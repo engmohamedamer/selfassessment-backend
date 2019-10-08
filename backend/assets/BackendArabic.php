@@ -22,12 +22,17 @@ class BackendArabic extends AssetBundle
      */
     public $css = [
         // 'css/style.css'
+        'http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
+        'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700',
+        'css/custom.css',
+
     ];
     /**
      * @var array
      */
     public $js = [
         //'js/app.js'
+        'https://kit.fontawesome.com/7bdd7e5637.js'
     ];
 
     /**

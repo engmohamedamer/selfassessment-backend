@@ -32,164 +32,217 @@ if(Yii::$app->user->isGuest){
 <?php $this->beginContent('@backend/views/layouts/base.php'); ?>
 
 <div class="wrapper">
-    <!-- header logo: style can be found in header.less -->
-    <header class="main-header">
-        <a href="/" class="logo">
-            <!-- Add the class icon to your logo image or logo icon to add the margining -->
-            <?php echo Yii::$app->name ?>
-        </a>
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                <span class="sr-only"><?php echo Yii::t('backend', 'Toggle navigation') ?></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
-                    <li id="timeline-notifications" class="dropdown notifications-menu">
-                        <a href="<?php echo Url::to(['/timeline-event/index']) ?>">
-                            <ion-icon name="text"></ion-icon>
-                            <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-                        </a>
-                    </li>
-                    <!-- Notifications: style can be found in dropdown.less -->
-                    <!-- <li id="log-dropdown" class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <ion-icon name="notifications"></ion-icon>
-                            <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-                           
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header"><?php echo Yii::t('backend', 'You have {num} log items', ['num' => SystemLog::find()->count()]) ?></li>
-                            <li>
-                                <ul class="menu">
-                                    <?php foreach (SystemLog::find()->orderBy(['log_time' => SORT_DESC])->limit(5)->all() as $logEntry): ?>
-                                        <li>
-                                            <a href="<?php echo Yii::$app->urlManager->createUrl(['/system/log/view', 'id' => $logEntry->id]) ?>">
-                                                <i class="fa fa-warning <?php echo $logEntry->level === Logger::LEVEL_ERROR ? 'text-red' : 'text-yellow' ?>"></i>
-                                                <?php echo $logEntry->category ?>
-                                            </a>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <?php echo Html::a(Yii::t('backend', 'View all'), ['/system/log/index']) ?>
-                            </li>
-                        </ul>
-                    </li> -->
-                    <!-- <li>
-                        <?php echo Html::a('<ion-icon name="settings"></ion-icon>', ['/system/settings']) ?>
-                    </li> -->
-                    <!-- User Account: style can be found in dropdown.less -->
-                    <li class="dropdown user user-menu">
-                        <a href="/" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>"
-                                 class="user-image">
-                        </a>
-                        <ul class="dropdown-menu">
-                            <!-- User image -->
-                            <li class="user-header light-blue" style="background: url(/material/img/bg/photo1.png) no-repeat;">
-                                <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>"
-                                     class="img-circle" alt="User Image"/>
-                                <p>
-                                    <?php echo Yii::$app->user->identity->username ?>
-                                    <small>
-                                        <?php echo Yii::t('backend', 'Member since {0, date, short}', Yii::$app->user->identity->created_at) ?>
-                                    </small>
-                            </li>
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <?php echo Html::a(Yii::t('backend', 'Profile'), ['/sign-in/profile'], ['class' => 'btn btn-default']) ?>
-                                </div>
-                                <div class="pull-left">
-                                    <?php echo Html::a(Yii::t('backend', 'Account'), ['/sign-in/account'], ['class' => 'btn btn-default']) ?>
-                                </div>
-                                <div class="pull-right">
-                                    <?php echo Html::a(Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'btn btn-default', 'data-method' => 'post']) ?>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    
-                </ul>
-            </div>
+        <nav class="main-header navbar navbar-expand">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+                </li>
+
+            </ul>
         </nav>
-    </header>
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar ">
+            <!-- Brand Logo -->
+            <a href="/" class="brand-link">
+                <img src="/img/tamkeen-logo.png" alt="" class="brand-image ">
+
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Dashboard
+                                </p>
+                            </a>
+
+                        </li>
+                        <li class="nav-header">Assessments</li>
+                        <li class="nav-item">
+                            <a href="AssessmentsList.html" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Assessments List
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="NewAssessment.html" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    New Assessment
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="AssessmentsList.html" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Assessments Reports
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>ChartJS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Flot</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Inline</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-header">Contributors</li>
+
+                        <li class="nav-item">
+                            <a href="ContributorsList.html" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Contributors List
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="NewContributor.html" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    New Contributor
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="ContributorsList.html" class="nav-link">
+                                <i class="nav-icon fas fa-chart-area"></i>
+                                <p>
+                                    Contributors Report
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header">MISCELLANEOUS</li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Pages
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>News</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Contact us</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>About us</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Terms</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-plus-square"></i>
+                                <p>
+                                    Extras
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Help Center</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Media Center</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Notifications Center</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+    
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-            <!-- Sidebar user panel -->
-            <!-- <div class="user-panel">
-                <div class="pull-left image">
-                    <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>" class="img-circle" />
-                </div>
-                <div class="pull-left info">
-                    <p><?php echo Yii::t('backend', 'Hello, {username}', ['username' => Yii::$app->user->identity->getPublicIdentity()]) ?></p>
-                    <a href="<?php echo Url::to(['/sign-in/profile']) ?>">
-                        <i class="fa fa-circle text-success"></i>
-                        <?php echo Yii::$app->formatter->asDatetime(time()) ?>
-                    </a>
-                </div>
-            </div> -->
-            <div class="user-profile" style="background: url(/material/img/bg/photo1.png) no-repeat;">
-                    <!-- User profile image -->
-                    <div class="profile-img"> <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>" alt="user"> </div>
-                    <!-- User profile text-->
-                    <div class="profile-text"> 
-                        <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                            <?php echo Yii::t('backend', 'Hello, {username}', ['username' => Yii::$app->user->identity->getPublicIdentity()]) ?>
-                        </a> 
-                        
-                    </div>
-                </div>
-            <!-- sidebar menu: : style can be found in sidebar.less -->
-
-
-            <?php
-            if (Yii::$app->user->can('administrator')) {
-               // $this->beginContent('@app/views/layouts/menus/_superadmin_menu.php');
-                $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
-                $this->endContent();
-            } elseif (Yii::$app->user->can('manager') ) {
-                $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
-                $this->endContent();
-
-            }else{
-                //do no thing
-                $this->beginContent('@app/views/layouts/menus/moe.php');
-                $this->endContent();
-            }
-            ?>
-
-        </section>
-        <!-- /.sidebar -->
-    </aside>
+   
 
     <!-- Right side column. Contains the navbar and content of the page -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                <?php echo $this->title ?>
-                <?php if (isset($this->params['subtitle'])): ?>
-                    <small><?php echo $this->params['subtitle'] ?></small>
-                <?php endif; ?>
-            </h1>
-
-            <?php echo Breadcrumbs::widget([
-                'tag' => 'ol',
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-        </section>
+        <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">Assessments List</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="NewAssessment.html" class="btn btn-primary" style="float:right">New Assessment</a>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+        
 
         <!-- Main content -->
         <section class="content">
+            <div class="container-fluid">
             <?php if (Yii::$app->session->hasFlash('alert')): ?>
                 <?php echo Alert::widget([
                     'body' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'body'),
@@ -197,6 +250,7 @@ if(Yii::$app->user->isGuest){
                 ]) ?>
             <?php endif; ?>
             <?php echo $content ?>
+            </div>
         </section><!-- /.content -->
     </div><!-- /.right-side -->
 

@@ -27,7 +27,7 @@ class BackendAsset extends AssetBundle
      * @var array
      */
     public $css = [
-       // 'css/style.css'
+        'css/_all-skins.min.css'
     ];
     /**
      * @var array

@@ -29,8 +29,8 @@ class LoginAsset extends AssetBundle
      */
     public $css = [
         'https://fonts.googleapis.com/css?family=Cairo:400,600,700',
-        'css/AdminLTE-RTL.css',
-        'css/styleAr.css'
+        //'css/AdminLTE-RTL.css',
+        //'css/styleAr.css'
     ];
     /**
      * @var array
