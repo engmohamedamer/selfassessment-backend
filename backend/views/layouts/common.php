@@ -15,7 +15,17 @@ use yii\helpers\Url;
 use yii\log\Logger;
 use yii\widgets\Breadcrumbs;
 
-$bundle = BackendAsset::register($this);
+
+if(Yii::$app->user->isGuest){
+    $bundle = BackendAsset::register($this);
+}else{
+    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
+        $bundle = BackendAsset::register($this);
+    }else{
+        $bundle =\backend\assets\BackendArabic::register($this);
+    }
+}
+
 
 ?>
 

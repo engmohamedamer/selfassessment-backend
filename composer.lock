@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6972a8d35e2a7253d58ed6618d369a65",
+    "content-hash": "dbcdb77d10a07768fe64aae2e52f2753",
     "packages": [
         {
             "name": "alexantr/yii2-elfinder",
@@ -4034,17 +4034,23 @@
         },
         {
             "name": "npm-asset/admin-lte",
-            "version": "v2.4.0-alpha1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
-                "reference": "37c8bbb01998db487382e9d62cfb398511167f3a"
-            },
+            "version": "3.0.0-alpha.2",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/37c8bbb01998db487382e9d62cfb398511167f3a",
-                "reference": "37c8bbb01998db487382e9d62cfb398511167f3a",
+                "type": "tar",
+                "url": "https://registry.npmjs.org/admin-lte/-/admin-lte-3.0.0-alpha.2.tgz",
+                "reference": null,
                 "shasum": null
+            },
+            "require": {
+                "npm-asset/bootstrap": ">=4.1.0,<5.0.0",
+                "npm-asset/chart.js": ">=2.7.2,<3.0.0",
+                "npm-asset/ckeditor--ckeditor5-build-classic": ">=1.0.0-beta.4,<2.0.0",
+                "npm-asset/datatables.net": ">=1.10.16,<2.0.0",
+                "npm-asset/datatables.net-bs4": ">=1.10.16,<2.0.0",
+                "npm-asset/font-awesome": ">=4.7.0,<5.0.0",
+                "npm-asset/jquery": ">=3.3.1,<4.0.0",
+                "npm-asset/jquery-ui": ">=1.12.1,<2.0.0",
+                "npm-asset/popper.js": ">=1.14.3,<2.0.0"
             },
             "type": "npm-asset",
             "license": [
@@ -4059,6 +4065,144 @@
                 "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.3.1.tgz",
                 "reference": null,
                 "shasum": null
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/chart.js",
+            "version": "2.8.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/chart.js/-/chart.js-2.8.0.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "npm-asset/chartjs-color": ">=2.1.0,<3.0.0",
+                "npm-asset/moment": ">=2.10.2,<3.0.0"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/chartjs-color",
+            "version": "2.4.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:chartjs/chartjs-color.git",
+                "reference": "c661e338f4bf0137a476d235ae540def0b4bd846"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chartjs/chartjs-color/zipball/c661e338f4bf0137a476d235ae540def0b4bd846",
+                "reference": "c661e338f4bf0137a476d235ae540def0b4bd846",
+                "shasum": null
+            },
+            "require": {
+                "npm-asset/chartjs-color-string": ">=0.6.0,<0.7.0",
+                "npm-asset/color-convert": ">=1.9.3,<2.0.0"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/chartjs-color-string",
+            "version": "0.6.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/chartjs-color-string/-/chartjs-color-string-0.6.0.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "npm-asset/color-name": ">=1.0.0,<2.0.0"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/ckeditor--ckeditor5-build-classic",
+            "version": "1.0.0-beta.4",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/@ckeditor/ckeditor5-build-classic/-/ckeditor5-build-classic-1.0.0-beta.4.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "npm-asset",
+            "license": [
+                "(GPL-2.0 OR LGPL-2.1 OR MPL-1.1)"
+            ]
+        },
+        {
+            "name": "npm-asset/color-convert",
+            "version": "1.9.3",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/color-convert/-/color-convert-1.9.3.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "npm-asset/color-name": "1.1.3"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/color-name",
+            "version": "1.1.3",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/color-name/-/color-name-1.1.3.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/datatables.net",
+            "version": "1.10.20",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/datatables.net/-/datatables.net-1.10.20.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "npm-asset/jquery": ">=1.7"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/datatables.net-bs4",
+            "version": "1.10.20",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/datatables.net-bs4/-/datatables.net-bs4-1.10.20.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "npm-asset/datatables.net": "1.10.20",
+                "npm-asset/jquery": ">=1.7"
             },
             "type": "npm-asset",
             "license": [
@@ -4103,23 +4247,17 @@
         },
         {
             "name": "npm-asset/jquery",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jquery/jquery.git",
-                "reference": "1b74660f730d34bf728094c33080ff406427f41e"
-            },
+            "version": "3.4.1",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jquery/jquery/zipball/1b74660f730d34bf728094c33080ff406427f41e",
-                "reference": "1b74660f730d34bf728094c33080ff406427f41e",
+                "type": "tar",
+                "url": "https://registry.npmjs.org/jquery/-/jquery-3.4.1.tgz",
+                "reference": null,
                 "shasum": null
             },
             "type": "npm-asset",
             "license": [
                 "MIT"
-            ],
-            "time": "2019-09-26T19:12:38+00:00"
+            ]
         },
         {
             "name": "npm-asset/jquery-slimscroll",
@@ -4134,6 +4272,48 @@
                 "npm-asset/jquery": ">=1.7"
             },
             "type": "npm-asset"
+        },
+        {
+            "name": "npm-asset/jquery-ui",
+            "version": "1.12.1",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.12.1.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/moment",
+            "version": "2.24.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/moment/-/moment-2.24.0.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/popper.js",
+            "version": "1.15.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/popper.js/-/popper.js-1.15.0.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "paragonie/random_compat",
@@ -5581,12 +5761,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "8fbb5af36e7d64a902d26b1e008cf9de076b0408"
+                "reference": "4924cc63aaf781f6c0bc5f49bcb8ec09d5e5f9be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/8fbb5af36e7d64a902d26b1e008cf9de076b0408",
-                "reference": "8fbb5af36e7d64a902d26b1e008cf9de076b0408",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/4924cc63aaf781f6c0bc5f49bcb8ec09d5e5f9be",
+                "reference": "4924cc63aaf781f6c0bc5f49bcb8ec09d5e5f9be",
                 "shasum": ""
             },
             "require": {
@@ -5673,7 +5853,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2019-10-05T19:33:29+00:00"
+            "time": "2019-10-07T15:45:51+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -5796,16 +5976,16 @@
         },
         {
             "name": "yiisoft/yii2-bootstrap4",
-            "version": "2.0.7",
+            "version": "2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-bootstrap4.git",
-                "reference": "6745eb7cfc13ac7bc01b396adb8410aa41711fa6"
+                "reference": "c67ae3f3624c35d977841f6b18d0d752ebed6420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap4/zipball/6745eb7cfc13ac7bc01b396adb8410aa41711fa6",
-                "reference": "6745eb7cfc13ac7bc01b396adb8410aa41711fa6",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap4/zipball/c67ae3f3624c35d977841f6b18d0d752ebed6420",
+                "reference": "c67ae3f3624c35d977841f6b18d0d752ebed6420",
                 "shasum": ""
             },
             "require": {
@@ -5861,7 +6041,7 @@
                 "bootstrap4",
                 "yii2"
             ],
-            "time": "2019-08-13T11:49:38+00:00"
+            "time": "2019-10-08T11:01:37+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -5924,12 +6104,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-httpclient.git",
-                "reference": "a023c06a957448cedaf796b3b7d4db6561d2b6a7"
+                "reference": "05ecc99868352cf840173bfd8fe67bfd84b5f295"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-httpclient/zipball/a023c06a957448cedaf796b3b7d4db6561d2b6a7",
-                "reference": "a023c06a957448cedaf796b3b7d4db6561d2b6a7",
+                "url": "https://api.github.com/repos/yiisoft/yii2-httpclient/zipball/05ecc99868352cf840173bfd8fe67bfd84b5f295",
+                "reference": "05ecc99868352cf840173bfd8fe67bfd84b5f295",
                 "shasum": ""
             },
             "require": {
@@ -5966,7 +6146,7 @@
                 "httpclient",
                 "yii2"
             ],
-            "time": "2019-10-01T08:37:27+00:00"
+            "time": "2019-10-08T09:48:57+00:00"
         },
         {
             "name": "yiisoft/yii2-jui",
@@ -6323,22 +6503,22 @@
         },
         {
             "name": "codeception/phpunit-wrapper",
-            "version": "7.1.0",
+            "version": "7.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/phpunit-wrapper.git",
-                "reference": "cde840638d021804ce93e8f98bcb7edbf6935423"
+                "reference": "ed4b12beb167dc2ecea293b4f6df6c20ce8d280f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/cde840638d021804ce93e8f98bcb7edbf6935423",
-                "reference": "cde840638d021804ce93e8f98bcb7edbf6935423",
+                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/ed4b12beb167dc2ecea293b4f6df6c20ce8d280f",
+                "reference": "ed4b12beb167dc2ecea293b4f6df6c20ce8d280f",
                 "shasum": ""
             },
             "require": {
                 "phpunit/php-code-coverage": "^6.0",
-                "phpunit/phpunit": "^7.1",
-                "sebastian/comparator": "^2.0",
+                "phpunit/phpunit": ">=7.1 <7.6",
+                "sebastian/comparator": "^3.0",
                 "sebastian/diff": "^3.0"
             },
             "require-dev": {
@@ -6362,7 +6542,7 @@
                 }
             ],
             "description": "PHPUnit classes used by Codeception",
-            "time": "2018-04-10T09:05:14+00:00"
+            "time": "2019-01-13T10:34:39+00:00"
         },
         {
             "name": "codeception/stub",
@@ -6555,12 +6735,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "242591b09ad2fc5993570448fc0a95b09f30270b"
+                "reference": "73192096ed649e2b3d7043a227aa94bd4d8be561"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/242591b09ad2fc5993570448fc0a95b09f30270b",
-                "reference": "242591b09ad2fc5993570448fc0a95b09f30270b",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/73192096ed649e2b3d7043a227aa94bd4d8be561",
+                "reference": "73192096ed649e2b3d7043a227aa94bd4d8be561",
                 "shasum": ""
             },
             "require": {
@@ -6597,7 +6777,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2019-09-18T07:27:53+00:00"
+            "time": "2019-10-07T21:19:09+00:00"
         },
         {
             "name": "opis/closure",
@@ -7259,16 +7439,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.1.4",
+            "version": "7.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "6d51299e307dc510149e0b7cd1931dd11770e1cb"
+                "reference": "ca64dba53b88aba6af32aebc6b388068db95c435"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6d51299e307dc510149e0b7cd1931dd11770e1cb",
-                "reference": "6d51299e307dc510149e0b7cd1931dd11770e1cb",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ca64dba53b88aba6af32aebc6b388068db95c435",
+                "reference": "ca64dba53b88aba6af32aebc6b388068db95c435",
                 "shasum": ""
             },
             "require": {
@@ -7287,7 +7467,7 @@
                 "phpunit/php-text-template": "^1.2.1",
                 "phpunit/php-timer": "^2.0",
                 "phpunit/phpunit-mock-objects": "^6.1.1",
-                "sebastian/comparator": "^2.1 || ^3.0",
+                "sebastian/comparator": "^3.0",
                 "sebastian/diff": "^3.0",
                 "sebastian/environment": "^3.1",
                 "sebastian/exporter": "^3.1",
@@ -7335,7 +7515,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-04-18T13:41:53+00:00"
+            "time": "2018-04-29T15:09:19+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -7490,30 +7670,30 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "2.1.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "34369daee48eafb2651bea869b4b15d75ccc35f9"
+                "reference": "9a1267ac19ecd74163989bcb3e01c5c9587f9e3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/34369daee48eafb2651bea869b4b15d75ccc35f9",
-                "reference": "34369daee48eafb2651bea869b4b15d75ccc35f9",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/9a1267ac19ecd74163989bcb3e01c5c9587f9e3b",
+                "reference": "9a1267ac19ecd74163989bcb3e01c5c9587f9e3b",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0",
-                "sebastian/diff": "^2.0 || ^3.0",
+                "php": "^7.1",
+                "sebastian/diff": "^3.0",
                 "sebastian/exporter": "^3.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.4"
+                "phpunit/phpunit": "^7.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1.x-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -7550,7 +7730,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2018-02-01T13:46:46+00:00"
+            "time": "2019-07-02T07:45:15+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -8071,12 +8251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "b27682e75fc723b504267a5c628ac1d2a8439191"
+                "reference": "d227823b940ea690a104c68f7df2847c3d8a2a23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/b27682e75fc723b504267a5c628ac1d2a8439191",
-                "reference": "b27682e75fc723b504267a5c628ac1d2a8439191",
+                "url": "https://api.github.com/repos/symfony/console/zipball/d227823b940ea690a104c68f7df2847c3d8a2a23",
+                "reference": "d227823b940ea690a104c68f7df2847c3d8a2a23",
                 "shasum": ""
             },
             "require": {
@@ -8139,7 +8319,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-10-07T12:37:47+00:00"
+            "time": "2019-10-07T16:46:30+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -8807,16 +8987,16 @@
         },
         {
             "name": "yiisoft/yii2-gii",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "6ebe5e1550030b9b65beaf656cd175577eb74975"
+                "reference": "cf3e81953a9e9796eed4021f3065bc5c18ee3356"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/6ebe5e1550030b9b65beaf656cd175577eb74975",
-                "reference": "6ebe5e1550030b9b65beaf656cd175577eb74975",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/cf3e81953a9e9796eed4021f3065bc5c18ee3356",
+                "reference": "cf3e81953a9e9796eed4021f3065bc5c18ee3356",
                 "shasum": ""
             },
             "require": {
@@ -8854,7 +9034,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2019-08-13T14:34:28+00:00"
+            "time": "2019-10-08T10:28:42+00:00"
         }
     ],
     "aliases": [],

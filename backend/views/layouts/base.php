@@ -9,16 +9,6 @@ use yii\helpers\ArrayHelper;
 
 
 
-if(Yii::$app->user->isGuest){
-    $bundle = BackendAsset::register($this);
-}else{
-    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
-        $bundle = BackendAsset::register($this);
-    }else{
-        $bundle =BackendArabic::register($this);
-    }
-}
-
 
 
 $this->params['body-class'] = $this->params['body-class'] ?? null;
