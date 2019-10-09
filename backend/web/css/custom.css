@@ -64,4 +64,10 @@ a {
   width: 55%;
   display: block;
 }
+
+.nav-item.dropdown.user.user-menu .nav-link .user-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
 /*# sourceMappingURL=custom.css.map */

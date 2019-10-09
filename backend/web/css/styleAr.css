@@ -1,19 +1,19 @@
 body {
-    font-family: "Cairo", sans-serif !important;
-    direction: rtl;
+  font-family: "Cairo", sans-serif !important;
+  direction: rtl;
 }
 
 .tooltip {
-    font-family: "Cairo", sans-serif !important;
+  font-family: "Cairo", sans-serif !important;
 }
 
 .login-box,
 .register-box {
-    font-family: "Cairo", sans-serif !important;
+  font-family: "Cairo", sans-serif !important;
 }
 
 .main-header .logo {
-    font-family: "Cairo", sans-serif !important;
+  font-family: "Cairo", sans-serif !important;
 }
 
 .h1,
@@ -27,128 +27,128 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Cairo", sans-serif !important;
+  font-family: "Cairo", sans-serif !important;
 }
 
 .upload-kit .upload-kit-input,
 .upload-kit .upload-kit-item {
-    float: right;
-    margin: 10px 0 0 0;
+  float: right;
+  margin: 10px 0 0 0;
 }
 
 .upload-kit .files {
-    float: right;
+  float: right;
 }
 
 .sidebar .user-profile .profile-img {
-    margin-right: 30px;
+  margin-right: 30px;
 }
 
-.navbar-nav>li {
-    float: right;
+.navbar-nav > li {
+  float: right;
 }
 
 .close {
-    float: left !important;
+  float: left !important;
 }
 
 .pull-right {
-    float: left !important;
+  float: left !important;
 }
 
 .pull-left {
-    float: right !important;
+  float: right !important;
 }
 
 .table thead th a,
 .table th a {
-    float: right;
+  float: right;
 }
 
 .nav-tabs {
-    padding: 0;
+  padding: 0;
 }
 
 .nav-tabs .header .hydrated {
-    margin-right: 0;
-    margin-left: 5px;
+  margin-right: 0;
+  margin-left: 5px;
 }
 
 .kv-tree-wrapper {
-    direction: ltr;
+  direction: ltr;
 }
 
 .kv-tree-wrapper h1 {
-    direction: rtl;
+  direction: rtl;
 }
 
 .kv-tree-wrapper .row .col-sm-3 .kv-detail-container,
 .kv-tree-wrapper .row .col-sm-9 .kv-detail-container {
-    direction: rtl;
+  direction: rtl;
 }
 
 .kv-detail-crumbs {
-    padding-top: 10px;
-    float: right;
-    margin-right: 15px;
+  padding-top: 10px;
+  float: right;
+  margin-right: 15px;
 }
 
 .checkbox input[type="checkbox"],
 label.checkbox-inline input[type="checkbox"] {
-    margin-left: 5px;
-    margin-right: 0;
+  margin-left: 5px;
+  margin-right: 0;
 }
 
 .main-header .user-menu .dropdown-menu {
-    width: 340px;
+  width: 340px;
 }
 
 .error img {
-    float: left;
+  float: left;
 }
 
-.table-bordered>thead>tr>th,
-.table-bordered>thead>tr>td {
-    border-bottom-width: 2px;
-    text-align: right;
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  border-bottom-width: 2px;
+  text-align: right;
 }
 
-.nav-tabs>li {
-    float: right;
+.nav-tabs > li {
+  float: right;
 }
 
 .table.detail-view th {
-    text-align: right;
+  text-align: right;
 }
 
 .grid-form .form-group {
-    margin-right: 0;
-    margin-left: 1%;
+  margin-right: 0;
+  margin-left: 1%;
 }
 
 .kv-grid-toolbar .dropdown-menu li a i {
-    float: left;
+  float: left;
 }
 
 .kv-checkbox-list li .checkbox label {
-    text-align: right;
+  text-align: right;
 }
 
 .sidebar-mini.sidebar-collapse .profile-text {
-    display: none;
+  display: none;
 }
 
 .sidebar-mini.sidebar-collapse .profile-img {
-    margin: 0;
-    padding: 5px;
+  margin: 0;
+  padding: 5px;
 }
 
 .sidebar-mini.sidebar-collapse .profile-img::before {
-    display: none;
+  display: none;
 }
 
-.sidebar-mini.sidebar-collapse .sidebar-menu>li:hover>a>.pull-right-container {
-    right: 175px !important;
+.sidebar-mini.sidebar-collapse .sidebar-menu > li:hover > a > .pull-right-container {
+  right: 175px !important;
 }
 
 .error .col-xs-1,
@@ -163,81 +163,81 @@ label.checkbox-inline input[type="checkbox"] {
 .error .col-xs-10,
 .error .col-xs-11,
 .error .col-xs-12 {
-    float: right;
+  float: right;
 }
 
 .select2-container .select2-selection--single .select2-selection__rendered {
-    padding-left: 0;
-    padding-right: 10px;
-    direction: rtl;
+  padding-left: 0;
+  padding-right: 10px;
+  direction: rtl;
 }
 
 .kv-batch-create i {
-    margin-right: 0;
-    margin-left: 10px;
+  margin-right: 0;
+  margin-left: 10px;
 }
 
 .treeView .row .col-sm-3,
 .treeView .row .col-sm-9,
 .treeView .row .col-sm-6 {
-    float: right;
-    text-align: right;
-    direction: rtl;
+  float: right;
+  text-align: right;
+  direction: rtl;
 }
 
 .treeView .kv-tree-list .kv-node-icon {
-    float: right;
-    margin-right: 10px;
+  float: right;
+  margin-right: 10px;
 }
 
 .treeView .kv-search-container {
-    float: left;
+  float: left;
 }
 
 .treeView .kv-search-container .kv-search-clear {
-    position: absolute;
-    padding: 10px;
-    right: auto;
-    left: 0;
+  position: absolute;
+  padding: 10px;
+  right: auto;
+  left: 0;
 }
 
 .treeView .kv-tree li {
-    padding-left: 0;
-    border: dotted #333;
-    border-width: 0px 1px 1px 0px;
-    line-height: 1.9;
-    padding-right: 0.75em;
+  padding-left: 0;
+  border: dotted #333;
+  border-width: 0px 1px 1px 0px;
+  line-height: 1.9;
+  padding-right: 0.75em;
 }
 
 .treeView .kv-tree li ul {
-    border-top: 1px dotted #333;
-    margin-left: 0;
-    padding-left: 0;
-    margin-right: -0.75em;
-    padding-right: 1.4em;
+  border-top: 1px dotted #333;
+  margin-left: 0;
+  padding-left: 0;
+  margin-right: -0.75em;
+  padding-right: 1.4em;
 }
 
 .treeView ul.kv-tree,
 .treeView .kv-tree ul {
-    padding-left: 0;
-    padding-right: 0.73em;
+  padding-left: 0;
+  padding-right: 0.73em;
 }
 
 .treeView .kv-detail-heading .pull-right {
-    float: left !important;
+  float: left !important;
 }
 
 .treeView .kv-detail-heading {
-    padding: 5px 15px 5px 5px;
+  padding: 5px 15px 5px 5px;
 }
 
 .select2-container--krajee .select2-selection--single .select2-selection__clear {
-    right: auto;
-    left: 10px;
+  right: auto;
+  left: 10px;
 }
 
 .btns-list .btn {
-    margin: 0 5px 0 0;
+  margin: 0 5px 0 0;
 }
 
 form .col-xs-1,
@@ -288,63 +288,51 @@ form .col-xs-12,
 form .col-sm-12,
 form .col-md-12,
 form .col-lg-12 {
-    float: right;
+  float: right;
 }
 
-.navbar-nav>.notifications-menu>.dropdown-menu>li.header,
-.navbar-nav>.messages-menu>.dropdown-menu>li.header,
-.navbar-nav>.tasks-menu>.dropdown-menu>li.header {
-    text-align: right;
+.navbar-nav > .notifications-menu > .dropdown-menu > li.header,
+.navbar-nav > .messages-menu > .dropdown-menu > li.header,
+.navbar-nav > .tasks-menu > .dropdown-menu > li.header {
+  text-align: right;
 }
 
-.skin-blue .sidebar-menu>li.header>a {
-    padding: 0;
+.skin-blue .sidebar-menu > li.header > a {
+  padding: 0;
 }
 
-.skin-blue .sidebar-menu>li.header>a:hover {
-    background: transparent;
-    border-left-color: transparent;
+.skin-blue .sidebar-menu > li.header > a:hover {
+  background: transparent;
+  border-left-color: transparent;
 }
 
-.skin-blue .sidebar-menu>li.header:hover>a,
-.skin-blue .sidebar-menu>li.header.active>a {
-    color: #fff;
-    background: transparent;
-    border-left-color: transparent;
+.skin-blue .sidebar-menu > li.header:hover > a,
+.skin-blue .sidebar-menu > li.header.active > a {
+  color: #fff;
+  background: transparent;
+  border-left-color: transparent;
 }
 
 .table a {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .select2-container--krajee .select2-selection--single .select2-selection__placeholder {
-    color: #3c3c3c;
+  color: #3c3c3c;
 }
 
 .upload-kit-input.error .error-popover {
-    font-size: 32px;
-    left: -18px;
-    top: -18px;
-    right: auto;
+  font-size: 32px;
+  left: -18px;
+  top: -18px;
+  right: auto;
 }
 
 .upload-kit-input.error .popover {
-    top: -19px !important;
-    left: 14px;
-    display: block;
-    width: 220px;
-    text-align: center;
+  top: -19px;
+  left: 14px;
+  display: block;
+  width: 218px;
+  text-align: center;
 }
-
-.progress-bar {
-    float: right;
-    background: #fff !important;
-}
-
-[class*="col-"] {
-    /* WE USE * HERE */
-    float: right
-}
-
-
 /*# sourceMappingURL=styleAr.css.map */

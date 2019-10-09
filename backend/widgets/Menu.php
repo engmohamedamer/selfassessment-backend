@@ -37,7 +37,7 @@ class Menu extends \yii\widgets\Menu
     /**
      * @var string
      */
-    public $parentRightIcon = '<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>';
+    public $parentRightIcon = '<i class="right fas fa-angle-left"></i>';
 
     /**
      * @inheritdoc

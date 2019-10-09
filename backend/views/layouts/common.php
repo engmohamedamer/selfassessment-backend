@@ -40,12 +40,37 @@ if(Yii::$app->user->isGuest){
                 </li>
 
             </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown user user-menu">
+                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>"
+                                class="user-image">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">Welcome, Mohamed Amer</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="/sign-in/profile" class="dropdown-item">
+                            <i class="far fa-user-circle mr-2"></i> My Profile
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/sign-in/account" class="dropdown-item">
+                        <i class="far fa-user mr-2"></i> My Account
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/sign-in/logout" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                        </a>
+                       
+                    </div>
+                   
+                </li>
+            </ul>
         </nav>
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar ">
             <!-- Brand Logo -->
             <a href="/" class="brand-link">
-                <img src="/img/tamkeen-logo.png" alt="" class="brand-image ">
+                <img src="/img/tamkeen-logo.png" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
 
             </a>
 
@@ -55,161 +80,24 @@ if(Yii::$app->user->isGuest){
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                </p>
-                            </a>
+                   
 
-                        </li>
-                        <li class="nav-header">Assessments</li>
-                        <li class="nav-item">
-                            <a href="AssessmentsList.html" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Assessments List
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="NewAssessment.html" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    New Assessment
-                                </p>
-                            </a>
-                        </li>
+                    <?php
+                    if (Yii::$app->user->can('administrator')) {
+                    // $this->beginContent('@app/views/layouts/menus/_superadmin_menu.php');
+                        $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
+                        $this->endContent();
+                    } elseif (Yii::$app->user->can('manager') ) {
+                        $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
+                        $this->endContent();
 
-                        <li class="nav-item has-treeview">
-                            <a href="AssessmentsList.html" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Assessments Reports
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>ChartJS</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Flot</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Inline</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                    }else{
+                        //do no thing
+                        $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
+                        $this->endContent();
+                    }
+                    ?>
 
-                        <li class="nav-header">Contributors</li>
-
-                        <li class="nav-item">
-                            <a href="ContributorsList.html" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Contributors List
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="NewContributor.html" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    New Contributor
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="ContributorsList.html" class="nav-link">
-                                <i class="nav-icon fas fa-chart-area"></i>
-                                <p>
-                                    Contributors Report
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">MISCELLANEOUS</li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-book"></i>
-                                <p>
-                                    Pages
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>News</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Contact us</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>About us</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Terms</p>
-                                    </a>
-                                </li>
-
-
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-plus-square"></i>
-                                <p>
-                                    Extras
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Help Center</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Media Center</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Notifications Center</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                    </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
@@ -226,7 +114,12 @@ if(Yii::$app->user->isGuest){
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Assessments List</h1>
+                            <h1 class="m-0 text-dark">
+                            <?php echo $this->title ?>
+                            <?php if (isset($this->params['subtitle'])): ?>
+                                <small><?php echo $this->params['subtitle'] ?></small>
+                            <?php endif; ?>
+                            </h1>
                         </div>
                         <div class="col-sm-6">
                             <a href="NewAssessment.html" class="btn btn-primary" style="float:right">New Assessment</a>

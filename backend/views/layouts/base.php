@@ -9,6 +9,17 @@ use yii\helpers\ArrayHelper;
 
 
 
+if(Yii::$app->user->isGuest){
+    $bundle = BackendAsset::register($this);
+}else{
+    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
+        $bundle = BackendAsset::register($this);
+    }else{
+        $bundle =BackendArabic::register($this);
+    }
+}
+
+
 
 
 $this->params['body-class'] = $this->params['body-class'] ?? null;
@@ -28,16 +39,7 @@ $this->params['body-class'] = $this->params['body-class'] ?? null;
     <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-firestore.js"></script>
 </head>
-<!-- <?php echo Html::beginTag('body', [
-    'class' => implode(' ', [
-        ArrayHelper::getValue($this->params, 'body-class'),
-        Yii::$app->keyStorage->get('backend.theme-skin', 'skin-blue'),
-        Yii::$app->keyStorage->get('backend.layout-fixed') ? 'fixed' : null,
-        Yii::$app->keyStorage->get('backend.layout-boxed') ? 'layout-boxed' : null,
-        Yii::$app->keyStorage->get('backend.layout-collapsed-sidebar') ? 'sidebar-collapse' : null,
-        Yii::$app->keyStorage->get('backend.sidebar-mini') ? 'sidebar-mini' : null,
-    ])
-])?> -->
+
 <body class="hold-transition sidebar-mini">
     <?php $this->beginBody() ?>
         <?php echo $content ?>
