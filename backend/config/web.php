@@ -18,6 +18,24 @@ $config = [
             'enableAutoLogin' => true,
             'as afterLogin' => common\behaviors\LoginTimestampBehavior::class,
         ],
+
+        'assetManager' => [
+            'class' => yii\web\AssetManager::class,
+            'linkAssets' => env('LINK_ASSETS'),
+            'appendTimestamp' => YII_ENV_DEV,
+            'bundles' => [
+                'yii\bootstrap4\BootstrapAsset' => [
+                    'sourcePath' => '@npm/bootstrap/dist'
+                ],
+                'yii\bootstrap4\BootstrapPluginAsset' => [
+                    'sourcePath' => '@npm/bootstrap/dist'
+                ]
+            ],
+
+
+        ],
+
+
     ],
     'modules' => [
         'content' => [
@@ -78,6 +96,18 @@ $config = [
         'class' => common\behaviors\GlobalAccessBehavior::class,
         'rules' => require __DIR__ . '/_rules.php',
     ],
+
+
+    'params' => [
+        'bsDependencyEnabled' => true, // this will not load Bootstrap CSS and JS for all Krajee extensions
+        // you need to ensure you load the Bootstrap CSS/JS manually in your view layout before Krajee CSS/JS assets
+        //
+        // other params settings below
+         'bsVersion' => '4.x',
+        // 'adminEmail' => 'admin@example.com'
+    ]
+
+
 ];
 
 if (YII_ENV_DEV) {
