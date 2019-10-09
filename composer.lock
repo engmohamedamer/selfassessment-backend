@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbcdb77d10a07768fe64aae2e52f2753",
+    "content-hash": "995204977df019b83bbf00955597143f",
     "packages": [
         {
             "name": "alexantr/yii2-elfinder",
@@ -250,28 +250,6 @@
             },
             "type": "bower-asset",
             "time": "2019-09-28T11:54:33+00:00"
-        },
-        {
-            "name": "bower-asset/bootstrap",
-            "version": "v3.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/68b0d231a13201eb14acd3dc84e51543d16e5f7e",
-                "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e",
-                "shasum": null
-            },
-            "require": {
-                "bower-asset/jquery": ">=1.9.1,<4.0"
-            },
-            "type": "bower-asset",
-            "license": [
-                "MIT"
-            ]
         },
         {
             "name": "bower-asset/eonasdan-bootstrap-datetimepicker",
@@ -973,12 +951,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "08896e6cc51c276092a4170263608099d9a3352f"
+                "reference": "98fec1ca655072b61f05659571cf4c812c79e763"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/08896e6cc51c276092a4170263608099d9a3352f",
-                "reference": "08896e6cc51c276092a4170263608099d9a3352f",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/98fec1ca655072b61f05659571cf4c812c79e763",
+                "reference": "98fec1ca655072b61f05659571cf4c812c79e763",
                 "shasum": ""
             },
             "type": "library",
@@ -1018,7 +996,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2019-10-07T09:50:27+00:00"
+            "time": "2019-10-08T13:34:38+00:00"
         },
         {
             "name": "kartik-v/bootstrap-star-rating",
@@ -1159,6 +1137,58 @@
                 "select"
             ],
             "time": "2019-09-03T03:12:44+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-bootstrap4-dropdown",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-bootstrap4-dropdown.git",
+                "reference": "399150300e7b0a9b93d51f43e583c1354db65488"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-bootstrap4-dropdown/zipball/399150300e7b0a9b93d51f43e583c1354db65488",
+                "reference": "399150300e7b0a9b93d51f43e583c1354db65488",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-krajee-base": ">=1.9",
+                "yiisoft/yii2-bootstrap4": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\bs4dropdown\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Enhanced Bootstrap 4 dropdown widget for Yii2 with nested submenu support",
+            "homepage": "https://github.com/kartik-v/yii2-bootstrap4-dropdown",
+            "keywords": [
+                "bootstrap",
+                "dropdown",
+                "jquery",
+                "nested",
+                "submenu",
+                "yii2"
+            ],
+            "time": "2019-05-25T07:11:53+00:00"
         },
         {
             "name": "kartik-v/yii2-builder",
@@ -1382,12 +1412,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-export.git",
-                "reference": "fb3e25f2302ee2c2d8ff7821e4b6a153c2378475"
+                "reference": "7dc1cf1ff5e2dcc4cd3eae1ba76979669999b922"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/fb3e25f2302ee2c2d8ff7821e4b6a153c2378475",
-                "reference": "fb3e25f2302ee2c2d8ff7821e4b6a153c2378475",
+                "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/7dc1cf1ff5e2dcc4cd3eae1ba76979669999b922",
+                "reference": "7dc1cf1ff5e2dcc4cd3eae1ba76979669999b922",
                 "shasum": ""
             },
             "require": {
@@ -1434,7 +1464,7 @@
                 "xlsx",
                 "yii2"
             ],
-            "time": "2019-09-03T03:12:26+00:00"
+            "time": "2019-10-08T13:41:24+00:00"
         },
         {
             "name": "kartik-v/yii2-grid",
@@ -1754,12 +1784,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-tree-manager.git",
-                "reference": "b8747c8c96572726096b3ab227e16a06dd99326e"
+                "reference": "8c7168c866107722528793809877ad5c2f506183"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-tree-manager/zipball/b8747c8c96572726096b3ab227e16a06dd99326e",
-                "reference": "b8747c8c96572726096b3ab227e16a06dd99326e",
+                "url": "https://api.github.com/repos/kartik-v/yii2-tree-manager/zipball/8c7168c866107722528793809877ad5c2f506183",
+                "reference": "8c7168c866107722528793809877ad5c2f506183",
                 "shasum": ""
             },
             "require": {
@@ -1803,7 +1833,7 @@
                 "tree",
                 "treeview"
             ],
-            "time": "2019-10-07T09:57:50+00:00"
+            "time": "2019-10-09T09:12:53+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-activeform",
@@ -2837,12 +2867,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "f3e17a51285655d57bede45197d05ef4e3109bfc"
+                "reference": "301014816b2fb5d0776867e205ae7a3cbd1c3c8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f3e17a51285655d57bede45197d05ef4e3109bfc",
-                "reference": "f3e17a51285655d57bede45197d05ef4e3109bfc",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/301014816b2fb5d0776867e205ae7a3cbd1c3c8a",
+                "reference": "301014816b2fb5d0776867e205ae7a3cbd1c3c8a",
                 "shasum": ""
             },
             "require": {
@@ -2913,7 +2943,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-10-05T14:08:42+00:00"
+            "time": "2019-10-08T18:52:19+00:00"
         },
         {
             "name": "league/glide",
@@ -5761,12 +5791,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "4924cc63aaf781f6c0bc5f49bcb8ec09d5e5f9be"
+                "reference": "e972068ecb840458267373db5a235d5d985b3016"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/4924cc63aaf781f6c0bc5f49bcb8ec09d5e5f9be",
-                "reference": "4924cc63aaf781f6c0bc5f49bcb8ec09d5e5f9be",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/e972068ecb840458267373db5a235d5d985b3016",
+                "reference": "e972068ecb840458267373db5a235d5d985b3016",
                 "shasum": ""
             },
             "require": {
@@ -5853,7 +5883,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2019-10-07T15:45:51+00:00"
+            "time": "2019-10-09T11:59:45+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -5910,69 +5940,6 @@
                 "yii2"
             ],
             "time": "2019-07-02T10:42:21+00:00"
-        },
-        {
-            "name": "yiisoft/yii2-bootstrap",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yiisoft/yii2-bootstrap.git",
-                "reference": "40a00e20b66057cd32d0c8bbc9377dc0223e541a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/40a00e20b66057cd32d0c8bbc9377dc0223e541a",
-                "reference": "40a00e20b66057cd32d0c8bbc9377dc0223e541a",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/bootstrap": "3.4.* | 3.3.* | 3.2.* | 3.1.*",
-                "yiisoft/yii2": "~2.0.6"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "<7"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "yii\\bootstrap\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Paul Klimov",
-                    "email": "klimov.paul@gmail.com"
-                },
-                {
-                    "name": "Alexander Makarov",
-                    "email": "sam@rmcreative.ru",
-                    "homepage": "http://rmcreative.ru/"
-                },
-                {
-                    "name": "Antonio Ramirez",
-                    "email": "amigo.cobos@gmail.com"
-                },
-                {
-                    "name": "Qiang Xue",
-                    "email": "qiang.xue@gmail.com",
-                    "homepage": "http://www.yiiframework.com/"
-                }
-            ],
-            "description": "The Twitter Bootstrap extension for the Yii framework",
-            "keywords": [
-                "bootstrap",
-                "yii2"
-            ],
-            "time": "2019-05-23T16:20:29+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap4",
@@ -6735,12 +6702,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "73192096ed649e2b3d7043a227aa94bd4d8be561"
+                "reference": "300a564096ce5ce90dfd12a27fc8bc7ecbec523d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/73192096ed649e2b3d7043a227aa94bd4d8be561",
-                "reference": "73192096ed649e2b3d7043a227aa94bd4d8be561",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/300a564096ce5ce90dfd12a27fc8bc7ecbec523d",
+                "reference": "300a564096ce5ce90dfd12a27fc8bc7ecbec523d",
                 "shasum": ""
             },
             "require": {
@@ -6777,7 +6744,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2019-10-07T21:19:09+00:00"
+            "time": "2019-10-09T14:06:15+00:00"
         },
         {
             "name": "opis/closure",
@@ -8380,12 +8347,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "117563a4a2bb704d0c30c6cef5e93c42a85c65aa"
+                "reference": "0961866cf457cda10838e052d65e712417ad864c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/117563a4a2bb704d0c30c6cef5e93c42a85c65aa",
-                "reference": "117563a4a2bb704d0c30c6cef5e93c42a85c65aa",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/0961866cf457cda10838e052d65e712417ad864c",
+                "reference": "0961866cf457cda10838e052d65e712417ad864c",
                 "shasum": ""
             },
             "require": {
@@ -8433,7 +8400,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2019-09-27T17:11:11+00:00"
+            "time": "2019-10-09T13:24:13+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -8441,12 +8408,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "ed990f86531e653b3956881a325fa7b24febd35e"
+                "reference": "c73bdefc20ff6e180f878122e07f1f59afba03f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/ed990f86531e653b3956881a325fa7b24febd35e",
-                "reference": "ed990f86531e653b3956881a325fa7b24febd35e",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/c73bdefc20ff6e180f878122e07f1f59afba03f5",
+                "reference": "c73bdefc20ff6e180f878122e07f1f59afba03f5",
                 "shasum": ""
             },
             "require": {
@@ -8503,7 +8470,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2019-10-04T11:01:02+00:00"
+            "time": "2019-10-09T14:35:36+00:00"
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -9049,7 +9016,8 @@
         "mootensai/yii2-enhanced-gii": 20,
         "kartik-v/yii2-mpdf": 20,
         "kartik-v/yii2-tree-manager": 20,
-        "arogachev/yii2-many-to-many": 20
+        "arogachev/yii2-many-to-many": 20,
+        "kartik-v/yii2-bootstrap4-dropdown": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

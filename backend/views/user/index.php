@@ -4,7 +4,6 @@ use common\grid\EnumColumn;
 use common\models\User;
 use trntv\yii\datetime\DateTimeWidget;
 use yii\helpers\Html;
-//use yii\grid\GridView;
 use kartik\grid\GridView;
 
 
@@ -40,32 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'username',
 
-            [
-                'header'=> Yii::t('backend', 'Full Name') ,
-                'attribute' => 'id',
-                'format'    => 'raw',
-                'value'     => function ($model) {
-                    return Html::a( $model->userProfile['fullName'], ['/user/view?id='.$model->id],['target'=>'_blank']) ;
-                },
-                'filterType'=>GridView::FILTER_SELECT2,
-                'filter'=>'',
-                'filterWidgetOptions'=>[
-                    'pluginOptions'=>[
-                        'allowClear'=>true,
-                        'ajax' => [
-                            'url' => $url,
-                            'dataType' => 'json',
-                            'data' => new JsExpression('function(params) { return {q:params.term}; }')
-                        ],
-                        'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
-                        'templateResult' => new JsExpression('function(owner) { return owner.text; }'),
-                        'templateSelection' => new JsExpression('function (owner) { return owner.text; }'),
-                    ],
 
-                ],
-                'filterInputOptions'=>['placeholder'=>Yii::t('backend', 'Full Name')],
-
-            ],
 
             'email:email',
             [
