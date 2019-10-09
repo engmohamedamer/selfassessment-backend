@@ -12,6 +12,31 @@ use Yii;
 class UserController extends  Controller
 {
 
+    public static function allowedDomains()
+    {
+        return [
+             '*',                        // star allows all domains
+            'http://selfassest.localhost',
+        ];
+    }
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        // add CORS filter
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::className(),
+            'cors' => [
+                'Origin' => self::allowedDomains(),
+                'Access-Control-Request-Method' => ['*'],
+                'Access-Control-Request-Headers' => ['*'],
+            ],
+        ];
+
+        return $behaviors;
+    }
+
+
+
     public function actionLogin(){
         $params = \Yii::$app->request->post();
 
