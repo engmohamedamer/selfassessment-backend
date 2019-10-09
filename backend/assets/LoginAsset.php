@@ -28,21 +28,13 @@ class LoginAsset extends AssetBundle
      * @var array
      */
     public $css = [
-        'https://fonts.googleapis.com/css?family=Cairo:400,600,700',
-        //'css/AdminLTE-RTL.css',
-        //'css/styleAr.css'
+        'css/contributer.css',
     ];
     /**
      * @var array
      */
     public $js = [
-        // 'js/app.js',
-        // '/material/plugins/jquery-sparkline/dist/jquery.sparkline.min.js',
-        // '/material/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js',
-        // '/material/plugins/jvectormap/jquery-jvectormap-world-mill-en.js',
-        // '/material/plugins/jquery-slimscroll/jquery.slimscroll.min.js',
-        // '/material/plugins/chart.js/Chart.js',
-        // '/material/js/pages/dashboard2.js',
+        'https://kit.fontawesome.com/7bdd7e5637.js'
     ];
 
     /**
