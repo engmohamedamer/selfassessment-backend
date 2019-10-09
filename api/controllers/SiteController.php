@@ -11,9 +11,10 @@ class SiteController extends Controller
 {
     public function actionIndex(){
 
-        //return 'API...';
-        return $this->redirect(\Yii::getAlias('@frontendUrl'));
+        return 'API...';
+       // return $this->redirect(\Yii::getAlias('@frontendUrl'));
     }
+
 
     public function actionError()
     {

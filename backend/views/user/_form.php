@@ -80,18 +80,8 @@ $model->roles =Yii::$app->session->get('UserRole');
         <div class="row">
             <div class="col-md-6 col-sm-12">
 
-                <?php  
-                    if(User::IsOfficialNEoffice(Yii::$app->user->identity)){
-                        echo $form->field($model, 'roles')->dropDownList(
-                            [
-                                User::ROLE_SCHOOL_OWNER => 'مالك المنشئة التعلييمة',
-                                User::ROLE_SCHOOL_ADMIN => 'قائد المنشئة التعلييمة',
-                                User::ROLE_SCHOOL_ACTIVITY_ADMIN => 'رائد نشاط'
-                            ]
-                        , ['prompt' =>Yii::t('common', 'Select')]); 
-                    }else{
-                        echo $form->field($model, 'roles')->dropDownList(User::ListRoles(), ['prompt' =>Yii::t('common', 'Select')]); 
-                    }
+                <?php
+                  echo $form->field($model, 'roles')->dropDownList(User::ListRoles(), ['prompt' =>Yii::t('common', 'Select')]);
                 ?>
             </div>
 
@@ -100,34 +90,6 @@ $model->roles =Yii::$app->session->get('UserRole');
             </div>
         </div>
 
-        <?php
-        if($model->roles== User::ROLE_SCHOOL_ADMIN || $model->roles== User::ROLE_SCHOOL_ACTIVITY_ADMIN  || User::ROLE_SCHOOL_OWNER) {
-            $style='display: block;';
-        }else{
-            $style='display: none;';
-        }
-        ?>
-
-
-        <div class="row"  id="AdminType" style="<?=$style?>" >
-            <div class="col-md-6 col-sm-12">
-            <?php
-                $arr = ArrayHelper::map(\backend\models\Schools::find()->select([" id , CONCAT(  ' ( ',school_identity_number , ' ) - ' , title  ) AS title " ] )->all(), 'id', 'title'); //all schools
-                // Usage with ActiveForm and model
-                echo $form->field($profile, 'school_id')->widget(\kartik\select2\Select2::classname(), [
-                    'data' => $arr,
-                    'options' => [
-                        'placeholder' => Yii::t('common', 'Select'),
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true,
-                    ],
-                ]);
-            ?>
-            </div>
-        </div>
-
-        
 
 
     </div>
@@ -141,26 +103,4 @@ $model->roles =Yii::$app->session->get('UserRole');
 </div>
 
     <?php ActiveForm::end() ?>
-
-
-<?php
-$script2 = '
-$("#userform-roles").on("change", function() {
-    if($(this).val() == "'.User::ROLE_SCHOOL_ADMIN.'"  || $(this).val() == "'.User::ROLE_SCHOOL_ACTIVITY_ADMIN.'" || $(this).val() == "'.User::ROLE_SCHOOL_OWNER.'"){
-        $("#AdminType").show();
-        $("#userform-school_id").prop("disabled", false);
-    }else{
-        $("#AdminType").hide();
-        $("#userform-school_id").prop("disabled", true);
-
-    }
-      
-});
-';
-$this->registerJs($script2, \yii\web\View::POS_END);
-
-?>
-
-
-
 

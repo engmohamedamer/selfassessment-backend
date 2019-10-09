@@ -5,6 +5,13 @@ return [
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
+        ['pattern' => '/', 'route' => 'site/index'],
+        ['pattern' => '/site', 'route' => 'site/index'],
+        ['pattern' => '/site/index', 'route' => 'site/index'],
+        ['pattern' => '/login', 'route' => 'user/login'],
+
+
+
 
 
         ['class' =>'yii\rest\UrlRule','controller'=>'events'
@@ -28,15 +35,7 @@ return [
 
 
 
-        ['class' =>'yii\rest\UrlRule','controller'=>'user'
-            ,'only'=>['login','signup','verify','options']
-            ,'extraPatterns'=> [
-                'POST signup' => 'signup',
-                'POST login' => 'login',
-                'POST verify' => 'verify',
-            ]
-            , 'pluralize'=>false
-        ],
+
 
         ['class' =>'yii\rest\UrlRule','controller'=>'profile'
             ,'only'=>['index','update','options']

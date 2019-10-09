@@ -4,7 +4,6 @@ namespace backend\controllers;
 
 use Intervention\Image\ImageManagerStatic;
 use Yii;
-use backend\models\Schools;
 use backend\models\UserForm;
 use backend\models\search\UserSearch;
 use common\models\User;
@@ -137,21 +136,6 @@ class UserController extends Controller
                 'title' =>'',
             ]);
 
-            // firebase
-            $this->connectFirebaseAuth();
-            try{
-                $fireUser = $this->getFirebaseAuth()->getUserByEmail($model->email);
-                $user->access_token = $this->createFirebaseAuthCustomToken($fireUser->uid);
-                $user->save();
-            }catch (\Exception $e){
-                $this->createFirebaseUser([
-                    'email' => $model->email,
-                    'displayName' => $profile->firstname . ' ' . $profile->lastname,
-                ]);
-                $fireUser = $this->getFirebaseAuth()->getUserByEmail($model->email);
-                $user->access_token = $this->createFirebaseAuthCustomToken($fireUser->uid);
-                $user->save();
-            }
 
             return $this->redirect(['index?user_role='.$model->roles]);
         }
@@ -242,29 +226,12 @@ class UserController extends Controller
         $prof->firstname = $profile->firstname ;
         $prof->lastname = $profile->lastname ;
         $prof->gender = $profile->gender;
-        $prof->school_id = $profile->school_id;
-        $prof->draft = UserProfile::STATUS_ACTIVE;
         $prof->avatar_base_url = isset($profile->picture['base_url']) ? $profile->picture['base_url'] : null;
         $prof->avatar_path= isset($profile->picture['path'])? $profile->picture['path']: null ;
 
 
         $prof->save(false);
-        if ($prof->save(false) and $model->roles == 'schoolAdmin') {
-            $resetAdminSchool = Schools::find()->where("owner_id = $prof->user_id")->all();
-            foreach ($resetAdminSchool as $school) {
-                $school->owner_id = null;
-                $school->save(false);
-            }
-            $shchool = Schools::findOne($profile->school_id);
-            $shchool->owner_id = $prof->user_id;
-            $shchool->save(false);
-        }else if($model->roles == 'schoolActivityAdmin'){
-            $resetAdminSchool = Schools::find()->where("owner_id = $prof->user_id")->all();
-            foreach ($resetAdminSchool as $school) {
-                $school->owner_id = null;
-                $school->save(false);
-            }
-        }
+
         return $prof;
     }
 
