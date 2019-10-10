@@ -32,7 +32,7 @@ $model->roles =Yii::$app->session->get('UserRole');
     <div class="tab-pane active" id="tab_1-1">
         <div class="row">
             <div class="col-md-12">
-                <?php echo $form->field($profile, 'picture')->widget(\trntv\filekit\widget\Upload::class, [
+                <?php echo $form->field($profile, 'picture')->widget(\common\b4widget\upload\MyUpload::class, [
                     'url'=>['avatar-upload']
                 ]) ?>
             </div>
