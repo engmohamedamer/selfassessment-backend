@@ -8,21 +8,18 @@ use yii\helpers\ArrayHelper;
 /* @var $content string */
 
 
+//
+//if(Yii::$app->user->isGuest){
+//    $bundle = BackendAsset::register($this);
+//}else{
+//    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
+//        $bundle = BackendAsset::register($this);
+//    }else{
+//        $bundle =BackendArabic::register($this);
+//    }
+//}
+$bundle = BackendAsset::register($this);
 
-if(Yii::$app->user->isGuest){
-    $bundle = BackendAsset::register($this);
-}else{
-    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
-        $bundle = BackendAsset::register($this);
-    }else{
-        $bundle =BackendArabic::register($this);
-    }
-}
-
-
-
-
-$this->params['body-class'] = $this->params['body-class'] ?? null;
 ?>
 
 <?php $this->beginPage() ?>

@@ -30,19 +30,14 @@ echo Menu::widget([
 
 
         [
-            'label' => Yii::t('backend', 'Assessments'),
+            'label' => Yii::t('backend', 'Users Data'),
             'options' => ['class' => 'nav-header'],
         ],
+
         [
-            'label' => Yii::t('backend', 'Assessments list'),
-            'url' => '/',
-            'icon' => '<i class="nav-icon fas fa-th"></i>',
-            'options' => ['class' => 'nav-item'],
-        ],
-        [
-            'label' => Yii::t('backend', 'Assessments Report'),
+            'label' => Yii::t('backend', 'Users'),
             'url' => '#',
-            'icon' => '<i class="nav-icon fas fa-chart-pie"></i>',
+            'icon' => '<i class="nav-icon fas fa-th"></i>',
             'options' => ['class' => 'nav-item has-treeview'],
             'active' => (Yii::$app->controller->module->id == 'user'),
             'items' => [
@@ -56,6 +51,14 @@ echo Menu::widget([
                     'visible' => (Yii::$app->user->can('administrator') or  Yii::$app->user->can('manager') ),
                 ],
             ],
+        ],
+
+
+        [
+            'label' => Yii::t('backend', 'Organizations'),
+            'url' => '/',
+            'icon' => '<i class="nav-icon fas fa-th"></i>',
+            'options' => ['class' => 'nav-item'],
         ],
 
 

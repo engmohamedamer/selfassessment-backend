@@ -82,22 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{login} {view} {update} {delete}',
-                'buttons' => [
-                    'login' => function ($url) {
-                        return Html::a(
-                            '<i class="fa fa-sign-in" aria-hidden="true"></i>',
-                            $url,
-                            [
-                                'title' => Yii::t('backend', 'Login')
-                            ]
-                        );
-                    },
-                ],
-                'visibleButtons' => [
-                    'login' => Yii::$app->user->can('administrator')
-                ]
-
+                'template' => '{view} {update} {delete}',
             ],
         ],
     ]); ?>

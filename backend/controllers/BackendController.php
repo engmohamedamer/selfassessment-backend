@@ -2,7 +2,6 @@
 
 namespace admin\controllers;
 
-use common\helpers\RolesHelper;
 use webvimark\behaviors\multilanguage\MultiLanguageHelper;
 
 /**

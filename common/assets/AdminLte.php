@@ -37,5 +37,6 @@ class AdminLte extends AssetBundle
     public $depends = [
         FontAwesome::class,
         BootstrapPluginAsset::class,
+
     ];
 }

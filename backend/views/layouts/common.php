@@ -8,7 +8,7 @@ use backend\assets\BackendAsset;
 use backend\modules\system\models\SystemLog;
 use backend\widgets\Menu;
 use common\models\TimelineEvent;
-use yii\bootstrap\Alert;
+use yii\bootstrap4\Alert;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -16,15 +16,18 @@ use yii\log\Logger;
 use yii\widgets\Breadcrumbs;
 
 
-if(Yii::$app->user->isGuest){
-    $bundle = BackendAsset::register($this);
-}else{
-    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
-        $bundle = BackendAsset::register($this);
-    }else{
-        $bundle =\backend\assets\BackendArabic::register($this);
-    }
-}
+//
+//if(Yii::$app->user->isGuest){
+//    $bundle = BackendAsset::register($this);
+//}else{
+//    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
+//        $bundle = BackendAsset::register($this);
+//    }else{
+//        $bundle =BackendArabic::register($this);
+//    }
+//}
+$bundle = BackendAsset::register($this);
+
 
 
 ?>
@@ -47,14 +50,14 @@ if(Yii::$app->user->isGuest){
                                 class="user-image">
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">Welcome, Mohamed Amer</span>
+                        <span class="dropdown-item dropdown-header">Welcome,  <?php echo Yii::$app->user->identity->userProfile->fullName; ?></span>
                         <div class="dropdown-divider"></div>
                         <a href="/sign-in/profile" class="dropdown-item">
-                            <i class="far fa-user-circle mr-2"></i> My Profile
+                            <i class="far fa-user-circle mr-2"></i> <?= Yii::t('common','My Profile')?>
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="/sign-in/account" class="dropdown-item">
-                            <i class="far fa-user mr-2"></i> My Account
+                            <i class="far fa-user mr-2"></i>  <?= Yii::t('common','My Account')?>
                         </a>
                         <div class="dropdown-divider"></div>
 
@@ -92,7 +95,7 @@ if(Yii::$app->user->isGuest){
 
                     }else{
                         //do no thing
-                        $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
+                        $this->beginContent('@app/views/layouts/menus/empty.php');
                         $this->endContent();
                     }
                     ?>
@@ -108,29 +111,6 @@ if(Yii::$app->user->isGuest){
 
     <!-- Right side column. Contains the navbar and content of the page -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">
-                            <?php echo $this->title ?>
-                            <?php if (isset($this->params['subtitle'])): ?>
-                                <small><?php echo $this->params['subtitle'] ?></small>
-                            <?php endif; ?>
-                            </h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="NewAssessment.html" class="btn btn-primary" style="float:right">New Assessment</a>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
-        
 
         <!-- Main content -->
         <section class="content">
@@ -141,7 +121,9 @@ if(Yii::$app->user->isGuest){
                     'options' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'options'),
                 ]) ?>
             <?php endif; ?>
-            <?php echo $content ?>
+
+                         <?php echo $content ?>
+
             </div>
         </section><!-- /.content -->
     </div><!-- /.right-side -->
