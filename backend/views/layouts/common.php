@@ -113,18 +113,19 @@ $bundle = BackendAsset::register($this);
 
     <!-- Right side column. Contains the navbar and content of the page -->
     <div class="content-wrapper">
+         
 
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-            <?php if (Yii::$app->session->hasFlash('alert')): ?>
-                <?php echo Alert::widget([
-                    'body' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'body'),
-                    'options' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'options'),
-                ]) ?>
-            <?php endif; ?>
+                <?php if (Yii::$app->session->hasFlash('alert')): ?>
+                    <?php echo Alert::widget([
+                        'body' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'body'),
+                        'options' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'options'),
+                    ]) ?>
+                <?php endif; ?>
 
-                         <?php echo $content ?>
+                <?php echo $content ?>
 
             </div>
         </section><!-- /.content -->

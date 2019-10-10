@@ -12,6 +12,21 @@ $this->title = Yii::t('backend', 'Dashboard');
 \backend\assets\DashboardAsset::register($this);
 ?>
 
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Dashboard</h1>
+        </div>
+        <div class="col-sm-6">
+            <!-- <a href="NewOrganization.html" class="btn btn-primary" style="float: right">New Organization</a> -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.content-header -->
+
 <div class="row">
     <div class="col-lg-6">
         <div class="card">
