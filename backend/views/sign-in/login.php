@@ -33,31 +33,16 @@ $this->params['body-class'] = 'login-page';
                     <div class="col-md-4">
                         <div class="login">
                             <h2>WELCOME,</h2>
-                            <h4>Sign in Now!</h4>
+                            <h4>Tamkeen Admin!</h4>
                             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-<!--                            <i class="fas fa-envelope"></i>-->
-                            <?php echo $form->field($model, 'username')->textInput(['placeholder'=>'Email'])->label(false) ?>
-                            <?php echo $form->field($model, 'password')->passwordInput(['placeholder'=>'Password'])->label(false) ?>
-
-
-
-<!--                            <div class="form-group field-loginform-username required">-->
-<!--                                    <input type="text" id="loginform-username" class="form-control" name="LoginForm[username]" aria-required="true" placeholder="Email">-->
-<!--                                    <i class="fas fa-envelope"></i>-->
-<!--                                    <p class="help-block help-block-error"></p>-->
-<!--                                </div>-->
-<!--                                <div class="form-group field-loginform-password required">-->
-<!--                                    <input type="password" id="loginform-password" class="form-control" name="LoginForm[password]" aria-required="true" placeholder="Password">-->
-<!--                                    <i class="fas fa-eye"></i>-->
-<!--                                    <p class="help-block help-block-error"></p>-->
-<!--                                </div>-->
-
+                                <?php echo $form->field($model, 'username')->textInput(['placeholder'=>'Email'])->label(false) ?>
+                                <?php echo $form->field($model, 'password')->passwordInput(['placeholder'=>'Password'])->label(false) ?>
                                 <div class="form-group">
-                                <?php echo Html::submitButton(Yii::t('backend', 'Sign in'), [
-                                    'class' => 'btn btn-primary',
-                                    'name' => 'login-button'
-                                ]) ?>
-                                   
+                                    <?php echo Html::submitButton(Yii::t('backend', 'Sign in'), [
+                                        'class' => 'btn btn-primary',
+                                        'name' => 'login-button'
+                                    ]) ?>
+                                    <a href="" class="btn"><? echo Yii::t('backend', 'Forget password?') ?></a>
                                 </div>
                             <?php ActiveForm::end() ?>
                         </div>

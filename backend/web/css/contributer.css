@@ -49,6 +49,11 @@
   background: #377dff;
 }
 
+.login .form-group a.btn {
+  line-height: 3;
+  background: #ccc;
+}
+
 .header {
   border-bottom: 1px solid #ececec;
 }
