@@ -137,7 +137,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         [
             'class' => 'kartik\grid\ActionColumn',
-          
+
         ],
     ];
 
