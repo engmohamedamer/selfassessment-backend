@@ -36,24 +36,11 @@ $this->params['body-class'] = $this->params['body-class'] ?? null;
     <?php echo Html::csrfMetaTags() ?>
     <title><?php echo Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-firestore.js"></script>
 </head>
 
-<body class="hold-transition sidebar-mini">
     <?php $this->beginBody() ?>
         <?php echo $content ?>
     <?php $this->endBody() ?>
     
-<?php echo Html::endTag('body') ?>
-  <script type="text/javascript">
-        $('button[type="reset"]').on('click',function(){
-            console.log('reset');
-            $("#eventrequestsearch-calssification_id").val('').trigger('change')
-            $("#eventrequestsearch-field_id").val('').trigger('change')
-            $("#eventrequestsearch-school_id").val('').trigger('change')
-            $("#newssearch-school_id").val('').trigger('change')
-        });
-    </script>
 </html>
 <?php $this->endPage() ?>

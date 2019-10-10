@@ -21,8 +21,7 @@ use common\models\FirebaseAuth;
 
 class SignInController extends Controller
 {
-    use FirebaseAuth;
-    
+
     public $defaultAction = 'login';
 
 
@@ -69,23 +68,6 @@ class SignInController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            // firebase
-            $this->connectFirebaseAuth();
-            $user = $model->getUser();
-            $userProfile = $model->getUser()->userProfile;
-            try{
-                $fireUser = $this->getFirebaseAuth()->getUserByEmail($user->email);
-                $user->access_token = $this->createFirebaseAuthCustomToken($fireUser->uid);
-                $user->save();
-            }catch (\Exception $e){
-                $this->createFirebaseUser([
-                    'email' => $user->email,
-                    'displayName' => $userProfile->firstname . ' ' . $userProfile->lastname,
-                ]);
-                $fireUser = $this->getFirebaseAuth()->getUserByEmail($user->email);
-                $user->access_token = $this->createFirebaseAuthCustomToken($fireUser->uid);
-                $user->save();
-            }
             return $this->goBack();
         } else {
             return $this->render('login', [

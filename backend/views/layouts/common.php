@@ -57,10 +57,8 @@ if(Yii::$app->user->isGuest){
                             <i class="far fa-user mr-2"></i> My Account
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="/sign-in/logout" class="dropdown-item">
-                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
-                        </a>
-                        <?php echo Html::a(Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'dropdown-item', 'data-method' => 'post']) ?>
+
+                        <?php echo Html::a(  '<i class="fas fa-sign-out-alt mr-2"></i> '. Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'dropdown-item', 'data-method' => 'post']) ?>
                        
                     </div>
                    
