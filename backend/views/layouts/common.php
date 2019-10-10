@@ -15,6 +15,8 @@ use yii\helpers\Url;
 use yii\log\Logger;
 use yii\widgets\Breadcrumbs;
 
+use kartik\icons\Icon;
+Icon::map($this);
 
 //
 //if(Yii::$app->user->isGuest){
