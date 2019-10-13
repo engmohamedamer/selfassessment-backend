@@ -28,6 +28,7 @@
     "php": ">=7.1.0",
     "ext-intl": "*",
     "yiisoft/yii2": "^2.0.13",
+    "yiisoft/yii2-bootstrap": "^2.0.0",
     "yiisoft/yii2-bootstrap4": "~2.0.6",
     "yiisoft/yii2-swiftmailer": "^2.0.0",
     "yiisoft/yii2-authclient": "^2.0.0",
@@ -60,7 +61,9 @@
     "unclead/yii2-multiple-input": "~2.0",
     "arogachev/yii2-many-to-many": "dev-master",
     "newerton/yii2-fancybox-3": "*",
-    "kartik-v/yii2-bootstrap4-dropdown": "@dev"
+    "kartik-v/yii2-bootstrap4-dropdown": "@dev",
+    "webvimark/multilanguage": "*",
+    "kartik-v/yii2-icons": "@dev"
 
   },
   "require-dev": {

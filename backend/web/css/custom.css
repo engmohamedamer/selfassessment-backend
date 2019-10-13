@@ -70,4 +70,12 @@ a {
   height: 30px;
   border-radius: 50%;
 }
+
+.content-header {
+  padding: 15px 0;
+}
+
+.table th, .table td {
+  padding: 0.5rem;
+}
 /*# sourceMappingURL=custom.css.map */

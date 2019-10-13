@@ -30,19 +30,14 @@ echo Menu::widget([
 
 
         [
-            'label' => Yii::t('backend', 'Assessments'),
+            'label' => Yii::t('backend', 'Users Data'),
             'options' => ['class' => 'nav-header'],
         ],
+
         [
-            'label' => Yii::t('backend', 'Assessments list'),
-            'url' => '/',
-            'icon' => '<i class="nav-icon fas fa-th"></i>',
-            'options' => ['class' => 'nav-item'],
-        ],
-        [
-            'label' => Yii::t('backend', 'Assessments Report'),
+            'label' => Yii::t('backend', 'Users'),
             'url' => '#',
-            'icon' => '<i class="nav-icon fas fa-chart-pie"></i>',
+            'icon' => '<i class="nav-icon fas fa-th"></i>',
             'options' => ['class' => 'nav-item has-treeview'],
             'active' => (Yii::$app->controller->module->id == 'user'),
             'items' => [
@@ -60,20 +55,28 @@ echo Menu::widget([
 
 
         [
+            'label' => Yii::t('backend', 'Organizations'),
+            'url' => '/',
+            'icon' => '<i class="nav-icon fas fa-th"></i>',
+            'options' => ['class' => 'nav-item'],
+        ],
+
+
+        [
             'label' => Yii::t('backend', 'Content'),
             'options' => ['class' => 'nav-header'],
         ],
         [
             'label' => Yii::t('backend', 'Static pages'),
             'url' => ['/content/page/index'],
-            'icon' => '<i class="nav-icon fa fa-thumb-tack"></i>',
+            'icon' => '<i class="nav-icon fas fa-th"></i>',
             'active' => Yii::$app->controller->id === 'page',
             'options' => ['class' => 'nav-item'],
         ],
         [
             'label' => Yii::t('backend', 'Articles'),
             'url' => '#',
-            'icon' => '<i class="nav-icon fa fa-files-o"></i>',
+            'icon' => '<i class="nav-icon fas fa-th"></i>',
             'options' => ['class' => 'nav-item has-treeview'],
             'active' => 'content' === Yii::$app->controller->module->id &&
                 ('article' === Yii::$app->controller->id || 'category' === Yii::$app->controller->id),
@@ -81,13 +84,13 @@ echo Menu::widget([
                 [
                     'label' => Yii::t('backend', 'Articles'),
                     'url' => ['/content/article/index'],
-                    'icon' => '<i class="nav-icon fa fa-file-o"></i>',
+                    'icon' => '<i class="nav-icon fas fa-th"></i>',
                     'active' => Yii::$app->controller->id === 'article',
                 ],
                 [
                     'label' => Yii::t('backend', 'Categories'),
                     'url' => ['/content/category/index'],
-                    'icon' => '<i class="nav-icon fa fa-folder-open-o"></i>',
+                    'icon' => '<i class="nav-icon fas fa-th"></i>',
                     'active' => Yii::$app->controller->id === 'category',
                 ],
             ],
@@ -96,7 +99,7 @@ echo Menu::widget([
         [
             'label' => Yii::t('backend', 'Key-Value Storage'),
             'url' => ['/system/key-storage/index'],
-            'icon' => '<i class="nav-icon fa fa-arrows-h"></i>',
+            'icon' => '<i class="nav-icon fas fa-th"></i>',
             'active' => (Yii::$app->controller->id == 'key-storage'),
             'options' => ['class' => 'nav-item'],
         ],
