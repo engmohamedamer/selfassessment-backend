@@ -51,6 +51,15 @@ class OrganizationController extends Controller
             ],
             'second-delete' => [
                 'class' => DeleteAction::class
+            ],
+            'avatar-upload' => [
+                'class' => UploadAction::class,
+                'deleteRoute' => 'avatar-delete',
+                'on afterSave' => function ($event) {
+                }
+            ],
+            'avatar-delete' => [
+                'class' => DeleteAction::class
             ]
         ];
     }
@@ -93,6 +102,7 @@ class OrganizationController extends Controller
         $model   = new Organization();
         $user    = new UserForm();
         $user->roles = User::ROLE_GOVERNMENT_ADMIN; 
+        $user->status = User::STATUS_ACTIVE;
         $profile = new UserProfile();
 
         $user->setScenario('create');
