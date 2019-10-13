@@ -1,5 +1,4 @@
 <?php
-echo "dddddddddddddddddddd"; die;
 //error_reporting(0);
 // Composer
 require(__DIR__ . '/../../vendor/autoload.php');
