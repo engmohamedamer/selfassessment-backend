@@ -26,7 +26,7 @@ return [
     [
         'controllers' => ['user'],
         'allow' => true,
-        'roles' => ['administrator','manager'],
+        'roles' => ['governmentAdmin','governmentRep'],
     ],
     [
         'controllers' => ['user'],
@@ -34,7 +34,7 @@ return [
     ],
        [
         'allow' => true,
-        'roles' => ['manager', 'administrator'],
+           'roles' => ['governmentAdmin','governmentRep'],
     ],
 
 
