@@ -16,9 +16,6 @@ $search = "$('.search-button').click(function(){
 $this->registerJs($search);
 ?>
 <div class="organization-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a(Yii::t('common', 'Create Organization'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
