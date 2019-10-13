@@ -56,7 +56,7 @@ echo Menu::widget([
 
         [
             'label' => Yii::t('backend', 'Organizations'),
-            'url' => '/',
+            'url' => '/organization',
             'icon' => '<i class="nav-icon fas fa-th"></i>',
             'options' => ['class' => 'nav-item'],
         ],

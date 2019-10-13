@@ -7,16 +7,13 @@ use kartik\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Organization */
 
-$this->title = $model->id;
+$this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Organization'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="organization-view">
 
     <div class="row">
-        <div class="col-sm-9">
-            <h2><?= Yii::t('common', 'Organization').' '. Html::encode($this->title) ?></h2>
-        </div>
         <div class="col-sm-3" style="margin-top: 15px">
             
             <?= Html::a(Yii::t('common', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -38,8 +35,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'name',
         'business_sector',
         'address',
-        'city_id',
-        'district_id',
+        [
+            'attribute'=>Yii::t('common','City'),
+            'value'=>function($model){
+                return $model->city->title;
+            },
+            'format'=>'raw'
+        ],
+        [
+            'attribute'=>Yii::t('common','District'),
+            'value'=>function($model){
+                return $model->district->title;
+            },
+        ],
         'email:email',
         'phone',
         'mobile',
@@ -48,10 +56,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'contact_phone',
         'contact_position',
         'limit_account',
-        'first_image_base_url:url',
-        'first_image_path',
-        'second_image_base_url:url',
-        'second_image_path',
+        [
+            'attribute'=>Yii::t('common','Main Image'),
+            'value'=>function($model){
+                return "<img src='$model->first_image_base_url$model->first_image_path' width='100' />";
+            },
+            'format'=>'raw'
+        ],
+        [
+            'attribute'=>Yii::t('common','Second Image'),
+            'value'=>function($model){
+                return "<img src='$model->second_image_base_url$model->second_image_path' width='100' />";
+            },
+            'format'=>'raw'
+        ]
+
     ];
     echo DetailView::widget([
         'model' => $model,

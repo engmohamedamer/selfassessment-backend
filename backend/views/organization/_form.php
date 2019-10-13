@@ -1,12 +1,26 @@
 <?php
 
+use backend\models\City;
+use backend\models\District;
+use common\models\User;
+use common\models\UserProfile;
+use kartik\widgets\DepDrop;
+use trntv\filekit\widget\Upload;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Organization */
 /* @var $form yii\widgets\ActiveForm */
 
+$city = City::find()->all();
+if (isset($model->city_id)) {
+    $district = District::find()->where("city_id = {$model->city_id}")->all();
+}else{
+    $district = [];
+}
 ?>
 
 <div class="organization-form">
@@ -15,39 +29,103 @@ use yii\widgets\ActiveForm;
 
     <?= $form->errorSummary($model); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name']) ?>
+    <ul class="nav nav-pills">
+        <li class="nav-item ml-auto active"><a class="nav-link" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
+        <li class="nav-item "><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
+        
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_1-1">
+            <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name']) ?>
 
-    <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true, 'placeholder' => 'Business Sector']) ?>
+            <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true, 'placeholder' => 'Business Sector']) ?>
 
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true, 'placeholder' => 'Address']) ?>
+            <?= $form->field($model, 'address')->textInput(['maxlength' => true, 'placeholder' => 'Address']) ?>
 
-    <?= $form->field($model, 'city_id')->textInput(['placeholder' => 'City']) ?>
 
-    <?= $form->field($model, 'district_id')->textInput(['placeholder' => 'District']) ?>
+            <?php echo $form->field($model, 'city_id')->dropDownList(ArrayHelper::map( $city, 'id', 'title'),['id'=>'City-id',]) ?>
+           
+             
+             <?php echo $form->field($model, 'district_id')->widget(DepDrop::classname(), [
+                    'data'=> ArrayHelper::map($district,'id','title'),
+                    'options' => ['id'=>'subcat-id' ,'placeholder'=>Yii::t('common','Select City first')],
+                    'pluginOptions'=>[
+                        'depends'=>['City-id'],
+                        'placeholder' => Yii::t('common',  'Select') ,
+                        'url' => Url::to(['/helper/school-districts','schoolId'=>$model->id])
+                    ]
+                ]); 
+            ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => 'Email']) ?>
+            <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => 'Email']) ?>
 
-    <?= $form->field($model, 'phone')->textInput(['maxlength' => true, 'placeholder' => 'Phone']) ?>
+            <?= $form->field($model, 'phone')->textInput(['maxlength' => true, 'placeholder' => 'Phone']) ?>
 
-    <?= $form->field($model, 'mobile')->textInput(['maxlength' => true, 'placeholder' => 'Mobile']) ?>
+            <?= $form->field($model, 'mobile')->textInput(['maxlength' => true, 'placeholder' => 'Mobile']) ?>
 
-    <?= $form->field($model, 'conatct_name')->textInput(['maxlength' => true, 'placeholder' => 'Conatct Name']) ?>
+            <?= $form->field($model, 'conatct_name')->textInput(['maxlength' => true, 'placeholder' => 'Conatct Name']) ?>
 
-    <?= $form->field($model, 'contact_email')->textInput(['maxlength' => true, 'placeholder' => 'Contact Email']) ?>
+            <?= $form->field($model, 'contact_email')->textInput(['maxlength' => true, 'placeholder' => 'Contact Email']) ?>
 
-    <?= $form->field($model, 'contact_phone')->textInput(['maxlength' => true, 'placeholder' => 'Contact Phone']) ?>
+            <?= $form->field($model, 'contact_phone')->textInput(['maxlength' => true, 'placeholder' => 'Contact Phone']) ?>
 
-    <?= $form->field($model, 'contact_position')->textInput(['maxlength' => true, 'placeholder' => 'Contact Position']) ?>
+            <?= $form->field($model, 'contact_position')->textInput(['maxlength' => true, 'placeholder' => 'Contact Position']) ?>
 
-    <?= $form->field($model, 'limit_account')->textInput(['placeholder' => 'Limit Account']) ?>
+            <?= $form->field($model, 'limit_account')->textInput(['placeholder' => 'Limit Account']) ?>
 
-    <?= $form->field($model, 'first_image_base_url')->textInput(['maxlength' => true, 'placeholder' => 'First Image Base Url']) ?>
 
-    <?= $form->field($model, 'first_image_path')->textInput(['maxlength' => true, 'placeholder' => 'First Image Path']) ?>
+            <?php echo $form->field($model, 'first_image')->widget(\common\b4widget\upload\MyUpload::class, [
+                'url'=>['first-upload']
+            ]) ?>
 
-    <?= $form->field($model, 'second_image_base_url')->textInput(['maxlength' => true, 'placeholder' => 'Second Image Base Url']) ?>
+            <?php echo $form->field($model, 'second_image')->widget(\common\b4widget\upload\MyUpload::class, [
+                'url'=>['second-upload']
+            ]) ?>
+        </div>
 
-    <?= $form->field($model, 'second_image_path')->textInput(['maxlength' => true, 'placeholder' => 'Second Image Path']) ?>
+        <div class="tab-pane" id="tab_2-2">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <?php echo $form->field($profile, 'picture')->widget(\common\b4widget\upload\MyUpload::class, [
+                        'url'=>['avatar-upload']
+                    ]) ?>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <?php echo $form->field($user, 'email') ?>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <?php echo $form->field($user, 'password')->passwordInput() ?>
+                </div>
+
+
+            
+                <div class="col-md-4 col-sm-12">
+                    <?php echo $form->field($profile, 'firstname') ?>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <?php echo $form->field($profile, 'lastname') ?>
+                </div>
+                <div class="col-md-4 col-sm-12">
+
+                    <?php echo $form->field($profile, 'gender')->dropDownlist([
+                        UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female'),
+                        UserProfile::GENDER_MALE => Yii::t('backend', 'Male')
+                    ]) ?>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <?php echo $form->field($profile, 'mobile') ?>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('common', 'Create') : Yii::t('common', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

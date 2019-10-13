@@ -4,6 +4,7 @@ namespace common\models\base;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use trntv\filekit\behaviors\UploadBehavior;
 
 /**
  * This is the base model class for table "organization".
@@ -32,18 +33,47 @@ use yii\behaviors\TimestampBehavior;
 class Organization extends \yii\db\ActiveRecord
 {
 
+    public $first_image;
+    public $second_image;
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['city_id', 'district_id', 'limit_account', 'created_at', 'updated_at'], 'integer'],
+            [['city_id', 'district_id', 'limit_account'], 'integer'],
             [['name'], 'string', 'max' => 150],
             [['business_sector', 'email', 'conatct_name', 'contact_email', 'contact_position'], 'string', 'max' => 100],
             [['address'], 'string', 'max' => 255],
             [['phone', 'mobile', 'contact_phone'], 'string', 'max' => 20],
-            [['first_image_base_url', 'first_image_path', 'second_image_base_url', 'second_image_path'], 'string', 'max' => 1024]
+            [['first_image','second_image'],'safe'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => date('now'),
+            ],
+            [
+                'class' => UploadBehavior::class,
+                'attribute' => 'first_image',
+                'pathAttribute' => 'first_image_path',
+                'baseUrlAttribute' => 'first_image_base_url',
+            ],
+            [
+                'class' => UploadBehavior::class,
+                'attribute' => 'second_image',
+                'pathAttribute' => 'second_image_path',
+                'baseUrlAttribute' => 'second_image_base_url',
+            ],
         ];
     }
 
@@ -65,8 +95,8 @@ class Organization extends \yii\db\ActiveRecord
             'name' => Yii::t('common', 'Name'),
             'business_sector' => Yii::t('common', 'Business Sector'),
             'address' => Yii::t('common', 'Address'),
-            'city_id' => Yii::t('common', 'City ID'),
-            'district_id' => Yii::t('common', 'District ID'),
+            'city_id' => Yii::t('common', 'City'),
+            'district_id' => Yii::t('common', 'District'),
             'email' => Yii::t('common', 'Email'),
             'phone' => Yii::t('common', 'Phone'),
             'mobile' => Yii::t('common', 'Mobile'),
@@ -83,21 +113,22 @@ class Organization extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
-     * @return array mixed
+     * @return \yii\db\ActiveQuery
      */
-    public function behaviors()
+    public function getCity()
     {
-        return [
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-                'createdAtAttribute' => 'created_at',
-                'updatedAtAttribute' => 'updated_at',
-                'value' => date('now'),
-            ],
-        ];
+        return $this->hasOne(\backend\models\City::className(), ['id' => 'city_id']);
     }
 
+
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDistrict()
+    {
+        return $this->hasOne(\backend\models\District::className(), ['id' => 'district_id']);
+    }
 
     /**
      * @inheritdoc

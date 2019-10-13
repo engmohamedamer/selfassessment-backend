@@ -142,4 +142,9 @@ return [
     'Semester'=>'الفصل الدراسي',
     'School Year'=>'السنة الدراسية',
 
+    'Create Organization'=>'إضافة مؤسسة',
+    'Organization'=>'المؤساسات',
+    'Address'=>'العنوان',
+    'Select City first'=>'اختر المدرينة اولا',
+    'Organization Manager'=>'مسؤل المنظمة',
 ];

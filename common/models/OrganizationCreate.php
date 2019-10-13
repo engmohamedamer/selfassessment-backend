@@ -8,7 +8,7 @@ use \common\models\base\Organization as BaseOrganization;
 /**
  * This is the model class for table "organization".
  */
-class Organization extends BaseOrganization
+class OrganizationCreate extends BaseOrganization
 {
     /**
      * @inheritdoc
@@ -17,7 +17,7 @@ class Organization extends BaseOrganization
     {
         return array_replace_recursive(parent::rules(),
 	    [
-            [['name','business_sector', 'address', 'phone', 'email', 'conatct_name', 'contact_phone', 'contact_email', 'contact_position','first_image','second_image'], 'required'],
+            [['name','business_sector', 'address', 'phone', 'email', 'conatct_name', 'contact_phone', 'contact_email', 'contact_position'], 'required'],
             [['city_id', 'district_id', 'limit_account'], 'integer'],
             [['name'], 'string', 'max' => 150],
             [['business_sector', 'email', 'conatct_name', 'contact_email', 'contact_position'], 'string', 'max' => 100],

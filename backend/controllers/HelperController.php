@@ -6,7 +6,7 @@ use common\models\UserProfile;
 use Yii;
 use backend\models\City;
 use backend\models\District;
-use backend\models\Schools;
+use common\models\Organization;
 use backend\models\base\EventRequest;
 use yii\db\Query;
 use yii\helpers\Json;
@@ -14,7 +14,7 @@ use yii\web\Controller;
 use yii\web\Response;
 
 /**
- * SchoolsController implements the CRUD actions for Schools model.
+ * OrganizationController implements the CRUD actions for Organization model.
  */
 class HelperController extends Controller
 {
@@ -65,7 +65,7 @@ class HelperController extends Controller
             $out['results'] = array_values($data);
         }
         elseif ($id > 0) {
-            $out['results'] = ['id' => $id, 'text' => Schools::findOne(['id'=>$id])->name];
+            $out['results'] = ['id' => $id, 'text' => Organization::findOne(['id'=>$id])->name];
         }
         return $out;
     }
@@ -79,7 +79,7 @@ class HelperController extends Controller
             if ($parents != null) {
                 $city_id = $parents[0];
                 $districts = District::find()->where(['city_id'=>$city_id])->all();
-                $school = Schools::find()->where(['id'=>$schoolId])->one();
+                $school = Organization::find()->where(['id'=>$schoolId])->one();
                 foreach ($districts as $district) {
                     $data[]= ['id'=>$district->id, 'name'=>$district->title ];
                 }
@@ -89,38 +89,6 @@ class HelperController extends Controller
         }
         return  Json::encode(['output'=>$out, 'selected'=>$school->district_id]);
     }
-
-
-    public function actionChart()
-    {
-        $eventRequestCofirmed = EventRequest::find()->select('MONTH(created_at) as m, COUNT(created_at) as c, YEAR(created_at) as y')->where(['status'=>EventRequest::STATUS_CONFIRMED,'YEAR(created_at)'=> date('Y')])->groupBy('MONTH(created_at),YEAR(created_at)')->all();
-
-        $eventRequestRejected = EventRequest::find()->select('MONTH(created_at) as m, COUNT(created_at) as c, YEAR(created_at) as y')->where(['status'=>EventRequest::STATUS_REJECTED,'YEAR(created_at)'=>date('Y')])->groupBy('MONTH(created_at),YEAR(created_at)')->all();
-
-        for ($i=0; $i < 12; $i++) { 
-            $confirmed[] = 0;
-            $rejected[] = 0;
-        }
-        foreach ($eventRequestCofirmed as $value) {
-            $confirmed[($value->m-1)] = (int) $value->c;
-        }
-
-        foreach ($eventRequestRejected as $value) {
-            $rejected[($value->m-1)] = (int) $value->c;
-        }
-
-        return  Json::encode([
-            'confirmed'=>[
-                'lable'=> \Yii::t('backend','Event Request Confirmed'),
-                'data'=>$confirmed
-            ],
-            'rejected'=>[
-                'lable'=> \Yii::t('backend','Event Request Rejected'),
-                'data'=>$rejected
-            ]
-        ]);
-    }
-
 
 
 }
