@@ -16,6 +16,9 @@ Yii::setAlias('@console', realpath(__DIR__ . '/../../console'));
 Yii::setAlias('@storage', realpath(__DIR__ . '/../../storage'));
 Yii::setAlias('@tests', realpath(__DIR__ . '/../../tests'));
 
+Yii::setAlias('@organization', realpath(__DIR__ . '/../../organization'));
+
+
 /**
  * Setting url aliases
  */
@@ -23,6 +26,8 @@ Yii::setAlias('@apiUrl', env('API_HOST_INFO') . env('API_BASE_URL'));
 Yii::setAlias('@frontendUrl', env('FRONTEND_HOST_INFO') . env('FRONTEND_BASE_URL'));
 Yii::setAlias('@backendUrl', env('BACKEND_HOST_INFO') . env('BACKEND_BASE_URL'));
 Yii::setAlias('@storageUrl', env('STORAGE_HOST_INFO') . env('STORAGE_BASE_URL'));
+Yii::setAlias('@organization', env('ORGANIZATION_HOST_INFO') . env('ORGANIZATION_BASE_URL'));
+
 
 
 
