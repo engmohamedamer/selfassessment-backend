@@ -26,7 +26,7 @@ Yii::setAlias('@apiUrl', env('API_HOST_INFO') . env('API_BASE_URL'));
 Yii::setAlias('@frontendUrl', env('FRONTEND_HOST_INFO') . env('FRONTEND_BASE_URL'));
 Yii::setAlias('@backendUrl', env('BACKEND_HOST_INFO') . env('BACKEND_BASE_URL'));
 Yii::setAlias('@storageUrl', env('STORAGE_HOST_INFO') . env('STORAGE_BASE_URL'));
-Yii::setAlias('@organization', env('ORGANIZATION_HOST_INFO') . env('ORGANIZATION_BASE_URL'));
+Yii::setAlias('@organizationUrl', env('ORGANIZATION_HOST_INFO') . env('ORGANIZATION_BASE_URL'));
 
 
 

@@ -1,6 +1,6 @@
 <?php
 $config = [
-    'homeUrl' => Yii::getAlias('@backendUrl'),
+    'homeUrl' => Yii::getAlias('@organizationUrl'),
     'controllerNamespace' => 'organization\controllers',
     'defaultRoute' => 'site/dashboard',
     'components' => [
