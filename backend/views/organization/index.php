@@ -24,6 +24,15 @@ $this->registerJs($search);
         ['class' => 'yii\grid\SerialColumn'],
         'id',
         'name',
+        [
+            'label' => 'مسؤل المؤسسة',
+            'attribute' => 'manager',
+            'value'=>function ($model) {
+                return  ' <a href="/user/update?id='.$model->id.'"  target="_blank">المسؤل</a> ' ;
+
+            },
+            'format' => 'raw',
+        ],
         'business_sector',
         // 'address',
         // 'city_id',
