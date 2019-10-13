@@ -25,10 +25,10 @@ $this->registerJs($search);
         'id',
         'name',
         [
-            'label' => 'مسؤل المؤسسة',
+            'label' => Yii::t('common', 'Organization Manager'),
             'attribute' => 'manager',
             'value'=>function ($model) {
-                return  ' <a href="/user/update?id='.$model->id.'"  target="_blank">المسؤل</a> ' ;
+                return  ' <a href="/user/update?id='.$model->manager->user_id.'"target="_blank">'.$model->manager->firstname.'</a> ' ;
 
             },
             'format' => 'raw',

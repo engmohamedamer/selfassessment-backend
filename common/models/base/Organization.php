@@ -3,8 +3,9 @@
 namespace common\models\base;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
+use common\models\UserProfile;
 use trntv\filekit\behaviors\UploadBehavior;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the base model class for table "organization".
@@ -128,6 +129,14 @@ class Organization extends \yii\db\ActiveRecord
     public function getDistrict()
     {
         return $this->hasOne(\backend\models\District::className(), ['id' => 'district_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getManager()
+    {
+        return $this->hasOne(UserProfile::className(), ['organization_id' => 'id']);
     }
 
     /**
