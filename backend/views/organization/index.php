@@ -72,7 +72,7 @@ $this->registerJs($search);
         // 'second_image_base_url:url',
         // 'second_image_path',
         [
-            'class' => 'yii\grid\ActionColumn',
+            'class' => 'kartik\grid\ActionColumn',
         ],
     ]; 
     ?>
