@@ -20,8 +20,8 @@ class ProfileController extends  MyActiveController
     public function actionIndex(){
         $params = \Yii::$app->request->post();
         $user= User::findOne(['id'=> \Yii::$app->user->identity->getId()]) ;
-        $profile=$user->userProfile;
-        return  ['status'=>1, 'profile'=>$profile] ;
+
+        return  ['status'=>1, 'profile'=>$user] ;
     }
 
     public function actionUpdate(){
