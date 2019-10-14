@@ -25,6 +25,14 @@ class MyActiveController extends ActiveController
     public $pageSizeLimit= [1,200];
 
 
+    public static function allowedDomains()
+    {
+        return [
+            '*',                        // star allows all domains
+            'http://selfassest.localhost',
+        ];
+    }
+
 
     public function  behaviors()
     {
@@ -35,7 +43,13 @@ class MyActiveController extends ActiveController
         // add CORS filter before authentication
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::className(),
+            'cors' => [
+                'Origin' => self::allowedDomains(),
+                'Access-Control-Request-Method' => ['*'],
+                'Access-Control-Request-Headers' => ['*'],
+            ],
         ];
+
 
         // Put in a bearer auth authentication filter
         $behaviors['authenticator'] = [

@@ -21,6 +21,7 @@ use yii\db\ActiveRecord;
  * @property string $avatar_base_url
  * @property integer $gender
  * @property string $device_token
+ * @property string $bio
  *
  * @property User $user
  */
@@ -73,7 +74,7 @@ class UserProfile extends ActiveRecord
             [['firstname', 'middlename', 'lastname', 'avatar_path', 'avatar_base_url','mobile','device_token'], 'string', 'max' => 255],
             ['locale', 'default', 'value' => Yii::$app->language],
             ['locale', 'in', 'range' => array_keys(Yii::$app->params['availableLocales'])],
-            [['picture','nationality_id','specialization_id','job','activity','active'], 'safe'],
+            [['picture','nationality_id','specialization_id','job','activity','active','bio'], 'safe'],
             [['nationality_id','specialization_id','job','activity','mobile'],'required', 'on'=>self::SCENARIO_VALIDATE],
             ['firstname','required','message' => 'full_name يجب ادخاله', 'on'=>self::SCENARIO_VALIDATE],
             [['nationality_id','specialization_id'],'integer','min'=>1,'on'=>self::SCENARIO_VALIDATE],
@@ -96,6 +97,7 @@ class UserProfile extends ActiveRecord
             'gender' => Yii::t('common', 'Gender'),
             'school_id'=> Yii::t('common', 'School Admin'),
             'mobile'=> Yii::t('common', 'Mobile'),
+            'bio'=> Yii::t('common', 'Bio'),
         ];
     }
 

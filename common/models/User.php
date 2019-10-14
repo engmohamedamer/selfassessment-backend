@@ -163,6 +163,7 @@ class User extends ActiveRecord implements IdentityInterface
         // /^([0-9]+))*@temp.mail
         return [
             [['username', 'email'], 'unique'],
+            ['email', 'email'],
             ['email', 'match','not'=>true, 'pattern' => '/^([0-9]+)*@temp.mail$/ix','on'=> self::SCENARIO_VALIDATE],
             ['status', 'default', 'value' => self::STATUS_NOT_ACTIVE],
             ['status', 'in', 'range' => array_keys(self::statuses())],

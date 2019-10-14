@@ -147,4 +147,5 @@ return [
     'Address'=>'العنوان',
     'Select City first'=>'اختر المدرينة اولا',
     'Organization Manager'=>'مسؤل المنظمة',
+    'Bio'=>'الوصف',
 ];
