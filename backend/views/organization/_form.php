@@ -39,8 +39,9 @@ if (isset($model->city_id)) {
 
     <ul class="nav nav-pills">
         <li class="nav-item ml-auto active"><a class="nav-link" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
-        <li class="nav-item "><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
-        
+        <?php if($model->isNewRecord) :?>
+            <li class="nav-item "><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
+        <?php endif; ?>        
     </ul>
     <div class="tab-content">
         <div class="tab-pane active" id="tab_1-1">
@@ -106,7 +107,7 @@ if (isset($model->city_id)) {
                 </div>
             </div>
         </div>
-
+        <?php if($model->isNewRecord) :?>
         <div class="tab-pane" id="tab_2-2">
 
             <div class="row">
@@ -148,6 +149,7 @@ if (isset($model->city_id)) {
             </div>
 
         </div>
+        <?php endif;?>
 
     </div>
 
