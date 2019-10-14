@@ -106,10 +106,8 @@ class Organization extends \yii\db\ActiveRecord
             'contact_phone' => Yii::t('common', 'Contact Phone'),
             'contact_position' => Yii::t('common', 'Contact Position'),
             'limit_account' => Yii::t('common', 'Limit Account'),
-            'first_image_base_url' => Yii::t('common', 'First Image Base Url'),
-            'first_image_path' => Yii::t('common', 'First Image Path'),
-            'second_image_base_url' => Yii::t('common', 'Second Image Base Url'),
-            'second_image_path' => Yii::t('common', 'Second Image Path'),
+            'first_image' => Yii::t('common', 'First Image'),
+            'second_image' => Yii::t('common', 'Second Image'),
         ];
     }
 

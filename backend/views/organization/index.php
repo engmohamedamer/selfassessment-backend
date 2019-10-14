@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $searchModel common\models\OrganizationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use yii\helpers\Html;
@@ -10,38 +11,21 @@ use kartik\grid\GridView;
 $this->title = Yii::t('common', 'Organization');
 $this->params['breadcrumbs'][] = $this->title;
 $search = "$('.search-button').click(function(){
-	$('.search-form').toggle(1000);
-	return false;
+    $('.search-form').toggle(1000);
+    return false;
 });";
 $this->registerJs($search);
 ?>
+<div class="organization-index">
 
-<!-- Content Header (Page header) -->
-<div class="content-header">
-    <div class="row mb-2">
-        <div class="col-6">
-            <h1 class="m-0 text-dark">Organization</h1>
-        </div>
-        <div class="col-6">
-            <?= Html::a(Yii::t('common', 'Create Organization'), ['create'], ['class' => 'btn btn-primary','style'=>'float: right']) ?>
-       
-        </div>
-        <!-- /.col -->
+    <h1><?= Html::encode($this->title) ?></h1>
+    <p>
+        <?= Html::a(Yii::t('common', 'Create Organization'), ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+    <div class="search-form" style="display:none">
+        <?=  $this->render('_search', ['model' => $searchModel]); ?>
     </div>
-    <!-- /.row -->
-</div>
-<!-- /.content-header -->
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header border-0">
-                <h3 class="card-title">Organizations List</h3>
-                
-            </div>
-            <div class="card-body">
-            
-   
-<?php 
+    <?php 
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
         'name',
@@ -55,21 +39,10 @@ $this->registerJs($search);
             'format' => 'raw',
         ],
         'business_sector',
-        // 'address',
-        // 'city_id',
-        // 'district_id',
         'email:email',
-        // 'phone',
-        // 'mobile',
+        'phone',
         'conatct_name',
-        'contact_email:email',
-        // 'contact_phone',
-        // 'contact_position',
-        // 'limit_account',
-        // 'first_image_base_url:url',
-        // 'first_image_path',
-        // 'second_image_base_url:url',
-        // 'second_image_path',
+        'contact_phone',
         [
             'class' => 'kartik\grid\ActionColumn',
         ],
@@ -77,6 +50,7 @@ $this->registerJs($search);
     ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => $gridColumn,
         'pjax' => false,
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-organization']],
@@ -107,7 +81,4 @@ $this->registerJs($search);
         ],
     ]); ?>
 
-            </div>
-        </div>
-    </div>
 </div>

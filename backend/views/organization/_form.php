@@ -47,13 +47,13 @@ if (isset($model->city_id)) {
         <div class="tab-pane active" id="tab_1-1">
             <div class="row">
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name']) ?>
+                    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true, 'placeholder' => 'Business Sector']) ?>
+                    <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'address')->textInput(['maxlength' => true, 'placeholder' => 'Address']) ?>
+                    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
                     <?php echo $form->field($model, 'city_id')->dropDownList(ArrayHelper::map( $city, 'id', 'title'),['id'=>'City-id',]) ?>
@@ -71,28 +71,28 @@ if (isset($model->city_id)) {
                     ?>
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => 'Email']) ?>
+                    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'phone')->textInput(['maxlength' => true, 'placeholder' => 'Phone']) ?>
+                    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'mobile')->textInput(['maxlength' => true, 'placeholder' => 'Mobile']) ?>
+                    <?= $form->field($model, 'mobile')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'conatct_name')->textInput(['maxlength' => true, 'placeholder' => 'Conatct Name']) ?>
+                    <?= $form->field($model, 'conatct_name')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'contact_email')->textInput(['maxlength' => true, 'placeholder' => 'Contact Email']) ?>
+                    <?= $form->field($model, 'contact_email')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'contact_phone')->textInput(['maxlength' => true, 'placeholder' => 'Contact Phone']) ?>
+                    <?= $form->field($model, 'contact_phone')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'contact_position')->textInput(['maxlength' => true, 'placeholder' => 'Contact Position']) ?>
+                    <?= $form->field($model, 'contact_position')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'limit_account')->textInput(['placeholder' => 'Limit Account']) ?>
+                    <?= $form->field($model, 'limit_account')->textInput() ?>
                 </div>
                 <div class="w-100"></div>
                 <div class="col-lg-4">
