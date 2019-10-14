@@ -24,7 +24,7 @@ class User extends \common\models\User
                 return $model->userProfile->avatar_base_url.$model->userProfile->avatar_path ;
             },
             'organization_name'=>function($model){
-                return 'My Organization';
+                return 'MyOrganization Name';
             },
             'thems'=> function()
             {
