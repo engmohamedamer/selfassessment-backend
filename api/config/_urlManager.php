@@ -10,14 +10,16 @@ return [
         ['pattern' => '/site/index', 'route' => 'site/index'],
         ['pattern' => '/login', 'route' => 'user/login'],
 
-//        ['class' =>'yii\rest\UrlRule','controller'=>'user'
-//            ,'only'=>['create','options']
-//            ,'extraPatterns'=>[
-//                'POST create' => 'create',
-//
-//            ]
-//            , 'pluralize'=>false
-//        ],
+        ['class' =>'yii\rest\UrlRule','controller'=>'user'
+            ,'only'=>['login','signup','options']
+            ,'extraPatterns'=>[
+                'POST create' => 'create',
+                'POST login' => 'login',
+                'POST signup' => 'signup',
+
+            ]
+            , 'pluralize'=>false
+        ],
 //
 
 
