@@ -6,34 +6,10 @@ use api\helpers\ResponseHelper;
 use api\resources\User;
 use common\models\UserProfile;
 use yii\helpers\ArrayHelper;
-use yii\rest\Controller;
 use Yii;
 
-class UserController extends  Controller
+class UserController extends  RestControllerController
 {
-
-    public static function allowedDomains()
-    {
-        return [
-             '*',                        // star allows all domains
-            'http://selfassest.localhost',
-        ];
-    }
-    public function behaviors()
-    {
-        $behaviors = parent::behaviors();
-        // add CORS filter
-        $behaviors['corsFilter'] = [
-            'class' => \yii\filters\Cors::className(),
-            'cors' => [
-                'Origin' => self::allowedDomains(),
-                'Access-Control-Request-Method' => ['*'],
-                'Access-Control-Request-Headers' => ['*'],
-            ],
-        ];
-
-        return $behaviors;
-    }
 
 
 

@@ -6,10 +6,9 @@ use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class ThemeController extends Controller
+class ThemeController extends RestController
 {
     public function actionIndex(){
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
         $colors =[
             'brandPrimColor'=> "rgb(38, 95, 78)",
