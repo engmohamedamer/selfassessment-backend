@@ -4,21 +4,15 @@ use backend\assets\BackendArabic;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
-/* @var $this \yii\web\View */
-/* @var $content string */
-
-
-//
-//if(Yii::$app->user->isGuest){
-//    $bundle = BackendAsset::register($this);
-//}else{
-//    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
-//        $bundle = BackendAsset::register($this);
-//    }else{
-//        $bundle =BackendArabic::register($this);
-//    }
-//}
-$bundle = BackendAsset::register($this);
+if(Yii::$app->user->isGuest){
+    $bundle = BackendAsset::register($this);
+}else{
+    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
+        $bundle = BackendAsset::register($this);
+    }else{
+        $bundle = BackendArabic::register($this);
+    }
+}
 
 ?>
 

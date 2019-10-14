@@ -8,7 +8,9 @@ use yii\bootstrap4\ActiveForm;
 /* @var $model common\models\UserProfile */
 /* @var $form yii\bootstrap\ActiveForm */
 
-$this->title = Yii::t('backend', 'Edit profile')
+$this->title = Yii::t('backend', 'Edit profile');
+
+echo( \Yii::$app->language).'dddddddddddddddddddddd';
 ?>
 
 <div class="user-profile-form">

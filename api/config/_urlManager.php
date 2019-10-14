@@ -36,16 +36,10 @@ return [
                 'DELETE <id>/<day>/<child_id> ' => 'delete',
             ]
 
-
-
-            , 'pluralize'=>false
+           , 'pluralize'=>false
         ],
 
-
-
-
-
-        ['class' =>'yii\rest\UrlRule','controller'=>'profile'
+       ['class' =>'yii\rest\UrlRule','controller'=>'profile'
             ,'only'=>['index','update','options']
             ,'extraPatterns'=>['POST update' => 'update' ]
             , 'pluralize'=>false

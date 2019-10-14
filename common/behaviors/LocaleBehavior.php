@@ -42,6 +42,9 @@ class LocaleBehavior extends Behavior
         if ($hasCookie && !$forceUpdate) {
             $locale = Yii::$app->getRequest()->getCookies()->getValue($this->cookieName);
         } else {
+             echo "here ";
+             echo Yii::$app->user->identity->userProfile->locale;
+             die;
             $this->resolveLocale();  //$locale = 'ar_AR';//
         }
         Yii::$app->language = $locale;

@@ -176,6 +176,13 @@ $config = [
             'en-US' => 'English (US)',
             'ar-AR' => 'Arabic (AR)',
         ],
+        'mlConfig'=>[
+            'default_language'=>'ar',
+            'languages'=>[
+                'ar'=>'عربى',
+                'en'=>'English',
+            ],
+        ],
     ],
 ];
 
