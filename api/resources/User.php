@@ -29,38 +29,6 @@ class User extends \common\models\User
             'organization'=>function($model){
                 return ['id'=>1,'name'=>'MyOrganization Name'];
             },
-            'theme'=> function()
-            {
-                $colors =[
-                    'brandPrimColor'=> "rgb(38, 95, 78)",
-                    'brandSecColor'=> "rgb(38, 95, 78)",
-                    'brandHTextColor'=>  "#4d5d73",
-                    'brandPTextColor'=> "#4d5d73",
-                    'brandBlackColor'=> "#12263f",
-                    'brandGrayColor'=> "rgb(38, 95, 78)",
-                    'arfont'=> "Cairo, sans-serif",
-                    'enfont'=> "Roboto, sans-serif",
-                ];
-
-                $footer = [];
-                $menu = [];
-                $images = [
-                    'lightLogo'=> [
-                        'src'=> "",
-                        'title'=> "",
-                    ],
-                    'darkLogo'=> [
-                        'src'=> "",
-                        'title'=> "",
-                    ],
-                    'background'=> [
-                        'src'=> "",
-                        'title'=> "",
-                    ],
-                ];
-                return ['colors'=>$colors,'footer'=>$footer,'menu'=>$menu,'images'=>$images];
-            },
-
         ];
     }
 
