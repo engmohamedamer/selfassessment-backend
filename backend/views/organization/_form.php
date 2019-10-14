@@ -2,14 +2,15 @@
 
 use backend\models\City;
 use backend\models\District;
+use common\models\Organization;
 use common\models\User;
 use common\models\UserProfile;
 use kartik\widgets\DepDrop;
 use trntv\filekit\widget\Upload;
+use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Organization */
@@ -48,6 +49,9 @@ if (isset($model->city_id)) {
             <div class="row">
                 <div class="col-lg-4">
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="col-lg-4">
+                    <?= $form->field($model, 'name_en')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
                     <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true]) ?>
@@ -94,6 +98,11 @@ if (isset($model->city_id)) {
                 <div class="col-lg-4">
                     <?= $form->field($model, 'limit_account')->textInput() ?>
                 </div>
+
+                <div class="col-lg-4">
+                    <?php echo $form->field($model, 'status')->dropDownList(Organization::status()) ?>
+                </div>
+
                 <div class="w-100"></div>
                 <div class="col-lg-4">
                     <?php echo $form->field($model, 'first_image')->widget(\common\b4widget\upload\MyUpload::class, [

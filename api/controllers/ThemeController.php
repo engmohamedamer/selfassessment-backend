@@ -3,12 +3,18 @@
 namespace api\controllers;
 
 use Yii;
+use common\models\Organization;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 class ThemeController extends RestController
 {
-    public function actionIndex(){
+    public function actionIndex($id){
+        $organization = Organization::findOne($id);
+
+        if (!$organization) {
+            return (new NotFoundHttpException(Yii::t('yii', 'Page not found.')));
+        }
 
         $colors =[
             'brandPrimColor'=> "rgb(38, 95, 78)",
@@ -25,12 +31,12 @@ class ThemeController extends RestController
         $menu = [];
         $images = [
             'lightLogo'=> [
-                'src'=> "",
-                'title'=> "",
+                'src'=> $organization->first_image_base_url . $organization->first_image_path,
+                'title'=> $organization->name,
             ],
             'darkLogo'=> [
-                'src'=> "",
-                'title'=> "",
+                'src'=> $organization->second_image_base_url . $organization->second_image_path,
+                'title'=> $organization->name,
             ],
             'background'=> [
                 'src'=> "",
@@ -38,9 +44,9 @@ class ThemeController extends RestController
             ],
         ];
 
-        $organization = ['id'=>1,'name'=>'MyOrganization Name','about'=>'About MyOrganization'];
+        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name ,'about'=>'About MyOrganization'];
 
-        return ['theme_version'=>1,'organization'=>$organization,'colors'=>$colors,'footer'=>$footer,'menu'=>$menu,'images'=>$images];
+        return ['theme_version'=>1,'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer,'menu'=>$menu,'images'=>$images];
     }
 
 }

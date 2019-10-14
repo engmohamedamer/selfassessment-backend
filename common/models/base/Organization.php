@@ -12,6 +12,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property integer $id
  * @property string $name
+ * @property string $name_en
  * @property string $business_sector
  * @property string $address
  * @property integer $city_id
@@ -30,12 +31,17 @@ use yii\behaviors\TimestampBehavior;
  * @property string $second_image_path
  * @property integer $created_at
  * @property integer $updated_at
+ * @property integer $status
  */
 class Organization extends \yii\db\ActiveRecord
 {
 
     public $first_image;
     public $second_image;
+
+    const STATUS_NOT_ACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+
     /**
      * @inheritdoc
      */
@@ -43,11 +49,11 @@ class Organization extends \yii\db\ActiveRecord
     {
         return [
             [['city_id', 'district_id', 'limit_account'], 'integer'],
-            [['name'], 'string', 'max' => 150],
+            [['name','name_en'], 'string', 'max' => 150],
             [['business_sector', 'email', 'conatct_name', 'contact_email', 'contact_position'], 'string', 'max' => 100],
             [['address'], 'string', 'max' => 255],
             [['phone', 'mobile', 'contact_phone'], 'string', 'max' => 20],
-            [['first_image','second_image'],'safe'],
+            [['first_image','second_image','status'],'safe'],
         ];
     }
 
@@ -94,6 +100,7 @@ class Organization extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('common', 'ID'),
             'name' => Yii::t('common', 'Name'),
+            'name_en' => Yii::t('common', 'Name En'),
             'business_sector' => Yii::t('common', 'Business Sector'),
             'address' => Yii::t('common', 'Address'),
             'city_id' => Yii::t('common', 'City'),
@@ -108,6 +115,7 @@ class Organization extends \yii\db\ActiveRecord
             'limit_account' => Yii::t('common', 'Limit Account'),
             'first_image' => Yii::t('common', 'First Image'),
             'second_image' => Yii::t('common', 'Second Image'),
+            'status' => Yii::t('common', 'Status'),
         ];
     }
 
@@ -144,5 +152,17 @@ class Organization extends \yii\db\ActiveRecord
     public static function find()
     {
         return new \common\models\query\OrganizationQuery(get_called_class());
+    }
+
+    /**
+     * Returns organization status list
+     * @return array|mixed
+     */
+    public static function status()
+    {
+        return [
+            self::STATUS_ACTIVE => Yii::t('common', 'Active'),
+            self::STATUS_NOT_ACTIVE => Yii::t('common', 'Not Active'),
+        ];
     }
 }

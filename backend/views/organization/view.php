@@ -17,14 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-sm-3" style="margin-top: 15px">
             
             <?= Html::a(Yii::t('common', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a(Yii::t('common', 'Delete'), ['delete', 'id' => $model->id], [
-                'class' => 'btn btn-danger',
-                'data' => [
-                    'confirm' => Yii::t('common', 'Are you sure you want to delete this item?'),
-                    'method' => 'post',
-                ],
-            ])
-            ?>
         </div>
     </div>
 
@@ -57,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'contact_position',
         'limit_account',
         [
-            'attribute'=>Yii::t('common','Main Image'),
+            'attribute'=>Yii::t('common','First Image'),
             'value'=>function($model){
                 return "<img src='$model->first_image_base_url$model->first_image_path' width='100' />";
             },

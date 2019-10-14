@@ -15,6 +15,8 @@ $search = "$('.search-button').click(function(){
     return false;
 });";
 $this->registerJs($search);
+
+echo newerton\fancybox3\FancyBox::widget();
 ?>
 <div class="organization-index">
 
@@ -33,8 +35,7 @@ $this->registerJs($search);
             'label' => Yii::t('common', 'Organization Manager'),
             'attribute' => 'manager',
             'value'=>function ($model) {
-                return  ' <a href="/user/update?id='.$model->manager->user_id.'" target="_blank">'.$model->manager->firstname.'</a> ' ;
-
+                return  ' <a data-src="/organization/manager?id='.$model->manager->user_id.'" data-fancybox data-type="iframe" href="javascript:;" >'.$model->manager->firstname.'</a> ' ;
             },
             'format' => 'raw',
         ],
@@ -45,6 +46,7 @@ $this->registerJs($search);
         'contact_phone',
         [
             'class' => 'kartik\grid\ActionColumn',
+            'template'=>'{view}{update}'
         ],
     ]; 
     ?>

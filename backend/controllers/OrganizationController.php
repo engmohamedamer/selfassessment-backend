@@ -180,7 +180,7 @@ class OrganizationController extends Controller
      * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function UpdateUserRelatedTbls($model,$profile,$organization_id){
+    public function UpdateUserRelatedTbls($model,$profile,$organization_id = null){
         $prof= $model->getModel()->userProfile;
         if(!$prof) {
             $prof = new UserProfile();
@@ -196,5 +196,30 @@ class OrganizationController extends Controller
         $prof->save(false);
 
         return $prof;
+    }
+
+
+    public function actionManager($id)
+    {
+        $this->layout='base';
+
+        $model = new UserForm();
+        $model->setModel(User::findOne($id));
+        $model->roles = User::ROLE_GOVERNMENT_ADMIN; 
+        $profile= $model->getModel()->userProfile;
+        $saved = false;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $profile->load(Yii::$app->request->post());
+            $this->UpdateUserRelatedTbls($model,$profile,$profile->organization_id);
+            $saved = true;
+        }else{
+            // return var_dump($model->errors);
+        }
+
+        return $this->render('manager', [
+            'model' => $model,
+            'profile' => $profile,
+            'saved'=> $saved
+        ]);
     }
 }
