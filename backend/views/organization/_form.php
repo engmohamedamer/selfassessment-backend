@@ -9,7 +9,7 @@ use trntv\filekit\widget\Upload;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Organization */
@@ -26,7 +26,7 @@ if (isset($model->city_id)) {
 
 
     <?php $form = ActiveForm::begin(); ?>
-    <?= $form->errorSummary($model); ?>
+    <?php  //echo $form->errorSummary($model); ?>
 
 
 
