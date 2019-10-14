@@ -13,27 +13,28 @@ class RestController  extends  Controller
 {
 
 
-    public function  behaviors()
+    public static function allowedDomains()
+    {
+        return [
+            '*',                        // star allows all domains
+            'http://selfassest.localhost',
+        ];
+    }
+    public function behaviors()
     {
         $behaviors = parent::behaviors();
-        // remove authentication filter if there is one
-        unset($behaviors['authenticator']);
-
-        // add CORS filter before authentication
+        // add CORS filter
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::className(),
+            'cors' => [
+                'Origin' => self::allowedDomains(),
+                'Access-Control-Request-Method' => ['*'],
+                'Access-Control-Request-Headers' => ['*'],
+            ],
         ];
 
-        // Put in a bearer auth authentication filter
-        $behaviors['authenticator'] = [
-            'class' => CompositeAuth::class,
-            'authMethods' => [
-                HttpBearerAuth::class,
-            ]
-        ];
-        // avoid authentication on CORS-pre-flight requests (HTTP OPTIONS method)
-        $behaviors['authenticator']['except'] = ['options'];
         return $behaviors;
     }
+
 
 }

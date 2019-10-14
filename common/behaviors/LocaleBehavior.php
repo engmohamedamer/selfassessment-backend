@@ -42,10 +42,8 @@ class LocaleBehavior extends Behavior
         if ($hasCookie && !$forceUpdate) {
             $locale = Yii::$app->getRequest()->getCookies()->getValue($this->cookieName);
         } else {
-//             echo "here ";
-//             echo Yii::$app->user->identity->userProfile->locale;
-//             die;
-            $this->resolveLocale();  //$locale = 'ar_AR';//
+
+            $locale =   $this->resolveLocale();  //$locale = 'ar_AR';//
         }
         Yii::$app->language = $locale;
     }
@@ -55,6 +53,7 @@ class LocaleBehavior extends Behavior
         $locale = Yii::$app->language;
 
         if (!Yii::$app->user->isGuest && Yii::$app->user->identity->userProfile->locale) {
+
             $locale = Yii::$app->user->getIdentity()->userProfile->locale;
         } elseif ($this->enablePreferredLanguage) {
             $locale = Yii::$app->request->getPreferredLanguage($this->getAvailableLocales());
