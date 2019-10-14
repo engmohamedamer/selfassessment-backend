@@ -8,7 +8,7 @@ use common\models\UserProfile;
 use yii\helpers\ArrayHelper;
 use Yii;
 
-class UserController extends  RestControllerController
+class UserController extends  RestController
 {
 
 
