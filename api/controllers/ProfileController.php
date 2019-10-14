@@ -16,7 +16,7 @@ class ProfileController extends  RestController
         $resource = new User();
         $resource->load(\Yii::$app->user->getIdentity()->attributes, '');
 
-        $profile= User::findOne(['username'=>$resource->username]);
+        $profile = User::findOne(['username'=>$resource->username]);
 
         //return ResponseHelper::sendSuccessResponse($profile);
         return  ['status'=>1 , 'profile'=>$profile] ;
