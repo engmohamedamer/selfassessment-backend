@@ -28,7 +28,7 @@ $this->registerJs($search);
             'label' => Yii::t('common', 'Organization Manager'),
             'attribute' => 'manager',
             'value'=>function ($model) {
-                return  ' <a href="/user/update?id='.$model->manager->user_id.'"target="_blank">'.$model->manager->firstname.'</a> ' ;
+                return  ' <a href="/user/update?id='.$model->manager->user_id.'" target="_blank">'.$model->manager->firstname.'</a> ' ;
 
             },
             'format' => 'raw',
