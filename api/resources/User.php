@@ -23,6 +23,9 @@ class User extends \common\models\User
             'profile_picture'=>function($model){
                 return $model->userProfile->avatar_base_url.$model->userProfile->avatar_path ;
             },
+            'bio'=>function($model){
+                return $model->userProfile->bio;
+            },
             'organization'=>function($model){
                 return ['id'=>1,'name'=>'MyOrganization Name'];
             },
