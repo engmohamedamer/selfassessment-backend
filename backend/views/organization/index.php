@@ -79,7 +79,7 @@ $this->registerJs($search);
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => $gridColumn,
-        'pjax' => true,
+        'pjax' => false,
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-organization']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
