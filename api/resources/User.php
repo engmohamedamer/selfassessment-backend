@@ -26,7 +26,10 @@ class User extends \common\models\User
             'organization_name'=>function($model){
                 return 'MyOrganization Name';
             },
-            'thems'=> function()
+            'organization'=>function($model){
+                return ['id'=>1,'name','Organization name'];
+            },
+            'theme'=> function()
             {
                 $colors =[
                     'brandPrimColor'=> "rgb(38, 95, 78)",
