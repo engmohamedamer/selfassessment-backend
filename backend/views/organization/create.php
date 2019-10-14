@@ -10,9 +10,21 @@ $this->title = Yii::t('common', 'Create Organization');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Organization'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="organization-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+
+        <!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="row mb-2">
+        <div class="col-6">
+            <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
+        </div>
+        <div class="col-6">
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.content-header -->
 
     <?= $this->render('_form', [
         'model' => $model,
@@ -20,4 +32,4 @@ $this->params['breadcrumbs'][] = $this->title;
         'profile' => $profile,
     ]) ?>
 
-</div>
+
