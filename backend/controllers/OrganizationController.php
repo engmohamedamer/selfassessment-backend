@@ -5,7 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\UserForm;
 use common\models\Organization;
-use common\models\OrganizationCreate;
+use common\models\OrganizationSearch;
 use common\models\User;
 use common\models\UserProfile;
 use trntv\filekit\actions\UploadAction;
@@ -70,11 +70,11 @@ class OrganizationController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Organization::find(),
-        ]);
+        $searchModel = new OrganizationSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
