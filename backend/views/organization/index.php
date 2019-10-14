@@ -44,7 +44,6 @@ $this->registerJs($search);
 <?php 
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
-        'id',
         'name',
         [
             'label' => Yii::t('common', 'Organization Manager'),
