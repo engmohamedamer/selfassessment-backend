@@ -39,12 +39,15 @@ if (isset($model->city_id)) {
             <div class="card-body">
 
     <ul class="nav nav-pills">
-        <li class="nav-item ml-auto active"><a class="nav-link" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
-        <?php if($model->isNewRecord) :?>
-            <li class="nav-item "><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
+    <?php if($model->isNewRecord) :?>
+        
+            <li class="nav-item ml-auto"><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
+            <li class="nav-item  "><a class="nav-link active" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
+
+        
         <?php endif; ?>        
     </ul>
-    <div class="tab-content">
+    <div class="tab-content mt-2">
         <div class="tab-pane active" id="tab_1-1">
             <div class="row">
                 <div class="col-lg-4">

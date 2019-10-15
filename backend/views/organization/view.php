@@ -11,16 +11,35 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Organization'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="organization-view">
-
-    <div class="row">
-        <div class="col-sm-3" style="margin-top: 15px">
-            
-            <?= Html::a(Yii::t('common', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="row mb-2">
+        <div class="col-6">
+            <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
         </div>
+        <div class="col-6">
+            <?= Html::a(Yii::t('common', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary','style'=>'float: right']) ?>
+        </div>
+        <!-- /.col -->
     </div>
+    <!-- /.row -->
+</div>
+<!-- /.content-header -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+           
+            <div class="card-body">
+    <ul class="nav nav-pills">
+        
+            <li class="nav-item ml-auto "><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
+            <li class="nav-item "><a class="nav-link active" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
+         
+    </ul>
+    <div class="tab-content mt-2">
+        <div class="tab-pane active" id="tab_1-1">
+            <div class="row">
 
-    <div class="row">
 <?php 
     $gridColumn = [
         'id',
@@ -69,5 +88,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => $gridColumn
     ]);
 ?>
-    </div>
+</div>
+</div>
+            <div class="tab-pane active" id="tab_1-1">
+            <div class="row">
+
+            </div>
+            </div>
+
+
+</div>
+
+
+
+</div>
+</div>
+</div>
 </div>

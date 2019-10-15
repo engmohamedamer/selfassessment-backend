@@ -22,9 +22,9 @@ use yii\helpers\ArrayHelper;
 		                    <li class="nav-item pull-left header">
 		                        <h3 class="card-title"><?php echo Yii::t('backend', 'User Details') ?>  </a></h3>    
 		                    </li>
-		                    <li class="nav-item ml-auto active"><a class="nav-link" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
+		                    <!-- <li class="nav-item ml-auto active"><a class="nav-link" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li> -->
 		                </ul>
-		                <div class="tab-content">
+		                <div class="tab-content mt-2">
 		                    <div class="tab-pane active" id="tab_1-1">
 		                        <div class="row">
 		                            <div class="col-md-12">
