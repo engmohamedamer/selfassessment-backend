@@ -26,8 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-6">
             <h1 class="m-0 text-dark">Users</h1>
         </div>
-        <div class="col-6">
-            <?php echo Html::a(Yii::t('backend', 'Create New User'), ['create'], ['class' => 'btn btn-primary','style'=>'float: right']) ?>
+        <div class="col-6 actionBtns">
+            <?php echo Html::a(Yii::t('backend', 'Create New User'), ['create'], ['class' => 'btn btn-primary']) ?>
         </div>
         <!-- /.col -->
     </div>

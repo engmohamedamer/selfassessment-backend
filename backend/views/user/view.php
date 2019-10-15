@@ -18,11 +18,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-6">
             <h1 class="m-0 text-dark">Username</h1>
         </div>
-        <div class="col-6">
-        <?php echo Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary','style'=>'float: right']) ?>
+        <div class="col-6 actionBtns">
+        <?php echo Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?php echo Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger mr-2',
-            'style'=>'float: right',
             'data' => [
                 'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
                 'method' => 'post',

@@ -25,8 +25,8 @@ echo newerton\fancybox3\FancyBox::widget();
         <div class="col-6">
             <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
         </div>
-        <div class="col-6">
-            <?= Html::a(Yii::t('common', 'Create Organization'), ['create'], ['class' => 'btn btn-primary','style'=>'float: right']) ?>
+        <div class="col-6 actionBtns">
+            <?= Html::a(Yii::t('common', 'Create Organization'), ['create'], ['class' => 'btn btn-primary']) ?>
         </div>
         <!-- /.col -->
     </div>

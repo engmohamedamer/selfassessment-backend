@@ -78,4 +78,9 @@ a {
 .table th, .table td {
   padding: 0.5rem;
 }
+
+.actionBtns .btn {
+  float: right;
+  margin-left: 10px;
+}
 /*# sourceMappingURL=custom.css.map */
