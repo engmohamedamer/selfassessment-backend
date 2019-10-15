@@ -1,8 +1,9 @@
 <?php
 
+use common\models\User;
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Organization */
@@ -28,80 +29,92 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-           
             <div class="card-body">
-    <ul class="nav nav-pills">
-        
-            <li class="nav-item ml-auto "><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
-            <li class="nav-item "><a class="nav-link active" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
-         
-    </ul>
-    <div class="tab-content mt-2">
-        <div class="tab-pane active" id="tab_1-1">
-            <div class="row">
+                <ul class="nav nav-pills">
+                    
+                        <li class="nav-item ml-auto "><a class="nav-link" href="#tab2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
+                        <li class="nav-item "><a class="nav-link active" href="#tab1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
+                     
+                </ul>
+                <div class="tab-content mt-2">
+                    <div class="tab-pane active" id="tab1">
+                        <div class="row">
 
-<?php 
-    $gridColumn = [
-        'id',
-        'name',
-        'business_sector',
-        'address',
-        [
-            'attribute'=>Yii::t('common','City'),
-            'value'=>function($model){
-                return $model->city->title;
-            },
-            'format'=>'raw'
-        ],
-        [
-            'attribute'=>Yii::t('common','District'),
-            'value'=>function($model){
-                return $model->district->title;
-            },
-        ],
-        'email:email',
-        'phone',
-        'mobile',
-        'conatct_name',
-        'contact_email:email',
-        'contact_phone',
-        'contact_position',
-        'limit_account',
-        [
-            'attribute'=>Yii::t('common','First Image'),
-            'value'=>function($model){
-                return "<img src='$model->first_image_base_url$model->first_image_path' width='100' />";
-            },
-            'format'=>'raw'
-        ],
-        [
-            'attribute'=>Yii::t('common','Second Image'),
-            'value'=>function($model){
-                return "<img src='$model->second_image_base_url$model->second_image_path' width='100' />";
-            },
-            'format'=>'raw'
-        ]
+                            <?php 
+                                $gridColumn = [
+                                    'id',
+                                    'name',
+                                    'business_sector',
+                                    'address',
+                                    [
+                                        'attribute'=>Yii::t('common','City'),
+                                        'value'=>function($model){
+                                            return $model->city->title;
+                                        },
+                                        'format'=>'raw'
+                                    ],
+                                    [
+                                        'attribute'=>Yii::t('common','District'),
+                                        'value'=>function($model){
+                                            return $model->district->title;
+                                        },
+                                    ],
+                                    'email:email',
+                                    'phone',
+                                    'mobile',
+                                    'conatct_name',
+                                    'contact_email:email',
+                                    'contact_phone',
+                                    'contact_position',
+                                    'limit_account',
+                                    [
+                                        'attribute'=>Yii::t('common','First Image'),
+                                        'value'=>function($model){
+                                            return "<img src='$model->first_image_base_url$model->first_image_path' width='100' />";
+                                        },
+                                        'format'=>'raw'
+                                    ],
+                                    [
+                                        'attribute'=>Yii::t('common','Second Image'),
+                                        'value'=>function($model){
+                                            return "<img src='$model->second_image_base_url$model->second_image_path' width='100' />";
+                                        },
+                                        'format'=>'raw'
+                                    ]
 
-    ];
-    echo DetailView::widget([
-        'model' => $model,
-        'attributes' => $gridColumn
-    ]);
-?>
-</div>
-</div>
-            <div class="tab-pane active" id="tab_1-1">
-            <div class="row">
-
+                                ];
+                                echo DetailView::widget([
+                                    'model' => $model,
+                                    'attributes' => $gridColumn
+                                ]);
+                            ?>
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="tab2">
+                        <div class="row">
+                            <?php 
+                                $gridColumn = [
+                                    'user_id',
+                                    'firstname',
+                                    'lastname',
+                                    'user.email',
+                                    'mobile',
+                                    [
+                                        'attribute'=>Yii::t('common','Status'),
+                                        'value'=>function($model){
+                                            return User::statuses()[$model->user->status];
+                                        }
+                                    ],
+                                ];
+                                echo DetailView::widget([
+                                    'model' => $model->manager,
+                                    'attributes' => $gridColumn
+                                ]);
+                            ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </div>
-
-
-</div>
-
-
-
-</div>
-</div>
-</div>
+        </div>
+    </div>
 </div>
