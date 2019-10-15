@@ -18,12 +18,12 @@ class ThemeController extends RestController
         }
 
         $colors =[
-            'brandPrimColor'=> "rgb(38, 95, 78)",
-            'brandSecColor'=> "rgb(38, 95, 78)",
-            'brandHTextColor'=>  "#4d5d73",
-            'brandPTextColor'=> "#4d5d73",
-            'brandBlackColor'=> "#12263f",
-            'brandGrayColor'=> "rgb(38, 95, 78)",
+            'brandPrimColor'=> "#1abc9c",
+            'brandSecColor'=> "#16a085",
+            'brandHTextColor'=>  "#2c3e50",
+            'brandPTextColor'=> "#34495e",
+            'brandBlackColor'=> "#000",
+            'brandGrayColor'=> "#bdc3c7",
             'arfont'=> "Cairo, sans-serif",
             'enfont'=> "Roboto, sans-serif",
         ];
