@@ -50,7 +50,7 @@ return [
             'controller'=>'profile',
             'only'=>['index','update','options'],
             'extraPatterns'=>[
-                'POST update' => 'update' 
+                'PUT update' => 'update' 
             ],
             'pluralize'=>false
         ],

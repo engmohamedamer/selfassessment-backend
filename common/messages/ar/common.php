@@ -160,4 +160,6 @@ return [
     'Update'=>'تعديل',
     'Create'=>'إضافة',
     'Name En'=>'اسم المؤسسة بالانجليزية',
+    'Update User'=>'تحديث مستخدم',
+    'Contributors'=>'Contributors',
 ];

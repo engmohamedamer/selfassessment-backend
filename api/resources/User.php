@@ -27,7 +27,7 @@ class User extends \common\models\User
                 return $model->userProfile->bio;
             },
             'organization'=>function($model){
-                return ['id'=>1,'name'=>'MyOrganization Name'];
+                return ['id'=>$model->userProfile->organization->id,'name'=>$model->userProfile->organization->name];
             },
         ];
     }

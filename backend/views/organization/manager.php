@@ -34,9 +34,6 @@ use yii\helpers\ArrayHelper;
 		                            </div>
 		                        
 		                            <div class="col-md-4 col-sm-12">
-		                                <?php echo $form->field($model, 'username') ?>
-		                            </div>
-		                            <div class="col-md-4 col-sm-12">
 		                                <?php echo $form->field($model, 'email') ?>
 		                            </div>
 
@@ -44,8 +41,6 @@ use yii\helpers\ArrayHelper;
 		                                <?php echo $form->field($model, 'password')->passwordInput() ?>
 		                            </div>
 
-
-		                        
 		                            <div class="col-md-4 col-sm-12">
 		                                <?php echo $form->field($profile, 'firstname') ?>
 		                            </div>

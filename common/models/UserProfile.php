@@ -2,9 +2,10 @@
 
 namespace common\models;
 
-use backend\models\Schools;
-use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
+use backend\models\Schools;
+use common\models\Organization;
+use trntv\filekit\behaviors\UploadBehavior;
 use yii\db\ActiveRecord;
 
 /**
@@ -69,7 +70,7 @@ class UserProfile extends ActiveRecord
     {
         return [
             [['user_id','firstname'], 'required'],
-            [['user_id', 'gender','school_id','draft'], 'integer'],
+            [['user_id', 'gender','organization_id','draft'], 'integer'],
             [['gender'], 'in', 'range' => [NULL, self::GENDER_FEMALE, self::GENDER_MALE]],
             [['firstname', 'middlename', 'lastname', 'avatar_path', 'avatar_base_url','mobile','device_token'], 'string', 'max' => 255],
             ['locale', 'default', 'value' => Yii::$app->language],
@@ -77,7 +78,6 @@ class UserProfile extends ActiveRecord
             [['picture','nationality_id','specialization_id','job','activity','active','bio'], 'safe'],
             [['nationality_id','specialization_id','job','activity','mobile'],'required', 'on'=>self::SCENARIO_VALIDATE],
             ['firstname','required','message' => 'full_name يجب ادخاله', 'on'=>self::SCENARIO_VALIDATE],
-            [['nationality_id','specialization_id'],'integer','min'=>1,'on'=>self::SCENARIO_VALIDATE],
 
         ];
     }
@@ -95,7 +95,7 @@ class UserProfile extends ActiveRecord
             'locale' => Yii::t('common', 'Locale'),
             'picture' => Yii::t('common', 'Picture'),
             'gender' => Yii::t('common', 'Gender'),
-            'school_id'=> Yii::t('common', 'School Admin'),
+            'organization_id'=> Yii::t('common', 'School Admin'),
             'mobile'=> Yii::t('common', 'Mobile'),
             'bio'=> Yii::t('common', 'Bio'),
         ];
@@ -110,14 +110,9 @@ class UserProfile extends ActiveRecord
     }
 
 
-    public function getSchool()
+    public function getOrganization()
     {
-        return $this->hasOne(Schools::class, ['owner_id' => 'user_id']);
-    }
-
-    public function getMySchool()
-    {
-        return $this->hasOne(Schools::class, ['id' => 'school_id']);
+        return $this->hasOne(Organization::class, ['id' => 'organization_id']);
     }
 
 
@@ -142,67 +137,6 @@ class UserProfile extends ActiveRecord
         return $this->avatar_path
             ? Yii::getAlias($this->avatar_base_url . '/' . $this->avatar_path)
             : $default;
-    }
-
-
-    public static function ListNationalities()
-    {
-        return [
-            [
-                "id"=>1,
-                "label"=>"سعودي"
-            ],
-            [
-                "id"=>2,
-                "label"=>"مصري"
-            ],
-            [
-                "id"=>3,
-                "label"=>"لبناني"
-            ],
-            [
-                "id"=>4,
-                "label"=>"باكستاني"
-            ],
-            [
-                "id"=>5,
-                "label"=>"هندي"
-            ],
-            [
-                "id"=>5,
-                "label"=>"بنغالي"
-            ],
-        ];
-    }
-
-    public static function ListSpecialization()
-    {
-        return [
-            [
-                "id"=>1,
-                "label"=>"لغة انجليزية"
-            ],
-            [
-                "id"=>2,
-                "label"=>"رياضيات ابتدائي"
-            ],
-            [
-                "id"=>3,
-                "label"=>"دراسات اجتماعية"
-            ],
-            [
-                "id"=>4,
-                "label"=>"لغة عربية"
-            ],
-            [
-                "id"=>5,
-                "label"=>"معلم فصل"
-            ],
-            [
-                "id"=>5,
-                "label"=>"رياض اطفال"
-            ],
-        ];
     }
     
 }

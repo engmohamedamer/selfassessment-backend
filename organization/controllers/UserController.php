@@ -1,11 +1,11 @@
 <?php
 
-namespace backend\controllers;
+namespace organization\controllers;
 
 use Intervention\Image\ImageManagerStatic;
 use Yii;
-use backend\models\UserForm;
-use backend\models\search\UserSearch;
+use organization\models\UserForm;
+use organization\models\search\UserSearch;
 use common\models\User;
 use common\models\UserProfile;
 use common\models\UserToken;
@@ -70,7 +70,7 @@ class UserController extends Controller
             Yii::$app->session->set('UserRole',$_REQUEST['user_role']);
         }
 
-        $searchModel->user_role = Yii::$app->session->get('UserRole');
+        $searchModel->user_role = User::ROLE_USER;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $dataProvider->sort = [
@@ -122,13 +122,14 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new UserForm();
-        $profile= new UserProfile();
-
+        $model->roles = User::ROLE_USER;
+        $profile = new UserProfile();
         $model->setScenario('create');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             $profile->load(Yii::$app->request->post());
-            $user = $this->UpdateUserRelatedTbls($model,$profile)->user;
+            $organization_id = Yii::$app->user->identity->userProfile->organization_id;
+            $user = $this->UpdateUserRelatedTbls($model,$profile,$organization_id)->user;
 
             Yii::$app->getSession()->setFlash('alert', [
                 'type' =>'success',
@@ -136,14 +137,12 @@ class UserController extends Controller
                 'title' =>'',
             ]);
 
-
             return $this->redirect(['index?user_role='.$model->roles]);
         }
 
         return $this->render('create', [
             'model' => $model,
             'profile' => $profile,
-            'roles' => ArrayHelper::map(Yii::$app->authManager->getRoles(), 'name', 'name')
         ]);
     }
 
@@ -155,16 +154,13 @@ class UserController extends Controller
     public function actionUpdate($id)
     {
         $model = new UserForm();
-        $model->setModel($this->findModel($id));
-
+        $model->setModel($this->findModel($id));        
         $profile= $model->getModel()->userProfile;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             $profile->load(Yii::$app->request->post());
-            // return var_dump(Yii::$app->request->post());
             $this->UpdateUserRelatedTbls($model,$profile);
-
 
             Yii::$app->getSession()->setFlash('alert', [
                 'type' =>'success',
@@ -175,12 +171,9 @@ class UserController extends Controller
             return $this->redirect(['index?user_role='.$model->roles]);
         }
 
-        // return var_dump($model);
-
         return $this->render('update', [
             'model' => $model,
             'profile' => $profile,
-            'roles' => ArrayHelper::map(Yii::$app->authManager->getRoles(), 'name', 'name'),
         ]);
     }
 
@@ -216,7 +209,7 @@ class UserController extends Controller
      * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function UpdateUserRelatedTbls($model,$profile,$post_data=null){
+    public function UpdateUserRelatedTbls($model,$profile,$organization_id = null){
         $prof= $model->getModel()->userProfile;
         if(!$prof) {
             $prof = new UserProfile();
@@ -226,6 +219,9 @@ class UserController extends Controller
         $prof->firstname = $profile->firstname ;
         $prof->lastname = $profile->lastname ;
         $prof->gender = $profile->gender;
+        if ($organization_id) {
+            $prof->organization_id = $organization_id;
+        }
         $prof->avatar_base_url = isset($profile->picture['base_url']) ? $profile->picture['base_url'] : null;
         $prof->avatar_path= isset($profile->picture['path'])? $profile->picture['path']: null ;
 

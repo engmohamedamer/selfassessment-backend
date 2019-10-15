@@ -21,7 +21,36 @@ $config = [
 
     ],
     'modules' => [
+        'treemanager' =>  [
+            'class' => '\kartik\tree\Module',
+        ],
+        'content' => [
+            'class' => backend\modules\content\Module::class,
+        ],
+        'widget' => [
+            'class' => backend\modules\widget\Module::class,
+        ],
+        'file' => [
+            'class' => backend\modules\file\Module::class,
+        ],
+        'system' => [
+            'class' => backend\modules\system\Module::class,
+        ],
+        'translation' => [
+            'class' => backend\modules\translation\Module::class,
+        ],
+        'rbac' => [
+            'class' => backend\modules\rbac\Module::class,
+            'defaultRoute' => 'rbac-auth-item/index',
+        ],
 
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module',
+        ],
+
+        'datecontrol' => [
+            'class' => '\kartik\datecontrol\Module',
+        ],
 
 
     ],
@@ -30,7 +59,10 @@ $config = [
         'rules' => require __DIR__ . '/_rules.php',
     ],
 
-
+    'params' => [
+        'bsVersion' => '4.x',
+        'icon-framework' => \kartik\icons\Icon::FAS,  // Font Awesome Icon framework
+    ],
 
 
 ];
