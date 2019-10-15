@@ -143,7 +143,7 @@ return [
     'School Year'=>'السنة الدراسية',
 
     'Create Organization'=>'إضافة مؤسسة',
-    'Organization'=>'المؤساسات',
+    'Organization'=>'المؤسسات',
     'Address'=>'العنوان',
     'Select City first'=>'اختر المدينة اولا',
     'Organization Manager'=>'مسؤل المؤسسة',
@@ -154,10 +154,12 @@ return [
     'Contact Email'=>'البريد الالكتروني  لمسؤل التواصل',
     'Contact Position'=>'مركز مسؤل التواصل',
     'Limit Account'=>'عدد الحد الاقصي للحسابات',
-    'Organizations'=>'المؤساسات',
+    'Organizations'=>'المؤسسات',
     'First Image'=>'الصورة الاساسية الاولي',
     'Second Image'=>'الصورة الاساسية الثانية',
     'Update'=>'تعديل',
     'Create'=>'إضافة',
     'Name En'=>'اسم المؤسسة بالانجليزية',
+    'Update User'=>'تحديث مستخدم',
+    'Contributors'=>'Contributors',
 ];
