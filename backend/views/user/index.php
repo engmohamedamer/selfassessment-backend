@@ -16,7 +16,7 @@ $url=\yii\helpers\Url::to(['/helper/users-list']);
 /* @var $searchModel backend\models\search\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Users');
+$this->title = Yii::t('backend', 'Managers');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="content-header">
     <div class="row mb-2">
         <div class="col-6">
-            <h1 class="m-0 text-dark">Users</h1>
+            <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Managers') ?></h1>
         </div>
         <div class="col-6 actionBtns">
             <?php echo Html::a(Yii::t('backend', 'Create New User'), ['create'], ['class' => 'btn btn-primary']) ?>
@@ -38,7 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header border-0">
-                <h3 class="card-title">Contributors List</h3>
                 <div class="card-tools">
                     <a href="#" class="btn btn-tool btn-sm">
                         <i class="fas fa-search"></i>
@@ -51,9 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card-body">
             <?php
                 $gridColumns=[
-                    //'id',
                     ['class' => 'yii\grid\SerialColumn'],
-                    //'username',
                     'email:email',
                     [
                         'class' => EnumColumn::class,
@@ -64,32 +61,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'updated_at',
                         'format' => 'datetime',
-                        // 'filter' => DateTimeWidget::widget([
-                        //     'model' => $searchModel,
-                        //     'attribute' => 'created_at',
-                        //     'phpDatetimeFormat' => 'dd.MM.yyyy',
-                        //     'momentDatetimeFormat' => 'DD.MM.YYYY',
-                        //     'clientEvents' => [
-                        //         'dp.change' => new JsExpression('(e) => $(e.target).find("input").trigger("change.yiiGridView")')
-                        //     ],
-                        // ])
                     ],
                     [
                         'attribute' => 'logged_at',
                         'format' => 'datetime',
-                        // 'filter' => DateTimeWidget::widget([
-                        //     'model' => $searchModel,
-                        //     'attribute' => 'logged_at',
-                        //     'phpDatetimeFormat' => 'dd.MM.yyyy',
-                        //     'momentDatetimeFormat' => 'DD.MM.YYYY',
-                        //     'clientEvents' => [
-                        //         'dp.change' => new JsExpression('(e) => $(e.target).find("input").trigger("change.yiiGridView")')
-                        //     ],
-                        // ])
                     ],
                     [
                         'class' => 'kartik\grid\ActionColumn',
-                    
                     ],
                 ];
 
@@ -126,25 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'export' => [
                         'fontAwesome' => true
                     ],
-                    // parameters from the demo form
-                    //'bordered' => $bordered,
-                    //'striped' => $striped,
-                    //'condensed' => $condensed,
-                    //'responsive' => $responsive,
-                    //        'hover' => $hover,
-                    //        'showPageSummary' => $pageSummary,
-                    //        'panel' => [
-                    //            'type' => GridView::TYPE_PRIMARY,
-                    //            'heading' => $heading,
-                    //        ],
-                    //        'persistResize' => false,
-                    //        'toggleDataOptions' => ['minCount' => 10],
-                    //        'exportConfig' => $exportConfig,
-                    //        'itemLabelSingle' => 'book',
-                    //        'itemLabelPlural' => 'books'
                 ]);
-
-
             ?>
             </div>
         </div>

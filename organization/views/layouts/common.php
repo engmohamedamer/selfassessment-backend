@@ -4,9 +4,10 @@
  * @var $content string
  */
 
-use organization\assets\BackendAsset;
-use organization\modules\system\models\SystemLog;
-use organization\widgets\Menu;
+use backend\assets\BackendAsset;
+use backend\assets\BackendArabic;
+use backend\modules\system\models\SystemLog;
+use backend\widgets\Menu;
 use common\models\TimelineEvent;
 use yii\bootstrap4\Alert;
 use yii\helpers\ArrayHelper;
@@ -18,17 +19,16 @@ use yii\widgets\Breadcrumbs;
 use kartik\icons\Icon;
 Icon::map($this);
 
-//
-//if(Yii::$app->user->isGuest){
-//    $bundle = BackendAsset::register($this);
-//}else{
-//    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
-//        $bundle = BackendAsset::register($this);
-//    }else{
-//        $bundle =BackendArabic::register($this);
-//    }
-//}
-$bundle = BackendAsset::register($this);
+
+if(Yii::$app->user->isGuest){
+    $bundle = BackendAsset::register($this);
+}else{
+    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
+        $bundle = BackendAsset::register($this);
+    }else{
+        $bundle = BackendArabic::register($this);
+    }
+}
 
 
 
@@ -84,15 +84,12 @@ $bundle = BackendAsset::register($this);
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                   
-
                     <?php
                     if (Yii::$app->user->can('governmentAdmin')) {
-                        $this->beginContent('@app/views/layouts/menus/_superadmin_menu.php');
+                        $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
                         $this->endContent();
                     }
                     ?>
-
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
@@ -127,7 +124,7 @@ $bundle = BackendAsset::register($this);
         <strong>&nbsp;</strong>
         <div class="pull-right">
             <!-- <?php echo Yii::powered() ?> -->
-        فعال &copy;  <?php echo date('Y') ?>
+        selfassesment &copy;  <?php echo date('Y') ?>
         </div>
   </footer>
 </div><!-- ./wrapper -->
