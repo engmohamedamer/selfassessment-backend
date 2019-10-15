@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\widgets;
+namespace organization\widgets;
 
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;

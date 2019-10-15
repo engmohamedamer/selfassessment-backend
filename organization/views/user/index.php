@@ -70,6 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'class' => 'kartik\grid\ActionColumn',
+                        'template'=>'{view}{update}'
                     
                     ],
                 ];

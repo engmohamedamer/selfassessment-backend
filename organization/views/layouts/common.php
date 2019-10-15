@@ -87,17 +87,8 @@ $bundle = BackendAsset::register($this);
                    
 
                     <?php
-                    if (Yii::$app->user->can('administrator')) {
-                    // $this->beginContent('@app/views/layouts/menus/_superadmin_menu.php');
-                        $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
-                        $this->endContent();
-                    } elseif (Yii::$app->user->can('manager') ) {
-                        $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
-                        $this->endContent();
-
-                    }else{
-                        //do no thing
-                        $this->beginContent('@app/views/layouts/menus/empty.php');
+                    if (Yii::$app->user->can('governmentAdmin')) {
+                        $this->beginContent('@app/views/layouts/menus/_superadmin_menu.php');
                         $this->endContent();
                     }
                     ?>
