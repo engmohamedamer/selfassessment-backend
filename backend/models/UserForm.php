@@ -19,6 +19,7 @@ class UserForm extends Model
     public $status;
     public $roles;
     public $firstname;
+    public $mobile;
     private $model;
 
     /**
@@ -51,6 +52,9 @@ class UserForm extends Model
 
             [['status'], 'integer'],
             ['roles', 'string'],
+
+            ['mobile', 'match','on'=>'create', 'pattern' => '/^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/' ,'message'=>Yii::t('common','Enter valid phone')],
+
 
 //            [['roles'], 'each',
 //                'rule' => ['in', 'range' => ArrayHelper::getColumn(
@@ -101,6 +105,7 @@ class UserForm extends Model
             'password' => Yii::t('common', 'Password'),
             'roles' => Yii::t('common', 'Roles'),
             'firstname' => Yii::t('common', 'Firstname'),
+            'mobile' => Yii::t('common', 'Mobile'),
         ];
     }
 

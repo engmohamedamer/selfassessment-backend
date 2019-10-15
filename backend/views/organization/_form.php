@@ -27,7 +27,7 @@ if (isset($model->city_id)) {
 
 
     <?php $form = ActiveForm::begin(); ?>
-    <?php  //echo $form->errorSummary($model); ?>
+    <?php  echo $form->errorSummary($model); ?>
 
 
 
@@ -155,7 +155,7 @@ if (isset($model->city_id)) {
                 </div>
 
                 <div class="col-md-4 col-sm-12">
-                    <?php echo $form->field($profile, 'mobile') ?>
+                    <?php echo $form->field($user, 'mobile') ?>
                 </div>
 
             </div>

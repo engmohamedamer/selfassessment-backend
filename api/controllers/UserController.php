@@ -34,31 +34,21 @@ class UserController extends  RestController
         if($valid_password){
 
             //check role
-//            $roles = ArrayHelper::getColumn( Yii::$app->authManager->getRolesByUser($user->id),'name');
-//            $currentRole=   array_keys($roles)[0];
-//
-//            if( $currentRole != \common\models\User::ROLE_USER){
-//                return ResponseHelper::sendFailedResponse(['INVALID_ROLE'=>'Invalid User Role']);
-//            }
+           $roles = ArrayHelper::getColumn( Yii::$app->authManager->getRolesByUser($user->id),'name');
+           $currentRole=   array_keys($roles)[0];
+
+           if( $currentRole != \common\models\User::ROLE_USER){
+               return ResponseHelper::sendFailedResponse(['INVALID_ROLE'=>'Invalid User Role']);
+           }
 
             $user->access_token = Yii::$app->getSecurity()->generateRandomString(40);
             $user->save(false);
-            if(isset($params['device_token'])){
-                $profile = $user->userProfile;
-                $profile->device_token = $params['device_token'];
-                $profile->save(false);
-            }
-
-
-            $data =  [ 'token'=> $user->access_token, 'profile'=> $user ];
-            return  ResponseHelper::sendSuccessResponse($data);
+            $data = ['token'=> $user->access_token, 'profile'=> $user ];
+            return ResponseHelper::sendSuccessResponse($data);
         }else{
-
             return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>'Invalid username or Password -03']);
         }
     }
-
-
 
     public function actionSignup(){
 
@@ -67,9 +57,4 @@ class UserController extends  RestController
     public function actionVerify(){
 
     }
-
-
-
-
-
 }

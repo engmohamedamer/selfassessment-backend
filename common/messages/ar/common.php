@@ -163,4 +163,5 @@ return [
     'Update User'=>'تحديث مستخدم',
     'Contributors'=>'Contributors',
     'Contributors'=>'المشاركين',
+    'Mobile'=>'رقم الجوال',
 ];

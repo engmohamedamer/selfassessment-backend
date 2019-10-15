@@ -59,6 +59,7 @@ return [
             'controller'=>'theme',
             'only'=>['index'],
             'extraPatterns'=>[
+                'POST <id>/<locale>' => 'index',
                 'POST <id>' => 'index' 
             ],
             'pluralize'=>false

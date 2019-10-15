@@ -9,7 +9,8 @@ use yii\web\NotFoundHttpException;
 
 class ThemeController extends RestController
 {
-    public function actionIndex($id){
+    public function actionIndex($id,$locale = 'ar'){
+
         $organization = Organization::findOne($id);
 
         if (!$organization) {
@@ -27,24 +28,28 @@ class ThemeController extends RestController
             'enfont'=> "Roboto, sans-serif",
         ];
 
-        $footer = [];
-        $menu = [];
-        $images = [
-            'lightLogo'=> [
-                'src'=> $organization->first_image_base_url . $organization->first_image_path,
-                'title'=> $organization->name,
+        $footer = [
+            'links'=>[
+                ['title'=>'Home','href'=>'http://'],
+                ['title'=>'About','href'=>'http://'],
+                ['title'=>'Contact','href'=>'http://'],
+                ['title'=>'Test','href'=>'http://'],
+                ['title'=>'Data','href'=>'http://'],
             ],
-            'darkLogo'=> [
-                'src'=> $organization->second_image_base_url . $organization->second_image_path,
-                'title'=> $organization->name,
-            ],
-            'background'=> [
-                'src'=> "",
-                'title'=> "",
-            ],
+            'social_media'=>[
+                'facebook'=>'http://',
+                'twitter'=>'http://',
+                'linkedin'=>'http://',
+                'instagram'=>'http://',
+            ]
         ];
 
-        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name ,'about'=>'About MyOrganization'];
+        if ($locale == 'en') {
+            $name = $organization->name_en;
+        }else{
+            $name = $organization->name;
+        }
+        $organizationDate = ['id'=> $organization->id,'name'=> $name ,'about'=>'About MyOrganization', 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
 
         return ['theme_version'=>1,'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer,'menu'=>$menu,'images'=>$images];
     }
