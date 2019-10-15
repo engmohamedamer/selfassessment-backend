@@ -37,10 +37,10 @@ class ThemeController extends RestController
                 ['title'=>'Data','href'=>'http://'],
             ],
             'social_media'=>[
-                'facebook'=>'http://',
-                'twitter'=>'http://',
-                'linkedin'=>'http://',
-                'instagram'=>'http://',
+                ['title'=>'facebook','href'=>'http://'],
+                ['title'=>'twitter','href'=>'http://'],
+                ['title'=>'linkedin','href'=>'http://'],
+                ['title'=>'instagram','href'=>'http://'],
             ]
         ];
 
