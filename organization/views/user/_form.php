@@ -16,7 +16,18 @@ $model->roles =Yii::$app->session->get('UserRole');
 ?>
 
     <?php $form = ActiveForm::begin() ?>
-
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="row mb-2">
+        <div class="col-6">
+            <h1 class="m-0 text-dark"><?= Yii::t('backend','Users')?></h1>
+        </div>
+        
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.content-header -->
 <div class="row">
     <div class="col-lg-12">
         <div class="card">

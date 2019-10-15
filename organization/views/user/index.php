@@ -26,8 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-6">
             <h1 class="m-0 text-dark"><?= Yii::t('backend','Users')?></h1>
         </div>
-        <div class="col-6">
-            <?php echo Html::a(Yii::t('backend', 'Create New User'), ['create'], ['class' => 'btn btn-primary','style'=>'float: right']) ?>
+        <div class="col-6 actionBtns">
+            <?php echo Html::a(Yii::t('backend', 'Create New User'), ['create'], ['class' => 'btn btn-primary']) ?>
         </div>
         <!-- /.col -->
     </div>
@@ -39,14 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card">
             <div class="card-header border-0">
                 <h3 class="card-title"><?= Yii::t('common','Contributors')?></h3>
-                <div class="card-tools">
-                    <a href="#" class="btn btn-tool btn-sm">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <a href="#" class="btn btn-tool btn-sm">
-                        <i class="fas fa-bars"></i>
-                    </a>
-                </div>
+               
             </div>
             <div class="card-body">
             <?php
