@@ -77,7 +77,6 @@ echo newerton\fancybox3\FancyBox::widget();
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-organization']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-            'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),
         ],
         'export' => false,
         // your toolbar can include the additional full export menu
@@ -89,10 +88,10 @@ echo newerton\fancybox3\FancyBox::widget();
                 'target' => ExportMenu::TARGET_BLANK,
                 'fontAwesome' => true,
                 'dropdownOptions' => [
-                    'label' => 'Full',
+                    'label' => Yii::t('backend','Full'),
                     'class' => 'btn btn-default',
                     'itemsBefore' => [
-                        '<li class="dropdown-header">Export All Data</li>',
+                        '<li class="dropdown-header">'. Yii::t('backend','Export All Data') .'</li>',
                     ],
                 ],
                 'exportConfig' => [

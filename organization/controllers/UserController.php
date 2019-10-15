@@ -65,12 +65,8 @@ class UserController extends Controller
     public function actionIndex()
     {
         $searchModel = new UserSearch();
-
-        if(isset($_REQUEST['user_role'])){
-            Yii::$app->session->set('UserRole',$_REQUEST['user_role']);
-        }
-
         $searchModel->user_role = User::ROLE_USER;
+        $searchModel->organization_id = Yii::$app->user->identity->userProfile->organization_id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $dataProvider->sort = [
@@ -80,6 +76,16 @@ class UserController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+
+    public function userCount()
+    {
+        $searchModel = new UserSearch();
+        $searchModel->user_role = User::ROLE_USER;
+        $searchModel->organization_id = Yii::$app->user->identity->userProfile->organization_id;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $dataProvider->count;
     }
 
     /**
@@ -125,25 +131,29 @@ class UserController extends Controller
         $model->roles = User::ROLE_USER;
         $profile = new UserProfile();
         $model->setScenario('create');
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $organization = Yii::$app->user->identity->userProfile->organization;
+        if ( !$organization->limit_account ||  ( $organization->limit_account and $organization->limit_account >= $this->userCount() ) ) {
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            $profile->load(Yii::$app->request->post());
-            $organization_id = Yii::$app->user->identity->userProfile->organization_id;
-            $user = $this->UpdateUserRelatedTbls($model,$profile,$organization_id)->user;
+                $profile->load(Yii::$app->request->post());
+                $organization_id = Yii::$app->user->identity->userProfile->organization_id;
+                $user = $this->UpdateUserRelatedTbls($model,$profile,$organization_id)->user;
 
-            Yii::$app->getSession()->setFlash('alert', [
-                'type' =>'success',
-                'body' => \Yii::t('backend', 'Data has been saved Successfully') ,
-                'title' =>'',
+                Yii::$app->getSession()->setFlash('alert', [
+                    'type' =>'success',
+                    'body' => \Yii::t('backend', 'Data has been saved Successfully') ,
+                    'title' =>'',
+                ]);
+
+                return $this->redirect(['index?user_role='.$model->roles]);
+            }
+
+            return $this->render('create', [
+                'model' => $model,
+                'profile' => $profile,
             ]);
-
-            return $this->redirect(['index?user_role='.$model->roles]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-            'profile' => $profile,
-        ]);
+        return $this->redirect('/user');
     }
 
     /**

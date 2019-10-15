@@ -41,6 +41,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php
                 $gridColumns=[
                     ['class' => 'yii\grid\SerialColumn'],
+                    [
+                        'attribute'=>Yii::t('backend','Name'),
+                        'value'=>function($model){
+                            return $model->userProfile->firstname;
+                        }
+                    ]
                     'userProfile.firstname',
                     'email:email',
                     [
