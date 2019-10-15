@@ -45,20 +45,10 @@ echo Menu::widget([
                 [
                     'label' => Yii::t('backend', 'Users'),
                     'icon' => '<i class="far fa-circle nav-icon"></i>',
-                    'url' => ['/user/index?user_role=manager'],
+                    'url' => ['/user/index'],
                     'options' => ['class' => 'nav-item'],
-                    'active' => (Yii::$app->request->get('user_role') == 'schoolAdmin'),
-                    'visible' => (Yii::$app->user->can('administrator') or  Yii::$app->user->can('manager') ),
                 ],
             ],
-        ],
-
-
-        [
-            'label' => Yii::t('backend', 'Organizations'),
-            'url' => '/',
-            'icon' => '<i class="nav-icon fas fa-th"></i>',
-            'options' => ['class' => 'nav-item'],
         ],
     ],
 ]) ?>
