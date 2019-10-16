@@ -253,3 +253,13 @@ ul {
     padding-left: calc(1.5em + 0.75rem);
     background-position: center left calc(0.375em + 0.1875rem);
 }
+
+.alert-danger, .alert-error{
+    background-color: #f17b86!important;
+    border-color: #f17b86;
+    
+}
+
+.alert-danger ul, .alert-error ul{
+    margin: 0 20px;
+}
