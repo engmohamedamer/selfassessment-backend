@@ -66,7 +66,7 @@ class UserSearch extends User
                 ]
             );
         }
-        
+
 
         if($this->user_role){
             $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')

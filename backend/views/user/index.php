@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['class' => 'yii\grid\SerialColumn'],
 
                     [
-                        'header'=> Yii::t('hr', 'Full Name') ,
+                        'header'=> Yii::t('common', 'Full Name') ,
                         'attribute' => 'SearchFullName',
                         'format'    => 'raw',
                         'value'     => function ($model) {

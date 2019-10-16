@@ -16,7 +16,22 @@ $search = "$('.search-button').click(function(){
 });";
 $this->registerJs($search);
 
-echo newerton\fancybox3\FancyBox::widget();
+
+echo newerton\fancybox3\FancyBox::widget([
+
+    'config'=>[
+        'iframe' => [
+
+            'preload'       => false,
+            'css'=>[
+                'width'=>'900px',
+                'height'=>'450px'
+            ]
+        ],
+
+    ],
+]);
+
 ?>
 
 <!-- Content Header (Page header) -->

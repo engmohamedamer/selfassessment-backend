@@ -28,18 +28,18 @@ $config = [
             // enter other module properties if needed
             // for advanced/personalized configuration
             // (refer module properties available below)
-//            'i18n' => [
-//                'class' => 'yii\i18n\PhpMessageSource',
-//                'basePath' => '@common/messages',
-//                'forceTranslation' => true,
-//                'fileMap' => [
-//                    'common' => 'common.php',
-//                    'backend' => 'backend.php',
-//                    'frontend' => 'frontend.php',
-//                    'kvtree' => 'kvtree.php',
-//                ],
-//                'on missingTranslation' => [backend\modules\translation\Module::class, 'missingTranslation']
-//            ],
+            'i18n' => [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'basePath' => '@common/messages',
+                'forceTranslation' => true,
+                'fileMap' => [
+                    'common' => 'common.php',
+                    'backend' => 'backend.php',
+                    'frontend' => 'frontend.php',
+                    'kvtree' => 'kvtree.php',
+                ],
+                'on missingTranslation' => [backend\modules\translation\Module::class, 'missingTranslation']
+            ],
         ],
 
 
@@ -69,11 +69,11 @@ $config = [
             // use your own export download action or custom translation
             // message source
             // 'downloadAction' => 'gridview/export/download',
-//            'i18n' => [
-//                'class' => 'yii\i18n\PhpMessageSource',
-//                'basePath' => '@common/messages',
-//                'forceTranslation' => true
-//            ]
+            'i18n' => [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'basePath' => '@common/messages',
+                'forceTranslation' => true
+            ]
         ],
 
         'datecontrol' => [

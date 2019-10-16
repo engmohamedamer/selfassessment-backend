@@ -22,7 +22,7 @@ $model->roles =Yii::$app->session->get('UserRole');
 <div class="content-header">
     <div class="row mb-2">
         <div class="col-6">
-            <h1 class="m-0 text-dark">Update User</h1>
+            <h1 class="m-0 text-dark"><?= Yii::t('common','Update User');?> </h1>
         </div>
         <div class="col-6">
         </div>
