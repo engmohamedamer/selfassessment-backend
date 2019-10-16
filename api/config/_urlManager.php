@@ -15,7 +15,7 @@ return [
             ,'extraPatterns'=>[
                 'POST create' => 'create',
                 'POST login' => 'login',
-                'POST signup' => 'signup',
+                'POST signup/<organization>' => 'signup',
 
             ]
             , 'pluralize'=>false
