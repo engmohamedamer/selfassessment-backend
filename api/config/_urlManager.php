@@ -27,10 +27,13 @@ return [
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'profile',
-            'only'=>['index','update','options'],
+            'only'=>['index','update','image','options'],
             'extraPatterns'=>[
                 'GET ' => 'index' ,
-                'PUT ' => 'update'
+                'PUT ' => 'update',
+                'POST image' => 'image'
+
+
             ],
             'pluralize'=>false
         ],
