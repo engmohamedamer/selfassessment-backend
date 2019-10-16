@@ -27,7 +27,7 @@ if (isset($model->city_id)) {
 
 
     <?php $form = ActiveForm::begin(); ?>
-    <?php  //echo $form->errorSummary($model); ?>
+    <?php  echo $form->errorSummary($model); ?>
 
 
 
@@ -52,6 +52,10 @@ if (isset($model->city_id)) {
             <div class="row">
                 <div class="col-lg-4">
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                </div>
+
+                <div class="col-lg-4">
+                    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
                 </div>
 
                 <div class="col-lg-4">

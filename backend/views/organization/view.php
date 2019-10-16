@@ -44,6 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $gridColumn = [
                                     'id',
                                     'name',
+                                    'slug',
                                     'business_sector',
                                     'address',
                                     [

@@ -29,6 +29,13 @@ class User extends \common\models\User
             'organization'=>function($model){
                 return ['id'=>$model->userProfile->organization->id,'name'=>$model->userProfile->organization->name];
             },
+            'locale'=>function($model){
+                if ($model->userProfile->locale == 'en-US') {
+                    return 'en';
+                }else{
+                    return 'ar';
+                }
+            },
         ];
     }
 
