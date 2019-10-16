@@ -60,7 +60,7 @@ class UserController extends  RestController
         $organization = Organization::findOne($organization);
         
         if (!$organization) {
-            return (new NotFoundHttpException(Yii::t('yii', 'Page not found.')));
+            return new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
         }
          
         $model = new SignupForm();
