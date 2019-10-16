@@ -46,7 +46,7 @@ class ProfileController extends  MyActiveController
         if (isset($params['image']) and !empty($params['image'])) {
             $userProfile = User::findOne(['id'=> \Yii::$app->user->identity->getId()])->userProfile;
             $filename = ImageHelper::Base64IMageConverter($params['image'],'profile');
-            $path = \Yii::getAlias('@storageUrl'). '/web/source/';
+            $path = \Yii::getAlias('@storageUrl'). '/source/';
             $userProfile->avatar_path = 'profile/'.$filename;
             $userProfile->avatar_base_url= $path;
             $userProfile->save(false);
