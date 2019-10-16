@@ -31,9 +31,6 @@ return [
             'extraPatterns'=>[
                 'GET ' => 'index' ,
                 'PUT ' => 'update',
-                'POST image' => 'image'
-
-
             ],
             'pluralize'=>false
         ],
