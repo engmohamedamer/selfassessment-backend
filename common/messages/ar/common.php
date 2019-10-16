@@ -162,6 +162,6 @@ return [
     'Name En'=>'اسم المؤسسة بالانجليزية',
     'Update User'=>'تحديث مستخدم',
     'Contributors'=>'Contributors',
-    'Contributors'=>'المشاركين',
+    'Contributors'=>'الموظفين',
     'Mobile'=>'رقم الجوال',
 ];
