@@ -48,9 +48,10 @@ return [
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'profile',
-            'only'=>['index','update','options'],
+            'only'=>['index','update','image','options'],
             'extraPatterns'=>[
-                'PUT update' => 'update' 
+                'PUT update' => 'update',
+                'POST image' => 'image' 
             ],
             'pluralize'=>false
         ],

@@ -49,4 +49,43 @@ class ProfileController extends  MyActiveController
         }
     }
 
+
+    public function actionImage()
+    {
+        $params = \Yii::$app->request->post();
+        $user = User::findOne(['id'=> \Yii::$app->user->identity->getId()])->userProfile;
+        return $user;
+        $filename = $this->Base64IMageConverter($params['image']);
+        $user->avatar_path = 'event-request/'.$filename;
+        $user->avatar_base_url= $path;
+        $user->save();
+    }
+
+    public static function Base64IMageConverter($binary , $upPath='profile'){
+
+        $path = \Yii::getAlias('@storage'). '/web/source/'.$upPath;
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+        $imageName = "img-". (intval(time()) + rand(1,100000) ).".jpeg";
+
+        $directory= $path.'/'.$imageName;
+
+
+        $entry = base64_decode($binary);
+        $image = imagecreatefromstring($entry);
+
+        header ( 'Content-type:image/jpeg' );
+
+        imagejpeg($image, $directory);
+
+        imagedestroy ( $image );
+
+        if(file_exists($directory)){
+            return $imageName;
+        }else{
+            return false;
+        }
+    }
+
 }

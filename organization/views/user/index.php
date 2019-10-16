@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'value'=>function($model){
                             return $model->userProfile->firstname;
                         }
-                    ]
+                    ],
                     'userProfile.firstname',
                     'email:email',
                     [
