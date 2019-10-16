@@ -5,9 +5,10 @@ use backend\models\District;
 use common\models\Organization;
 use common\models\User;
 use common\models\UserProfile;
+use kartik\widgets\ActiveForm;
 use kartik\widgets\DepDrop;
 use trntv\filekit\widget\Upload;
-use yii\bootstrap4\ActiveForm;
+// use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -55,7 +56,9 @@ if (isset($model->city_id)) {
                 </div>
 
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'slug',[
+                            'addon' => ['prepend' => ['content'=>'selfassest.com']]
+                    ])->textInput(['maxlength' => true]) ?>
                 </div>
 
                 <div class="col-lg-4">
@@ -65,7 +68,7 @@ if (isset($model->city_id)) {
                     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?php echo $form->field($model, 'city_id')->dropDownList(ArrayHelper::map( $city, 'id', 'title'),['id'=>'City-id',]) ?>
+                    <?php echo $form->field($model, 'city_id')->dropDownList([''=>Yii::t('common',  'Select')]+ArrayHelper::map($city, 'id', 'title'),['id'=>'City-id',]) ?>
                 </div>
                 <div class="col-lg-4">
                     <?php echo $form->field($model, 'district_id')->widget(DepDrop::classname(), [
