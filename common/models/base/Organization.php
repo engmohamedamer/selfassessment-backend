@@ -12,7 +12,6 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property integer $id
  * @property string $name
- * @property string $name_en
  * @property string $business_sector
  * @property string $address
  * @property integer $city_id
@@ -49,7 +48,7 @@ class Organization extends \yii\db\ActiveRecord
     {
         return [
             [['city_id', 'district_id', 'limit_account'], 'integer'],
-            [['name','name_en'], 'string', 'max' => 150],
+            ['name', 'string', 'max' => 150],
             [['business_sector', 'email', 'conatct_name', 'contact_email', 'contact_position'], 'string', 'max' => 100],
             [['address'], 'string', 'max' => 255],
             [['phone', 'mobile', 'contact_phone'], 'string', 'max' => 20],
@@ -100,7 +99,6 @@ class Organization extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('common', 'ID'),
             'name' => Yii::t('common', 'Name'),
-            'name_en' => Yii::t('common', 'Name En'),
             'business_sector' => Yii::t('common', 'Business Sector'),
             'address' => Yii::t('common', 'Address'),
             'city_id' => Yii::t('common', 'City'),
