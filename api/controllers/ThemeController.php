@@ -44,12 +44,7 @@ class ThemeController extends RestController
             ]
         ];
 
-        if ($locale == 'en') {
-            $name = $organization->name_en;
-        }else{
-            $name = $organization->name;
-        }
-        $organizationDate = ['id'=> $organization->id,'name'=> $name ,'about'=>'About MyOrganization', 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
+        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name ,'about'=>'About MyOrganization', 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
 
         return ['theme_version'=>1,'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer,'menu'=>$menu,'images'=>$images];
     }

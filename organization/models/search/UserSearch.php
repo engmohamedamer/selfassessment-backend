@@ -14,6 +14,8 @@ class UserSearch extends User
 {
 
     public $user_role;
+
+    public $organization_id;
     /**
      * @inheritdoc
      */
@@ -25,7 +27,7 @@ class UserSearch extends User
             [['created_at'], 'default', 'value' => null],
             [['username', 'auth_key', 'password_hash', 'email'], 'safe'],
             ['user_role','string'],
-            ['user_role','safe'],
+            [['user_role','organization_id'],'safe'],
 
         ];
     }
@@ -48,7 +50,7 @@ class UserSearch extends User
 
         $query = User::find();
 
-        $query->joinWith(['userProfile'])->where(['!=','draft',UserProfile::STATUS_DRAFT]);
+        $query->joinWith(['userProfile'])->where(['organization_id'=>$this->organization_id]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -74,15 +76,6 @@ class UserSearch extends User
             $query->andFilterWhere(['between', 'created_at', $this->created_at, $this->created_at + 3600 * 24]);
         }
 
-        // if ($this->updated_at !== null) {
-        //     $query->andFilterWhere(['between', 'updated_at', $this->updated_at, $this->updated_at + 3600 * 24]);
-        // }
-
-        // if ($this->logged_at !== null) {
-        //     $query->andFilterWhere(['between', 'logged_at', $this->logged_at, $this->logged_at + 3600 * 24]);
-        // }
-
-
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'auth_key', $this->auth_key])
             ->andFilterWhere(['like', 'password_hash', $this->password_hash])
@@ -90,10 +83,7 @@ class UserSearch extends User
 
         if(! \Yii::$app->user->can('administrator')) {
             $query->andFilterWhere(['>', 'id', 1]);  //super admin
-
         }
-
-
         return $dataProvider;
     }
 }

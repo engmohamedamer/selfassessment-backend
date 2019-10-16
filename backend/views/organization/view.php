@@ -44,6 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $gridColumn = [
                                     'id',
                                     'name',
+                                    'slug',
                                     'business_sector',
                                     'address',
                                     [
@@ -90,7 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ?>
                         </div>
                     </div>
-                    <div class="tab-pane active" id="tab2">
+                    <div class="tab-pane" id="tab2">
                         <div class="row">
                             <?php 
                                 $gridColumn = [

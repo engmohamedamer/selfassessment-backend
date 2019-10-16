@@ -86,7 +86,7 @@ if(Yii::$app->user->isGuest){
                 <nav class="mt-2">
                     <?php
                     if (Yii::$app->user->can('governmentAdmin')) {
-                        $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
+                        $this->beginContent('@app/views/layouts/menus/_superadmin_menu.php');
                         $this->endContent();
                     }
                     ?>

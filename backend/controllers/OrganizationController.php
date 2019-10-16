@@ -107,7 +107,7 @@ class OrganizationController extends Controller
 
         $user->setScenario('create');
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() &&  $user ->load(Yii::$app->request->post()) && $user->validate() ) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate() &&  $user->load(Yii::$app->request->post()) && $user->validate() ) {
             $model->save();
             $user->save();
             $profile->load(Yii::$app->request->post());
@@ -184,14 +184,14 @@ class OrganizationController extends Controller
         $prof= $model->getModel()->userProfile;
         if(!$prof) {
             $prof = new UserProfile();
-            $prof->user_id=$model->getId();
+            $prof->user_id = $model->getId();
         }
         $prof->locale= 'ar-AR';
         $prof->firstname = $profile->firstname ;
         $prof->lastname = $profile->lastname ;
         $prof->gender = $profile->gender;
         $prof->avatar_base_url = isset($profile->picture['base_url']) ? $profile->picture['base_url'] : null;
-        $prof->avatar_path= isset($profile->picture['path'])? $profile->picture['path']: null ;
+        $prof->avatar_path = isset($profile->picture['path'])? $profile->picture['path']: null ;
         $prof->organization_id = $organization_id;
         $prof->save(false);
 

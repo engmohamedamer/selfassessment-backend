@@ -53,9 +53,11 @@ if (isset($model->city_id)) {
                 <div class="col-lg-4">
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                 </div>
+
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'name_en')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
                 </div>
+
                 <div class="col-lg-4">
                     <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true]) ?>
                 </div>

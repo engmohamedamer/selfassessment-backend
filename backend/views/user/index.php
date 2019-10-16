@@ -51,6 +51,35 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php
                 $gridColumns=[
                     ['class' => 'yii\grid\SerialColumn'],
+
+                    [
+                        'header'=> Yii::t('common', 'Full Name') ,
+                        'attribute' => 'SearchFullName',
+                        'format'    => 'raw',
+                        'value'     => function ($model) {
+                            return Html::a( $model->userProfile['fullName'], ['/user/view?id='.$model->id],['target'=>'_blank']) ;
+                        },
+                        'filterType'=>GridView::FILTER_SELECT2,
+                        'filter'=>'',
+                        'filterWidgetOptions'=>[
+                            'pluginOptions'=>[
+                                'allowClear'=>true,
+                                'ajax' => [
+                                    'url' => $url,
+                                    'dataType' => 'json',
+                                    'data' => new JsExpression('function(params) { return {q:params.term}; }')
+                                ],
+                                'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+                                'templateResult' => new JsExpression('function(owner) { return owner.text; }'),
+                                'templateSelection' => new JsExpression('function (owner) { return owner.text; }'),
+                            ],
+
+                        ],
+                        'filterInputOptions'=>['placeholder'=>Yii::t('hr', 'Full Name')],
+
+                    ],
+
+
                     'email:email',
                     [
                         'class' => EnumColumn::class,
@@ -76,34 +105,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
                     'columns' => $gridColumns, // check the configuration for grid columns by clicking button above
-                    'containerOptions' => ['style' => 'overflow: auto'], // only set when $responsive = false
-                    'headerRowOptions' => ['class' => 'kartik-sheet-style'],
-                    'filterRowOptions' => ['class' => 'kartik-sheet-style'],
-                    'pjax' => true, // pjax is set to always true for this demo
-                    // set your toolbar
-                    'toolbar' =>  [
-                        [
-                            'content' =>
-                                Html::button('<i class="fas fa-plus"></i>', [
-                                    'class' => 'btn btn-success',
-                                    'title' => Yii::t('kvgrid', 'Add Book'),
-                                    'onclick' => 'alert("This will launch the book creation form.\n\nDisabled for this demo!");'
-                                ]) . ' '.
-                                Html::a('<i class="fas fa-redo"></i>', ['grid-demo'], [
-                                    'class' => 'btn btn-outline-secondary',
-                                    'title'=>Yii::t('kvgrid', 'Reset Grid'),
-                                    'data-pjax' => 0,
-                                ]),
-                            'options' => ['class' => 'btn-group mr-2']
-                        ],
-                        '{export}',
-                        '{toggleData}',
-                    ],  
-                    'toggleDataContainer' => ['class' => 'btn-group mr-2'],
-                    // set export properties
-                    'export' => [
-                        'fontAwesome' => true
-                    ],
+
                 ]);
             ?>
             </div>

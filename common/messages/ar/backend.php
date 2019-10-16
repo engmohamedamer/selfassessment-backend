@@ -460,8 +460,9 @@ return [
     'School Identity Number'=>'الرقم الوزاري',
     'District ID'=>'الحي',
     'City ID'=>'المدينة',
-
-
+    'Full'=>'استخراج',
+    'Export All Data'=>'استخراج الكل',
+    'Name'=>'الاسم',
 
 ];
 

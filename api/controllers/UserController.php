@@ -2,11 +2,15 @@
 
 namespace api\controllers;
 
-use api\helpers\ResponseHelper;
-use api\resources\User;
-use common\models\UserProfile;
-use yii\helpers\ArrayHelper;
 use Yii;
+use api\helpers\ResponseHelper;
+use api\helpers\SignupForm;
+use api\resources\User;
+use common\models\Organization;
+use common\models\UserProfile;
+use organization\models\UserForm;
+use yii\helpers\ArrayHelper;
+use yii\web\NotFoundHttpException;
 
 class UserController extends  RestController
 {
@@ -50,9 +54,25 @@ class UserController extends  RestController
         }
     }
 
-    public function actionSignup(){
+    public function actionSignup($organization){
 
+        $params = \Yii::$app->request->post();
+        $organization = Organization::findOne($organization);
+        
+        if (!$organization) {
+            return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],404);
+        }
+         
+        $model = new SignupForm();
+        if ($model->load(['SignupForm'=>$params]) && $user = $model->save($organization->id)) {
+            $user= User::findOne(['id'=> $user->id]) ;
+            $data = ['token'=> $user->access_token, 'profile'=> $user];
+            return ResponseHelper::sendSuccessResponse($data);
+        }else{
+            return ['status'=>0, 'messages'=>$model->errors];
+        }
     }
+
 
     public function actionVerify(){
 
