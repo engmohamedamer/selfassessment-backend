@@ -5,6 +5,7 @@ namespace common\models\base;
 use Yii;
 use common\models\UserProfile;
 use trntv\filekit\behaviors\UploadBehavior;
+use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 
 /**
@@ -12,6 +13,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property integer $id
  * @property string $name
+ * @property string $slug
  * @property string $business_sector
  * @property string $address
  * @property integer $city_id
@@ -50,7 +52,7 @@ class Organization extends \yii\db\ActiveRecord
             [['city_id', 'district_id', 'limit_account'], 'integer'],
             ['name', 'string', 'max' => 150],
             [['business_sector', 'email', 'conatct_name', 'contact_email', 'contact_position'], 'string', 'max' => 100],
-            [['address'], 'string', 'max' => 255],
+            [['address','slug'], 'string', 'max' => 255],
             [['phone', 'mobile', 'contact_phone'], 'string', 'max' => 20],
             [['first_image','second_image','status'],'safe'],
         ];
@@ -79,6 +81,12 @@ class Organization extends \yii\db\ActiveRecord
                 'attribute' => 'second_image',
                 'pathAttribute' => 'second_image_path',
                 'baseUrlAttribute' => 'second_image_base_url',
+            ],
+            'slug' => [
+                'class' => SluggableBehavior::class,
+                'attribute' => 'name',
+                'ensureUnique' => true,
+                'immutable' => true
             ],
         ];
     }
@@ -114,6 +122,7 @@ class Organization extends \yii\db\ActiveRecord
             'first_image' => Yii::t('common', 'First Image'),
             'second_image' => Yii::t('common', 'Second Image'),
             'status' => Yii::t('common', 'Status'),
+            'slug'=> Yii::t('common', 'Slug'),
         ];
     }
 
