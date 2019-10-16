@@ -2,6 +2,7 @@
 
 namespace api\controllers;
 
+use api\helpers\ImageHelper;
 use api\helpers\ResponseHelper;
 use api\resources\User;
 
@@ -42,58 +43,20 @@ class ProfileController extends  MyActiveController
             $profile->mobile = $params['mobile'];
         }
 
+        if (isset($params['image']) and !empty($params['image'])) {
+            $userProfile = User::findOne(['id'=> \Yii::$app->user->identity->getId()])->userProfile;
+            $filename = ImageHelper::Base64IMageConverter($params['image'],'profile');
+            $path = \Yii::getAlias('@storageUrl'). '/web/source/';
+            $userProfile->avatar_path = 'profile/'.$filename;
+            $userProfile->avatar_base_url= $path;
+            $userProfile->save(false);
+        }
+
         if($profile->save() && $user->save()){
+            $user = User::findOne(['id'=> \Yii::$app->user->identity->getId()]) ;
             return ['status'=>1 , 'profile'=>$user ];
         }else{
             return ['status'=>0 , 'message'=>'Invalid Data','errors'=> array_merge($profile->errors,$user->errors) ];
         }
     }
-
-
-    public function actionImage()
-    {
-        $params = \Yii::$app->request->post();
-
-        if (empty($params['image'])) {
-            return  ['status'=>0, 'message'=>'image required'] ;
-        }
-        
-        $user = User::findOne(['id'=> \Yii::$app->user->identity->getId()])->userProfile;
-        $filename = $this->Base64IMageConverter($params['image']);
-        $path = \Yii::getAlias('@storageUrl'). '/web/source/'.$upPath;
-        $user->avatar_path = 'profile/'.$filename;
-        $user->avatar_base_url= $path;
-        if(!$user->save(false)){
-            return $user->errors;
-        }
-        return  ['status'=>1, 'profile'=>$user] ;
-    }
-
-    public static function Base64IMageConverter($binary , $upPath='profile'){
-
-        $path = \Yii::getAlias('@storage'). '/web/source/'.$upPath;
-        if (!file_exists($path)) {
-            mkdir($path, 0777, true);
-        }
-        $imageName = "img-". (intval(time()) + rand(1,100000) ).".jpeg";
-
-        $directory= $path.'/'.$imageName;
-
-
-        $entry = base64_decode($binary);
-        $image = imagecreatefromstring($entry);
-
-        header ( 'Content-type:image/jpeg' );
-
-        imagejpeg($image, $directory);
-
-        imagedestroy ( $image );
-
-        if(file_exists($directory)){
-            return $imageName;
-        }else{
-            return false;
-        }
-    }
-
 }
