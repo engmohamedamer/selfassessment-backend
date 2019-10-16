@@ -51,7 +51,7 @@ class UserForm extends Model
             ['password', 'string', 'min' => 6],
 
             [['status'], 'integer'],
-            ['roles', 'string'],
+           // ['roles', 'string'],
 
             ['mobile', 'match','on'=>'create', 'pattern' => '/^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/' ,'message'=>Yii::t('common','Enter valid phone')],
 
@@ -84,6 +84,7 @@ class UserForm extends Model
     {
         $this->username = $model->username;
         $this->email = $model->email;
+        $this->mobile = $model->userProfile->mobile;
         $this->status = $model->status;
         $this->model = $model;
         $this->roles = ArrayHelper::getColumn(

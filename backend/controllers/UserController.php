@@ -122,10 +122,13 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new UserForm();
+        $model->roles = Yii::$app->session->get('UserRole');
         $profile= new UserProfile();
 
         $model->setScenario('create');
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->username = $model->email;
+            $model->save();
 
             $profile->load(Yii::$app->request->post());
             $user = $this->UpdateUserRelatedTbls($model,$profile)->user;
@@ -137,9 +140,8 @@ class UserController extends Controller
             ]);
 
 
-            return $this->redirect(['index?user_role='.$model->roles]);
+            return $this->redirect(['index']);
         }
-
         return $this->render('create', [
             'model' => $model,
             'profile' => $profile,
@@ -172,10 +174,10 @@ class UserController extends Controller
                 'title' =>'',
             ]);
 
-            return $this->redirect(['index?user_role='.$model->roles]);
+            return $this->redirect(['index']);
         }
 
-        // return var_dump($model);
+        // return var_dump($model->errors);
 
         return $this->render('update', [
             'model' => $model,
@@ -225,6 +227,7 @@ class UserController extends Controller
         $prof->locale= 'ar-AR';
         $prof->firstname = $profile->firstname ;
         $prof->lastname = $profile->lastname ;
+        $prof->mobile = $profile->mobile ;
         $prof->gender = $profile->gender;
         $prof->avatar_base_url = isset($profile->picture['base_url']) ? $profile->picture['base_url'] : null;
         $prof->avatar_path= isset($profile->picture['path'])? $profile->picture['path']: null ;

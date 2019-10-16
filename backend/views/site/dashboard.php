@@ -29,7 +29,8 @@ $this->title = Yii::t('backend', 'Dashboard');
 
 <div class="row">
     <div class="col-lg-6">
-        <div class="card">
+       <?/*?>
+     <div class="card">
             <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
                     <h3 class="card-title">Assessments Report</h3>
@@ -66,6 +67,8 @@ $this->title = Yii::t('backend', 'Dashboard');
                 </div>
             </div>
         </div>
+
+    <? */?>
         <!-- /.card -->
 
         <div class="card">
@@ -194,6 +197,7 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div>
         <!-- /.card -->
     </div>
+    <? /*?>
     <!-- /.col-md-6 -->
     <div class="col-lg-6">
         <div class="card">
@@ -288,7 +292,9 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div>
     </div>
     <!-- /.col-md-6 -->
+    <? */?>
 </div>
+<? /*?>
 <!-- /.row -->
 <div class="row">
         <div class="col-lg-12">
@@ -452,3 +458,4 @@ $this->title = Yii::t('backend', 'Dashboard');
     </div>
     <!-- /.row -->
 
+<? */?>
