@@ -66,7 +66,8 @@ class UserController extends  RestController
         $model = new SignupForm();
         if ($model->load(['SignupForm'=>$params]) && $user = $model->save($organization->id)) {
             $user= User::findOne(['id'=> $user->id]) ;
-            return ['token'=> $user->access_token, 'profile'=> $user];
+            $data = ['token'=> $user->access_token, 'profile'=> $user];
+            return ResponseHelper::sendSuccessResponse($data);
         }else{
             return ['status'=>0, 'messages'=>$model->errors];
         }
