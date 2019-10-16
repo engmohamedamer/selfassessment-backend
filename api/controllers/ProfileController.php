@@ -53,12 +53,20 @@ class ProfileController extends  MyActiveController
     public function actionImage()
     {
         $params = \Yii::$app->request->post();
+
+        if (empty($params['image'])) {
+            return  ['status'=>0, 'message'=>'image required'] ;
+        }
+        
         $user = User::findOne(['id'=> \Yii::$app->user->identity->getId()])->userProfile;
-        return $user;
         $filename = $this->Base64IMageConverter($params['image']);
-        $user->avatar_path = 'event-request/'.$filename;
+        $path = \Yii::getAlias('@storageUrl'). '/web/source/'.$upPath;
+        $user->avatar_path = 'profile/'.$filename;
         $user->avatar_base_url= $path;
-        $user->save();
+        if(!$user->save(false)){
+            return $user->errors;
+        }
+        return  ['status'=>1, 'profile'=>$user] ;
     }
 
     public static function Base64IMageConverter($binary , $upPath='profile'){

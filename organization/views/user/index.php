@@ -47,7 +47,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             return $model->userProfile->firstname;
                         }
                     ],
-                    'userProfile.firstname',
                     'email:email',
                     [
                         'class' => EnumColumn::class,
