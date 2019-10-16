@@ -7,4 +7,3 @@ return [
       // 'frontendCache' => require Yii::getAlias('@frontend/config/_cache.php')
     ],
 ];
-    
