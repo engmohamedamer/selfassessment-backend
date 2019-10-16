@@ -12,6 +12,7 @@ use yii\data\ActiveDataProvider;
  */
 class UserSearch extends User
 {
+    public $SearchFullName ;
 
     public $user_role;
     /**
@@ -23,7 +24,7 @@ class UserSearch extends User
             [['id', 'status'], 'integer'],
             [['created_at'], 'filter', 'filter' => 'strtotime', 'skipOnEmpty' => true],
             [['created_at'], 'default', 'value' => null],
-            [['username', 'auth_key', 'password_hash', 'email'], 'safe'],
+            [['username', 'auth_key', 'password_hash', 'email','SearchFullName'], 'safe'],
             ['user_role','string'],
             ['user_role','safe'],
 
@@ -58,6 +59,14 @@ class UserSearch extends User
         if (!($this->load($params) && $this->validate())) {
             //return $dataProvider;
         }
+
+        if($this->SearchFullName){
+            $query->andFilterWhere([
+                    'id' => $this->SearchFullName
+                ]
+            );
+        }
+        
 
         if($this->user_role){
             $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')

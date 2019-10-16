@@ -51,6 +51,35 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php
                 $gridColumns=[
                     ['class' => 'yii\grid\SerialColumn'],
+
+                    [
+                        'header'=> Yii::t('hr', 'Full Name') ,
+                        'attribute' => 'SearchFullName',
+                        'format'    => 'raw',
+                        'value'     => function ($model) {
+                            return Html::a( $model->userProfile['fullName'], ['/user/view?id='.$model->id],['target'=>'_blank']) ;
+                        },
+                        'filterType'=>GridView::FILTER_SELECT2,
+                        'filter'=>'',
+                        'filterWidgetOptions'=>[
+                            'pluginOptions'=>[
+                                'allowClear'=>true,
+                                'ajax' => [
+                                    'url' => $url,
+                                    'dataType' => 'json',
+                                    'data' => new JsExpression('function(params) { return {q:params.term}; }')
+                                ],
+                                'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+                                'templateResult' => new JsExpression('function(owner) { return owner.text; }'),
+                                'templateSelection' => new JsExpression('function (owner) { return owner.text; }'),
+                            ],
+
+                        ],
+                        'filterInputOptions'=>['placeholder'=>Yii::t('hr', 'Full Name')],
+
+                    ],
+
+
                     'email:email',
                     [
                         'class' => EnumColumn::class,
