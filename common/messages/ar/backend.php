@@ -21,7 +21,7 @@ return [
     ''=>'',
     ''=>'',
     ''=>'',
-    ''=>'',
+    'You Have no privilege on this dashbaord'=>'ليس لديك صلاحيه للدخول الى النظام',
     'Users Data'=>'بيانات المستخدمين',
     'Users'=>'المستخدمين',
 
