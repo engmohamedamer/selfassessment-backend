@@ -167,6 +167,7 @@ return [
     'Select color ...'=>'اختر لون ...',
     'Organization Theme'=>'الهوية البصرية',
     'Default Organization Locale'=>'اللغة الافتراضية للمؤسسة',
+    'Create New Contributors'=>'إضافة موظف',
     'Instagram'=>'',
     'Linkedin'=>'',
     'Twitter'=>'',

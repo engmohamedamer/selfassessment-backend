@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h1 class="m-0 text-dark"><?= Yii::t('common','Contributors')?></h1>
         </div>
         <div class="col-6 actionBtns">
-            <?php echo Html::a(Yii::t('backend', 'Create New User'), ['create'], ['class' => 'btn btn-primary']) ?>
+            <?php echo Html::a(Yii::t('common', 'Create New Contributors'), ['create'], ['class' => 'btn btn-primary']) ?>
         </div>
         <!-- /.col -->
     </div>
