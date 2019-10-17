@@ -17,7 +17,7 @@ class OrganizationTheme extends BaseOrganizationTheme
     {
         return array_replace_recursive(parent::rules(),
 	    [
-            [['organization_id'], 'required'],
+            [['organization_id','brandPrimColor','brandSecColor'], 'required'],
             [['organization_id'], 'integer'],
             [['brandPrimColor', 'brandSecColor', 'brandHTextColor', 'brandPTextColor', 'brandBlackColor', 'brandGrayColor', 'arfont', 'enfont', 'facebook', 'twitter', 'linkedin', 'instagram', 'locale', 'updated_at'], 'string', 'max' => 255],
             [['brandPrimColor', 'brandSecColor', 'brandHTextColor', 'brandPTextColor', 'brandBlackColor', 'brandGrayColor'], 'match', 'pattern' => '/^#([0-9a-f]{6}|[0-9a-f]{3})$/' ,'message'=>Yii::t('common','Enter valid color')],

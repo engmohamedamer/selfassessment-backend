@@ -175,4 +175,7 @@ return [
     'Arfont'=>'',
     'Brand Prim Color'=>'اللون الرئيسي للموقع',
     'Brand Sec Color'=>'اللون الفرعي للموقع',
+    'Organization Show'=>'عرض بيانات المؤسسة',
+    'Organization Update'=>'تعديل بيانات المؤسسة',
+    'My Organization'=>'المؤسسة',
 ];

@@ -44,10 +44,6 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
     <ul class="nav nav-pills">
         <li class="nav-item  "><a class="nav-link active" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
-
-        <?php if($model->isNewRecord) :?>
-            <li class="nav-item ml-auto"><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
-        <?php endif; ?>
         <li class="nav-item  "><a class="nav-link " href="#tab_3-3" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('common', 'Organization Theme') ?></a></li>
 
     </ul>
@@ -127,49 +123,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                 </div>
             </div>
         </div>
-        <?php if($model->isNewRecord) :?>
-        <div class="tab-pane" id="tab_2-2">
 
-            <div class="row">
-                <div class="col-md-12">
-                    <?php echo $form->field($profile, 'picture')->widget(\common\b4widget\upload\MyUpload::class, [
-                        'url'=>['avatar-upload']
-                    ]) ?>
-                </div>
-
-                <div class="col-md-4 col-sm-12">
-                    <?php echo $form->field($user, 'email') ?>
-                </div>
-
-                <div class="col-md-4 col-sm-12">
-                    <?php echo $form->field($user, 'password')->passwordInput() ?>
-                </div>
-
-
-            
-                <div class="col-md-4 col-sm-12">
-                    <?php echo $form->field($profile, 'firstname') ?>
-                </div>
-
-                <div class="col-md-4 col-sm-12">
-                    <?php echo $form->field($profile, 'lastname') ?>
-                </div>
-                <div class="col-md-4 col-sm-12">
-
-                    <?php echo $form->field($profile, 'gender')->dropDownlist([
-                        UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female'),
-                        UserProfile::GENDER_MALE => Yii::t('backend', 'Male')
-                    ]) ?>
-                </div>
-
-                <div class="col-md-4 col-sm-12">
-                    <?php echo $form->field($user, 'mobile') ?>
-                </div>
-
-            </div>
-
-        </div>
-        <?php endif;?>
         <div class="tab-pane " id="tab_3-3">
             <?= 
                 $this->render('_formOrganizationTheme', [

@@ -13,11 +13,11 @@ use kartik\color\ColorInput;
 <div class="organization-form">
 
     <?php echo  $form->field($OrganizationTheme, 'brandPrimColor')->widget(ColorInput::classname(), [
-    'options' => ['placeholder' => Yii::t('common','Select color ...')],
+    'options' => ['placeholder' => Yii::t('common','Select color ...'),'value'=>$OrganizationTheme->brandPrimColor ?: '#8e44ad'],
     ]) ?>
 
     <?php echo  $form->field($OrganizationTheme, 'brandSecColor')->widget(ColorInput::classname(), [
-    'options' => ['placeholder' => Yii::t('common','Select color ...')],
+    'options' => ['placeholder' => Yii::t('common','Select color ...'),'value'=>$OrganizationTheme->brandSecColor ?: '#f7f3ff'],
     ]) ?>
 
     <?php // echo  $form->field($OrganizationTheme, 'brandHTextColor')->widget(ColorInput::classname(), ['options' => ['placeholder' => Yii::t('common','Select color ...')],    ]) ?>
