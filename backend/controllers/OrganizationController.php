@@ -19,7 +19,7 @@ use yii\web\NotFoundHttpException;
 /**
  * OrganizationController implements the CRUD actions for Organization model.
  */
-class OrganizationController extends Controller
+class OrganizationController extends BackendController
 {
     public function behaviors()
     {
