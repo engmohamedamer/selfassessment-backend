@@ -9,12 +9,11 @@ use yii\web\View;
 <?php $sid = uniqid() ?>
 
 
-
-<ul class="nav nav-tabs translateTabs" role="tablist">
+<ul class="nav nav-pills">
 	<?php foreach (Yii::$app->params['mlConfig']['languages'] as $languageCode => $languageName): ?>
 
-		<li class="<?= (Yii::$app->language == $languageCode) ? 'active' : '' ?>">
-			<a href="#<?= $sid . $languageCode ?>" role="tab" data-toggle="tab">
+		<li class="nav-item  ">
+			<a class="nav-link <?= (Yii::$app->language == $languageCode) ? 'active' : '' ?>" href="#ddd<?= $languageCode ?>" data-toggle="tab" aria-expanded="true">
 				<?= $languageName ?>
 			</a>
 		</li>
@@ -22,7 +21,10 @@ use yii\web\View;
 
 </ul>
 
-<div class="tab-content">
+
+
+
+<div class="tab-content mt-2">
 
 	<?php foreach (Yii::$app->params['mlConfig']['languages'] as $languageCode => $languageName): ?>
 
@@ -38,7 +40,7 @@ use yii\web\View;
 		?>
 
 
-		<div class="tab-pane <?= $activeClass ?>" id="<?= $sid . $languageCode ?>">
+		<div class="tab-pane <?= $activeClass ?>" id="ddd<?=  $languageCode ?>">
 
 			<?= $this->context->getInputField($attribute) ?>
 		</div>

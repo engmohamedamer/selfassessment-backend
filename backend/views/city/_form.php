@@ -29,32 +29,35 @@ use yii\widgets\ActiveForm;
 
     <?  //= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Title']) ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Title'])
-        ->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(['class'=>'form-control dddd']));  ?>
+   
+
+
+<?= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Title'])
+        ->widget(\common\helpers\multiLang\MyMultiLanguageActiveField::className());  ?>
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true, 'placeholder' => 'Slug']) ?>
 
     <?= $form->field($model, 'sort')->textInput(['placeholder' => 'Sort']) ?>
 
     <?php
-    $forms = [
-        [
-            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('backend', 'District')),
-            'content' => $this->render('_formDistrict', [
-                'row' => \yii\helpers\ArrayHelper::toArray($model->districts),
-            ]),
-        ],
-    ];
-    echo kartik\tabs\TabsX::widget([
-        'items' => $forms,
-        'position' => kartik\tabs\TabsX::POS_ABOVE,
-        'encodeLabels' => false,
-        'pluginOptions' => [
-            'bordered' => true,
-            'sideways' => true,
-            'enableCache' => false,
-        ],
-    ]);
+    // $forms = [
+    //     [
+    //         'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('backend', 'District')),
+    //         'content' => $this->render('_formDistrict', [
+    //             'row' => \yii\helpers\ArrayHelper::toArray($model->districts),
+    //         ]),
+    //     ],
+    // ];
+    // echo kartik\tabs\TabsX::widget([
+    //     'items' => $forms,
+    //     'position' => kartik\tabs\TabsX::POS_ABOVE,
+    //     'encodeLabels' => false,
+    //     'pluginOptions' => [
+    //         'bordered' => true,
+    //         'sideways' => true,
+    //         'enableCache' => false,
+    //     ],
+    // ]);
     ?>
     <div class="form-group">
     <?php if(Yii::$app->controller->action->id != 'save-as-new'): ?>
