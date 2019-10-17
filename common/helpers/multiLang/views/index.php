@@ -6,14 +6,15 @@ use yii\helpers\Html;
 use yii\web\View;
 
 ?>
-<?php $sid = uniqid() ?>
+<?php $sid = uniqid();
+?>
 
 
 <ul class="nav nav-pills">
 	<?php foreach (Yii::$app->params['mlConfig']['languages'] as $languageCode => $languageName): ?>
 
 		<li class="nav-item  ">
-			<a class="nav-link <?= (Yii::$app->language == $languageCode) ? 'active' : '' ?>" href="#ddd<?= $languageCode ?>" data-toggle="tab" aria-expanded="true">
+			<a class="nav-link <?= (Yii::$app->language == $languageCode) ? 'active' : '' ?>" href="#L<?= $sid.$languageCode ?>" data-toggle="tab" aria-expanded="true">
 				<?= $languageName ?>
 			</a>
 		</li>
@@ -40,7 +41,7 @@ use yii\web\View;
 		?>
 
 
-		<div class="tab-pane <?= $activeClass ?>" id="ddd<?=  $languageCode ?>">
+		<div class="tab-pane <?= $activeClass ?>" id="L<?=  $sid.$languageCode ?>">
 
 			<?= $this->context->getInputField($attribute) ?>
 		</div>

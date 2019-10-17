@@ -26,7 +26,8 @@ class BackendController extends \yii\web\Controller
     {
 
         MultiLanguageHelper::catchLanguage();
-        \Yii::$app->language = \Yii::$app->user->identity->userProfile->locale;
+
+       // \Yii::$app->language = 'ar'; //\Yii::$app->user->identity->userProfile->locale;
 
         parent::init();
     }
