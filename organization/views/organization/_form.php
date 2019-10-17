@@ -2,13 +2,13 @@
 
 use backend\models\City;
 use backend\models\District;
+use common\helpers\multiLang\MyMultiLanguageActiveField;
 use common\models\Organization;
 use common\models\User;
 use common\models\UserProfile;
 use kartik\widgets\ActiveForm;
 use kartik\widgets\DepDrop;
 use trntv\filekit\widget\Upload;
-// use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -51,7 +51,8 @@ if (isset($model->city_id) and !empty($model->city_id)) {
         <div class="tab-pane active" id="tab_1-1">
             <div class="row">
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name'])
+                        ->widget(MyMultiLanguageActiveField::className());  ?>
                 </div>
 
                 <div class="col-lg-4">
@@ -61,10 +62,11 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                 </div>
 
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
+
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'address')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
                 </div>
                 <div class="col-lg-4">
                     <?php echo $form->field($model, 'city_id')->dropDownList([''=>Yii::t('common',  'Select')]+ArrayHelper::map($city, 'id', 'title'),['id'=>'City-id',]) ?>
@@ -91,7 +93,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                     <?= $form->field($model, 'mobile')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'conatct_name')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'conatct_name')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
                 </div>
                 <div class="col-lg-4">
                     <?= $form->field($model, 'contact_email')->textInput(['maxlength' => true]) ?>
@@ -100,7 +102,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                     <?= $form->field($model, 'contact_phone')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'contact_position')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'contact_position')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
                 </div>
                 <div class="col-lg-4">
                     <?= $form->field($model, 'limit_account')->textInput() ?>
