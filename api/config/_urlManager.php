@@ -13,9 +13,8 @@ return [
         ['class' =>'yii\rest\UrlRule','controller'=>'user'
             ,'only'=>['login','signup','options']
             ,'extraPatterns'=>[
-                'POST create' => 'create',
+                'POST ' => 'signup',
                 'POST login' => 'login',
-                'POST signup/<organization>' => 'signup',
 
             ]
             , 'pluralize'=>false

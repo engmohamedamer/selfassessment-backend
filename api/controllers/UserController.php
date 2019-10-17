@@ -54,10 +54,10 @@ class UserController extends  RestController
         }
     }
 
-    public function actionSignup($organization){
+    public function actionSignup(){
 
         $params = \Yii::$app->request->post();
-        $organization = Organization::findOne($organization);
+        $organization = Organization::findOne($params['organization']);
         
         if (!$organization) {
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],404);
