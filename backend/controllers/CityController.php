@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use webvimark\behaviors\multilanguage\MultiLanguageHelper;
 use Yii;
 use backend\models\City;
 use backend\models\search\CitySearch;
@@ -25,6 +26,16 @@ class CityController extends Controller
             ],
         ];
     }
+
+    public function init()
+    {
+
+        MultiLanguageHelper::catchLanguage();
+        \Yii::$app->language ='en';
+
+       parent::init();
+    }
+
 
     /**
      * Lists all City models.

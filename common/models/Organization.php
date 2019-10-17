@@ -10,6 +10,7 @@ use \common\models\base\Organization as BaseOrganization;
  */
 class Organization extends BaseOrganization
 {
+
     /**
      * @inheritdoc
      */

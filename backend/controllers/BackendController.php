@@ -1,6 +1,6 @@
 <?php
 
-namespace admin\controllers;
+namespace backend\controllers;
 
 use webvimark\behaviors\multilanguage\MultiLanguageHelper;
 
@@ -22,14 +22,14 @@ class BackendController extends \yii\web\Controller
     }
 
 
-//    public function init()
-//    {
-//
-//        MultiLanguageHelper::catchLanguage();
-//       // \Yii::$app->language ='ar';
-//
-//        parent::init();
-//    }
+    public function init()
+    {
+
+        MultiLanguageHelper::catchLanguage();
+        //\Yii::$app->language ='ar';
+
+        parent::init();
+    }
 
 
 
