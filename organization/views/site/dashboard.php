@@ -16,18 +16,60 @@ $this->title = Yii::t('backend', 'Dashboard');
 <div class="content-header">
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Dashboard') ?></h1>
         </div>
         <div class="col-sm-6">
             <!-- <a href="NewOrganization.html" class="btn btn-primary" style="float: right">New Organization</a> -->
         </div>
         <!-- /.col -->
     </div>
-    <!-- /.row -->
 </div>
-<!-- /.content-header -->
 
 <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fa fa-tag"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text"><a href="/organization/view"><?= Yii::t('common', 'Organization Show') ?></a></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-gear"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text"><a href="/organization/update"><?= Yii::t('common', 'Organization Update') ?></a>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+
+          <!-- fix for small devices only -->
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class="fa fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text"><a href="/user/index"><?= Yii::t('common', 'Contributors') ?></a></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <!-- /.col -->
+        </div>
+<!-- <div class="row">
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header border-0">
@@ -49,7 +91,6 @@ $this->title = Yii::t('backend', 'Dashboard');
                         <span class="text-muted">Since last week</span>
                     </p>
                 </div>
-                <!-- /.d-flex -->
 
                 <div class="position-relative mb-4">
                     <canvas id="visitors-chart" height="200"></canvas>
@@ -66,7 +107,6 @@ $this->title = Yii::t('backend', 'Dashboard');
                 </div>
             </div>
         </div>
-        <!-- /.card -->
 
         <div class="card">
             <div class="card-header border-0">
@@ -192,9 +232,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </table>
             </div>
         </div>
-        <!-- /.card -->
     </div>
-    <!-- /.col-md-6 -->
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header border-0">
@@ -216,7 +254,6 @@ $this->title = Yii::t('backend', 'Dashboard');
                         <span class="text-muted">Since last month</span>
                     </p>
                 </div>
-                <!-- /.d-flex -->
 
                 <div class="position-relative mb-4">
                     <canvas id="sales-chart" height="200"></canvas>
@@ -233,7 +270,6 @@ $this->title = Yii::t('backend', 'Dashboard');
                 </div>
             </div>
         </div>
-        <!-- /.card -->
 
         <div class="card">
             <div class="card-header border-0">
@@ -259,7 +295,6 @@ $this->title = Yii::t('backend', 'Dashboard');
                         <span class="text-muted">ASSESSMENTS RATE</span>
                     </p>
                 </div>
-                <!-- /.d-flex -->
                 <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
                     <p class="text-warning text-xl">
                         <i class="fas fa-shopping-cart"></i>
@@ -271,7 +306,6 @@ $this->title = Yii::t('backend', 'Dashboard');
                         <span class="text-muted">SALES RATE</span>
                     </p>
                 </div>
-                <!-- /.d-flex -->
                 <div class="d-flex justify-content-between align-items-center mb-0">
                     <p class="text-danger text-xl">
                         <i class="fas fa-users"></i>
@@ -283,13 +317,10 @@ $this->title = Yii::t('backend', 'Dashboard');
                         <span class="text-muted">REGISTRATION RATE</span>
                     </p>
                 </div>
-                <!-- /.d-flex -->
             </div>
         </div>
     </div>
-    <!-- /.col-md-6 -->
 </div>
-<!-- /.row -->
 <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -312,8 +343,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                             <span class="text-muted">Since last week</span>
                         </p>
                     </div>
-                    <!-- /.d-flex -->
-
+    
                     <div class="position-relative mb-4">
                         <canvas id="visitors-chart" height="200"></canvas>
                     </div>
@@ -329,8 +359,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </div>
                 </div>
             </div>
-            <!-- /.card -->
-
+    
             <div class="card">
                 <div class="card-header border-0">
                     <h3 class="card-title">New Assessments</h3>
@@ -444,11 +473,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </table>
                 </div>
             </div>
-            <!-- /.card -->
-        </div>
-        <!-- /.col-md-6 -->
+            </div>
 
-        <!-- /.col-md-6 -->
     </div>
-    <!-- /.row -->
-
+ -->
