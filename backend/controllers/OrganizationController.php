@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use trntv\filekit\actions\DeleteAction;
 use Yii;
 use backend\models\UserForm;
 use common\models\Organization;
@@ -18,7 +19,7 @@ use yii\web\NotFoundHttpException;
 /**
  * OrganizationController implements the CRUD actions for Organization model.
  */
-class OrganizationController extends Controller
+class OrganizationController extends BackendController
 {
     public function behaviors()
     {

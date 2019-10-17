@@ -177,10 +177,11 @@ $config = [
             'ar-AR' => 'Arabic (AR)',
         ],
         'mlConfig'=>[
-            'default_language'=>'ar',
+            'default_language'=>'en',
             'languages'=>[
-                'ar'=>'عربى',
                 'en'=>'English',
+                'ar'=>'عربى',
+
             ],
         ],
     ],
