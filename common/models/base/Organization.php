@@ -145,8 +145,8 @@ class Organization extends \yii\db\ActiveRecord
             'contact_phone' => Yii::t('common', 'Contact Phone'),
             'contact_position' => Yii::t('common', 'Contact Position'),
             'limit_account' => Yii::t('common', 'Limit Account'),
-            'first_image' => Yii::t('common', 'First Image'),
-            'second_image' => Yii::t('common', 'Second Image'),
+            'first_image' => Yii::t('common', 'Logo Image'),
+            'second_image' => Yii::t('common', 'Logo Icon Image'),
             'status' => Yii::t('common', 'Status'),
             'slug'=> Yii::t('common', 'Slug'),
         ];
