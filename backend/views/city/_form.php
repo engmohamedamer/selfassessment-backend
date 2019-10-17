@@ -25,7 +25,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
 
-    <?= $form->field($model, 'ref')->textInput(['maxlength' => true, 'placeholder' => 'Ref']) ?>
+    <? //= $form->field($model, 'ref')->textInput(['maxlength' => true, 'placeholder' => 'Ref']) ?>
+
 
     <?  //= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Title']) ?>
 

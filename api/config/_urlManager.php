@@ -9,13 +9,13 @@ return [
         ['pattern' => '/site', 'route' => 'site/index'],
         ['pattern' => '/site/index', 'route' => 'site/index'],
         ['pattern' => '/login', 'route' => 'user/login'],
+        ['pattern' => '/signup', 'route' => 'user/signup'],
 
         ['class' =>'yii\rest\UrlRule','controller'=>'user'
             ,'only'=>['login','signup','options']
             ,'extraPatterns'=>[
-                'POST create' => 'create',
+                'POST  signup' => 'signup',
                 'POST login' => 'login',
-                'POST signup/<organization>' => 'signup',
 
             ]
             , 'pluralize'=>false
