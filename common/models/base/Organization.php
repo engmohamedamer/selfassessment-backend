@@ -205,4 +205,10 @@ class Organization extends \yii\db\ActiveRecord
             self::STATUS_NOT_ACTIVE => Yii::t('common', 'Not Active'),
         ];
     }
+
+
+    public function logo()
+    {
+        return $this->first_image_base_url.$this->first_image_path;
+    }
 }

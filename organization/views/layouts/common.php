@@ -74,7 +74,7 @@ if(Yii::$app->user->isGuest){
         <aside class="main-sidebar ">
             <!-- Brand Logo -->
             <a href="/" class="brand-link">
-                <img src="/img/tamkeen-logo.png" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
+                <img src="<?= Yii::$app->user->identity->userProfile->organization->logo() ?>" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
 
             </a>
 
