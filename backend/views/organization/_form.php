@@ -18,8 +18,8 @@ use yii\helpers\Url;
 /* @var $form yii\widgets\ActiveForm */
 
 $city = City::find()->all();
-if (isset($model->city_id)) {
-    $district = District::find()->where("city_id = {$model->city_id}")->all();
+if (isset($model->city_id) and !empty($model->city_id)) {
+    $district = District::find()->where("city_id = $model->city_id")->all();
 }else{
     $district = [];
 }
@@ -46,9 +46,9 @@ if (isset($model->city_id)) {
         <li class="nav-item  "><a class="nav-link active" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
 
         <?php if($model->isNewRecord) :?>
-            <li class="nav-item ml-auto"><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li
+            <li class="nav-item ml-auto"><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
         <?php endif; ?>
-        <li class="nav-item  "><a class="nav-link " href="#tab_3-3" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Organization Theme') ?></a></li>
+        <li class="nav-item  "><a class="nav-link " href="#tab_3-3" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('common', 'Organization Theme') ?></a></li>
 
     </ul>
     <div class="tab-content mt-2">
@@ -171,29 +171,12 @@ if (isset($model->city_id)) {
         </div>
         <?php endif;?>
         <div class="tab-pane " id="tab_3-3">
-            <?php
-            $forms = [
-                [
-                    'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode('OrganizationTheme'),
-                    'content' => $this->render('_formOrganizationTheme', [
-                        'form' => $form,
-                        'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
-                    ]),
-                ],
-            ];
-            echo kartik\tabs\TabsX::widget([
-                'items' => $forms,
-                'position' => kartik\tabs\TabsX::POS_ABOVE,
-                'encodeLabels' => false,
-                'pluginOptions' => [
-                    'bordered' => true,
-                    'sideways' => true,
-                    'enableCache' => false,
-                ],
-            ]);
-            ?>
+            <?= 
+                $this->render('_formOrganizationTheme', [
+                'form' => $form,
+                'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
+            ]) ?>
         </div>
-
 
     </div>
 
