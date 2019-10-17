@@ -17,15 +17,16 @@ class ThemeController extends RestController
             return (new NotFoundHttpException(Yii::t('yii', 'Page not found.')));
         }
 
+        $theme = $organization->organizationTheme;
         $colors =[
-            'brandPrimColor'=> "#1abc9c",
-            'brandSecColor'=> "#16a085",
-            'brandHTextColor'=>  "#2c3e50",
-            'brandPTextColor'=> "#34495e",
-            'brandBlackColor'=> "#000",
-            'brandGrayColor'=> "#bdc3c7",
-            'arfont'=> "Cairo, sans-serif",
-            'enfont'=> "Roboto, sans-serif",
+            'brandPrimColor'=> $theme->brandPrimColor,
+            'brandSecColor'=> $theme->brandSecColor,
+            'brandHTextColor'=>  $theme->brandHTextColor,
+            'brandPTextColor'=> $theme->brandPTextColor,
+            'brandBlackColor'=> $theme->brandBlackColor,
+            'brandGrayColor'=> $theme->brandGrayColor,
+            'arfont'=> $theme->arfont,
+            'enfont'=> $theme->enfont,
         ];
 
         $footer = [
@@ -37,14 +38,14 @@ class ThemeController extends RestController
                 ['title'=>'Data','href'=>'http://'],
             ],
             'social_media'=>[
-                ['title'=>'facebook','href'=>'http://'],
-                ['title'=>'twitter','href'=>'http://'],
-                ['title'=>'linkedin','href'=>'http://'],
-                ['title'=>'instagram','href'=>'http://'],
+                ['title'=>'facebook','href'=>$theme->facebook],
+                ['title'=>'twitter','href'=>$theme->twitter],
+                ['title'=>'linkedin','href'=>$theme->linkedin],
+                ['title'=>'instagram','href'=>$theme->instagram],
             ]
         ];
 
-        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name ,'about'=>'About MyOrganization', 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
+        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name ,'about'=>'About MyOrganization', 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $theme->locale];
 
         return ['theme_version'=>1,'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer,'menu'=>$menu,'images'=>$images];
     }

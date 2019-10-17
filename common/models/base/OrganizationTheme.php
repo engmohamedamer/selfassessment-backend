@@ -68,21 +68,33 @@ class OrganizationTheme extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'organization_id' => Yii::t('app', 'Organization ID'),
-            'brandPrimColor' => Yii::t('app', 'Brand Prim Color'),
-            'brandSecColor' => Yii::t('app', 'Brand Sec Color'),
-            'brandHTextColor' => Yii::t('app', 'Brand H Text Color'),
-            'brandPTextColor' => Yii::t('app', 'Brand P Text Color'),
-            'brandBlackColor' => Yii::t('app', 'Brand Black Color'),
-            'brandGrayColor' => Yii::t('app', 'Brand Gray Color'),
-            'arfont' => Yii::t('app', 'Arfont'),
-            'enfont' => Yii::t('app', 'Enfont'),
-            'facebook' => Yii::t('app', 'Facebook'),
-            'twitter' => Yii::t('app', 'Twitter'),
-            'linkedin' => Yii::t('app', 'Linkedin'),
-            'instagram' => Yii::t('app', 'Instagram'),
-            'locale' => Yii::t('app', 'Locale'),
+            'organization_id' => Yii::t('common', 'Organization ID'),
+            'brandPrimColor' => Yii::t('common', 'Brand Prim Color'),
+            'brandSecColor' => Yii::t('common', 'Brand Sec Color'),
+            'brandHTextColor' => Yii::t('common', 'Brand H Text Color'),
+            'brandPTextColor' => Yii::t('common', 'Brand P Text Color'),
+            'brandBlackColor' => Yii::t('common', 'Brand Black Color'),
+            'brandGrayColor' => Yii::t('common', 'Brand Gray Color'),
+            'arfont' => Yii::t('common', 'Arfont'),
+            'enfont' => Yii::t('common', 'Enfont'),
+            'facebook' => Yii::t('common', 'Facebook'),
+            'twitter' => Yii::t('common', 'Twitter'),
+            'linkedin' => Yii::t('common', 'Linkedin'),
+            'instagram' => Yii::t('common', 'Instagram'),
+            'locale' => Yii::t('common', 'Default Organization Locale'),
         ];
+    }
+
+    public function beforeSave($insert) {
+
+        $this->brandHTextColor = '#2c3e50';
+        $this->brandPTextColor = '#34495e';
+        $this->brandBlackColor = '#000';
+        $this->brandGrayColor = '#f5f5f5';
+        $this->arfont = 'Cairo, sans-serif';
+        $this->enfont = 'Roboto, sans-serif';
+
+        return parent::beforeSave($insert);
     }
     
     /**

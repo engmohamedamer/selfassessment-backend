@@ -166,4 +166,13 @@ return [
     'Mobile'=>'رقم الجوال',
     'Select color ...'=>'اختر لون ...',
     'Organization Theme'=>'الهوية البصرية',
+    'Default Organization Locale'=>'اللغة الافتراضية للمؤسسة',
+    'Instagram'=>'',
+    'Linkedin'=>'',
+    'Twitter'=>'',
+    'Facebook'=>'',
+    'Enfont'=>'',
+    'Arfont'=>'',
+    'Brand Prim Color'=>'اللون الرئيسي للموقع',
+    'Brand Sec Color'=>'اللون الفرعي للموقع',
 ];
