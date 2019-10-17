@@ -164,4 +164,6 @@ return [
     'Contributors'=>'Contributors',
     'Contributors'=>'الموظفين',
     'Mobile'=>'رقم الجوال',
+    'Select color ...'=>'اختر لون ...',
+    'Organization Theme'=>'الهوية البصرية',
 ];

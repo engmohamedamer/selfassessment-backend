@@ -6,6 +6,7 @@ use Yii;
 use backend\models\UserForm;
 use common\models\Organization;
 use common\models\OrganizationSearch;
+use common\models\OrganizationTheme;
 use common\models\User;
 use common\models\UserProfile;
 use trntv\filekit\actions\UploadAction;
@@ -113,14 +114,21 @@ class OrganizationController extends Controller
             $profile->load(Yii::$app->request->post());
             $this->UpdateUserRelatedTbls($user,$profile,$model->id);
 
+            $theme = new OrganizationTheme();
+            $theme->organization_id = $model->id;
+            $theme->load(Yii::$app->request->post());
+            if (!$theme->save()) {
+                return var_dump($theme->errors);
+            }
+            
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-                'user' => $user,
-                'profile' => $profile,
-            ]);
         }
+        
+        return $this->render('create', [
+            'model' => $model,
+            'user' => $user,
+            'profile' => $profile,
+        ]);
 
     }
 
@@ -133,14 +141,19 @@ class OrganizationController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        // return var_dump(Yii::$app->request->post(), $model->load(Yii::$app->request->post()));
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            $theme = OrganizationTheme::findOne(['organization_id'=>$id]);
+            if ( $theme !== null) {
+                if ($theme->load(Yii::$app->request->post()) && $theme->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
         }
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
