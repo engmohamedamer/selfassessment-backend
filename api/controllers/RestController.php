@@ -5,6 +5,7 @@
  *
  * */
 namespace api\controllers;
+use webvimark\behaviors\multilanguage\MultiLanguageHelper;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBearerAuth;
 use yii\rest\Controller;

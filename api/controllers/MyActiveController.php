@@ -8,6 +8,7 @@
 
 namespace api\controllers;
 
+use webvimark\behaviors\multilanguage\MultiLanguageHelper;
 use yii\data\ActiveDataProvider;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBearerAuth;
@@ -31,6 +32,23 @@ class MyActiveController extends ActiveController
             '*',                        // star allows all domains
             'http://selfassest.localhost',
         ];
+    }
+
+
+    public function init()
+    {
+        if(! \Yii::$app->user->isGuest){
+            MultiLanguageHelper::catchLanguage();
+            if(\Yii::$app->user->identity->userProfile->locale == 'ar-AR'){
+                \Yii::$app->language = 'ar';
+            }else{
+                \Yii::$app->language = 'en';
+            }
+        }
+
+        // \Yii::$app->language = 'ar'; //\Yii::$app->user->identity->userProfile->locale;
+
+        parent::init();
     }
 
 

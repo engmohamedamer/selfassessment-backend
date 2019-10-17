@@ -12,7 +12,7 @@ use yii\imagine\Image;
 use yii\web\Controller;
 use common\models\FirebaseAuth;
 
-class SignInController extends Controller
+class SignInController extends OrganizationController
 {
 
     public $defaultAction = 'login';

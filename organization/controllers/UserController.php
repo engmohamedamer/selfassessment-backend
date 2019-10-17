@@ -16,15 +16,12 @@ use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-use common\models\FirebaseAuth;
-
 /**
  * UserController implements the CRUD actions for User model.
  */
 class UserController extends Controller
 {
-    use FirebaseAuth;
-    
+
     public function behaviors()
     {
         return [

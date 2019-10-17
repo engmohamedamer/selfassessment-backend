@@ -23,17 +23,19 @@ class OrganizationController extends \yii\web\Controller
         ];
     }
 
-
     public function init()
     {
 
         MultiLanguageHelper::catchLanguage();
-        \Yii::$app->language ='ar';
+        if(\Yii::$app->user->identity->userProfile->locale == 'ar-AR'){
+            \Yii::$app->language = 'ar';
+        }else{
+            \Yii::$app->language = 'en';
+        }
+        // \Yii::$app->language = 'ar'; //\Yii::$app->user->identity->userProfile->locale;
 
         parent::init();
     }
-
-
 
 
 
