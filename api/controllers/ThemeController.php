@@ -3,6 +3,7 @@
 namespace api\controllers;
 
 use Yii;
+use api\helpers\ResponseHelper;
 use common\models\Organization;
 use common\models\User;
 use yii\filters\auth\CompositeAuth;
@@ -44,7 +45,7 @@ class ThemeController extends RestController
         $organization = Organization::findOne($id);
 
         if (!$organization) {
-            return (new NotFoundHttpException(Yii::t('yii', 'Page not found.')));
+            return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],404);
         }
 
         $theme = $organization->organizationTheme;
@@ -94,7 +95,7 @@ class ThemeController extends RestController
 
         $organizationDate = ['id'=> $organization->id,'name'=> $organization->name,'address'=> $organization->address ,'about'=>'About MyOrganization', 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
 
-        return ['theme_version'=>1,'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer,'menu'=>$menu,'images'=>$images];
+        return ['theme_version'=>1,'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer];
     }
 
 }
