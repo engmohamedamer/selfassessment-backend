@@ -97,7 +97,7 @@ class ThemeController extends RestController
 
         $organizationDate = ['id'=> $organization->id,'name'=> $organization->name,'address'=> $organization->address ,'about'=>'About MyOrganization', 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
 
-        return ['theme_version'=>1,'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer];
+        return ['theme_version'=> $theme->updated_at,'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer];
     }
 
 }
