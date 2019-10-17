@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
     <?  //= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Title']) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Title'])
-        ->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(['class'=>'form-control dddd']));  ?>
+        ->widget(\common\helpers\multiLang\MyMultiLanguageActiveField::className());  ?>
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true, 'placeholder' => 'Slug']) ?>
 
