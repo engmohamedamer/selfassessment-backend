@@ -69,14 +69,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'contact_position',
                                     'limit_account',
                                     [
-                                        'attribute'=>Yii::t('common','First Image'),
+                                        'attribute'=> Yii::t('common','Logo Image'),
                                         'value'=>function($model){
                                             return "<img src='$model->first_image_base_url$model->first_image_path' width='100' />";
                                         },
                                         'format'=>'raw'
                                     ],
                                     [
-                                        'attribute'=>Yii::t('common','Second Image'),
+                                        'attribute'=> Yii::t('common','Logo Icon Image'),
                                         'value'=>function($model){
                                             return "<img src='$model->second_image_base_url$model->second_image_path' width='100' />";
                                         },
