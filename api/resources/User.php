@@ -27,7 +27,7 @@ class User extends \common\models\User
                 return $model->userProfile->bio;
             },
             'organization'=>function($model){
-                return ['id'=>$model->userProfile->organization->id,'name'=>$model->userProfile->organization->name];
+                return ['id'=>$model->userProfile->organization->id,'name'=>$model->userProfile->organization->name,'slug'=> $model->userProfile->organization->slug];
             },
             'locale'=>function($model){
                 if ($model->userProfile->locale == 'en-US') {

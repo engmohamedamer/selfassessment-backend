@@ -463,6 +463,7 @@ return [
     'Full'=>'استخراج',
     'Export All Data'=>'استخراج الكل',
     'Name'=>'الاسم',
+    'Update User'=>'تعديل المستخدم',
 
 ];
 

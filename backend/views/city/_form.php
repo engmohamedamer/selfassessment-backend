@@ -27,7 +27,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'ref')->textInput(['maxlength' => true, 'placeholder' => 'Ref']) ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Title']) ?>
+    <?  //= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Title']) ?>
+
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Title'])
+        ->widget(\common\helpers\multiLang\MyMultiLanguageActiveField::className());  ?>
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true, 'placeholder' => 'Slug']) ?>
 

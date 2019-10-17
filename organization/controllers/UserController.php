@@ -166,9 +166,9 @@ class UserController extends Controller
         $model = new UserForm();
         $model->setModel($this->findModel($id));        
         $profile= $model->getModel()->userProfile;
+        $model->roles = User::ROLE_USER;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
             $profile->load(Yii::$app->request->post());
             $this->UpdateUserRelatedTbls($model,$profile);
 
@@ -225,16 +225,15 @@ class UserController extends Controller
             $prof = new UserProfile();
             $prof->user_id=$model->getId();
         }
-        $prof->locale= 'ar-AR';
         $prof->firstname = $profile->firstname ;
         $prof->lastname = $profile->lastname ;
         $prof->gender = $profile->gender;
+        $prof->locale = $profile->locale;
         if ($organization_id) {
             $prof->organization_id = $organization_id;
         }
         $prof->avatar_base_url = isset($profile->picture['base_url']) ? $profile->picture['base_url'] : null;
         $prof->avatar_path= isset($profile->picture['path'])? $profile->picture['path']: null ;
-
 
         $prof->save(false);
 

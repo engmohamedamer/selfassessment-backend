@@ -83,15 +83,6 @@ class UserSearch extends User
             $query->andFilterWhere(['between', 'created_at', $this->created_at, $this->created_at + 3600 * 24]);
         }
 
-        // if ($this->updated_at !== null) {
-        //     $query->andFilterWhere(['between', 'updated_at', $this->updated_at, $this->updated_at + 3600 * 24]);
-        // }
-
-        // if ($this->logged_at !== null) {
-        //     $query->andFilterWhere(['between', 'logged_at', $this->logged_at, $this->logged_at + 3600 * 24]);
-        // }
-
-
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'auth_key', $this->auth_key])
             ->andFilterWhere(['like', 'password_hash', $this->password_hash])

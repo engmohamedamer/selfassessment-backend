@@ -5,9 +5,10 @@ use backend\models\District;
 use common\models\Organization;
 use common\models\User;
 use common\models\UserProfile;
+use kartik\widgets\ActiveForm;
 use kartik\widgets\DepDrop;
 use trntv\filekit\widget\Upload;
-use yii\bootstrap4\ActiveForm;
+// use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -17,8 +18,8 @@ use yii\helpers\Url;
 /* @var $form yii\widgets\ActiveForm */
 
 $city = City::find()->all();
-if (isset($model->city_id)) {
-    $district = District::find()->where("city_id = {$model->city_id}")->all();
+if (isset($model->city_id) and !empty($model->city_id)) {
+    $district = District::find()->where("city_id = $model->city_id")->all();
 }else{
     $district = [];
 }
@@ -27,7 +28,10 @@ if (isset($model->city_id)) {
 
 
     <?php $form = ActiveForm::begin(); ?>
-    <?php  echo $form->errorSummary($model); ?>
+
+    <div class="alert alert-danger error-summary mt-2" style="display: none;">
+        <?php  echo $form->errorSummary($model); ?>
+    </div>
 
 
 
@@ -39,13 +43,13 @@ if (isset($model->city_id)) {
             <div class="card-body">
 
     <ul class="nav nav-pills">
-    <?php if($model->isNewRecord) :?>
-        
-            <li class="nav-item ml-auto"><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
-            <li class="nav-item  "><a class="nav-link active" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
+        <li class="nav-item  "><a class="nav-link active" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
 
-        
-        <?php endif; ?>        
+        <?php if($model->isNewRecord) :?>
+            <li class="nav-item ml-auto"><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
+        <?php endif; ?>
+        <li class="nav-item  "><a class="nav-link " href="#tab_3-3" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('common', 'Organization Theme') ?></a></li>
+
     </ul>
     <div class="tab-content mt-2">
         <div class="tab-pane active" id="tab_1-1">
@@ -55,7 +59,9 @@ if (isset($model->city_id)) {
                 </div>
 
                 <div class="col-lg-4">
-                    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'slug',[
+                            'addon' => ['prepend' => ['content'=>'selfasses.com']]
+                    ])->textInput(['maxlength' => true]) ?>
                 </div>
 
                 <div class="col-lg-4">
@@ -65,7 +71,7 @@ if (isset($model->city_id)) {
                     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
                 </div>
                 <div class="col-lg-4">
-                    <?php echo $form->field($model, 'city_id')->dropDownList(ArrayHelper::map( $city, 'id', 'title'),['id'=>'City-id',]) ?>
+                    <?php echo $form->field($model, 'city_id')->dropDownList([''=>Yii::t('common',  'Select')]+ArrayHelper::map($city, 'id', 'title'),['id'=>'City-id',]) ?>
                 </div>
                 <div class="col-lg-4">
                     <?php echo $form->field($model, 'district_id')->widget(DepDrop::classname(), [
@@ -164,6 +170,13 @@ if (isset($model->city_id)) {
 
         </div>
         <?php endif;?>
+        <div class="tab-pane " id="tab_3-3">
+            <?= 
+                $this->render('_formOrganizationTheme', [
+                'form' => $form,
+                'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
+            ]) ?>
+        </div>
 
     </div>
 
