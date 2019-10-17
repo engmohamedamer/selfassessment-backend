@@ -57,7 +57,7 @@ if (isset($model->city_id)) {
 
                 <div class="col-lg-4">
                     <?= $form->field($model, 'slug',[
-                            'addon' => ['prepend' => ['content'=>'selfassest.com']]
+                            'addon' => ['prepend' => ['content'=>'selfasses.com']]
                     ])->textInput(['maxlength' => true]) ?>
                 </div>
 
