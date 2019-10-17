@@ -28,6 +28,27 @@ echo Menu::widget([
             'options' => ['class' => 'nav-item'],
         ],
 
+        [
+            'label' => Yii::t('common', 'My Organization'),
+            'url' => '#',
+            'icon' => '<i class="nav-icon fas fa-th"></i>',
+            'options' => ['class' => 'nav-item has-treeview'],
+            'active' => (Yii::$app->controller->module->id == 'organization'),
+            'items' => [
+                [
+                    'label' => Yii::t('common', 'Organization Show'),
+                    'icon' => '<i class="far fa-circle nav-icon"></i>',
+                    'url' => ['/organization/view'],
+                    'options' => ['class' => 'nav-item'],
+                ],
+                [
+                    'label' => Yii::t('common', 'Organization Update'),
+                    'icon' => '<i class="far fa-circle nav-icon"></i>',
+                    'url' => ['/organization/update'],
+                    'options' => ['class' => 'nav-item'],
+                ],
+            ],
+        ],
 
         [
             'label' => Yii::t('backend', 'Users Data'),
@@ -50,5 +71,7 @@ echo Menu::widget([
                 ],
             ],
         ],
+
+        
     ],
 ]) ?>
