@@ -29,7 +29,7 @@ if (isset($model->city_id)) {
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <div class="alert alert-danger">
+    <div class="alert alert-danger error-summary" style="display: none;">
         <?php  echo $form->errorSummary($model); ?>
     </div>
 
