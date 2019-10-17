@@ -32,8 +32,10 @@ class ThemeController extends RestController
         return $behaviors;
     }
 
-    public function actionIndex($id,$locale = null){
+    public function actionIndex(){
 
+        $params = \Yii::$app->request->get();
+        $locale = $params['lang'] ?:null;
         if (\Yii::$app->user->identity) {
             if (\Yii::$app->user->identity->userProfile->locale == 'ar-AR') {
                 $locale = 'ar';
@@ -42,7 +44,7 @@ class ThemeController extends RestController
             }
         }
         
-        $organization = Organization::findOne($id);
+        $organization = Organization::findOne(['slug'=>$params['org']]);
 
         if (!$organization) {
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],404);
@@ -61,7 +63,7 @@ class ThemeController extends RestController
 
         \Yii::$app->language = $locale; 
         
-        $organization = Organization::findOne($id);
+        $organization = Organization::findOne(['slug'=>$params['org']]);
 
         
         $colors =[
