@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
 
                         ],
-                        'filterInputOptions'=>['placeholder'=>Yii::t('hr', 'Full Name')],
+                        'filterInputOptions'=>['placeholder'=>Yii::t('common', 'Full Name')],
 
                     ],
 

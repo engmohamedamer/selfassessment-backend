@@ -14,6 +14,7 @@ class UserSearch extends User
 {
 
     public $user_role;
+    public $SearchFullName;
 
     public $organization_id;
     /**
@@ -25,7 +26,7 @@ class UserSearch extends User
             [['id', 'status'], 'integer'],
             [['created_at'], 'filter', 'filter' => 'strtotime', 'skipOnEmpty' => true],
             [['created_at'], 'default', 'value' => null],
-            [['username', 'auth_key', 'password_hash', 'email'], 'safe'],
+            [['username', 'auth_key', 'password_hash', 'email','SearchFullName'], 'safe'],
             ['user_role','string'],
             [['user_role','organization_id'],'safe'],
 
@@ -59,6 +60,13 @@ class UserSearch extends User
 
         if (!($this->load($params) && $this->validate())) {
             //return $dataProvider;
+        }
+
+        if($this->SearchFullName){
+            $query->andFilterWhere([
+                    'id' => $this->SearchFullName
+                ]
+            );
         }
 
         if($this->user_role){

@@ -22,7 +22,7 @@ $model->roles =Yii::$app->session->get('UserRole');
 <div class="content-header">
     <div class="row mb-2">
         <div class="col-6">
-            <h1 class="m-0 text-dark"><?= Yii::t('common','Update User');?> </h1>
+            <h1 class="m-0 text-dark"><?= Yii::t('backend','Users Data');?> </h1>
         </div>
         <div class="col-6">
         </div>
@@ -62,8 +62,8 @@ $model->roles =Yii::$app->session->get('UserRole');
                 <div class="row">
                     <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($profile, 'gender')->dropDownlist([
+                            UserProfile::GENDER_MALE => Yii::t('backend', 'Male'),
                             UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female'),
-                            UserProfile::GENDER_MALE => Yii::t('backend', 'Male')
                         ]) ?>
                     </div>
                     <div class="col-md-4 col-sm-12">
