@@ -140,7 +140,7 @@ class Organization extends \yii\db\ActiveRecord
             'email' => Yii::t('common', 'Email'),
             'phone' => Yii::t('common', 'Phone'),
             'mobile' => Yii::t('common', 'Mobile'),
-            'conatct_name' => Yii::t('common', 'Conatct Name'),
+            'conatct_name' => Yii::t('common', 'Contact Name'),
             'contact_email' => Yii::t('common', 'Contact Email'),
             'contact_phone' => Yii::t('common', 'Contact Phone'),
             'contact_position' => Yii::t('common', 'Contact Position'),
