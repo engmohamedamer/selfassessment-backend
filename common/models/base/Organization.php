@@ -2,6 +2,8 @@
 
 namespace common\models\base;
 
+use webvimark\behaviors\multilanguage\MultiLanguageBehavior;
+use webvimark\behaviors\multilanguage\MultiLanguageTrait;
 use Yii;
 use common\models\UserProfile;
 use trntv\filekit\behaviors\UploadBehavior;
@@ -36,6 +38,7 @@ use yii\behaviors\TimestampBehavior;
  */
 class Organization extends \yii\db\ActiveRecord
 {
+    use MultiLanguageTrait;
 
     public $first_image;
     public $second_image;
@@ -95,6 +98,21 @@ class Organization extends \yii\db\ActiveRecord
                 'attribute' => 'name',
                 'ensureUnique' => true,
                 'immutable' => true
+            ],
+            'mlBehavior'=>[
+                'class'    => MultiLanguageBehavior::className(),
+                'mlConfig' => [
+                    'db_table'         => 'translations_with_text',
+                    'attributes'       => [
+                        'name','business_sector','address',
+                        'conatct_name','contact_position'
+
+                        ],
+                    'admin_routes'     => [
+                        'organization/update',
+                        'organization/index',
+                    ],
+                ],
             ],
         ];
     }

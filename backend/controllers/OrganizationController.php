@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use trntv\filekit\actions\DeleteAction;
 use Yii;
 use backend\models\UserForm;
 use common\models\Organization;
