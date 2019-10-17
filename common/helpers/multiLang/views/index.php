@@ -10,7 +10,7 @@ use yii\web\View;
 ?>
 
 
-<ul class="nav nav-pills">
+<ul class="nav nav-pills translatenav">
 	<?php foreach (Yii::$app->params['mlConfig']['languages'] as $languageCode => $languageName): ?>
 
 		<li class="nav-item  ">

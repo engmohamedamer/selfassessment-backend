@@ -83,4 +83,15 @@ a {
   float: right;
   margin-left: 10px;
 }
+
+.innernavs, .translatenav {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.translatenav .nav-link {
+  padding: 2px 20px;
+  border-radius: 20px;
+}
 /*# sourceMappingURL=custom.css.map */
