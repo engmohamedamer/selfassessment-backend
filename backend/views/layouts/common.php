@@ -52,7 +52,7 @@ if(Yii::$app->user->isGuest){
                                 class="user-image">
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">Welcome,  <?php echo Yii::$app->user->identity->userProfile->fullName; ?></span>
+                        <span class="dropdown-item dropdown-header"><?= Yii::t('common','Welcome')?>,  <?php echo Yii::$app->user->identity->userProfile->fullName; ?></span>
                         <div class="dropdown-divider"></div>
                         <a href="/sign-in/profile" class="dropdown-item">
                             <i class="far fa-user-circle mr-2"></i> <?= Yii::t('common','My Profile')?>

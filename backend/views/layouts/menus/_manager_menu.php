@@ -66,43 +66,43 @@ echo Menu::widget([
             'label' => Yii::t('backend', 'Content'),
             'options' => ['class' => 'nav-header'],
         ],
-        [
-            'label' => Yii::t('backend', 'Static pages'),
-            'url' => ['/content/page/index'],
-            'icon' => '<i class="nav-icon fas fa-th"></i>',
-            'active' => Yii::$app->controller->id === 'page',
-            'options' => ['class' => 'nav-item'],
-        ],
-        [
-            'label' => Yii::t('backend', 'Articles'),
-            'url' => '#',
-            'icon' => '<i class="nav-icon fas fa-th"></i>',
-            'options' => ['class' => 'nav-item has-treeview'],
-            'active' => 'content' === Yii::$app->controller->module->id &&
-                ('article' === Yii::$app->controller->id || 'category' === Yii::$app->controller->id),
-            'items' => [
-                [
-                    'label' => Yii::t('backend', 'Articles'),
-                    'url' => ['/content/article/index'],
-                    'icon' => '<i class="nav-icon fas fa-th"></i>',
-                    'active' => Yii::$app->controller->id === 'article',
-                ],
-                [
-                    'label' => Yii::t('backend', 'Categories'),
-                    'url' => ['/content/category/index'],
-                    'icon' => '<i class="nav-icon fas fa-th"></i>',
-                    'active' => Yii::$app->controller->id === 'category',
-                ],
-            ],
-        ],
+        // [
+        //     'label' => Yii::t('backend', 'Static pages'),
+        //     'url' => ['/content/page/index'],
+        //     'icon' => '<i class="nav-icon fas fa-th"></i>',
+        //     'active' => Yii::$app->controller->id === 'page',
+        //     'options' => ['class' => 'nav-item'],
+        // ],
+        // [
+        //     'label' => Yii::t('backend', 'Articles'),
+        //     'url' => '#',
+        //     'icon' => '<i class="nav-icon fas fa-th"></i>',
+        //     'options' => ['class' => 'nav-item has-treeview'],
+        //     'active' => 'content' === Yii::$app->controller->module->id &&
+        //         ('article' === Yii::$app->controller->id || 'category' === Yii::$app->controller->id),
+        //     'items' => [
+        //         [
+        //             'label' => Yii::t('backend', 'Articles'),
+        //             'url' => ['/content/article/index'],
+        //             'icon' => '<i class="nav-icon fas fa-th"></i>',
+        //             'active' => Yii::$app->controller->id === 'article',
+        //         ],
+        //         [
+        //             'label' => Yii::t('backend', 'Categories'),
+        //             'url' => ['/content/category/index'],
+        //             'icon' => '<i class="nav-icon fas fa-th"></i>',
+        //             'active' => Yii::$app->controller->id === 'category',
+        //         ],
+        //     ],
+        // ],
 
-        [
-            'label' => Yii::t('backend', 'Key-Value Storage'),
-            'url' => ['/system/key-storage/index'],
-            'icon' => '<i class="nav-icon fas fa-th"></i>',
-            'active' => (Yii::$app->controller->id == 'key-storage'),
-            'options' => ['class' => 'nav-item'],
-        ],
+        // [
+        //     'label' => Yii::t('backend', 'Key-Value Storage'),
+        //     'url' => ['/system/key-storage/index'],
+        //     'icon' => '<i class="nav-icon fas fa-th"></i>',
+        //     'active' => (Yii::$app->controller->id == 'key-storage'),
+        //     'options' => ['class' => 'nav-item'],
+        // ],
 
        
         

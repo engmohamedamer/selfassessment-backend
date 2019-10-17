@@ -90,9 +90,12 @@ class LoginForm extends Model
         if (Yii::$app->user->login($this->getUser(), $duration)) {
             if (!Yii::$app->user->can('loginToBackend')) {
                // echo Yii::$app->user->id .' -----------------------'; die;
-
                 Yii::$app->user->logout();
-                throw new ForbiddenHttpException;
+                $this->addError('password', Yii::t('backend', 'You Have no privilege on this dashbaord'));
+
+                return false;
+
+                //throw new ForbiddenHttpException;
             }
             return true;
         }

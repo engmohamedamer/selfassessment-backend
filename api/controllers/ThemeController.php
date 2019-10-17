@@ -43,8 +43,9 @@ class ThemeController extends RestController
                 $locale = 'en';
             }
         }
-        
-        $organization = Organization::findOne(['slug'=>$params['org']]);
+
+        //$organization = Organization::findOne(['slug'=>$params['org']]);
+        $organization = Organization::find()->limit(1)->one();
 
         if (!$organization) {
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],404);
@@ -61,11 +62,11 @@ class ThemeController extends RestController
             }
         }
 
-        \Yii::$app->language = $locale; 
-        
+        \Yii::$app->language = $locale;
+
         $organization = Organization::findOne(['slug'=>$params['org']]);
 
-        
+
         $colors =[
             'brandPrimColor'=> $theme->brandPrimColor,
             'brandSecColor'=> $theme->brandSecColor,
@@ -93,11 +94,15 @@ class ThemeController extends RestController
             ]
         ];
 
-        
+        if ($locale =='ar' ) {
+            $about = "نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر.";
+        }else{
+            $about = "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
+        }
 
-        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name,'address'=> $organization->address ,'about'=>'About MyOrganization', 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
+        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name,'address'=> $organization->address ,'about'=> $about, 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
 
-        return ['theme_version'=>1,'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer];
+        return ['theme_version'=> strtotime($theme->updated_at),'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer];
     }
 
 }

@@ -58,18 +58,18 @@ class UserController extends  RestController
 
         $params = \Yii::$app->request->post();
         $organization = Organization::findOne($params['organization']);
-        
+
         if (!$organization) {
-            return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],404);
+            return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],401);
         }
-         
+
         $model = new SignupForm();
         if ($model->load(['SignupForm'=>$params]) && $user = $model->save($organization->id)) {
             $user= User::findOne(['id'=> $user->id]) ;
             $data = ['token'=> $user->access_token, 'profile'=> $user];
             return ResponseHelper::sendSuccessResponse($data);
         }else{
-            return ['status'=>0, 'messages'=>$model->errors];
+            return ResponseHelper::sendFailedResponse(['ERROR'=>'Can not sign up'],401);
         }
     }
 
