@@ -17,7 +17,7 @@ use backend\models\Schools;
 /**
  * Site controller
  */
-class SiteController extends \yii\web\Controller
+class SiteController extends BackendController
 {
     /**
      * @inheritdoc
