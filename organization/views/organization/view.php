@@ -1,6 +1,5 @@
 <?php
 
-use common\models\User;
 use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -19,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
         </div>
         <div class="col-6 actionBtns">
-            <?= Html::a(Yii::t('common', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a(Yii::t('common', 'Update'), ['update'], ['class' => 'btn btn-primary']) ?>
         </div>
         <!-- /.col -->
     </div>
@@ -32,7 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card-body">
                 <ul class="nav nav-pills">
                         <li class="nav-item "><a class="nav-link active" href="#tab1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
-                        <li class="nav-item ml-auto "><a class="nav-link" href="#tab2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
                         <li class="nav-item ml-auto "><a class="nav-link" href="#tab3" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Theme') ?></a></li>
                      
                 </ul>
@@ -86,29 +84,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ];
                                 echo DetailView::widget([
                                     'model' => $model,
-                                    'attributes' => $gridColumn
-                                ]);
-                            ?>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="tab2">
-                        <div class="row">
-                            <?php 
-                                $gridColumn = [
-                                    'user_id',
-                                    'firstname',
-                                    'lastname',
-                                    'user.email',
-                                    'mobile',
-                                    [
-                                        'attribute'=>Yii::t('common','Status'),
-                                        'value'=>function($model){
-                                            return User::statuses()[$model->user->status];
-                                        }
-                                    ],
-                                ];
-                                echo DetailView::widget([
-                                    'model' => $model->manager,
                                     'attributes' => $gridColumn
                                 ]);
                             ?>

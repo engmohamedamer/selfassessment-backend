@@ -3,29 +3,78 @@
 namespace api\controllers;
 
 use Yii;
+use api\helpers\ResponseHelper;
 use common\models\Organization;
+use common\models\User;
+use yii\filters\auth\CompositeAuth;
+use yii\filters\auth\HttpBearerAuth;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 class ThemeController extends RestController
 {
-    public function actionIndex($id,$locale = 'ar'){
 
-        $organization = Organization::findOne($id);
+    public function  behaviors()
+    {
+        $behaviors = parent::behaviors();
+        // remove authentication filter if there is one
+        unset($behaviors['authenticator']);
+
+        if (isset(apache_request_headers()['Authorization'])) {
+            $behaviors['authenticator'] = [
+                'class' => CompositeAuth::class,
+                'authMethods' => [
+                    HttpBearerAuth::class,
+                ]
+            ];
+            $behaviors['authenticator']['except'] = ['options'];
+        }
+        return $behaviors;
+    }
+
+    public function actionIndex(){
+
+        $params = \Yii::$app->request->get();
+        $locale = $params['lang'] ?:null;
+        if (\Yii::$app->user->identity) {
+            if (\Yii::$app->user->identity->userProfile->locale == 'ar-AR') {
+                $locale = 'ar';
+            }else{
+                $locale = 'en';
+            }
+        }
+        
+        $organization = Organization::findOne(['slug'=>$params['org']]);
 
         if (!$organization) {
-            return (new NotFoundHttpException(Yii::t('yii', 'Page not found.')));
+            return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],404);
         }
 
+        $theme = $organization->organizationTheme;
+
+
+        if (!\Yii::$app->user->identity and is_null($locale)) {
+            if ($theme->locale == 'ar-AR') {
+                $locale = 'ar';
+            }else{
+                $locale = 'en';
+            }
+        }
+
+        \Yii::$app->language = $locale; 
+        
+        $organization = Organization::findOne(['slug'=>$params['org']]);
+
+        
         $colors =[
-            'brandPrimColor'=> "#1abc9c",
-            'brandSecColor'=> "#16a085",
-            'brandHTextColor'=>  "#2c3e50",
-            'brandPTextColor'=> "#34495e",
-            'brandBlackColor'=> "#000",
-            'brandGrayColor'=> "#bdc3c7",
-            'arfont'=> "Cairo, sans-serif",
-            'enfont'=> "Roboto, sans-serif",
+            'brandPrimColor'=> $theme->brandPrimColor,
+            'brandSecColor'=> $theme->brandSecColor,
+            'brandHTextColor'=>  $theme->brandHTextColor,
+            'brandPTextColor'=> $theme->brandPTextColor,
+            'brandBlackColor'=> $theme->brandBlackColor,
+            'brandGrayColor'=> $theme->brandGrayColor,
+            'arfont'=> $theme->arfont,
+            'enfont'=> $theme->enfont,
         ];
 
         $footer = [
@@ -37,16 +86,18 @@ class ThemeController extends RestController
                 ['title'=>'Data','href'=>'http://'],
             ],
             'social_media'=>[
-                ['title'=>'facebook','href'=>'http://'],
-                ['title'=>'twitter','href'=>'http://'],
-                ['title'=>'linkedin','href'=>'http://'],
-                ['title'=>'instagram','href'=>'http://'],
+                ['title'=>'facebook','href'=>$theme->facebook],
+                ['title'=>'twitter','href'=>$theme->twitter],
+                ['title'=>'linkedin','href'=>$theme->linkedin],
+                ['title'=>'instagram','href'=>$theme->instagram],
             ]
         ];
 
-        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name ,'about'=>'About MyOrganization', 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
+        
 
-        return ['theme_version'=>1,'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer,'menu'=>$menu,'images'=>$images];
+        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name,'address'=> $organization->address ,'about'=>'About MyOrganization', 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
+
+        return ['theme_version'=>1,'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer];
     }
 
 }
