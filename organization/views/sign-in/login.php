@@ -42,7 +42,7 @@ $this->params['body-class'] = 'login-page';
                                         'class' => 'btn btn-primary',
                                         'name' => 'login-button'
                                     ]) ?>
-                                    <a href="" class="btn"><? echo Yii::t('backend', 'Forget password?') ?></a>
+                                    <a href="/sign-in/request-password-reset" class="btn"><? echo Yii::t('backend', 'Forget password?') ?></a>
                                 </div>
                             <?php ActiveForm::end() ?>
                         </div>
