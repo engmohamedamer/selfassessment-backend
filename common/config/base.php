@@ -209,7 +209,11 @@ if (YII_ENV_DEV) {
         'class' => 'Swift_SmtpTransport',
         'host' => env('SMTP_HOST'),
         'port' => env('SMTP_PORT'),
+        'username' => env('SMTP_USER'),
+        'password' => env('SMTP_PASS'),
+        'encryption' => env('SMTP_ENC'),
     ];
+
 }
 
 return $config;
