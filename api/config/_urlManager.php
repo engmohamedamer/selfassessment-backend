@@ -10,6 +10,8 @@ return [
         ['pattern' => '/site/index', 'route' => 'site/index'],
         ['pattern' => '/login', 'route' => 'user/login'],
         ['pattern' => '/signup', 'route' => 'user/signup'],
+        ['pattern' => '/theme', 'route' => 'theme/index'],
+        ['pattern' => '/theme/<slug>/<lang>', 'route' => 'theme/index'],
 
         ['class' =>'yii\rest\UrlRule','controller'=>'user'
             ,'only'=>['login','signup','options']
@@ -39,7 +41,7 @@ return [
             'controller'=>'theme',
             'only'=>['index'],
             'extraPatterns'=>[
-                'GET ' => 'index' 
+                'GET ' => 'index'
             ],
             'pluralize'=>false
         ],

@@ -43,8 +43,9 @@ class ThemeController extends RestController
                 $locale = 'en';
             }
         }
-        
-        $organization = Organization::findOne(['slug'=>$params['org']]);
+
+        //$organization = Organization::findOne(['slug'=>$params['org']]);
+        $organization = Organization::find()->limit(1)->one();
 
         if (!$organization) {
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],404);
@@ -61,11 +62,11 @@ class ThemeController extends RestController
             }
         }
 
-        \Yii::$app->language = $locale; 
-        
+        \Yii::$app->language = $locale;
+
         $organization = Organization::findOne(['slug'=>$params['org']]);
 
-        
+
         $colors =[
             'brandPrimColor'=> $theme->brandPrimColor,
             'brandSecColor'=> $theme->brandSecColor,

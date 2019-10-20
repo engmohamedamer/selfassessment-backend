@@ -4,6 +4,8 @@ namespace organization\controllers;
 
 use common\models\Organization;
 use common\models\OrganizationTheme;
+use trntv\filekit\actions\DeleteAction;
+use trntv\filekit\actions\UploadAction;
 use webvimark\behaviors\multilanguage\MultiLanguageHelper;
 
 /**
@@ -17,12 +19,35 @@ class OrganizationController extends \yii\web\Controller
     public function actions()
     {
         return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
+            'first-upload' => [
+                'class' => UploadAction::class,
+                'deleteRoute' => 'first-delete',
+                'on afterSave' => function ($event) {
+                }
             ],
+            'first-delete' => [
+                'class' => DeleteAction::class
+            ],
+            'second-upload' => [
+                'class' => UploadAction::class,
+                'deleteRoute' => 'second-delete',
+                'on afterSave' => function ($event) {
+                }
+            ],
+            'second-delete' => [
+                'class' => DeleteAction::class
+            ],
+            'avatar-upload' => [
+                'class' => UploadAction::class,
+                'deleteRoute' => 'avatar-delete',
+                'on afterSave' => function ($event) {
+                }
+            ],
+            'avatar-delete' => [
+                'class' => DeleteAction::class
+            ]
         ];
     }
-
     public function init()
     {
 
