@@ -69,4 +69,7 @@ class ProfileController extends  MyActiveController
             return ['status'=>0 , 'message'=>'Invalid Data','errors'=> array_merge($profile->errors,$user->errors) ];
         }
     }
+
+    
+
 }

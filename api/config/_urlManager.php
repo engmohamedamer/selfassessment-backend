@@ -14,10 +14,12 @@ return [
         ['pattern' => '/theme/<slug>/<lang>', 'route' => 'theme/index'],
 
         ['class' =>'yii\rest\UrlRule','controller'=>'user'
-            ,'only'=>['login','signup','options']
+            ,'only'=>['login','signup','reset-password','request-reset-password','options']
             ,'extraPatterns'=>[
                 'POST  signup' => 'signup',
                 'POST login' => 'login',
+                'POST reset-password'=>'reset-password',
+                'POST request-reset-password'=>'request-reset-password',
 
             ]
             , 'pluralize'=>false
@@ -29,7 +31,7 @@ return [
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'profile',
-            'only'=>['index','update','image','options'],
+            'only'=>['index','update','options'],
             'extraPatterns'=>[
                 'GET ' => 'index' ,
                 'PUT ' => 'update',

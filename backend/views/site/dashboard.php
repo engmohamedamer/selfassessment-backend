@@ -16,7 +16,7 @@ $this->title = Yii::t('backend', 'Dashboard');
 <div class="content-header">
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark"><?= Yii::t('backend','Dashboard') ?></h1>
         </div>
         <div class="col-sm-6">
             <!-- <a href="NewOrganization.html" class="btn btn-primary" style="float: right">New Organization</a> -->
@@ -73,7 +73,7 @@ $this->title = Yii::t('backend', 'Dashboard');
 
         <div class="card">
             <div class="card-header border-0">
-                <h3 class="card-title">New Organizations</h3>
+                <h3 class="card-title"><?= Yii::t('common','New Organizations') ?></h3>
                 <div class="card-tools">
                     <a href="#" class="btn btn-tool btn-sm">
                         <i class="fas fa-download"></i>
@@ -88,109 +88,35 @@ $this->title = Yii::t('backend', 'Dashboard');
                 <table class="table table-striped table-valign-middle">
                     <thead>
                         <tr>
-                            <th>Organization</th>
+                            <th><?= Yii::t('common','Name') ?></th>
                             <th>Assessments</th>
-                            <th>Contributors</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th><?= Yii::t('common','Contributors')?></th>
+                            <th><?= Yii::t('common','Status') ?></th>
+                            <th><?= Yii::t('common','Actions') ?></th>
                         </tr>
                     </thead>
                         <tbody>
+                            <?php foreach($organizations as $organization):?>
                             <tr>
                                 <td>
                                    
-                                    <a href="OrganizationView.html"> Organization Name</a>
+                                    <a href="OrganizationView.html"><?= $organization->name ?></a>
                                 </td>
                                 <td><a href="AssessmentList.html">3</a></td>
                                 <td><a href="ContributorsList.html">52</a></td>
-                                <td class="text-success">Active</td>
+                                <td class="text-success"><?= $organization->status()[$organization->status] ?></td>
 
                                 <td>
-                                    <a href="#" class="text-muted" title="View Report" style="margin-right: 10px">
+                                    <a href="/organization/view?id=<?= $organization->id ?>" class="text-muted" title="View Report" style="margin-right: 10px">
                                         <i class="fas fa-file-contract"></i>
                                     </a>
-                                    <a href="#" class="text-muted" title="Edit Assessment">
+                                    <a href="/organization/update?id=<?= $organization->id ?>" class="text-muted" title="Edit Assessment">
                                         <i class="fas fa-edit"></i>
                                     </a>
 
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    
-                                    <a href="OrganizationView.html"> Organization Name</a>
-                                </td>
-                                <td><a href="AssessmentList.html">3</a></td>
-                                <td><a href="ContributorsList.html">52</a></td>
-                                <td class="text-success">Active</td>
-
-                                <td>
-                                    <a href="#" class="text-muted" title="View Report" style="margin-right: 10px">
-                                        <i class="fas fa-file-contract"></i>
-                                    </a>
-                                    <a href="#" class="text-muted" title="Edit Assessment">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    
-                                    <a href="OrganizationView.html"> Organization Name</a>
-                                </td>
-                                <td><a href="AssessmentList.html">3</a></td>
-                                <td><a href="ContributorsList.html">52</a></td>
-                                <td class="text-success">Active</td>
-
-                                <td>
-                                    <a href="#" class="text-muted" title="View Report" style="margin-right: 10px">
-                                        <i class="fas fa-file-contract"></i>
-                                    </a>
-                                    <a href="#" class="text-muted" title="Edit Assessment">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    
-                                    <a href="OrganizationView.html"> Organization Name</a>
-                                </td>
-                                <td><a href="AssessmentList.html">3</a></td>
-                                <td><a href="ContributorsList.html">52</a></td>
-                                <td class="text-success">Active</td>
-
-                                <td>
-                                    <a href="#" class="text-muted" title="View Report" style="margin-right: 10px">
-                                        <i class="fas fa-file-contract"></i>
-                                    </a>
-                                    <a href="#" class="text-muted" title="Edit Assessment">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    
-                                    <a href="OrganizationView.html"> Organization Name</a>
-                                </td>
-                                <td><a href="AssessmentList.html">3</a></td>
-                                <td><a href="ContributorsList.html">52</a></td>
-                                <td class="text-success">Active</td>
-
-                                <td>
-                                    <a href="#" class="text-muted" title="View Report" style="margin-right: 10px">
-                                        <i class="fas fa-file-contract"></i>
-                                    </a>
-                                    <a href="#" class="text-muted" title="Edit Assessment">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-
-                                </td>
-                            </tr>
+                            <?php endforeach;?>
                         </tbody>
                     </table>
             </div>

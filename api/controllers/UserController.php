@@ -12,6 +12,11 @@ use organization\models\UserForm;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
+use api\helpers\ResetPassword;
+use cheatsheet\Time;
+use common\commands\SendEmailCommand;
+use common\models\UserToken;
+
 class UserController extends  RestController
 {
 
@@ -76,5 +81,40 @@ class UserController extends  RestController
 
     public function actionVerify(){
 
+    }
+
+    public function actionRequestResetPassword(){
+        $params = \Yii::$app->request->post();
+
+        $user = User::findOne(['email'=> $params['email']]) ;
+        if ($user) {
+            $token = UserToken::create($user->id, UserToken::TYPE_PASSWORD_RESET, Time::SECONDS_IN_A_DAY);
+            if ($user->save()) {
+                return \Yii::$app->commandBus->handle(new SendEmailCommand([
+                    'to' => $user->email,
+                    'subject' => \Yii::t('frontend', 'Password reset for {name}', ['name' => \Yii::$app->name]),
+                    'view' => 'passwordResetToken',
+                    'params' => [
+                        'user' => $user,
+                        'token' => $token->token
+                    ]
+                ]));
+            }
+            return ResponseHelper::sendSuccessResponse(['SEND_EMAIL_SUCCESS'=>\Yii::t('common','Email reset password sent successfully')]);
+        }
+        return ResponseHelper::sendSuccessResponse(['ENTER_EMAIL'=>\Yii::t('common','Email Required.')]);
+    }
+
+    public function actionResetPassword(){
+        $params = \Yii::$app->request->post();
+        try{
+            $model = new ResetPassword($params['token']);
+        } catch (InvalidArgumentException $e) {
+            return ResponseHelper::sendFailedResponse($e->getMessage());
+        }
+        if ($model->load(['ResetPassword'=>$params]) && $model->validate() && $model->resetPassword()) {
+            return ResponseHelper::sendSuccessResponse(['RESET_PASSWORD_SUCCESS'=>\Yii::t('frontend', 'New password was saved.')]);
+        }
+        return ResponseHelper::sendFailedResponse($model->errors);
     }
 }

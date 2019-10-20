@@ -109,4 +109,50 @@ class SignInController extends OrganizationController
         }
         return $this->render('account', ['model' => $model]);
     }
+
+    /**
+     * @return string|Response
+     */
+    public function actionRequestPasswordReset()
+    {
+        $model = new PasswordResetRequestForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->sendEmail()) {
+
+                Yii::$app->getSession()->setFlash('success',Yii::t('frontend', 'Check your email for further instructions.') );
+
+                return $this->goHome();
+            } else {
+                Yii::$app->getSession()->setFlash('error',Yii::t('frontend', 'Sorry, we are unable to reset password for email provided.') );
+            }
+        }
+
+        return $this->render('requestPasswordResetToken', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * @param $token
+     * @return string|Response
+     * @throws BadRequestHttpException
+     */
+    public function actionResetPassword($token)
+    {
+        try {
+            $model = new ResetPasswordForm($token);
+        } catch (InvalidArgumentException $e) {
+            throw new BadRequestHttpException($e->getMessage());
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
+
+            Yii::$app->getSession()->setFlash('success',Yii::t('frontend', 'New password was saved.') );
+            return $this->goHome();
+        }
+
+        return $this->render('resetPassword', [
+            'model' => $model,
+        ]);
+    }
 }
