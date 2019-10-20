@@ -29,6 +29,7 @@ if($saved == true){
 }
 
 ?>
+<div class="col-lg-12">
 <div class="container-fluid">
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -101,4 +102,5 @@ if($saved == true){
         </div>
     </div>
 </div>
-                       
+</div>
+

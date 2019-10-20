@@ -89,9 +89,39 @@ a {
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
+.translatenav ul{
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+.translatenav{
+  padding: 10px;
+  background: #f4f6f9;
+}
 
 .translatenav .nav-link {
   padding: 2px 20px;
-  border-radius: 20px;
+  border-radius: 4px;
+}
+
+.nav-sidebar > .nav-item .nav-icon{
+  font-size:1rem
+}
+.upload-kit .upload-kit-item .remove{
+    font-family:'FontAwesome';
+    font-size: 2em;
+}
+.upload-kit .upload-kit-item .remove:before{
+  content: "\f014";
+}
+.upload-kit .upload-kit-input .add{
+  font-family:'FontAwesome';
+  top: 43%;
+}
+.upload-kit .upload-kit-input .add:before{
+  content: "\f067";
+}
+.detail-view th{
+  width: 35%;
 }
 /*# sourceMappingURL=custom.css.map */

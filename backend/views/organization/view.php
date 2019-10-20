@@ -87,6 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 echo DetailView::widget([
                                     'model' => $model,
                                     'attributes' => $gridColumn
+
                                 ]);
                             ?>
                         </div>

@@ -227,6 +227,7 @@ ul {
 .actionBtns .btn{
     float: left;
     margin-right: 10px;
+    margin-left: 0;
 }
 .dropdown-menu-right {
     right: auto;
