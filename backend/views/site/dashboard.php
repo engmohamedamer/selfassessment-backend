@@ -90,7 +90,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                         <tr>
                             <th><?= Yii::t('common','Name') ?></th>
                             <th>Assessments</th>
-                            <th>Contributors</th>
+                            <th><?= Yii::t('common','Contributors')?></th>
                             <th><?= Yii::t('common','Status') ?></th>
                             <th><?= Yii::t('common','Actions') ?></th>
                         </tr>
