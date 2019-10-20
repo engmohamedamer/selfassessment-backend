@@ -2,12 +2,13 @@
 
 namespace backend\controllers;
 
-use common\models\UserProfile;
 use Yii;
 use backend\models\City;
 use backend\models\District;
-use common\models\Organization;
 use backend\models\base\EventRequest;
+use common\models\Organization;
+use common\models\User;
+use common\models\UserProfile;
 use yii\db\Query;
 use yii\helpers\Json;
 use yii\web\Controller;
@@ -24,12 +25,13 @@ class HelperController extends Controller
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $out = ['results' => ['id' => '', 'text' => '']];
         if (!is_null($q)) {
-            //$users= User::find()
             $query = new Query();
             $query->select(' CONCAT_WS(" ", `firstname`, `lastname`) as text, {{%user_profile}}.user_id as id')
                 ->from('{{%user_profile}}')
-                ->where('CONCAT( `firstname`, `lastname`) LIKE  \'%'.$q.'%\'  ')
-                ->limit(20);
+                ->where('CONCAT( `firstname`, `lastname`) LIKE  \'%'.$q.'%\'  ');
+    
+            $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user_profile}}.user_id')
+                ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_MANAGER]);
 
             $command = $query->createCommand();
             $data = $command->queryAll();

@@ -49,7 +49,7 @@ class UserSearch extends User
 
         $query = User::find();
 
-        $query->joinWith(['userProfile'])->where(['!=','draft',UserProfile::STATUS_DRAFT]);
+        $query->joinWith(['userProfile']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
