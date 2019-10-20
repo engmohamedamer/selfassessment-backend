@@ -13,6 +13,7 @@ use backend\models\NewsStatus;
 use backend\models\SchoolCategory;
 use backend\models\SchoolGender;
 use backend\models\Schools;
+use common\models\Organization;
 
 /**
  * Site controller
@@ -40,8 +41,8 @@ class SiteController extends BackendController
 
 
     public function actionDashboard(){
-
-        return $this->render('dashboard');  //,compact()
+        $organizations = Organization::find()->orderBy('id desc')->limit(6)->all();
+        return $this->render('dashboard',compact('organizations'));
     }
 
 }

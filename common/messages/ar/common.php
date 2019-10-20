@@ -185,4 +185,6 @@ return [
     'Enter valid linkedin link'=>'ادخل رابط linkedin صحيح',
     'Invalid City'=>'يجب اختيار المدينة',
     'Email Required.'=>'يجب ادخال بريد الالكتروني صحيح',
+    'New Organizations'=>'المؤسسات الجديدة',
+    'Actions'=>'خيارات',
 ];
