@@ -115,6 +115,7 @@ class SignInController extends OrganizationController
      */
     public function actionRequestPasswordReset()
     {
+        return var_dump('request');
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
@@ -139,6 +140,8 @@ class SignInController extends OrganizationController
      */
     public function actionResetPassword($token)
     {
+        return var_dump('reset');
+
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidArgumentException $e) {
