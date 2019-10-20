@@ -26,6 +26,15 @@ class User extends \common\models\User
             'bio'=>function($model){
                 return $model->userProfile->bio;
             },
+            'position'=>function($model){
+                return $model->userProfile->position;
+            },
+            'city_id'=>function($model){
+                return $model->userProfile->city_id;
+            },
+            'district_id'=>function($model){
+                return $model->userProfile->district_id;
+            },
             'organization'=>function($model){
                 return ['id'=>$model->userProfile->organization->id,'name'=>$model->userProfile->organization->name,'slug'=> $model->userProfile->organization->slug];
             },

@@ -183,4 +183,5 @@ return [
     'Enter valid facebook link'=>'ادخل رابط facebook صحيح',
     'Enter valid instagram link'=>'ادخل رابط instagram صحيح',
     'Enter valid linkedin link'=>'ادخل رابط linkedin صحيح',
+    'Invalid City'=>'يجب اختيار المدينة',
 ];

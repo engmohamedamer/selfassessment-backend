@@ -36,6 +36,9 @@ class ProfileController extends  MyActiveController
         if (isset($params['lastname'])) $profile->lastname = $params['lastname'] ;
         if (isset($params['bio'])) $profile->bio= $params['bio'] ;
         if (isset($params['device_token'])) $profile->device_token = $params['device_token'] ;
+        if (isset($params['city_id'])) $profile->city_id = $params['city_id'] ;
+        if (isset($params['district_id'])) $profile->district_id = $params['district_id'] ;
+        if (isset($params['position'])) $profile->position = $params['position'] ;
         if (isset($params['email'])) $user->email= $params['email'] ;
         if (isset($params['password'])) $user->setPassword($params['password']);
         if (isset($params['locale'])){

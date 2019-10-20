@@ -2,18 +2,28 @@
 
 namespace api\controllers;
 
+use api\controllers\RestController;
 use api\helpers\ResponseHelper;
-use api\resources\SportsResource;
-use yii\rest\ActiveController;
+use api\resources\CityResource;
+use api\resources\DistrictResource;
+use backend\models\City;
 
-class LookupsController extends  ActiveController
+class LookupsController extends RestController
 {
-    public $modelClass = SportsResource::class;
 
-    public function actionListSports(){
+    public function actionListCities(){
+    	$cities = CityResource::find()->all();
+        return ResponseHelper::sendSuccessResponse($cities);
+    }
 
-        $goals = SportsResource::find()->where(['status'=>1])->all();
-        return ResponseHelper::sendSuccessResponse($goals);
+
+    public function actionListDistricts(){
+        $params = \Yii::$app->request->get();
+        if (empty($params['city_id'])) {
+            return ResponseHelper::sendFailedResponse(['INTER_VALID_CITY'=>\Yii::t('common','Invalid City')],404);
+        }
+    	$districts = DistrictResource::find()->where(['city_id'=>$params['city_id']])->all();
+        return ResponseHelper::sendSuccessResponse($districts);
     }
 
 
