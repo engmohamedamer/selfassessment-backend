@@ -4,7 +4,7 @@ return [
         'controllers' => ['sign-in'],
         'allow' => true,
         'roles' => ['?'],
-        'actions' => ['login'],
+        'actions' => ['login','reset-password','request-password-reset'],
     ],
     [
         'controllers' => ['sign-in'],

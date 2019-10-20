@@ -1,16 +1,18 @@
 <?php
 namespace organization\controllers;
 
+use Intervention\Image\ImageManagerStatic;
+use Yii;
+use common\models\FirebaseAuth;
 use organization\models\AccountForm;
 use organization\models\LoginForm;
-use Intervention\Image\ImageManagerStatic;
+use organization\models\PasswordResetRequestForm;
+use organization\models\ResetPasswordForm;
 use trntv\filekit\actions\DeleteAction;
 use trntv\filekit\actions\UploadAction;
-use Yii;
 use yii\filters\VerbFilter;
 use yii\imagine\Image;
 use yii\web\Controller;
-use common\models\FirebaseAuth;
 
 class SignInController extends OrganizationController
 {
@@ -115,12 +117,13 @@ class SignInController extends OrganizationController
      */
     public function actionRequestPasswordReset()
     {
+        $this->layout = 'base';
+        \Yii::$app->language = 'ar';
+
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-
                 Yii::$app->getSession()->setFlash('success',Yii::t('frontend', 'Check your email for further instructions.') );
-
                 return $this->goHome();
             } else {
                 Yii::$app->getSession()->setFlash('error',Yii::t('frontend', 'Sorry, we are unable to reset password for email provided.') );
@@ -139,6 +142,9 @@ class SignInController extends OrganizationController
      */
     public function actionResetPassword($token)
     {
+        $this->layout = 'base';
+        \Yii::$app->language = 'ar';
+
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidArgumentException $e) {
