@@ -10,10 +10,20 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Organization'), '
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('common', 'Update');
 ?>
-<div class="organization-update">
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
 
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="row mb-2">
+        <div class="col-6">
+            <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
+        </div>
+
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
 </div>
+<!-- /.content-header -->
+<?= $this->render('_form', [
+    'model' => $model,
+]) ?>
