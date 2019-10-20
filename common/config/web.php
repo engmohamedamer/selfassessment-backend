@@ -6,14 +6,14 @@ $config = [
             'class' => yii\web\AssetManager::class,
             'linkAssets' => env('LINK_ASSETS'),
             'appendTimestamp' => YII_ENV_DEV,
-            'bundles' => [
-                'yii\bootstrap4\BootstrapAsset' => [
-                    'sourcePath' => '@npm/bootstrap/dist'
-                ],
-                'yii\bootstrap4\BootstrapPluginAsset' => [
-                    'sourcePath' => '@npm/bootstrap/dist'
-                ]
-            ],
+//            'bundles' => [
+//                'yii\bootstrap4\BootstrapAsset' => [
+//                    'sourcePath' => '@npm/bootstrap/dist'
+//                ],
+//                'yii\bootstrap4\BootstrapPluginAsset' => [
+//                    'sourcePath' => '@npm/bootstrap/dist'
+//                ]
+//            ],
 
 
         ],

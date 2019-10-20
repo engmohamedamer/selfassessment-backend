@@ -9,7 +9,7 @@
 namespace common\assets;
 
 use common\assets\FontAwesome;
-use yii\bootstrap4\BootstrapPluginAsset;
+use yii\bootstrap\BootstrapPluginAsset;
 use yii\web\AssetBundle;
 
 class AdminLte extends AssetBundle
