@@ -46,10 +46,11 @@ return [
 
 
         ['class' => 'yii\rest\UrlRule', 'controller' => 'lookups' ,'pluralize'=>false ,
-            'only' => ['list-sports'],
+            'only' => ['list-cities','list-districts'],
 
             'extraPatterns'=>[
-                'GET list-sports' => 'list-sports',
+                'GET list-cities' => 'list-cities',
+                'GET list-districts' => 'list-districts',
 
             ]
 
