@@ -44,7 +44,7 @@ class ThemeController extends RestController
             }
         }
 
-        //$organization = Organization::findOne(['slug'=>$params['org']]);
+        // $organization = Organization::findOne(['slug'=>$params['org']]);
         $organization = Organization::find()->limit(1)->one();
 
         if (!$organization) {
@@ -64,7 +64,13 @@ class ThemeController extends RestController
 
         \Yii::$app->language = $locale;
 
-        $organization = Organization::findOne(['slug'=>$params['org']]);
+        // $organization = Organization::findOne(['slug'=>$params['org']]);
+        $organization = Organization::find()->limit(1)->one();
+        $pages = $organization->pages;
+        $pageLinks = [];
+        foreach ($pages as $value) {
+            $pageLinks[] = ['title'=>$value->name,'href'=>$value->link];
+        }
 
 
         $colors =[
@@ -79,13 +85,7 @@ class ThemeController extends RestController
         ];
 
         $footer = [
-            'links'=>[
-                ['title'=>'Home','href'=>'http://'],
-                ['title'=>'About','href'=>'http://'],
-                ['title'=>'Contact','href'=>'http://'],
-                ['title'=>'Test','href'=>'http://'],
-                ['title'=>'Data','href'=>'http://'],
-            ],
+            'links'=> $pageLinks,
             'social_media'=>[
                 ['title'=>'facebook','href'=>$theme->facebook],
                 ['title'=>'twitter','href'=>$theme->twitter],
