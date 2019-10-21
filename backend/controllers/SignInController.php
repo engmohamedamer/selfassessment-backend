@@ -8,16 +8,18 @@
 
 namespace backend\controllers;
 
+use Intervention\Image\ImageManagerStatic;
+use Yii;
 use backend\models\AccountForm;
 use backend\models\LoginForm;
-use Intervention\Image\ImageManagerStatic;
+use common\models\FirebaseAuth;
+use common\models\PasswordResetRequestForm;
+use common\models\ResetPasswordForm;
 use trntv\filekit\actions\DeleteAction;
 use trntv\filekit\actions\UploadAction;
-use Yii;
 use yii\filters\VerbFilter;
 use yii\imagine\Image;
 use yii\web\Controller;
-use common\models\FirebaseAuth;
 
 class SignInController extends BackendController
 {
@@ -115,5 +117,55 @@ class SignInController extends BackendController
             return $this->refresh();
         }
         return $this->render('account', ['model' => $model]);
+    }
+
+    /**
+     * @return string|Response
+     */
+    public function actionRequestPasswordReset()
+    {
+        $this->layout = 'base';
+        \Yii::$app->language = 'ar';
+
+        $model = new PasswordResetRequestForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->sendEmail()) {
+                Yii::$app->getSession()->setFlash('success',Yii::t('frontend', 'Check your email for further instructions.') );
+                return $this->goHome();
+            } else {
+                Yii::$app->getSession()->setFlash('error',Yii::t('frontend', 'Sorry, we are unable to reset password for email provided.') );
+            }
+        }
+
+        return $this->render('requestPasswordResetToken', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * @param $token
+     * @return string|Response
+     * @throws BadRequestHttpException
+     */
+    public function actionResetPassword($token)
+    {
+        $this->layout = 'base';
+        \Yii::$app->language = 'ar';
+
+        try {
+            $model = new ResetPasswordForm($token);
+        } catch (InvalidArgumentException $e) {
+            throw new BadRequestHttpException($e->getMessage());
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
+
+            Yii::$app->getSession()->setFlash('success',Yii::t('frontend', 'New password was saved.') );
+            return $this->goHome();
+        }
+
+        return $this->render('resetPassword', [
+            'model' => $model,
+        ]);
     }
 }

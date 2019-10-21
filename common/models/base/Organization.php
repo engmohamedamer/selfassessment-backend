@@ -2,11 +2,12 @@
 
 namespace common\models\base;
 
-use webvimark\behaviors\multilanguage\MultiLanguageBehavior;
-use webvimark\behaviors\multilanguage\MultiLanguageTrait;
 use Yii;
+use common\models\Pages;
 use common\models\UserProfile;
 use trntv\filekit\behaviors\UploadBehavior;
+use webvimark\behaviors\multilanguage\MultiLanguageBehavior;
+use webvimark\behaviors\multilanguage\MultiLanguageTrait;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 
@@ -183,6 +184,11 @@ class Organization extends \yii\db\ActiveRecord
     public function getManager()
     {
         return $this->hasOne(UserProfile::className(), ['organization_id' => 'id']);
+    }
+
+    public function getPages()
+    {
+        return $this->hasMany(Pages::className(), ['organization_id' => 'id']);
     }
 
     /**

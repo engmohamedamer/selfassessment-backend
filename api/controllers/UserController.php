@@ -3,19 +3,18 @@
 namespace api\controllers;
 
 use Yii;
+use api\helpers\ResetPassword;
 use api\helpers\ResponseHelper;
 use api\helpers\SignupForm;
 use api\resources\User;
+use cheatsheet\Time;
+use common\commands\SendEmailCommand;
 use common\models\Organization;
 use common\models\UserProfile;
+use common\models\UserToken;
 use organization\models\UserForm;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
-
-use api\helpers\ResetPassword;
-use cheatsheet\Time;
-use common\commands\SendEmailCommand;
-use common\models\UserToken;
 
 class UserController extends  RestController
 {
