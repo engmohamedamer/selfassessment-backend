@@ -23,6 +23,48 @@ $config = [
 
 
     'modules' => [
+
+        'assessment' => [
+            'class' => 'backend\modules\assessment\Module',
+            'params' => [
+                'uploadsUrl' => 'http://advanced-frontend.lh/uploads/survey/', // full URL of the folder where the images will be uploaded.
+                // 'uploadsUrl' => '/uploads/survey/', // or for basic
+                'uploadsPath' => '@frontend/web/uploads/survey/', // absolute path to the folder where images will be saved.
+            ],
+//            'as access' => [
+//                'class' => AccessControl::class,
+//                'except' => ['default/done'],
+//                'only' => ['default*'],
+//                'rules' => [
+//                    [
+//                        'allow' => true,
+//                        'roles' => ['survey'],
+//                    ],
+//                ],
+//            ],
+        ],
+
+
+//        'survey' => [
+//            'class' => '\onmotion\survey\Module',
+//            'params' => [
+//                'uploadsUrl' => 'http://advanced-frontend.lh/uploads/survey/', // full URL of the folder where the images will be uploaded.
+//                // 'uploadsUrl' => '/uploads/survey/', // or for basic
+//                'uploadsPath' => '@frontend/web/uploads/survey/', // absolute path to the folder where images will be saved.
+//            ],
+////            'as access' => [
+////                'class' => AccessControl::class,
+////                'except' => ['default/done'],
+////                'only' => ['default*'],
+////                'rules' => [
+////                    [
+////                        'allow' => true,
+////                        'roles' => ['survey'],
+////                    ],
+////                ],
+////            ],
+//        ],
+
         'treemanager' =>  [
             'class' => '\kartik\tree\Module',
             // enter other module properties if needed
@@ -85,11 +127,11 @@ $config = [
     ],
 
     'params' => [
-        'bsDependencyEnabled' => true, // this will not load Bootstrap CSS and JS for all Krajee extensions
+      //  'bsDependencyEnabled' => true, // this will not load Bootstrap CSS and JS for all Krajee extensions
         // you need to ensure you load the Bootstrap CSS/JS manually in your view layout before Krajee CSS/JS assets
         //
         // other params settings below
-        'bsVersion' => '4.x',
+       // 'bsVersion' => '4.x',
         // 'adminEmail' => 'admin@example.com',
 
         'icon-framework' => \kartik\icons\Icon::FAS,  // Font Awesome Icon framework

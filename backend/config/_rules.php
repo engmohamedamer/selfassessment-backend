@@ -26,7 +26,7 @@ return [
     [
         'controllers' => ['user'],
         'allow' => true,
-        'roles' => ['administrator','manager','officialNEoffice'],
+        'roles' => ['administrator','manager'],
     ],
     [
         'controllers' => ['user'],
@@ -38,25 +38,6 @@ return [
     ],
 
     /**  *-------------------------------- Moe Admin  --------------------------------------------   **/
-
-
-    [
-        'controllers' => ['helper','site','file'],
-        'allow' => true,
-        'roles' => ['officialNEoffice'],
-    ],
-
-    [
-        'controllers' => ['schools','event','event-request','announcement','news','sign-in','timeline-event'],
-        'allow' => true,
-        'roles' => ['officialNEoffice'],
-    ],
-
-    //just for now
-    [
-        'allow' => true,
-        'roles' => ['officialNEoffice'],
-    ],
 
 
 

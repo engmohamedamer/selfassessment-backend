@@ -44,7 +44,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
             <div class="card-body">
 
     <ul class="nav nav-pills innernavs">
-        <li class="nav-item  "><a class="nav-link active" href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
+        <li class="nav-item  active"><a class="nav-link " href="#tab_1-1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
 
         <?php if($model->isNewRecord) :?>
             <li class="nav-item"><a class="nav-link" href="#tab_2-2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
