@@ -9,7 +9,7 @@
 namespace organization\assets;
 
 use common\assets\AdminLte;
-use yii\bootstrap4\BootstrapPluginAsset;
+use yii\bootstrap\BootstrapPluginAsset;
 use yii\web\AssetBundle;
 use yii\web\YiiAsset;
 

@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-use yii\bootstrap4\ActiveForm;
+use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -23,14 +23,14 @@ use yii\bootstrap4\ActiveForm;
             <?php echo $form->field($model, 'email') ?>
           </div>
         </div>
-        
-        
-       
+
+
+
         <div class="col-12 col-md-12 text-center">
-          
+
         <button type="submit" class="btn btn-yellow">استرجاع كلمة المرور</button>
-        
-    
+
+
         </div>
       </div>
        <?php ActiveForm::end(); ?>

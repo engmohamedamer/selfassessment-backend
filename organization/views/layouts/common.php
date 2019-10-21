@@ -9,7 +9,7 @@ use backend\assets\BackendArabic;
 use backend\modules\system\models\SystemLog;
 use backend\widgets\Menu;
 use common\models\TimelineEvent;
-use yii\bootstrap4\Alert;
+use yii\bootstrap\Alert;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -64,9 +64,9 @@ if(Yii::$app->user->isGuest){
                         <div class="dropdown-divider"></div>
 
                         <?php echo Html::a(  '<i class="fas fa-sign-out-alt mr-2"></i> '. Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'dropdown-item', 'data-method' => 'post']) ?>
-                       
+
                     </div>
-                   
+
                 </li>
             </ul>
         </nav>
@@ -95,13 +95,13 @@ if(Yii::$app->user->isGuest){
             </div>
             <!-- /.sidebar -->
         </aside>
-    
+
     <!-- Left side column. contains the logo and sidebar -->
-   
+
 
     <!-- Right side column. Contains the navbar and content of the page -->
     <div class="content-wrapper">
-         
+
 
         <!-- Main content -->
         <section class="content">
@@ -119,7 +119,7 @@ if(Yii::$app->user->isGuest){
         </section><!-- /.content -->
     </div><!-- /.right-side -->
 
-  
+
     <footer class="main-footer">
         <strong>&nbsp;</strong>
         <div class="pull-right">

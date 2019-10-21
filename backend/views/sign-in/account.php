@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap4\ActiveForm;
+use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\UserProfile */
@@ -33,13 +33,13 @@ $this->title = Yii::t('backend', 'Edit account')
 			<div class="col-lg-6"><?php echo $form->field($model, 'password')->passwordInput() ?></div>
 			<div class="col-lg-6"><?php echo $form->field($model, 'password_confirm')->passwordInput() ?></div>
 		</div>
-                
 
-                
 
-                
 
-                
+
+
+
+
 
                 <div class="form-group">
                     <?php echo Html::submitButton(Yii::t('backend', 'Update'), ['class' => 'btn btn-primary']) ?>

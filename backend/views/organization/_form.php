@@ -8,7 +8,7 @@ use common\models\UserProfile;
 use kartik\widgets\ActiveForm;
 use kartik\widgets\DepDrop;
 use trntv\filekit\widget\Upload;
-// use yii\bootstrap4\ActiveForm;
+// use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -36,7 +36,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
 
 
-    
+
 
 <div class="row">
     <div class="col-lg-12">
@@ -85,7 +85,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 'placeholder' => Yii::t('common',  'Select') ,
                                 'url' => Url::to(['/helper/school-districts','schoolId'=>$model->id])
                             ]
-                        ]); 
+                        ]);
                     ?>
                 </div>
                 <div class="col-lg-4">
@@ -149,7 +149,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                 </div>
 
 
-            
+
                 <div class="col-md-4 col-sm-12">
                     <?php echo $form->field($profile, 'firstname') ?>
                 </div>
@@ -174,7 +174,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
         </div>
         <?php endif;?>
         <div class="tab-pane " id="tab_3-3">
-            <?= 
+            <?=
                 $this->render('_formOrganizationTheme', [
                 'form' => $form,
                 'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
