@@ -9,8 +9,9 @@ use yii\web\View;
 <?php $sid = uniqid();
 ?>
 
+<div class="translatenav">
 
-<ul class="nav nav-pills translatenav">
+<ul class="nav nav-pills ">
 	<?php foreach (Yii::$app->params['mlConfig']['languages'] as $languageCode => $languageName): ?>
 
 		<li class="nav-item  ">
@@ -48,4 +49,5 @@ use yii\web\View;
 
 
 	<?php endforeach ?>
+</div>
 </div>
