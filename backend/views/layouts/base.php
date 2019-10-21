@@ -43,13 +43,17 @@ if(Yii::$app->user->isGuest){
         .table td a {
             color: #cd4e8e !important;
         }
+        a:hover, a:active, a:focus {
+            color: #cd4e8e !important;
+        }
     </style>
     <?php $this->head() ?>
 </head>
+<body class="skin-blue sidebar-mini" cz-shortcut-listen="true" style="height: auto; min-height: 100%;">
 
     <?php $this->beginBody() ?>
         <?php echo $content ?>
     <?php $this->endBody() ?>
-    
+    </body>
 </html>
 <?php $this->endPage() ?>
