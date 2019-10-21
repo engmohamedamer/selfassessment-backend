@@ -6,7 +6,7 @@
  * Time: 14:18
  */
 
-namespace onmotion\survey;
+namespace backend\modules\assessment;
 
 
 use yii\web\AssetBundle;

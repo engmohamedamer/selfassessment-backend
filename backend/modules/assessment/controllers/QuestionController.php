@@ -1,6 +1,7 @@
 <?php
 
-namespace onmotion\survey\controllers;
+namespace backend\modules\assessment\controllers;
+
 
 use onmotion\survey\models\Survey;
 use onmotion\survey\models\SurveyAnswer;
