@@ -5,6 +5,7 @@ namespace api\controllers;
 use api\helpers\ImageHelper;
 use api\helpers\ResponseHelper;
 use api\resources\User;
+use yii\base\DynamicModel;
 
 
 class ProfileController extends  MyActiveController
@@ -27,6 +28,18 @@ class ProfileController extends  MyActiveController
 
     public function actionUpdate(){
         $params = \Yii::$app->request->post();
+        $model = DynamicModel::validateData(['firstname' => $params['firstname'],'email' => $params['email'],'password'=>$params['password'],'mobile'=>$params['mobile']], [
+            ['email', 'unique', 'targetClass' => User::class, 'filter' => function ($query) {
+                $query->andWhere(['not', ['id' => \Yii::$app->user->identity->getId()]]);
+            }],
+            ['firstname', 'required'],
+            ['email', 'email'],
+            ['password', 'string', 'min' => 6],
+            ['mobile', 'match', 'pattern' => '/^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/' ,'message'=> \Yii::t('common','Enter valid phone')],
+        ]);
+        if ($model->hasErrors()) {
+            return ResponseHelper::sendFailedResponse($model->errors,404);
+        }
 
         $user = User::findOne(['id'=> \Yii::$app->user->identity->getId()]) ;
         $user->setScenario(\common\models\User::SCENARIO_VALIDATE);
@@ -35,7 +48,6 @@ class ProfileController extends  MyActiveController
         if (isset($params['firstname'])) $profile->firstname = $params['firstname'] ;
         if (isset($params['lastname'])) $profile->lastname = $params['lastname'] ;
         if (isset($params['bio'])) $profile->bio= $params['bio'] ;
-        if (isset($params['device_token'])) $profile->device_token = $params['device_token'] ;
         if (isset($params['city_id'])) $profile->city_id = $params['city_id'] ;
         if (isset($params['district_id'])) $profile->district_id = $params['district_id'] ;
         if (isset($params['position'])) $profile->position = $params['position'] ;
