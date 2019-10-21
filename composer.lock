@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "196bc24bda24b74ec1d618de042a4c82",
+    "content-hash": "6bf84408160f86e9c1232aca12cba9a1",
     "packages": [
         {
             "name": "alexantr/yii2-elfinder",
@@ -167,8 +167,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/ajaxorg/ace-builds/zipball/c36237047e22cc3350845bc3f5b55ec062953f42",
-                "reference": "c36237047e22cc3350845bc3f5b55ec062953f42",
-                "shasum": null
+                "reference": "c36237047e22cc3350845bc3f5b55ec062953f42"
             },
             "type": "bower-asset",
             "license": [
@@ -186,8 +185,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/blueimp/JavaScript-Canvas-to-Blob/zipball/8441bcc4628eab4698f1c781c03f735f46d7e135",
-                "reference": "8441bcc4628eab4698f1c781c03f735f46d7e135",
-                "shasum": null
+                "reference": "8441bcc4628eab4698f1c781c03f735f46d7e135"
             },
             "type": "bower-asset",
             "time": "2019-09-28T12:03:15+00:00"
@@ -203,8 +201,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/blueimp/jQuery-File-Upload/zipball/bb52d3493d725175fcf5554da034a317aaaea0e2",
-                "reference": "bb52d3493d725175fcf5554da034a317aaaea0e2",
-                "shasum": null
+                "reference": "bb52d3493d725175fcf5554da034a317aaaea0e2"
             },
             "require": {
                 "bower-asset/blueimp-canvas-to-blob": ">=2.1.1",
@@ -228,8 +225,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/blueimp/JavaScript-Load-Image/zipball/ead9b7e314cbc1eb4bdeb275d9067901d4de6e05",
-                "reference": "ead9b7e314cbc1eb4bdeb275d9067901d4de6e05",
-                "shasum": null
+                "reference": "ead9b7e314cbc1eb4bdeb275d9067901d4de6e05"
             },
             "type": "bower-asset",
             "time": "2019-09-28T11:54:13+00:00"
@@ -245,8 +241,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/blueimp/JavaScript-Templates/zipball/91079d9333a26e9112eb6bb48bdd45abbac820c7",
-                "reference": "91079d9333a26e9112eb6bb48bdd45abbac820c7",
-                "shasum": null
+                "reference": "91079d9333a26e9112eb6bb48bdd45abbac820c7"
             },
             "type": "bower-asset",
             "time": "2019-09-28T11:54:33+00:00"
@@ -262,8 +257,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/twbs/bootstrap/zipball/68b0d231a13201eb14acd3dc84e51543d16e5f7e",
-                "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e",
-                "shasum": null
+                "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "require": {
                 "bower-asset/jquery": ">=1.9.1,<4.0"
@@ -284,8 +278,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Eonasdan/bootstrap-datetimepicker/zipball/25c11d79e614bc6463a87c3dd9cbf8280422e006",
-                "reference": "25c11d79e614bc6463a87c3dd9cbf8280422e006",
-                "shasum": null
+                "reference": "25c11d79e614bc6463a87c3dd9cbf8280422e006"
             },
             "require": {
                 "bower-asset/jquery": ">=1.8.3",
@@ -307,8 +300,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/fancyapps/fancyBox/zipball/059c44062a033665cb635364320713cbc52de651",
-                "reference": "059c44062a033665cb635364320713cbc52de651",
-                "shasum": null
+                "reference": "059c44062a033665cb635364320713cbc52de651"
             },
             "require": {
                 "bower-asset/jquery": ">=1.9.0"
@@ -329,8 +321,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/5e670ad62f50c738388d4dcec78d2888505ad77b",
-                "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b",
-                "shasum": null
+                "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "require": {
                 "bower-asset/jquery": ">=1.7"
@@ -351,8 +342,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/15bc73803f76bc53b654b9fdbbbc096f56d7c03d",
-                "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d",
-                "shasum": null
+                "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d"
             },
             "type": "bower-asset",
             "license": [
@@ -370,8 +360,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/components/jqueryui/zipball/44ecf3794cc56b65954cc19737234a3119d036cc",
-                "reference": "44ecf3794cc56b65954cc19737234a3119d036cc",
-                "shasum": null
+                "reference": "44ecf3794cc56b65954cc19737234a3119d036cc"
             },
             "require": {
                 "bower-asset/jquery": ">=1.6"
@@ -392,8 +381,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/moment/moment/zipball/96d0d6791ab495859d09a868803d31a55c917de1",
-                "reference": "96d0d6791ab495859d09a868803d31a55c917de1",
-                "shasum": null
+                "reference": "96d0d6791ab495859d09a868803d31a55c917de1"
             },
             "type": "bower-asset",
             "license": [
@@ -411,8 +399,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/bestiejs/punycode.js/zipball/38c8d3131a82567bfef18da09f7f4db68c84f8a3",
-                "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3",
-                "shasum": null
+                "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "type": "bower-asset"
         },
@@ -427,8 +414,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/aef7b953107264f00234902a3880eb50dafc48be",
-                "reference": "aef7b953107264f00234902a3880eb50dafc48be",
-                "shasum": null
+                "reference": "aef7b953107264f00234902a3880eb50dafc48be"
             },
             "require": {
                 "bower-asset/jquery": ">=1.8"
@@ -4476,23 +4462,16 @@
         },
         {
             "name": "npm-asset/admin-lte",
-            "version": "3.0.0-alpha.2",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/admin-lte/-/admin-lte-3.0.0-alpha.2.tgz",
-                "reference": null,
-                "shasum": null
+            "version": "v2.4.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
+                "reference": "37c8bbb01998db487382e9d62cfb398511167f3a"
             },
-            "require": {
-                "npm-asset/bootstrap": ">=4.1.0,<5.0.0",
-                "npm-asset/chart.js": ">=2.7.2,<3.0.0",
-                "npm-asset/ckeditor--ckeditor5-build-classic": ">=1.0.0-beta.4,<2.0.0",
-                "npm-asset/datatables.net": ">=1.10.16,<2.0.0",
-                "npm-asset/datatables.net-bs4": ">=1.10.16,<2.0.0",
-                "npm-asset/font-awesome": ">=4.7.0,<5.0.0",
-                "npm-asset/jquery": ">=3.3.1,<4.0.0",
-                "npm-asset/jquery-ui": ">=1.12.1,<2.0.0",
-                "npm-asset/popper.js": ">=1.14.3,<2.0.0"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/37c8bbb01998db487382e9d62cfb398511167f3a",
+                "reference": "37c8bbb01998db487382e9d62cfb398511167f3a"
             },
             "type": "npm-asset",
             "license": [
@@ -4504,147 +4483,7 @@
             "version": "4.3.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.3.1.tgz",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "npm-asset/chart.js",
-            "version": "2.8.0",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/chart.js/-/chart.js-2.8.0.tgz",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "npm-asset/chartjs-color": ">=2.1.0,<3.0.0",
-                "npm-asset/moment": ">=2.10.2,<3.0.0"
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "npm-asset/chartjs-color",
-            "version": "2.4.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:chartjs/chartjs-color.git",
-                "reference": "c661e338f4bf0137a476d235ae540def0b4bd846"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/chartjs/chartjs-color/zipball/c661e338f4bf0137a476d235ae540def0b4bd846",
-                "reference": "c661e338f4bf0137a476d235ae540def0b4bd846",
-                "shasum": null
-            },
-            "require": {
-                "npm-asset/chartjs-color-string": ">=0.6.0,<0.7.0",
-                "npm-asset/color-convert": ">=1.9.3,<2.0.0"
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "npm-asset/chartjs-color-string",
-            "version": "0.6.0",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/chartjs-color-string/-/chartjs-color-string-0.6.0.tgz",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "npm-asset/color-name": ">=1.0.0,<2.0.0"
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "npm-asset/ckeditor--ckeditor5-build-classic",
-            "version": "1.0.0-beta.4",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/@ckeditor/ckeditor5-build-classic/-/ckeditor5-build-classic-1.0.0-beta.4.tgz",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "npm-asset",
-            "license": [
-                "(GPL-2.0 OR LGPL-2.1 OR MPL-1.1)"
-            ]
-        },
-        {
-            "name": "npm-asset/color-convert",
-            "version": "1.9.3",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/color-convert/-/color-convert-1.9.3.tgz",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "npm-asset/color-name": "1.1.3"
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "npm-asset/color-name",
-            "version": "1.1.3",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/color-name/-/color-name-1.1.3.tgz",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "npm-asset/datatables.net",
-            "version": "1.10.20",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/datatables.net/-/datatables.net-1.10.20.tgz",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "npm-asset/jquery": ">=1.7"
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "npm-asset/datatables.net-bs4",
-            "version": "1.10.20",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/datatables.net-bs4/-/datatables.net-bs4-1.10.20.tgz",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "npm-asset/datatables.net": "1.10.20",
-                "npm-asset/jquery": ">=1.7"
+                "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.3.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -4656,9 +4495,7 @@
             "version": "0.8.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/flot/-/flot-0.8.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/flot/-/flot-0.8.3.tgz"
             },
             "type": "npm-asset"
         },
@@ -4667,9 +4504,7 @@
             "version": "4.7.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.7.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.7.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -4681,81 +4516,40 @@
             "version": "3.7.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/html5shiv/-/html5shiv-3.7.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/html5shiv/-/html5shiv-3.7.3.tgz"
             },
             "type": "npm-asset"
         },
         {
             "name": "npm-asset/jquery",
-            "version": "3.4.1",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jquery/jquery.git",
+                "reference": "26415e081b318dbe1d46d2b7c30e05f14c339b75"
+            },
             "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/jquery/-/jquery-3.4.1.tgz",
-                "reference": null,
-                "shasum": null
+                "type": "zip",
+                "url": "https://api.github.com/repos/jquery/jquery/zipball/26415e081b318dbe1d46d2b7c30e05f14c339b75",
+                "reference": "26415e081b318dbe1d46d2b7c30e05f14c339b75"
             },
             "type": "npm-asset",
             "license": [
                 "MIT"
-            ]
+            ],
+            "time": "2019-10-14T16:41:35+00:00"
         },
         {
             "name": "npm-asset/jquery-slimscroll",
             "version": "1.3.8",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/jquery-slimscroll/-/jquery-slimscroll-1.3.8.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/jquery-slimscroll/-/jquery-slimscroll-1.3.8.tgz"
             },
             "require": {
                 "npm-asset/jquery": ">=1.7"
             },
             "type": "npm-asset"
-        },
-        {
-            "name": "npm-asset/jquery-ui",
-            "version": "1.12.1",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.12.1.tgz",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "npm-asset/moment",
-            "version": "2.24.0",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/moment/-/moment-2.24.0.tgz",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "npm-asset/popper.js",
-            "version": "1.15.0",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/popper.js/-/popper.js-1.15.0.tgz",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
         },
         {
             "name": "onmotion/yii2-survey",
