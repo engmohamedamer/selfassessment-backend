@@ -2,7 +2,7 @@
 
 use common\models\User;
 use common\models\UserProfile;
-use yii\bootstrap4\ActiveForm;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
@@ -37,7 +37,7 @@ if($saved == true){
         <div class="col-6">
             <h1 class="m-0 text-dark">Update User</h1>
         </div>
-       
+
         <!-- /.col -->
     </div>
     <!-- /.row -->
@@ -72,7 +72,7 @@ if($saved == true){
                         </div>
                     </div>
 
-                    
+
                 </div>
                 <div class="row">
                     <div class="col-md-4">

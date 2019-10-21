@@ -96,7 +96,7 @@ if(Yii::$app->user->isGuest){
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                   
+
 
                     <?php
                     if (Yii::$app->user->can('administrator')) {
@@ -119,13 +119,13 @@ if(Yii::$app->user->isGuest){
             </section>
             <!-- /.sidebar -->
         </aside>
-    
+
     <!-- Left side column. contains the logo and sidebar -->
-   
+
 
     <!-- Right side column. Contains the navbar and content of the page -->
     <div class="content-wrapper">
-         
+
 
         <!-- Main content -->
         <section class="content">
@@ -143,7 +143,7 @@ if(Yii::$app->user->isGuest){
         </section><!-- /.content -->
     </div><!-- /.right-side -->
 
-  
+
     <footer class="main-footer">
         <strong>&nbsp;</strong>
         <div class="pull-right">

@@ -2,7 +2,7 @@
 
 use common\models\User;
 use common\models\UserProfile;
-use yii\bootstrap4\ActiveForm;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
@@ -22,7 +22,7 @@ $model->roles =Yii::$app->session->get('UserRole');
         <div class="col-6">
             <h1 class="m-0 text-dark"><?= Yii::t('common','Contributors')?></h1>
         </div>
-        
+
         <!-- /.col -->
     </div>
     <!-- /.row -->
