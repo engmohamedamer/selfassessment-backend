@@ -1,6 +1,6 @@
 <?php
 
-namespace organization\models;
+namespace common\models;
 
 use cheatsheet\Time;
 use common\commands\SendEmailCommand;
