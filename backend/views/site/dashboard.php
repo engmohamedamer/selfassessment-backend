@@ -28,7 +28,7 @@ $this->title = Yii::t('backend', 'Dashboard');
 <!-- /.content-header -->
 
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-12">
        <?/*?>
      <div class="card">
             <div class="card-header border-0">
@@ -74,18 +74,11 @@ $this->title = Yii::t('backend', 'Dashboard');
         <div class="card">
             <div class="card-header border-0">
                 <h3 class="card-title"><?= Yii::t('common','New Organizations') ?></h3>
-                <div class="card-tools">
-                    <a href="#" class="btn btn-tool btn-sm">
-                        <i class="fas fa-download"></i>
-                    </a>
-                    <a href="#" class="btn btn-tool btn-sm">
-                        <i class="fas fa-bars"></i>
-                    </a>
-                </div>
+
             </div>
             <div class="card-body p-0">
                
-                <table class="table table-striped table-valign-middle">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th><?= Yii::t('common','Name') ?></th>

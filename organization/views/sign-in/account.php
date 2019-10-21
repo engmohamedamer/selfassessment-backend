@@ -9,23 +9,30 @@ use yii\bootstrap4\ActiveForm;
 $this->title = Yii::t('backend', 'Edit account')
 ?>
 
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="row mb-2">
+        <div class="col-6">
+            <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
+        </div>
+
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header border-0">
-                <h3 class="card-title"><? echo Yii::t('backend', 'Edit account')?></h3>
-            </div>
+
             <div class="card-body">
 
                 <?php $form = ActiveForm::begin() ?>
-
-                <?php echo $form->field($model, 'username') ?>
-
-                <?php echo $form->field($model, 'email') ?>
-
-                <?php echo $form->field($model, 'password')->passwordInput() ?>
-
-                <?php echo $form->field($model, 'password_confirm')->passwordInput() ?>
+                <div class="row">
+                			<div class="col-lg-6"><?php echo $form->field($model, 'username') ?></div>
+                			<div class="col-lg-6"><?php echo $form->field($model, 'email') ?></div>
+                			<div class="col-lg-6"><?php echo $form->field($model, 'password')->passwordInput() ?></div>
+                			<div class="col-lg-6"><?php echo $form->field($model, 'password_confirm')->passwordInput() ?></div>
+                		</div>
 
                 <div class="form-group">
                     <?php echo Html::submitButton(Yii::t('backend', 'Update'), ['class' => 'btn btn-primary']) ?>

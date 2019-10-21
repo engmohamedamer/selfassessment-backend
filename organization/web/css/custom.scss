@@ -92,3 +92,22 @@ a {
 .table th, .table td {
     padding: 0.5rem;
 }
+
+.actionBtns .btn{
+    float: right;
+    margin-left: 10px;
+}
+
+.innernavs ,.translatenav{
+    justify-content: flex-end;
+}
+.translatenav{
+.nav-link{
+    padding: 2px 20px;
+    border-radius: 20px;
+}
+}
+
+.nav-sidebar > .nav-item .nav-icon{
+    font-size:1rem
+}
