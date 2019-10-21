@@ -31,6 +31,10 @@ class SiteController extends BackendController
             ],
         ];
     }
+    public function actionGo(){
+        $this->layout= 'baselayout';
+        return $this->render('go');
+    }
 
     public function beforeAction($action)
     {

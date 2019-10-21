@@ -1,6 +1,6 @@
 <?php
 
-namespace onmotion\survey\controllers;
+namespace backend\modules\assessment\controllers;
 
 use onmotion\survey\models\search\SurveySearch;
 use onmotion\survey\models\search\SurveyStatSearch;

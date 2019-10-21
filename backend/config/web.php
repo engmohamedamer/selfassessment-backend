@@ -24,6 +24,27 @@ $config = [
 
     'modules' => [
 
+        'assessment' => [
+            'class' => 'backend\modules\assessment\Module',
+            'params' => [
+                'uploadsUrl' => 'http://advanced-frontend.lh/uploads/survey/', // full URL of the folder where the images will be uploaded.
+                // 'uploadsUrl' => '/uploads/survey/', // or for basic
+                'uploadsPath' => '@frontend/web/uploads/survey/', // absolute path to the folder where images will be saved.
+            ],
+//            'as access' => [
+//                'class' => AccessControl::class,
+//                'except' => ['default/done'],
+//                'only' => ['default*'],
+//                'rules' => [
+//                    [
+//                        'allow' => true,
+//                        'roles' => ['survey'],
+//                    ],
+//                ],
+//            ],
+        ],
+
+
         'survey' => [
             'class' => '\onmotion\survey\Module',
             'params' => [

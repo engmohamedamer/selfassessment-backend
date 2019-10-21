@@ -1,6 +1,6 @@
 <?php
 
-namespace onmotion\survey;
+namespace backend\modules\assessment;
 
 use yii\base\UserException;
 use yii\helpers\FileHelper;
@@ -15,7 +15,9 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      */
-    public $controllerNamespace;
+  //  public $controllerNamespace;
+    public $controllerNamespace = 'backend\modules\assessment\controllers';
+
     public $userClass;
 
     public $params = [
@@ -29,11 +31,15 @@ class Module extends \yii\base\Module
     public function init()
     {
 
-        if (empty($this->controllerNamespace)) {
-            $this->controllerNamespace = \Yii::$app->controllerNamespace === 'backend\controllers'
-                ? 'onmotion\survey\controllers'
-                : 'onmotion\survey\widgetControllers';
-        }
+        $this->layout = '//layout/baselayout';
+
+
+
+//        if (empty($this->controllerNamespace)) {
+//            $this->controllerNamespace = \Yii::$app->controllerNamespace === 'backend\controllers'
+//                ? 'onmotion\survey\controllers'
+//                : 'onmotion\survey\widgetControllers';
+//        }
 
         parent::init();
 
