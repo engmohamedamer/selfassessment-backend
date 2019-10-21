@@ -43,7 +43,7 @@
     "trntv/yii2-command-bus": "^3.0",
     "intervention/image": "^2.1",
     "vlucas/phpdotenv": "^2.0",
-     "npm-asset/admin-lte": "^3.0",
+       "npm-asset/admin-lte": "^2.0",
 
     "npm-asset/font-awesome": "^4.0",
     "npm-asset/html5shiv": "^3.0",
