@@ -23,6 +23,7 @@
     width: 100px;
 }
 
+.theme-edit-content-panel {padding: 0 25px !important;}
 .theme-edit-content {padding: 0 20px !important;}
 .theme-edit-content .theme-edit-form{
     background: white;
@@ -43,4 +44,6 @@
     border-radius: 10px;
     width: 100%;
 }
+
+.upload-kit-item.done.image img {width: 100% !important}
 

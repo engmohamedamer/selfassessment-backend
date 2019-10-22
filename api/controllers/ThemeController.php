@@ -64,13 +64,9 @@ class ThemeController extends RestController
 
         \Yii::$app->language = $locale;
 
-        // $organization = Organization::findOne(['slug'=>$params['org']]);
-        $organization = Organization::find()->limit(1)->one();
-        $pages = $organization->pages;
-        $pageLinks = [];
-        foreach ($pages as $value) {
-            $pageLinks[] = ['title'=>$value->name,'href'=>$value->link];
-        }
+        $organization = Organization::findOne(['slug'=>$params['org']]);
+        // $organization = Organization::find()->limit(1)->one();
+        $footerLinks = $organization->organizationFooterLinks;
 
 
         $colors =[
@@ -85,7 +81,13 @@ class ThemeController extends RestController
         ];
 
         $footer = [
-            'links'=> $pageLinks,
+            'links'=>[
+                ['title'=>$footerLinks->name_link1,'href'=>$footerLinks->link1],
+                ['title'=>$footerLinks->name_link2,'href'=>$footerLinks->link2],
+                ['title'=>$footerLinks->name_link3,'href'=>$footerLinks->link3],
+                ['title'=>$footerLinks->name_link4,'href'=>$footerLinks->link4],
+                ['title'=>$footerLinks->name_link5,'href'=>$footerLinks->link5],
+            ],
             'social_media'=>[
                 ['title'=>'facebook','href'=>$theme->facebook],
                 ['title'=>'twitter','href'=>$theme->twitter],
