@@ -71,16 +71,6 @@ echo Menu::widget([
                 ],
             ],
         ],
-
-
-        [
-            'label' => Yii::t('common', 'Pages'),
-            'url' => '/pages',
-            'icon' => '<i class="nav-icon fas fa-tachometer-alt"></i>',
-            'options' => ['class' => 'nav-item'],
-            'active' => (Yii::$app->controller->module->id == 'pages'),
-        ],
-
         
     ],
 ]) ?>
