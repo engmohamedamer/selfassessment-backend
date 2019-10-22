@@ -58,5 +58,4 @@ use yii\widgets\ActiveForm;
         <?php echo  $form->field($organizationFooterLinks, 'link5')->textInput() ?>
     </div>
 
-    </div>
 </div>
