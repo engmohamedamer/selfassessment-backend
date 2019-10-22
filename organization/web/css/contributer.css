@@ -1,3 +1,16 @@
+
+ body{
+  background-image: url(/img/login-bg2.png) !important;
+  background-repeat: no-repeat !important;
+  background-position: 80% 70px;
+  background-size: contain;
+}
+.help-block-error{
+  display: block !important;
+}
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+background-color:transparent;
+}
 #SVGMainHero {
   float: right;
   right: 0;
@@ -14,7 +27,7 @@
   font-size: 4rem;
   font-weight: 100;
   margin-bottom: 0;
-  color: #4d5d73;
+  color: #000;
 }
 
 .login h4 {
