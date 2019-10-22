@@ -189,7 +189,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <?= 
                                 $this->render('_formOrganizationTheme', [
                                 'form' => $form,
-                                'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
+                                'OrganizationThemeColor' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
@@ -210,7 +210,11 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                 <div class="tab-pane " id="tab_4-4">
                     <div class='row'>
                         <div class='col-sm-12 col-lg-8 row'>
-                            
+                            <?= 
+                                $this->render('_formOrganizationTheme', [
+                                'form' => $form,
+                                'OrganizationThemeLinks' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
+                            ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
                             <h2 class=''> عرض توضيحي</h2>
