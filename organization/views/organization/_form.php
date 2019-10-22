@@ -165,14 +165,14 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                     <div class='row'>
                         <div class='col-sm-12 col-lg-8 row theme-edit-content-panel'>
                             <div class="col-lg-6">
-<!--                                --><?php //echo $form->field($model, 'first_image')->widget(Upload::class, [
-//                                    'url'=>['first-upload']
-//                                ]) ?>
+                                <?php echo $form->field($model, 'first_image')->widget(Upload::class, [
+                                    'url'=>['first-upload']
+                                ]) ?>
                             </div>
                             <div class="col-lg-6">
-<!--                                --><?php //echo $form->field($model, 'second_image')->widget(Upload::class, [
-//                                    'url'=>['second-upload']
-//                                ]) ?>
+                                <?php echo $form->field($model, 'second_image')->widget(Upload::class, [
+                                    'url'=>['second-upload']
+                                ]) ?>
                             </div>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
