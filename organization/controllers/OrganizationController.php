@@ -2,6 +2,7 @@
 
 namespace organization\controllers;
 
+use common\models\FooterLinks;
 use common\models\Organization;
 use common\models\OrganizationTheme;
 use trntv\filekit\actions\DeleteAction;
@@ -100,7 +101,11 @@ class OrganizationController extends \yii\web\Controller
         $model = $this->findModel($id);
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             $theme = OrganizationTheme::findOne(['organization_id'=>$id]);
-            if ($theme->load(\Yii::$app->request->post()) && $theme->save()) {
+            $themeFooterLinks = FooterLinks::findOne(['organization_id'=>$id]);
+            if (!$themeFooterLinks) {
+                $themeFooterLinks = new FooterLinks();
+            }
+            if ($themeFooterLinks->load(\Yii::$app->request->post()) && $theme->load(\Yii::$app->request->post()) && $themeFooterLinks->save() && $theme->save()) {
                 return $this->redirect(['view']);
             }
         }
