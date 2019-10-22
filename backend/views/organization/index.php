@@ -25,7 +25,7 @@ echo newerton\fancybox3\FancyBox::widget([
             'preload'       => false,
             'css'=>[
                 'width'=>'900px',
-                'height'=>'450px'
+                'height'=>'500px'
             ]
         ],
 
@@ -51,9 +51,9 @@ echo newerton\fancybox3\FancyBox::widget([
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-           
+
             <div class="card-body">
-            
+
 
 
     <p>
@@ -61,7 +61,7 @@ echo newerton\fancybox3\FancyBox::widget([
     <div class="search-form" style="display:none">
         <?=  $this->render('_search', ['model' => $searchModel]); ?>
     </div>
-    <?php 
+    <?php
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
         'name',
@@ -82,7 +82,7 @@ echo newerton\fancybox3\FancyBox::widget([
             'class' => 'kartik\grid\ActionColumn',
             'template'=>'{view}{update}'
         ],
-    ]; 
+    ];
     ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
