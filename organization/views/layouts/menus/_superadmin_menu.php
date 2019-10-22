@@ -53,25 +53,11 @@ echo Menu::widget([
         ],
 
         [
-            'label' => Yii::t('backend', 'Users Data'),
-            'options' => ['class' => 'nav-header'],
-        ],
-
-        [
             'label' => Yii::t('common', 'Contributors'),
-            'url' => '#',
-            'icon' => '<i class="nav-icon fas fa-th"></i>',
-            'options' => ['class' => 'nav-item has-treeview'],
+            'url' => '/user/index',
+            'icon' => '<i class="far fa-circle nav-icon"></i>',
+            'options' => ['class' => 'nav-item'],
             'active' => (Yii::$app->controller->module->id == 'user'),
-            'items' => [
-
-                [
-                    'label' => Yii::t('common', 'Contributors'),
-                    'icon' => '<i class="far fa-circle nav-icon"></i>',
-                    'url' => ['/user/index'],
-                    'options' => ['class' => 'nav-item'],
-                ],
-            ],
         ],
         
     ],
