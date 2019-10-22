@@ -119,12 +119,12 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
                 <div class="w-100"></div>
                 <div class="col-lg-4">
-                    <?php echo $form->field($model, 'first_image')->widget(\common\b4widget\upload\MyUpload::class, [
+                    <?php echo $form->field($model, 'first_image')->widget(Upload::class, [
                         'url'=>['first-upload']
                     ]) ?>
                 </div>
                 <div class="col-lg-4">
-                <?php echo $form->field($model, 'second_image')->widget(\common\b4widget\upload\MyUpload::class, [
+                <?php echo $form->field($model, 'second_image')->widget(Upload::class, [
                     'url'=>['second-upload']
                 ]) ?>
                 </div>
@@ -135,7 +135,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
             <div class="row">
                 <div class="col-md-12">
-                    <?php echo $form->field($profile, 'picture')->widget(\common\b4widget\upload\MyUpload::class, [
+                    <?php echo $form->field($profile, 'picture')->widget(Upload::class, [
                         'url'=>['avatar-upload']
                     ]) ?>
                 </div>
