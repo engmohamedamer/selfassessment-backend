@@ -1,5 +1,6 @@
 <?php
-
+use backend\assets\BackendAsset;
+use backend\assets\BackendArabic;
 use common\models\User;
 use common\models\UserProfile;
 use yii\bootstrap\ActiveForm;
@@ -12,6 +13,16 @@ use yii\helpers\Html;
 /* @var $permissions yii\rbac\Permission[] */
 
 $model->roles =Yii::$app->session->get('UserRole');
+
+if(Yii::$app->user->isGuest){
+    $bundle = BackendAsset::register($this);
+}else{
+    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
+        $bundle = BackendAsset::register($this);
+    }else{
+        $bundle = BackendArabic::register($this);
+    }
+}
 
 ?>
 

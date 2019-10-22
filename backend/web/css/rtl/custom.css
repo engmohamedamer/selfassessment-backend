@@ -296,3 +296,7 @@ ul {
     border-right: 1px solid #d2d6de !important;
     border-left: 0 !important;
 }
+.table td a{
+    margin-right: 0;
+    margin-left: 10px;
+  }
