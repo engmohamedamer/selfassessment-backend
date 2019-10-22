@@ -1,6 +1,5 @@
 <?php
-use backend\assets\BackendAsset;
-use backend\assets\BackendArabic;
+
 use common\models\User;
 use common\models\UserProfile;
 use yii\bootstrap\ActiveForm;
@@ -14,15 +13,7 @@ use yii\helpers\Html;
 
 $model->roles =Yii::$app->session->get('UserRole');
 
-if(Yii::$app->user->isGuest){
-    $bundle = BackendAsset::register($this);
-}else{
-    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
-        $bundle = BackendAsset::register($this);
-    }else{
-        $bundle = BackendArabic::register($this);
-    }
-}
+
 
 ?>
 
@@ -40,8 +31,7 @@ if($saved == true){
 }
 
 ?>
-<div class="col-lg-12">
-<div class="container-fluid">
+<div class="container-fluid orgmanager">
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="row mb-2">
