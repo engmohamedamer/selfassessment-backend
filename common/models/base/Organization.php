@@ -160,12 +160,21 @@ class Organization extends \yii\db\ActiveRecord
     {
         return $this->hasOne(\backend\models\City::className(), ['id' => 'city_id']);
     }
+    
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getOrganizationTheme()
     {
         return $this->hasOne(\common\models\OrganizationTheme::className(), ['organization_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOrganizationFooterLinks()
+    {
+        return $this->hasOne(\common\models\FooterLinks::className(), ['organization_id' => 'id']);
     }
 
 
