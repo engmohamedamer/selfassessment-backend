@@ -104,6 +104,7 @@ class OrganizationController extends \yii\web\Controller
             $themeFooterLinks = FooterLinks::findOne(['organization_id'=>$id]);
             if (!$themeFooterLinks) {
                 $themeFooterLinks = new FooterLinks();
+                $themeFooterLinks->organization_id = $id;
             }
             if ($themeFooterLinks->load(\Yii::$app->request->post()) && $theme->load(\Yii::$app->request->post()) && $themeFooterLinks->save() && $theme->save()) {
                 return $this->redirect(['view']);

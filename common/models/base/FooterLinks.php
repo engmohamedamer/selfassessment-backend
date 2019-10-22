@@ -4,7 +4,8 @@ namespace common\models\base;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
-
+use webvimark\behaviors\multilanguage\MultiLanguageBehavior;
+use webvimark\behaviors\multilanguage\MultiLanguageTrait;
 /**
  * This is the base model class for table "footer_links".
  *
@@ -25,7 +26,7 @@ use yii\behaviors\TimestampBehavior;
  */
 class FooterLinks extends \yii\db\ActiveRecord
 {
-    use \mootensai\relation\RelationTrait;
+    use \mootensai\relation\RelationTrait, MultiLanguageTrait;
 
 
     /**
@@ -91,6 +92,23 @@ class FooterLinks extends \yii\db\ActiveRecord
                 'createdAtAttribute' => 'created_at',
                 'updatedAtAttribute' => 'updated_at',
                 'value' => date('now'),
+            ],
+            'mlBehavior'=>[
+                'class'    => MultiLanguageBehavior::className(),
+                'mlConfig' => [
+                    'db_table'         => 'translations_with_text',
+                    'attributes'       => [
+                        'name_link1',
+                        'name_link2',
+                        'name_link3',
+                        'name_link4',
+                        'name_link5',
+                    ],
+                    'admin_routes'     => [
+                        'footer-links/update',
+                        'footer-links/index',
+                    ],
+                ],
             ],
         ];
     }
