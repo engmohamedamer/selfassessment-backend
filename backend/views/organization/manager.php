@@ -54,8 +54,8 @@ if($saved == true){
                             'url'=>['avatar-upload']
                         ]) ?>
                 <div class="row">
-                   
-                    
+
+
                             <div class="col-md-3">
                                 <?php echo $form->field($model, 'email') ?>
                             </div>
@@ -68,7 +68,7 @@ if($saved == true){
                             <div class="col-md-3">
                                 <?php echo $form->field($profile, 'lastname') ?>
                             </div>
-                        
+
 
 
                 </div>
