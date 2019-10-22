@@ -46,6 +46,14 @@ if(Yii::$app->user->isGuest){
         a:hover, a:active, a:focus {
             color: #cd4e8e !important;
         }
+
+        .panel-primary > .panel-heading {
+            background-color: #cd4e8e !important;
+            border-color: #cd4e8e !important;
+        }
+        .panel-primary {
+            border-color: #cd4e8e !important;
+        }
     </style>
     <?php $this->head() ?>
 </head>
