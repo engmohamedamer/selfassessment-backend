@@ -54,7 +54,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
     </div>
 
     <div class='col-sm-10 theme-edit-content'>
-        <h2 class='mt-2 mb-5'>تعديل البيانات</h2>
+        <!-- <h2 class='mt-2 mb-5'>تعديل البيانات</h2> -->
         <div class='theme-edit-form'>
             <div class="tab-content mt-5">
 
@@ -179,8 +179,18 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <h2 class=''> عرض توضيحي</h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active" id="tab_1-1">
-
-                                    <img src="/img/tamkeen-logo.png" alt="">
+                                    <p>* يرجى ادخال البيانات المطلوبة باللغتين العربية والإنجليزية.</p>
+                                    <hr class='mt-5 mb-5'>
+                                    <p>* يظهر اسم المؤسسة المُدخل في أماكن عدة بالموقع كتبويب المتصفح وقائمة الجانبية وفي خانة الحقوق بتذييل الموقع.</p>
+                                    <p>أمثلة توضيحية</p>
+                                    <img src="/img/previews/preview1.png" alt="" class='mt-3 mb-3 img'>
+                                    <img src="/img/previews/preview2.png" alt="" class='mt-3 mb-3 img'>
+                                    <img src="/img/previews/preview3.png" alt="" class='mt-3 mb-3 img'>
+                                    <hr class='mt-5 mb-5'>
+                                    <p>*يظهر المُدخل الخاص بالـ slug في بداية رابط الموقع الخاص بكم ويكون باللغة الإنجليزية وبدون مسافات ويعبر عن اسم المؤسسة.</p>
+                                    <img src="/img/previews/preview4.png" alt="" class='mt-3 mb-3 img'>
+                                    <hr class='mt-5 mb-5'>
+                                    <p>* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.</p>
                                 </div>
                             </div>
                         </div>
@@ -202,8 +212,18 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <h2 class=''> عرض توضيحي</h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active" id="tab_1-1">
-
-                                    <img src="/img/tamkeen-logo.png" alt="">
+                                    <p>* يرجى ادخال البيانات المطلوبة باللغتين العربية والإنجليزية.</p>
+                                    <hr class='mt-5 mb-5'>
+                                    <p>* يظهر اسم المؤسسة المُدخل في أماكن عدة بالموقع كتبويب المتصفح وقائمة الجانبية وفي خانة الحقوق بتذييل الموقع.</p>
+                                    <p>أمثلة توضيحية</p>
+                                    <img src="/img/previews/preview1.png" alt="" class='mt-3 mb-3 img'>
+                                    <img src="/img/previews/preview2.png" alt="" class='mt-3 mb-3 img'>
+                                    <img src="/img/previews/preview3.png" alt="" class='mt-3 mb-3 img'>
+                                    <hr class='mt-5 mb-5'>
+                                    <p>*يظهر المُدخل الخاص بالـ slug في بداية رابط الموقع الخاص بكم ويكون باللغة الإنجليزية وبدون مسافات ويعبر عن اسم المؤسسة.</p>
+                                    <img src="/img/previews/preview4.png" alt="" class='mt-3 mb-3 img'>
+                                    <hr class='mt-5 mb-5'>
+                                    <p>* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.</p>
                                 </div>
                             </div>
                         </div>
@@ -226,8 +246,18 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <h2 class=''> عرض توضيحي</h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active" id="tab_1-1">
-
-                                    <img src="/img/tamkeen-logo.png" alt="">
+                                    <p>* يرجى ادخال البيانات المطلوبة باللغتين العربية والإنجليزية.</p>
+                                    <hr class='mt-5 mb-5'>
+                                    <p>* يظهر اسم المؤسسة المُدخل في أماكن عدة بالموقع كتبويب المتصفح وقائمة الجانبية وفي خانة الحقوق بتذييل الموقع.</p>
+                                    <p>أمثلة توضيحية</p>
+                                    <img src="/img/previews/preview1.png" alt="" class='mt-3 mb-3 img'>
+                                    <img src="/img/previews/preview2.png" alt="" class='mt-3 mb-3 img'>
+                                    <img src="/img/previews/preview3.png" alt="" class='mt-3 mb-3 img'>
+                                    <hr class='mt-5 mb-5'>
+                                    <p>*يظهر المُدخل الخاص بالـ slug في بداية رابط الموقع الخاص بكم ويكون باللغة الإنجليزية وبدون مسافات ويعبر عن اسم المؤسسة.</p>
+                                    <img src="/img/previews/preview4.png" alt="" class='mt-3 mb-3 img'>
+                                    <hr class='mt-5 mb-5'>
+                                    <p>* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.</p>
                                 </div>
                             </div>
                         </div>
@@ -250,8 +280,18 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <h2 class=''> عرض توضيحي</h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active" id="tab_1-1">
-
-                                    <img src="/img/tamkeen-logo.png" alt="">
+                                    <p>* يرجى ادخال البيانات المطلوبة باللغتين العربية والإنجليزية.</p>
+                                    <hr class='mt-5 mb-5'>
+                                    <p>* يظهر اسم المؤسسة المُدخل في أماكن عدة بالموقع كتبويب المتصفح وقائمة الجانبية وفي خانة الحقوق بتذييل الموقع.</p>
+                                    <p>أمثلة توضيحية</p>
+                                    <img src="/img/previews/preview1.png" alt="" class='mt-3 mb-3 img'>
+                                    <img src="/img/previews/preview2.png" alt="" class='mt-3 mb-3 img'>
+                                    <img src="/img/previews/preview3.png" alt="" class='mt-3 mb-3 img'>
+                                    <hr class='mt-5 mb-5'>
+                                    <p>*يظهر المُدخل الخاص بالـ slug في بداية رابط الموقع الخاص بكم ويكون باللغة الإنجليزية وبدون مسافات ويعبر عن اسم المؤسسة.</p>
+                                    <img src="/img/previews/preview4.png" alt="" class='mt-3 mb-3 img'>
+                                    <hr class='mt-5 mb-5'>
+                                    <p>* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.</p>
                                 </div>
                             </div>
                         </div>
