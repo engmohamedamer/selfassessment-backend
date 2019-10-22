@@ -34,7 +34,7 @@ if(Yii::$app->user->isGuest){
 
 ?>
 
-<?php $this->beginContent('@backend/views/layouts/base.php'); ?>
+<?php $this->beginContent('@organization/views/layouts/base.php'); ?>
 <div class="wrapper" style="height: auto; min-height: 100%;">
 
 <header class="main-header">

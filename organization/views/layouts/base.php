@@ -26,25 +26,29 @@ if(Yii::$app->user->isGuest){
     
     <?php echo Html::csrfMetaTags() ?>
     <title><?php echo Html::encode($this->title) ?></title>
+    <?php 
+        $brandPrimColor =  Yii::$app->user->identity->userProfile->organization->organizationTheme->brandPrimColor; 
+        $brandSecColor =  Yii::$app->user->identity->userProfile->organization->organizationTheme->brandSecColor; 
 
+    ?>
 
     <style>
         .btn-primary{
-            background-color: #cd4e8e !important;
-            border-color: #cd4e8e !important;
+            background-color: <?= $brandPrimColor ?> !important;
+            border-color: <?= $brandPrimColor ?> !important;
         }
         .btn-danger{
-            background-color: #94464e !important;
-            border-color: #94464e !important;
+            background-color: <?= $brandSecColor ?> !important;
+            border-color: <?= $brandSecColor ?> !important;
         }
         .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
-             background-color: #cd4e8e !important;
+             background-color: <?= $brandPrimColor ?> !important;
         }
         .table td a {
-            color: #cd4e8e !important;
+            color: <?= $brandPrimColor ?> !important;
         }
         a:hover, a:active, a:focus {
-            color: #cd4e8e !important;
+            color: <?= $brandPrimColor ?> !important;
         }
     </style>
     <?php $this->head() ?>
