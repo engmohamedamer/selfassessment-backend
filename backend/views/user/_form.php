@@ -5,6 +5,7 @@ use common\models\UserProfile;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use trntv\filekit\widget\Upload;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\UserForm */
