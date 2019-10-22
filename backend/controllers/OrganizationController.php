@@ -109,7 +109,7 @@ class OrganizationController extends BackendController
 
         $user->setScenario('create');
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() &&  $user->load(Yii::$app->request->post()) && $user->validate() ) {
+        if ($model->load(Yii::$app->request->post()) &&  $user->load(Yii::$app->request->post()) && $profile->load(Yii::$app->request->post()) && $model->validate() && $user->validate() ) {
             $model->save();
             $user->save();
             $profile->load(Yii::$app->request->post());
