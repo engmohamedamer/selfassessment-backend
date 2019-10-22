@@ -143,7 +143,8 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                     <hr>
                                     <p>* يظهر اسم المؤسسة المُدخل في أماكن عدة بالموقع كتبويب المتصفح وفي خانة الحقوق بتذييل الموقع</p>
 
-                                    <img src="/img/preview1.png" alt="" class='mt-3 mb-3 img'>
+                                    <img src="/img/preview/preview1.png" alt="" class='mt-3 mb-3 img'>
+                                    <img src="/img/preview/preview2.png" alt="" class='mt-3 mb-3 img'>
                                 </div>
                             </div>
                         </div>
