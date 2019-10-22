@@ -60,7 +60,7 @@ $config = [
     ],
 
     'params' => [
-        'bsVersion' => '4.x',
+        //'bsVersion' => '4.x',
         'icon-framework' => \kartik\icons\Icon::FAS,  // Font Awesome Icon framework
     ],
 
