@@ -13,15 +13,10 @@ use yii\helpers\Html;
 /* @var $permissions yii\rbac\Permission[] */
 
 $model->roles =Yii::$app->session->get('UserRole');
-
-if(Yii::$app->user->isGuest){
+if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
     $bundle = BackendAsset::register($this);
 }else{
-    if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
-        $bundle = BackendAsset::register($this);
-    }else{
-        $bundle = BackendArabic::register($this);
-    }
+    $bundle = BackendArabic::register($this);
 }
 
 ?>
@@ -64,8 +59,8 @@ if($saved == true){
                             'url'=>['avatar-upload']
                         ]) ?>
                 <div class="row">
-                   
-                    
+
+
                             <div class="col-md-3">
                                 <?php echo $form->field($model, 'email') ?>
                             </div>
@@ -78,7 +73,7 @@ if($saved == true){
                             <div class="col-md-3">
                                 <?php echo $form->field($profile, 'lastname') ?>
                             </div>
-                        
+
 
 
                 </div>
