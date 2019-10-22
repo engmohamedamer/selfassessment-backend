@@ -222,6 +222,7 @@ a {
 .content-header h1 {
   font-size: 1.8rem;
   margin: 7px 0;
+  color: #000;
 }
 .card {
   position: relative;

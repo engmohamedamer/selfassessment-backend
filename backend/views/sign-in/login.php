@@ -12,17 +12,7 @@ $this->params['body-class'] = 'login-page';
 \backend\assets\LoginAsset::register($this);
 
 ?>
-<style>
-    body{
-        background-image: url(/img/login-bg.png) !important;
-        background-repeat: no-repeat !important;
-        background-position: 100%;
-        background-size: contain;
-    }
-    .help-block-error{
-        display: block !important;
-    }
-</style>
+
 <div class="wrapper">
         <header>
             <div class="container">

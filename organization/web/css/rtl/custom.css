@@ -270,10 +270,17 @@ ul {
 
 
 
-.content-wrapper, .right-side, .main-footer, .main-header .navbar{
+.content-wrapper, .right-side, .main-footer{
     margin-left: 0;
     margin-right: 250px;
-    width: calc(100% - 250px);
+}
+.main-header .navbar{
+    margin-left: 0;
+    margin-right: 0;
+}
+.sidebar-mini.sidebar-collapse .main-header .navbar {
+    margin-right: 0;
+    margin-left: auto;
 }
 .form-control{
     border-radius: 0;

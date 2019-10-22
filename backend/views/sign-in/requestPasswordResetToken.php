@@ -8,34 +8,32 @@ use yii\bootstrap\ActiveForm;
 
 \organization\assets\LoginAsset::register($this);
 ?>
+
+
 <div class="wrapper">
-
-<div class="container" id="addschool">
-  <div class="row justify-content-center">
-    <h1>استرجاع كلمة المرور</h1>
-  </div>
-  <div class="row justify-content-md-center">
-    <div class="col-12 col-md-5 schoolForm">
-        <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
-      <div class="row">
-        <div class="col-12">
-          <div class="form-group">
-            <?php echo $form->field($model, 'email') ?>
-          </div>
-        </div>
+        <header>
+            <div class="container">
+                <a href="" class="brand-link"><img src="/img/tamkeen-logo.png" width="150"> </a>
 
 
-
-        <div class="col-12 col-md-12 text-center">
-
-        <button type="submit" class="btn btn-yellow">استرجاع كلمة المرور</button>
-
-
-        </div>
-      </div>
-       <?php ActiveForm::end(); ?>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="login">
+                            <h2>Change Password,</h2>
+                            <h4>Tamkeen Admin!</h4>
+                            <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
+                                <?php echo $form->field($model, 'email') ?> 
+                                <div class="form-group">
+                                  <button type="submit" class='btn btn-primary'>Change Password</button>
+                                </div>
+                            <?php ActiveForm::end() ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
     </div>
-  </div>
-</div>
-</div>
+
+
+
 
