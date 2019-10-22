@@ -1,5 +1,6 @@
 <?php
-
+use backend\assets\BackendAsset;
+use backend\assets\BackendArabic;
 use common\models\User;
 use common\models\UserProfile;
 use yii\bootstrap\ActiveForm;
@@ -12,6 +13,11 @@ use yii\helpers\Html;
 /* @var $permissions yii\rbac\Permission[] */
 
 $model->roles =Yii::$app->session->get('UserRole');
+if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
+    $bundle = BackendAsset::register($this);
+}else{
+    $bundle = BackendArabic::register($this);
+}
 
 ?>
 
@@ -49,28 +55,25 @@ if($saved == true){
         <div class="card">
             <div class="card-body">
                 <?php $form = ActiveForm::begin() ?>
-                <div class="row">
-                    <div class="col-md-4">
-                        <?php echo $form->field($profile, 'picture')->widget(\common\b4widget\upload\MyUpload::class, [
+                <?php echo $form->field($profile, 'picture')->widget(\common\b4widget\upload\MyUpload::class, [
                             'url'=>['avatar-upload']
                         ]) ?>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <div class="col-md-6">
+                <div class="row">
+
+
+                            <div class="col-md-3">
                                 <?php echo $form->field($model, 'email') ?>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <?php echo $form->field($model, 'password')->passwordInput() ?>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <?php echo $form->field($profile, 'firstname') ?>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <?php echo $form->field($profile, 'lastname') ?>
                             </div>
-                        </div>
-                    </div>
+
 
 
                 </div>

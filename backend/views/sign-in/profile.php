@@ -14,8 +14,8 @@ $this->title = Yii::t('backend', 'Edit profile');
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="row mb-2">
-        <div class="col-6">
-            <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
+        <div class="col-md-6">
+            <h1 class=""><?= Html::encode($this->title) ?></h1>
         </div>
 
         <!-- /.col -->

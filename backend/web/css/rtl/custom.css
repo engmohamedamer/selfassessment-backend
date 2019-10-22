@@ -26,7 +26,6 @@ ul {
     padding-left: .5rem;
 }
 
-
 /*------------------------------------ contacts-list ------------------------------------*/
 
 .contacts-list-img {
@@ -41,12 +40,14 @@ ul {
 
 /* sidebar */
 
-.sidebar {
-    direction: ltr;
-}
+
 
 .sidebar > div:first-child {
     direction: rtl;
+}
+.nav-icon {
+    margin-right: 0;
+    margin-left: 1rem;
 }
 
 .control-sidebar, .control-sidebar:before {
@@ -130,6 +131,8 @@ ul {
 .main-sidebar {
     left: auto;
     right:0;
+    border-left: 1px solid #e3ebf6;
+    border-right:0;
 }
 
 /* Cards */
@@ -265,3 +268,35 @@ ul {
     margin: 0 20px;
 }
 
+
+
+.content-wrapper, .right-side, .main-footer, .main-header .navbar{
+    margin-left: 0;
+    margin-right: 250px;
+    width: calc(100% - 250px);
+}
+.form-control{
+    border-radius: 0;
+}
+
+.card-title{
+    float: right;
+}
+.skin-blue .sidebar-menu>li>a{
+    padding: 10px 15px 10px 5px ;
+}
+.content-header h1{
+    text-align: right;
+}
+.input-group-html5 .input-group-addon + .form-control {
+    border-right: 0 !important;
+    border-left: 1px solid #ccc !important;
+}
+.input-group .input-group-addon:not(:last-child){
+    border-right: 1px solid #d2d6de !important;
+    border-left: 0 !important;
+}
+.table td a{
+    margin-right: 0;
+    margin-left: 10px;
+  }
