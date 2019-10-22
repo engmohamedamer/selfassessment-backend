@@ -82,8 +82,18 @@ class UserController extends  RestController
             $data = ['token'=> $user->access_token, 'profile'=> $user];
             return ResponseHelper::sendSuccessResponse($data);
         }else{
-            return ResponseHelper::sendFailedResponse($model->errors,401);
+            $data = $this->customResponseError($model->errors);
+            return ResponseHelper::sendFailedResponse($data,401);
         }
+    }
+
+    private function customResponseError($errors)
+    {
+        $data = [];
+        foreach ($errors as $key => $value) {
+            $data[$key] = str_replace('"', ' ', $value[0]);
+        }
+        return $data;
     }
 
 
@@ -123,6 +133,6 @@ class UserController extends  RestController
         if ($model->load(['ResetPassword'=>$params]) && $model->validate() && $model->resetPassword()) {
             return ResponseHelper::sendSuccessResponse(['RESET_PASSWORD_SUCCESS'=>\Yii::t('frontend', 'New password was saved.')]);
         }
-        return ResponseHelper::sendFailedResponse($model->errors);
+        return ResponseHelper::sendFailedResponse($model->getErrors());
     }
 }

@@ -142,7 +142,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                     <p>* يرجى ادخال البيانات المطلوبة باللغتين العربية والإنجليزية.</p>
                                     <hr class='mt-5 mb-5'>
                                     <p>* يظهر اسم المؤسسة المُدخل في أماكن عدة بالموقع كتبويب المتصفح وقائمة الجانبية وفي خانة الحقوق بتذييل الموقع.</p>
-                                    <p>أمثلة توضيحية</p>
+                                    <p> -- أمثلة توضيحية -- </p>
                                     <img src="/img/previews/preview1.png" alt="" class='mt-3 mb-3 img'>
                                     <img src="/img/previews/preview2.png" alt="" class='mt-3 mb-3 img'>
                                     <img src="/img/previews/preview3.png" alt="" class='mt-3 mb-3 img'>
@@ -180,7 +180,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active" >
                                     <p>يظهر شعار المؤسسة في رأس الصفحة وتظهر أيقونة الشعار في تبويب المتصفح والقائمة الجانبية للموقع.</p>
-                                    <p>أمثلة توضيحية</p>
+                                    <p> -- أمثلة توضيحية -- </p>
                                     <img src="/img/previews/preview5.png" alt="" class='mt-3 mb-3 img'>
                                     <img src="/img/previews/preview6.png" alt="" class='mt-3 mb-3 img'>
                                     <p>خصائص إدخال شعار وأيقونة المؤسسة :</p>
@@ -212,7 +212,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 <div  class="tab-pane active">
                                     <p>* تظهر الالوان المدخلة بشكل أساسي في الموقع وتعكس هوية المؤسسة مثل الخلفيات والأزرار الرئيسية.</p>
                                     <p>* برجاء ادخال اللون الرئيسي لهوية المؤسسة وادخال اللون الفرعي بشفافية أقل.</p>
-                                    <p>أمثلة توضيحية</p>
+                                    <p> -- أمثلة توضيحية -- </p>
                                     <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'>
                                     <hr class='mt-5 mb-5'>
                                 </div>
@@ -226,7 +226,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
                 <div class="tab-pane " id="tab_4-4">
                     <div class='row'>
-                        <div class='col-sm-12 col-lg-8 row'>
+                        <div class='col-sm-12 col-lg-8 row theme-edit-content-panel'>
                             <?=
                                 $this->render('_formOrganizationThemeFooterLinks', [
                                 'form' => $form,
@@ -237,18 +237,11 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <h2 class=''> عرض توضيحي</h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active" >
-                                    <p>* يرجى ادخال البيانات المطلوبة باللغتين العربية والإنجليزية.</p>
+                                    <p>* تظهر روابط تذييل الصفحة في أسفل الموقع ويحتوي على 5 روابط يهم المؤسسة إظاهرهم للمستخدم.</p>
+                                    <p>* برجاء ادخال اسم الرابط الذي سيظهر به باللغتين ثم ادخال الرابط المراد ربطه به.</p>
+                                    <p> -- أمثلة توضيحية -- </p>
+                                    <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'>
                                     <hr class='mt-5 mb-5'>
-                                    <p>* يظهر اسم المؤسسة المُدخل في أماكن عدة بالموقع كتبويب المتصفح وقائمة الجانبية وفي خانة الحقوق بتذييل الموقع.</p>
-                                    <p>أمثلة توضيحية</p>
-                                    <img src="/img/previews/preview1.png" alt="" class='mt-3 mb-3 img'>
-                                    <img src="/img/previews/preview2.png" alt="" class='mt-3 mb-3 img'>
-                                    <img src="/img/previews/preview3.png" alt="" class='mt-3 mb-3 img'>
-                                    <hr class='mt-5 mb-5'>
-                                    <p>*يظهر المُدخل الخاص بالـ slug في بداية رابط الموقع الخاص بكم ويكون باللغة الإنجليزية وبدون مسافات ويعبر عن اسم المؤسسة.</p>
-                                    <img src="/img/previews/preview4.png" alt="" class='mt-3 mb-3 img'>
-                                    <hr class='mt-5 mb-5'>
-                                    <p>* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.</p>
                                 </div>
                             </div>
                         </div>
@@ -260,7 +253,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
                 <div class="tab-pane " id="tab_5-5">
                     <div class='row'>
-                        <div class='col-sm-12 col-lg-8 row'>
+                        <div class='col-sm-12 col-lg-8 row theme-edit-content-panel'>
                             <?=
                                 $this->render('_formOrganizationThemeLinks', [
                                 'form' => $form,
@@ -271,18 +264,10 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <h2 class=''> عرض توضيحي</h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active" >
-                                    <p>* يرجى ادخال البيانات المطلوبة باللغتين العربية والإنجليزية.</p>
+                                    <p>* تظهر روابط التواصل الإجتماعي في أسفل الموقع .</p>
+                                    <p> -- أمثلة توضيحية -- </p>
+                                    <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'>
                                     <hr class='mt-5 mb-5'>
-                                    <p>* يظهر اسم المؤسسة المُدخل في أماكن عدة بالموقع كتبويب المتصفح وقائمة الجانبية وفي خانة الحقوق بتذييل الموقع.</p>
-                                    <p>أمثلة توضيحية</p>
-                                    <img src="/img/previews/preview1.png" alt="" class='mt-3 mb-3 img'>
-                                    <img src="/img/previews/preview2.png" alt="" class='mt-3 mb-3 img'>
-                                    <img src="/img/previews/preview3.png" alt="" class='mt-3 mb-3 img'>
-                                    <hr class='mt-5 mb-5'>
-                                    <p>*يظهر المُدخل الخاص بالـ slug في بداية رابط الموقع الخاص بكم ويكون باللغة الإنجليزية وبدون مسافات ويعبر عن اسم المؤسسة.</p>
-                                    <img src="/img/previews/preview4.png" alt="" class='mt-3 mb-3 img'>
-                                    <hr class='mt-5 mb-5'>
-                                    <p>* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.</p>
                                 </div>
                             </div>
                         </div>
