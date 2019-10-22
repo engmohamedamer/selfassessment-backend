@@ -4,7 +4,7 @@
 
 body {
   color: #6e84a3;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 400;
   line-height: 1.5;
 
@@ -14,6 +14,9 @@ body {
 
 a {
   color: #6e84a3;
+}
+.mt-2{
+  margin-top: 15px;
 }
 
 .brand-link {
@@ -36,6 +39,15 @@ a {
 .skin-blue .main-header .logo:hover,.skin-blue .main-header .navbar {
   background-color:transparent;
 }
+.navbar{
+  display: block;
+}
+.dropdown-toggle::after{
+  display: none;
+}
+.navbar-nav>.user-menu .user-image{
+  margin-right: 0;
+}
 .skin-blue .logo{
   background-color: #fff;
   padding: 0.8125rem 0.5rem;
@@ -43,6 +55,7 @@ a {
 }
 .skin-blue .main-header .navbar .sidebar-toggle{
   color: #6e84a3;
+  
 }
 .skin-blue .main-header .navbar .sidebar-toggle:hover {
   background-color: transparent;
@@ -110,9 +123,6 @@ a {
   padding: 10px 5px 10px 15px;
 }
 .dropdown-item {
-
-}
-.dropdown-item {
   display: block;
   width: 100%;
   padding: 1rem;
@@ -140,7 +150,10 @@ a {
   font-size: 1.4rem;
 }
 .card-title{
-  font-size: 2.25rem;
+  float: left;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin: 0;
 }
 .main-header {
   border: 0px !important;
@@ -199,6 +212,9 @@ a {
   height: 30px;
   border-radius: 50%;
 }
+.user-menu .dropdown-toggle{
+  padding: 15px;
+}
 
 .content-header {
   padding: 15px 0;
@@ -217,10 +233,17 @@ a {
   background-clip: border-box;
   border: 0 solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
 }
 .card-body {
   flex: 1 1 auto;
   padding: 1.25rem;
+}
+.card-header {
+  background-color: transparent;
+  border-bottom: 0;
+  position: relative;
+  padding: 15px;
 }
 .table th, .table td {
   padding: 0.5rem;
@@ -235,6 +258,13 @@ a {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+          
+}
+.innernavs{
+  display: flex;
+}
+.nav-pills .nav-link {
+  border-radius: 3px;
 }
 .translatenav ul{
   -webkit-box-pack: end;
@@ -248,7 +278,7 @@ a {
 
 .translatenav .nav-link {
   padding: 2px 20px;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 .detail-view th{
@@ -278,11 +308,20 @@ select.form-control:not([size]):not([multiple]){
 .nav-pills .nav-link:not(.active):hover{
   color: inherit;
 }
-.nav-pills > li.active > a:hover{
+.nav-pills > li.active > a:hover,.nav-pills > li.active > a{
   color: #fff !important;
+}
+.input-group{
+  width: 100%;
 }
 .input-group-addon, .input-group-btn{
   width: auto;
+}
+.input-group .input-group-addon {
+  border-radius: 0;
+  border-color: #d2d6de;
+  background-color: #f4f6f9;
+  line-height: 26px;
 }
 
 

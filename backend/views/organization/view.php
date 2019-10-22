@@ -15,10 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="row mb-2">
-        <div class="col-6">
+        <div class="col-md-6">
             <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
         </div>
-        <div class="col-6 actionBtns">
+        <div class="col-md-6 actionBtns">
             <?= Html::a(Yii::t('common', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         </div>
         <!-- /.col -->
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </ul>
                 <div class="tab-content mt-2">
                     <div class="tab-pane active" id="tab1">
-                        <div class="row">
+                       
 
                             <?php 
                                 $gridColumn = [
@@ -90,10 +90,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 ]);
                             ?>
-                        </div>
+                       
                     </div>
                     <div class="tab-pane" id="tab2">
-                        <div class="row">
+                        
                             <?php 
                                 $gridColumn = [
                                     'user_id',
@@ -113,11 +113,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'attributes' => $gridColumn
                                 ]);
                             ?>
-                        </div>
+                     
                     </div>
 
                     <div class="tab-pane" id="tab3">
-                        <div class="row">
+                       
                             <?php 
                                 $organizationTheme = [
                                     'brandPrimColor',
@@ -140,7 +140,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'attributes' => $organizationTheme
                                 ]);
                             ?>
-                        </div>
+                       
                     </div>
                 </div>
             </div>

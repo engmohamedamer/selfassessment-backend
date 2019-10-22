@@ -23,6 +23,10 @@ class UserController extends  RestController
 
     public function actionLogin(){
         $params = \Yii::$app->request->post();
+        
+        if ($params['locale'] == 'ar') {
+            \Yii::$app->language = 'ar';
+        }
 
         $user = User::find()
             ->active()
@@ -30,11 +34,11 @@ class UserController extends  RestController
             ->one();
 
         if(! $user){
-            return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>'Invalid username or Password - 01']);
+            return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','Please Enter Valid Email')]);
         }
 
         if(! $params['password']){
-            return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>'Invalid username or Password - 02']);
+            return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','Please Enter Password')]);
         }
 
         $valid_password = Yii::$app->getSecurity()->validatePassword($params['password'], $user->password_hash);
@@ -54,17 +58,22 @@ class UserController extends  RestController
             $data = ['token'=> $user->access_token, 'profile'=> $user ];
             return ResponseHelper::sendSuccessResponse($data);
         }else{
-            return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>'Invalid username or Password -03']);
+            return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','Invalid Email or Password')]);
         }
     }
 
     public function actionSignup(){
 
         $params = \Yii::$app->request->post();
+
+        if ($params['locale'] == 'ar') {
+            \Yii::$app->language = 'ar';
+        }
+
         $organization = Organization::findOne(['slug'=>$params['organization']]);
 
         if (!$organization) {
-            return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],401);
+            return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>Yii::t('common','Organization Not Found')],401);
         }
 
         $model = new SignupForm();
@@ -73,7 +82,7 @@ class UserController extends  RestController
             $data = ['token'=> $user->access_token, 'profile'=> $user];
             return ResponseHelper::sendSuccessResponse($data);
         }else{
-            return ResponseHelper::sendFailedResponse(['ERROR'=>'Can not sign up'],401);
+            return ResponseHelper::sendFailedResponse($model->errors,401);
         }
     }
 
