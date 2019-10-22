@@ -304,6 +304,7 @@ select.form-control:not([size]):not([multiple]){
 }
 .table td a{
   color: #007bff;
+  margin-right: 10px;
 }
 .nav-pills .nav-link:not(.active):hover{
   color: inherit;
@@ -322,6 +323,9 @@ select.form-control:not([size]):not([multiple]){
   border-color: #d2d6de;
   background-color: #f4f6f9;
   line-height: 26px;
+}
+.input-group-sp{
+  width: 50px;
 }
 
 

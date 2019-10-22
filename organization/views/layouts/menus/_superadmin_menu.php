@@ -13,10 +13,12 @@ use yii\log\Logger;
 use yii\widgets\Breadcrumbs;
 
 
+
+
 echo Menu::widget([
-    'options' => ['class' => 'nav nav-pills nav-sidebar flex-column', 'data' => ['widget' => 'treeview']],
-    'linkTemplate' => '<a href="{url}" class="nav-link">{icon}<p>{label}{right-icon}{badge}</p></a>',
-    'submenuTemplate' => "\n<ul class=\"nav nav-treeview\">\n{items}\n</ul>\n",
+    'options' => ['class' => 'sidebar-menu tree', 'data' => ['widget' => 'tree']],
+    'linkTemplate' => '<a href="{url}">{icon}<span>{label}</span><span class="pull-right-container">{right-icon}{badge}</span></a>',
+    'submenuTemplate' => "\n<ul class=\"treeview-menu\">\n{items}\n</ul>\n",
     'activateParents' => true,
     'items' => [
         
@@ -32,7 +34,7 @@ echo Menu::widget([
             'label' => Yii::t('common', 'My Organization'),
             'url' => '#',
             'icon' => '<i class="nav-icon fas fa-th"></i>',
-            'options' => ['class' => 'nav-item has-treeview'],
+            'options' => ['class' => 'treeview'],
             'active' => (Yii::$app->controller->module->id == 'organization'),
             'items' => [
                 [
@@ -71,16 +73,6 @@ echo Menu::widget([
                 ],
             ],
         ],
-
-
-        [
-            'label' => Yii::t('common', 'Pages'),
-            'url' => '/pages',
-            'icon' => '<i class="nav-icon fas fa-tachometer-alt"></i>',
-            'options' => ['class' => 'nav-item'],
-            'active' => (Yii::$app->controller->module->id == 'pages'),
-        ],
-
         
     ],
 ]) ?>

@@ -4,7 +4,7 @@
  * @var $content string
  */
 ?>
-<?php $this->beginContent('@backend/views/layouts/common.php'); ?>
+<?php $this->beginContent('@organization/views/layouts/common.php'); ?>
     
     <?php echo $content ?>
        

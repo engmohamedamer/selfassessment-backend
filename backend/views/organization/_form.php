@@ -117,7 +117,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                     <?php echo $form->field($model, 'status')->dropDownList(Organization::status()) ?>
                 </div>
 
-                <div class="w-100"></div>
+                <div class="clearfix"></div>
                 <div class="col-lg-4">
                     <?php echo $form->field($model, 'first_image')->widget(Upload::class, [
                         'url'=>['first-upload']

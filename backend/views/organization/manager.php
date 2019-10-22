@@ -13,6 +13,8 @@ use yii\helpers\Html;
 
 $model->roles =Yii::$app->session->get('UserRole');
 
+
+
 ?>
 
 <?php
@@ -29,8 +31,7 @@ if($saved == true){
 }
 
 ?>
-<div class="col-lg-12">
-<div class="container-fluid">
+<div class="container-fluid orgmanager">
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="row mb-2">
@@ -53,8 +54,8 @@ if($saved == true){
                             'url'=>['avatar-upload']
                         ]) ?>
                 <div class="row">
-                   
-                    
+
+
                             <div class="col-md-3">
                                 <?php echo $form->field($model, 'email') ?>
                             </div>
@@ -67,7 +68,7 @@ if($saved == true){
                             <div class="col-md-3">
                                 <?php echo $form->field($profile, 'lastname') ?>
                             </div>
-                        
+
 
 
                 </div>
