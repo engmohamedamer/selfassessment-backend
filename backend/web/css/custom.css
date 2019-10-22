@@ -311,6 +311,9 @@ select.form-control:not([size]):not([multiple]){
 .nav-pills > li.active > a:hover,.nav-pills > li.active > a{
   color: #fff !important;
 }
+.input-group{
+  width: 100%;
+}
 .input-group-addon, .input-group-btn{
   width: auto;
 }

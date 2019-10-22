@@ -35,29 +35,27 @@ $model->roles =Yii::$app->session->get('UserRole');
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
+               
                         <?php echo $form->field($profile, 'picture')->widget(Upload::class, [
                             'url'=>['avatar-upload']
                         ]) ?>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <div class="col-md-6">
+                    
+              
+
+                <div class="row">
+                            <div class="col-md-3">
                                 <?php echo $form->field($model, 'email') ?>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <?php echo $form->field($model, 'password')->passwordInput() ?>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <?php echo $form->field($profile, 'firstname') ?>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <?php echo $form->field($profile, 'lastname') ?>
                             </div>
                         </div>
-                    </div>
-                </div>
 
                 <div class="row">
                     <div class="col-md-4 col-sm-12">
