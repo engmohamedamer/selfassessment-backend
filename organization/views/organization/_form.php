@@ -39,7 +39,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
 
 
-    
+
 
 <div class="row theme-edit">
 
@@ -94,10 +94,10 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <div class="col-lg-6">
                                 <?php echo $form->field($model, 'city_id')->dropDownList([''=>Yii::t('common',  'Select')]+ArrayHelper::map($city, 'id', 'title'),['id'=>'City-id',]) ?>
                             </div>
-                            
 
-                            
-                            
+
+
+
                             <div class="col-lg-6">
                                 <?php echo $form->field($model, 'district_id')->widget(DepDrop::classname(), [
                                         'data'=> ArrayHelper::map($district,'id','title'),
@@ -107,7 +107,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                             'placeholder' => Yii::t('common',  'Select') ,
                                             'url' => Url::to(['/helper/school-districts','schoolId'=>$model->id])
                                         ]
-                                    ]); 
+                                    ]);
                                 ?>
                             </div>
                             <div class="col-lg-6">
@@ -119,22 +119,22 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'mobile')->textInput(['maxlength' => true]) ?>
                             </div>
-                            
+
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'contact_email')->textInput(['maxlength' => true]) ?>
                             </div>
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'contact_phone')->textInput(['maxlength' => true]) ?>
                             </div>
-                            
+
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'limit_account')->textInput() ?>
                             </div>
 
                             <div class="w-100"></div>
-                            
+
                        </div>
-                       
+
                        <div class='col-sm-0 col-lg-4 theme-edit-preview'>
                             <h2 class=''> عرض توضيحي</h2>
                             <div class='preview-images mt-5'>
@@ -159,18 +159,18 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                 </div>
 
 
-                
+
 
                 <div class="tab-pane " id="tab_2-2">
                     <div class='row'>
                         <div class='col-sm-12 col-lg-8 row'>
                             <div class="col-lg-6">
-                                <?php echo $form->field($model, 'first_image')->widget(\common\b4widget\upload\MyUpload::class, [
+                                <?php echo $form->field($model, 'first_image')->widget(Upload::class, [
                                     'url'=>['first-upload']
                                 ]) ?>
                             </div>
                             <div class="col-lg-6">
-                                <?php echo $form->field($model, 'second_image')->widget(\common\b4widget\upload\MyUpload::class, [
+                                <?php echo $form->field($model, 'second_image')->widget(Upload::class, [
                                     'url'=>['second-upload']
                                 ]) ?>
                             </div>
@@ -192,7 +192,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                 <div class="tab-pane " id="tab_3-3">
                     <div class='row'>
                         <div class='col-sm-12 col-lg-8 row'>
-                            <?= 
+                            <?=
                                 $this->render('_formOrganizationThemeColor', [
                                 'form' => $form,
                                 'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
@@ -207,7 +207,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -216,7 +216,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                 <div class="tab-pane " id="tab_4-4">
                     <div class='row'>
                         <div class='col-sm-12 col-lg-8 row'>
-                            <?= 
+                            <?=
                                 $this->render('_formOrganizationThemeFooterLinks', [
                                 'form' => $form,
                                 'organizationFooterLinks' => is_null($model->organizationFooterLinks) ? new common\models\FooterLinks() : $model->organizationFooterLinks,
@@ -231,7 +231,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -240,7 +240,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                 <div class="tab-pane " id="tab_5-5">
                     <div class='row'>
                         <div class='col-sm-12 col-lg-8 row'>
-                            <?= 
+                            <?=
                                 $this->render('_formOrganizationThemeLinks', [
                                 'form' => $form,
                                 'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
@@ -255,7 +255,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -270,7 +270,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
             <?= Html::submitButton($model->isNewRecord ? Yii::t('common', 'Create') : Yii::t('common', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
         </div>
     </div>
-         
+
 </div>
 
     <?php ActiveForm::end(); ?>

@@ -5,6 +5,7 @@ use common\models\UserProfile;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use trntv\filekit\widget\Upload;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\UserForm */
@@ -37,7 +38,7 @@ $model->roles =Yii::$app->session->get('UserRole');
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <?php echo $form->field($profile, 'picture')->widget(\common\b4widget\upload\MyUpload::class, [
+                        <?php echo $form->field($profile, 'picture')->widget(Upload::class, [
                             'url'=>['avatar-upload']
                         ]) ?>
                     </div>
