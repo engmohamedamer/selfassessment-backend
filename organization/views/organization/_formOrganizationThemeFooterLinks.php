@@ -14,8 +14,7 @@ use yii\widgets\ActiveForm;
 <div class="row">
 
     <div class="col-md-6 col-sm-12">
-        <?= $form->field($organizationFooterLinks, 'name_link1')->textInput()
-        ->widget(MyMultiLanguageActiveField::className());  ?>
+        <?= $form->field($organizationFooterLinks, 'name_link1')->textInput(['maxlength' => true, 'placeholder' => 'Name'])->widget(MyMultiLanguageActiveField::className());  ?>
     </div>
 
     <div class="col-md-6 col-sm-12">

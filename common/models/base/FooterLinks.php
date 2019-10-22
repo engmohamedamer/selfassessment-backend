@@ -67,15 +67,15 @@ class FooterLinks extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('common', 'ID'),
             'organization_id' => Yii::t('common', 'Organization ID'),
-            'name_link1' => Yii::t('common', 'Name Link1'),
+            'name_link1' => Yii::t('common', 'Name First Link'),
             'link1' => Yii::t('common', 'Link1'),
-            'name_link2' => Yii::t('common', 'Name Link2'),
+            'name_link2' => Yii::t('common', 'Name Second Link'),
             'link2' => Yii::t('common', 'Link2'),
-            'name_link3' => Yii::t('common', 'Name Link3'),
+            'name_link3' => Yii::t('common', 'Name Third Link'),
             'link3' => Yii::t('common', 'Link3'),
-            'name_link4' => Yii::t('common', 'Name Link4'),
+            'name_link4' => Yii::t('common', 'Name Fourth Link'),
             'link4' => Yii::t('common', 'Link4'),
-            'name_link5' => Yii::t('common', 'Name Link5'),
+            'name_link5' => Yii::t('common', 'Name Fifth Link'),
             'link5' => Yii::t('common', 'Link5'),
         ];
     }

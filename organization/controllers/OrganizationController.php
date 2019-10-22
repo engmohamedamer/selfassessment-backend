@@ -58,8 +58,6 @@ class OrganizationController extends \yii\web\Controller
         }else{
             \Yii::$app->language = 'en';
         }
-        // \Yii::$app->language = 'ar'; //\Yii::$app->user->identity->userProfile->locale;
-
         parent::init();
     }
 
