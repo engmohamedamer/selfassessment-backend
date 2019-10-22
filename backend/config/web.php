@@ -27,9 +27,9 @@ $config = [
         'assessment' => [
             'class' => 'backend\modules\assessment\Module',
             'params' => [
-                'uploadsUrl' => 'http://advanced-frontend.lh/uploads/survey/', // full URL of the folder where the images will be uploaded.
+                'uploadsUrl' =>  Yii::getAlias('@storageUrl').'/source/survey/', // full URL of the folder where the images will be uploaded.
                 // 'uploadsUrl' => '/uploads/survey/', // or for basic
-                'uploadsPath' => '@frontend/web/uploads/survey/', // absolute path to the folder where images will be saved.
+                'uploadsPath' => '@storage/web/source/survey/', // absolute path to the folder where images will be saved.
             ],
 //            'as access' => [
 //                'class' => AccessControl::class,

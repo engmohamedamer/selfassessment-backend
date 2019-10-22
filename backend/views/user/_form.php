@@ -2,7 +2,7 @@
 
 use common\models\User;
 use common\models\UserProfile;
-use yii\bootstrap4\ActiveForm;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 

@@ -17,19 +17,127 @@ a {
 }
 
 .brand-link {
-  background: white;
+    background: white;
   color: #12263f !important;
   border: 0px !important;
 }
-
+.content-wrapper, .right-side {
+  background-color: #f4f6f9;
+}
 .main-sidebar {
-  background: white;
+  background: white !important;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
   border-right: 1px solid #e3ebf6;
+  padding-top: 0;
+  min-height:100% !important;
+  z-index: 10000;
 }
+.skin-blue .main-header .logo:hover,.skin-blue .main-header .navbar {
+  background-color:transparent;
+}
+.skin-blue .logo{
+  background-color: #fff;
+  padding: 0.8125rem 0.5rem;
+  display: block;
+}
+.skin-blue .main-header .navbar .sidebar-toggle{
+  color: #6e84a3;
+}
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+  background-color: transparent;
+  color: #6e84a3;
+}
+
 .nav-sidebar .nav-header{
   font-size: 1.2rem;
+}
+.skin-blue .sidebar-menu>li:hover>a, .skin-blue .sidebar-menu>li.active>a, .skin-blue .sidebar-menu>li.menu-open>a {
+  text-decoration: none;
+  background-color: #eeeeee;
+  color:#6c757d;
+}
+.skin-blue .sidebar a{
+  color: #6c757d;
+}
+.skin-blue .sidebar-menu>li.header {
+  color: #4b646f;
+  background: transparent;
+}
+.main-sidebar, .left-side{
+  width: 250px;
+}
+
+.content-wrapper, .right-side, .main-footer,.main-header .navbar{
+  margin-left: 250px;
+}
+.sidebar-menu {
+
+  padding: 5px;
+}
+.sidebar-menu li>a>.fa-angle-left, .sidebar-menu li>a>.pull-right-container>.fa-angle-left{
+  width: .75rem;
+}
+.sidebar-menu li>a>.pull-right-container{
+  top: 44%;
+}
+.skin-blue .sidebar-menu>li>.treeview-menu {
+  margin: 0;
+  background: transparent;
+  padding: 4px 0;
+}
+.skin-blue .sidebar-menu .treeview-menu>li>a {
+  color: #6c757d;
+  padding: 10px 5px 10px 15px;
+}
+.skin-blue .sidebar-menu .treeview-menu>li.active>a, .skin-blue .sidebar-menu .treeview-menu>li>a:hover {
+  text-decoration: none;
+  background-color: #eeeeee;
+  color:#6c757d;
+  border-radius: 4px;
+}
+.skin-blue .sidebar-menu>li.header:not(:first-of-type) {
+  padding: 1.7rem 1rem .5rem 1rem;
+  font-size: 1.2rem;
+}
+.skin-blue .main-header .navbar .nav>li>a:hover, .skin-blue .main-header .navbar .nav>li>a:active, .skin-blue .main-header .navbar .nav>li>a:focus, .skin-blue .main-header .navbar .nav .open>a, .skin-blue .main-header .navbar .nav .open>a:hover, .skin-blue .main-header .navbar .nav .open>a:focus, .skin-blue .main-header .navbar .nav>.active>a {
+  background: transparent;
+  color: #f6f6f6;
+}
+.skin-blue .sidebar-menu>li>a{
+  border: 0;
+  border-radius: 4px;
+  padding: 10px 5px 10px 15px;
+}
+.dropdown-item {
+
+}
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.6rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.dropdown-footer, .dropdown-header{
+  text-align: center;
+  display: block;
+}
+.dropdown-divider {
+  height: 0;
+  margin:0;
+  overflow: hidden;
+  border-top: 1px solid #e9ecef;
+}
+.nav-icon {
+  margin-right: 1rem;
+  font-size: 1.4rem;
 }
 .card-title{
   font-size: 2.25rem;
@@ -37,7 +145,7 @@ a {
 .main-header {
   border: 0px !important;
   background: #f4f6f9;
-  padding: 0 8px;
+  padding: 0;
   margin-bottom: 0;
 }
 
@@ -82,7 +190,7 @@ a {
   margin-right: .5rem;
   margin-top: -3px;
   max-height: none;
-  width: 55%;
+  width: 120px;
   display: block;
 }
 
@@ -95,7 +203,25 @@ a {
 .content-header {
   padding: 15px 0;
 }
-
+.content-header h1 {
+  font-size: 1.8rem;
+  margin: 7px 0;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #ffffff;
+  background-clip: border-box;
+  border: 0 solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
 .table th, .table td {
   padding: 0.5rem;
 }
@@ -136,6 +262,10 @@ a {
   font-size: 1.6rem;
   padding: .5rem 1.5rem;
 }
+.btn:hover, .btn:focus, .btn.focus {
+  color: #fff !important;
+  text-decoration: none;
+}
 select.form-control:not([size]):not([multiple]){
   height: 40px;
 }
@@ -153,5 +283,16 @@ select.form-control:not([size]):not([multiple]){
 }
 .input-group-addon, .input-group-btn{
   width: auto;
+}
+
+
+@media (min-width: 768px){
+  .sidebar-mini.sidebar-collapse .main-sidebar{
+    z-index: 10000;
+  }
+  .sidebar-mini.sidebar-collapse .main-sidebar .brand-image{
+    width: 40px;
+    margin: 0;
+  }
 }
 /*# sourceMappingURL=custom.css.map */

@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-use yii\bootstrap4\ActiveForm;
+use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -28,7 +28,7 @@ $this->params['body-class'] = 'login-page';
             <div class="container">
                 <a href="" class="brand-link"><img src="/img/tamkeen-logo.png" width="150"> </a>
 
-                
+
                 <div class="row">
                     <div class="col-md-4">
                         <div class="login">

@@ -35,56 +35,68 @@ if(Yii::$app->user->isGuest){
 ?>
 
 <?php $this->beginContent('@backend/views/layouts/base.php'); ?>
+<div class="wrapper" style="height: auto; min-height: 100%;">
 
-<div class="wrapper">
-        <nav class="main-header navbar navbar-expand">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-                </li>
+<header class="main-header">
 
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown user user-menu">
-                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>"
-                                class="user-image">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header"><?= Yii::t('common','Welcome')?>,  <?php echo Yii::$app->user->identity->userProfile->fullName; ?></span>
-                        <div class="dropdown-divider"></div>
-                        <a href="/sign-in/profile" class="dropdown-item">
-                            <i class="far fa-user-circle mr-2"></i> <?= Yii::t('common','My Profile')?>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="/sign-in/account" class="dropdown-item">
-                            <i class="far fa-user mr-2"></i>  <?= Yii::t('common','My Account')?>
-                        </a>
-                        <div class="dropdown-divider"></div>
+    <!-- Logo -->
+    <!-- Brand Logo -->
 
-                        <?php echo Html::a(  '<i class="fas fa-sign-out-alt mr-2"></i> '. Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'dropdown-item', 'data-method' => 'post']) ?>
-                       
-                    </div>
-                   
-                </li>
-            </ul>
-        </nav>
+
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+          <li class="dropdown user user-menu">
+
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                  <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>"
+                          class="user-image">
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                  <span class="dropdown-item dropdown-header"><?= Yii::t('common','Welcome')?>,  <?php echo Yii::$app->user->identity->userProfile->fullName; ?></span>
+                  <div class="dropdown-divider"></div>
+                  <a href="/sign-in/profile" class="dropdown-item">
+                      <i class="far fa-user-circle mr-2"></i> <?= Yii::t('common','My Profile')?>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a href="/sign-in/account" class="dropdown-item">
+                      <i class="far fa-user mr-2"></i>  <?= Yii::t('common','My Account')?>
+                  </a>
+                  <div class="dropdown-divider"></div>
+
+                  <?php echo Html::a(  '<i class="fas fa-sign-out-alt mr-2"></i> '. Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'dropdown-item', 'data-method' => 'post']) ?>
+
+              </div>
+
+          </li>
+
+
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar ">
-            <!-- Brand Logo -->
-            <a href="/" class="brand-link">
-                <img src="/img/tamkeen-logo.png" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
 
-            </a>
+    <a href="/" class="logo">
+       <img src="/img/tamkeen-logo.png" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
 
+    </a>
             <!-- Sidebar -->
-            <div class="sidebar">
+            <section class="sidebar">
 
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                   
+
 
                     <?php
                     if (Yii::$app->user->can('administrator')) {
@@ -104,20 +116,20 @@ if(Yii::$app->user->isGuest){
 
                 </nav>
                 <!-- /.sidebar-menu -->
-            </div>
+            </section>
             <!-- /.sidebar -->
         </aside>
-    
+
     <!-- Left side column. contains the logo and sidebar -->
-   
+
 
     <!-- Right side column. Contains the navbar and content of the page -->
     <div class="content-wrapper">
-         
+
 
         <!-- Main content -->
         <section class="content">
-            <div class="container-fluid">
+
                 <?php if (Yii::$app->session->hasFlash('alert')): ?>
                     <?php echo Alert::widget([
                         'body' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'body'),
@@ -127,11 +139,11 @@ if(Yii::$app->user->isGuest){
 
                 <?php echo $content ?>
 
-            </div>
+
         </section><!-- /.content -->
     </div><!-- /.right-side -->
 
-  
+
     <footer class="main-footer">
         <strong>&nbsp;</strong>
         <div class="pull-right">

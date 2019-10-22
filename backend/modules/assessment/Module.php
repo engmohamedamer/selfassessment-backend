@@ -54,6 +54,7 @@ class Module extends \yii\base\Module
             $this->params['uploadsPath'] = FileHelper::normalizePath($this->params['uploadsPath']);
         }
 
+        //echo $this->params['uploadsUrl'];die;
         $this->userClass = \Yii::$app->user->identityClass;
 
         \Yii::setAlias('@surveyRoot', __DIR__);

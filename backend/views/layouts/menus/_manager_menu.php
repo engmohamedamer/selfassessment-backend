@@ -14,9 +14,9 @@ use yii\widgets\Breadcrumbs;
 
 
 echo Menu::widget([
-    'options' => ['class' => 'nav nav-pills nav-sidebar flex-column', 'data' => ['widget' => 'treeview']],
-    'linkTemplate' => '<a href="{url}" class="nav-link">{icon}<p>{label}{right-icon}{badge}</p></a>',
-    'submenuTemplate' => "\n<ul class=\"nav nav-treeview\">\n{items}\n</ul>\n",
+    'options' => ['class' => 'sidebar-menu tree', 'data' => ['widget' => 'tree']],
+    'linkTemplate' => '<a href="{url}">{icon}<span>{label}</span><span class="pull-right-container">{right-icon}{badge}</span></a>',
+    'submenuTemplate' => "\n<ul class=\"treeview-menu\">\n{items}\n</ul>\n",
     'activateParents' => true,
     'items' => [
         
@@ -31,20 +31,20 @@ echo Menu::widget([
 
         [
             'label' => Yii::t('backend', 'Users Data'),
-            'options' => ['class' => 'nav-header'],
+            'options' => ['class' => 'header'],
         ],
 
         [
             'label' => Yii::t('backend', 'Users'),
             'url' => '#',
             'icon' => '<i class="nav-icon fas fa-th"></i>',
-            'options' => ['class' => 'nav-item has-treeview'],
+            'options' => ['class' => 'treeview'],
             'active' => (Yii::$app->controller->module->id == 'user'),
             'items' => [
 
                 [
                     'label' => Yii::t('backend', 'Managers'),
-                    'icon' => '<i class="far fa-circle nav-icon"></i>',
+                    'icon' => '<i class="nav-icon far fa-circle nav-icon"></i>',
                     'url' => ['/user/index?user_role=manager'],
                     'options' => ['class' => 'nav-item'],
                     'active' => (Yii::$app->request->get('user_role') == 'schoolAdmin'),
@@ -64,7 +64,7 @@ echo Menu::widget([
 
         [
             'label' => Yii::t('backend', 'Content'),
-            'options' => ['class' => 'nav-header'],
+            'options' => ['class' => 'header'],
         ],
         // [
         //     'label' => Yii::t('backend', 'Static pages'),
@@ -77,7 +77,7 @@ echo Menu::widget([
         //     'label' => Yii::t('backend', 'Articles'),
         //     'url' => '#',
         //     'icon' => '<i class="nav-icon fas fa-th"></i>',
-        //     'options' => ['class' => 'nav-item has-treeview'],
+        //     'options' => ['class' => 'treeview menu-open'],
         //     'active' => 'content' === Yii::$app->controller->module->id &&
         //         ('article' === Yii::$app->controller->id || 'category' === Yii::$app->controller->id),
         //     'items' => [
