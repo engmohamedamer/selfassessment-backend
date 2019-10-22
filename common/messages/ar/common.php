@@ -202,4 +202,9 @@ return [
     'Link3'=>'الرابط الثالث',
     'Link4'=>'الرابط الرابع',
     'Link5'=>'الرابط الخامس',
+
+    'Please Enter Valid Email'=>'الرجاء إدخال بريد إلكتروني صحيح',
+    'Invalid Email or Password'=>'يرجي التاكد من البريد الإلكتروني أو كلمة المرور',
+    'Please Enter Password'=>'من فضلك أدخل كلمة المرور',
+    'Organization Not Found'=>'برجاء ادخال مؤسسة صحيحة',
 ];
