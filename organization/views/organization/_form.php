@@ -187,9 +187,9 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                     <div class='row'>
                         <div class='col-sm-12 col-lg-8 row'>
                             <?= 
-                                $this->render('_formOrganizationTheme', [
+                                $this->render('_formOrganizationThemeColor', [
                                 'form' => $form,
-                                'OrganizationThemeColor' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
+                                'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
@@ -211,9 +211,9 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                     <div class='row'>
                         <div class='col-sm-12 col-lg-8 row'>
                             <?= 
-                                $this->render('_formOrganizationTheme', [
+                                $this->render('_formOrganizationThemeLinks', [
                                 'form' => $form,
-                                'OrganizationThemeLinks' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
+                                'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
