@@ -1,5 +1,6 @@
 <?php
 
+use common\widgets\OrganizationForm;
 use yii\helpers\Html;
 
 
@@ -24,13 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <!-- /.row -->
 </div>
 <!-- /.content-header -->
-
-    <?= $this->render('_form', [
-        'model' => $model,
-        'user' => $user,
-        'profile' => $profile,
-        'theme'=> $theme,
-        'themeFooterLinks'=> $themeFooterLinks
-    ]) ?>
-
+<?= OrganizationForm::widget([
+    'model' => $model,
+    'theme'=> $theme,
+    'user'=> $user,
+    'profile'=> $profile,
+    'themeFooterLinks'=> $themeFooterLinks
+]) ?>
 
