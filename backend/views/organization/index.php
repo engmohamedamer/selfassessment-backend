@@ -64,7 +64,13 @@ echo newerton\fancybox3\FancyBox::widget([
     <?php
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
-        'name',
+        [
+            'attribute' => 'name',
+            'value'=>function ($model) {
+                return Html::a( $model->manager['fullName'], ['/user/view?id='.$model->id]) ;
+            },
+            'format' => 'raw',
+        ],
         [
             'label' => Yii::t('common', 'Organization Manager'),
             'attribute' => 'manager',

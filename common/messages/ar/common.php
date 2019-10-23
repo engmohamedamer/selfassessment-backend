@@ -210,4 +210,6 @@ return [
     'Colors'=>'الألوان',
     'Footer Links'=>'روابط تذييل الصفحة',
     'Socail Links'=>'التواصل الإجتماعي',
+    'Organization Mobile'=>'رقم جوال المؤسسة',
+    'Organization Phone'=>'هاتف المؤسسة',
 ];

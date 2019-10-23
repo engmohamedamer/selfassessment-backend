@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'SearchFullName',
                         'format'    => 'raw',
                         'value'     => function ($model) {
-                            return Html::a( $model->userProfile['fullName'], ['/user/view?id='.$model->id],['target'=>'_blank']) ;
+                            return Html::a( $model->userProfile['fullName'], ['/user/view?id='.$model->id]) ;
                         },
                         'filterType'=>GridView::FILTER_SELECT2,
                         'filter'=>'',
