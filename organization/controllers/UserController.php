@@ -130,9 +130,8 @@ class UserController extends Controller
         $model->setScenario('create');
         $organization = Yii::$app->user->identity->userProfile->organization;
         if ( !$organization->limit_account ||  ( $organization->limit_account and $organization->limit_account >= $this->userCount() ) ) {
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post()) && $profile->load(Yii::$app->request->post()) &&  $model->save()) {
 
-                $profile->load(Yii::$app->request->post());
                 $organization_id = Yii::$app->user->identity->userProfile->organization_id;
                 $user = $this->UpdateUserRelatedTbls($model,$profile,$organization_id)->user;
 

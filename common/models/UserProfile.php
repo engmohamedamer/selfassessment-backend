@@ -136,7 +136,15 @@ class UserProfile extends ActiveRecord
     {
         return $this->avatar_path
             ? Yii::getAlias($this->avatar_base_url . '/' . $this->avatar_path)
-            : $default;
+            : '/img/anonymous.jpg';
+    }
+
+    public function genderList()
+    {
+        return [
+            UserProfile::GENDER_MALE => Yii::t('backend', 'Male'),
+            UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female'),
+        ];
     }
     
 }

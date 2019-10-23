@@ -30,15 +30,42 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
+                <div>
+                    <img src="<?= $model->userProfile->avatar ?>">
+                </div>
                 <?php echo DetailView::widget([
                     'model' => $model,
                     'attributes' => [
                         'id',
-                        'username',
-                        //'auth_key',
-                        'userProfile.firstname',
-                        'userProfile.lastname',
+                        [
+                            'attribute' => Yii::t('common','Name'),
+                            'value' => function($model){
+                                return $model->userProfile->firstname . ' ' . $model->userProfile->lastname ;
+                            },
+                            'format'=>'raw',
+                        ],
                         'email:email',
+                        [
+                            'attribute' => Yii::t('common','Phone'),
+                            'value' => function($model){
+                                return $model->userProfile->mobile;
+                            },
+                            'format'=>'raw',
+                        ],
+                        [
+                            'attribute' => Yii::t('common','Locale'),
+                            'value' => function($model){
+                                return $model->userProfile->locale;
+                            },
+                            'format'=>'raw',
+                        ],
+                        [
+                            'attribute' => Yii::t('common','Gender'),
+                            'value' => function($model){
+                                return $model->userProfile->genderList()[$model->userProfile->gender];
+                            },
+                            'format'=>'raw',
+                        ],
                         [
                             'attribute' => 'status',
                             'value' => function($model){
