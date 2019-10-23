@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <!-- /.content-header -->
 
-    <?= $this->render('_formTest', [
+    <?= $this->render('_form', [
         'model' => $model,
         'user' => $user,
         'profile' => $profile,
