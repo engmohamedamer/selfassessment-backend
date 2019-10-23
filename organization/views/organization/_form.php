@@ -47,9 +47,9 @@ if (isset($model->city_id) and !empty($model->city_id)) {
         <ul class="nav nav-pills nav-stacked">
             <li role="presentation" class="active"><a  href="#tab_1-1" data-toggle="tab" aria-expanded="true"><span class=" glyphicon glyphicon-pencil" aria-hidden="true"></span><p><?php echo Yii::t('backend', 'Main Details') ?></p></a></li>
             <li role="presentation" class=""><a  href="#tab_2-2" data-toggle="tab" aria-expanded="true"><span class=" glyphicon glyphicon-eye-open" aria-hidden="true"></span><p><?php echo Yii::t('common', 'Organization Theme') ?></p></a></li>
-            <li role="presentation" class=""><a  href="#tab_3-3" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-palette"></i></span><p>الألوان</p></a></li>
-            <li role="presentation" class=""><a  href="#tab_4-4" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-link"></i></span><p>روابط تذييل الصفحة</p></a></li>
-            <li role="presentation" class=""><a  href="#tab_5-5" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-users"></i></span><p>التواصل الإجتماعي</p></a></li>
+            <li role="presentation" class=""><a  href="#tab_3-3" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-palette"></i></span><p><?php echo Yii::t('common', 'Colors') ?></p></a></li>
+            <li role="presentation" class=""><a  href="#tab_4-4" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-link"></i></span><p><?php echo Yii::t('common', 'Footer Links') ?></p></a></li>
+            <li role="presentation" class=""><a  href="#tab_5-5" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-users"></i></span><p><?php echo Yii::t('common', 'Socail Links') ?></p></a></li>
         </ul>
     </div>
 
