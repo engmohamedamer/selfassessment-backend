@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="content-header">
     <div class="row mb-2">
         <div class="col-md-6">
-            اسم الموظف
+            <?= $model->userProfile->firstname . ' ' . $model->userProfile->lastname  ?>
         </div>
         <div class="col-md-6 actionBtns">
         <?php echo Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
