@@ -23,10 +23,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="row mb-2">
-        <div class="col-6">
+        <div class="col-md-6">
             <h1 class="m-0 text-dark"><?= Yii::t('common','Contributors')?></h1>
         </div>
-        <div class="col-6 actionBtns">
+        <div class="col-md-6 actionBtns">
             <?php echo Html::a(Yii::t('common', 'Create New Contributors'), ['create'], ['class' => 'btn btn-primary']) ?>
         </div>
         <!-- /.col -->

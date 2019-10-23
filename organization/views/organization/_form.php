@@ -27,6 +27,8 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 }else{
     $district = [];
 }
+
+$OrganizationTheme  = is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme;
 ?>
 
 
@@ -47,13 +49,13 @@ if (isset($model->city_id) and !empty($model->city_id)) {
         <ul class="nav nav-pills nav-stacked">
             <li role="presentation" class="active"><a  href="#tab_1-1" data-toggle="tab" aria-expanded="true"><span ><i class="fas fa-edit"></i></span><p><?php echo Yii::t('backend', 'Main Details') ?></p></a></li>
             <li role="presentation" class=""><a  href="#tab_2-2" data-toggle="tab" aria-expanded="true"><span ><i class="fas fa-eye"></i></span><p><?php echo Yii::t('common', 'Organization Theme') ?></p></a></li>
-            <li role="presentation" class=""><a  href="#tab_3-3" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-palette"></i></span><p>الألوان</p></a></li>
-            <li role="presentation" class=""><a  href="#tab_4-4" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-link"></i></span><p>روابط تذييل الصفحة</p></a></li>
-            <li role="presentation" class=""><a  href="#tab_5-5" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-users"></i></span><p>التواصل الإجتماعي</p></a></li>
+            <li role="presentation" class=""><a  href="#tab_3-3" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-palette"></i></span><p><?php echo Yii::t('common', 'Colors') ?></p></a></li>
+            <li role="presentation" class=""><a  href="#tab_4-4" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-link"></i></span><p><?php echo Yii::t('common', 'Footer Links') ?></p></a></li>
+            <li role="presentation" class=""><a  href="#tab_5-5" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-users"></i></span><p><?php echo Yii::t('common', 'Socail Links') ?></p></a></li>
         </ul>
     </div>
 
-    <div class='col-sm-10 theme-edit-content'>
+    <div class='col-sm-10 col-lg-11 theme-edit-content'>
         <!-- <h2 class='mt-2 mb-5'>تعديل البيانات</h2> -->
         <div class='theme-edit-form'>
             <div class="tab-content mt-5">
@@ -131,6 +133,9 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 <?= $form->field($model, 'limit_account')->textInput() ?>
                             </div>
 
+                            <div class="col-md-6 col-sm-12">
+                                <?php echo  $form->field($OrganizationTheme, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
+                            </div>
                             <div class="w-100"></div>
 
                        </div>
@@ -204,7 +209,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <?=
                                 $this->render('_formOrganizationThemeColor', [
                                 'form' => $form,
-                                'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
+                                'OrganizationTheme' => $OrganizationTheme,
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
@@ -258,7 +263,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <?=
                                 $this->render('_formOrganizationThemeLinks', [
                                 'form' => $form,
-                                'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
+                                'OrganizationTheme' => $OrganizationTheme,
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>

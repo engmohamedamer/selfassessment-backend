@@ -101,7 +101,8 @@ a {
 }
 .skin-blue .sidebar-menu .treeview-menu>li>a {
   color: #6c757d;
-  padding: 10px 5px 10px 15px;
+  padding: 10px 15px 10px 5px;
+  margin-top: 4px;
 }
 .skin-blue .sidebar-menu .treeview-menu>li.active>a, .skin-blue .sidebar-menu .treeview-menu>li>a:hover {
   text-decoration: none;
@@ -329,7 +330,9 @@ select.form-control:not([size]):not([multiple]){
   width: 50px;
 }
 
-
+.pt-45{
+  padding-top: 45px;
+}
 @media (min-width: 768px){
   .sidebar-mini.sidebar-collapse .main-sidebar{
     z-index: 10000;
@@ -339,4 +342,6 @@ select.form-control:not([size]):not([multiple]){
     margin: 0;
   }
 }
+
+
 /*# sourceMappingURL=custom.css.map */

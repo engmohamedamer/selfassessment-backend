@@ -207,4 +207,7 @@ return [
     'Invalid Email or Password'=>'يرجي التاكد من البريد الإلكتروني أو كلمة المرور',
     'Please Enter Password'=>'من فضلك أدخل كلمة المرور',
     'Organization Not Found'=>'برجاء ادخال مؤسسة صحيحة',
+    'Colors'=>'الألوان',
+    'Footer Links'=>'روابط تذييل الصفحة',
+    'Socail Links'=>'التواصل الإجتماعي',
 ];
