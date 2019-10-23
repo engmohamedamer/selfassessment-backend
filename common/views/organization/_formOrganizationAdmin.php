@@ -18,7 +18,8 @@ use yii\widgets\ActiveForm;
                 'url'=>['avatar-upload']
             ]) ?>
         </div>
-
+            </div>
+            <div class="row">
         <div class="col-md-4 col-sm-12">
             <?php echo $form->field($user, 'email') ?>
         </div>
@@ -32,7 +33,8 @@ use yii\widgets\ActiveForm;
         <div class="col-md-4 col-sm-12">
             <?php echo $form->field($profile, 'firstname') ?>
         </div>
-
+            </div>
+            <div class="row">
         <div class="col-md-4 col-sm-12">
             <?php echo $form->field($profile, 'lastname') ?>
         </div>

@@ -349,6 +349,9 @@ select.form-control:not([size]):not([multiple]){
 .table .form-control,.table select.form-control:not([size]):not([multiple]){
 height: 34px;
 }
+.input-group-sp.input-group-addon{
+  min-width: 70px;
+}
 
 .field-survey-imagefile #survey-imagefile{
   display: none;

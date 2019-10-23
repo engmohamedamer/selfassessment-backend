@@ -142,6 +142,8 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                         'url'=>['avatar-upload']
                     ]) ?>
                 </div>
+                    </div>
+                    <div class="row">    
 
                 <div class="col-md-4 col-sm-12">
                     <?php echo $form->field($user, 'email') ?>
@@ -156,7 +158,8 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                 <div class="col-md-4 col-sm-12">
                     <?php echo $form->field($profile, 'firstname') ?>
                 </div>
-
+                    </div>
+                    <div class="row">
                 <div class="col-md-4 col-sm-12">
                     <?php echo $form->field($profile, 'lastname') ?>
                 </div>
