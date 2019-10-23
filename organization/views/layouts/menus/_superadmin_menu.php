@@ -55,7 +55,7 @@ echo Menu::widget([
         [
             'label' => Yii::t('common', 'Contributors'),
             'url' => '/user/index',
-            'icon' => '<i class="far fa-circle nav-icon"></i>',
+            'icon' => '<i class="fas fa-users nav-icon"></i>',
             'options' => ['class' => 'nav-item'],
             'active' => (Yii::$app->controller->module->id == 'user'),
         ],

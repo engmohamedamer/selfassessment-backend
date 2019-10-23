@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($organizationFooterLinks, 'name_link1')->textInput(['maxlength' => true, 'placeholder' => 'Name'])->widget(MyMultiLanguageActiveField::className());  ?>
         </div>
 
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-6 col-sm-12 pt-45">
             <?php echo  $form->field($organizationFooterLinks, 'link1')->textInput() ?>
         </div>
     </div>
@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
             ->widget(MyMultiLanguageActiveField::className());  ?>
         </div>
 
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-6 col-sm-12 pt-45">
             <?php echo  $form->field($organizationFooterLinks, 'link2')->textInput() ?>
         </div>
     </div>
@@ -39,7 +39,7 @@ use yii\widgets\ActiveForm;
             ->widget(MyMultiLanguageActiveField::className());  ?>
         </div>
 
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-6 col-sm-12 pt-45">
             <?php echo  $form->field($organizationFooterLinks, 'link3')->textInput() ?>
         </div>
 
@@ -52,7 +52,7 @@ use yii\widgets\ActiveForm;
             ->widget(MyMultiLanguageActiveField::className());  ?>
         </div>
 
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-6 col-sm-12 pt-45">
             <?php echo  $form->field($organizationFooterLinks, 'link4')->textInput() ?>
         </div>
 
@@ -64,7 +64,7 @@ use yii\widgets\ActiveForm;
             ->widget(MyMultiLanguageActiveField::className());  ?>
         </div>
 
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-6 col-sm-12 pt-45">
             <?php echo  $form->field($organizationFooterLinks, 'link5')->textInput() ?>
         </div>
 

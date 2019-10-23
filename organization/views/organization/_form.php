@@ -55,7 +55,7 @@ $OrganizationTheme  = is_null($model->organizationTheme) ? new common\models\Org
         </ul>
     </div>
 
-    <div class='col-sm-10 theme-edit-content'>
+    <div class='col-sm-10 col-lg-11 theme-edit-content'>
         <!-- <h2 class='mt-2 mb-5'>تعديل البيانات</h2> -->
         <div class='theme-edit-form'>
             <div class="tab-content mt-5">
