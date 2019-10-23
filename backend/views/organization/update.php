@@ -1,5 +1,6 @@
 <?php
 
+use common\widgets\OrganizationForm;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -24,6 +25,5 @@ $this->params['breadcrumbs'][] = Yii::t('common', 'Update');
     <!-- /.row -->
 </div>
 <!-- /.content-header -->
-<?= $this->render('_form', [
-    'model' => $model,
-]) ?>
+<?= OrganizationForm::widget(['model' => $model]) ?>
+
