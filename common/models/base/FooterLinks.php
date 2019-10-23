@@ -105,8 +105,8 @@ class FooterLinks extends \yii\db\ActiveRecord
                         'name_link5',
                     ],
                     'admin_routes'     => [
-                        'footer-links/update',
-                        'footer-links/index',
+                        'organization/update',
+                        'organization/index',
                     ],
                 ],
             ],
