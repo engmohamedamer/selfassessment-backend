@@ -30,9 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <div>
-                    <img src="<?= $model->userProfile->avatar ?>">
+                <div class="col-md-3">
+                    <img src="<?= $model->userProfile->avatar ?>" class="img-thumbnail">
                 </div>
+                <div class="col-md-9">
                 <?php echo DetailView::widget([
                     'model' => $model,
                     'attributes' => [
@@ -77,6 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'logged_at:datetime',
                     ],
                 ]) ?>
+                </div>
             </div>
         </div>
     </div>

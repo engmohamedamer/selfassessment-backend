@@ -329,7 +329,10 @@ select.form-control:not([size]):not([multiple]){
 .input-group-sp{
   width: 50px;
 }
-
+.dropdown-menu-lg .dropdown-item:hover,.dropdown-menu-lg .dropdown-item:focus{
+  background: #eeeeee;
+    text-decoration: none;
+}
 .pt-45{
   padding-top: 45px;
 }
