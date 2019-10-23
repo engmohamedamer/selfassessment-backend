@@ -359,6 +359,7 @@ height: 34px;
 .modal{
   z-index: 10500;
 }
+
 .survey-container .survey-block .btn.btn-primary, .kv-editable-popover .survey-block .btn.btn-primary {
   color: #fff !important;
   background-color: #428bca !important;

@@ -33,7 +33,12 @@ echo newerton\fancybox3\FancyBox::widget([
 ]);
 
 ?>
-
+<style>
+.table-responsive {
+    min-height: 0.01%;
+    overflow-x: hidden;
+}
+</style>
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="row mb-2">
