@@ -67,7 +67,7 @@ echo newerton\fancybox3\FancyBox::widget([
         [
             'attribute' => 'name',
             'value'=>function ($model) {
-                return Html::a( $model->manager['fullName'], ['/user/view?id='.$model->id]) ;
+                return Html::a( $model->name, ['/organization/view?id='.$model->id]) ;
             },
             'format' => 'raw',
         ],
