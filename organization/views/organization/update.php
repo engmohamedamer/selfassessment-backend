@@ -26,4 +26,8 @@ $this->params['breadcrumbs'][] = Yii::t('common', 'Update');
 </div>
 <!-- /.content-header -->
 
-<?= OrganizationForm::widget(['model' => $model]) ?>
+<?= OrganizationForm::widget([
+	'model' => $model,
+	'theme'=> $theme,
+	'themeFooterLinks'=> $themeFooterLinks
+]) ?>

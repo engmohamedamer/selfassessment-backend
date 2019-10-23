@@ -2,14 +2,15 @@
 
 namespace backend\controllers;
 
-use trntv\filekit\actions\DeleteAction;
 use Yii;
 use backend\models\UserForm;
+use common\models\FooterLinks;
 use common\models\Organization;
 use common\models\OrganizationSearch;
 use common\models\OrganizationTheme;
 use common\models\User;
 use common\models\UserProfile;
+use trntv\filekit\actions\DeleteAction;
 use trntv\filekit\actions\UploadAction;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
@@ -106,29 +107,41 @@ class OrganizationController extends BackendController
         $user->roles = User::ROLE_GOVERNMENT_ADMIN; 
         $user->status = User::STATUS_ACTIVE;
         $profile = new UserProfile();
+        $theme = new OrganizationTheme();
+        $themeFooterLinks = new FooterLinks();
 
         $user->setScenario('create');
 
-        if ($model->load(Yii::$app->request->post()) &&  $user->load(Yii::$app->request->post()) && $profile->load(Yii::$app->request->post()) && $model->validate() && $user->validate() ) {
-            $model->save();
-            $user->save();
-            $profile->load(Yii::$app->request->post());
-            $this->UpdateUserRelatedTbls($user,$profile,$model->id);
+        if ($model->load(Yii::$app->request->post()) &&  
+            $user->load(Yii::$app->request->post()) &&
+            $model->validate() && $user->validate() && 
+            $profile->load(Yii::$app->request->post()) && 
+            $theme->load(Yii::$app->request->post()) && 
+            $themeFooterLinks->load(Yii::$app->request->post())  
+        ) {
 
-            $theme = new OrganizationTheme();
-            $theme->organization_id = $model->id;
-            $theme->load(Yii::$app->request->post());
-            if (!$theme->save()) {
-                return var_dump($theme->errors);
+            if ($model->validate() && $user->validate() && $theme->validate() && 
+                $themeFooterLinks->validate()) {
+                $model->save();
+                $user->save();
+                $profile->load(Yii::$app->request->post());
+                $this->UpdateUserRelatedTbls($user,$profile,$model->id);
+
+                $theme->organization_id = $model->id;
+                $themeFooterLinks->organization_id = $model->id;
+                
+                if($themeFooterLinks->save() && $theme->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
-            
-            return $this->redirect(['view', 'id' => $model->id]);
         }
-        
+
         return $this->render('create', [
             'model' => $model,
             'user' => $user,
             'profile' => $profile,
+            'theme'=> $theme,
+            'themeFooterLinks'=> $themeFooterLinks
         ]);
 
     }
@@ -142,18 +155,21 @@ class OrganizationController extends BackendController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        // return var_dump(Yii::$app->request->post(), $model->load(Yii::$app->request->post()));
-
+        $theme = OrganizationTheme::findOne(['organization_id'=>$id]);
+        $themeFooterLinks = FooterLinks::findOne(['organization_id'=>$id]);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $theme = OrganizationTheme::findOne(['organization_id'=>$id]);
-            if ( $theme !== null) {
-                if ($theme->load(Yii::$app->request->post()) && $theme->save()) {
+            if (!$themeFooterLinks) {
+                $themeFooterLinks = new FooterLinks();
+                $themeFooterLinks->organization_id = $id;
+            }
+            if ($themeFooterLinks->load(\Yii::$app->request->post()) && $theme->load(\Yii::$app->request->post()) && $themeFooterLinks->save() && $theme->save()) {
                     return $this->redirect(['view', 'id' => $model->id]);
-                }
             }
         }
         return $this->render('update', [
             'model' => $model,
+            'theme' => $theme,
+            'themeFooterLinks' => $themeFooterLinks,
         ]);
     }
 

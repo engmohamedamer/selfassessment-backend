@@ -97,19 +97,17 @@ class OrganizationController extends \yii\web\Controller
     {
         $id = \Yii::$app->user->identity->userProfile->organization_id;
         $model = $this->findModel($id);
+        $theme = OrganizationTheme::findOne(['organization_id'=>$id]);
+        $themeFooterLinks = FooterLinks::findOne(['organization_id'=>$id]);
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
-            $theme = OrganizationTheme::findOne(['organization_id'=>$id]);
-            $themeFooterLinks = FooterLinks::findOne(['organization_id'=>$id]);
-            if (!$themeFooterLinks) {
-                $themeFooterLinks = new FooterLinks();
-                $themeFooterLinks->organization_id = $id;
-            }
             if ($themeFooterLinks->load(\Yii::$app->request->post()) && $theme->load(\Yii::$app->request->post()) && $themeFooterLinks->save() && $theme->save()) {
                 return $this->redirect(['view']);
             }
         }
         return $this->render('update', [
             'model' => $model,
+            'theme' => $theme,
+            'themeFooterLinks' => $themeFooterLinks,
         ]);
     }
     /**
