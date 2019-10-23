@@ -14,6 +14,9 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use common\helpers\multiLang\MyMultiLanguageActiveField;
 
+
+\organization\assets\OrgUpdate::register($this);
+
 /* @var $this yii\web\View */
 /* @var $model common\models\Organization */
 /* @var $form yii\widgets\ActiveForm */
