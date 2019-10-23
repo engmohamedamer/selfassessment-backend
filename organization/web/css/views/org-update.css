@@ -53,7 +53,7 @@
 
 .preview-images img {
     border-radius: 10px;
-    max-width: 100%;
+    max-width: 90%;
 }
 
 .upload-kit-item.done.image img {width: 100% !important}

@@ -45,8 +45,8 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
     <div class='col-sm-2 col-lg-1 theme-nav' >
         <ul class="nav nav-pills nav-stacked">
-            <li role="presentation" class="active"><a  href="#tab_1-1" data-toggle="tab" aria-expanded="true"><span class=" glyphicon glyphicon-pencil" aria-hidden="true"></span><p><?php echo Yii::t('backend', 'Main Details') ?></p></a></li>
-            <li role="presentation" class=""><a  href="#tab_2-2" data-toggle="tab" aria-expanded="true"><span class=" glyphicon glyphicon-eye-open" aria-hidden="true"></span><p><?php echo Yii::t('common', 'Organization Theme') ?></p></a></li>
+            <li role="presentation" class="active"><a  href="#tab_1-1" data-toggle="tab" aria-expanded="true"><span ><i class="fas fa-edit"></i></span><p><?php echo Yii::t('backend', 'Main Details') ?></p></a></li>
+            <li role="presentation" class=""><a  href="#tab_2-2" data-toggle="tab" aria-expanded="true"><span ><i class="fas fa-eye"></i></span><p><?php echo Yii::t('common', 'Organization Theme') ?></p></a></li>
             <li role="presentation" class=""><a  href="#tab_3-3" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-palette"></i></span><p>الألوان</p></a></li>
             <li role="presentation" class=""><a  href="#tab_4-4" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-link"></i></span><p>روابط تذييل الصفحة</p></a></li>
             <li role="presentation" class=""><a  href="#tab_5-5" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-users"></i></span><p>التواصل الإجتماعي</p></a></li>
@@ -64,6 +64,13 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                 <div class="tab-pane active" id="tab_1-1">
                     <div class="row">
                        <div class='col-sm-12 col-lg-8 row theme-edit-content-panel'>
+
+                            <div class="col-sm-12">
+                                <?= $form->field($model, 'slug',[
+                                        'addon' => ['prepend' => ['content'=>'selfasses.com']]
+                                ])->textInput(['maxlength' => true]) ?>
+                            </div>
+                            <hr class='mt-5 mb-5 col-lg-12 row'>
 
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name'])
@@ -84,19 +91,12 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             </div>
                             <div class="col-lg-6">
                             </div>
+                            <hr class='mt-5 mb-5 col-lg-12 row'>
 
-                            <div class="col-lg-6">
-                                <?= $form->field($model, 'slug',[
-                                        'addon' => ['prepend' => ['content'=>'selfasses.com']]
-                                ])->textInput(['maxlength' => true]) ?>
-                            </div>
 
                             <div class="col-lg-6">
                                 <?php echo $form->field($model, 'city_id')->dropDownList([''=>Yii::t('common',  'Select')]+ArrayHelper::map($city, 'id', 'title'),['id'=>'City-id',]) ?>
                             </div>
-
-
-
 
                             <div class="col-lg-6">
                                 <?php echo $form->field($model, 'district_id')->widget(DepDrop::classname(), [
@@ -141,14 +141,15 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 <div  class="tab-pane active">
                                     <p>* يرجى ادخال البيانات المطلوبة باللغتين العربية والإنجليزية.</p>
                                     <hr class='mt-5 mb-5'>
+                                    <p>*يظهر المُدخل الخاص بالـ slug في بداية رابط الموقع الخاص بكم ويكون باللغة الإنجليزية وبدون مسافات ويعبر عن اسم المؤسسة.</p>
+                                    <img src="/img/previews/preview4.png" alt="" class='mt-3 mb-3 img'>
+                                    <hr class='mt-5 mb-5'>
                                     <p>* يظهر اسم المؤسسة المُدخل في أماكن عدة بالموقع كتبويب المتصفح وقائمة الجانبية وفي خانة الحقوق بتذييل الموقع.</p>
                                     <p> -- أمثلة توضيحية -- </p>
                                     <img src="/img/previews/preview1.png" alt="" class='mt-3 mb-3 img'>
                                     <img src="/img/previews/preview2.png" alt="" class='mt-3 mb-3 img'>
                                     <img src="/img/previews/preview3.png" alt="" class='mt-3 mb-3 img'>
-                                    <hr class='mt-5 mb-5'>
-                                    <p>*يظهر المُدخل الخاص بالـ slug في بداية رابط الموقع الخاص بكم ويكون باللغة الإنجليزية وبدون مسافات ويعبر عن اسم المؤسسة.</p>
-                                    <img src="/img/previews/preview4.png" alt="" class='mt-3 mb-3 img'>
+                                    
                                     <hr class='mt-5 mb-5'>
                                     <!-- <p>* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.</p> -->
                                 </div>
