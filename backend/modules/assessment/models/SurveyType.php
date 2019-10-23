@@ -1,6 +1,6 @@
 <?php
 
-namespace onmotion\survey\models;
+namespace backend\modules\assessment\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;

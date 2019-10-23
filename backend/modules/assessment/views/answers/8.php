@@ -9,7 +9,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-/** @var $question \onmotion\survey\models\SurveyQuestion */
+/** @var $question \backend\modules\assessment\models\SurveyQuestion */
 /** @var $form \yii\widgets\ActiveForm */
 
 echo 'Will be presented text box where respondent can enter the open-ended answer';

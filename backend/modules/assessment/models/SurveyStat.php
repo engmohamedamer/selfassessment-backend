@@ -1,6 +1,6 @@
 <?php
 
-namespace onmotion\survey\models;
+namespace backend\modules\assessment\models;
 
 use app\modules\user\models\User;
 use Yii;

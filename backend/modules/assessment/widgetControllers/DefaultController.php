@@ -1,16 +1,16 @@
 <?php
 
-namespace onmotion\survey\widgetControllers;
+namespace backend\modules\assessment\widgetControllers;
 
-use onmotion\survey\models\search\SurveySearch;
-use onmotion\survey\models\search\SurveyStatSearch;
-use onmotion\survey\models\Survey;
-use onmotion\survey\models\SurveyAnswer;
-use onmotion\survey\models\SurveyQuestion;
-use onmotion\survey\models\SurveyStat;
-use onmotion\survey\models\SurveyType;
-use onmotion\survey\SurveyInterface;
-use onmotion\survey\User;
+use backend\modules\assessment\models\search\SurveySearch;
+use backend\modules\assessment\models\search\SurveyStatSearch;
+use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyAnswer;
+use backend\modules\assessment\models\SurveyQuestion;
+use backend\modules\assessment\models\SurveyStat;
+use backend\modules\assessment\models\SurveyType;
+use backend\modules\assessment\SurveyInterface;
+use backend\modules\assessment\User;
 use yii\base\Model;
 use yii\base\UserException;
 use yii\db\Expression;
@@ -105,7 +105,7 @@ class DefaultController extends Controller
             'title' => '<div class="text-center"><h2>' . \Yii::t('survey', 'Thank you!'),
             'content' => $this->renderPartial('@surveyRoot/views/widget/default/success', ['survey' => $survey]),
             'footer' =>
-              Html::button('Ok', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) 
+              Html::button('Ok', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"])
         ];
     }
 

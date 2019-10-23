@@ -6,11 +6,11 @@
  * Time: 13:59
  */
 
-use onmotion\survey\models\SurveyUserAnswer;
+use backend\modules\assessment\models\SurveyUserAnswer;
 use vova07\imperavi\Widget;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-/** @var $question \onmotion\survey\models\SurveyQuestion */
+/** @var $question \backend\modules\assessment\models\SurveyQuestion */
 /** @var $form \yii\widgets\ActiveForm */
 

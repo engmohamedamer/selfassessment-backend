@@ -21,7 +21,7 @@ class Module extends \yii\base\Module
     public $userClass;
 
     public $params = [
-        'uploadsUrl' => null,
+        'uploadsUrl' => 'http://storage.selfassest.localhost/source/survey/',
         'uploadsPath' => null,
     ];
 
@@ -37,8 +37,8 @@ class Module extends \yii\base\Module
 
 //        if (empty($this->controllerNamespace)) {
 //            $this->controllerNamespace = \Yii::$app->controllerNamespace === 'backend\controllers'
-//                ? 'onmotion\survey\controllers'
-//                : 'onmotion\survey\widgetControllers';
+//                ? 'backend\modules\assessment\controllers'
+//                : 'backend\modules\assessment\widgetControllers';
 //        }
 
         parent::init();
@@ -48,6 +48,7 @@ class Module extends \yii\base\Module
         } else {
             $this->params['uploadsUrl'] = rtrim($this->params['uploadsUrl'], '/');
         }
+
         if (empty($this->params['uploadsPath'])) {
             throw new UserException("You must set uploadsPath param in the config. Please see the documentation for more information.");
         } else {

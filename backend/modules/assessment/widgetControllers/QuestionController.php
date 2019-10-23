@@ -1,13 +1,13 @@
 <?php
 
-namespace onmotion\survey\widgetControllers;
+namespace backend\modules\assessment\widgetControllers;
 
-use onmotion\survey\models\Survey;
-use onmotion\survey\models\SurveyAnswer;
-use onmotion\survey\models\SurveyQuestion;
-use onmotion\survey\models\SurveyStat;
-use onmotion\survey\models\SurveyType;
-use onmotion\survey\models\SurveyUserAnswer;
+use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyAnswer;
+use backend\modules\assessment\models\SurveyQuestion;
+use backend\modules\assessment\models\SurveyStat;
+use backend\modules\assessment\models\SurveyType;
+use backend\modules\assessment\models\SurveyUserAnswer;
 use vova07\imperavi\actions\GetAction;
 use yii\base\Event;
 use yii\base\Model;

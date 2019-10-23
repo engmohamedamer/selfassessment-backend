@@ -7,7 +7,7 @@
  */
 
 use cenotia\components\modal\RemoteModal;
-use onmotion\survey\models\SurveyStat;
+use backend\modules\assessment\models\SurveyStat;
 use kartik\editable\Editable;
 use kartik\helpers\Html;
 use wbraganca\dynamicform\DynamicFormWidget;
@@ -16,7 +16,7 @@ use yii\bootstrap\Modal;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $survey \onmotion\survey\models\Survey */
+/* @var $survey \backend\modules\assessment\models\Survey */
 /* @var $stat SurveyStat */
 
 
