@@ -27,6 +27,8 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 }else{
     $district = [];
 }
+
+$OrganizationTheme  = is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme;
 ?>
 
 
@@ -131,6 +133,9 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 <?= $form->field($model, 'limit_account')->textInput() ?>
                             </div>
 
+                            <div class="col-md-6 col-sm-12">
+                                <?php echo  $form->field($OrganizationTheme, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
+                            </div>
                             <div class="w-100"></div>
 
                        </div>
@@ -203,7 +208,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <?=
                                 $this->render('_formOrganizationThemeColor', [
                                 'form' => $form,
-                                'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
+                                'OrganizationTheme' => $OrganizationTheme,
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
@@ -257,7 +262,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <?=
                                 $this->render('_formOrganizationThemeLinks', [
                                 'form' => $form,
-                                'OrganizationTheme' => is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme,
+                                'OrganizationTheme' => $OrganizationTheme,
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
