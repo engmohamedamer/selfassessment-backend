@@ -4,19 +4,19 @@
  * @var $content string
  */
 
-use backend\assets\BackendAsset;
 use backend\assets\BackendArabic;
+use backend\assets\BackendAsset;
 use backend\modules\system\models\SystemLog;
 use backend\widgets\Menu;
 use common\models\TimelineEvent;
-use yii\bootstrap4\Alert;
+use kartik\icons\Icon;
+use kartik\widgets\Alert;
+// use yii\bootstrap4\Alert;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\log\Logger;
 use yii\widgets\Breadcrumbs;
-
-use kartik\icons\Icon;
 Icon::map($this);
 
 
@@ -122,10 +122,15 @@ if(Yii::$app->user->isGuest){
         <section class="content">
 
                 <?php if (Yii::$app->session->hasFlash('alert')): ?>
-                    <?php echo Alert::widget([
-                        'body' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'body'),
-                        'options' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'options'),
-                    ]) ?>
+                    <?php 
+                      echo Alert::widget([
+                        'type' => Alert::TYPE_SUCCESS,
+                        'icon' => 'fas fa-ok-circle',
+                        'body' => Yii::$app->session->getFlash('alert')['body'],
+                        'showSeparator' => true,
+                        'delay' => 3000
+                    ]);
+                    ?>
                 <?php endif; ?>
 
                 <?php echo $content ?>
