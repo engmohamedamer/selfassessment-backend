@@ -3,10 +3,10 @@
 namespace backend\modules\assessment\controllers;
 
 
-use onmotion\survey\models\Survey;
-use onmotion\survey\models\SurveyAnswer;
-use onmotion\survey\models\SurveyQuestion;
-use onmotion\survey\models\SurveyType;
+use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyAnswer;
+use backend\modules\assessment\models\SurveyQuestion;
+use backend\modules\assessment\models\SurveyType;
 use vova07\imperavi\actions\GetAction;
 use yii\base\Event;
 use yii\base\Model;

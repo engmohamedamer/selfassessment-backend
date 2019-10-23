@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
 
-/* @var $searchModel \onmotion\survey\models\search\SurveyStatSearch */
+/* @var $searchModel \backend\modules\assessment\models\search\SurveyStatSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $surveyId integer */
 
@@ -104,7 +104,7 @@ JS
 		'dataProvider' => $dataProvider,
 		'itemOptions' => ['class' => 'item'],
 		'itemView' => function ($model, $key, $index, $widget) use ($surveyId) {
-			/** @var $model \onmotion\survey\models\SurveyStat */
+			/** @var $model \backend\modules\assessment\models\SurveyStat */
 			$surveyStat = $model;
 			ob_start();
 			?>
@@ -135,4 +135,4 @@ JS
 	?>
 
 </div>
-    
+

@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $survey \onmotion\survey\models\Survey */
+/* @var $survey \backend\modules\assessment\models\Survey */
 /* @var $withUserSearch boolean */
 
 // widget with default options

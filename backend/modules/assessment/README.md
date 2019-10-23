@@ -40,7 +40,7 @@ php yii migrate --migrationPath=@vendor/onmotion/yii2-survey/migrations
 'modules' => [
 //...
     'survey' => [
-        'class' => '\onmotion\survey\Module',
+        'class' => '\backend\modules\assessment\Module',
         'params' => [
             'uploadsUrl' => 'http://advanced-frontend.lh/uploads/survey/', // full URL of the folder where the images will be uploaded.
            // 'uploadsUrl' => '/uploads/survey/', // or for basic
@@ -69,9 +69,9 @@ Usage
 
 If you are using the Yii basic template, you must manually define `$controllerNamespace` for module.
 
-*onmotion\survey\controllers* - backend (admin/create/edit surveys)
+*backend\modules\assessment\controllers* - backend (admin/create/edit surveys)
 
-*onmotion\survey\widgetControllers* - default (for widget)
+*backend\modules\assessment\widgetControllers* - default (for widget)
 
 Now go to `/survey` in your backend and create a survey.
 
@@ -80,7 +80,7 @@ Now go to `/survey` in your backend and create a survey.
 After that you can select Survey entities and show it for user, for example:
 
 ```php
-echo \onmotion\survey\Survey::widget([
+echo \backend\modules\assessment\Survey::widget([
    'surveyId' => 1
 ]);
 ```
