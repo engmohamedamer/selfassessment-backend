@@ -18,8 +18,24 @@ BootstrapPluginAsset::register($this);
 
 ?>
     <div id="survey-index">
+        <div class="content-header">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>
+                Assessments List
+                </h1>
+            </div>
+            <div class="col-md-6 actionBtns">
+
+                <?php echo Html::a(\Yii::t('survey', 'Create new survey'), Url::toRoute(['default/create']), ['class' => 'btn btn-primary']); ?>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+
+        <div class="col-md-12">
         <?php
-        echo Html::a(\Yii::t('survey', 'Create new survey'), Url::toRoute(['default/create']), ['class' => 'btn btn-success pull-right']);
+        
 
         Pjax::begin([
             'id' => 'survey-index-pjax',
@@ -91,7 +107,8 @@ BootstrapPluginAsset::register($this);
         Pjax::end();
 
         ?>
-
+ </div>
+        </div>
     </div>
 
 <?php RemoteModal::begin([

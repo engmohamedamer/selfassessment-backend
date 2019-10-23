@@ -347,4 +347,84 @@ select.form-control:not([size]):not([multiple]){
 }
 
 
+.field-survey-imagefile #survey-imagefile{
+  display: none;
+}
+.modal{
+  z-index: 10500;
+}
+.survey-container .survey-block .btn.btn-primary, .kv-editable-popover .survey-block .btn.btn-primary {
+  color: #fff !important;
+  background-color: #428bca !important;
+  border-color: #357ebd !important;
+}
+.survey-container .btn.btn-primary, .kv-editable-popover .btn.btn-primary, #survey-index .btn.btn-primary{
+  color: #fff !important;
+  background-color: #428bca !important;
+  border-color: #357ebd !important;
+  margin: 0;
+}
+
+.survey-container .btn.btn-primary:hover,.survey-container .btn.btn-primary:focus, .kv-editable-popover .btn.btn-primary:hover,.kv-editable-popover .btn.btn-primary:focus, #survey-index .btn.btn-primary:hover,#survey-index .btn.btn-primary:focus{
+  color: #fff !important;
+  background-color: #3071a9 !important;
+  border-color: #285e8e !important;
+  box-shadow: none !important;
+}
+.survey-container .survey-block .btn.btn-primary:hover, .survey-container .survey-block .btn.btn-primary:focus, .kv-editable-popover .survey-block .btn.btn-primary:hover, .kv-editable-popover .survey-block .btn.btn-primary:focus {
+  color: #fff !important;
+  background-color: #3071a9 !important;
+  border-color: #285e8e !important;
+  box-shadow: none !important;
+}
+.survey-container .btn:hover, .kv-editable-popover .btn:hover, #survey-index .btn:hover{
+  box-shadow: none !important;
+}
+
+.survey-container .survey-block .survey-name-wrap, .survey-container .survey-block .survey-question-name-wrap, .survey-container .survey-block .survey-question-view-wrap, .kv-editable-popover .survey-block .survey-name-wrap, .kv-editable-popover .survey-block .survey-question-name-wrap, .kv-editable-popover .survey-block .survey-question-view-wrap{
+  background-color: #428bca !important;
+  margin-bottom: 10px;
+}
+#survey-index .survey-card{
+  max-width: 100%;
+}
+#survey-index .summary{
+  display: none;
+}
+#remote-modal .modal-content{
+  background: #fff  ;
+}
+#survey-list .summary + .item{
+  margin-top: 10px;
+}
+.survey-container .survey-block .survey-question-name-wrap .form-control, .kv-editable-popover .survey-block .survey-question-name-wrap .form-control {
+  color: #fff !important;
+  font-weight: normal;
+  border-bottom: 1px solid #fff !important;
+}
+.survey-container .survey-block .survey-question-name-wrap .form-control::placeholder, .kv-editable-popover .survey-block .survey-question-name-wrap .form-control::placeholder {
+  color: #fff !important;
+}
+.survey-container .survey-block .btn.btn-success, .kv-editable-popover .survey-block .btn.btn-success {
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+.survey-container .survey-block .btn.btn-danger, .kv-editable-popover .survey-block .btn.btn-danger {
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+.survey-container .survey-block .survey-question-name-wrap .btn, .kv-editable-popover .survey-block .survey-question-name-wrap .btn {
+  margin: 0;
+  margin-left: 5px;
+}
+.survey-container .survey-block .survey-question-view-wrap h4, .kv-editable-popover .survey-block .survey-question-view-wrap h4{
+  color: #fff;
+}
+.survey-container .survey-block .btn.btn-info, .kv-editable-popover .survey-block .btn.btn-info {
+  border-color: #ffffff;
+  color: #fff;
+  background-color: transparent;
+  margin: 4px;
+}
+
 /*# sourceMappingURL=custom.css.map */
