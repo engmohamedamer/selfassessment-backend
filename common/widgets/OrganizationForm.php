@@ -13,18 +13,20 @@ use yii\base\Widget;
 class OrganizationForm extends Widget
 {
     public $model;
+    public $theme;
+    public $themeFooterLinks;
+    
     public function init()
     {
         parent::init();
-        if ($this->model === null) {
-            $this->model = 'School Edit Form View';
-        }
     }
 
     public function run()
     {
         return $this->render('@common/views/organization/_form', [
            'model' => $this->model,
+           'theme' => $this->theme,
+           'themeFooterLinks' => $this->themeFooterLinks,
         ]);
     }
 }

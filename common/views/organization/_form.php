@@ -28,7 +28,6 @@ if (isset($model->city_id) and !empty($model->city_id)) {
     $district = [];
 }
 
-$OrganizationTheme  = is_null($model->organizationTheme) ? new common\models\OrganizationTheme() : $model->organizationTheme;
 ?>
 
 
@@ -134,7 +133,7 @@ $OrganizationTheme  = is_null($model->organizationTheme) ? new common\models\Org
                             </div>
 
                             <div class="col-md-6 col-sm-12">
-                                <?php echo  $form->field($OrganizationTheme, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
+                                <?php echo  $form->field($theme, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
                             </div>
                             <div class="w-100"></div>
 
@@ -209,7 +208,7 @@ $OrganizationTheme  = is_null($model->organizationTheme) ? new common\models\Org
                             <?=
                                 $this->render('_formOrganizationThemeColor', [
                                 'form' => $form,
-                                'OrganizationTheme' => $OrganizationTheme,
+                                'OrganizationTheme' => $theme,
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
@@ -236,7 +235,7 @@ $OrganizationTheme  = is_null($model->organizationTheme) ? new common\models\Org
                             <?=
                                 $this->render('_formOrganizationThemeFooterLinks', [
                                 'form' => $form,
-                                'organizationFooterLinks' => is_null($model->organizationFooterLinks) ? new common\models\FooterLinks() : $model->organizationFooterLinks,
+                                'organizationFooterLinks' => $themeFooterLinks,
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
@@ -263,7 +262,7 @@ $OrganizationTheme  = is_null($model->organizationTheme) ? new common\models\Org
                             <?=
                                 $this->render('_formOrganizationThemeLinks', [
                                 'form' => $form,
-                                'OrganizationTheme' => $OrganizationTheme,
+                                'OrganizationTheme' => $theme,
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
