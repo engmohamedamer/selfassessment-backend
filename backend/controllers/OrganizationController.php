@@ -113,30 +113,28 @@ class OrganizationController extends BackendController
         $user->setScenario('create');
 
         if ($model->load(Yii::$app->request->post()) &&  
-            $user->load(Yii::$app->request->post()) && 
+            $user->load(Yii::$app->request->post()) &&
+            $model->validate() && $user->validate() && 
             $profile->load(Yii::$app->request->post()) && 
             $theme->load(Yii::$app->request->post()) && 
-            $themeFooterLinks->load(Yii::$app->request->post()) && 
-            $theme->validate() && $themeFooterLinks->validate() &&
-            $model->validate() && $user->validate() 
+            $themeFooterLinks->load(Yii::$app->request->post())  
         ) {
-            $model->save();
-            $user->save();
-            $profile->load(Yii::$app->request->post());
-            $this->UpdateUserRelatedTbls($user,$profile,$model->id);
 
-            $theme->organization_id = $model->id;
-            $themeFooterLinks->organization_id = $model->id;
-            
-            if($themeFooterLinks->save() && $theme->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }else{
-        return var_dump($theme->errors,$themeFooterLinks->errors);
+            if ($model->validate() && $user->validate() && $theme->validate() && 
+                $themeFooterLinks->validate()) {
+                $model->save();
+                $user->save();
+                $profile->load(Yii::$app->request->post());
+                $this->UpdateUserRelatedTbls($user,$profile,$model->id);
+
+                $theme->organization_id = $model->id;
+                $themeFooterLinks->organization_id = $model->id;
+                
+                if($themeFooterLinks->save() && $theme->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
-            
         }
-        // return var_dump($model->errors,$user->errors,$profile->errors,$theme->errors,$themeFooterLinks->errors);
-        // return var_dump($model,$user,$profile,$theme,$themeFooterLinks);
 
         return $this->render('create', [
             'model' => $model,
@@ -157,11 +155,9 @@ class OrganizationController extends BackendController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        // return var_dump(Yii::$app->request->post(), $model->load(Yii::$app->request->post()));
-
+        $theme = OrganizationTheme::findOne(['organization_id'=>$id]);
+        $themeFooterLinks = FooterLinks::findOne(['organization_id'=>$id]);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $theme = OrganizationTheme::findOne(['organization_id'=>$id]);
-            $themeFooterLinks = FooterLinks::findOne(['organization_id'=>$id]);
             if (!$themeFooterLinks) {
                 $themeFooterLinks = new FooterLinks();
                 $themeFooterLinks->organization_id = $id;
@@ -172,6 +168,8 @@ class OrganizationController extends BackendController
         }
         return $this->render('update', [
             'model' => $model,
+            'theme' => $theme,
+            'themeFooterLinks' => $themeFooterLinks,
         ]);
     }
 

@@ -47,7 +47,11 @@ if (isset($model->city_id) and !empty($model->city_id)) {
     <div class='col-sm-2 col-lg-1 theme-nav' >
         <ul class="nav nav-pills nav-stacked">
             <li role="presentation" class="active"><a  href="#tab_1-1" data-toggle="tab" aria-expanded="true"><span ><i class="fas fa-edit"></i></span><p><?php echo Yii::t('backend', 'Main Details') ?></p></a></li>
+            <?php if($model->isNewRecord) :?>
+            <li role="presentation" class=""><a  href="#tab_6-6" data-toggle="tab" aria-expanded="true"><span ><i class="fas fa-eye"></i></span><p><?php echo Yii::t('common', 'Organization Admin') ?></p></a></li>
+            <?php endif ?>
             <li role="presentation" class=""><a  href="#tab_2-2" data-toggle="tab" aria-expanded="true"><span ><i class="fas fa-eye"></i></span><p><?php echo Yii::t('common', 'Organization Theme') ?></p></a></li>
+
             <li role="presentation" class=""><a  href="#tab_3-3" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-palette"></i></span><p><?php echo Yii::t('common', 'Colors') ?></p></a></li>
             <li role="presentation" class=""><a  href="#tab_4-4" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-link"></i></span><p><?php echo Yii::t('common', 'Footer Links') ?></p></a></li>
             <li role="presentation" class=""><a  href="#tab_5-5" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-users"></i></span><p><?php echo Yii::t('common', 'Socail Links') ?></p></a></li>
@@ -200,6 +204,34 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                     </div>
                 </div>
 
+            <?php if($model->isNewRecord) :?>
+
+                <div class="tab-pane " id="tab_6-6">
+                    <div class='row'>
+                        <div class='col-sm-12 col-lg-8 row theme-edit-content-panel'>
+                            <?=
+                                $this->render('_formOrganizationAdmin', [
+                                'form' => $form,
+                                'user' => $user,
+                                'profile' => $profile,
+                            ]) ?>
+                        </div>
+                        <div class='col-sm-0 col-lg-4 theme-edit-preview'>
+                            <h2 class=''> عرض توضيحي</h2>
+                            <div class='preview-images mt-5'>
+                                <div  class="tab-pane active">
+                                    <p>* تظهر الالوان المدخلة بشكل أساسي في الموقع وتعكس هوية المؤسسة مثل الخلفيات والأزرار الرئيسية.</p>
+                                    <p>* برجاء ادخال اللون الرئيسي لهوية المؤسسة وادخال اللون الفرعي بشفافية أقل.</p>
+                                    <p> -- أمثلة توضيحية -- </p>
+                                    <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'>
+                                    <hr class='mt-5 mb-5'>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <?php endif;?>
 
 
                 <div class="tab-pane " id="tab_3-3">

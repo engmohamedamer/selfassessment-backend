@@ -212,4 +212,5 @@ return [
     'Socail Links'=>'التواصل الإجتماعي',
     'Organization Mobile'=>'رقم جوال المؤسسة',
     'Organization Phone'=>'هاتف المؤسسة',
+    'Organization Admin'=>'مسؤل المؤسسة',
 ];

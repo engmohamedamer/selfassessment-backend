@@ -27,6 +27,8 @@ use yii\helpers\Url;
 <?= OrganizationForm::widget([
     'model' => $model,
     'theme'=> $theme,
+    'user'=> $user,
+    'profile'=> $profile,
     'themeFooterLinks'=> $themeFooterLinks
 ]) ?>
     

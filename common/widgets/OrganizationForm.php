@@ -13,6 +13,8 @@ use yii\base\Widget;
 class OrganizationForm extends Widget
 {
     public $model;
+    public $user;
+    public $profile;
     public $theme;
     public $themeFooterLinks;
     
@@ -26,6 +28,8 @@ class OrganizationForm extends Widget
         return $this->render('@common/views/organization/_form', [
            'model' => $this->model,
            'theme' => $this->theme,
+           'user' => $this->user,
+           'profile' => $this->profile,
            'themeFooterLinks' => $this->themeFooterLinks,
         ]);
     }
