@@ -37,7 +37,7 @@ echo Menu::widget([
         [
             'label' => Yii::t('backend', 'Users'),
             'url' => '#',
-            'icon' => '<i class="nav-icon fas fa-th"></i>',
+            'icon' => '<i class="nav-icon fas fa-users"></i>',
             'options' => ['class' => 'treeview'],
             'active' => (Yii::$app->controller->module->id == 'user'),
             'items' => [
