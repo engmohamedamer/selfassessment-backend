@@ -7,7 +7,7 @@
  */
 
 
-use onmotion\survey\models\SurveyType;
+use backend\modules\assessment\models\SurveyType;
 use kartik\editable\Editable;
 use kartik\helpers\Html;
 use kartik\select2\Select2;
@@ -19,7 +19,7 @@ use yii\widgets\Pjax;
 
 
 /* @var $this yii\web\View */
-/* @var $question \onmotion\survey\models\SurveyQuestion */
+/* @var $question \backend\modules\assessment\models\SurveyQuestion */
 
 Pjax::begin([
     'id' => 'survey-questions-pjax-' . $question->survey_question_id,
@@ -62,7 +62,7 @@ echo Html::endTag('div');
 
 $confirmMessage = \Yii::t('survey', 'Current types are not compatible, all entered data will be deleted. Are you sure?');
 echo $form->field($question, "[{$question->survey_question_id}]survey_question_type")->widget(Select2::classname(), [
-    'data' => \onmotion\survey\models\SurveyType::getDropdownList(),
+    'data' => \backend\modules\assessment\models\SurveyType::getDropdownList(),
     'pluginOptions' => [
         'allowClear' => false
     ],

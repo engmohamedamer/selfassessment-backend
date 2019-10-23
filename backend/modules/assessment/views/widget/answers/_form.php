@@ -6,7 +6,7 @@
  * Time: 13:37
  */
 
-/** @var $question \onmotion\survey\models\SurveyQuestion */
+/** @var $question \backend\modules\assessment\models\SurveyQuestion */
 /** @var $form \yii\widgets\ActiveForm */
 /** @var $readonly boolean */
 

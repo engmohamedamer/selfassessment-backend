@@ -27,7 +27,7 @@ $config = [
         'assessment' => [
             'class' => 'backend\modules\assessment\Module',
             'params' => [
-                'uploadsUrl' =>  Yii::getAlias('@storageUrl').'/source/survey/', // full URL of the folder where the images will be uploaded.
+                'uploadsUrl' =>  Yii::getAlias('@storageUrl').'/source/survey/', // full URL of the folder where the images will be uploaded. //Yii::getAlias('@storageUrl')
                 // 'uploadsUrl' => '/uploads/survey/', // or for basic
                 'uploadsPath' => '@storage/web/source/survey/', // absolute path to the folder where images will be saved.
             ],

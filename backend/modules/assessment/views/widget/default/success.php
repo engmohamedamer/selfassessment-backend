@@ -11,7 +11,7 @@ use kartik\helpers\Html;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $survey \onmotion\survey\models\Survey */
+/* @var $survey \backend\modules\assessment\models\Survey */
 
 ?>
 

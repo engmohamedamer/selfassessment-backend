@@ -1,6 +1,6 @@
 <?php
 
-namespace onmotion\survey\models;
+namespace backend\modules\assessment\models;
 
 use Yii;
 use yii\db\conditions\AndCondition;
@@ -192,7 +192,7 @@ class Survey extends \yii\db\ActiveRecord
         if (empty($file)) {
             return null;
         }
-        $module = \Yii::$app->getModule('survey');
+        $module = \Yii::$app->getModule('assessment');
         $basepath = $module->params['uploadsUrl'];
         $path = $basepath . '/' . $this->survey_image;
 
