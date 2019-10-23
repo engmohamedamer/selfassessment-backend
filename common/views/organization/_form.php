@@ -135,11 +135,12 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'limit_account')->textInput() ?>
                             </div>
+                            <div class="col-lg-6">
+                            </div>
 
-                            <div class="col-md-6 col-sm-12">
+                            <div class="col-lg-6 ">
                                 <?php echo  $form->field($theme, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
                             </div>
-                            <div class="w-100"></div>
 
                        </div>
 
@@ -159,7 +160,9 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                     <img src="/img/previews/preview3.png" alt="" class='mt-3 mb-3 img'>
                                     
                                     <hr class='mt-5 mb-5'>
-                                    <!-- <p>* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.</p> -->
+                                    <p>* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.</p>
+                                    <hr class='mt-5 mb-5'>
+
                                 </div>
                             </div>
                         </div>
@@ -305,7 +308,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                     <p> -- أمثلة توضيحية -- </p>
                                     <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'>
                                     <hr class='mt-5 mb-5'>
-                                    <p>* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.</p>
+                                    
                                 </div>
                             </div>
                         </div>
