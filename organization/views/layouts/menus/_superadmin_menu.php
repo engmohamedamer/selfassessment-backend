@@ -21,8 +21,8 @@ echo Menu::widget([
     'submenuTemplate' => "\n<ul class=\"treeview-menu\">\n{items}\n</ul>\n",
     'activateParents' => true,
     'items' => [
-        
-       
+
+
         [
             'label' => Yii::t('backend', 'Dashboard'),
             'url' => '/',
@@ -59,6 +59,16 @@ echo Menu::widget([
             'options' => ['class' => 'nav-item'],
             'active' => (Yii::$app->controller->module->id == 'user'),
         ],
-        
+
+
+        [
+            'label' => Yii::t('common', 'Assessments List'),
+            'url' => '/assessment',
+            'icon' => '<i class="fas fa-users nav-icon"></i>',
+            'options' => ['class' => 'nav-item'],
+            'active' => (Yii::$app->controller->module->id == 'assessment'),
+        ],
+
+
     ],
 ]) ?>

@@ -28,7 +28,7 @@ $config = [
                 'uploadsUrl' =>  Yii::getAlias('@storageUrl').'/source/survey/', // full URL of the folder where the images will be uploaded. //Yii::getAlias('@storageUrl')
                 // 'uploadsUrl' => '/uploads/survey/', // or for basic
                 'uploadsPath' => '@storage/web/source/survey/', // absolute path to the folder where images will be saved.
-                'organization_id'=> \Yii::$app->user->identity->userProfile->organization_id,
+                'organization_id'=>  5, //\Yii::$app->user->identity->userProfile->organization_id,
             ],
 //            'as access' => [
 //                'class' => AccessControl::class,
