@@ -17,8 +17,6 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\log\Logger;
 use yii\widgets\Breadcrumbs;
-Icon::map($this);
-
 
 if(Yii::$app->user->isGuest){
     $bundle = BackendAsset::register($this);
@@ -122,7 +120,7 @@ if(Yii::$app->user->isGuest){
         <section class="content">
 
                 <?php if (Yii::$app->session->hasFlash('alert')): ?>
-                    <?php 
+                    <?php
                       echo Alert::widget([
                         'type' => Alert::TYPE_SUCCESS,
                         'icon' => 'fas fa-ok-circle',
