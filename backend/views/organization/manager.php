@@ -5,6 +5,7 @@ use common\models\UserProfile;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use trntv\filekit\widget\Upload;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\UserForm */
@@ -50,7 +51,7 @@ if($saved == true){
         <div class="card">
             <div class="card-body">
                 <?php $form = ActiveForm::begin() ?>
-                <?php echo $form->field($profile, 'picture')->widget(\common\b4widget\upload\MyUpload::class, [
+                <?php echo $form->field($profile, 'picture')->widget(Upload::class, [
                             'url'=>['avatar-upload']
                         ]) ?>
                 <div class="row">
