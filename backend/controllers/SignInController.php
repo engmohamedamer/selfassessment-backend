@@ -62,7 +62,6 @@ class SignInController extends BackendController
     public function actionLogin()
     {
         $this->layout = 'base';
-        \Yii::$app->language = 'ar'; 
 
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
@@ -125,7 +124,6 @@ class SignInController extends BackendController
     public function actionRequestPasswordReset()
     {
         $this->layout = 'base';
-        \Yii::$app->language = 'ar';
 
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -150,7 +148,6 @@ class SignInController extends BackendController
     public function actionResetPassword($token)
     {
         $this->layout = 'base';
-        \Yii::$app->language = 'ar';
 
         try {
             $model = new ResetPasswordForm($token);
