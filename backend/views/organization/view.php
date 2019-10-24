@@ -32,8 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card-body">
                 <ul class="nav nav-pills innernavs">
                         <li class="nav-item active"><a class="nav-link " href="#tab1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Branding') ?></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Managers') ?></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Footer Links') ?></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Social Links') ?></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tab5" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Branding') ?></a></li>
                      
                 </ul>
                 <div class="tab-content mt-2">
@@ -121,8 +123,21 @@ $this->params['breadcrumbs'][] = $this->title;
                             ?>
                      
                     </div>
-
                     <div class="tab-pane" id="tab3">
+
+                       
+                      
+                            
+                       
+                    </div>
+                    <div class="tab-pane" id="tab4">
+
+                       
+                            
+                       
+                    </div>
+
+                    <div class="tab-pane" id="tab5">
 
                         <div class="col-md-3">
                             <p>
