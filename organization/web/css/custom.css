@@ -417,12 +417,18 @@ height: 34px;
   color: #fff !important;
 }
 .survey-container .survey-block .btn.btn-success, .kv-editable-popover .survey-block .btn.btn-success {
-  border-color: #ffffff !important;
+  border-color: #00a65a !important;
   color: #ffffff !important;
+  background-color: #00a65a !important;
 }
 .survey-container .survey-block .btn.btn-danger, .kv-editable-popover .survey-block .btn.btn-danger {
-  border-color: #ffffff !important;
+  border-color: #a94442 !important;
   color: #ffffff !important;
+  background-color: #a94442 !important;
+}
+
+.survey-container .form-group.has-error .help-block{
+  color: #a94442 !important;
 }
 .survey-container .survey-block .survey-question-name-wrap .btn, .kv-editable-popover .survey-block .survey-question-name-wrap .btn {
   margin: 0;
@@ -432,9 +438,9 @@ height: 34px;
   color: #fff;
 }
 .survey-container .survey-block .btn.btn-info, .kv-editable-popover .survey-block .btn.btn-info {
-  border-color: #ffffff;
+  border-color: #0099b1;
   color: #fff;
-  background-color: transparent;
+  background-color: #0099b1;
   margin: 4px;
 }
 
@@ -470,5 +476,23 @@ text-align: left;
 .slugaddon .input-group .input-group-addon{
   text-align: left;
     direction: ltr;
+}
+.popover.right {
+  z-index: 10000 !important;
+}
+#survey-widget #survey-title, #survey-view #survey-title{
+  margin: 20px;
+}
+#survey-widget #survey-questions .survey-block .survey-question-name-wrap, #survey-view #survey-questions .survey-block .survey-question-name-wrap {
+  padding: 10px;
+  color: #fbfbfb;
+}
+#survey-view .progress {
+  height: 15px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+.hidden-modal-right{
+  z-index: 10000;
 }
 /*# sourceMappingURL=custom.css.map */

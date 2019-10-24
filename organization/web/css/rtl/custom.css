@@ -318,7 +318,15 @@ ul {
 
 .emptyassessment .img{
       float: right;
-  }
-  .emptyassessment .name{
-      float: right;
-  }
+}
+.emptyassessment .name{
+    float: right;
+}
+.survey-container .survey-block .survey-name-wrap #form-photo-pjax {
+    left: auto;
+    right: 2px;
+}
+.survey-container .survey-block .survey-name-wrap #survey-survey_name-cont {
+    margin-left: 0;
+    margin-right: 45px;
+}
