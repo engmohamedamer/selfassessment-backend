@@ -46,7 +46,9 @@ BootstrapPluginAsset::register($this);
             'layout' => "{summary}\n{items}\n<div class='clearfix'></div><div class='col-md-12'>{pager}</div>",
             'dataProvider' => $dataProvider,
             'itemOptions' => ['class' => 'item'],
-            'itemView' => function ($model, $key, $index, $widget) {
+            'emptyText' => 'fjpeijfi eifhe ofuheo',
+
+        'itemView' => function ($model, $key, $index, $widget) {
                 /** @var $model \backend\modules\assessment\models\Survey */
                 $survey = $model;
                 $image = $survey->getImage();
