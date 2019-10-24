@@ -27,8 +27,8 @@ if(Yii::$app->user->isGuest){
         $bundle = BackendArabic::register($this);
     }
 }
-
-
+$organization = Yii::$app->user->identity->userProfile->organization;
+$logo = $organization->first_image_base_url . $organization->first_image_path;
 
 ?>
 
@@ -85,7 +85,7 @@ if(Yii::$app->user->isGuest){
         <aside class="main-sidebar ">
 
     <a href="/" class="logo">
-       <img src="/img/tamkeen-logo.png" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
+       <img src="<?= $logo ?>" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
 
     </a>
             <!-- Sidebar -->
