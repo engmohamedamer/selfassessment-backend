@@ -315,3 +315,10 @@ ul {
     margin-right: 0;
     margin-left: 10px;
 }
+
+.emptyassessment .img{
+      float: right;
+  }
+  .emptyassessment .name{
+      float: right;
+  }

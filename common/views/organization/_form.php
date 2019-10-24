@@ -75,9 +75,9 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                            if (Yii::$app->user->can('administrator') or Yii::$app->user->can('manager')) {
                                ?>
 
-                               <div class="col-sm-12">
+                               <div class="col-sm-12 slugaddon">
                                    <?= $form->field($model, 'slug',[
-                                       'addon' => ['prepend' => ['content'=>'selfasses.com']]
+                                       'addon' => ['prepend' => ['content'=>'.selfasses.com']]
                                    ])->textInput(['maxlength' => true]) ?>
                                </div>
                                <hr class='mt-5 mb-5 col-lg-12 row'>
