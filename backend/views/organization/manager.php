@@ -36,7 +36,7 @@ if($saved == true){
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="row mb-2">
-        <div class="col-6">
+        <div class="col-md-6">
             <h1 class="m-0 text-dark"><?php echo Yii::t('common', 'Organization Admin') ?></h1>
         </div>
 
@@ -57,16 +57,16 @@ if($saved == true){
                 <div class="row">
 
 
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <?php echo $form->field($model, 'email') ?>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <?php echo $form->field($model, 'password')->passwordInput() ?>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <?php echo $form->field($profile, 'firstname') ?>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-sm-3">
                                 <?php echo $form->field($profile, 'lastname') ?>
                             </div>
 
@@ -74,25 +74,25 @@ if($saved == true){
 
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                         <?php echo $form->field($profile, 'gender')->dropDownlist([
                             UserProfile::GENDER_MALE => Yii::t('backend', 'Male'),
                             UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female')
                         ]) ?>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                         <?php echo $form->field($profile, 'mobile') ?>
                     </div>
 
 
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                         <?php echo $form->field($model, 'status')->dropDownList(User::statuses()) ?>
                     </div>
 
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <?php echo Html::submitButton(Yii::t('backend', 'Save'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                     </div>
                 </div>
