@@ -10,6 +10,8 @@ return [
         ['pattern' => '/site/index', 'route' => 'site/index'],
         ['pattern' => '/login', 'route' => 'user/login'],
         ['pattern' => '/signup', 'route' => 'user/signup'],
+        ['pattern' => '/reset-password', 'route' => 'user/reset-password'],
+        ['pattern' => '/request-reset-password', 'route' => 'user/request-reset-password'],
         ['pattern' => '/theme', 'route' => 'theme/index'],
         ['pattern' => '/theme/<slug>/<lang>', 'route' => 'theme/index'],
 
