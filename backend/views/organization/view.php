@@ -33,13 +33,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 <ul class="nav nav-pills innernavs">
                         <li class="nav-item active"><a class="nav-link " href="#tab1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
                         <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Manager') ?></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Theme') ?></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Branding') ?></a></li>
                      
                 </ul>
                 <div class="tab-content mt-2">
                     <div class="tab-pane active" id="tab1">
-                       
+                        <div class="row">
+                            
 
+                            <div class="col-md-12">
                             <?php 
                                 $gridColumn = [
                                     'id',
@@ -90,6 +92,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 ]);
                             ?>
+                            </div>
+                        </div>
+
+                           
                        
                     </div>
                     <div class="tab-pane" id="tab2">
@@ -117,7 +123,21 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
 
                     <div class="tab-pane" id="tab3">
+
+                        <div class="col-md-3">
+                            <p>
+                            <label>Logo Image</label>
+                            </p>
+                            <img src="..." alt="..." class="img-thumbnail">
                        
+                            <p>
+                            <label>Logo Image</label>
+                            </p>
+                            <img src="..." alt="..." class="img-thumbnail">
+                        </div>
+                        <div class="col-md-9">
+                           
+                            <div style="width: 100px;height: 30px;background: #000;margin: 0 10px;" ></div>
                             <?php 
                                 $organizationTheme = [
                                     'brandPrimColor',
@@ -129,17 +149,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                     // 'arfont',
                                     // 'enfont',
-                                    'facebook:url',
-                                    'twitter:url',
-                                    'linkedin:url',
-                                    'instagram:url',
-                                    'locale',
+                                    // 'facebook:url',
+                                    // 'twitter:url',
+                                    // 'linkedin:url',
+                                    // 'instagram:url',
+                                    // 'locale',
                                 ];
                                 echo DetailView::widget([
                                     'model' => $model->organizationTheme,
                                     'attributes' => $organizationTheme
                                 ]);
                             ?>
+                        </div>
+                      
+                            
                        
                     </div>
                 </div>
