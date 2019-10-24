@@ -64,7 +64,7 @@ echo Menu::widget([
         [
             'label' => Yii::t('common', 'Assessments List'),
             'url' => '/assessment',
-            'icon' => '<i class="fas fa-users nav-icon"></i>',
+            'icon' => '<i class="fas fa-th nav-icon"></i>',
             'options' => ['class' => 'nav-item'],
             'active' => (Yii::$app->controller->module->id == 'assessment'),
         ],
