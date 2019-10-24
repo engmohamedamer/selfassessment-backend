@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-$resetLink = Yii::getAlias('@frontendUrl').'/sign-in/reset-password?token='.$token;
+$resetLink = Yii::getAlias('@frontendUrl').'/reset-password?token='.$token;
 ?>
 
   <!-- start preheader -->
