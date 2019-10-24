@@ -51,7 +51,7 @@ class ProfileController extends  MyActiveController
         if (isset($params['district_id'])) $profile->district_id = $params['district_id'] ;
         if (isset($params['position'])) $profile->position = $params['position'] ;
         if (isset($params['email'])) $user->email= $params['email'] ;
-        if (isset($params['password'])) $user->setPassword($params['password']);
+        if (!empty($params['password'])) $user->setPassword($params['password']);
         if (isset($params['locale'])){
             if ($params['locale'] == 'en') {
                 $profile->locale = 'en-US';
