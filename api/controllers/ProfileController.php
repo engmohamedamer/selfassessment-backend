@@ -50,6 +50,7 @@ class ProfileController extends  MyActiveController
         if (isset($params['bio'])) $profile->bio= $params['bio'] ;
         if (isset($params['city_id'])) $profile->city_id = $params['city_id'] ;
         if (isset($params['district_id'])) $profile->district_id = $params['district_id'] ;
+        if (isset($params['address'])) $profile->address = $params['address'] ;
         if (isset($params['position'])) $profile->position = $params['position'] ;
         if (isset($params['email'])) $user->email= $params['email'] ;
         if (!empty($params['password'])) $user->setPassword($params['password']);

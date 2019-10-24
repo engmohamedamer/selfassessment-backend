@@ -213,4 +213,5 @@ return [
     'Organization Mobile'=>'رقم جوال المؤسسة',
     'Organization Phone'=>'هاتف المؤسسة',
     'Organization Admin'=>'مسؤل المؤسسة',
+    'Password Reset'=>'استعادة كلمة المرور',
 ];
