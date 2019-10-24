@@ -93,7 +93,9 @@ class UserController extends  RestController
 
     public function actionRequestResetPassword(){
         $params = \Yii::$app->request->post();
-
+        if ($params['locale'] == 'ar') {
+            \Yii::$app->language = 'ar';
+        }
         $user = User::findOne(['email'=> $params['email']]) ;
         if ($user) {
             $token = UserToken::create($user->id, UserToken::TYPE_PASSWORD_RESET, Time::SECONDS_IN_A_DAY);
@@ -115,6 +117,11 @@ class UserController extends  RestController
 
     public function actionResetPassword(){
         $params = \Yii::$app->request->post();
+
+        if ($params['locale'] == 'ar') {
+            \Yii::$app->language = 'ar';
+        }
+        
         try{
             $model = new ResetPassword($params['token']);
         } catch (InvalidArgumentException $e) {
