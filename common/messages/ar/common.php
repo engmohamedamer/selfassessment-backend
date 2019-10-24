@@ -217,4 +217,5 @@ return [
     'Password reset for '=>'استعادة كلمة المرور لـ ',
     'Contact Details'=>'بيانات التواصل',
     'Email Not Found.'=>' البريد الالكتروني غير مسجل لدينا ',
+    'Email reset password sent successfully'=>'تم إرسال البريد الإلكتروني لإستعادة كلمة مرور  بنجاح',
 ];

@@ -70,12 +70,21 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                     <div class="row">
                        <div class='col-sm-12 col-lg-8 row theme-edit-content-panel'>
 
-                            <div class="col-sm-12 slugaddon">
-                                <?= $form->field($model, 'slug',[
-                                        'addon' => ['prepend' => ['content'=>'.selfasses.com']]
-                                ])->textInput(['maxlength' => true]) ?>
-                            </div>
-                            <hr class='mt-5 mb-5 col-lg-12 row'>
+                           <?php
+
+                           if (Yii::$app->user->can('administrator') or Yii::$app->user->can('manager')) {
+                               ?>
+
+                               <div class="col-sm-12 slugaddon">
+                                   <?= $form->field($model, 'slug',[
+                                       'addon' => ['prepend' => ['content'=>'.selfasses.com']]
+                                   ])->textInput(['maxlength' => true]) ?>
+                               </div>
+                               <hr class='mt-5 mb-5 col-lg-12 row'>
+
+                               
+                               <?
+                           }?>
 
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name'])
@@ -158,7 +167,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                     <img src="/img/previews/preview1.png" alt="" class='mt-3 mb-3 img'>
                                     <img src="/img/previews/preview2.png" alt="" class='mt-3 mb-3 img'>
                                     <img src="/img/previews/preview3.png" alt="" class='mt-3 mb-3 img'>
-                                    
+
                                     <hr class='mt-5 mb-5'>
                                     <p>* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.</p>
                                     <hr class='mt-5 mb-5'>
@@ -308,7 +317,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                     <p> -- أمثلة توضيحية -- </p>
                                     <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'>
                                     <hr class='mt-5 mb-5'>
-                                    
+
                                 </div>
                             </div>
                         </div>
