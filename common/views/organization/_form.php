@@ -70,9 +70,9 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                     <div class="row">
                        <div class='col-sm-12 col-lg-8 row theme-edit-content-panel'>
 
-                            <div class="col-sm-12">
+                            <div class="col-sm-12 slugaddon">
                                 <?= $form->field($model, 'slug',[
-                                        'addon' => ['prepend' => ['content'=>'selfasses.com']]
+                                        'addon' => ['prepend' => ['content'=>'.selfasses.com']]
                                 ])->textInput(['maxlength' => true]) ?>
                             </div>
                             <hr class='mt-5 mb-5 col-lg-12 row'>

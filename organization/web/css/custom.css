@@ -463,4 +463,12 @@ height: 34px;
     margin: 36px 0;
     border-radius: 4px;
 }
+.slugaddon .input-group{
+direction: rtl;
+text-align: left;
+}
+.slugaddon .input-group .input-group-addon{
+  text-align: left;
+    direction: ltr;
+}
 /*# sourceMappingURL=custom.css.map */
