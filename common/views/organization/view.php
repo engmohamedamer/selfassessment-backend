@@ -156,12 +156,13 @@ use yii\widgets\DetailView;
                             <label><?= Yii::t('common','Logo Image') ?></label>
                             </p>
                             <img src='<?= $model->first_image_base_url.$model->first_image_path ?>' alt="..." class="img-thumbnail" />
-                            <p>
+                            
+                            <p class="mt-2">
                             <label><?= Yii::t('common','Logo Icon Image') ?></label>
                             </p>
                             <img src='<?= $model->second_image_base_url.$model->second_image_path ?>' alt="..." class="img-thumbnail" />
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-9" style="padding-top:35px">
                            
                             
                             <?php 
