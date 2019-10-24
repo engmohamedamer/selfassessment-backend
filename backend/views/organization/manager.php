@@ -37,7 +37,7 @@ if($saved == true){
 <div class="content-header">
     <div class="row mb-2">
         <div class="col-md-6">
-            <h1 class="m-0 text-dark">Update User</h1>
+            <h1 class="m-0 text-dark"><?php echo Yii::t('common', 'Organization Admin') ?></h1>
         </div>
 
         <!-- /.col -->
@@ -76,8 +76,8 @@ if($saved == true){
                 <div class="row">
                     <div class="col-sm-4">
                         <?php echo $form->field($profile, 'gender')->dropDownlist([
-                            UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female'),
-                            UserProfile::GENDER_MALE => Yii::t('backend', 'Male')
+                            UserProfile::GENDER_MALE => Yii::t('backend', 'Male'),
+                            UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female')
                         ]) ?>
                     </div>
 
