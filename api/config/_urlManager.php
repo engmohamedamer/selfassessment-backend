@@ -29,7 +29,7 @@ return [
 //
 
         ['class' =>'yii\rest\UrlRule',
-            'controller'=>'survey',
+            'controller'=>'assessments',
             'only'=>['index','options'],//'update',
             'extraPatterns'=>[
                 'GET ' => 'index' ,

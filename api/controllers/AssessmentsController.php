@@ -6,7 +6,7 @@ namespace api\controllers;
 use api\resources\SurveyResource;
 
 
-class SurveyController extends  MyActiveController
+class AssessmentsController extends  MyActiveController
 {
     public $modelClass = SurveyResource::class;
 
