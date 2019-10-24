@@ -68,13 +68,13 @@ class Survey extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['survey_created_at', 'survey_updated_at', 'survey_expired_at'], 'safe'],
+            [['survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id'], 'safe'],
             [['survey_is_pinned', 'survey_is_closed', 'survey_is_private', 'survey_is_visible'], 'boolean'],
             [['survey_name'], 'string', 'max' => 45],
             [['survey_descr'], 'string'],
             [['survey_tags', 'survey_image'], 'string', 'max' => 255],
             [['survey_name'], 'required'],
-            [['survey_wallet', 'survey_status', 'survey_created_by', 'survey_time_to_pass', 'survey_badge_id'], 'integer'],
+            [['survey_wallet', 'survey_status', 'survey_created_by', 'survey_time_to_pass', 'survey_badge_id','org_id'], 'integer'],
             [['imageFile'], 'file', 'mimeTypes' => 'image/jpeg, image/png', 'maxSize' => 5000000]
         ];
     }
@@ -86,6 +86,7 @@ class Survey extends \yii\db\ActiveRecord
     {
         return [
             'survey_id' => Yii::t('survey', 'Survey ID'),
+            'org_id' => Yii::t('survey', 'Organization ID'),
             'survey_name' => Yii::t('survey', 'Name'),
             'survey_created_at' => Yii::t('survey', 'Created at'),
             'survey_updated_at' => Yii::t('survey', 'Updated at'),

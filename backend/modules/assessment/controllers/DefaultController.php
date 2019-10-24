@@ -88,7 +88,11 @@ class DefaultController extends Controller
 
     public function actionCreate()
     {
+        $module = \Yii::$app->getModule('assessment');
+        $basepath = $module->params['uploadsUrl'];
+        
         $survey = new Survey();
+        $survey->org_id =1;
         $survey->survey_name = \Yii::t('survey', 'New Survey');
         $survey->survey_is_closed = true;
         $survey->save(false);

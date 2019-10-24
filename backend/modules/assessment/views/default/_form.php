@@ -191,7 +191,7 @@ echo Dialog::widget();
             echo Html::endTag('div'); // col-md-3
 
             echo Html::beginTag('div', ['class' => 'col-md-9']);
-            echo $form->field($survey, "survey_tags")->input('text', ['placeholder' => 'Comma separated']);
+            echo $form->field($survey, "survey_tags")->input('text', ['placeholder' => Yii::t('survey','Comma separated')]);
 			if ($withUserSearch) {
 				echo Html::tag('div', '', ['class' => 'clearfix']);
 				echo $form->field($survey, 'restrictedUserIds')->widget(Select2::classname(),
