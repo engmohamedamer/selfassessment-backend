@@ -1,6 +1,6 @@
 <?php
 $config = [
-    'name' => 'لوحة التحكم',
+    'name' => 'Self Assessment',
     'vendorPath' => __DIR__ . '/../../vendor',
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'sourceLanguage' => 'en-US',
