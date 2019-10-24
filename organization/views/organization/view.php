@@ -1,5 +1,6 @@
 <?php
 
+use common\widgets\OrganizationView;
 use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -24,100 +25,4 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <!-- /.row -->
 </div>
-<!-- /.content-header -->
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-body">
-                <ul class="nav nav-pills innernavs">
-                        <li class="nav-item active"><a class="nav-link" href="#tab1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
-                        <li class="nav-item "><a class="nav-link" href="#tab3" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Theme') ?></a></li>
-                     
-                </ul>
-                <div class="tab-content mt-2">
-                    <div class="tab-pane active" id="tab1">
-                    
-
-                            <?php 
-                                $gridColumn = [
-                                    'id',
-                                    'name',
-                                    'slug',
-                                    'business_sector',
-                                    'address',
-                                    [
-                                        'attribute'=>Yii::t('common','City'),
-                                        'value'=>function($model){
-                                            return $model->city->title;
-                                        },
-                                        'format'=>'raw'
-                                    ],
-                                    [
-                                        'attribute'=>Yii::t('common','District'),
-                                        'value'=>function($model){
-                                            return $model->district->title;
-                                        },
-                                    ],
-                                    'email:email',
-                                    'phone',
-                                    'mobile',
-                                    'conatct_name',
-                                    'contact_email:email',
-                                    'contact_phone',
-                                    'contact_position',
-                                    'limit_account',
-                                    [
-                                        'attribute'=>Yii::t('common','Logo Image'),
-                                        'value'=>function($model){
-                                            return "<img src='$model->first_image_base_url$model->first_image_path' width='100' />";
-                                        },
-                                        'format'=>'raw'
-                                    ],
-                                    [
-                                        'attribute'=>Yii::t('common','Logo Icon Image'),
-                                        'value'=>function($model){
-                                            return "<img src='$model->second_image_base_url$model->second_image_path' width='100' />";
-                                        },
-                                        'format'=>'raw'
-                                    ]
-
-                                ];
-                                echo DetailView::widget([
-                                    'model' => $model,
-                                    'attributes' => $gridColumn
-                                ]);
-                            ?>
-                        
-                    </div>
-
-                    <div class="tab-pane" id="tab3">
-                      
-                            <?php 
-                                $organizationTheme = [
-                                    'brandPrimColor',
-                                    'brandSecColor',
-                                    // 'brandHTextColor',
-                                    // 'brandPTextColor',
-                                    // 'brandBlackColor',
-                                    // 'brandGrayColor',
-
-                                    // 'arfont',
-                                    // 'enfont',
-                                    'facebook:url',
-                                    'twitter:url',
-                                    'linkedin:url',
-                                    'instagram:url',
-                                    'locale',
-                                ];
-                                echo DetailView::widget([
-                                    'model' => $model->organizationTheme,
-                                    'attributes' => $organizationTheme
-                                ]);
-                            ?>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<?= OrganizationView::widget(['model' => $model]) ?>

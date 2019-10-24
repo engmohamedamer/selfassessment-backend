@@ -215,4 +215,6 @@ return [
     'Organization Admin'=>'مسؤل المؤسسة',
     'Password Reset'=>'استعادة كلمة المرور',
     'Password reset for '=>'استعادة كلمة المرور لـ ',
+    'Contact Details'=>'بيانات التواصل',
+    'Email Not Found.'=>' البريد الالكتروني غير مسجل لدينا ',
 ];
