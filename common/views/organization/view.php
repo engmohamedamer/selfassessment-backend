@@ -117,16 +117,51 @@ use yii\widgets\DetailView;
                     <div class="tab-pane" id="tab4">
                        <?php 
                             $organizationFooterLinks = [
-                                'name_link1',
-                                'link1:url',
-                                'name_link2',
-                                'link2:url',
-                                'name_link3',
-                                'link3:url',
-                                'name_link4',
-                                'link4:url',
-                                'name_link5',
-                                'link5:url',
+                                [
+                                    'attribute'=>'link1',
+                                    'value'=>function($model){
+                                        if ($model->link1) {
+                                         return $model->name_link1 . ' ( '. $model->link1 .' )';
+                                        }
+                                    },
+                                    'format'=>'url'
+                                ],
+                                [
+                                    'attribute'=>'link2',
+                                    'value'=>function($model){
+                                        if ($model->link2) {
+                                         return $model->name_link2 . ' ( '. $model->link2 .' )';
+                                        }
+                                    },
+                                    'format'=>'url'
+                                ],
+                                [
+                                    'attribute'=>'link3',
+                                    'value'=>function($model){
+                                        if ($model->link3) {
+                                         return $model->name_link3 . ' ( '. $model->link3 .' )';
+                                        }
+                                    },
+                                    'format'=>'url'
+                                ],
+                                [
+                                    'attribute'=>'link4',
+                                    'value'=>function($model){
+                                        if ($model->link4) {
+                                         return $model->name_link4 . ' ( '. $model->link4 .' )';
+                                        }
+                                    },
+                                    'format'=>'url'
+                                ],
+                                [
+                                    'attribute'=>'link5',
+                                    'value'=>function($model){
+                                        if ($model->link5) {
+                                         return $model->name_link5 . ' ( '. $model->link5 .' )';
+                                        }
+                                    },
+                                    'format'=>'url'
+                                ],
                             ];
                             echo DetailView::widget([
                                 'model' => $model->organizationFooterLinks,
