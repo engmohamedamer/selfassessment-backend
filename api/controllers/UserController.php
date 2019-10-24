@@ -110,7 +110,7 @@ class UserController extends  RestController
             }
             return ResponseHelper::sendSuccessResponse(['SEND_EMAIL_SUCCESS'=>\Yii::t('common','Email reset password sent successfully')]);
         }
-        return ResponseHelper::sendSuccessResponse(['ENTER_EMAIL'=>\Yii::t('common','Email Required.')]);
+        return ResponseHelper::sendSuccessResponse(['ENTER_EMAIL'=>\Yii::t('common','Email Not Found.')]);
     }
 
     public function actionResetPassword(){
