@@ -270,6 +270,7 @@ a {
 }
 .nav-pills .nav-link {
   border-radius: 3px;
+  background: #f7f7f7;
 }
 .translatenav ul{
   -webkit-box-pack: end;
