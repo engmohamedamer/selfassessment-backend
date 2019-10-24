@@ -22,7 +22,7 @@ BootstrapPluginAsset::register($this);
         <div class="row">
             <div class="col-md-6">
                 <h1>
-                Assessments List
+               <?= \Yii::t('survey', 'Assessments List') ?>
                 </h1>
             </div>
             <div class="col-md-6 actionBtns">
@@ -35,7 +35,7 @@ BootstrapPluginAsset::register($this);
 
         <div class="col-md-12">
         <?php
-        
+
 
         Pjax::begin([
             'id' => 'survey-index-pjax',

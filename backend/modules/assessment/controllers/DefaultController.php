@@ -32,6 +32,21 @@ use yii\widgets\ActiveForm;
  */
 class DefaultController extends Controller
 {
+    public $organization_id;
+
+
+    public function init()
+    {
+
+//        $module = \Yii::$app->getModule('assessment');
+//        $this->organization_id = $module->params['organization_id'];
+
+        $this->organization_id =\Yii::$app->user->identity->userProfile->organization_id;
+
+        parent::init();
+    }
+
+
 
     /**
      * Renders the index view for the module
@@ -40,6 +55,7 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         $searchModel = new SurveySearch();
+        $searchModel->org_id = $this->organization_id ;
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -88,7 +104,10 @@ class DefaultController extends Controller
 
     public function actionCreate()
     {
+
+
         $survey = new Survey();
+        $survey->org_id =$this->organization_id ;
         $survey->survey_name = \Yii::t('survey', 'New Survey');
         $survey->survey_is_closed = true;
         $survey->save(false);

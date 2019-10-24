@@ -18,8 +18,8 @@ class SurveySearch extends Survey
     public function rules()
     {
         return [
-            [['survey_id', 'survey_badge_id'], 'integer'],
-            [['survey_name', 'survey_created_at', 'survey_updated_at', 'survey_expired_at'], 'safe'],
+            [['survey_id', 'survey_badge_id','org_id'], 'integer'],
+            [['survey_name', 'survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id'], 'safe'],
             [['survey_is_pinned', 'survey_is_closed'], 'boolean'],
         ];
     }
@@ -55,11 +55,12 @@ class SurveySearch extends Survey
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
              $query->where('0=1');
-            return $dataProvider;
+           // return $dataProvider;
         }
 
         $query->andFilterWhere([
             'survey_id' => $this->survey_id,
+            'org_id' => $this->org_id,
             'survey_created_at' => $this->survey_created_at,
             'survey_updated_at' => $this->survey_updated_at,
             'survey_expired_at' => $this->survey_expired_at,
