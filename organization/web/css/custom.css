@@ -256,7 +256,7 @@ a {
   margin-left: 10px;
 }
 
-.innernavs, .translatenav {
+/* .innernavs, .translatenav {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
@@ -264,9 +264,13 @@ a {
 }
 .innernavs{
   display: flex;
+} */
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+  border-top-color: #292929;
 }
 .nav-pills .nav-link {
   border-radius: 3px;
+  background: #f7f7f7;
 }
 .translatenav ul{
   -webkit-box-pack: end;
@@ -359,6 +363,7 @@ height: 34px;
 .modal{
   z-index: 10500;
 }
+
 .survey-container .survey-block .btn.btn-primary, .kv-editable-popover .survey-block .btn.btn-primary {
   color: #fff !important;
   background-color: #428bca !important;
