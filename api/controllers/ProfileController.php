@@ -37,7 +37,8 @@ class ProfileController extends  MyActiveController
             ['mobile', 'match', 'pattern' => '/^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/' ,'message'=> \Yii::t('common','Enter valid phone')],
         ]);
         if ($model->hasErrors()) {
-            return ResponseHelper::sendFailedResponse($model->errors,404);
+            $errors =  ResponseHelper::customResponseError($model->errors);
+            return ResponseHelper::sendFailedResponse($errors,401);
         }
 
         $user = User::findOne(['id'=> \Yii::$app->user->identity->getId()]) ;

@@ -37,6 +37,15 @@ class ResponseHelper {
     }
 
 
+    public static function customResponseError($errors)
+    {
+        $data = [];
+        foreach ($errors as $key => $value) {
+            $data[$key] = str_replace('"', ' ', $value[0]);
+        }
+        return $data;
+    }
+
 }
 
 

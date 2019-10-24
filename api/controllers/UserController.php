@@ -82,20 +82,10 @@ class UserController extends  RestController
             $data = ['token'=> $user->access_token, 'profile'=> $user];
             return ResponseHelper::sendSuccessResponse($data);
         }else{
-            $data = $this->customResponseError($model->errors);
-            return ResponseHelper::sendFailedResponse($data,401);
+            $errors =  ResponseHelper::customResponseError($model->errors);
+            return ResponseHelper::sendFailedResponse($errors,401);
         }
     }
-
-    private function customResponseError($errors)
-    {
-        $data = [];
-        foreach ($errors as $key => $value) {
-            $data[$key] = str_replace('"', ' ', $value[0]);
-        }
-        return $data;
-    }
-
 
     public function actionVerify(){
 
