@@ -29,6 +29,9 @@ class User extends \common\models\User
             'position'=>function($model){
                 return $model->userProfile->position;
             },
+            'address'=>function($model){
+                return $model->userProfile->address;
+            },
             'city_id'=>function($model){
                 return $model->userProfile->city_id;
             },
