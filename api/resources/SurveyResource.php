@@ -65,6 +65,10 @@ class SurveyResource extends Survey
                                                 'value'=>3,
                                                 'text'=>'Very Good'
                                             ],
+                                            [
+                                                'value'=>4,
+                                                'text'=>'Excellent'
+                                            ],
 
                                         ]
 

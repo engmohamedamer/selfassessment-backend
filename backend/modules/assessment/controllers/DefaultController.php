@@ -391,7 +391,7 @@ class DefaultController extends Controller
 
         } else {
             if ($model->hasErrors()) {
-                Yii::$app->session->setFlash("error", "Ошибка сохранения " . current($model->getFirstErrors()));
+                Yii::$app->session->setFlash("error", Yii::t('survey','Error Saving image.') . current($model->getFirstErrors()));
             }
         }
 

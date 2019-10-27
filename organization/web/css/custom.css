@@ -443,6 +443,16 @@ height: 34px;
   background-color: #0099b1;
   margin: 4px;
 }
+.survey-container .btn-info, .kv-editable-popover .btn-info, #survey-index .btn-info{
+  border-color: #0099b1 !important;
+  color: #fff !important;
+  background-color: #0099b1 !important;
+}
+#survey-index .btn.btn-danger {
+  border-color: #a94442 !important;
+  color: #ffffff !important;
+  background-color: #a94442 !important;
+}
 
 
 .emptyassessment{
