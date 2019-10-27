@@ -218,4 +218,28 @@ return [
     'Contact Details'=>'بيانات التواصل',
     'Email Not Found.'=>' البريد الالكتروني غير مسجل لدينا ',
     'Email reset password sent successfully'=>'تم إرسال البريد الإلكتروني لإستعادة كلمة مرور  بنجاح',
+
+    'Preview'=>'عرض توضيحي',
+    '* Please enter the required data in two languages arabic & english.'=>'* يرجى ادخال البيانات المطلوبة باللغتين العربية والإنجليزية.',
+    '* SLUG input is the subdomain of your website and contains your organization name in english with no spaces.'=>'*يظهر المُدخل الخاص بالـ slug في بداية رابط الموقع الخاص بكم ويكون باللغة الإنجليزية وبدون مسافات ويعبر عن اسم المؤسسة.',
+    '* Organization name shows in multiple places in your website like ( browser tab, website side menu and footer rights ).'=>'* يظهر اسم المؤسسة المُدخل في أماكن عدة بالموقع كتبويب المتصفح وقائمة الجانبية وفي خانة الحقوق بتذييل الموقع.',
+    '-- Examples --'=>' -- أمثلة توضيحية -- ',
+    '* In default language part you enter the default language of your website.'=>'* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.',
+
+    '* Organization logo will be shown in your website header and the logo icon in your browser tab and website side menu.'=>'يظهر شعار المؤسسة في رأس الصفحة وتظهر أيقونة الشعار في تبويب المتصفح والقائمة الجانبية للموقع.',
+    'Logos properties:'=>'خصائص إدخال شعار وأيقونة المؤسسة :',
+    '- must be in PNG format.'=>'* يجب ان يكون بصيغة PNG',
+    '- size must be 1MB at max.'=>'* يجب ألا يزيد حجم الملف عن 1 ميجابايت',
+    '- logo will be presented on white background so make sure that it suits it.'=>'* أن يتناسب الشعار في تباينه مع الخلفية البيضاء اللون',
+    
+    
+    
+    'Colors will present your organization identity in the website parts like buttons and backgrounds.'=>'* تظهر الالوان المدخلة بشكل أساسي في الموقع وتعكس هوية المؤسسة مثل الخلفيات والأزرار الرئيسية.',
+    'Please enter your main color and the second color with lower opacity.'=>'* برجاء ادخال اللون الرئيسي لهوية المؤسسة وادخال اللون الفرعي بشفافية أقل.',
+    
+    
+    'Footer links will be shown in the footer and contains 5 links with short naming.'=>'* تظهر روابط تذييل الصفحة في أسفل الموقع ويحتوي على 5 روابط يهم المؤسسة إظاهرهم للمستخدم.',
+    'Please enter your links names in the required languages.'=>'* برجاء ادخال اسم الرابط الذي سيظهر به باللغتين ثم ادخال الرابط المراد ربطه به.',
+    
+    'Social media links will be shown in the footer.'=>'* تظهر روابط التواصل الإجتماعي في أسفل الموقع .',
 ];
