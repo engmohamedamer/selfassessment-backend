@@ -154,22 +154,22 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                        </div>
 
                        <div class='col-sm-0 col-lg-4 theme-edit-preview'>
-                            <h2 class=''> عرض توضيحي</h2>
+                            <h2 class=''> <?php echo Yii::t('common', 'Preview') ?></h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active">
-                                    <p>* يرجى ادخال البيانات المطلوبة باللغتين العربية والإنجليزية.</p>
+                                    <p><?php echo Yii::t('common', '* Please enter the required data in two languages arabic & english.') ?></p>
                                     <hr class='mt-5 mb-5'>
-                                    <p>*يظهر المُدخل الخاص بالـ slug في بداية رابط الموقع الخاص بكم ويكون باللغة الإنجليزية وبدون مسافات ويعبر عن اسم المؤسسة.</p>
+                                    <p><?php echo Yii::t('common', '* SLUG input is the subdomain of your website and contains your organization name in english with no spaces.') ?></p>
                                     <img src="/img/previews/preview4.png" alt="" class='mt-3 mb-3 img'>
                                     <hr class='mt-5 mb-5'>
-                                    <p>* يظهر اسم المؤسسة المُدخل في أماكن عدة بالموقع كتبويب المتصفح وقائمة الجانبية وفي خانة الحقوق بتذييل الموقع.</p>
-                                    <p> -- أمثلة توضيحية -- </p>
+                                    <p><?php echo Yii::t('common', '* Organization name shows in multiple places in your website like ( browser tab, website side menu and footer rights ).') ?></p>
+                                    <p><?php echo Yii::t('common', '-- Examples --') ?></p>
                                     <img src="/img/previews/preview1.png" alt="" class='mt-3 mb-3 img'>
                                     <img src="/img/previews/preview2.png" alt="" class='mt-3 mb-3 img'>
                                     <img src="/img/previews/preview3.png" alt="" class='mt-3 mb-3 img'>
 
                                     <hr class='mt-5 mb-5'>
-                                    <p>* في الجزء الخاص باللغة الإفتراضية للمؤسسة تقوم باختيار اللغة المفضله لك لعرض موقعك.</p>
+                                    <p><?php echo Yii::t('common', '* In default language part you enter the default language of your website.') ?></p>
                                     <hr class='mt-5 mb-5'>
 
                                 </div>
@@ -197,17 +197,18 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             </div>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
-                            <h2 class=''> عرض توضيحي</h2>
+                            <h2 class=''> <?php echo Yii::t('common', 'Preview') ?></h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active" >
-                                    <p>يظهر شعار المؤسسة في رأس الصفحة وتظهر أيقونة الشعار في تبويب المتصفح والقائمة الجانبية للموقع.</p>
-                                    <p> -- أمثلة توضيحية -- </p>
+                                
+                                    <p><?php echo Yii::t('common', '* Organization logo will be shown in your website header and the logo icon in your browser tab and website side menu.') ?></p>
+                                    <p><?php echo Yii::t('common', '-- Examples --') ?></p>
                                     <img src="/img/previews/preview5.png" alt="" class='mt-3 mb-3 img'>
                                     <img src="/img/previews/preview6.png" alt="" class='mt-3 mb-3 img'>
-                                    <p>خصائص إدخال شعار وأيقونة المؤسسة :</p>
-                                    <p>* يجب ان يكون بصيغة PNG</p>
-                                    <p>* يجب ألا يزيد حجم الملف عن 1 ميجابايت</p>
-                                    <p>* أن يتناسب الشعار في تباينه مع الخلفية البيضاء اللون</p>
+                                    <p><?php echo Yii::t('common', 'Logos properties:') ?></p>
+                                    <p><?php echo Yii::t('common', '- must be in PNG format.') ?></p>
+                                    <p><?php echo Yii::t('common', '- size must be 1MB at max.') ?></p>
+                                    <p><?php echo Yii::t('common', '- logo will be presented on white background so make sure that it suits it.') ?></p>
                                     <hr class='mt-5 mb-5'>
 
                                 </div>
@@ -229,12 +230,12 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
-                            <h2 class=''> عرض توضيحي</h2>
+                            <h2 class=''> <?php echo Yii::t('common', 'Preview') ?></h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active">
-                                    <p>* تظهر الالوان المدخلة بشكل أساسي في الموقع وتعكس هوية المؤسسة مثل الخلفيات والأزرار الرئيسية.</p>
-                                    <p>* برجاء ادخال اللون الرئيسي لهوية المؤسسة وادخال اللون الفرعي بشفافية أقل.</p>
-                                    <p> -- أمثلة توضيحية -- </p>
+                                    <p><?php echo Yii::t('common', 'Colors will present your organization identity in the website parts like buttons and backgrounds.') ?></p>
+                                    <p><?php echo Yii::t('common', 'Please enter your main color and the second color with lower opacity.') ?></p>
+                                    <p> <?php echo Yii::t('common', '-- Examples --') ?> </p>
                                     <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'>
                                     <hr class='mt-5 mb-5'>
                                 </div>
@@ -256,12 +257,12 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
-                            <h2 class=''> عرض توضيحي</h2>
+                            <h2 class=''> <?php echo Yii::t('common', 'Preview') ?></h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active">
-                                    <p>* تظهر الالوان المدخلة بشكل أساسي في الموقع وتعكس هوية المؤسسة مثل الخلفيات والأزرار الرئيسية.</p>
-                                    <p>* برجاء ادخال اللون الرئيسي لهوية المؤسسة وادخال اللون الفرعي بشفافية أقل.</p>
-                                    <p> -- أمثلة توضيحية -- </p>
+                                    <p><?php echo Yii::t('common', 'Colors will present your organization identity in the website parts like buttons and backgrounds.') ?></p>
+                                    <p><?php echo Yii::t('common', 'Please enter your main color and the second color with lower opacity.') ?></p>
+                                    <p> <?php echo Yii::t('common', '-- Examples --') ?> </p>
                                     <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'>
                                     <hr class='mt-5 mb-5'>
                                 </div>
@@ -283,12 +284,12 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
-                            <h2 class=''> عرض توضيحي</h2>
+                            <h2 class=''> <?php echo Yii::t('common', 'Preview') ?></h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active" >
-                                    <p>* تظهر روابط تذييل الصفحة في أسفل الموقع ويحتوي على 5 روابط يهم المؤسسة إظاهرهم للمستخدم.</p>
-                                    <p>* برجاء ادخال اسم الرابط الذي سيظهر به باللغتين ثم ادخال الرابط المراد ربطه به.</p>
-                                    <p> -- أمثلة توضيحية -- </p>
+                                    <p><?php echo Yii::t('common', 'Footer links will be shown in the footer and contains 5 links with short naming.') ?></p>
+                                    <p><?php echo Yii::t('common', 'Please enter your links names in the required languages.') ?></p>
+                                    <p> <?php echo Yii::t('common', '-- Examples --') ?> </p>
                                     <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'>
                                     <hr class='mt-5 mb-5'>
                                 </div>
@@ -310,11 +311,11 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
-                            <h2 class=''> عرض توضيحي</h2>
+                            <h2 class=''> <?php echo Yii::t('common', 'Preview') ?></h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active" >
-                                <p>* تظهر روابط التواصل الإجتماعي في أسفل الموقع .</p>
-                                    <p> -- أمثلة توضيحية -- </p>
+                                <p><?php echo Yii::t('common', 'Social media links will be shown in the footer.') ?></p>
+                                    <p> <?php echo Yii::t('common', '-- Examples --') ?> </p>
                                     <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'>
                                     <hr class='mt-5 mb-5'>
 
