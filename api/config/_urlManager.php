@@ -28,7 +28,15 @@ return [
         ],
 //
 
-
+        ['class' =>'yii\rest\UrlRule',
+            'controller'=>'assessments',
+            'only'=>['index','options'],//'update',
+            'extraPatterns'=>[
+                'GET ' => 'index' ,
+               // 'PUT ' => 'update',
+            ],
+            'pluralize'=>false
+        ],
 
 
         ['class' =>'yii\rest\UrlRule',

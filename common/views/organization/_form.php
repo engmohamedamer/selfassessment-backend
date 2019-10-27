@@ -82,7 +82,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                </div>
                                <hr class='mt-5 mb-5 col-lg-12 row'>
 
-                               
+
                                <?
                            }?>
 
