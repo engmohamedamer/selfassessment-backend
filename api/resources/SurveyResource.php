@@ -12,6 +12,9 @@ class SurveyResource extends Survey
             'id'=>function($model){
                 return $model->survey_id;
             },
+            'progress'=>function($model){
+                return "65";
+            },
 
             'title'=>function($model){
                 return $model->survey_name;
