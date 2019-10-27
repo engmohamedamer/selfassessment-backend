@@ -47,7 +47,7 @@ BootstrapPluginAsset::register($this);
             'layout' => "{summary}\n{items}\n<div class='clearfix'></div><div class='col-md-12'>{pager}</div>",
             'dataProvider' => $dataProvider,
             'itemOptions' => ['class' => 'item'],
-            'emptyText' => '<p>لا يوجد استبيانات في الوقت الحالي</p><div class="emptyassessment"><div class="img"></div><div class="name"></div></div><div class="emptyassessment"><div class="img"></div><div class="name"></div></div>',
+            'emptyText' => '<p> '.Yii::t('survey','No Assessments at this point.').'</p><div class="emptyassessment"><div class="img"></div><div class="name"></div></div><div class="emptyassessment"><div class="img"></div><div class="name"></div></div>',
 
         'itemView' => function ($model, $key, $index, $widget) {
                 /** @var $model \backend\modules\assessment\models\Survey */

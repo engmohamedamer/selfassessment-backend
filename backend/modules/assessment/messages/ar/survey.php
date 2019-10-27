@@ -16,7 +16,7 @@ return [
     ''=>'',
     ''=>'',
     ''=>'',
-    ''=>'',
+    'No Assessments at this point.'=>'لا يوجد استبيانات في الوقت الحالي',
     'Description'=>'الوصف',
     'Visible'=>'مرئى',
     'Private'=>'خاص',
