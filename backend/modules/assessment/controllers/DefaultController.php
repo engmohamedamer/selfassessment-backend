@@ -384,7 +384,7 @@ class DefaultController extends Controller
                     $model->survey_image = $name;
                     $model->save();
                 } else {
-                    Yii::$app->session->setFlash("warning", 'Ошибка загрузки изображения.');
+                    Yii::$app->session->setFlash("warning", Yii::t('survey','Error loading image.') );
                 }
             }
             return $this->renderPartial('update', ['survey' => $model]);

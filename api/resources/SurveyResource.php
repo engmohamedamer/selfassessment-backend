@@ -27,8 +27,51 @@ class SurveyResource extends Survey
                 return $model->survey_time_to_pass;
             },
 
-            'items'=>function($model){
+            'pages'=>function($model){
 
+                    return [
+                            [
+                                'name'=>'Page 1',
+                                'elements'=>[
+                                    [
+                                        'type'=>"text",
+                                        'name'=>'1',
+                                        'title'=>'question one ?'
+
+                                    ],
+                                    [
+                                        'type'=>"text",
+                                        'name'=>'2',
+                                        'title'=>'question two ?'
+
+                                    ],
+
+                                    [
+                                        'type'=>'dropdown',
+                                        'name'=>3,
+                                        'title'=>'drop down question three ?',
+                                        'description'=>"description for question three .. description .. description  .. description",
+                                        'isRequired'=>true,
+                                        'choices'=>[
+                                            [
+                                                'value'=>1,
+                                                'text'=>'Bad'
+                                            ],
+                                            [
+                                                'value'=>2,
+                                                'text'=>'Good'
+                                            ],
+                                            [
+                                                'value'=>3,
+                                                'text'=>'Very Good'
+                                            ],
+
+                                        ]
+
+                                    ],
+                                ],
+                            ]
+                    ];
 
             }
 

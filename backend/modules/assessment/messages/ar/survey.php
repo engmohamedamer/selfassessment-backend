@@ -16,7 +16,7 @@ return [
     ''=>'',
     ''=>'',
     ''=>'',
-    ''=>'',
+    'Error loading image.'=>'خطأ فى تحميل الصورة',
     'Description'=>'الوصف',
     'Visible'=>'مرئى',
     'Private'=>'خاص',
