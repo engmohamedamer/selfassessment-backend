@@ -4,7 +4,7 @@ namespace api\resources;
 
 use backend\modules\assessment\models\Survey;
 
-class SurveyResource extends Survey
+class SurveyMiniResource extends Survey
 {
     public function fields()
     {
@@ -15,22 +15,20 @@ class SurveyResource extends Survey
             'progress'=>function($model){
                 return "65";
             },
+
             'title'=>function($model){
                 return $model->survey_name;
             },
+
 
             'description'=>function($model){
                 return $model->survey_descr;
             },
 
+
             'survey_time_to_pass'=>function($model){
                 return $model->survey_time_to_pass;
             },
-
-            'items'=>function($model){
-
-
-            }
 
         ];
     }

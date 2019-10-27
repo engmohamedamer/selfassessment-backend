@@ -30,10 +30,11 @@ return [
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'assessments',
-            'only'=>['index','options'],//'update',
+            'only'=>['index','view','options'],//'update',
             'extraPatterns'=>[
                 'GET ' => 'index' ,
-               // 'PUT ' => 'update',
+                'GET <id>' => 'view' ,
+                // 'PUT ' => 'update',
             ],
             'pluralize'=>false
         ],
