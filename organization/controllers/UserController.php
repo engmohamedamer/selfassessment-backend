@@ -225,6 +225,7 @@ class UserController extends Controller
         $prof->lastname = $profile->lastname ;
         $prof->gender = $profile->gender;
         $prof->locale = $profile->locale;
+        $prof->mobile = $profile->mobile;
         if ($organization_id) {
             $prof->organization_id = $organization_id;
         }
