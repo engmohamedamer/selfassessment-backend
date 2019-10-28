@@ -48,7 +48,7 @@ class SurveyResource extends Survey
 
                                     [
                                         'type'=>'dropdown',
-                                        'name'=>3,
+                                        'name'=> "El Sham3a",
                                         'title'=>'drop down question three ?',
                                         'description'=>"description for question three .. description .. description  .. description",
                                         'isRequired'=>true,
