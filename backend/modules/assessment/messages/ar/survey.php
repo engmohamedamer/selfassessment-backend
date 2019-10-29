@@ -33,7 +33,7 @@ return [
     'Add question'=>'أضف سؤال ',
     'Restrict survey to selected user...'=>'اقصاء الموظفين ...',
     'minutes'=>'دقائق',
-    'Time to pass'=>'الوقت الازم لانهائه ',
+    'Time to pass'=>'الوقت اللازم لانهائه ',
     'Expired at'=>'ينتهى فى ',
     'New Survey'=>'استبيان جديد',
     'Name'=>'العنوان',
