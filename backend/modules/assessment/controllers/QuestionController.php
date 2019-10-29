@@ -92,6 +92,13 @@ class QuestionController extends Controller
         $questionIsChanged = false;
 
         $questionData = ArrayHelper::getValue($post, "SurveyQuestion.{$question->survey_question_id}");
+
+       if( $question->survey_question_type !=  $questionData['survey_question_type'] ){
+
+           $question->survey_question_type = $questionData['survey_question_type'];
+           $question->save(false);
+           return true;
+       }
         if (!empty($questionData) && $question->load($questionData, '')) {
             $isValid = $question->validate();
             $questionIsChanged = !empty($question->getDirtyAttributes());
