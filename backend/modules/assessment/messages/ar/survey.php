@@ -47,7 +47,7 @@ return [
     'Enter time in minutes...'=>'ادخل الوقت بالدقائق',
     'Show detailed description'=>'إظهار التفاصيل',
     'Reset'=>'إلغاء',
-    'Can be skipped'=>'يمكن تخطي',
+    'Can be skipped'=>'يمكن تخطيه',
     'Score this question'=>'إضافة نقاط الاختيارات',
     'Will be presented one text field where respondent can enter the answer in free form'=>'سيتم إظهار حقل نص واحد حيث يمكن للمستفتى إدخال الإجابة',
     'Enter an answer choice'=>'أدخل اختيار الإجابة',
