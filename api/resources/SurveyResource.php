@@ -48,8 +48,8 @@ class SurveyResource extends Survey
                 return "65";
             },
 
-            'elements'=> function($model){
-                $data =[];
+            'pages'=>function($model){
+                $data =[]['questions'];
                 foreach ($model->questions as $key => $question) {
                     if ($question->questionType->survey_type_name == 'Single textbox') {
                         $type = 'text'; 
@@ -59,18 +59,18 @@ class SurveyResource extends Survey
                         $type = strtolower($question->questionType->survey_type_name); 
                     }
 
-                    $data[] = [
+                    $data[]['questions'] = [[
+                        'type'=> $type,
                         'name'=>'q-'.$question->survey_question_id,
                         'title'=> $question->survey_question_name,
-                        'type'=> $type,
-                    ];
+                    ]];
 
                     if ($question->survey_question_show_descr == 1 ) {
-                        $data[$key]['description'] = $question->survey_question_descr;
+                        $data[$key]['questions'][0]['description'] = $question->survey_question_descr;
                     }
 
                     if ($question->survey_question_can_skip == 1 ) {
-                        $data[$key]['isRequired'] = true;
+                        $data[$key]['questions'][0]['isRequired'] = true;
                     }
 
                     if ($type == 'dropdown') {
@@ -78,7 +78,7 @@ class SurveyResource extends Survey
                         foreach ($question->answers as $value) {
                             $qAnswer[] = ['value'=>$value->survey_answer_points,'text'=> $value->survey_answer_name]; 
                         }
-                        $data[$key]['choices'] = $qAnswer;
+                        $data[$key]['questions'][0]['choices'] = $qAnswer;
                     }
 
                     if ($type == 'radiogroup') {
@@ -86,63 +86,12 @@ class SurveyResource extends Survey
                         foreach ($question->answers as $value) {
                             $qAnswer[] = $value->survey_answer_name; 
                         }
-                        $data[$key]['choices'] = $qAnswer;
+                        $data[$key]['questions'][0]['choices'] = $qAnswer;
                     }
 
                 }
                 return $data;
             },
-            'pages'=>function($model){
-
-                    return [
-                            [
-                                'name'=>'Page 1',
-                                'elements'=>[
-                                    [
-                                        'type'=>"text",
-                                        'name'=>'1',
-                                        'title'=>'question one ?'
-
-                                    ],
-                                    [
-                                        'type'=>"text",
-                                        'name'=>'2',
-                                        'title'=>'question two ?'
-
-                                    ],
-
-                                    [
-                                        'type'=>'dropdown',
-                                        'name'=> "El Sham3a",
-                                        'title'=>'drop down question three ?',
-                                        'description'=>"description for question three .. description .. description  .. description",
-                                        'isRequired'=>true,
-                                        'choices'=>[
-                                            [
-                                                'value'=>1,
-                                                'text'=>'Bad'
-                                            ],
-                                            [
-                                                'value'=>2,
-                                                'text'=>'Good'
-                                            ],
-                                            [
-                                                'value'=>3,
-                                                'text'=>'Very Good'
-                                            ],
-                                            [
-                                                'value'=>4,
-                                                'text'=>'Excellent'
-                                            ],
-
-                                        ]
-
-                                    ],
-                                ],
-                            ]
-                    ];
-
-            }
 
         ];
     }
