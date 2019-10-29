@@ -15,10 +15,10 @@ use yii\helpers\Url;
 foreach ($question->answers as $i => $answer) {
 switch ($i){
     case 0:
-        $label = 'Min';
+        $label = Yii::t('survey','Min');
         break;
     case 1:
-        $label = 'Max';
+        $label = Yii::t('survey','Max');
         break;
     default:
         $label = false;
