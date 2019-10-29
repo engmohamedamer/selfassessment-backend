@@ -59,4 +59,5 @@ return [
     'Max'=>'أكبر',
     'Current types are not compatible, all entered data will be deleted. Are you sure?'=>'الأنواع الحالية غير متوافقة ، سيتم حذف جميع البيانات المدخلة. هل أنت متاكد',
     'Will be presented text box where respondent can enter the open-ended answer'=>'سيتم تقديم مربع النص حيث يمكن للمستفتى إدخال إجابة مفتوحة',
+    'Update survey'=>'تحديث الاستبيان'
 ];
