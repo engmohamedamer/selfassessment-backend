@@ -66,6 +66,10 @@ class Module extends \yii\base\Module
                 'class' => 'yii\i18n\PhpMessageSource',
                 'basePath' => '@surveyRoot/messages',
             ];
+            \Yii::$app->i18n->translations['kveditable'] = [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'basePath' => '@surveyRoot/messages',
+            ];
         }
 
         $view = \Yii::$app->getView();
