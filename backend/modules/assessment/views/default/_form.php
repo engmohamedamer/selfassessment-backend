@@ -68,7 +68,7 @@ echo Dialog::widget();
                 'model' => $survey,
                 'attribute' => 'survey_name',
                 'asPopover' => true,
-                'header' => 'Name',
+                'header' => Yii::t('survey','Name'),
                 'size' => 'md',
                 'formOptions' => [
                     'action' => Url::toRoute(['default/update-editable', 'property' => 'survey_name'])
@@ -76,7 +76,7 @@ echo Dialog::widget();
                 'additionalData' => ['id' => $survey->survey_id],
                 'options' => [
                     'class' => 'form-control',
-                    'placeholder' => 'Enter survey name...',
+                    'placeholder' => Yii::t('survey','Enter survey name...'),
                 ]
             ]);
             echo Html::endTag('div');
@@ -91,7 +91,7 @@ echo Dialog::widget();
             echo Editable::widget([
                 'model' => $survey,
                 'attribute' => 'survey_expired_at',
-                'header' => 'Expired at',
+                'header' => Yii::t('survey', 'Expired at'),
                 'asPopover' => true,
                 'size' => 'md',
                 'inputType' => Editable::INPUT_DATETIME,
@@ -105,13 +105,16 @@ echo Dialog::widget();
                         'autoclose' => true,
                         // 'format' => 'd.m.Y H:i'
                     ],
-                    'options' => ['placeholder' => 'Expired at']
+                    'options' => ['placeholder' => Yii::t('survey', 'Expired at')]
                 ],
                 'showButtonLabels' => true,
                 'submitButton' => [
                     'icon' => false,
-                    'label' => 'OK',
+                    'label' => Yii::t('survey','OK'),
                     'class' => 'btn btn-sm btn-primary'
+                ],
+                'resetButton'=>[
+                    'label' => Yii::t('survey','Reset'),
                 ]
             ]);
             echo Html::endTag('div'); // col-md-6
@@ -122,7 +125,7 @@ echo Dialog::widget();
                 'model' => $survey,
                 'attribute' => 'survey_time_to_pass',
                 'asPopover' => true,
-                'header' => 'Time to pass',
+                'header' => Yii::t('survey', 'Time to pass'),
                 'size' => 'md',
                 'formOptions' => [
                     'action' => Url::toRoute(['default/update-editable', 'property' => 'survey_time_to_pass'])
@@ -130,7 +133,7 @@ echo Dialog::widget();
                 'additionalData' => ['id' => $survey->survey_id],
                 'options' => [
                     'class' => 'form-control',
-                    'placeholder' => 'Enter time in minutes...',
+                    'placeholder' => Yii::t('survey', 'Enter time in minutes...'),
                     'type' => 'number',
                 ]
             ]);

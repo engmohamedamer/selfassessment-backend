@@ -12,4 +12,4 @@ use yii\helpers\Url;
 /** @var $question \backend\modules\assessment\models\SurveyQuestion */
 /** @var $form \yii\widgets\ActiveForm */
 
-echo 'Will be presented one text field where respondent can enter the answer in free form';
+echo Yii::t('survey','Will be presented one text field where respondent can enter the answer in free form');
