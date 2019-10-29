@@ -13,6 +13,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\modules\assessment\models\search\SurveySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+$this->title = Yii::t('backend', 'Survey');
 
 BootstrapPluginAsset::register($this);
 
