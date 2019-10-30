@@ -110,7 +110,7 @@ JS
 			?>
 			<div class="assigned-user">
 				<?php
-				echo $surveyStat->user->fullname
+				echo $surveyStat->user->userProfile->fullName
 				?>
 
 			</div>

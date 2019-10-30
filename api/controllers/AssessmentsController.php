@@ -7,7 +7,9 @@ use api\helpers\ResponseHelper;
 use api\resources\SurveyMiniResource;
 use api\resources\SurveyResource;
 use api\resources\User;
+use backend\modules\assessment\models\SurveyStat;
 use yii\data\ActiveDataProvider;
+use yii\db\Expression;
 
 
 class AssessmentsController extends  MyActiveController
@@ -18,6 +20,7 @@ class AssessmentsController extends  MyActiveController
         $actions = parent::actions();
         unset($actions['index']);
         unset($actions['view']);
+        unset($actions['update']);
         return $actions;
     }
 
@@ -55,6 +58,58 @@ class AssessmentsController extends  MyActiveController
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
     }
+
+
+    public function actionUpdate($id)
+    {
+        $user= User::findOne(['id'=> \Yii::$app->user->identity->getId()]) ;
+        if(! $id) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],'404');
+        $profile=$user->userProfile;
+
+        $surveyObj = SurveyResource::findOne(['survey_id'=>$id]);
+        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found', 404]);
+
+        $params = \Yii::$app->request->post();
+
+        //add survey state
+         $this->CheckState($surveyObj->survey_id);
+
+        foreach ($params as $key=>$value) {
+           echo $key;
+            print_r($value);
+
+            echo "<br/>";
+        }
+
+
+        die;
+
+
+        return ResponseHelper::sendSuccessResponse($surveyObj);
+
+    }
+
+
+    public function CheckState($surveyId){
+        $assignedModel = SurveyStat::getAssignedUserStat(\Yii::$app->user->getId(), $surveyId);
+        if (empty($assignedModel)) {
+            SurveyStat::assignUser(\Yii::$app->user->getId(), $this->surveyId);
+            $assignedModel = SurveyStat::getAssignedUserStat(\Yii::$app->user->getId(),$surveyId);
+        } else {
+//            if ($assignedModel->survey_stat_is_done){
+//                return $this->renderClosed();
+//            }
+        }
+
+        if ($assignedModel->survey_stat_started_at === null) {
+            $assignedModel->survey_stat_started_at = new Expression('NOW()');
+            $assignedModel->save(false);
+        }
+
+        return true;
+    }
+
+
 
 
 }

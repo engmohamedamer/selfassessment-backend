@@ -6,7 +6,7 @@
  * Time: 10:09
  */
 
-namespace onmotion\survey;
+namespace backend\modules\assessment;
 
 
 use backend\modules\assessment\models\SurveyStat;

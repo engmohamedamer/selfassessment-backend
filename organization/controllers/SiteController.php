@@ -25,4 +25,9 @@ class SiteController extends OrganizationController
         return $this->render('dashboard');  //,compact()
     }
 
+
+    public  function actionTest(){
+        return $this->render('test');
+    }
+
 }
