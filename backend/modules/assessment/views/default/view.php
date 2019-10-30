@@ -39,7 +39,7 @@ BootstrapPluginAsset::register($this);
                            class="btn btn-info btn-xs survey-label" data-pjax="0"
                            title="edit"><span class="glyphicon glyphicon-pencil"></span></a>
                         <span class="survey-label btn btn-info btn-xs respondents-toggle" data-toggle="tooltip"
-                              title="<?= \Yii::t('survey', 'Respondents') ?>"><?= \Yii::t('survey', 'Number of respondents') ?>: <?= $survey->getRespondentsCount() ?></span>
+                              title="<?= \Yii::t('survey', 'Respondents count') ?>"><?= \Yii::t('survey', 'Respondents count') ?>: <?= $survey->getRespondentsCount() ?></span>
                         <span class="survey-label btn btn-info btn-xs" data-toggle="tooltip"
                               title="<?= \Yii::t('survey', 'Questions') ?>"><?= \Yii::t('survey', 'Questions') ?>: <?= $survey->getQuestions()->count() ?></span>
 	                    <span class="survey-label btn btn-info btn-xs restricted-users-toggle" data-toggle="tooltip"
@@ -107,6 +107,10 @@ BootstrapPluginAsset::register($this);
                 echo Html::beginTag('div', ['class' => 'col-md-12']);
                 echo $form->field($survey, "survey_descr", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
                 )->textarea(['rows' => 3]);
+
+                 echo $form->field($survey, "start_info", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
+                )->textarea(['rows' => 3,'calss'=>'form-control']);
+
                 echo Html::tag('div', '', ['class' => 'clearfix']);
                 echo Html::endTag('div');
                 echo Html::endTag('div');
@@ -131,7 +135,7 @@ BootstrapPluginAsset::register($this);
                 echo Html::endTag('div');
 
                 echo Html::beginTag('div', ['class' => 'col-md-9']);
-                echo $form->field($survey, "survey_tags")->input('text', ['placeholder' => 'Comma separated']);
+                echo $form->field($survey, "survey_tags")->input('text', ['placeholder' => Yii::t('survey','Comma separated')]);
                 echo Html::endTag('div');
                 echo Html::endTag('div');
 
