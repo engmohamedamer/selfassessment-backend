@@ -83,6 +83,9 @@ class AssessmentsController extends  MyActiveController
         if(!$survey_done)  return ResponseHelper::sendFailedResponse(['message'=>'Survey is Completed']);
 
         foreach ($params as $key=>$value) {
+            $key=  (int)preg_replace('/\D/ui','',$key);
+
+
             $question = $this->findModel($key);
             //check question type
            if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
