@@ -13,11 +13,7 @@ class SurveyResource extends Survey
                 return $model->survey_id;
             },
             'locale'=>function($model){
-                if (\Yii::$app->user->identity->userProfile->locale == 'en-US') {
-                    return 'en';
-                }else{
-                    return 'ar';
-                }
+                return 'ar';
             },
             'title'=>function($model){
                 return $model->survey_name;
