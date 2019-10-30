@@ -29,7 +29,7 @@ class SurveyResource extends Survey
                 return 'top';
             },
             'maxTimeToFinish'=>function($model){
-                return $model->survey_time_to_pass;
+                return $model->survey_time_to_pass ? $model->survey_time_to_pass * 60 : null ;
             },
             'firstPageIsStarted'=>function($model){
                 return true;
