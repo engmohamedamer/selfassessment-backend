@@ -52,7 +52,7 @@ class SurveyResource extends Survey
                 $data =[]['questions'];
                 foreach ($model->questions as $key => $question) {
                     if ($question->questionType->survey_type_name == 'Single textbox') {
-                        $type = 'text'; 
+                        $type = 'comment'; 
                     }elseif ($question->questionType->survey_type_name == 'One choise of list') {
                         $type = 'radiogroup'; 
                     }elseif ($question->questionType->survey_type_name == 'Multiple choice') {
