@@ -60,6 +60,8 @@ class SurveyResource extends Survey
                         $type = 'radiogroup'; 
                     }elseif ($question->questionType->survey_type_name == 'Multiple choice') {
                         $type = 'checkbox'; 
+                    }elseif ($question->questionType->survey_type_name == 'Date/Time') {
+                        $type = 'text'; 
                     }else{
                         $type = strtolower($question->questionType->survey_type_name); 
                     }
@@ -94,6 +96,9 @@ class SurveyResource extends Survey
                         $data[$key+1]['questions'][0]['choices'] = $qAnswer;
                     }
 
+                    if ($question->questionType->survey_type_name == 'Date/Time') {
+                        $data[$key+1]['questions'][0]['inputType'] = 'date';
+                    }
                 }
                 return $data;
             },
