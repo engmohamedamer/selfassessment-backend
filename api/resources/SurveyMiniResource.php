@@ -12,6 +12,9 @@ class SurveyMiniResource extends Survey
             'id'=>function($model){
                 return $model->survey_id;
             },
+            'status'=>function($model){
+                   return  rand(0,2);
+            },
             'progress'=>function($model){
                 return "65";
             },
@@ -29,6 +32,9 @@ class SurveyMiniResource extends Survey
             'survey_time_to_pass'=>function($model){
                 return $model->survey_time_to_pass;
             },
+            'remaining_time'=>function($model){
+                  return '50';
+            }
 
         ];
     }

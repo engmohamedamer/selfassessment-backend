@@ -183,7 +183,7 @@ class DefaultController extends Controller
 	        function ($user) {
 	            return [
 	                'id' => $user->id,
-	                'text' => $user->fullname,
+	                'text' =>  $surveyStat->user->userProfile->fullName,
 	                'isAssigned' => false,
 	                'isRestricted' => false
 		        ];

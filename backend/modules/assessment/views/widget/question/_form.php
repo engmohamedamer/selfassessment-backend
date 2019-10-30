@@ -38,8 +38,8 @@ Pjax::begin([
 
 $form = ActiveForm::begin([
     'id' => 'survey-questions-form-' . $question->survey_question_id,
-    'action' => Url::toRoute(['/survey/question/submit-answer', 'id' => $question->survey_question_id, 'n' => $number]),
-    'validationUrl' => Url::toRoute(['/survey/question/validate', 'id' => $question->survey_question_id]),
+    'action' => Url::toRoute(['/assessment/widget/question/submit-answer', 'id' => $question->survey_question_id, 'n' => $number]),
+    'validationUrl' => Url::toRoute(['/assessment/widget/question/validate', 'id' => $question->survey_question_id]),
     'options' => ['class' => 'form-inline question-form', 'data-pjax' => true],
     'enableClientValidation' => false,
     'enableAjaxValidation' => true,

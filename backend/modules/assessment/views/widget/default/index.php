@@ -125,7 +125,7 @@ if ($stat && $stat->survey_stat_is_done) {
         if ($statusClass === 'active') {
             echo Html::button(\Yii::t('survey', 'Done'),
                 ['class' => 'btn btn-success center-block', 'data-default-text' => \Yii::t('survey', 'Done'),
-                    'id' => 's-done', 'data-action' => Url::toRoute(['/survey/default/done']), 'data-hash' => $stat->survey_stat_hash]);
+                    'id' => 's-done', 'data-action' => Url::toRoute(['/assessment/widget/default/done']), 'data-hash' => $stat->survey_stat_hash]);
         }
         ?>
     </div>
