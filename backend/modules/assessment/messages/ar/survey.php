@@ -62,4 +62,5 @@ return [
     'Update survey'=>'تحديث الاستبيان',
     'Are you sure?'=>'هل أنت واثق؟',
     'Edit'=>'تعديل',
+    'Survey Start Info'=>'تعليمات بدء الاستبيان',
 ];

@@ -170,6 +170,9 @@ echo Dialog::widget();
             echo Html::beginTag('div', ['class' => 'col-md-12']);
             echo $form->field($survey, "survey_descr", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
             )->textarea(['rows' => 3]);
+
+            echo $form->field($survey, "start_info", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
+            )->textarea(['rows' => 3]);
             echo Html::tag('div', '', ['class' => 'clearfix']);
             echo Html::endTag('div'); // col-md-12
             echo Html::endTag('div'); // row

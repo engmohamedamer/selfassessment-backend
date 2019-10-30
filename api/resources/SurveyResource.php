@@ -50,6 +50,13 @@ class SurveyResource extends Survey
 
             'pages'=>function($model){
                 $data =[]['questions'];
+                $data[]['questions'] = [[
+                    'type'=> 'html',
+                    'name'=>'q',
+                    'html'=>[
+                        'ar'=> '<h3>تعليمات هامة</h3><h4>تعليمات  '. $model->start_info .' </h4>'
+                    ]
+                ]];
                 foreach ($model->questions as $key => $question) {
                     if ($question->questionType->survey_type_name == 'Single textbox') {
                         $type = 'comment'; 
@@ -68,11 +75,11 @@ class SurveyResource extends Survey
                     ]];
 
                     if ($question->survey_question_show_descr == 1 ) {
-                        $data[$key]['questions'][0]['description'] = $question->survey_question_descr;
+                        $data[$key+1]['questions'][0]['description'] = $question->survey_question_descr;
                     }
 
                     if ($question->survey_question_can_skip == 1 ) {
-                        $data[$key]['questions'][0]['isRequired'] = true;
+                        $data[$key+1]['questions'][0]['isRequired'] = true;
                     }
 
                     if ($type == 'dropdown' || $type == 'checkbox') {
@@ -80,7 +87,7 @@ class SurveyResource extends Survey
                         foreach ($question->answers as $value) {
                             $qAnswer[] = ['value'=>$value->survey_answer_points,'text'=> $value->survey_answer_name]; 
                         }
-                        $data[$key]['questions'][0]['choices'] = $qAnswer;
+                        $data[$key+1]['questions'][0]['choices'] = $qAnswer;
                     }
 
                     if ($type == 'radiogroup') {
@@ -88,7 +95,7 @@ class SurveyResource extends Survey
                         foreach ($question->answers as $value) {
                             $qAnswer[] = $value->survey_answer_name; 
                         }
-                        $data[$key]['questions'][0]['choices'] = $qAnswer;
+                        $data[$key+1]['questions'][0]['choices'] = $qAnswer;
                     }
 
                 }
