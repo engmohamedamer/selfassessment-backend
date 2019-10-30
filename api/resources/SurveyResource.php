@@ -68,7 +68,7 @@ class SurveyResource extends Survey
 
                     $data[]['questions'] = [[
                         'type'=> $type,
-                        'name'=>$question->survey_question_id,
+                        'name'=>'q-'.$question->survey_question_id,
                         'title'=> $question->survey_question_name,
                     ]];
 
