@@ -13,11 +13,7 @@ class SurveyResource extends Survey
                 return $model->survey_id;
             },
             'locale'=>function($model){
-                if (\Yii::$app->user->identity->userProfile->locale == 'en-US') {
-                    return 'en';
-                }else{
-                    return 'ar';
-                }
+                return 'ar';
             },
             'title'=>function($model){
                 return $model->survey_name;
@@ -33,7 +29,7 @@ class SurveyResource extends Survey
                 return 'top';
             },
             'maxTimeToFinish'=>function($model){
-                return $model->survey_time_to_pass;
+                return $model->survey_time_to_pass ? $model->survey_time_to_pass * 60 : null ;
             },
             'firstPageIsStarted'=>function($model){
                 return true;
@@ -50,11 +46,22 @@ class SurveyResource extends Survey
 
             'pages'=>function($model){
                 $data =[]['questions'];
+                $data[]['questions'] = [[
+                    'type'=> 'html',
+                    'name'=>'q',
+                    'html'=>[
+                        'ar'=> '<h3>تعليمات هامة</h3><p>تعليمات  '. $model->start_info .' </p>'
+                    ]
+                ]];
                 foreach ($model->questions as $key => $question) {
                     if ($question->questionType->survey_type_name == 'Single textbox') {
-                        $type = 'text'; 
+                        $type = 'comment'; 
                     }elseif ($question->questionType->survey_type_name == 'One choise of list') {
                         $type = 'radiogroup'; 
+                    }elseif ($question->questionType->survey_type_name == 'Multiple choice') {
+                        $type = 'checkbox'; 
+                    }elseif ($question->questionType->survey_type_name == 'Date/Time') {
+                        $type = 'text'; 
                     }else{
                         $type = strtolower($question->questionType->survey_type_name); 
                     }
@@ -66,19 +73,19 @@ class SurveyResource extends Survey
                     ]];
 
                     if ($question->survey_question_show_descr == 1 ) {
-                        $data[$key]['questions'][0]['description'] = $question->survey_question_descr;
+                        $data[$key+1]['questions'][0]['description'] = $question->survey_question_descr;
                     }
 
                     if ($question->survey_question_can_skip == 1 ) {
-                        $data[$key]['questions'][0]['isRequired'] = true;
+                        $data[$key+1]['questions'][0]['isRequired'] = true;
                     }
 
-                    if ($type == 'dropdown') {
+                    if ($type == 'dropdown' || $type == 'checkbox') {
                         $qAnswer = [];
                         foreach ($question->answers as $value) {
                             $qAnswer[] = ['value'=>$value->survey_answer_points,'text'=> $value->survey_answer_name]; 
                         }
-                        $data[$key]['questions'][0]['choices'] = $qAnswer;
+                        $data[$key+1]['questions'][0]['choices'] = $qAnswer;
                     }
 
                     if ($type == 'radiogroup') {
@@ -86,9 +93,12 @@ class SurveyResource extends Survey
                         foreach ($question->answers as $value) {
                             $qAnswer[] = $value->survey_answer_name; 
                         }
-                        $data[$key]['questions'][0]['choices'] = $qAnswer;
+                        $data[$key+1]['questions'][0]['choices'] = $qAnswer;
                     }
 
+                    if ($question->questionType->survey_type_name == 'Date/Time') {
+                        $data[$key+1]['questions'][0]['inputType'] = 'date';
+                    }
                 }
                 return $data;
             },

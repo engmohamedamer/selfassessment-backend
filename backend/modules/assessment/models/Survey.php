@@ -28,6 +28,7 @@ use yii\helpers\ArrayHelper;
  * @property string $survey_tags
  * @property string $survey_image
  * @property string $survey_descr
+ * @property string $start_info
  *
  * @property SurveyUserAnswer[] $surveyUserAnswers
  * @property SurveyQuestion[] $questions
@@ -73,7 +74,7 @@ class Survey extends \yii\db\ActiveRecord
             [['survey_name'], 'string', 'max' => 45],
             [['survey_descr'], 'string'],
             [['survey_tags', 'survey_image'], 'string', 'max' => 255],
-            [['survey_name'], 'required'],
+            [['survey_name','start_info'], 'required'],
             [['survey_wallet', 'survey_status', 'survey_created_by', 'survey_time_to_pass', 'survey_badge_id','org_id'], 'integer'],
             [['imageFile'], 'file', 'mimeTypes' => 'image/jpeg, image/png', 'maxSize' => 5000000]
         ];
@@ -101,6 +102,7 @@ class Survey extends \yii\db\ActiveRecord
             'survey_time_to_pass' => Yii::t('survey', 'Time to pass'),
             'restrictedUserIds' => Yii::t('survey', 'Restricted users'),
             'imageFile' => '',
+            'start_info'=>Yii::t('survey', 'Survey Start Info'),
         ];
     }
 
