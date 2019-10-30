@@ -55,20 +55,20 @@ class SurveyResource extends Survey
                 ]];
                 foreach ($model->questions as $key => $question) {
                     if ($question->questionType->survey_type_name == 'Single textbox') {
-                        $type = 'comment'; 
+                        $type = 'comment';
                     }elseif ($question->questionType->survey_type_name == 'One choise of list') {
-                        $type = 'radiogroup'; 
+                        $type = 'radiogroup';
                     }elseif ($question->questionType->survey_type_name == 'Multiple choice') {
-                        $type = 'checkbox'; 
+                        $type = 'checkbox';
                     }elseif ($question->questionType->survey_type_name == 'Date/Time') {
-                        $type = 'text'; 
+                        $type = 'text';
                     }else{
-                        $type = strtolower($question->questionType->survey_type_name); 
+                        $type = strtolower($question->questionType->survey_type_name);
                     }
 
                     $data[]['questions'] = [[
                         'type'=> $type,
-                        'name'=>'q-'.$question->survey_question_id,
+                        'name'=>$question->survey_question_id,
                         'title'=> $question->survey_question_name,
                     ]];
 
@@ -83,7 +83,7 @@ class SurveyResource extends Survey
                     if ($type == 'dropdown' || $type == 'checkbox' || $type == 'radiogroup') {
                         $qAnswer = [];
                         foreach ($question->answers as $value) {
-                            $qAnswer[] = ['value'=>$value->survey_answer_id,'text'=> $value->survey_answer_name]; 
+                            $qAnswer[] = ['value'=>$value->survey_answer_id,'text'=> $value->survey_answer_name];
                         }
                         $data[$key+1]['questions'][0]['choices'] = $qAnswer;
                     }
