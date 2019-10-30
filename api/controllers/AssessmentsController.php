@@ -7,9 +7,15 @@ use api\helpers\ResponseHelper;
 use api\resources\SurveyMiniResource;
 use api\resources\SurveyResource;
 use api\resources\User;
+use backend\modules\assessment\models\SurveyQuestion;
 use backend\modules\assessment\models\SurveyStat;
+use backend\modules\assessment\models\SurveyType;
+use backend\modules\assessment\models\SurveyUserAnswer;
 use yii\data\ActiveDataProvider;
 use yii\db\Expression;
+use yii\helpers\ArrayHelper;
+use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 
 class AssessmentsController extends  MyActiveController
@@ -72,28 +78,72 @@ class AssessmentsController extends  MyActiveController
         $params = \Yii::$app->request->post();
 
         //add survey state
-         $this->CheckState($surveyObj->survey_id);
+        $survey_done =  $this->CheckState($surveyObj->survey_id);
+
+        if(!$survey_done)  return ResponseHelper::sendFailedResponse(['message'=>'Survey is Completed']);
 
         foreach ($params as $key=>$value) {
-           echo $key;
-            print_r($value);
+            $question = $this->findModel($key);
+            //check question type
+           if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
+                || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
+                || $question->survey_question_type === SurveyType::TYPE_SLIDER
+                || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
+                || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
+            ){
+               //handel one answer
+               $userAnswers = $question->userAnswers;
+               $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
+                   'survey_user_answer_user_id' => \Yii::$app->user->getId(),
+                   'survey_user_answer_survey_id' => $question->survey_question_survey_id,
+                   'survey_user_answer_question_id' => $question->survey_question_id,
+               ]));
 
-            echo "<br/>";
-        }
+               $userAnswer->survey_user_answer_value = $value;
+               $userAnswer->save(false);
+            }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
+               || $question->survey_question_type === SurveyType::TYPE_RANKING
+               || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
+               || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
+               || $question->survey_question_type === SurveyType::TYPE_CALENDAR
+           ) {
+               //delete old answers and add new
+               SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
+                   'survey_user_answer_question_id'=>$question->survey_question_id,
+                   'survey_user_answer_user_id' => \Yii::$app->user->getId()
+                   ]);
+               //save multiple
+               foreach ($question->answers as $i => $answer) {
+                 $found = in_array($answer->survey_answer_id ,$value);
+                  if($found){
+                      $userAnswer =  new SurveyUserAnswer();
+
+                          $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
+                          $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
+                          $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
+                          $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
+                          $userAnswer->survey_user_answer_value =1 ;
+
+                      $userAnswer->save(false);
+                  }
+
+                 }
+
+           }//end if
+
+        }//end loap answers
 
 
-        die;
-
-
-        return ResponseHelper::sendSuccessResponse($surveyObj);
+        return ResponseHelper::sendSuccessResponse();
 
     }
 
 
     public function CheckState($surveyId){
         $assignedModel = SurveyStat::getAssignedUserStat(\Yii::$app->user->getId(), $surveyId);
+
         if (empty($assignedModel)) {
-            SurveyStat::assignUser(\Yii::$app->user->getId(), $this->surveyId);
+            SurveyStat::assignUser(\Yii::$app->user->getId(), $surveyId);
             $assignedModel = SurveyStat::getAssignedUserStat(\Yii::$app->user->getId(),$surveyId);
         } else {
 //            if ($assignedModel->survey_stat_is_done){
@@ -106,9 +156,89 @@ class AssessmentsController extends  MyActiveController
             $assignedModel->save(false);
         }
 
+        $stat = SurveyStat::getAssignedUserStat(\Yii::$app->user->getId(), $surveyId);
+        //не работаем с завершенными опросами
+        if ($stat->survey_stat_is_done) {
+            return false;
+        }
+
+
         return true;
     }
 
+    protected function findModel($id)
+    {
+        if (($model = SurveyQuestion::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    protected function validate(&$question,$post)
+    {
+
+        $result = [];
+
+        $answersData = ArrayHelper::getValue($post, "SurveyUserAnswer.{$question->survey_question_id}");
+        $userAnswers = $question->userAnswers;
+
+        if (!empty($answersData)) {
+            if ($question->survey_question_type === SurveyType::TYPE_MULTIPLE
+                || $question->survey_question_type === SurveyType::TYPE_RANKING
+                || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
+                || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
+                || $question->survey_question_type === SurveyType::TYPE_CALENDAR
+            ) {
+                foreach ($question->answers as $i => $answer) {
+                    if (!$question->survey->isAccessibleByCurrentUser) {
+                        die(['lkj']);
+                    }
+
+                    $userAnswer = isset($userAnswers[$answer->survey_answer_id]) ? $userAnswers[$answer->survey_answer_id] : (new SurveyUserAnswer([
+                        'survey_user_answer_user_id' => \Yii::$app->user->getId(),
+                        'survey_user_answer_survey_id' => $question->survey_question_survey_id,
+                        'survey_user_answer_question_id' => $question->survey_question_id,
+                        'survey_user_answer_answer_id' => $answer->survey_answer_id
+                    ]));
+                    if ($userAnswer->load($answersData[$answer->survey_answer_id], '')) {
+                        $userAnswer->validate();
+                        foreach ($userAnswer->getErrors() as $attribute => $errors) {
+                            $result["surveyuseranswer-{$question->survey_question_id}-{$answer->survey_answer_id}-{$attribute}"] = $errors;
+                        }
+                        $userAnswer->save();
+                    }
+                }
+                $question->refresh();
+                $question->validateMultipleAnswer();
+                foreach ($question->userAnswers as $userAnswer) {
+                    foreach ($userAnswer->getErrors() as $attribute => $errors) {
+                        $result["surveyuseranswer-{$question->survey_question_id}-{$userAnswer->survey_user_answer_answer_id}-{$attribute}"] = $errors;
+                    }
+                }
+            } elseif ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
+                || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
+                || $question->survey_question_type === SurveyType::TYPE_SLIDER
+                || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
+                || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
+            ) {
+                $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
+                    'survey_user_answer_user_id' => \Yii::$app->user->getId(),
+                    'survey_user_answer_survey_id' => $question->survey_question_survey_id,
+                    'survey_user_answer_question_id' => $question->survey_question_id,
+                ]));
+                if ($userAnswer->load($answersData, '')) {
+                    $userAnswer->validate();
+                    foreach ($userAnswer->getErrors() as $attribute => $errors) {
+                        $result["surveyuseranswer-{$question->survey_question_id}-{$attribute}"] = $errors;
+                    }
+                    $userAnswer->save();
+                }
+            }
+        }
+
+        return $result;
+    }
 
 
 
