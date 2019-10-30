@@ -80,21 +80,21 @@ class SurveyResource extends Survey
                         $data[$key+1]['questions'][0]['isRequired'] = true;
                     }
 
-                    if ($type == 'dropdown' || $type == 'checkbox') {
+                    if ($type == 'dropdown' || $type == 'checkbox' || $type == 'radiogroup') {
                         $qAnswer = [];
                         foreach ($question->answers as $value) {
-                            $qAnswer[] = ['value'=>$value->survey_answer_points,'text'=> $value->survey_answer_name]; 
+                            $qAnswer[] = ['value'=>$value->survey_answer_id,'text'=> $value->survey_answer_name]; 
                         }
                         $data[$key+1]['questions'][0]['choices'] = $qAnswer;
                     }
 
-                    if ($type == 'radiogroup') {
-                        $qAnswer = [];
-                        foreach ($question->answers as $value) {
-                            $qAnswer[] = $value->survey_answer_name; 
-                        }
-                        $data[$key+1]['questions'][0]['choices'] = $qAnswer;
-                    }
+                    // if ($type == 'radiogroup') {
+                    //     $qAnswer = [];
+                    //     foreach ($question->answers as $value) {
+                    //         $qAnswer[] = $value->survey_answer_name; 
+                    //     }
+                    //     $data[$key+1]['questions'][0]['choices'] = $qAnswer;
+                    // }
 
                     if ($question->questionType->survey_type_name == 'Date/Time') {
                         $data[$key+1]['questions'][0]['inputType'] = 'date';
