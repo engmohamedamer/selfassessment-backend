@@ -55,6 +55,8 @@ class SurveyResource extends Survey
                         $type = 'text'; 
                     }elseif ($question->questionType->survey_type_name == 'One choise of list') {
                         $type = 'radiogroup'; 
+                    }elseif ($question->questionType->survey_type_name == 'Multiple choice') {
+                        $type = 'checkbox'; 
                     }else{
                         $type = strtolower($question->questionType->survey_type_name); 
                     }
@@ -73,7 +75,7 @@ class SurveyResource extends Survey
                         $data[$key]['questions'][0]['isRequired'] = true;
                     }
 
-                    if ($type == 'dropdown') {
+                    if ($type == 'dropdown' || $type == 'checkbox') {
                         $qAnswer = [];
                         foreach ($question->answers as $value) {
                             $qAnswer[] = ['value'=>$value->survey_answer_points,'text'=> $value->survey_answer_name]; 
