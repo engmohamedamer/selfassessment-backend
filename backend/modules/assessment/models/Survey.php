@@ -74,7 +74,7 @@ class Survey extends \yii\db\ActiveRecord
             [['survey_name'], 'string', 'max' => 45],
             [['survey_descr'], 'string'],
             [['survey_tags', 'survey_image'], 'string', 'max' => 255],
-            [['survey_name','start_info'], 'required'],
+            [['survey_name'], 'required'],
             [['survey_wallet', 'survey_status', 'survey_created_by', 'survey_time_to_pass', 'survey_badge_id','org_id'], 'integer'],
             [['imageFile'], 'file', 'mimeTypes' => 'image/jpeg, image/png', 'maxSize' => 5000000]
         ];

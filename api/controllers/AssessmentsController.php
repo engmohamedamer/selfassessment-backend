@@ -174,13 +174,16 @@ class AssessmentsController extends  MyActiveController
         }
         $stat = SurveyStat::getAssignedUserStat(\Yii::$app->user->getId(), $surveyId);
         //не работаем с завершенными опросами
-        if ($status && $stat->survey_stat_is_done != 2) {
-            $assignedModel->survey_stat_is_done = $status;
+        if ($status == 2 && $stat->survey_stat_is_done != 1) {
+            $assignedModel->survey_stat_is_done = 1;
+            $assignedModel->pageNo = $pageNo;
+            $assignedModel->save(false);
+        }elseif($status == 1){
             $assignedModel->pageNo = $pageNo;
             $assignedModel->save(false);
         }
 
-        if ($stat->survey_stat_is_done == 2) {
+        if ($stat->survey_stat_is_done) {
             return false;
         }
 

@@ -3,6 +3,7 @@
 namespace api\resources;
 
 use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyStat;
 
 class SurveyMiniResource extends Survey
 {
@@ -13,7 +14,12 @@ class SurveyMiniResource extends Survey
                 return $model->survey_id;
             },
             'status'=>function($model){
-                   return  rand(0,2);
+                $userId = \Yii::$app->user->identity->id;
+                $userSurveyStat =  SurveyStat::find()->where(['survey_stat_user_id'=>$userId,'survey_stat_survey_id'=>$model->survey_id])->one();
+                if (!$userSurveyStat) {
+                    return 0;
+                }
+                return $userSurveyStat->survey_stat_is_done ? 2 : 1;
             },
             'progress'=>function($model){
                 return "65";
