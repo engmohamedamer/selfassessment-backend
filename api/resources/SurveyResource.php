@@ -136,6 +136,7 @@ class SurveyResource extends Survey
                         || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
                         || $question->survey_question_type === SurveyType::TYPE_SLIDER
                         || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
+                        || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
                         || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
                     ){
                         //fetch user answers
@@ -154,7 +155,6 @@ class SurveyResource extends Survey
                         $question->survey_question_type === SurveyType::TYPE_MULTIPLE
                         || $question->survey_question_type === SurveyType::TYPE_RANKING
                         || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
-                        || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
                         || $question->survey_question_type === SurveyType::TYPE_CALENDAR
                     ){
 
@@ -167,7 +167,7 @@ class SurveyResource extends Survey
                         ])->all();
                         if($userAnswersObj){
                             foreach ($userAnswersObj as $item) {
-                                if($item->survey_user_answer_answer_id){
+                                if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
                                     $data[$question->survey_question_id][] = $item->survey_user_answer_answer_id;
                                 }
 
