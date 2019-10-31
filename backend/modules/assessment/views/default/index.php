@@ -99,8 +99,8 @@ BootstrapPluginAsset::register($this);
                             </div>
                         </div>
                         <div class="second-line">
-                            <span><?= \Yii::t('survey', 'Author') ?> : <?= $survey->getAuthorName() ?></span>
-                            <span class="date"><?= \Yii::t('survey', 'Created At') ?> : <?= \Yii::$app->formatter->asDate($survey->survey_created_at) ?></span>
+                            <span><?= \Yii::t('survey', 'Author') ?> : <?= $survey->getAuthorName() ?> </span> 
+                             <span class="date"><?= \Yii::t('survey', 'Created At') ?> : <?= \Yii::$app->formatter->asDate($survey->survey_created_at) ?></span>
                         </div>
                     </div>
                 </div>
