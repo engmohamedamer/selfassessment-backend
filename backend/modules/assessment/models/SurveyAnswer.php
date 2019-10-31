@@ -38,11 +38,11 @@ class SurveyAnswer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['survey_answer_descr'], 'string'],
+            [['survey_answer_descr','survey_answer_corrective_action'], 'string'],
             [['survey_answer_question_id', 'survey_answer_sort', 'survey_answer_points'], 'integer'],
             [['survey_answer_question_id', 'survey_answer_sort', 'survey_answer_points'], 'filter', 'filter' => 'intval'],
-            [['survey_answer_show_descr'], 'boolean'],
-            [['survey_answer_show_descr'], 'filter', 'filter' => 'boolval'],
+            [['survey_answer_show_descr','survey_answer_show_corrective_action'], 'boolean'],
+            [['survey_answer_show_descr','survey_answer_show_corrective_action'], 'filter', 'filter' => 'boolval'],
             [['survey_answer_name'], 'string', 'max' => 100],
             [['survey_answer_name'], 'required'],
             [['survey_answer_class', 'survey_answer_comment'], 'string', 'max' => 255],
@@ -80,6 +80,8 @@ class SurveyAnswer extends \yii\db\ActiveRecord
             'survey_answer_comment' => Yii::t('survey', 'Comment'),
             'survey_answer_question_id' => Yii::t('survey', 'Question ID'),
             'survey_answer_points' => Yii::t('survey', 'Points'),
+            'survey_answer_show_corrective_action'=> Yii::t('survey', 'Show corrective action description'),
+            'survey_answer_corrective_action'=> Yii::t('survey', 'Corrective action description'),
         ];
     }
 

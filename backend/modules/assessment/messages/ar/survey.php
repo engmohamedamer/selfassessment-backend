@@ -68,4 +68,6 @@ return [
     'Will be presented one date/time field where respondent can enter the answer in free form'=>'سيتم تقديم حقل تاريخ/وقت حيث يمكن للمستفتى إدخال إجابة مفتوحة',
     'Author'=>'إضافة بواسطة',
     'Created At'=>'انشئ في',
+    'Show corrective action description'=>'إظهار تفاصيل اجراءت تصحيحية',
+    'Corrective action description'=>'اجراءت تصحيحية',
 ];
