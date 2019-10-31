@@ -82,7 +82,7 @@ class AssessmentsController extends  MyActiveController
 
         if(!$survey_done)  return ResponseHelper::sendFailedResponse(['message'=>'Survey is Completed']);
 
-        foreach ($params as $key=>$value) {
+        foreach ($params['answers'] as $key=>$value) {
             $key=  (int)preg_replace('/\D/ui','',$key);
 
 
