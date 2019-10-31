@@ -3,6 +3,8 @@
 namespace api\resources;
 
 use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyType;
+use backend\modules\assessment\models\SurveyUserAnswer;
 
 class SurveyResource extends Survey
 {
@@ -94,7 +96,30 @@ class SurveyResource extends Survey
                 }
                 return $data;
             },
+            'answers'=>function($model){
 
+                /*
+                {
+                   "44": [
+                      93,
+                      94
+                   ],
+                    "47": "Amer test"
+                }
+                */
+                $userId = \Yii::$app->user->identity->id;
+                $userAnswers =  SurveyUserAnswer::find()->select('*,survey_question.survey_question_type')->joinWith(['question'], true, 'INNER JOIN')->where(['survey_user_answer_user_id'=>$userId,'survey_user_answer_survey_id'=>$model->survey_id])->all();
+                $data = [];
+                foreach ($userAnswers as $key => $value) {
+                    if ($value->question->survey_question_type == SurveyType::TYPE_SINGLE_TEXTBOX) {
+                        $data[] = [$value->survey_user_answer_question_id =>$value->survey_user_answer_value];
+                    }else{
+                        $data[] = [$value->survey_user_answer_question_id =>$value->survey_user_answer_answer_id];
+
+                    }
+                }
+                return $data;
+            }
         ];
     }
 
