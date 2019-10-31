@@ -60,7 +60,7 @@ class SurveyReportResource extends Survey
                 $userId = \Yii::$app->user->identity->id;
                 $data =$result= [];
                 //get survey questions then check user answers
-                $i=0;
+                $i=1;
                 foreach ($model->questions as  $question) {
                     //echo $question->survey_question_id.'<br>';
 
