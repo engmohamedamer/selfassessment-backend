@@ -69,7 +69,7 @@ class Survey extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id'], 'safe'],
+            [['survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id','start_info'], 'safe'],
             [['survey_is_pinned', 'survey_is_closed', 'survey_is_private', 'survey_is_visible'], 'boolean'],
             [['survey_name'], 'string', 'max' => 45],
             [['survey_descr'], 'string'],
