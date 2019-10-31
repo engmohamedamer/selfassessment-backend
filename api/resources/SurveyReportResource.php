@@ -38,7 +38,17 @@ class SurveyReportResource extends Survey
                 return $userSurveyStat->survey_stat_is_done;
             },
 
+            'generalInfo'=>function($model){
 
+                return [
+                    'total_points'=>50,
+                    'gained_points'=>25,
+                    'progress'=>65,
+                    'actual_time'=>35
+
+                ];
+
+            },
             'answers'=>function($model){
 
                 /*
