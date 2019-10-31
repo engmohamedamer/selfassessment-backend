@@ -53,7 +53,7 @@ class SurveyResource extends Survey
                 if (!$userSurveyStat) {
                     return 0;
                 }
-                return $userSurveyStat->survey_stat_is_done;
+                return $userSurveyStat->survey_stat_is_done ? 2 : 1;
             },
 
             'pageNo'=>function($model){
