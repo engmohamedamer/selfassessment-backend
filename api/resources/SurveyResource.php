@@ -48,8 +48,8 @@ class SurveyResource extends Survey
             },
 
             'status'=>function($model){
+                $userId = \Yii::$app->user->identity->id;
                 $userSurveyStat =  SurveyStat::find()->where(['survey_stat_user_id'=>$userId,'survey_stat_survey_id'=>$model->survey_id])->one();
-                return var_dump($userSurveyStat);
                 if (!$userSurveyStat) {
                     return 0;
                 }
@@ -57,11 +57,12 @@ class SurveyResource extends Survey
             },
 
             'pageNo'=>function($model){
+                $userId = \Yii::$app->user->identity->id;
                 $userSurveyStat =  SurveyStat::find()->where(['survey_stat_user_id'=>$userId,'survey_stat_survey_id'=>$model->survey_id])->one();
                 if (!$userSurveyStat) {
                     return 0;
                 }
-                return $userSurveyStat->pageNo;
+                return $userSurveyStat->pageNo ?: 0;
             },
 
             'pages'=>function($model){
