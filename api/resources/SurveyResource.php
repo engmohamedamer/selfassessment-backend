@@ -3,6 +3,7 @@
 namespace api\resources;
 
 use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\SurveyType;
 use backend\modules\assessment\models\SurveyUserAnswer;
 
@@ -44,6 +45,23 @@ class SurveyResource extends Survey
             },
             'progress'=>function($model){
                 return "65";
+            },
+
+            'status'=>function($model){
+                $userSurveyStat =  SurveyStat::find()->where(['survey_stat_user_id'=>$userId,'survey_stat_survey_id'=>$model->survey_id])->one();
+                return var_dump($userSurveyStat);
+                if (!$userSurveyStat) {
+                    return 0;
+                }
+                return $userSurveyStat->survey_stat_is_done;
+            },
+
+            'pageNo'=>function($model){
+                $userSurveyStat =  SurveyStat::find()->where(['survey_stat_user_id'=>$userId,'survey_stat_survey_id'=>$model->survey_id])->one();
+                if (!$userSurveyStat) {
+                    return 0;
+                }
+                return $userSurveyStat->pageNo;
             },
 
             'pages'=>function($model){
