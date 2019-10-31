@@ -14,6 +14,7 @@ return [
         ['pattern' => '/request-reset-password', 'route' => 'user/request-reset-password'],
         ['pattern' => '/theme', 'route' => 'theme/index'],
         ['pattern' => '/theme/<slug>/<lang>', 'route' => 'theme/index'],
+        ['pattern' => '/assessments/report/<id>', 'route' => 'assessments/report'],
 
         ['class' =>'yii\rest\UrlRule','controller'=>'user'
             ,'only'=>['login','signup','reset-password','request-reset-password','options']
@@ -30,10 +31,11 @@ return [
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'assessments',
-            'only'=>['index','view','update','options'],//'update',
+            'only'=>['index','view','update','report','options'],//'update',
             'extraPatterns'=>[
                 'GET ' => 'index' ,
                 'GET <id>' => 'view' ,
+                'GET report/<id>' => 'view' ,
                 'PUT ' => 'update',
             ],
             'pluralize'=>false

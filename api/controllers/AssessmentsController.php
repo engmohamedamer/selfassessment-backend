@@ -5,6 +5,7 @@ namespace api\controllers;
 
 use api\helpers\ResponseHelper;
 use api\resources\SurveyMiniResource;
+use api\resources\SurveyReportResource;
 use api\resources\SurveyResource;
 use api\resources\User;
 use backend\modules\assessment\models\SurveyQuestion;
@@ -60,6 +61,18 @@ class AssessmentsController extends  MyActiveController
         $profile=$user->userProfile;
 
         $surveyObj = SurveyResource::findOne(['survey_id'=>$id]);
+
+        return ResponseHelper::sendSuccessResponse($surveyObj);
+
+    }
+
+    public function actionReport($id)
+    {
+        $user= User::findOne(['id'=> \Yii::$app->user->identity->getId()]) ;
+        if(! $id) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],'404');
+        $profile=$user->userProfile;
+
+        $surveyObj = SurveyReportResource::findOne(['survey_id'=>$id]);
 
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
@@ -144,7 +157,7 @@ class AssessmentsController extends  MyActiveController
 
     public function CheckState($surveyId,$status = null,$pageNo = 0){
         $assignedModel = SurveyStat::getAssignedUserStat(\Yii::$app->user->getId(), $surveyId);
-        
+
 
         if (empty($assignedModel)) {
             SurveyStat::assignUser(\Yii::$app->user->getId(), $surveyId);
