@@ -41,7 +41,7 @@ class SurveyResource extends Survey
                 return 'بدء الإستبيان';
             },
             'completedHtml'=>function($model){
-                return "<h3 class='mb-4'>شكراً لك تم انهاء الإستبيان بنجاح </h3>للإطلاع على تقرير بإجاباتك في الاستبيان <a href='#'>من هنا</a>";
+                return "<h3 class='mb-4'>شكراً لك تم انهاء الإستبيان بنجاح </h3>";
             },
             'progress'=>function($model){
                 return "65";
