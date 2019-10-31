@@ -95,7 +95,7 @@ class SurveyReportResource extends Survey
                             $temp=[];
                             foreach ($userAnswersObj as $item) {
                                 if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
-                                    $temp[] = $item->survey_user_answer_answer_id;
+                                    $temp[] = $item->surveyUserAnswerAnswer->survey_answer_name;
                                 }
 
                             }
