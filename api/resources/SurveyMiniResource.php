@@ -22,7 +22,7 @@ class SurveyMiniResource extends Survey
                 return $userSurveyStat->survey_stat_is_done ? 2 : 1;
             },
             'progress'=>function($model){
-                return "65";
+                return  Survey::surveyProgress($model,\Yii::$app->user->identity->id);
             },
 
             'title'=>function($model){
@@ -39,7 +39,7 @@ class SurveyMiniResource extends Survey
                 return $model->survey_time_to_pass;
             },
             'remaining_time'=>function($model){
-                  return '50';
+                  return SurveyStat::remainingTime($model,\Yii::$app->user->identity->id);
             }
 
         ];

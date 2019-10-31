@@ -25,9 +25,6 @@ class SurveyReportResource extends Survey
                 return $model->survey_descr;
             },
 
-            'progress'=>function($model){
-                return "65";
-            },
 
             'status'=>function($model){
                 $userId = \Yii::$app->user->identity->id;
@@ -39,12 +36,12 @@ class SurveyReportResource extends Survey
             },
 
             'generalInfo'=>function($model){
-
+                $userId= \Yii::$app->user->identity->id;
                 return [
                     'total_points'=>50,
                     'gained_points'=>25,
-                    'progress'=>65,
-                    'actual_time'=>35
+                    'progress'=>$this->surveyProgress($model,$userId),
+                    'actual_time'=>SurveyStat::actualTime($model->survey_id,$userId),
 
                 ];
 
@@ -68,9 +65,7 @@ class SurveyReportResource extends Survey
                     //echo $question->survey_question_id.'<br>';
 
                     // has one value
-                    if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
-                        || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
-                        || $question->survey_question_type === SurveyType::TYPE_SLIDER
+                    if ( $question->survey_question_type === SurveyType::TYPE_SLIDER
                         || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
                         || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
                         || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
@@ -84,6 +79,21 @@ class SurveyReportResource extends Survey
                         ]);
                         if($userAnswerObj){
                             $answer = $userAnswerObj->survey_user_answer_value;
+
+                        }
+
+                    }else if($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
+                        || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
+                    ){
+                        //fetch user answers
+                        $userAnswerObj = SurveyUserAnswer::findOne([
+                            'survey_user_answer_user_id'=>$userId,
+                            'survey_user_answer_survey_id'=>$model->survey_id,
+                            'survey_user_answer_question_id'=>$question->survey_question_id
+
+                        ]);
+                        if($userAnswerObj){
+                            $answer = $userAnswerObj->surveyUserAnswerAnswer->survey_answer_name;
 
                         }
 
@@ -136,6 +146,9 @@ class SurveyReportResource extends Survey
             }
         ];
     }
+
+
+
 
 
 }

@@ -254,4 +254,22 @@ class Survey extends \yii\db\ActiveRecord
     public function getIsAccessibleByCurrentUser() {
     	return $this->isAccessibleBy(\Yii::$app->user->id);
     }
+
+    public static function surveyProgress($model,$userId){
+        $no_of_question = count($model->questions);
+
+        $userAnswersObj = SurveyUserAnswer::find()
+            ->select('DISTINCT survey_user_answer_question_id')
+            ->where([
+                'survey_user_answer_user_id'=>$userId,
+                'survey_user_answer_survey_id'=>$model->survey_id,
+
+            ])->count();
+
+        $progress= ($userAnswersObj/$no_of_question)*100;
+        return $progress;
+
+
+    }
+
 }

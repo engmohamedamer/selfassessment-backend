@@ -41,7 +41,7 @@ class SurveyResource extends Survey
                 return "<h3 class='mb-4'>شكراً لك تم انهاء الإستبيان بنجاح </h3>";
             },
             'progress'=>function($model){
-                return "65";
+                return  Survey::surveyProgress($model,\Yii::$app->user->identity->id);
             },
 
             'status'=>function($model){
