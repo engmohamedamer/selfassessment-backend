@@ -93,7 +93,7 @@ class SurveyReportResource extends Survey
 
                         ]);
                         if($userAnswerObj){
-                            $answer = $userAnswerObj->surveyUserAnswerAnswer->survey_answer_name;
+                            $answer = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_name;
 
                         }
 

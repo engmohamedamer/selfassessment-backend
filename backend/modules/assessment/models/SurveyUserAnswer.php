@@ -92,6 +92,14 @@ class SurveyUserAnswer extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\ActiveQuery  for single item relation
+     */
+    public function getSurveyUserAnswerValueAnswer()
+    {
+        return $this->hasOne(SurveyAnswer::class, ['survey_answer_id' => 'survey_user_answer_value']);
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getSurveyUserAnswerAnswer()
