@@ -106,6 +106,7 @@ class AssessmentsController extends  MyActiveController
                 || $question->survey_question_type === SurveyType::TYPE_SLIDER
                 || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
                 || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
+               || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
             ){
                //handel one answer
                $userAnswers = $question->userAnswers;
@@ -120,7 +121,7 @@ class AssessmentsController extends  MyActiveController
             }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
                || $question->survey_question_type === SurveyType::TYPE_RANKING
                || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
-               || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
+
                || $question->survey_question_type === SurveyType::TYPE_CALENDAR
            ) {
                //delete old answers and add new
