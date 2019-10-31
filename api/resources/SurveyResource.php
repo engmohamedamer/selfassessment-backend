@@ -95,7 +95,10 @@ class SurveyResource extends Survey
                     }
 
                     if ($question->survey_question_can_skip == 1 ) {
+                        $data[$key+1]['questions'][0]['isRequired'] = false;
+                    }else{
                         $data[$key+1]['questions'][0]['isRequired'] = true;
+
                     }
 
                     if ($type == 'dropdown' || $type == 'checkbox' || $type == 'radiogroup') {
