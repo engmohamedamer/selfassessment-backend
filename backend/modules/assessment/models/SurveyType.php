@@ -61,7 +61,7 @@ class SurveyType extends \yii\db\ActiveRecord
     public static function getDropdownList()
     {
         return ArrayHelper::map(SurveyType::find()->where(['status'=>1])
-            ->asArray()->all(), 'survey_type_id', function($model){
+            ->asArray()->orderBy('sort')->all(), 'survey_type_id', function($model){
             if (\Yii::$app->user->identity->userProfile->locale == 'en-US') {
                 return \Yii::t('survey', $model['survey_type_name']);
             }
