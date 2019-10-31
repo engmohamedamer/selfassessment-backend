@@ -148,7 +148,7 @@ class SurveyResource extends Survey
 
                         ]);
                         if($userAnswerObj){
-                            $data[$question->survey_question_id] = $userAnswerObj->survey_user_answer_value;
+                            $data['q-'.$question->survey_question_id] = $userAnswerObj->survey_user_answer_value;
 
                         }
 
@@ -169,7 +169,7 @@ class SurveyResource extends Survey
                         if($userAnswersObj){
                             foreach ($userAnswersObj as $item) {
                                 if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
-                                    $data[$question->survey_question_id][] = $item->survey_user_answer_answer_id;
+                                    $data['q-'.$question->survey_question_id][] = $item->survey_user_answer_answer_id;
                                 }
 
                             }
