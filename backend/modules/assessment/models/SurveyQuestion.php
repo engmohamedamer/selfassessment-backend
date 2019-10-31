@@ -118,7 +118,8 @@ class SurveyQuestion extends \yii\db\ActiveRecord
     public function loadDefaultValues($skipIfSet = true)
     {
         parent::loadDefaultValues($skipIfSet);
-        $this->survey_question_type = SurveyType::TYPE_MULTIPLE; //multiple choice
+       // $this->survey_question_type = SurveyType::TYPE_MULTIPLE; //multiple choice
+        $this->survey_question_type = SurveyType::TYPE_SINGLE_TEXTBOX; //multiple choice
         return $this;
     }
 
