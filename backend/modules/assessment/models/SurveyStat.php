@@ -23,6 +23,7 @@ use yii\db\Expression;
  * @property string $survey_stat_ip
  * @property boolean $survey_stat_is_done
  * @property string $survey_stat_hash
+ * @property integer $pageNo
  *
  * @property Survey $survey
  * @property User $user
@@ -94,7 +95,7 @@ class SurveyStat extends \yii\db\ActiveRecord
     {
         return [
             [['survey_stat_survey_id', 'survey_stat_user_id', 'survey_stat_hash'], 'required'],
-            [['survey_stat_survey_id', 'survey_stat_user_id'], 'integer'],
+            [['survey_stat_survey_id', 'survey_stat_user_id','pageNo'], 'integer'],
             [['survey_stat_assigned_at', 'survey_stat_started_at', 'survey_stat_updated_at', 'survey_stat_ended_at'], 'safe'],
             [['survey_stat_is_done'], 'boolean'],
             [['survey_stat_ip'], 'string', 'max' => 45],

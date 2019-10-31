@@ -78,11 +78,11 @@ class AssessmentsController extends  MyActiveController
         $params = \Yii::$app->request->post();
 
         //add survey state
-        $survey_done =  $this->CheckState($surveyObj->survey_id);
+        $survey_done =  $this->CheckState($surveyObj->survey_id,$params['status'],$params['pageNo']);
 
         if(!$survey_done)  return ResponseHelper::sendFailedResponse(['message'=>'Survey is Completed']);
 
-        foreach ($params as $key=>$value) {
+        foreach ($params['answers'] as $key=>$value) {
             $key=  (int)preg_replace('/\D/ui','',$key);
 
 
@@ -142,8 +142,9 @@ class AssessmentsController extends  MyActiveController
     }
 
 
-    public function CheckState($surveyId){
+    public function CheckState($surveyId,$status = null,$pageNo = 0){
         $assignedModel = SurveyStat::getAssignedUserStat(\Yii::$app->user->getId(), $surveyId);
+        
 
         if (empty($assignedModel)) {
             SurveyStat::assignUser(\Yii::$app->user->getId(), $surveyId);
@@ -158,10 +159,15 @@ class AssessmentsController extends  MyActiveController
             $assignedModel->survey_stat_started_at = new Expression('NOW()');
             $assignedModel->save(false);
         }
-
         $stat = SurveyStat::getAssignedUserStat(\Yii::$app->user->getId(), $surveyId);
         //не работаем с завершенными опросами
-        if ($stat->survey_stat_is_done) {
+        if ($status && $stat->survey_stat_is_done != 2) {
+            $assignedModel->survey_stat_is_done = $status;
+            $assignedModel->pageNo = $pageNo;
+            $assignedModel->save(false);
+        }
+
+        if ($stat->survey_stat_is_done == 2) {
             return false;
         }
 

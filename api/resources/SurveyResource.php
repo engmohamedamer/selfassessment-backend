@@ -3,6 +3,7 @@
 namespace api\resources;
 
 use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\SurveyType;
 use backend\modules\assessment\models\SurveyUserAnswer;
 
@@ -40,10 +41,28 @@ class SurveyResource extends Survey
                 return 'بدء الإستبيان';
             },
             'completedHtml'=>function($model){
-                return "<h3 class='mb-4'>شكراً لك تم انهاء الإستبيان بنجاح </h3><h4>للإطلاع على تقرير بإجاباتك في الاستبيان <a href='#'>من هنا</a></h4>";
+                return "<h3 class='mb-4'>شكراً لك تم انهاء الإستبيان بنجاح </h3>";
             },
             'progress'=>function($model){
                 return "65";
+            },
+
+            'status'=>function($model){
+                $userId = \Yii::$app->user->identity->id;
+                $userSurveyStat =  SurveyStat::find()->where(['survey_stat_user_id'=>$userId,'survey_stat_survey_id'=>$model->survey_id])->one();
+                if (!$userSurveyStat) {
+                    return 0;
+                }
+                return $userSurveyStat->survey_stat_is_done;
+            },
+
+            'pageNo'=>function($model){
+                $userId = \Yii::$app->user->identity->id;
+                $userSurveyStat =  SurveyStat::find()->where(['survey_stat_user_id'=>$userId,'survey_stat_survey_id'=>$model->survey_id])->one();
+                if (!$userSurveyStat) {
+                    return 0;
+                }
+                return $userSurveyStat->pageNo ?: 0;
             },
 
             'pages'=>function($model){
