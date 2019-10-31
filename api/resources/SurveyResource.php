@@ -127,24 +127,6 @@ class SurveyResource extends Survey
                 }
                 */
                 $userId = \Yii::$app->user->identity->id;
-//                $userAnswers =  SurveyUserAnswer::find()->select('*,survey_question.survey_question_type')->joinWith(['question'], true, 'INNER JOIN')->where(['survey_user_answer_user_id'=>$userId,'survey_user_answer_survey_id'=>$model->survey_id])->all();
-//                $data = [];
-//                foreach ($userAnswers as $key => $value) {
-//
-//
-//                    if ($value->question->survey_question_type == SurveyType::TYPE_SINGLE_TEXTBOX) {
-//                        if($value->survey_user_answer_value){
-//                            $data[$key] = [$value->survey_user_answer_question_id =>$value->survey_user_answer_value];
-//
-//                        }
-//                    }else{
-//                        if($value->survey_user_answer_value) {
-//                            $data[$key] = [$value->survey_user_answer_question_id => $value->survey_user_answer_answer_id];
-//                        }
-//
-//                    }
-//                }
-
                 $data = [];
                 //get survey questions then check user answers
 
