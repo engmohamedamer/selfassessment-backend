@@ -6,7 +6,8 @@
 
 
 echo \backend\modules\assessment\Survey::widget([
-    'surveyId' => 18
+    'surveyId' => 18,
+    'userId' => 24
 ]);
 
 ?>
