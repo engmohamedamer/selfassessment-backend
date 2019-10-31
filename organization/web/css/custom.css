@@ -506,4 +506,7 @@ text-align: left;
 .hidden-modal-right{
   z-index: 10000;
 }
+.survey-container .survey-block .points-wrap, .kv-editable-popover .survey-block .points-wrap {
+  width: 100px !important;
+}
 /*# sourceMappingURL=custom.css.map */

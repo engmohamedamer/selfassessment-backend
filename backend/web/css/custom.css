@@ -472,4 +472,7 @@ text-align: left;
   text-align: left;
     direction: ltr;
 }
+.survey-container .survey-block .points-wrap, .kv-editable-popover .survey-block .points-wrap {
+  width: 100px !important;
+}
 /*# sourceMappingURL=custom.css.map */
