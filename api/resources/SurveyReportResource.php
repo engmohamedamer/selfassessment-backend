@@ -94,6 +94,8 @@ class SurveyReportResource extends Survey
                         ]);
                         if($userAnswerObj){
                             $answer = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_name;
+                            $correctiveActions = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_corrective_action;
+
 
                         }
 
@@ -113,14 +115,17 @@ class SurveyReportResource extends Survey
                         ])->all();
                         if($userAnswersObj){
                             $temp=[];
+                            $correctiveAction= [];
                             foreach ($userAnswersObj as $item) {
                                 if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
                                     $temp[] = $item->surveyUserAnswerAnswer->survey_answer_name;
+                                    $correctiveAction[] = $item->surveyUserAnswerAnswer->survey_answer_corrective_action;
                                 }
 
                             }
 
                            $answer = $temp;
+                           $correctiveActions = $correctiveAction;
 
                         }
 
@@ -133,7 +138,7 @@ class SurveyReportResource extends Survey
                         'qAnswer'=>$answer,
                         'qGainedPoints'=>rand(1,300),
                         'qTotalPoints'=>'300',
-                        'qCorrectiveActions'=>'to be done'
+                        'qCorrectiveActions'=> $correctiveActions
 
 
                     ];
