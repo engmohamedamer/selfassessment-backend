@@ -241,4 +241,5 @@ return [
     'Please enter your links names in the required languages.'=>'* برجاء ادخال اسم الرابط الذي سيظهر به باللغتين ثم ادخال الرابط المراد ربطه به.',
     
     'Social media links will be shown in the footer.'=>'* تظهر روابط التواصل الإجتماعي في أسفل الموقع .',
+    'Your account not activated yet'=>'حسابك لم يتم تفعيله بعد',
 ];

@@ -62,7 +62,7 @@ class SignupForm extends Model
             $model = new User();
             $model->username = $this->email;
             $model->email = $this->email;
-            $model->status = User::STATUS_ACTIVE;
+            $model->status = User::STATUS_NOT_ACTIVE;
             if ($this->password) {
                 $model->setPassword($this->password);
             }
