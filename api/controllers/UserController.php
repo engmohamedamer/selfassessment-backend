@@ -29,7 +29,6 @@ class UserController extends  RestController
         }
 
         $user = User::find()
-            ->active()
             ->andWhere(['or', ['username' => $params['identity'] ], ['email' => $params['identity']]])
             ->one();
 
@@ -37,6 +36,7 @@ class UserController extends  RestController
             return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','Please Enter Valid Email')]);
         }
 
+          
         if(! $params['password']){
             return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','Please Enter Password')]);
         }
@@ -44,6 +44,11 @@ class UserController extends  RestController
         $valid_password = Yii::$app->getSecurity()->validatePassword($params['password'], $user->password_hash);
 
         if($valid_password){
+            
+            $checkIsActive = User::find()->active()->andWhere(['or', ['username' => $params['identity'] ], ['email' => $params['identity']]])->one();
+            if(!$checkIsActive){
+                return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common',Yii::t('common','Your account not activated yet'))]);
+            }
 
             //check role
            $roles = ArrayHelper::getColumn( Yii::$app->authManager->getRolesByUser($user->id),'name');
@@ -78,9 +83,8 @@ class UserController extends  RestController
 
         $model = new SignupForm();
         if ($model->load(['SignupForm'=>$params]) && $user = $model->save($organization->id)) {
-            $user= User::findOne(['id'=> $user->id]) ;
-            $data = ['token'=> $user->access_token, 'profile'=> $user];
-            return ResponseHelper::sendSuccessResponse($data);
+            $user= User::findOne(['id'=> $user->id]);
+            return ResponseHelper::sendSuccessResponse(['message'=>'Account Created Successfully']);
         }else{
             $errors =  ResponseHelper::customResponseError($model->errors);
             return ResponseHelper::sendFailedResponse($errors,401);

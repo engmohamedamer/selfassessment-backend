@@ -111,26 +111,7 @@ echo $form->field($question, "[{$question->survey_question_id}]survey_question_s
 echo Html::tag('br', '');
 
 if ($question->survey_question_show_descr) {
-    echo $form->field($question, "[{$question->survey_question_id}]survey_question_descr")->widget(Widget::class, [
-        'settings' => [
-            'lang' => 'ru',
-            'minHeight' => 200,
-            'toolbarFixed' => false,
-            'imageManagerJson' => Url::toRoute(['question/images-get']),
-            'imageUpload' => Url::toRoute(['question/image-upload']),
-            'fileManagerJson' => Url::toRoute(['question/files-get']),
-            'fileUpload' => Url::toRoute(['question/file-upload']),
-            'plugins' => [
-                'imagemanager',
-                'video',
-                'fullscreen',
-                'filemanager',
-                'fontsize',
-                'fontcolor',
-                'table',
-            ]
-        ]
-    ])->label(false);
+    echo $form->field($question, "[{$question->survey_question_id}]survey_question_descr")->textarea()->label(false);
 }
 
 echo Html::beginTag('div', ['class' => 'answers-container', 'id' => 'survey-answers-' . $question->survey_question_id]);

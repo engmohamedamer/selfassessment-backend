@@ -68,7 +68,7 @@ class SurveyResource extends Survey
                     'type'=> 'html',
                     'name'=>'q',
                     'html'=>[
-                        'ar'=> '<h3>تعليمات هامة</h3><p>تعليمات  '. $model->start_info .' </p>'
+                        'ar'=> '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>'
                     ]
                 ]];
                 foreach ($model->questions as $key => $question) {

@@ -8,6 +8,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use vova07\imperavi\Widget;
 
 /** @var $question \backend\modules\assessment\models\SurveyQuestion */
 /** @var $form \yii\widgets\ActiveForm */
@@ -63,4 +64,7 @@ foreach ($question->answers as $i => $answer) {
             ]
         ])->label(false);
     }
+
+        echo Html::tag('br', '');
+
 }

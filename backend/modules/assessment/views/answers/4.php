@@ -26,33 +26,14 @@ foreach ($question->answers as $i => $answer) {
         'name' => 'action', 'value' => 'delete-answer'
     ]);
 
-    echo $form->field($answer, "[{$question->survey_question_id}][$i]survey_answer_show_descr",
-        ['options' => [
-            'class' => 'form-group checkbox-inline'
-        ]])->checkbox(['class' => 'checkbox-updatable']);
+    // echo $form->field($answer, "[{$question->survey_question_id}][$i]survey_answer_show_descr",
+    //     ['options' => [
+    //         'class' => 'form-group checkbox-inline'
+    //     ]])->checkbox(['class' => 'checkbox-updatable']);
     echo Html::tag('br', '');
 
     if ($answer->survey_answer_show_descr) {
-        echo $form->field($answer, "[{$question->survey_question_id}][$i]survey_answer_descr")->widget(Widget::class, [
-            'settings' => [
-                'lang' => 'ru',
-                'minHeight' => 100,
-                'toolbarFixed' => false,
-                'imageManagerJson' => Url::toRoute(['question/images-get']),
-                'imageUpload' => Url::toRoute(['question/image-upload']),
-                'fileManagerJson' => Url::toRoute(['question/files-get']),
-                'fileUpload' => Url::toRoute(['question/file-upload']),
-                'plugins' => [
-                    'imagemanager',
-                    'video',
-                    'fullscreen',
-                    'filemanager',
-                    'fontsize',
-                    'fontcolor',
-                    'table',
-                ]
-            ]
-        ])->label(false);
+        echo $form->field($answer, "[{$question->survey_question_id}][$i]survey_answer_descr")->textarea()->label(false);
     }
 
     echo Html::tag('br', '');
