@@ -16,7 +16,12 @@ class SurveyResource extends Survey
                 return $model->survey_id;
             },
             'locale'=>function($model){
-                return 'ar';
+                $userId = \Yii::$app->user->identity->userProfile;
+                if ($userId->locale == 'en-US') {
+                    return 'en';
+                }else{
+                    return 'ar';
+                }
             },
             'title'=>function($model){
                 return $model->survey_name;
@@ -63,57 +68,64 @@ class SurveyResource extends Survey
             },
 
             'pages'=>function($model){
-                $data =[]['questions'];
-                $data[]['questions'] = [[
-                    'type'=> 'html',
-                    'name'=>'q',
-                    'html'=>[
-                        'ar'=> '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>'
-                    ]
-                ]];
-                foreach ($model->questions as $key => $question) {
-                    if ($question->questionType->survey_type_name == 'Single textbox') {
-                        $type = 'comment';
-                    }elseif ($question->questionType->survey_type_name == 'One choise of list') {
-                        $type = 'radiogroup';
-                    }elseif ($question->questionType->survey_type_name == 'Multiple choice') {
-                        $type = 'checkbox';
-                    }elseif ($question->questionType->survey_type_name == 'Date/Time') {
-                        $type = 'text';
-                    }else{
-                        $type = strtolower($question->questionType->survey_type_name);
-                    }
-
-                    $data[]['questions'] = [[
-                        'type'=> $type,
-                        'name'=>'q-'.$question->survey_question_id,
-                        'title'=> $question->survey_question_name,
-                    ]];
-
-                    if ($question->survey_question_show_descr == 1 ) {
-                        $data[$key+1]['questions'][0]['description'] = $question->survey_question_descr;
-                    }
-
-                    if ($question->survey_question_can_skip == 1 ) {
-                        $data[$key+1]['questions'][0]['isRequired'] = false;
-                    }else{
-                        $data[$key+1]['questions'][0]['isRequired'] = true;
-
-                    }
-
-                    if ($type == 'dropdown' || $type == 'checkbox' || $type == 'radiogroup') {
-                        $qAnswer = [];
-                        foreach ($question->answers as $value) {
-                            $qAnswer[] = ['value'=>$value->survey_answer_id,'text'=> $value->survey_answer_name];
+                $result = [];
+                $assessmentQuestions = array_chunk($model->questions, 2);
+                foreach ($assessmentQuestions as $k => $questions) {
+                    $data =[];
+                    // if ($k == 0) {
+                    //     $data[$k] = [
+                    //         'type'=> 'html',
+                    //         'name'=>'q',
+                    //         'html'=>[
+                    //             'ar'=> '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>'
+                    //         ]
+                    //     ];
+                    // }
+                    foreach ($questions as $key => $question) {
+                        if ($question->questionType->survey_type_name == 'Single textbox') {
+                            $type = 'comment';
+                        }elseif ($question->questionType->survey_type_name == 'One choise of list') {
+                            $type = 'radiogroup';
+                        }elseif ($question->questionType->survey_type_name == 'Multiple choice') {
+                            $type = 'checkbox';
+                        }elseif ($question->questionType->survey_type_name == 'Date/Time') {
+                            $type = 'text';
+                        }else{
+                            $type = strtolower($question->questionType->survey_type_name);
                         }
-                        $data[$key+1]['questions'][0]['choices'] = $qAnswer;
-                    }
 
-                    if ($question->questionType->survey_type_name == 'Date/Time') {
-                        $data[$key+1]['questions'][0]['inputType'] = 'date';
+                        $data[$key] = [
+                            'type'=> $type,
+                            'name'=>'q-'.$question->survey_question_id,
+                            'title'=> $question->survey_question_name,
+                        ];
+                        if ($question->survey_question_show_descr == 1 ) {
+                            $data[$key]['description'] = $question->survey_question_descr;
+                        }
+
+                        if ($question->survey_question_can_skip == 1 ) {
+                            $data[$key]['isRequired'] = false;
+                        }else{
+                            $data[$key]['isRequired'] = true;
+
+                        }
+
+                        if ($type == 'dropdown' || $type == 'checkbox' || $type == 'radiogroup') {
+                            $qAnswer = [];
+                            foreach ($question->answers as $value) {
+                                $qAnswer[] = ['value'=>$value->survey_answer_id,'text'=> $value->survey_answer_name];
+                            }
+                            $data[$key]['choices'] = $qAnswer;
+                        }
+
+                        if ($question->questionType->survey_type_name == 'Date/Time') {
+                            $data[$key]['inputType'] = 'date';
+                        }
                     }
+                    $result[] = ['name'=>'page'.($k+1),'questions'=>$data];
                 }
-                return $data;
+
+                return $result;
             },
             'answers'=>function($model){
 
