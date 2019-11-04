@@ -26,6 +26,7 @@ class SurveyType extends \yii\db\ActiveRecord
     const TYPE_COMMENT_BOX = 8;
     const TYPE_DATE_TIME = 9;
     const TYPE_CALENDAR = 10;
+    const TYPE_FILE = 11;
 
     /**
      * @inheritdoc
