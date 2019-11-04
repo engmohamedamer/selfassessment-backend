@@ -93,10 +93,9 @@ class SurveyResource extends Survey
                         }else{
                             $type = strtolower($question->questionType->survey_type_name);
                         }
-                        if ($k == 1) {
-                            $key = -1;
+                        if ($k > 0) {
+                            $key = $key -1;
                         }
-
                         $data[$key+1] = [
                             'type'=> $type,
                             'name'=>'q-'.$question->survey_question_id,
