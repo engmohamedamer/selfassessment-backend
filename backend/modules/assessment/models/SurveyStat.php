@@ -258,4 +258,30 @@ class SurveyStat extends \yii\db\ActiveRecord
     }
 
 
+    public static function countMySurvey($userId){
+        $userAnswersObj = SurveyStat::find()
+            ->where([
+                'survey_stat_user_id'=>$userId,
+            ])->count();
+        return $userAnswersObj;
+    }
+
+    public static function countCompletedAssessments($userId){
+        $userAnswersObj = SurveyStat::find()
+            ->where([
+                'survey_stat_user_id'=>$userId,
+                'survey_stat_is_done'=> 1,
+            ])->count();
+        return $userAnswersObj;
+    }
+
+    public static function countUncompletedAssessments($userId){
+        $userAnswersObj = SurveyStat::find()
+            ->where([
+                'survey_stat_user_id'=>$userId,
+                'survey_stat_is_done'=> 0,
+            ])->count();
+        return $userAnswersObj;
+    }
+
 }

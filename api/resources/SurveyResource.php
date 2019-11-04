@@ -123,6 +123,13 @@ class SurveyResource extends Survey
                         if ($question->questionType->survey_type_name == 'Date/Time') {
                             $data[$key+1]['inputType'] = 'date';
                         }
+
+                        if ($type == 'file') {
+                            $data[$key+1]['storeDataAsText'] = true;
+                            $data[$key+1]['showPreview'] = true;
+                            $data[$key+1]['imageWidth'] = true;
+                            $data[$key+1]['maxSize'] = true;
+                        }
                     }
                     $result[] = ['name'=>'page'.($k+1),'elements'=>$data];
                 }

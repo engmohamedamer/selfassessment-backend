@@ -2,6 +2,8 @@
 
 namespace api\resources;
 
+use backend\modules\assessment\models\SurveyStat;
+
 class User extends \common\models\User
 {
     public function fields()
@@ -47,6 +49,15 @@ class User extends \common\models\User
                 }else{
                     return 'ar';
                 }
+            },
+            'allAssessments'=>function($model){
+                return SurveyStat::countMySurvey($model->id);
+            },
+            'completedAssessments'=>function($model){
+                return SurveyStat::countCompletedAssessments($model->id);
+            },
+            'uncompletedAssessments'=>function($model){
+                return SurveyStat::countUncompletedAssessments($model->id);
             },
         ];
     }
