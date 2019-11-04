@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m191104_122636_survey_type_add_file
+ * Class m191104_122637_survey_type_add_file
  */
-class m191104_122636_survey_type_add_file extends Migration
+class m191104_122637_survey_type_add_file extends Migration
 {
     /**
      * {@inheritdoc}
@@ -22,7 +22,7 @@ class m191104_122636_survey_type_add_file extends Migration
      */
     public function safeDown()
     {
-        echo "m191104_122636_survey_type_add_file cannot be reverted.\n";
+        echo "m191104_122637_survey_type_add_file cannot be reverted.\n";
 
         return false;
     }
@@ -36,7 +36,7 @@ class m191104_122636_survey_type_add_file extends Migration
 
     public function down()
     {
-        echo "m191104_122636_survey_type_add_file cannot be reverted.\n";
+        echo "m191104_122637_survey_type_add_file cannot be reverted.\n";
 
         return false;
     }
