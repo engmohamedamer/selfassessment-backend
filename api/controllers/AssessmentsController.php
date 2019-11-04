@@ -121,7 +121,6 @@ class AssessmentsController extends  MyActiveController
             }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
                || $question->survey_question_type === SurveyType::TYPE_RANKING
                || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
-
                || $question->survey_question_type === SurveyType::TYPE_CALENDAR
            ) {
                //delete old answers and add new
