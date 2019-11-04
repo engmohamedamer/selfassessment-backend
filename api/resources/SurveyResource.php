@@ -72,15 +72,15 @@ class SurveyResource extends Survey
                 $assessmentQuestions = array_chunk($model->questions, 2);
                 foreach ($assessmentQuestions as $k => $questions) {
                     $data =[];
-                    // if ($k == 0) {
-                    //     $data[$k] = [
-                    //         'type'=> 'html',
-                    //         'name'=>'q',
-                    //         'html'=>[
-                    //             'ar'=> '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>'
-                    //         ]
-                    //     ];
-                    // }
+                    if ($k == 0) {
+                        $data[$k] = [
+                            'type'=> 'html',
+                            'name'=>'q',
+                            'html'=>[
+                                'ar'=> '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>'
+                            ]
+                        ];
+                    }
                     foreach ($questions as $key => $question) {
                         if ($question->questionType->survey_type_name == 'Single textbox') {
                             $type = 'comment';
@@ -93,20 +93,23 @@ class SurveyResource extends Survey
                         }else{
                             $type = strtolower($question->questionType->survey_type_name);
                         }
+                        if ($k == 1) {
+                            $key = -1;
+                        }
 
-                        $data[$key] = [
+                        $data[$key+1] = [
                             'type'=> $type,
                             'name'=>'q-'.$question->survey_question_id,
                             'title'=> $question->survey_question_name,
                         ];
                         if ($question->survey_question_show_descr == 1 ) {
-                            $data[$key]['description'] = $question->survey_question_descr;
+                            $data[$key+1]['description'] = $question->survey_question_descr;
                         }
 
                         if ($question->survey_question_can_skip == 1 ) {
-                            $data[$key]['isRequired'] = false;
+                            $data[$key+1]['isRequired'] = false;
                         }else{
-                            $data[$key]['isRequired'] = true;
+                            $data[$key+1]['isRequired'] = true;
 
                         }
 
@@ -115,14 +118,14 @@ class SurveyResource extends Survey
                             foreach ($question->answers as $value) {
                                 $qAnswer[] = ['value'=>$value->survey_answer_id,'text'=> $value->survey_answer_name];
                             }
-                            $data[$key]['choices'] = $qAnswer;
+                            $data[$key+1]['choices'] = $qAnswer;
                         }
 
                         if ($question->questionType->survey_type_name == 'Date/Time') {
-                            $data[$key]['inputType'] = 'date';
+                            $data[$key+1]['inputType'] = 'date';
                         }
                     }
-                    $result[] = ['name'=>'page'.($k+1),'questions'=>$data];
+                    $result[] = ['name'=>'page'.($k+1),'elements'=>$data];
                 }
 
                 return $result;
