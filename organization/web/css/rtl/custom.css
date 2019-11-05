@@ -330,3 +330,18 @@ ul {
     margin-left: 0;
     margin-right: 45px;
 }
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: right;
+}
+.select2-container--krajee .select2-results__option[aria-selected] {
+    text-align: right;
+}
+.select2-container--krajee .select2-search--dropdown .select2-search__field {
+    text-align: right;
+    padding: 5px 30px;
+}
+.datetimepicker.datetimepicker-rtl{
+    right: auto !important;
+}

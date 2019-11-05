@@ -413,6 +413,7 @@ height: 34px;
   color: #fff !important;
   font-weight: normal;
   border-bottom: 1px solid #fff !important;
+  background: transparent;
 }
 .survey-container .survey-block .survey-question-name-wrap .form-control::placeholder, .kv-editable-popover .survey-block .survey-question-name-wrap .form-control::placeholder {
   color: #fff !important;
@@ -432,7 +433,7 @@ height: 34px;
   color: #a94442 !important;
 }
 .survey-container .survey-block .survey-question-name-wrap .btn, .kv-editable-popover .survey-block .survey-question-name-wrap .btn {
-  margin: 0;
+  margin: 7px;
   margin-left: 5px;
 }
 .survey-container .survey-block .survey-question-view-wrap h4, .kv-editable-popover .survey-block .survey-question-view-wrap h4{
@@ -508,5 +509,28 @@ text-align: left;
 }
 .survey-container .survey-block .points-wrap, .kv-editable-popover .survey-block .points-wrap {
   width: 100px !important;
+}
+.survey-container .survey-block .survey-questions-form-field, .kv-editable-popover .survey-block .survey-questions-form-field {
+  margin: 10px 10px;
+}
+.survey-container .form-control, .kv-editable-popover .form-control {
+  padding: 10px;
+  height: 34px;
+  background: #f9f9f9;
+}
+.survey-container .survey-block .select2-container--krajee .select2-selection--single, .kv-editable-popover .survey-block .select2-container--krajee .select2-selection--single {
+  padding: 10px;
+  height: 34px;
+  background: #f9f9f9;
+
+}
+.desc-100 .form-group{
+width: 100% !important;
+}
+.desc-100 .form-group textarea{
+  height: 75px;
+}
+.form-group.field-survey-start_info{
+  margin-bottom: 10px;
 }
 /*# sourceMappingURL=custom.css.map */
