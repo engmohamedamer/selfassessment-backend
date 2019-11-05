@@ -69,7 +69,7 @@ class SurveyResource extends Survey
 
             'pages'=>function($model){
                 $result = [];
-                $assessmentQuestions = array_chunk($model->questions, 2);
+                $assessmentQuestions = array_chunk($model->questions, 10);
                 foreach ($assessmentQuestions as $k => $questions) {
                     $data =[];
                     if ($k == 0) {
