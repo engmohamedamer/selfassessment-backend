@@ -69,7 +69,7 @@ class SurveyResource extends Survey
 
             'pages'=>function($model){
                 $result = [];
-                $assessmentQuestions = array_chunk($model->questions, 2);
+                $assessmentQuestions = array_chunk($model->questions, 10);
                 foreach ($assessmentQuestions as $k => $questions) {
                     $data =[];
                     if ($k == 0) {
@@ -93,10 +93,9 @@ class SurveyResource extends Survey
                         }else{
                             $type = strtolower($question->questionType->survey_type_name);
                         }
-                        if ($k == 1) {
-                            $key = -1;
+                        if ($k > 0) {
+                            $key = $key -1;
                         }
-
                         $data[$key+1] = [
                             'type'=> $type,
                             'name'=>'q-'.$question->survey_question_id,
@@ -123,6 +122,13 @@ class SurveyResource extends Survey
 
                         if ($question->questionType->survey_type_name == 'Date/Time') {
                             $data[$key+1]['inputType'] = 'date';
+                        }
+
+                        if ($type == 'file') {
+                            $data[$key+1]['storeDataAsText'] = true;
+                            $data[$key+1]['showPreview'] = true;
+                            $data[$key+1]['imageWidth'] = true;
+                            $data[$key+1]['maxSize'] = true;
                         }
                     }
                     $result[] = ['name'=>'page'.($k+1),'elements'=>$data];
