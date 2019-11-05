@@ -533,4 +533,8 @@ width: 100% !important;
 .form-group.field-survey-start_info{
   margin-bottom: 10px;
 }
+.survey-container .survey-block .survey-questions-form-field-inline input{
+  width: 200px !important;
+  text-align: center;
+}
 /*# sourceMappingURL=custom.css.map */
