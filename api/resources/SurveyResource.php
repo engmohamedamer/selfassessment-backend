@@ -194,14 +194,25 @@ class SurveyResource extends Survey
                                 }
 
                             }
-
-
-
                         }
+                    }else if(
+                        $question->survey_question_type === SurveyType::TYPE_FILE
+                    ){
+                        // return $userId;
+                        //fetch user answers
+                        $userAnswersObj = SurveyUserAnswer::find()->where([
+                            'survey_user_answer_user_id'=>$userId,
+                            'survey_user_answer_survey_id'=>$model->survey_id,
+                            'survey_user_answer_question_id'=>$question->survey_question_id
 
-
+                        ])->all();
+                        if($userAnswersObj){
+                            $path = \Yii::getAlias('@storageUrl'). '/source/';
+                            foreach ($userAnswersObj as $item) {
+                                $data['q-'.$question->survey_question_id][] = $path.$item->survey_user_answer_value;
+                            }
+                        }
                     }
-
                 }
 
 

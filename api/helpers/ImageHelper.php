@@ -105,8 +105,8 @@ namespace api\helpers;
 
          $directory= $path.'/'.$imageName;
 
-
-         $entry = base64_decode($binary);
+         $data = explode(',', $binary);
+         $entry = base64_decode($data[1]);
          $image = imagecreatefromstring($entry);
 
          header ( 'Content-type:image/jpeg' );
@@ -134,9 +134,9 @@ namespace api\helpers;
          $directory= $path.'/'.$FileName;
 
 
-
+         $data = explode(',', $pdf_content);
 //Decode pdf content
-         $pdf_decoded = base64_decode ($pdf_content);
+         $pdf_decoded = base64_decode ($data[1]);
 //Write data back to pdf file
          $pdf = fopen ($directory,'w');
 

@@ -70,6 +70,8 @@ class SurveyReportResource extends Survey
                         || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
                         || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
                     ){
+                        $temp=[];
+                        $correctiveAction= [];
                         //fetch user answers
                         $userAnswerObj = SurveyUserAnswer::findOne([
                             'survey_user_answer_user_id'=>$userId,
@@ -85,6 +87,8 @@ class SurveyReportResource extends Survey
                     }else if($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
                         || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
                     ){
+                        $temp=[];
+                        $correctiveAction= [];
                         //fetch user answers
                         $userAnswerObj = SurveyUserAnswer::findOne([
                             'survey_user_answer_user_id'=>$userId,
@@ -105,6 +109,8 @@ class SurveyReportResource extends Survey
                         || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
                         || $question->survey_question_type === SurveyType::TYPE_CALENDAR
                     ){
+                        $temp=[];
+                        $correctiveAction= [];
 
                         //fetch user answers
                         $userAnswersObj = SurveyUserAnswer::find()->where([
@@ -130,6 +136,27 @@ class SurveyReportResource extends Survey
                         }
 
 
+                    }else if(
+                        $question->survey_question_type === SurveyType::TYPE_FILE
+                    ){
+                        $temp=[];
+                        $correctiveAction= [];
+                        //fetch user answers
+                        $userAnswersObj = SurveyUserAnswer::find()->where([
+                            'survey_user_answer_user_id'=>$userId,
+                            'survey_user_answer_survey_id'=>$model->survey_id,
+                            'survey_user_answer_question_id'=>$question->survey_question_id
+
+                        ])->all();
+                        // return var_dump($userAnswersObj);
+                        if($userAnswersObj){
+                            $path = \Yii::getAlias('@storageUrl'). '/source/';
+
+                            foreach ($userAnswersObj as $item) {
+                                $temp[] = $path.$item->survey_user_answer_value;
+                            }
+                            $answer = $temp;
+                        }
                     }
 
                     $data = [
@@ -139,10 +166,8 @@ class SurveyReportResource extends Survey
                         'qGainedPoints'=>rand(1,300),
                         'qTotalPoints'=>'300',
                         'qCorrectiveActions'=> $correctiveActions
-
-
                     ];
-
+                    $correctiveActions = [];
                     $result [] = $data;
                 }
 

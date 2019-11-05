@@ -3,6 +3,7 @@
 namespace api\controllers;
 
 
+use api\helpers\ImageHelper;
 use api\helpers\ResponseHelper;
 use api\resources\SurveyMiniResource;
 use api\resources\SurveyReportResource;
@@ -145,6 +146,23 @@ class AssessmentsController extends  MyActiveController
 
                  }
 
+           }else if($question->survey_question_type === SurveyType::TYPE_FILE
+           ) {
+               //save multiple
+               foreach ($value as $file) {
+                  if(isset($file['type']) && $file['type']  != 'image/jpeg' ){
+                      $filename = ImageHelper::Base64IPdfConverter($file['content'],'answers');
+
+                  }else{
+                      $filename = ImageHelper::Base64IMageConverter($file['content'],'answers');
+                  }
+                  $userAnswer =  new SurveyUserAnswer();
+                  $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
+                  $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
+                  $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
+                  $userAnswer->survey_user_answer_value = 'answers/'.$filename;
+                  $userAnswer->save(false);
+              }
            }//end if
 
         }//end loap answers
