@@ -475,4 +475,7 @@ text-align: left;
 .survey-container .survey-block .points-wrap, .kv-editable-popover .survey-block .points-wrap {
   width: 100px !important;
 }
+.survey-container .survey-block .survey-questions-form-field, .kv-editable-popover .survey-block .survey-questions-form-field {
+  margin: 10px 10px;
+}
 /*# sourceMappingURL=custom.css.map */

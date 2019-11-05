@@ -92,6 +92,7 @@ echo Dialog::widget();
                 'model' => $survey,
                 'attribute' => 'survey_expired_at',
                 'header' => Yii::t('survey', 'Expired at'),
+                'placement'=>'bottom',
                 'asPopover' => true,
                 'size' => 'md',
                 'inputType' => Editable::INPUT_DATETIME,
@@ -101,6 +102,7 @@ echo Dialog::widget();
                 'additionalData' => ['id' => $survey->survey_id],
                 'options' => [
                     'class' => Editable::INPUT_DATETIME,
+                    
                     'pluginOptions' => [
                         'autoclose' => true,
                         // 'format' => 'd.m.Y H:i'

@@ -110,9 +110,11 @@ echo Html::tag('br', '');
 echo $form->field($question, "[{$question->survey_question_id}]survey_question_show_descr")->checkbox(['class' => 'checkbox-updatable']);
 echo Html::tag('br', '');
 
+echo Html::beginTag('div', ['class' => 'desc-100']);
 if ($question->survey_question_show_descr) {
-    echo $form->field($question, "[{$question->survey_question_id}]survey_question_descr")->textarea()->label(false);
+    echo $form->field($question, "[{$question->survey_question_id}]survey_question_descr")->textarea(['rows'=>'5','cols'=>'10'])->label(false);
 }
+echo Html::endTag('div');
 
 echo Html::beginTag('div', ['class' => 'answers-container', 'id' => 'survey-answers-' . $question->survey_question_id]);
 if (isset($question->survey_question_type)) {

@@ -46,7 +46,7 @@ foreach ($question->answers as $i => $answer) {
     echo Html::tag('br', '');
 
     if ($answer->survey_answer_show_descr) {
-        echo $form->field($answer, "[{$question->survey_question_id}][$i]survey_answer_descr")->textarea()->label(false);
+        echo $form->field($answer, "[{$question->survey_question_id}][$i]survey_answer_descr")->textarea(['class'=>'w-100','rows'=>'5','cols'=>'10'])->label(false);
     }
 
     echo Html::tag('br', '');
