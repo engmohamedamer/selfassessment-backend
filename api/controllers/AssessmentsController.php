@@ -29,6 +29,7 @@ class AssessmentsController extends  MyActiveController
         unset($actions['index']);
         unset($actions['view']);
         unset($actions['update']);
+        unset($actions['delete']);
         return $actions;
     }
 
@@ -149,19 +150,21 @@ class AssessmentsController extends  MyActiveController
            }else if($question->survey_question_type === SurveyType::TYPE_FILE
            ) {
                //save multiple
-               foreach ($value as $file) {
-                  if(isset($file['type']) && $file['type']  != 'image/jpeg' ){
-                      $filename = ImageHelper::Base64IPdfConverter($file['content'],'answers');
+              if (count($value) > 0 ) {
+                 foreach ($value as $file) {
+                    if(isset($file['type']) && $file['type']  != 'image/jpeg' ){
+                        $filename = ImageHelper::Base64IPdfConverter($file['content'],'answers');
 
-                  }else{
-                      $filename = ImageHelper::Base64IMageConverter($file['content'],'answers');
-                  }
-                  $userAnswer =  new SurveyUserAnswer();
-                  $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
-                  $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
-                  $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
-                  $userAnswer->survey_user_answer_value = 'answers/'.$filename;
-                  $userAnswer->save(false);
+                    }else{
+                        $filename = ImageHelper::Base64IMageConverter($file['content'],'answers');
+                    }
+                    $userAnswer =  new SurveyUserAnswer();
+                    $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
+                    $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
+                    $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
+                    $userAnswer->survey_user_answer_value = 'answers/'.$filename;
+                    $userAnswer->save(false);
+                }
               }
            }//end if
 
@@ -218,5 +221,11 @@ class AssessmentsController extends  MyActiveController
         }
     }
 
+
+    public function actionDeleteFile()
+    {
+        $params = \Yii::$app->request->post();
+        return $params;
+    }
 
 }
