@@ -265,8 +265,10 @@ class Survey extends \yii\db\ActiveRecord
                 'survey_user_answer_survey_id'=>$model->survey_id,
 
             ])->count();
-
-        $progress= ($userAnswersObj/$no_of_question)*100;
+        $progress = 0;
+        if ($userAnswersObj) {
+            $progress= ($userAnswersObj/$no_of_question)*100;
+        }
         return $progress;
 
 
