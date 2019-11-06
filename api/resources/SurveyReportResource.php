@@ -71,7 +71,7 @@ class SurveyReportResource extends Survey
                         || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
                     ){
                         $temp=[];
-                        $correctiveAction= [];
+                        $correctiveActions= [];
                         //fetch user answers
                         $userAnswerObj = SurveyUserAnswer::findOne([
                             'survey_user_answer_user_id'=>$userId,
@@ -88,7 +88,7 @@ class SurveyReportResource extends Survey
                         || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
                     ){
                         $temp=[];
-                        $correctiveAction= [];
+                        $correctiveActions= [];
                         //fetch user answers
                         $userAnswerObj = SurveyUserAnswer::findOne([
                             'survey_user_answer_user_id'=>$userId,
@@ -110,7 +110,7 @@ class SurveyReportResource extends Survey
                         || $question->survey_question_type === SurveyType::TYPE_CALENDAR
                     ){
                         $temp=[];
-                        $correctiveAction= [];
+                        $correctiveActions= [];
 
                         //fetch user answers
                         $userAnswersObj = SurveyUserAnswer::find()->where([
@@ -140,7 +140,7 @@ class SurveyReportResource extends Survey
                         $question->survey_question_type === SurveyType::TYPE_FILE
                     ){
                         $temp=[];
-                        $correctiveAction= [];
+                        $correctiveActions= [];
                         //fetch user answers
                         $userAnswersObj = SurveyUserAnswer::find()->where([
                             'survey_user_answer_user_id'=>$userId,
