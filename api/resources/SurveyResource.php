@@ -78,10 +78,12 @@ class SurveyResource extends Survey
                 $result[] = [
                     'name'=> 'page1',
                     'elements'=>[
-                        'type'=>'html',
-                        'name'=>'q',
-                        'html'=>[
-                            'ar'=> '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>'
+                        [
+                            'type'=>'html',
+                            'name'=>'q',
+                            'html'=>[
+                                'ar'=> '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>'
+                            ]
                         ]
                     ]
                 ];
