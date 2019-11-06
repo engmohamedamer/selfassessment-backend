@@ -42,6 +42,9 @@ class SurveyResource extends Survey
             'maxTimeToFinishPage'=>function($model){
                 return 10;
             },
+            'firstPageIsStarted'=>function($model){
+                return true;
+            },
             'startSurveyText'=>function($model){
                 return 'بدء الإستبيان';
             },
