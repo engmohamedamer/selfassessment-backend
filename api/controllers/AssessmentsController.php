@@ -153,6 +153,10 @@ class AssessmentsController extends  MyActiveController
               if (count($value) > 0 ) {
                  foreach ($value as $file) {
                     if (!isset($file['id'])) {
+                      SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
+                       'survey_user_answer_question_id'=>$question->survey_question_id,
+                       'survey_user_answer_user_id' => \Yii::$app->user->getId()
+                       ]);
                       if(isset($file['type']) && $file['type']  == 'application/pdf' ){
                           $filename = ImageHelper::Base64IPdfConverter($file['content'],'answers');
 
