@@ -43,7 +43,7 @@ class SurveyResource extends Survey
                 return 10;
             },
             'firstPageIsStarted'=>function($model){
-                return true;
+                return false;
             },
             'startSurveyText'=>function($model){
                 return 'بدء الإستبيان';
