@@ -97,6 +97,8 @@ class SurveyResource extends Survey
                             $type = 'checkbox';
                         }elseif ($question->questionType->survey_type_name == 'Date/Time') {
                             $type = 'text';
+                        }elseif ($question->questionType->survey_type_name == 'Ranking') {
+                            $type = 'matrix';
                         }else{
                             $type = strtolower($question->questionType->survey_type_name);
                         }
@@ -134,6 +136,17 @@ class SurveyResource extends Survey
                             $data[$key]['showPreview'] = true;
                             $data[$key]['imageWidth'] = 150;
                             $data[$key]['maxSize'] = 10485760;
+                        }
+
+                        if ($type == 'matrix') {
+                            $qAnswer = [];
+                            $columns = [];
+                            foreach ($question->answers as $index => $value) {
+                                $qAnswer[] = ['value'=>$value->survey_answer_id,'text'=> $value->survey_answer_name];
+                                $columns[] = ['value'=>$value->survey_answer_id,'text'=> $index+1];
+                            }
+                            $data[$key]['columns'] = $columns;
+                            $data[$key]['rows'] = $qAnswer;
                         }
                     }
                     $result[$k+1] = ['name'=>'page'.($k+2),'elements'=>$data];
