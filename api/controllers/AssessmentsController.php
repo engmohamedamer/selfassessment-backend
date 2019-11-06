@@ -152,7 +152,7 @@ class AssessmentsController extends  MyActiveController
                //save multiple
               if (count($value) > 0 ) {
                  foreach ($value as $file) {
-                    if(isset($file['type']) && $file['type']  != 'image/jpeg' ){
+                    if(isset($file['type']) && $file['type']  == 'application/pdf' ){
                         $filename = ImageHelper::Base64IPdfConverter($file['content'],'answers');
 
                     }else{
