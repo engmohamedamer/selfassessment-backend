@@ -142,7 +142,7 @@ class SurveyResource extends Survey
                             $qAnswer = [];
                             $columns = [];
                             foreach ($question->answers as $index => $value) {
-                                $qAnswer[] = ['value'=>"a-".$value->survey_answer_id,'text'=> $value->survey_answer_name];
+                                $qAnswer[] = ['value'=> $value->survey_answer_id,'text'=> $value->survey_answer_name];
                                 $i = $index+1 ;
                                 $columns[] = ['value'=> $i,
                                     'text'=> "$i"
