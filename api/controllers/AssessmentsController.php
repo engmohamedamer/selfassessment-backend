@@ -163,6 +163,7 @@ class AssessmentsController extends  MyActiveController
                     $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
                     $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
                     $userAnswer->survey_user_answer_value = 'answers/'.$filename;
+                    $userAnswer->survey_user_answer_text = $file['name'];
                     $userAnswer->save(false);
                 }
               }

@@ -153,7 +153,11 @@ class SurveyReportResource extends Survey
                             $path = \Yii::getAlias('@storageUrl'). '/source/';
 
                             foreach ($userAnswersObj as $item) {
-                                $temp[] = $path.$item->survey_user_answer_value;
+                                $temp[] = [
+                                    'id'=>$item->survey_user_answer_id,
+                                    'name'=>$item->survey_user_answer_text,
+                                    'content'=>$path.$item->survey_user_answer_value
+                                ];
                             }
                             $answer = $temp;
 
@@ -168,7 +172,6 @@ class SurveyReportResource extends Survey
                         'qGainedPoints'=>rand(1,300),
                         'qTotalPoints'=>'300',
                         'qCorrectiveActions'=> $correctiveActions,
-                        'qType'=> $type
                     ];
                     $correctiveActions = [];
                     $answer = null;
