@@ -168,6 +168,7 @@ class SurveyReportResource extends Survey
                         'qCorrectiveActions'=> $correctiveActions
                     ];
                     $correctiveActions = [];
+                    $answer = null;
                     $result [] = $data;
                 }
 
