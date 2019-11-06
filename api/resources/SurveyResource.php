@@ -127,8 +127,8 @@ class SurveyResource extends Survey
                         if ($type == 'file') {
                             $data[$key+1]['storeDataAsText'] = true;
                             $data[$key+1]['showPreview'] = true;
-                            $data[$key+1]['imageWidth'] = true;
-                            $data[$key+1]['maxSize'] = true;
+                            $data[$key+1]['imageWidth'] = 150;
+                            $data[$key+1]['maxSize'] = 102400;
                         }
                     }
                     $result[] = ['name'=>'page'.($k+1),'elements'=>$data];
