@@ -43,7 +43,7 @@ class SurveyResource extends Survey
                 return 10;
             },
             'firstPageIsStarted'=>function($model){
-                return false;
+                return true;
             },
             'startSurveyText'=>function($model){
                 return 'بدء الإستبيان';
@@ -75,18 +75,20 @@ class SurveyResource extends Survey
 
             'pages'=>function($model){
                 $result = [];
-                $assessmentQuestions = array_chunk($model->questions, 5);
+                $result[] = [
+                    'name'=> 'page1',
+                    'elements'=>[
+                        'type'=>'html',
+                        'name'=>'q',
+                        'html'=>[
+                            'ar'=> '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>'
+                        ]
+                    ]
+                ];
+                $assessmentQuestions = array_chunk($model->questions, 3);
                 foreach ($assessmentQuestions as $k => $questions) {
                     $data =[];
-                    if ($k == 0) {
-                        $data[$k] = [
-                            'type'=> 'html',
-                            'name'=>'q',
-                            'html'=>[
-                                'ar'=> '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>'
-                            ]
-                        ];
-                    }
+                    
                     foreach ($questions as $key => $question) {
                         if ($question->questionType->survey_type_name == 'Single textbox') {
                             $type = 'comment';
@@ -99,22 +101,20 @@ class SurveyResource extends Survey
                         }else{
                             $type = strtolower($question->questionType->survey_type_name);
                         }
-                        if ($k > 0) {
-                            $key = $key -1;
-                        }
-                        $data[$key+1] = [
+
+                        $data[$key] = [
                             'type'=> $type,
                             'name'=>'q-'.$question->survey_question_id,
                             'title'=> $question->survey_question_name,
                         ];
                         if ($question->survey_question_show_descr == 1 ) {
-                            $data[$key+1]['description'] = $question->survey_question_descr;
+                            $data[$key]['description'] = $question->survey_question_descr;
                         }
 
                         if ($question->survey_question_can_skip == 1 ) {
-                            $data[$key+1]['isRequired'] = false;
+                            $data[$key]['isRequired'] = false;
                         }else{
-                            $data[$key+1]['isRequired'] = true;
+                            $data[$key]['isRequired'] = true;
 
                         }
 
@@ -123,21 +123,21 @@ class SurveyResource extends Survey
                             foreach ($question->answers as $value) {
                                 $qAnswer[] = ['value'=>$value->survey_answer_id,'text'=> $value->survey_answer_name];
                             }
-                            $data[$key+1]['choices'] = $qAnswer;
+                            $data[$key]['choices'] = $qAnswer;
                         }
 
                         if ($question->questionType->survey_type_name == 'Date/Time') {
-                            $data[$key+1]['inputType'] = 'date';
+                            $data[$key]['inputType'] = 'date';
                         }
 
                         if ($type == 'file') {
-                            $data[$key+1]['storeDataAsText'] = true;
-                            $data[$key+1]['showPreview'] = true;
-                            $data[$key+1]['imageWidth'] = 150;
-                            $data[$key+1]['maxSize'] = 10485760;
+                            $data[$key]['storeDataAsText'] = true;
+                            $data[$key]['showPreview'] = true;
+                            $data[$key]['imageWidth'] = 150;
+                            $data[$key]['maxSize'] = 10485760;
                         }
                     }
-                    $result[] = ['name'=>'page'.($k+1),'elements'=>$data];
+                    $result[$k+1] = ['name'=>'page'.($k+2),'elements'=>$data];
                 }
 
                 return $result;
