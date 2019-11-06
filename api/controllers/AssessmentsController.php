@@ -152,19 +152,21 @@ class AssessmentsController extends  MyActiveController
                //save multiple
               if (count($value) > 0 ) {
                  foreach ($value as $file) {
-                    if(isset($file['type']) && $file['type']  == 'application/pdf' ){
-                        $filename = ImageHelper::Base64IPdfConverter($file['content'],'answers');
+                    if (!isset($file['id'])) {
+                      if(isset($file['type']) && $file['type']  == 'application/pdf' ){
+                          $filename = ImageHelper::Base64IPdfConverter($file['content'],'answers');
 
-                    }else{
-                        $filename = ImageHelper::Base64IMageConverter($file['content'],'answers');
+                      }else{
+                          $filename = ImageHelper::Base64IMageConverter($file['content'],'answers');
+                      }
+                      $userAnswer =  new SurveyUserAnswer();
+                      $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
+                      $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
+                      $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
+                      $userAnswer->survey_user_answer_value = 'answers/'.$filename;
+                      $userAnswer->survey_user_answer_text = $file['name'];
+                      $userAnswer->save(false);
                     }
-                    $userAnswer =  new SurveyUserAnswer();
-                    $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
-                    $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
-                    $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
-                    $userAnswer->survey_user_answer_value = 'answers/'.$filename;
-                    $userAnswer->survey_user_answer_text = $file['name'];
-                    $userAnswer->save(false);
                 }
               }
            }//end if
