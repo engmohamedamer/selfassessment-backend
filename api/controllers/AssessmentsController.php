@@ -156,7 +156,8 @@ class AssessmentsController extends  MyActiveController
                    ]);
                //save multiple
                foreach ($question->answers as $i => $answer) {
-                 $found = in_array($answer->survey_answer_id ,array_keys($value));
+                 $ids = array_keys($value);
+                 $found = in_array($answer->survey_answer_id ,$ids);
                   if($found){
                       $userAnswer =  new SurveyUserAnswer();
 
@@ -164,7 +165,7 @@ class AssessmentsController extends  MyActiveController
                           $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
                           $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
                           $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
-                          $userAnswer->survey_user_answer_value =1 ;
+                          $userAnswer->survey_user_answer_value = $value[$answer->survey_answer_id];
 
                       $userAnswer->save(false);
                   }

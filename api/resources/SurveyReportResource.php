@@ -108,7 +108,6 @@ class SurveyReportResource extends Survey
 
                     }else if(
                         $question->survey_question_type === SurveyType::TYPE_MULTIPLE
-                        || $question->survey_question_type === SurveyType::TYPE_RANKING
                         || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
                         || $question->survey_question_type === SurveyType::TYPE_CALENDAR
                     ){
@@ -128,6 +127,38 @@ class SurveyReportResource extends Survey
                             foreach ($userAnswersObj as $item) {
                                 if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
                                     $temp[] = $item->surveyUserAnswerAnswer->survey_answer_name;
+                                    $correctiveAction[] = $item->surveyUserAnswerAnswer->survey_answer_corrective_action;
+                                }
+
+                            }
+
+                            $answer = $temp;
+                            $type  = $question->questionType->survey_type_name;
+                            $correctiveActions = $correctiveAction;
+
+                        }
+
+
+                    }else if(
+                        $question->survey_question_type === SurveyType::TYPE_RANKING
+                    ){
+                        $temp=[];
+                        $correctiveActions= [];
+
+                        //fetch user answers
+                        $userAnswersObj = SurveyUserAnswer::find()->where([
+                            'survey_user_answer_user_id'=>$userId,
+                            'survey_user_answer_survey_id'=>$model->survey_id,
+                            'survey_user_answer_question_id'=>$question->survey_question_id
+
+                        ])->all();
+                        if($userAnswersObj){
+                            $temp=[];
+                            $correctiveAction= [];
+                            foreach ($userAnswersObj as $item) {
+                                if($item->survey_user_answer_answer_id) {
+                                    $temp[] = $item->surveyUserAnswerAnswer->survey_answer_name 
+                                    . " : " . $item->survey_user_answer_value .", " ;
                                     $correctiveAction[] = $item->surveyUserAnswerAnswer->survey_answer_corrective_action;
                                 }
 
