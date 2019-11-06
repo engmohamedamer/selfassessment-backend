@@ -63,7 +63,6 @@ class SurveyReportResource extends Survey
                 $i=1;
                 foreach ($model->questions as  $question) {
                     //echo $question->survey_question_id.'<br>';
-                    $type = null;
                     // has one value
                     if ( $question->survey_question_type === SurveyType::TYPE_SLIDER
                         || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
@@ -160,8 +159,6 @@ class SurveyReportResource extends Survey
                                 ];
                             }
                             $answer = $temp;
-
-                            $type = 'file';
                         }
                     }
 
