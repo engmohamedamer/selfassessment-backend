@@ -39,9 +39,6 @@ class SurveyResource extends Survey
             'maxTimeToFinish'=>function($model){
                 return $model->survey_time_to_pass ? $model->survey_time_to_pass * 60 : null ;
             },
-            // 'maxTimeToFinishPage'=>function($model){
-            //     return 10;
-            // },
             'firstPageIsStarted'=>function($model){
                 return true;
             },

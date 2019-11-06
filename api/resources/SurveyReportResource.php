@@ -64,6 +64,8 @@ class SurveyReportResource extends Survey
                 foreach ($model->questions as  $question) {
                     //echo $question->survey_question_id.'<br>';
                     // has one value
+                    $type = null;
+
                     if ( $question->survey_question_type === SurveyType::TYPE_SLIDER
                         || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
                         || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
@@ -80,6 +82,7 @@ class SurveyReportResource extends Survey
                         ]);
                         if($userAnswerObj){
                             $answer = $userAnswerObj->survey_user_answer_value;
+                            $type  = $question->survey_question_type;
 
                         }
 
@@ -97,6 +100,7 @@ class SurveyReportResource extends Survey
                         ]);
                         if($userAnswerObj){
                             $answer = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_name;
+                            $type  = $question->survey_question_type;
                             $correctiveActions = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_corrective_action;
 
 
@@ -130,6 +134,7 @@ class SurveyReportResource extends Survey
                             }
 
                            $answer = $temp;
+                           $type  = $question->survey_question_type;
                            $correctiveActions = $correctiveAction;
 
                         }
@@ -159,6 +164,7 @@ class SurveyReportResource extends Survey
                                 ];
                             }
                             $answer = $temp;
+                            $type  = $question->survey_question_type;
                         }
                     }
 
@@ -169,6 +175,7 @@ class SurveyReportResource extends Survey
                         'qGainedPoints'=>rand(1,300),
                         'qTotalPoints'=>'300',
                         'qCorrectiveActions'=> $correctiveActions,
+                        'qType'=>$type,
                     ];
                     $correctiveActions = [];
                     $answer = null;
