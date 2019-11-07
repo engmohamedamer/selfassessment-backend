@@ -85,7 +85,7 @@ class SurveyResource extends Survey
                         ]
                     ]
                 ];
-                $assessmentQuestions = array_chunk($model->questions, 3);
+                $assessmentQuestions = array_chunk($model->questions, 5);
                 foreach ($assessmentQuestions as $k => $questions) {
                     $data =[];
 
