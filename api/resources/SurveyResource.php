@@ -47,7 +47,7 @@ class SurveyResource extends Survey
                 return 'بدء الإستبيان';
             },
             'completedHtml'=>function($model){
-                return "<h3 class='mb-4'>شكراً لك تم انهاء الإستبيان بنجاح </h3>";
+                return "<h3 class='mb-4'>جاري حفظ الإستبيان .. </h3>";
             },
             'progress'=>function($model){
                 return  Survey::surveyProgress($model,\Yii::$app->user->identity->id);
