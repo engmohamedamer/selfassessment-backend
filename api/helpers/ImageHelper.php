@@ -106,8 +106,12 @@ namespace api\helpers;
          $directory= $path.'/'.$imageName;
 
          $data = explode(',', $binary);
-         $entry = base64_decode($data[1]);
-         $image = imagecreatefromstring($entry);
+         if (count($data) > 1) {
+            $binary = base64_decode($data[1]);
+         }else{
+            $binary = base64_decode($binary);
+         }
+         $image = imagecreatefromstring($binary);
 
          header ( 'Content-type:image/jpeg' );
 
