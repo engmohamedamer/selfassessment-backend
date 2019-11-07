@@ -93,7 +93,7 @@ class SurveyResource extends Survey
 
                     foreach ($questions as $key => $question) {
                         if ($question->questionType->survey_type_name == 'Single textbox') {
-                            $type = 'comment';
+                            $type = 'text';
                         }elseif ($question->questionType->survey_type_name == 'One choise of list') {
                             $type = 'radiogroup';
                         }elseif ($question->questionType->survey_type_name == 'Multiple choice') {
