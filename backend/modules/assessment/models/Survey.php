@@ -259,13 +259,15 @@ class Survey extends \yii\db\ActiveRecord
         $no_of_question = count($model->questions);
 
         $userAnswersObj = SurveyUserAnswer::find()
-            ->select('DISTINCT survey_user_answer_question_id')
+            ->select('survey_user_answer_question_id ')
+            ->distinct()
             ->where([
                 'survey_user_answer_user_id'=>$userId,
                 'survey_user_answer_survey_id'=>$model->survey_id,
 
-            ])->count();
+            ])->all();
         $progress = 0;
+
         if ($userAnswersObj) {
             $progress= ($userAnswersObj/$no_of_question)*100;
         }
