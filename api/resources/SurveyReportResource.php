@@ -63,13 +63,16 @@ class SurveyReportResource extends Survey
                 $i=1;
                 foreach ($model->questions as  $question) {
                     //echo $question->survey_question_id.'<br>';
-
                     // has one value
+                    $type = null;
+
                     if ( $question->survey_question_type === SurveyType::TYPE_SLIDER
                         || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
                         || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
                         || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
                     ){
+                        $temp=[];
+                        $correctiveActions= [];
                         //fetch user answers
                         $userAnswerObj = SurveyUserAnswer::findOne([
                             'survey_user_answer_user_id'=>$userId,
@@ -79,12 +82,15 @@ class SurveyReportResource extends Survey
                         ]);
                         if($userAnswerObj){
                             $answer = $userAnswerObj->survey_user_answer_value;
+                            $type  = $question->questionType->survey_type_name;
 
                         }
 
                     }else if($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
                         || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
                     ){
+                        $temp=[];
+                        $correctiveActions= [];
                         //fetch user answers
                         $userAnswerObj = SurveyUserAnswer::findOne([
                             'survey_user_answer_user_id'=>$userId,
@@ -94,6 +100,7 @@ class SurveyReportResource extends Survey
                         ]);
                         if($userAnswerObj){
                             $answer = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_name;
+                            $type  = $question->questionType->survey_type_name;
                             $correctiveActions = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_corrective_action;
 
 
@@ -101,10 +108,11 @@ class SurveyReportResource extends Survey
 
                     }else if(
                         $question->survey_question_type === SurveyType::TYPE_MULTIPLE
-                        || $question->survey_question_type === SurveyType::TYPE_RANKING
                         || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
                         || $question->survey_question_type === SurveyType::TYPE_CALENDAR
                     ){
+                        $temp=[];
+                        $correctiveActions= [];
 
                         //fetch user answers
                         $userAnswersObj = SurveyUserAnswer::find()->where([
@@ -124,12 +132,68 @@ class SurveyReportResource extends Survey
 
                             }
 
-                           $answer = $temp;
-                           $correctiveActions = $correctiveAction;
+                            $answer = $temp;
+                            $type  = $question->questionType->survey_type_name;
+                            $correctiveActions = $correctiveAction;
 
                         }
 
 
+                    }else if(
+                        $question->survey_question_type === SurveyType::TYPE_RANKING
+                    ){
+                        $temp=[];
+                        $correctiveActions= [];
+
+                        //fetch user answers
+                        $userAnswersObj = SurveyUserAnswer::find()->where([
+                            'survey_user_answer_user_id'=>$userId,
+                            'survey_user_answer_survey_id'=>$model->survey_id,
+                            'survey_user_answer_question_id'=>$question->survey_question_id
+
+                        ])->all();
+                        if($userAnswersObj){
+                            $temp=[];
+                            $correctiveAction= [];
+                            foreach ($userAnswersObj as $item) {
+                                if($item->survey_user_answer_answer_id) {
+                                    $temp[] = $item->surveyUserAnswerAnswer->survey_answer_name 
+                                    . ": " . $item->survey_user_answer_value;
+                                }
+
+                            }
+
+                            $answer = $temp;
+                            $type  = $question->questionType->survey_type_name;
+                        }
+
+
+                    }else if(
+                        $question->survey_question_type === SurveyType::TYPE_FILE
+                    ){
+                        $temp=[];
+                        $correctiveActions= [];
+                        //fetch user answers
+                        $userAnswersObj = SurveyUserAnswer::find()->where([
+                            'survey_user_answer_user_id'=>$userId,
+                            'survey_user_answer_survey_id'=>$model->survey_id,
+                            'survey_user_answer_question_id'=>$question->survey_question_id
+
+                        ])->all();
+                        // return var_dump($userAnswersObj);
+                        if($userAnswersObj){
+                            $path = \Yii::getAlias('@storageUrl'). '/source/';
+
+                            foreach ($userAnswersObj as $item) {
+                                $temp[] = [
+                                    'id'=>$item->survey_user_answer_id,
+                                    'name'=>$item->survey_user_answer_text,
+                                    'content'=>$path.$item->survey_user_answer_value
+                                ];
+                            }
+                            $answer = $temp;
+                            $type  = $question->questionType->survey_type_name;
+                        }
                     }
 
                     $data = [
@@ -138,11 +202,11 @@ class SurveyReportResource extends Survey
                         'qAnswer'=>$answer,
                         'qGainedPoints'=>rand(1,300),
                         'qTotalPoints'=>'300',
-                        'qCorrectiveActions'=> $correctiveActions
-
-
+                        'qCorrectiveActions'=> $correctiveActions,
+                        'qType'=>$type,
                     ];
-
+                    $correctiveActions = [];
+                    $answer = null;
                     $result [] = $data;
                 }
 

@@ -3,6 +3,7 @@
 namespace api\controllers;
 
 
+use api\helpers\ImageHelper;
 use api\helpers\ResponseHelper;
 use api\resources\SurveyMiniResource;
 use api\resources\SurveyReportResource;
@@ -28,6 +29,7 @@ class AssessmentsController extends  MyActiveController
         unset($actions['index']);
         unset($actions['view']);
         unset($actions['update']);
+        unset($actions['delete']);
         return $actions;
     }
 
@@ -119,7 +121,6 @@ class AssessmentsController extends  MyActiveController
                $userAnswer->survey_user_answer_value = $value;
                $userAnswer->save(false);
             }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
-               || $question->survey_question_type === SurveyType::TYPE_RANKING
                || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
                || $question->survey_question_type === SurveyType::TYPE_CALENDAR
            ) {
@@ -145,6 +146,58 @@ class AssessmentsController extends  MyActiveController
 
                  }
 
+           }else if(
+              $question->survey_question_type === SurveyType::TYPE_RANKING
+           ) {
+               //delete old answers and add new
+               SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
+                   'survey_user_answer_question_id'=>$question->survey_question_id,
+                   'survey_user_answer_user_id' => \Yii::$app->user->getId()
+                   ]);
+               //save multiple
+               foreach ($question->answers as $i => $answer) {
+                 $ids = array_keys($value);
+                 $found = in_array($answer->survey_answer_id ,$ids);
+                  if($found){
+                      $userAnswer =  new SurveyUserAnswer();
+
+                          $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
+                          $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
+                          $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
+                          $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
+                          $userAnswer->survey_user_answer_value = $value[$answer->survey_answer_id];
+
+                      $userAnswer->save(false);
+                  }
+
+                 }
+
+           }else if($question->survey_question_type === SurveyType::TYPE_FILE
+           ) {
+               //save multiple
+              if (count($value) > 0 ) {
+                 foreach ($value as $file) {
+                    if (!isset($file['id'])) {
+                      SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
+                       'survey_user_answer_question_id'=>$question->survey_question_id,
+                       'survey_user_answer_user_id' => \Yii::$app->user->getId()
+                       ]);
+                      if(isset($file['type']) && $file['type']  == 'application/pdf' ){
+                          $filename = ImageHelper::Base64IPdfConverter($file['content'],'answers');
+
+                      }else{
+                          $filename = ImageHelper::Base64IMageConverter($file['content'],'answers');
+                      }
+                      $userAnswer =  new SurveyUserAnswer();
+                      $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
+                      $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
+                      $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
+                      $userAnswer->survey_user_answer_value = 'answers/'.$filename;
+                      $userAnswer->survey_user_answer_text = $file['name'];
+                      $userAnswer->save(false);
+                    }
+                }
+              }
            }//end if
 
         }//end loap answers
@@ -200,5 +253,11 @@ class AssessmentsController extends  MyActiveController
         }
     }
 
+
+    public function actionDeleteFile()
+    {
+        $params = \Yii::$app->request->post();
+        return $params;
+    }
 
 }

@@ -31,12 +31,13 @@ return [
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'assessments',
-            'only'=>['index','view','update','report','options'],//'update',
+            'only'=>['index','view','update','delete-file','report','options'],//'update',
             'extraPatterns'=>[
                 'GET ' => 'index' ,
                 'GET <id>' => 'view' ,
                 'GET report/<id>' => 'view' ,
                 'PUT ' => 'update',
+                'DELETE delete-file' => 'delete-file',
             ],
             'pluralize'=>false
         ],

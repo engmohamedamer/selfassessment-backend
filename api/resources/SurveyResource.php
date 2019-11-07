@@ -39,6 +39,9 @@ class SurveyResource extends Survey
             'maxTimeToFinish'=>function($model){
                 return $model->survey_time_to_pass ? $model->survey_time_to_pass * 60 : null ;
             },
+            'firstPageIsStarted'=>function($model){
+                return true;
+            },
             'startSurveyText'=>function($model){
                 return 'بدء الإستبيان';
             },
@@ -69,18 +72,22 @@ class SurveyResource extends Survey
 
             'pages'=>function($model){
                 $result = [];
-                $assessmentQuestions = array_chunk($model->questions, 10);
-                foreach ($assessmentQuestions as $k => $questions) {
-                    $data =[];
-                    if ($k == 0) {
-                        $data[$k] = [
-                            'type'=> 'html',
+                $result[] = [
+                    'name'=> 'page1',
+                    'elements'=>[
+                        [
+                            'type'=>'html',
                             'name'=>'q',
                             'html'=>[
                                 'ar'=> '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>'
                             ]
-                        ];
-                    }
+                        ]
+                    ]
+                ];
+                $assessmentQuestions = array_chunk($model->questions, 3);
+                foreach ($assessmentQuestions as $k => $questions) {
+                    $data =[];
+                    
                     foreach ($questions as $key => $question) {
                         if ($question->questionType->survey_type_name == 'Single textbox') {
                             $type = 'comment';
@@ -90,25 +97,25 @@ class SurveyResource extends Survey
                             $type = 'checkbox';
                         }elseif ($question->questionType->survey_type_name == 'Date/Time') {
                             $type = 'text';
+                        }elseif ($question->questionType->survey_type_name == 'Ranking') {
+                            $type = 'matrix';
                         }else{
                             $type = strtolower($question->questionType->survey_type_name);
                         }
-                        if ($k > 0) {
-                            $key = $key -1;
-                        }
-                        $data[$key+1] = [
+
+                        $data[$key] = [
                             'type'=> $type,
                             'name'=>'q-'.$question->survey_question_id,
                             'title'=> $question->survey_question_name,
                         ];
                         if ($question->survey_question_show_descr == 1 ) {
-                            $data[$key+1]['description'] = $question->survey_question_descr;
+                            $data[$key]['description'] = $question->survey_question_descr;
                         }
 
                         if ($question->survey_question_can_skip == 1 ) {
-                            $data[$key+1]['isRequired'] = false;
+                            $data[$key]['isRequired'] = false;
                         }else{
-                            $data[$key+1]['isRequired'] = true;
+                            $data[$key]['isRequired'] = true;
 
                         }
 
@@ -117,21 +124,35 @@ class SurveyResource extends Survey
                             foreach ($question->answers as $value) {
                                 $qAnswer[] = ['value'=>$value->survey_answer_id,'text'=> $value->survey_answer_name];
                             }
-                            $data[$key+1]['choices'] = $qAnswer;
+                            $data[$key]['choices'] = $qAnswer;
                         }
 
                         if ($question->questionType->survey_type_name == 'Date/Time') {
-                            $data[$key+1]['inputType'] = 'date';
+                            $data[$key]['inputType'] = 'date';
                         }
 
                         if ($type == 'file') {
-                            $data[$key+1]['storeDataAsText'] = true;
-                            $data[$key+1]['showPreview'] = true;
-                            $data[$key+1]['imageWidth'] = true;
-                            $data[$key+1]['maxSize'] = true;
+                            $data[$key]['storeDataAsText'] = true;
+                            $data[$key]['showPreview'] = true;
+                            $data[$key]['imageWidth'] = 150;
+                            $data[$key]['maxSize'] = 10485760;
+                        }
+
+                        if ($type == 'matrix') {
+                            $qAnswer = [];
+                            $columns = [];
+                            foreach ($question->answers as $index => $value) {
+                                $qAnswer[] = ['value'=> $value->survey_answer_id,'text'=> $value->survey_answer_name];
+                                $i = $index+1 ;
+                                $columns[] = ['value'=> $i,
+                                    'text'=> "$i"
+                                ];
+                            }
+                            $data[$key]['columns'] = $columns;
+                            $data[$key]['rows'] = $qAnswer;
                         }
                     }
-                    $result[] = ['name'=>'page'.($k+1),'elements'=>$data];
+                    $result[$k+1] = ['name'=>'page'.($k+2),'elements'=>$data];
                 }
 
                 return $result;
@@ -194,14 +215,30 @@ class SurveyResource extends Survey
                                 }
 
                             }
-
-
-
                         }
+                    }else if(
+                        $question->survey_question_type === SurveyType::TYPE_FILE
+                    ){
+                        // return $userId;
+                        //fetch user answers
+                        $userAnswersObj = SurveyUserAnswer::find()->where([
+                            'survey_user_answer_user_id'=>$userId,
+                            'survey_user_answer_survey_id'=>$model->survey_id,
+                            'survey_user_answer_question_id'=>$question->survey_question_id
 
+                        ])->all();
+                        if($userAnswersObj){
+                            $path = \Yii::getAlias('@storageUrl'). '/source/';
+                            foreach ($userAnswersObj as $item) {
 
+                                $data['q-'.$question->survey_question_id][] = [
+                                    'id'=>$item->survey_user_answer_id,
+                                    'name'=>$item->survey_user_answer_text,
+                                    'content'=>$path.$item->survey_user_answer_value
+                                ];
+                            }
+                        }
                     }
-
                 }
 
 
