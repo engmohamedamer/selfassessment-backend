@@ -37,8 +37,9 @@ class SurveyResource extends Survey
                 return 'top';
             },
             'maxTimeToFinish'=>function($model){
-                return $model->survey_time_to_pass ? $model->survey_time_to_pass * 60 : null ;
+                return SurveyStat::remainingTime($model,\Yii::$app->user->identity->id) * 60 ;
             },
+
             'firstPageIsStarted'=>function($model){
                 return true;
             },
@@ -87,7 +88,7 @@ class SurveyResource extends Survey
                 $assessmentQuestions = array_chunk($model->questions, 3);
                 foreach ($assessmentQuestions as $k => $questions) {
                     $data =[];
-                    
+
                     foreach ($questions as $key => $question) {
                         if ($question->questionType->survey_type_name == 'Single textbox') {
                             $type = 'text';
