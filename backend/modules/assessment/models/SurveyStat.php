@@ -233,7 +233,7 @@ class SurveyStat extends \yii\db\ActiveRecord
                 $since_start = $start_date->diff(new \DateTime($result->survey_stat_updated_at));
             }
 
-            return $since_start->i;
+            return ($since_start->i)?: 0;
 
 //            echo $since_start->days.' days total<br>';
 //            echo $since_start->y.' years<br>';
