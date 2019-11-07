@@ -191,7 +191,11 @@ class SurveyReportResource extends Survey
                         }
                     }
                     
-                    $type  = $question->questionType->survey_type_name;
+                    if (\Yii::$app->user->identity->userProfile->locale == 'en-US') {
+                        $type  = $question->questionType->survey_type_name;
+                    }else{
+                        $type  = $question->questionType->survey_type_name_ar;
+                    }
 
                     $data = [
                         'qNum'=>$i++,
