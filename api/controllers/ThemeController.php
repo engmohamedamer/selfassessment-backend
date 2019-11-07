@@ -44,8 +44,8 @@ class ThemeController extends RestController
             }
         }
 
-        // $organization = Organization::findOne(['slug'=>$params['org']]);
-        $organization = Organization::find()->limit(1)->one();
+        $organization = Organization::findOne(['slug'=>$params['org']]);
+        // $organization = Organization::find()->limit(1)->one();
 
         if (!$organization) {
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],404);
