@@ -269,7 +269,7 @@ class Survey extends \yii\db\ActiveRecord
         $progress = 0;
 
         if ($userAnswersObj) {
-            $progress= ($userAnswersObj/$no_of_question)*100;
+            $progress= (count($userAnswersObj) /$no_of_question)*100;
         }
         return $progress;
 
