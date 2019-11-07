@@ -99,6 +99,8 @@ class SurveyResource extends Survey
                             $type = 'text';
                         }elseif ($question->questionType->survey_type_name == 'Ranking') {
                             $type = 'matrix';
+                        }elseif ($question->questionType->survey_type_name == 'Comment box') {
+                            $type = 'comment';
                         }else{
                             $type = strtolower($question->questionType->survey_type_name);
                         }

@@ -82,7 +82,6 @@ class SurveyReportResource extends Survey
                         ]);
                         if($userAnswerObj){
                             $answer = $userAnswerObj->survey_user_answer_value;
-                            $type  = $question->questionType->survey_type_name;
 
                         }
 
@@ -100,7 +99,6 @@ class SurveyReportResource extends Survey
                         ]);
                         if($userAnswerObj){
                             $answer = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_name;
-                            $type  = $question->questionType->survey_type_name;
                             $correctiveActions = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_corrective_action;
 
 
@@ -133,7 +131,6 @@ class SurveyReportResource extends Survey
                             }
 
                             $answer = $temp;
-                            $type  = $question->questionType->survey_type_name;
                             $correctiveActions = $correctiveAction;
 
                         }
@@ -164,7 +161,6 @@ class SurveyReportResource extends Survey
                             }
 
                             $answer = $temp;
-                            $type  = $question->questionType->survey_type_name;
                         }
 
 
@@ -192,9 +188,10 @@ class SurveyReportResource extends Survey
                                 ];
                             }
                             $answer = $temp;
-                            $type  = $question->questionType->survey_type_name;
                         }
                     }
+                    
+                    $type  = $question->questionType->survey_type_name;
 
                     $data = [
                         'qNum'=>$i++,
