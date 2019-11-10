@@ -102,6 +102,8 @@ class SurveyResource extends Survey
                             $type = 'matrixdropdown';
                         }elseif ($question->questionType->survey_type_name == 'Comment box') {
                             $type = 'comment';
+                        }elseif ($question->questionType->survey_type_name == 'Slider') {
+                            $type = 'rating';
                         }else{
                             $type = strtolower($question->questionType->survey_type_name);
                         }
@@ -132,6 +134,13 @@ class SurveyResource extends Survey
 
                         if ($question->questionType->survey_type_name == 'Date/Time') {
                             $data[$key]['inputType'] = 'date';
+                        }
+
+                        if ($type == 'rating') {
+                            $data[$key]['rateMin'] = $question->answers[0]->survey_answer_name;
+                            $data[$key]['rateMax'] = $question->answers[1]->survey_answer_name;
+                            $data[$key]['minRateDescription'] = $question->answers[0]->survey_answer_descr;
+                            $data[$key]['maxRateDescription'] = $question->answers[1]->survey_answer_descr;
                         }
 
                         if ($type == 'file') {
