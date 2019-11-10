@@ -56,7 +56,7 @@ class MediaController extends  MyActiveController
             $name = basename($_FILES[$key]["name"]);
             $uploaddir = \Yii::getAlias('@storage'). '/web/source/answers';
             move_uploaded_file($tmp_name, $uploaddir.'/'.$name);
-            $links[] = \Yii::getAlias('@storageUrl'). '/source/answers/'.$name;
+            $links[] =  [$name=>['id'=>1,'link'=>\Yii::getAlias('@storageUrl'). '/source/answers/'.$name]];
         }
         return ResponseHelper::sendSuccessResponse($links,200);
     }
