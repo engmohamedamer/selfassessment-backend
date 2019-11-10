@@ -278,7 +278,7 @@ class SurveyResource extends Survey
                                 $data['q-'.$question->survey_question_id][] = [
                                     'id'=>$item->survey_user_answer_id,
                                     'name'=>$item->survey_user_answer_text,
-                                    'content'=>$path.$item->survey_user_answer_value
+                                    'content'=>$item->survey_user_answer_value
                                 ];
                             }
                         }
