@@ -152,11 +152,11 @@ class SurveyResource extends Survey
                                     'text'=> "$i"
                                 ];
                             }
-                            $data[$key]['columns'] = [
+                            $data[$key]['columns'] = [[
                                 "name"=>"rate",
                                 "title"=>$question->survey_question_descr,
                                 "choices"=>$columns
-                            ];
+                            ]];
                             $data[$key]['rows'] = $qAnswer;
                         }
                     }
