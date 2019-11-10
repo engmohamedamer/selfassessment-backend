@@ -42,6 +42,16 @@ return [
             'pluralize'=>false
         ],
 
+        ['class' =>'yii\rest\UrlRule',
+            'controller'=>'media',
+            'only'=>['create','delete-file','options'],//'update',
+            'extraPatterns'=>[
+                'POST ' => 'create' ,
+                'DELETE delete-file' => 'delete-file',
+            ],
+            'pluralize'=>false
+        ],
+
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'profile',
