@@ -99,7 +99,7 @@ class SurveyResource extends Survey
                         }elseif ($question->questionType->survey_type_name == 'Date/Time') {
                             $type = 'text';
                         }elseif ($question->questionType->survey_type_name == 'Ranking') {
-                            $type = 'matrix';
+                            $type = 'matrixdropdown';
                         }elseif ($question->questionType->survey_type_name == 'Comment box') {
                             $type = 'comment';
                         }else{
@@ -142,7 +142,7 @@ class SurveyResource extends Survey
                             $data[$key]['maxSize'] = 10485760;
                         }
 
-                        if ($type == 'matrix') {
+                        if ($type == 'matrixdropdown') {
                             $qAnswer = [];
                             $columns = [];
                             foreach ($question->answers as $index => $value) {
@@ -152,7 +152,11 @@ class SurveyResource extends Survey
                                     'text'=> "$i"
                                 ];
                             }
-                            $data[$key]['columns'] = $columns;
+                            $data[$key]['columns'] = [
+                                "name"=>"rate",
+                                "title"=>$question->survey_question_descr,
+                                "choices"=>$columns
+                            ];
                             $data[$key]['rows'] = $qAnswer;
                         }
                     }

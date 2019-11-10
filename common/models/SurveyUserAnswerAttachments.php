@@ -3,6 +3,9 @@
 namespace common\models;
 
 use Yii;
+use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyQuestion;
+use common\models\User;
 
 /**
  * This is the model class for table "survey_user_answer_attachments".
