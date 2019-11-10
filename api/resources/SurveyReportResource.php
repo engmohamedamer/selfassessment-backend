@@ -178,8 +178,6 @@ class SurveyReportResource extends Survey
                         ])->all();
                         // return var_dump($userAnswersObj);
                         if($userAnswersObj){
-                            $path = \Yii::getAlias('@storageUrl'). '/source/';
-
                             foreach ($userAnswersObj as $item) {
                                 $temp[] = [
                                     'id'=>$item->survey_user_answer_id,

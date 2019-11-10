@@ -272,7 +272,6 @@ class SurveyResource extends Survey
 
                         ])->all();
                         if($userAnswersObj){
-                            $path = \Yii::getAlias('@storageUrl'). '/source/';
                             foreach ($userAnswersObj as $item) {
 
                                 $data['q-'.$question->survey_question_id][] = [
