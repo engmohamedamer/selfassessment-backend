@@ -16,6 +16,7 @@ return [
         ['pattern' => '/theme/<slug>/<lang>', 'route' => 'theme/index'],
         ['pattern' => '/assessments/report/<id>', 'route' => 'assessments/report'],
         ['pattern' => '/media/upload', 'route' => 'media/upload'],
+        ['pattern' => '/media/delete-file', 'route' => 'media/delete-file'],
 
         ['class' =>'yii\rest\UrlRule','controller'=>'user'
             ,'only'=>['login','signup','reset-password','request-reset-password','options']

@@ -21,7 +21,6 @@ class MediaController extends  MyActiveController
     public function actionCreate()
 	{
         $params = \Yii::$app->request->post();
-        return var_dump($params,$_FILES);
         $files= $params['files'];
         $questionId= $params['question_id'];
         $question = SurveyQuestion::findOne(['survey_question_id'=>$questionId]);
@@ -58,13 +57,24 @@ class MediaController extends  MyActiveController
             $uploaddir = \Yii::getAlias('@storage'). '/web/source/answers';
             move_uploaded_file($tmp_name, $uploaddir.'/'.$name);
             $media = new Media();
-            $media->path = 'answers'.$name;
+            $media->path = 'answers/'.$name;
             $media->base_url = \Yii::getAlias('@storageUrl'). '/source/';
             $media->type = $_FILES[$key]["type"];
             $media->save(false);
             $links[] =  [$name=>['id'=>$media->id,'link'=>\Yii::getAlias('@storageUrl'). '/source/answers/'.$name]];
         }
         return ResponseHelper::sendSuccessResponse($links,200);
+    }
+
+    public function actionDeleteFile()
+    {
+        $params = \Yii::$app->request->post();
+        $media = Media::findOne($params['id']);
+        if ($media) {
+           unlink(\Yii::getAlias('@storage'). '/web/source/'.$media->path);
+           $media->delete(false);
+        }
+        return ResponseHelper::sendSuccessResponse();
     }
 
 }
