@@ -29,5 +29,16 @@ switch ($i){
     ])->input('number',
         ['placeholder' => \Yii::t('survey', 'Enter an answer choice')])->label($label);
 
+    echo $form->field($answer, "[{$question->survey_question_id}][$i]survey_answer_show_descr",
+        ['options' => [
+            'class' => 'form-group checkbox-inline'
+        ]])->checkbox(['class' => 'checkbox-updatable']);
+    echo Html::tag('br', '');
+
+    if ($answer->survey_answer_show_descr) {
+        echo Html::beginTag('div', ['class' => 'desc-100']);
+        echo $form->field($answer, "[{$question->survey_question_id}][$i]survey_answer_descr")->textarea(['rows'=>'5','cols'=>'10'])->label(false);
+        echo Html::endTag('div');
+    }
     echo Html::tag('br', '');
 }
