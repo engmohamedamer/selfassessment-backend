@@ -152,9 +152,16 @@ class SurveyResource extends Survey
                                     'text'=> "$i"
                                 ];
                             }
+
+                            $userId = \Yii::$app->user->identity->userProfile;
+                            if ($userId->locale == 'en-US') {
+                                $descr = 'Sorting';
+                            }else{
+                                $descr = 'الترتيب';
+                            }
                             $data[$key]['columns'] = [[
                                 "name"=>"rate",
-                                "title"=>$question->survey_question_descr,
+                                "title"=>$descr,
                                 "choices"=>$columns
                             ]];
                             $data[$key]['rows'] = $qAnswer;
