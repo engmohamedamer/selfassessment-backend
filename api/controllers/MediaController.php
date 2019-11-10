@@ -3,6 +3,7 @@ namespace api\controllers;
 use api\helpers\ImageHelper;
 use api\helpers\ResponseHelper;
 use backend\modules\assessment\models\SurveyQuestion;
+use common\models\Media;
 use common\models\SurveyUserAnswerAttachments;
 
 class MediaController extends  MyActiveController
@@ -56,7 +57,12 @@ class MediaController extends  MyActiveController
             $name = basename($_FILES[$key]["name"]);
             $uploaddir = \Yii::getAlias('@storage'). '/web/source/answers';
             move_uploaded_file($tmp_name, $uploaddir.'/'.$name);
-            $links[] =  [$name=>['id'=>1,'link'=>\Yii::getAlias('@storageUrl'). '/source/answers/'.$name]];
+            $media = new Media();
+            $media->path = 'answers'.$name;
+            $media->base_url = \Yii::getAlias('@storageUrl'). '/source/';
+            $media->type = $_FILES[$key]["type"];
+            $media->save(false);
+            $links[] =  [$name=>['id'=>$media->id,'link'=>\Yii::getAlias('@storageUrl'). '/source/answers/'.$name]];
         }
         return ResponseHelper::sendSuccessResponse($links,200);
     }
