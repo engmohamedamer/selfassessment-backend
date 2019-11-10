@@ -237,7 +237,7 @@ class SurveyResource extends Survey
                         if($userAnswersObj){
                             foreach ($userAnswersObj as $item) {
                                 if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
-                                    $data['q-'.$question->survey_question_id][][$item->survey_user_answer_answer_id] = 
+                                    $data['q-'.$question->survey_question_id][$item->survey_user_answer_answer_id] = 
                                         ["rate"=>$item->survey_user_answer_value]
                                     ;
                                 }
