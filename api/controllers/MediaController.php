@@ -15,10 +15,12 @@ class MediaController extends  MyActiveController
         unset($actions['delete']);
         return $actions;
     }
-	public function actionCreate()
+	
+
+    public function actionCreate()
 	{
         $params = \Yii::$app->request->post();
-        // return var_dump($params,$_FILES);
+        return var_dump($params,$_FILES);
         $files= $params['files'];
         $questionId= $params['question_id'];
         $question = SurveyQuestion::findOne(['survey_question_id'=>$questionId]);
@@ -45,6 +47,19 @@ class MediaController extends  MyActiveController
 
         return var_dump($params);
 	}
+
+    public function actionUpload()
+    {
+        $links = [];
+        foreach ($_FILES as $key => $file) {
+            $tmp_name = $_FILES[$key]["tmp_name"];
+            $name = basename($_FILES[$key]["name"]);
+            $uploaddir = \Yii::getAlias('@storage'). '/web/source/answers';
+            move_uploaded_file($tmp_name, $uploaddir.'/'.$name);
+            $links[] = \Yii::getAlias('@storageUrl'). '/source/answers/'.$name;
+        }
+        return ResponseHelper::sendSuccessResponse($links,200);
+    }
 
 }
 

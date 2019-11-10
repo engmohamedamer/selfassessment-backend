@@ -15,6 +15,7 @@ return [
         ['pattern' => '/theme', 'route' => 'theme/index'],
         ['pattern' => '/theme/<slug>/<lang>', 'route' => 'theme/index'],
         ['pattern' => '/assessments/report/<id>', 'route' => 'assessments/report'],
+        ['pattern' => '/media/upload', 'route' => 'media/upload'],
 
         ['class' =>'yii\rest\UrlRule','controller'=>'user'
             ,'only'=>['login','signup','reset-password','request-reset-password','options']
@@ -44,9 +45,10 @@ return [
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'media',
-            'only'=>['create','delete-file','options'],//'update',
+            'only'=>['create','delete-file','upload','options'],//'update',
             'extraPatterns'=>[
                 'POST ' => 'create' ,
+                'POST upload' => 'upload' ,
                 'DELETE delete-file' => 'delete-file',
             ],
             'pluralize'=>false
