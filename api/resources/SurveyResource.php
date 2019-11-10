@@ -235,14 +235,13 @@ class SurveyResource extends Survey
 
                         ])->all();
                         if($userAnswersObj){
+                            $qAnswer = [];
                             foreach ($userAnswersObj as $item) {
-                                if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
-                                    $data['q-'.$question->survey_question_id][$item->survey_user_answer_answer_id] = 
-                                        ["rate"=>$item->survey_user_answer_value]
-                                    ;
-                                }
-
+                                    $qAnswer[$item->survey_user_answer_answer_id] = ['rate'=>$item->survey_user_answer_value];
                             }
+
+                            $data['q-'.$question->survey_question_id] = $qAnswer;
+                            $qAnswer = [];
                         }
                     }else if(
                         $question->survey_question_type === SurveyType::TYPE_FILE
