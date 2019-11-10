@@ -204,7 +204,6 @@ class SurveyResource extends Survey
 
                     }else if(
                         $question->survey_question_type === SurveyType::TYPE_MULTIPLE
-                        || $question->survey_question_type === SurveyType::TYPE_RANKING
                         || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
                         || $question->survey_question_type === SurveyType::TYPE_CALENDAR
                     ){
@@ -220,6 +219,27 @@ class SurveyResource extends Survey
                             foreach ($userAnswersObj as $item) {
                                 if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
                                     $data['q-'.$question->survey_question_id][] = $item->survey_user_answer_answer_id;
+                                }
+
+                            }
+                        }
+                    }else if(
+                        $question->survey_question_type === SurveyType::TYPE_RANKING
+                    ){
+
+                        //fetch user answers
+                        $userAnswersObj = SurveyUserAnswer::find()->where([
+                            'survey_user_answer_user_id'=>$userId,
+                            'survey_user_answer_survey_id'=>$model->survey_id,
+                            'survey_user_answer_question_id'=>$question->survey_question_id
+
+                        ])->all();
+                        if($userAnswersObj){
+                            foreach ($userAnswersObj as $item) {
+                                if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
+                                    $data['q-'.$question->survey_question_id][] = [
+                                        $item->survey_user_answer_answer_id =>["rate"=>$item->survey_user_answer_value]
+                                    ];
                                 }
 
                             }
