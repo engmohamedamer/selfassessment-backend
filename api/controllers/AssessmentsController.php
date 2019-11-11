@@ -98,99 +98,106 @@ class AssessmentsController extends  MyActiveController
         if(!$survey_done)  return ResponseHelper::sendFailedResponse(['message'=>'Survey is Completed']);
 
         foreach ($params['answers'] as $key=>$value) {
+
+          if (strstr($key, 'a-')){
             $key=  (int)preg_replace('/\D/ui','',$key);
-
-
             $question = $this->findModel($key);
-            //check question type
-           if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
-                || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
-                || $question->survey_question_type === SurveyType::TYPE_SLIDER
-                || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
-                || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
-               || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
-            ){
-               //handel one answer
-               $userAnswers = $question->userAnswers;
-               $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
-                   'survey_user_answer_user_id' => \Yii::$app->user->getId(),
-                   'survey_user_answer_survey_id' => $question->survey_question_survey_id,
-                   'survey_user_answer_question_id' => $question->survey_question_id,
-               ]));
+          }else{
 
-               $userAnswer->survey_user_answer_value = $value;
-               $userAnswer->save(false);
-            }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
-               || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
-               || $question->survey_question_type === SurveyType::TYPE_CALENDAR
-           ) {
-               //delete old answers and add new
-               SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
-                   'survey_user_answer_question_id'=>$question->survey_question_id,
-                   'survey_user_answer_user_id' => \Yii::$app->user->getId()
+              $key=  (int)preg_replace('/\D/ui','',$key);
+
+
+              $question = $this->findModel($key);
+             //check question type
+             if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
+                  || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
+                  || $question->survey_question_type === SurveyType::TYPE_SLIDER
+                  || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
+                  || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
+                 || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
+              ){
+                 //handel one answer
+                 $userAnswers = $question->userAnswers;
+                 $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
+                     'survey_user_answer_user_id' => \Yii::$app->user->getId(),
+                     'survey_user_answer_survey_id' => $question->survey_question_survey_id,
+                     'survey_user_answer_question_id' => $question->survey_question_id,
+                 ]));
+
+                 $userAnswer->survey_user_answer_value = $value;
+                 $userAnswer->save(false);
+              }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
+                 || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
+                 || $question->survey_question_type === SurveyType::TYPE_CALENDAR
+             ) {
+                 //delete old answers and add new
+                 SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
+                     'survey_user_answer_question_id'=>$question->survey_question_id,
+                     'survey_user_answer_user_id' => \Yii::$app->user->getId()
+                     ]);
+                 //save multiple
+                 foreach ($question->answers as $i => $answer) {
+                   $found = in_array($answer->survey_answer_id ,$value);
+                    if($found){
+                        $userAnswer =  new SurveyUserAnswer();
+
+                            $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
+                            $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
+                            $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
+                            $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
+                            $userAnswer->survey_user_answer_value =1 ;
+
+                        $userAnswer->save(false);
+                    }
+
+                   }
+
+             }else if(
+                $question->survey_question_type === SurveyType::TYPE_RANKING
+             ) {
+                 //delete old answers and add new
+                 SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
+                     'survey_user_answer_question_id'=>$question->survey_question_id,
+                     'survey_user_answer_user_id' => \Yii::$app->user->getId()
+                     ]);
+                 //save multiple
+                 foreach ($question->answers as $i => $answer) {
+                   $ids = array_keys($value);
+                   $found = in_array($answer->survey_answer_id ,$ids);
+                    if($found){
+                        $userAnswer =  new SurveyUserAnswer();
+
+                            $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
+                            $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
+                            $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
+                            $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
+                            $userAnswer->survey_user_answer_value = $value[$answer->survey_answer_id]['rate'];
+
+                        $userAnswer->save(false);
+                    }
+
+                   }
+
+             }else if($question->survey_question_type === SurveyType::TYPE_FILE
+             ) {
+                 //save multiple
+                if (count($value) > 0 ) {
+                    SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
+                     'survey_user_answer_question_id'=>$question->survey_question_id,
+                     'survey_user_answer_user_id' => \Yii::$app->user->getId()
                    ]);
-               //save multiple
-               foreach ($question->answers as $i => $answer) {
-                 $found = in_array($answer->survey_answer_id ,$value);
-                  if($found){
+                   foreach ($value as $file) {
                       $userAnswer =  new SurveyUserAnswer();
-
-                          $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
-                          $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
-                          $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
-                          $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
-                          $userAnswer->survey_user_answer_value =1 ;
-
+                      $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
+                      $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
+                      $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
+                      $userAnswer->survey_user_answer_value = $file['content'];
+                      $userAnswer->survey_user_answer_text = $file['name'];
                       $userAnswer->save(false);
-                  }
-
-                 }
-
-           }else if(
-              $question->survey_question_type === SurveyType::TYPE_RANKING
-           ) {
-               //delete old answers and add new
-               SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
-                   'survey_user_answer_question_id'=>$question->survey_question_id,
-                   'survey_user_answer_user_id' => \Yii::$app->user->getId()
-                   ]);
-               //save multiple
-               foreach ($question->answers as $i => $answer) {
-                 $ids = array_keys($value);
-                 $found = in_array($answer->survey_answer_id ,$ids);
-                  if($found){
-                      $userAnswer =  new SurveyUserAnswer();
-
-                          $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
-                          $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
-                          $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
-                          $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
-                          $userAnswer->survey_user_answer_value = $value[$answer->survey_answer_id]['rate'];
-
-                      $userAnswer->save(false);
-                  }
-
-                 }
-
-           }else if($question->survey_question_type === SurveyType::TYPE_FILE
-           ) {
-               //save multiple
-              if (count($value) > 0 ) {
-                  SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
-                   'survey_user_answer_question_id'=>$question->survey_question_id,
-                   'survey_user_answer_user_id' => \Yii::$app->user->getId()
-                 ]);
-                 foreach ($value as $file) {
-                    $userAnswer =  new SurveyUserAnswer();
-                    $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
-                    $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
-                    $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
-                    $userAnswer->survey_user_answer_value = $file['content'];
-                    $userAnswer->survey_user_answer_text = $file['name'];
-                    $userAnswer->save(false);
-                  }
-              }
-           }//end if
+                    }
+                }
+             }//end if
+          }
 
         }//end loap answers
 
@@ -209,6 +216,9 @@ class AssessmentsController extends  MyActiveController
             $assignedModel->survey_stat_session_start = date('Y-m-d H:i:s');
             $assignedModel->save(false);
         }
+
+        $assignedModel->survey_stat_session_start = date('Y-m-d H:i:s');
+        $assignedModel->save(false);
     }
 
     public function CheckState($surveyId,$status = null,$pageNo = 0){
@@ -241,7 +251,7 @@ class AssessmentsController extends  MyActiveController
 
         $start_date = new \DateTime($assignedModel->survey_stat_session_start);
         $since_start = $start_date->diff(new \DateTime(date('Y-m-d H:i:s')));
-        $assignedModel->survey_stat_actual_time = $since_start->i;
+        $assignedModel->survey_stat_actual_time += $since_start->i;
         $assignedModel->save(false);
 
         if ($stat->survey_stat_is_done) {
