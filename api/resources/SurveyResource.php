@@ -137,7 +137,7 @@ class SurveyResource extends Survey
                         }
 
                         if ($type == 'rating') {
-                            $data[$key]['rateStep'] = 2;
+                            $data[$key]['rateStep'] = $question->steps;
                             $data[$key]['rateMin'] = $question->answers[0]->survey_answer_name;
                             $data[$key]['rateMax'] = $question->answers[1]->survey_answer_name;
                             $data[$key]['minRateDescription'] = $question->answers[0]->survey_answer_descr;
