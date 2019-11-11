@@ -110,7 +110,7 @@ class SurveyResource extends Survey
                         }
 
                         $data[$i] = [
-                            'type'=> $type .'-' . $key,
+                            'type'=> $type,
                             'name'=>'q-'.$question->survey_question_id,
                             'title'=> $question->survey_question_name,
                         ];
@@ -178,26 +178,30 @@ class SurveyResource extends Survey
                             $data[$i]['rows'] = $qAnswer;
                         }
 
-                        $data[$i+1] = [
-                            'type'=> "panel",
-                            'startWithNewLine'=> false,
-                            'elements'=> [
-                                [
-                                    'name'=>'f-'.$question->survey_question_id,
-                                    'type'=> "boolean",
-                                    'defaultValue'=> false,
-                                    'title'=> "Upload File",
+                        if ($question->survey_question_attachment_file) {
+                            $data[$i+1] = [
+                                'type'=> "panel",
+                                'startWithNewLine'=> false,
+                                'elements'=> [
+                                    [
+                                        'name'=>'f-'.$question->survey_question_id,
+                                        'type'=> "boolean",
+                                        'defaultValue'=> false,
+                                        'title'=> "Upload File",
+                                    ],
+                                    [
+                                        "name"=> 'a-'.$question->survey_question_id,
+                                        "showTitle"=> false,
+                                        "type"=>"file",
+                                        "visibleIf"=>"{nameShowFile} == true",
+                                    ]
                                 ],
-                                [
-                                    "name"=> 'a-'.$question->survey_question_id,
-                                    "showTitle"=> false,
-                                    "type"=>"file",
-                                    "visibleIf"=>"{nameShowFile} == true",
-                                ]
-                            ],
-                        ];
+                            ];
+                            $i = $i+2;
+                        }else{
+                            $i = $i+1;
+                        }
 
-                        $i = $i+2;
                     }
                     $result[$k+1] = ['name'=>'page'.($k+2),'elements'=>$data];
                 }

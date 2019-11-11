@@ -130,6 +130,10 @@ echo Html::endTag('div');
 
 echo Html::tag('hr', '');
 echo $form->field($question, "[{$question->survey_question_id}]survey_question_can_skip")->checkbox();
+if ($question->survey_question_type != SurveyType::TYPE_FILE){
+    echo $form->field($question, "[{$question->survey_question_id}]survey_question_attachment_file")->checkbox(['class' => 'checkbox-updatable']);
+    echo Html::tag('br', '');
+}
 if (in_array($question->survey_question_type, [
     SurveyType::TYPE_MULTIPLE,
     SurveyType::TYPE_ONE_OF_LIST,
