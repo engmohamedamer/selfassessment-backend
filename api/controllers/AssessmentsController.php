@@ -13,6 +13,7 @@ use backend\modules\assessment\models\SurveyQuestion;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\SurveyType;
 use backend\modules\assessment\models\SurveyUserAnswer;
+use common\models\SurveyUserAnswerAttachments;
 use yii\data\ActiveDataProvider;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
@@ -102,11 +103,23 @@ class AssessmentsController extends  MyActiveController
           if (strstr($key, 'a-')){
             $key=  (int)preg_replace('/\D/ui','',$key);
             $question = $this->findModel($key);
+              SurveyUserAnswerAttachments::deleteAll(['survey_user_answer_attachments_survey_id'=>$question->survey_question_survey_id ,
+                   'survey_user_answer_attachments_question_id'=>$question->survey_question_id,
+                   'survey_user_answer_attachments_user_id' => \Yii::$app->user->getId()
+                   ]);
+              foreach ($value as $index => $file) {
+                $fileObj= new SurveyUserAnswerAttachments();
+                $fileObj->survey_user_answer_attachments_user_id = \Yii::$app->user->identity->getId();
+                $fileObj->survey_user_answer_attachments_survey_id = $question->survey_question_survey_id ;
+                $fileObj->survey_user_answer_attachments_question_id = $question->survey_question_id ;
+                $fileObj->path = $file['content'];
+                $fileObj->base_url= ' ';
+                $fileObj->name = $file['name'];
+                $fileObj->type = $file['type'];
+                $fileObj->save();
+              }
           }else{
-
               $key=  (int)preg_replace('/\D/ui','',$key);
-
-
               $question = $this->findModel($key);
              //check question type
              if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
