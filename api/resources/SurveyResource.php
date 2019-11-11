@@ -137,6 +137,7 @@ class SurveyResource extends Survey
                         }
 
                         if ($type == 'rating') {
+                            $data[$key]['rateStep'] = 2;
                             $data[$key]['rateMin'] = $question->answers[0]->survey_answer_name;
                             $data[$key]['rateMax'] = $question->answers[1]->survey_answer_name;
                             $data[$key]['minRateDescription'] = $question->answers[0]->survey_answer_descr;
@@ -149,6 +150,12 @@ class SurveyResource extends Survey
                             $data[$key]['imageWidth'] = 150;
                             $data[$key]['allowMultiple'] = true;
                             $data[$key]['maxSize'] = 10485760;
+                            $data[$key]['validators'] = [[
+                                "type"=>"expression",
+                                "expression"=>"isValidType({q-".$question->survey_question_id ."}) == true",
+                                "text"=>"الملفات المرفقة لابد ان تكون بالامتدادات التالية (.pdf | .png | .jpeg | .jpg | .doc | .xls | .xlsx | .docx)"
+
+                            ]];
                         }
 
                         if ($type == 'matrixdropdown') {
@@ -271,13 +278,12 @@ class SurveyResource extends Survey
 
                         ])->all();
                         if($userAnswersObj){
-                            $path = \Yii::getAlias('@storageUrl'). '/source/';
                             foreach ($userAnswersObj as $item) {
 
                                 $data['q-'.$question->survey_question_id][] = [
                                     'id'=>$item->survey_user_answer_id,
                                     'name'=>$item->survey_user_answer_text,
-                                    'content'=>$path.$item->survey_user_answer_value
+                                    'content'=>$item->survey_user_answer_value
                                 ];
                             }
                         }
