@@ -180,7 +180,11 @@ class SurveyResource extends Survey
                         if ($question->survey_question_attachment_file) {
                             $data[$i+1] = [
                                 'type'=> "panel",
-                                'startWithNewLine'=> false,
+                                'storeDataAsText'=> false,
+                                'showPreview'=> true,
+                                'imageWidth'=> 150,
+                                'allowMultiple'=> true,
+                                'maxSize'=> 10485760,
                                 'elements'=> [
                                     [
                                         'name'=>'f-'.$question->survey_question_id,
@@ -196,11 +200,10 @@ class SurveyResource extends Survey
                                     ]
                                 ],
                             ];
-                            $i = $i+2;
+                            $i = $questions[$k+1]->survey_question_attachment_file == 1 ? $i+2 : $i++;
                         }else{
                             $i = $i+1;
                         }
-
                     }
                     $result[$k+1] = ['name'=>'page'.($k+2),'elements'=>$data];
                 }
