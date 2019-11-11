@@ -40,7 +40,7 @@ class AssessmentsController extends  MyActiveController
         $orgId = \Yii::$app->user->identity->userProfile->organization_id;
         if(! $orgId) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],'404');
 
-        $query=SurveyMiniResource::find();
+        $query=SurveyMiniResource::find()->orderBy('survey_id DESC');
         $query->where(['org_id'=>$orgId]);
 
         $activeData = new ActiveDataProvider([
