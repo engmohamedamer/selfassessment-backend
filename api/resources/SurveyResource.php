@@ -110,7 +110,7 @@ class SurveyResource extends Survey
                         }
 
                         $data[$i] = [
-                            'type'=> $type,
+                            'type'=> $type .'-' . $key,
                             'name'=>'q-'.$question->survey_question_id,
                             'title'=> $question->survey_question_name,
                         ];
@@ -180,20 +180,20 @@ class SurveyResource extends Survey
 
                         if ($question->survey_question_attachment_file) {
                             $data[$i+1] = [
-                                'type'=> "panel",
+                                'type'=> "panel - ". ($i+1),
                                 'startWithNewLine'=> false,
                                 'elements'=> [
                                     [
                                         'name'=>'f-'.$question->survey_question_id,
                                         'type'=> "boolean",
-                                        'defaultValue'=> false,
+                                        'defaultValue'=> "false",
                                         'title'=> "Upload File",
                                     ],
                                     [
                                         "name"=> 'a-'.$question->survey_question_id,
                                         "showTitle"=> false,
                                         "type"=>"file",
-                                        "visibleIf"=>"{nameShowFile} == true",
+                                        "visibleIf"=>"{f-".$question->survey_question_id."} == true",
                                     ]
                                 ],
                             ];
