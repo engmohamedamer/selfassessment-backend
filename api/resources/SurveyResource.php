@@ -180,11 +180,6 @@ class SurveyResource extends Survey
                         if ($question->survey_question_attachment_file) {
                             $data[$i+1] = [
                                 'type'=> "panel",
-                                'storeDataAsText'=> false,
-                                'showPreview'=> true,
-                                'imageWidth'=> 150,
-                                'allowMultiple'=> true,
-                                'maxSize'=> 10485760,
                                 'elements'=> [
                                     [
                                         'name'=>'f-'.$question->survey_question_id,
@@ -196,6 +191,11 @@ class SurveyResource extends Survey
                                         "name"=> 'a-'.$question->survey_question_id,
                                         "showTitle"=> false,
                                         "type"=>"file",
+                                        'storeDataAsText'=> false,
+                                        'showPreview'=> true,
+                                        'imageWidth'=> 150,
+                                        'allowMultiple'=> true,
+                                        'maxSize'=> 10485760,
                                         "visibleIf"=>"{f-".$question->survey_question_id."} == true",
                                     ]
                                 ],
