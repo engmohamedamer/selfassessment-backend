@@ -102,7 +102,7 @@ class SurveyResource extends Survey
                             $type = 'matrixdropdown';
                         }elseif ($question->questionType->survey_type_name == 'Comment box') {
                             $type = 'comment';
-                        }elseif ($question->questionType->survey_type_name == 'Slider') {
+                        }elseif ($question->questionType->survey_type_name == 'Rating') {
                             $type = 'rating';
                         }else{
                             $type = strtolower($question->questionType->survey_type_name);
