@@ -118,7 +118,7 @@ class AssessmentsController extends  MyActiveController
                 $fileObj->type = $file['type'];
                 $fileObj->save();
               }
-          }else{
+          }elseif (strstr($key, 'q-')){
               $key=  (int)preg_replace('/\D/ui','',$key);
               $question = $this->findModel($key);
              //check question type
