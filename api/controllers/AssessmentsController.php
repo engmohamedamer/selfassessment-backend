@@ -200,6 +200,23 @@ class AssessmentsController extends  MyActiveController
     }
 
 
+    public function actionSurveyStart($surveyId)
+    {
+        $assignedModel = SurveyStat::getAssignedUserStat(\Yii::$app->user->getId(), $surveyId);
+        if (empty($assignedModel)) {
+            SurveyStat::assignUser(\Yii::$app->user->getId(), $surveyId);
+            $assignedModel = SurveyStat::getAssignedUserStat(\Yii::$app->user->getId(),$surveyId);
+            $assignedModel->survey_stat_session_start = date('Y-m-d H:i:s');
+            $assignedModel->save(false);
+        } else {
+          $start_date = new \DateTime($assignedModel->survey_stat_session_start);
+          $since_start = $start_date->diff(new \DateTime(date('Y-m-d H:i:s')));
+          $assignedModel->survey_stat_actual_time = $since_start->i;
+          $assignedModel->save(false);
+            return var_dump('expression2');
+        }
+    }
+
     public function CheckState($surveyId,$status = null,$pageNo = 0){
         $assignedModel = SurveyStat::getAssignedUserStat(\Yii::$app->user->getId(), $surveyId);
 
