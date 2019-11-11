@@ -179,6 +179,8 @@ class SurveyResource extends Survey
                         if ($question->survey_question_attachment_file) {
                             $data[$c+1] = [
                                 'type'=> "panel",
+                                "startWithNewLine"=>false,
+                                "title"=>"اختر مرفقات اجابتك",
                                 'elements'=> [
                                     [
                                         'name'=>'f-'.$question->survey_question_id,
