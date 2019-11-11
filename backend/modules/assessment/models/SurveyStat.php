@@ -85,7 +85,7 @@ class SurveyStat extends \yii\db\ActiveRecord
                 'createdAtAttribute' => 'survey_stat_assigned_at',
                 'updatedAtAttribute' => 'survey_stat_updated_at',
                 'skipUpdateOnClean' => true,
-                'value' => new Expression('NOW()'),
+                'value' => date('Y-m-d H:i:s'),
             ],
         ];
     }

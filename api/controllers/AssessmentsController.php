@@ -213,7 +213,6 @@ class AssessmentsController extends  MyActiveController
           $since_start = $start_date->diff(new \DateTime(date('Y-m-d H:i:s')));
           $assignedModel->survey_stat_actual_time = $since_start->i;
           $assignedModel->save(false);
-            return var_dump('expression2');
         }
     }
 
