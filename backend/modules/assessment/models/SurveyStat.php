@@ -227,34 +227,14 @@ class SurveyStat extends \yii\db\ActiveRecord
         $result = SurveyStat::find()->where(['survey_stat_survey_id' => $surveyId])
             ->andWhere(['survey_stat_user_id' => $userId])->one();
 
-        if($result){
-            $start_date = new \DateTime($result->survey_stat_started_at);
-            if($result->survey_stat_is_done){
-                $since_start = $start_date->diff(new \DateTime($result->survey_stat_started_at));
-            }else{
-                $since_start = $start_date->diff(new \DateTime($result->survey_stat_updated_at));
-            }
-
-            return ($since_start->i)?: 0;
-
-//            echo $since_start->days.' days total<br>';
-//            echo $since_start->y.' years<br>';
-//            echo $since_start->m.' months<br>';
-//            echo $since_start->d.' days<br>';
-//            echo $since_start->h.' hours<br>';
-//            echo $since_start->i.' minutes<br>';
-//            echo $since_start->s.' seconds<br>';
-        }else{
-            return 0;
-        }
-
+        return $result ? $result->survey_stat_actual_time : 0;
     }
 
 
     public static function  remainingTime($survey,$userId){
 
         $actualTime= SurveyStat::actualTime($survey->survey_id,$userId);
-        $remainingTime= $survey->survey_time_to_pass - $actualTime;
+        $remainingTime= $survey->survey_time_to_pass - $actualTime->survey_stat_actual_time;
         return $remainingTime ?:0;
 
     }
