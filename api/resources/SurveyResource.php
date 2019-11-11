@@ -88,8 +88,7 @@ class SurveyResource extends Survey
                 $assessmentQuestions = array_chunk($model->questions, 5);
                 foreach ($assessmentQuestions as $k => $questions) {
                     $data =[];
-
-                    $i = 0;
+                    $c = 0;
                     foreach ($questions as $key => $question) {
                         if ($question->questionType->survey_type_name == 'Single textbox') {
                             $type = 'text';
@@ -109,19 +108,19 @@ class SurveyResource extends Survey
                             $type = strtolower($question->questionType->survey_type_name);
                         }
 
-                        $data[$i] = [
+                        $data[$c] = [
                             'type'=> $type,
                             'name'=>'q-'.$question->survey_question_id,
                             'title'=> $question->survey_question_name,
                         ];
                         if ($question->survey_question_show_descr == 1 ) {
-                            $data[$i]['description'] = $question->survey_question_descr;
+                            $data[$c]['description'] = $question->survey_question_descr;
                         }
 
                         if ($question->survey_question_can_skip == 1 ) {
-                            $data[$i]['isRequired'] = false;
+                            $data[$c]['isRequired'] = false;
                         }else{
-                            $data[$i]['isRequired'] = true;
+                            $data[$c]['isRequired'] = true;
 
                         }
 
@@ -130,27 +129,27 @@ class SurveyResource extends Survey
                             foreach ($question->answers as $value) {
                                 $qAnswer[] = ['value'=>$value->survey_answer_id,'text'=> $value->survey_answer_name];
                             }
-                            $data[$i]['choices'] = $qAnswer;
+                            $data[$c]['choices'] = $qAnswer;
                         }
 
                         if ($question->questionType->survey_type_name == 'Date/Time') {
-                            $data[$i]['inputType'] = 'date';
+                            $data[$c]['inputType'] = 'date';
                         }
 
                         if ($type == 'rating') {
-                            $data[$i]['rateStep'] = $question->steps;
-                            $data[$i]['rateMin'] = $question->answers[0]->survey_answer_name;
-                            $data[$i]['rateMax'] = $question->answers[1]->survey_answer_name;
-                            $data[$i]['minRateDescription'] = $question->answers[0]->survey_answer_descr;
-                            $data[$i]['maxRateDescription'] = $question->answers[1]->survey_answer_descr;
+                            $data[$c]['rateStep'] = $question->steps;
+                            $data[$c]['rateMin'] = $question->answers[0]->survey_answer_name;
+                            $data[$c]['rateMax'] = $question->answers[1]->survey_answer_name;
+                            $data[$c]['minRateDescription'] = $question->answers[0]->survey_answer_descr;
+                            $data[$c]['maxRateDescription'] = $question->answers[1]->survey_answer_descr;
                         }
 
                         if ($type == 'file') {
-                            $data[$i]['storeDataAsText'] = false;
-                            $data[$i]['showPreview'] = true;
-                            $data[$i]['imageWidth'] = 150;
-                            $data[$i]['allowMultiple'] = true;
-                            $data[$i]['maxSize'] = 10485760;
+                            $data[$c]['storeDataAsText'] = false;
+                            $data[$c]['showPreview'] = true;
+                            $data[$c]['imageWidth'] = 150;
+                            $data[$c]['allowMultiple'] = true;
+                            $data[$c]['maxSize'] = 10485760;
                         }
 
                         if ($type == 'matrixdropdown') {
@@ -170,15 +169,15 @@ class SurveyResource extends Survey
                             }else{
                                 $descr = 'الترتيب';
                             }
-                            $data[$i]['columns'] = [[
+                            $data[$c]['columns'] = [[
                                 "name"=>"rate",
                                 "title"=>$descr,
                                 "choices"=>$columns
                             ]];
-                            $data[$i]['rows'] = $qAnswer;
+                            $data[$c]['rows'] = $qAnswer;
                         }
                         if ($question->survey_question_attachment_file) {
-                            $data[$i+1] = [
+                            $data[$c+1] = [
                                 'type'=> "panel",
                                 'elements'=> [
                                     [
@@ -199,9 +198,9 @@ class SurveyResource extends Survey
                                     ]
                                 ],
                             ];
-                            $i = $questions[$k+1]->survey_question_attachment_file == 1 ? $i+2 : $i++;
+                            $c = $c+2;
                         }else{
-                            $i = $i+1;
+                            $c = $c+1;
                         }
                     }
                     $result[$k+1] = ['name'=>'page'.($k+2),'elements'=>$data];
