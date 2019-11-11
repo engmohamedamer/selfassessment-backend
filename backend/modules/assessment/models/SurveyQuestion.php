@@ -19,6 +19,7 @@ use yii\helpers\ArrayHelper;
  * @property boolean $survey_question_show_descr
  * @property boolean $survey_question_is_scorable
  * @property integer $steps
+ * @property boolean $survey_question_attachment_file
  *
  * @property SurveyAnswer[] $answers
  * @property Survey $survey
@@ -92,7 +93,7 @@ class SurveyQuestion extends \yii\db\ActiveRecord
             [['survey_question_descr'], 'string'],
             [['survey_question_type', 'survey_question_survey_id','steps'], 'integer'],
             [['survey_question_type'], 'filter', 'filter' => 'intval'],
-            [['survey_question_can_skip', 'survey_question_show_descr', 'survey_question_is_scorable'], 'boolean'],
+            [['survey_question_can_skip', 'survey_question_show_descr', 'survey_question_is_scorable','survey_question_attachment_file'], 'boolean'],
             [['survey_question_can_skip', 'survey_question_show_descr', 'survey_question_is_scorable'], 'filter', 'filter' => 'boolval'],
             [['survey_question_name'], 'string', 'max' => 130],
             [['survey_question_name'], 'required'],
@@ -139,6 +140,7 @@ class SurveyQuestion extends \yii\db\ActiveRecord
             'survey_question_show_descr' => Yii::t('survey', 'Show detailed description'),
             'survey_question_is_scorable' => Yii::t('survey', 'Score this question'),
             'steps'=> Yii::t('survey', 'Steps Number'),
+            'survey_question_attachment_file'=> Yii::t('survey', 'Can Attach File')
         ];
     }
 

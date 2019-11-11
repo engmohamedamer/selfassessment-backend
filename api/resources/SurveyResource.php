@@ -88,7 +88,7 @@ class SurveyResource extends Survey
                 $assessmentQuestions = array_chunk($model->questions, 5);
                 foreach ($assessmentQuestions as $k => $questions) {
                     $data =[];
-
+                    $c = 0;
                     foreach ($questions as $key => $question) {
                         if ($question->questionType->survey_type_name == 'Single textbox') {
                             $type = 'text';
@@ -108,19 +108,19 @@ class SurveyResource extends Survey
                             $type = strtolower($question->questionType->survey_type_name);
                         }
 
-                        $data[$key] = [
+                        $data[$c] = [
                             'type'=> $type,
                             'name'=>'q-'.$question->survey_question_id,
                             'title'=> $question->survey_question_name,
                         ];
                         if ($question->survey_question_show_descr == 1 ) {
-                            $data[$key]['description'] = $question->survey_question_descr;
+                            $data[$c]['description'] = $question->survey_question_descr;
                         }
 
                         if ($question->survey_question_can_skip == 1 ) {
-                            $data[$key]['isRequired'] = false;
+                            $data[$c]['isRequired'] = false;
                         }else{
-                            $data[$key]['isRequired'] = true;
+                            $data[$c]['isRequired'] = true;
 
                         }
 
@@ -129,33 +129,27 @@ class SurveyResource extends Survey
                             foreach ($question->answers as $value) {
                                 $qAnswer[] = ['value'=>$value->survey_answer_id,'text'=> $value->survey_answer_name];
                             }
-                            $data[$key]['choices'] = $qAnswer;
+                            $data[$c]['choices'] = $qAnswer;
                         }
 
                         if ($question->questionType->survey_type_name == 'Date/Time') {
-                            $data[$key]['inputType'] = 'date';
+                            $data[$c]['inputType'] = 'date';
                         }
 
                         if ($type == 'rating') {
-                            $data[$key]['rateStep'] = $question->steps;
-                            $data[$key]['rateMin'] = $question->answers[0]->survey_answer_name;
-                            $data[$key]['rateMax'] = $question->answers[1]->survey_answer_name;
-                            $data[$key]['minRateDescription'] = $question->answers[0]->survey_answer_descr;
-                            $data[$key]['maxRateDescription'] = $question->answers[1]->survey_answer_descr;
+                            $data[$c]['rateStep'] = $question->steps;
+                            $data[$c]['rateMin'] = $question->answers[0]->survey_answer_name;
+                            $data[$c]['rateMax'] = $question->answers[1]->survey_answer_name;
+                            $data[$c]['minRateDescription'] = $question->answers[0]->survey_answer_descr;
+                            $data[$c]['maxRateDescription'] = $question->answers[1]->survey_answer_descr;
                         }
 
                         if ($type == 'file') {
-                            $data[$key]['storeDataAsText'] = false;
-                            $data[$key]['showPreview'] = true;
-                            $data[$key]['imageWidth'] = 150;
-                            $data[$key]['allowMultiple'] = true;
-                            $data[$key]['maxSize'] = 10485760;
-                            $data[$key]['validators'] = [[
-                                "type"=>"expression",
-                                "expression"=>"isValidType({q-".$question->survey_question_id ."}) == true",
-                                "text"=>"الملفات المرفقة لابد ان تكون بالامتدادات التالية (.pdf | .png | .jpeg | .jpg | .doc | .xls | .xlsx | .docx)"
-
-                            ]];
+                            $data[$c]['storeDataAsText'] = false;
+                            $data[$c]['showPreview'] = true;
+                            $data[$c]['imageWidth'] = 150;
+                            $data[$c]['allowMultiple'] = true;
+                            $data[$c]['maxSize'] = 10485760;
                         }
 
                         if ($type == 'matrixdropdown') {
@@ -175,12 +169,38 @@ class SurveyResource extends Survey
                             }else{
                                 $descr = 'الترتيب';
                             }
-                            $data[$key]['columns'] = [[
+                            $data[$c]['columns'] = [[
                                 "name"=>"rate",
                                 "title"=>$descr,
                                 "choices"=>$columns
                             ]];
-                            $data[$key]['rows'] = $qAnswer;
+                            $data[$c]['rows'] = $qAnswer;
+                        }
+                        if ($question->survey_question_attachment_file) {
+                            $data[$c+1] = [
+                                'type'=> "panel",
+                                'elements'=> [
+                                    [
+                                        'name'=>'f-'.$question->survey_question_id,
+                                        'type'=> "boolean",
+                                        'label'=> "تريد إرفاق بعض الملفات؟",
+                                    ],
+                                    [
+                                        "name"=> 'a-'.$question->survey_question_id,
+                                        "showTitle"=> false,
+                                        "type"=>"file",
+                                        'storeDataAsText'=> false,
+                                        'showPreview'=> true,
+                                        'imageWidth'=> 150,
+                                        'allowMultiple'=> true,
+                                        'maxSize'=> 10485760,
+                                        "visibleIf"=>"{f-".$question->survey_question_id."} == true",
+                                    ]
+                                ],
+                            ];
+                            $c = $c+2;
+                        }else{
+                            $c = $c+1;
                         }
                     }
                     $result[$k+1] = ['name'=>'page'.($k+2),'elements'=>$data];

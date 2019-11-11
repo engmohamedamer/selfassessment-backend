@@ -43,7 +43,7 @@ class SurveyMiniResource extends Survey
             },
 
             'actual_time'=> function($model){
-                    SurveyStat::actualTime($model->survey_id,\Yii::$app->user->identity->id);
+                    return SurveyStat::actualTime($model->survey_id,\Yii::$app->user->identity->id);
             },
             ];
     }
