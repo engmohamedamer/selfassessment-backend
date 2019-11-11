@@ -232,11 +232,13 @@ class SurveyStat extends \yii\db\ActiveRecord
 
 
     public static function  remainingTime($survey,$userId){
-
-        $actualTime= SurveyStat::actualTime($survey->survey_id,$userId);
-        $remainingTime= $survey->survey_time_to_pass - $actualTime->survey_stat_actual_time;
-        return $remainingTime ?:0;
-
+        $result = SurveyStat::find()->where(['survey_stat_survey_id' => $survey->survey_id])
+            ->andWhere(['survey_stat_user_id' => $userId])->one();
+        if ($result) {
+            $remainingTime = $survey->survey_time_to_pass - $result->survey_stat_actual_time;
+            return $remainingTime ;
+        }
+        return $survey->survey_time_to_pass;
     }
 
 
