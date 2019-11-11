@@ -110,6 +110,11 @@ echo Html::tag('br', '');
 echo $form->field($question, "[{$question->survey_question_id}]survey_question_show_descr")->checkbox(['class' => 'checkbox-updatable']);
 echo Html::tag('br', '');
 
+if ($question->survey_question_type == SurveyType::TYPE_SLIDER){
+    echo $form->field($question, "[{$question->survey_question_id}]steps")->input('number');
+}
+
+
 echo Html::beginTag('div', ['class' => 'desc-100']);
 if ($question->survey_question_show_descr) {
     echo $form->field($question, "[{$question->survey_question_id}]survey_question_descr")->textarea(['rows'=>'5','cols'=>'10'])->label(false);
