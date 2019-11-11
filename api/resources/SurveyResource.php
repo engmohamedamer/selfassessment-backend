@@ -180,7 +180,6 @@ class SurveyResource extends Survey
                             $data[$c+1] = [
                                 'type'=> "panel",
                                 "startWithNewLine"=>false,
-                                "title"=>"اختر مرفقات اجابتك",
                                 'elements'=> [
                                     [
                                         'name'=>'f-'.$question->survey_question_id,
@@ -191,6 +190,7 @@ class SurveyResource extends Survey
                                         "name"=> 'a-'.$question->survey_question_id,
                                         "showTitle"=> false,
                                         "type"=>"file",
+                                        "title"=>"اختر مرفقات اجابتك",
                                         'storeDataAsText'=> false,
                                         'showPreview'=> true,
                                         'imageWidth'=> 150,
