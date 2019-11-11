@@ -6,6 +6,7 @@ use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\SurveyType;
 use backend\modules\assessment\models\SurveyUserAnswer;
+use common\models\SurveyUserAnswerAttachments;
 
 class SurveyReportResource extends Survey
 {
@@ -189,13 +190,19 @@ class SurveyReportResource extends Survey
                         }
                     }
                     
-                    if (\Yii::$app->user->identity->userProfile->locale == 'en-US') {
-                        $type  = $question->questionType->survey_type_name;
-                    }else{
-                    $type  = $question->questionType->survey_type_name_ar;
-                    }
                     $type  = $question->questionType->survey_type_name;
-
+                    $qAttatchments = [];
+                    $files = SurveyUserAnswerAttachments::findAll(['survey_user_answer_attachments_survey_id'=>$question->survey_question_survey_id ,
+                       'survey_user_answer_attachments_question_id'=>$question->survey_question_id,
+                       'survey_user_answer_attachments_user_id' => \Yii::$app->user->getId()
+                       ]);
+                    foreach ($files as $key => $file) {
+                        $qAttatchments[] = [
+                            'type'=>$file->type,
+                            'content'=>$file->path,
+                            'name'=>$file->name
+                        ];
+                    }
                     $data = [
                         'qNum'=>$i++,
                         'qText'=>$question->survey_question_name,
@@ -204,8 +211,10 @@ class SurveyReportResource extends Survey
                         'qTotalPoints'=>'300',
                         'qCorrectiveActions'=> $correctiveActions,
                         'qType'=>$type,
+                        'qAttatchments'=> $qAttatchments
                     ];
                     $correctiveActions = [];
+                    $qAttatchments = [];
                     $answer = null;
                     $result [] = $data;
                 }
