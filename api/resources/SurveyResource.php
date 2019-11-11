@@ -180,6 +180,7 @@ class SurveyResource extends Survey
                             $data[$c+1] = [
                                 'type'=> "panel",
                                 "startWithNewLine"=>false,
+                                "title"=>"اختر مرفقات اجابتك",
                                 'elements'=> [
                                     [
                                         'name'=>'f-'.$question->survey_question_id,
