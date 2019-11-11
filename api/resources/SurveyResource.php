@@ -110,7 +110,7 @@ class SurveyResource extends Survey
                         }
 
                         $data[$i] = [
-                            'type'=> $type .'-' . $key,
+                            'type'=> $type,
                             'name'=>'q-'.$question->survey_question_id,
                             'title'=> $question->survey_question_name,
                         ];
@@ -180,7 +180,7 @@ class SurveyResource extends Survey
 
                         if ($question->survey_question_attachment_file) {
                             $data[$i+1] = [
-                                'type'=> "panel - ". ($i+1),
+                                'type'=> "panel",
                                 'startWithNewLine'=> false,
                                 'elements'=> [
                                     [
