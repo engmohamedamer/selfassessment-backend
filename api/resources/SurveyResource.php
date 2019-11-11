@@ -185,7 +185,6 @@ class SurveyResource extends Survey
                                         'name'=>'f-'.$question->survey_question_id,
                                         'type'=> "boolean",
                                         'label'=> "تريد إرفاق بعض الملفات؟",
-                                        'title'=> "Upload File",
                                     ],
                                     [
                                         "name"=> 'a-'.$question->survey_question_id,
