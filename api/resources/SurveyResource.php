@@ -177,7 +177,6 @@ class SurveyResource extends Survey
                             ]];
                             $data[$i]['rows'] = $qAnswer;
                         }
-
                         if ($question->survey_question_attachment_file) {
                             $data[$i+1] = [
                                 'type'=> "panel",
@@ -186,7 +185,7 @@ class SurveyResource extends Survey
                                     [
                                         'name'=>'f-'.$question->survey_question_id,
                                         'type'=> "boolean",
-                                        'defaultValue'=> "false",
+                                        'label'=> "تريد إرفاق بعض الملفات؟",
                                         'title'=> "Upload File",
                                     ],
                                     [
