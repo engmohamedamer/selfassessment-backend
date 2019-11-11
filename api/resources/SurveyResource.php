@@ -150,6 +150,12 @@ class SurveyResource extends Survey
                             $data[$key]['imageWidth'] = 150;
                             $data[$key]['allowMultiple'] = true;
                             $data[$key]['maxSize'] = 10485760;
+                            $data[$key]['validators'] = [[
+                                "type"=>"expression",
+                                "expression"=>"isValidType({q-".$question->survey_question_id ."}) == true",
+                                "text"=>"الملفات المرفقة لابد ان تكون بالامتدادات التالية (.pdf | .png | .jpeg | .jpg | .doc | .xls | .xlsx | .docx)"
+
+                            ]];
                         }
 
                         if ($type == 'matrixdropdown') {
