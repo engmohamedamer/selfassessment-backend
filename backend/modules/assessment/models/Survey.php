@@ -130,6 +130,12 @@ class Survey extends \yii\db\ActiveRecord
         return $this->hasMany(SurveyStat::class, ['survey_stat_survey_id' => 'survey_id']);
     }
 
+
+    public static function countOrgSurvey($org_id)
+    {
+        return self::find()->where(['org_id'=>$org_id,'survey_is_visible'=>1])->count();
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */

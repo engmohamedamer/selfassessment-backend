@@ -2,6 +2,7 @@
 
 namespace api\resources;
 
+use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
 
 class User extends \common\models\User
@@ -51,7 +52,7 @@ class User extends \common\models\User
                 }
             },
             'allAssessments'=>function($model){
-                return SurveyStat::countMySurvey($model->id);
+                return Survey::countOrgSurvey($model->userProfile->organization_id);
             },
             'completedAssessments'=>function($model){
                 return SurveyStat::countCompletedAssessments($model->id);
