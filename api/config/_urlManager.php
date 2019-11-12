@@ -39,7 +39,7 @@ return [
             'extraPatterns'=>[
                 'GET ' => 'index' ,
                 'GET <id>' => 'view' ,
-                'GET report/<id>' => 'view' ,
+                'GET report/<id>' => 'report' ,
                 'GET custom-report/<id>/<user_id>' => 'custom-report' ,
                 'GET survey-start/<surveyId>' => 'survey-start',
                 'PUT ' => 'update',
