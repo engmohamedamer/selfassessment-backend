@@ -39,11 +39,17 @@ BootstrapPluginAsset::register($this);
                            class="btn btn-info btn-xs survey-label" data-pjax="0"
                            title="edit"><span class="glyphicon glyphicon-pencil"></span></a>
                         <span class="survey-label btn btn-info btn-xs respondents-toggle" data-toggle="tooltip"
-                              title="<?= \Yii::t('survey', 'Respondents count') ?>"><?= \Yii::t('survey', 'Respondents count') ?>: <?= $survey->getRespondentsCount() ?></span>
+                              title="<?= \Yii::t('survey', 'Respondents count') ?>">
+                             <?= \Yii::t('survey', 'Respondents count') ?>: <?= $survey->getRespondentsCount() ?>
+                        </span>
                         <span class="survey-label btn btn-info btn-xs" data-toggle="tooltip"
-                              title="<?= \Yii::t('survey', 'Questions') ?>"><?= \Yii::t('survey', 'Questions') ?>: <?= $survey->getQuestions()->count() ?></span>
-	                    <span class="survey-label btn btn-info btn-xs restricted-users-toggle" data-toggle="tooltip"
-	                          title="<?= \Yii::t('survey', 'Restricted users') ?>"><?= \Yii::t('survey', 'Restricted users') ?>: <?= $survey->getRestrictedUsersCount() ?></span>
+                              title="<?= \Yii::t('survey', 'Questions') ?>">
+                               <?= \Yii::t('survey', 'Questions') ?>: <?= $survey->getQuestions()->count() ?>
+                        </span>
+<!--	                    <span class="survey-label btn btn-info btn-xs restricted-users-toggle" data-toggle="tooltip"-->
+<!--	                          title="--><?//= \Yii::t('survey', 'Restricted users') ?><!--">-->
+<!--                            --><?//= \Yii::t('survey', 'Restricted users') ?><!--: --><?//= $survey->getRestrictedUsersCount() ?>
+<!--                        </span>-->
                     </div>
 
                 </div>

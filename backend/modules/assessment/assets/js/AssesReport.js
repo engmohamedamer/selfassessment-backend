@@ -51,10 +51,6 @@ var api;
 
      },
     mounted() {
-
-  
-
-
       $.ajax({
         url:"http://api.selfassest.localhost/assessments/custom-report/"+this.SurveyId+"/"+this.UserId,
         method: "GET",
@@ -64,17 +60,21 @@ var api;
 
         },
         success: res => {
-        
-          console.log(res)
-          this.questionsReport = res.data.answers
-          this.reportGeneralInfo = res.data.generalInfo
-          this.assessmentDesc = res.data.description
-          this.assessmentTitle = res.data.title
-
-         
-
-
-        
+          if(res.status == 200){
+            
+            this.questionsReport = res.data.answers
+            this.reportGeneralInfo = res.data.generalInfo
+            this.assessmentDesc = res.data.description
+            this.assessmentTitle = res.data.title
+            $("#tabletemplate").show()
+            $("#projectFacts").show()
+            $(".content-header").show()
+          }
+        },
+        error:res =>{
+          $("#tabletemplate").hide()
+          $("#projectFacts").hide()
+          $("#noreport").show()
         }
       });
       
