@@ -40,7 +40,7 @@ class AssessmentsController extends  MyActiveController
 
         $orgId = \Yii::$app->user->identity->userProfile->organization_id;
         if(! $orgId) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],'404');
-        $query=SurveyMiniResource::find()->orderBy('survey_id DESC');
+        $query = SurveyMiniResource::find()->orderBy('survey_id DESC');
         $query->where(['org_id'=>$orgId]);
         $query->where(['survey_is_visible' => 1]);
 
@@ -64,7 +64,7 @@ class AssessmentsController extends  MyActiveController
         $profile=$user->userProfile;
 
         $surveyObj = SurveyResource::findOne(['survey_id'=>$id,'survey_is_visible' => 1]);
-
+        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found', 404]);
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
     }
@@ -76,7 +76,7 @@ class AssessmentsController extends  MyActiveController
         $profile=$user->userProfile;
 
         $surveyObj = SurveyReportResource::findOne(['survey_id'=>$id,'survey_is_visible' => 1]);
-
+        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found', 404]);
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
     }
@@ -88,8 +88,8 @@ class AssessmentsController extends  MyActiveController
         $profile=$user->userProfile;
         $_SESSION['userID'] =$user_id;
 
-        $surveyObj = SurveyReportResource::findOne(['survey_id'=>$id]);
-
+        $surveyObj = SurveyReportResource::findOne(['survey_id'=>$id,'survey_is_visible' => 1]);
+        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found', 404]);
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
     }
