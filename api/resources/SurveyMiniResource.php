@@ -44,7 +44,8 @@ class SurveyMiniResource extends Survey
             },
 
             'actual_time'=> function($model){
-                    return SurveyStat::actualTime($model->survey_id,\Yii::$app->user->identity->id);
+                    $time = SurveyStat::actualTime($model->survey_id,\Yii::$app->user->identity->id) / 60;
+                    return round($time,2);
             },
             'expiryDate'=>function($model){
                 return $model->survey_expired_at;
