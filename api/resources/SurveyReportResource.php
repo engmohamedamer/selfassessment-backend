@@ -12,7 +12,13 @@ class SurveyReportResource extends Survey
 {
 
    public  function getUserId(){
-       return \Yii::$app->user->identity->id;
+       if(isset($_REQUEST['user_id'])){
+           return $_REQUEST['user_id'];
+
+       }else{
+           return \Yii::$app->user->identity->id;
+
+       }
    }
 
     public function fields()
