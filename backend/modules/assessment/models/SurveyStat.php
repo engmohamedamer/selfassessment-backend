@@ -227,7 +227,7 @@ class SurveyStat extends \yii\db\ActiveRecord
         $result = SurveyStat::find()->where(['survey_stat_survey_id' => $surveyId])
             ->andWhere(['survey_stat_user_id' => $userId])->one();
 
-        return $result ? round(($result->survey_stat_actual_time / 60)) : 0;
+        return $result ? $result->survey_stat_actual_time : 0;
     }
 
 
