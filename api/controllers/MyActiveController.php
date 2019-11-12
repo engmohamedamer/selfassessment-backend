@@ -32,6 +32,7 @@ class MyActiveController extends ActiveController
             '*',                        // star allows all domains
             'http://selfassest.localhost',
             'http://organization.selfassest.localhost',
+            'http://backend.selfassest.localhost',
         ];
     }
 
