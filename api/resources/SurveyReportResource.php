@@ -13,11 +13,13 @@ class SurveyReportResource extends Survey
 
    public  function getUserId(){
 
-       if(\Yii::$app->user->can('governmentRep')){
-           if(isset($_SESSION['userID'])){
-               return $_SESSION['userID'];
+//       if(\Yii::$app->user->can('governmentRep')){
+//
+//       }
 
-           }
+       if(isset($_SESSION['userID'])){
+           return $_SESSION['userID'];
+
        }
        return \Yii::$app->user->identity->id;
    }

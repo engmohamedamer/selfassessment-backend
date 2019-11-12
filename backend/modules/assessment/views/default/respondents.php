@@ -112,6 +112,9 @@ JS
 				<?php
 				echo $surveyStat->user->userProfile->fullName
 				?>
+                - <a href="/assessment/default/view-one?id=<?= $surveyId?>&user_id=<?= $surveyStat->user->id ?>">
+                    <?= Yii::t('survey','view Assessment Answers')?>
+                </a>
 
 			</div>
 			<div class="buttons">
