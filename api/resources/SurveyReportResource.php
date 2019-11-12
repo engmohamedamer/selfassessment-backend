@@ -6,9 +6,15 @@ use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\SurveyType;
 use backend\modules\assessment\models\SurveyUserAnswer;
+use common\models\SurveyUserAnswerAttachments;
 
 class SurveyReportResource extends Survey
 {
+
+   public  function getUserId(){
+       return \Yii::$app->user->identity->id;
+   }
+
     public function fields()
     {
         return [
@@ -27,7 +33,7 @@ class SurveyReportResource extends Survey
 
 
             'status'=>function($model){
-                $userId = \Yii::$app->user->identity->id;
+                $userId = $this->userId;
                 $userSurveyStat =  SurveyStat::find()->where(['survey_stat_user_id'=>$userId,'survey_stat_survey_id'=>$model->survey_id])->one();
                 if (!$userSurveyStat) {
                     return 0;
@@ -36,7 +42,7 @@ class SurveyReportResource extends Survey
             },
 
             'generalInfo'=>function($model){
-                $userId= \Yii::$app->user->identity->id;
+                $userId= $this->userId;
                 return [
                     'total_points'=>50,
                     'gained_points'=>25,
@@ -57,7 +63,7 @@ class SurveyReportResource extends Survey
                     "47": "Amer test"
                 }
                 */
-                $userId = \Yii::$app->user->identity->id;
+                $userId =$this->userId;
                 $data =$result= [];
                 //get survey questions then check user answers
                 $i=1;
@@ -154,7 +160,7 @@ class SurveyReportResource extends Survey
                             $correctiveAction= [];
                             foreach ($userAnswersObj as $item) {
                                 if($item->survey_user_answer_answer_id) {
-                                    $temp[] = $item->surveyUserAnswerAnswer->survey_answer_name 
+                                    $temp[] = $item->surveyUserAnswerAnswer->survey_answer_name
                                     . ": " . $item->survey_user_answer_value;
                                 }
 
@@ -188,14 +194,20 @@ class SurveyReportResource extends Survey
                             $answer = $temp;
                         }
                     }
-                    
-                    if (\Yii::$app->user->identity->userProfile->locale == 'en-US') {
-                        $type  = $question->questionType->survey_type_name;
-                    }else{
-                    $type  = $question->questionType->survey_type_name_ar;
-                    }
-                    $type  = $question->questionType->survey_type_name;
 
+                    $type  = $question->questionType->survey_type_name;
+                    $qAttatchments = [];
+                    $files = SurveyUserAnswerAttachments::findAll(['survey_user_answer_attachments_survey_id'=>$question->survey_question_survey_id ,
+                       'survey_user_answer_attachments_question_id'=>$question->survey_question_id,
+                       'survey_user_answer_attachments_user_id' => \Yii::$app->user->getId()
+                       ]);
+                    foreach ($files as $key => $file) {
+                        $qAttatchments[] = [
+                            'type'=>$file->type,
+                            'content'=>$file->path,
+                            'name'=>$file->name
+                        ];
+                    }
                     $data = [
                         'qNum'=>$i++,
                         'qText'=>$question->survey_question_name,
@@ -204,8 +216,10 @@ class SurveyReportResource extends Survey
                         'qTotalPoints'=>'300',
                         'qCorrectiveActions'=> $correctiveActions,
                         'qType'=>$type,
+                        'qAttatchments'=> $qAttatchments
                     ];
                     $correctiveActions = [];
+                    $qAttatchments = [];
                     $answer = null;
                     $result [] = $data;
                 }
