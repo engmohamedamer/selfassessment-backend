@@ -46,11 +46,15 @@ var api;
         reportGeneralInfo: {},
         assessmentTitle: '',
         assessmentDesc: '',
+       
 
 
      },
     mounted() {
-     console.log(this.SurveyId)
+
+  
+
+
       $.ajax({
         url:"http://api.selfassest.localhost/assessments/custom-report/"+this.SurveyId+"/"+this.UserId,
         method: "GET",
