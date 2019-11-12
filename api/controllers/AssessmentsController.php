@@ -81,6 +81,18 @@ class AssessmentsController extends  MyActiveController
 
     }
 
+    public function actionCustomReport($id,$user_id)
+    {
+        $user= User::findOne(['id'=> $user_id]) ;
+        if(! $id) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],'404');
+        $profile=$user->userProfile;
+        $_SESSION['userID'] =$user_id;
+
+        $surveyObj = SurveyReportResource::findOne(['survey_id'=>$id]);
+
+        return ResponseHelper::sendSuccessResponse($surveyObj);
+
+    }
 
     public function actionUpdate($id)
     {

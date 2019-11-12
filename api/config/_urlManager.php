@@ -15,6 +15,7 @@ return [
         ['pattern' => '/theme', 'route' => 'theme/index'],
         ['pattern' => '/theme/<slug>/<lang>', 'route' => 'theme/index'],
         ['pattern' => '/assessments/report/<id>', 'route' => 'assessments/report'],
+        ['pattern' => '/assessments/custom-report/<id>/<user_id>', 'route' => 'assessments/custom-report'],
         ['pattern' => '/assessments/survey-start/<surveyId>', 'route' => 'assessments/survey-start'],
         ['pattern' => '/media/upload', 'route' => 'media/upload'],
         ['pattern' => '/media/delete-file', 'route' => 'media/delete-file'],
@@ -34,11 +35,12 @@ return [
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'assessments',
-            'only'=>['index','view','update','delete-file','report','survey-start','options'],//'update',
+            'only'=>['index','view','update','delete-file','report','survey-start','custom-report','options'],//'update',
             'extraPatterns'=>[
                 'GET ' => 'index' ,
                 'GET <id>' => 'view' ,
-                'GET report/<id>' => 'view' ,
+                'GET report/<id>' => 'report' ,
+                'GET custom-report/<id>/<user_id>' => 'custom-report' ,
                 'GET survey-start/<surveyId>' => 'survey-start',
                 'PUT ' => 'update',
                 'DELETE delete-file' => 'delete-file',

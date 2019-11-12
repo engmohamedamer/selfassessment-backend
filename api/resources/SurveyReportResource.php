@@ -10,6 +10,18 @@ use common\models\SurveyUserAnswerAttachments;
 
 class SurveyReportResource extends Survey
 {
+
+   public  function getUserId(){
+
+       if(\Yii::$app->user->can('governmentRep')){
+           if(isset($_SESSION['userID'])){
+               return $_SESSION['userID'];
+
+           }
+       }
+       return \Yii::$app->user->identity->id;
+   }
+
     public function fields()
     {
         return [
@@ -28,7 +40,7 @@ class SurveyReportResource extends Survey
 
 
             'status'=>function($model){
-                $userId = \Yii::$app->user->identity->id;
+                $userId = $this->userId;
                 $userSurveyStat =  SurveyStat::find()->where(['survey_stat_user_id'=>$userId,'survey_stat_survey_id'=>$model->survey_id])->one();
                 if (!$userSurveyStat) {
                     return 0;
@@ -37,7 +49,7 @@ class SurveyReportResource extends Survey
             },
 
             'generalInfo'=>function($model){
-                $userId= \Yii::$app->user->identity->id;
+                $userId= $this->userId;
                 return [
                     'total_points'=>50,
                     'gained_points'=>25,
@@ -58,7 +70,7 @@ class SurveyReportResource extends Survey
                     "47": "Amer test"
                 }
                 */
-                $userId = \Yii::$app->user->identity->id;
+                $userId =$this->userId;
                 $data =$result= [];
                 //get survey questions then check user answers
                 $i=1;
@@ -155,7 +167,7 @@ class SurveyReportResource extends Survey
                             $correctiveAction= [];
                             foreach ($userAnswersObj as $item) {
                                 if($item->survey_user_answer_answer_id) {
-                                    $temp[] = $item->surveyUserAnswerAnswer->survey_answer_name 
+                                    $temp[] = $item->surveyUserAnswerAnswer->survey_answer_name
                                     . ": " . $item->survey_user_answer_value;
                                 }
 
@@ -189,7 +201,7 @@ class SurveyReportResource extends Survey
                             $answer = $temp;
                         }
                     }
-                    
+
                     $type  = $question->questionType->survey_type_name;
                     $qAttatchments = [];
                     $files = SurveyUserAnswerAttachments::findAll(['survey_user_answer_attachments_survey_id'=>$question->survey_question_survey_id ,
