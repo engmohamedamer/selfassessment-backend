@@ -276,7 +276,7 @@ class AssessmentsController extends  MyActiveController
 
         $start_date = new \DateTime($assignedModel->survey_stat_session_start);
         $since_start = $start_date->diff(new \DateTime(date('Y-m-d H:i:s')));
-        $assignedModel->survey_stat_actual_time += $since_start->i;
+        $assignedModel->survey_stat_actual_time += ((($since_start->format("%a") * 24) + $since_start->format("%H")) * 60 + $since_start->format("%i")) * 60 + $since_start->format("%s");
         $assignedModel->save(false);
 
         if ($stat->survey_stat_is_done) {
