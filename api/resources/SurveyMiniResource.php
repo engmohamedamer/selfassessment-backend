@@ -45,7 +45,13 @@ class SurveyMiniResource extends Survey
             'actual_time'=> function($model){
                     return SurveyStat::actualTime($model->survey_id,\Yii::$app->user->identity->id);
             },
-            ];
+            'expiryDate'=>function($model){
+                return SurveyStat::find()->where(['survey_stat_survey_id' => $model->survey_id,'survey_stat_user_id' => \Yii::$app->user->identity->id])->one()->survey_stat_ended_at;
+            },
+            'qNum'=>function($model){
+                return count($model->questions);
+            }
+        ];
     }
 
 
