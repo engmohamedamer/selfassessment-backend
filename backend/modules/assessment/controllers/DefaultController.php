@@ -64,6 +64,13 @@ class DefaultController extends Controller
         ]);
     }
 
+    public function actionViewOne($id,$user_id){
+        $survey = $this->findModel($id);
+
+        return $this->render('view-one',['survey'=>$survey  , 'user_id'=>$user_id ]);
+    }
+
+
     public function actionDelete($id)
     {
 
