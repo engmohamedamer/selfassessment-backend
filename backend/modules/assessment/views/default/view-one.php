@@ -1,8 +1,113 @@
-
+<style>
+.sectionClass {
+    padding: 20px 0px 50px 0px;
+    position: relative;
+    display: block;
+}
+#projectFacts .fullWidth {
+    padding: 0;
+}
+.fullWidth {
+    width: 100% !important;
+    display: table;
+    float: none;
+    padding: 0;
+    min-height: 1px;
+    height: 100%;
+    position: relative;
+}
+.projectFactsWrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 30px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.projectFactsWrap .item {
+    width: 25%;
+    height: 100%;
+    padding: 50px 0px;
+    text-align: center;
+}
+.projectFactsWrap .item:nth-child(1) {
+    background: #101f2e;
+}
+.projectFactsWrap .item:nth-child(2) {
+    background: #122233;
+}
+.projectFactsWrap .item:nth-child(3) {
+    background: #152638;
+}
+.projectFactsWrap .item:nth-child(4) {
+    background: #172c42;
+}
+.projectFactsWrap .item i {
+    vertical-align: middle;
+    font-size: 50px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.projectFactsWrap .item p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    margin: 0;
+    padding: 10px;
+}
+.projectFactsWrap .item p.number {
+    font-size: 40px;
+    padding: 0;
+    font-weight: bold;
+}
+.projectFactsWrap .item span {
+    width: 60px;
+    background: rgba(255, 255, 255, 0.8);
+    height: 2px;
+    display: block;
+    margin: 0 auto;
+}
+</style>
 
 
 <div id="assessmentReport" data-SurveyId="<?= $survey->survey_id ?>"  data-UserId="<?= $user_id; ?>" data-tocken="<?= Yii::$app->user->getIdentity()->access_token ;?>" >
+    <div class="sectiontitle">
+        <p>تقرير {{assessmentTitle}}</p>
+        <p>{{assessmentDesc}}</p>
+    </div>
 
+<div id="projectFacts" class="sectionClass">
+                <div class="fullWidth eight columns">
+                    <div class="projectFactsWrap ">
+                        <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible;">
+                            <i class="fas fa-tasks"></i>
+                            <p id="number1" class="number">{{Math.ceil(reportGeneralInfo.progress)}}%</p>
+                            <span></span>
+                            <p>نسبة التقدم</p>
+                        </div>
+                        <div class="item wow fadeInUpBig animated animated" data-number="55" style="visibility: visible;">
+                            <i class="fas fa-spinner"></i>
+                            <p id="number2" class="number">{{reportGeneralInfo.total_points}}</p>
+                            <span></span>
+                            <p>مجموع النقاط</p>
+                        </div>
+                        <div class="item wow fadeInUpBig animated animated" data-number="359" style="visibility: visible;">
+                            <i class="fas fa-spinner"></i>
+                            <p id="number3" class="number">{{reportGeneralInfo.gained_points}}</p>
+                            <span></span>
+                            <p>النقاط المحصلة</p>
+                        </div>
+                        <div class="item wow fadeInUpBig animated animated" data-number="246" style="visibility: visible;">
+                            <i class="fas fa-clock"></i>
+                            <p id="number4" class="number">{{Math.ceil(reportGeneralInfo.actual_time)}}</p>
+                            <span></span>
+                            <p>وقت الإستبيان (د)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 <template>
   <v-card>
     <v-card-title>
