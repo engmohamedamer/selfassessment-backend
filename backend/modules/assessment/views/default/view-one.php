@@ -1,6 +1,5 @@
 <style>
 .sectionClass {
-    padding: 20px 0px 50px 0px;
     position: relative;
     display: block;
 }
@@ -20,7 +19,6 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-top: 30px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
@@ -73,9 +71,26 @@
 
 
 <div id="assessmentReport" data-SurveyId="<?= $survey->survey_id ?>"  data-UserId="<?= $user_id; ?>" data-tocken="<?= Yii::$app->user->getIdentity()->access_token ;?>" >
+<div class="content-header">
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <h1 class="m-0 text-dark">تقرير {{assessmentTitle}}</h1>
+        </div>
+        <div class="col-md-6 actionBtns">
+            <a class="btn btn-primary" href="/assessment/default/view?id=<?= $survey->survey_id ?>">العودة للإستبيان</a>        
+        </div>
+        <!-- /.col -->
+        
+        <div class="col-md-12">
+            <p>{{assessmentDesc}}</p>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+    
+    
     <div class="sectiontitle">
-        <p>تقرير {{assessmentTitle}}</p>
-        <p>{{assessmentDesc}}</p>
+        
     </div>
 
 <div id="projectFacts" class="sectionClass">
@@ -110,85 +125,75 @@
             </div>
 <template>
   <v-card>
-    <v-card-title>
-    </v-card-title>
+  <v-card-title class="mb-5">
+                   بيان الإستبيان
+                    <v-spacer></v-spacer>
+                    <v-text-field
+                    v-model="search"
+                    label="البحث"
+                    single-line
+                    hide-details
+                    ></v-text-field>
+                </v-card-title>
     
 
-    <v-data-table class="mb-5 mt-5"
-                    :headers="headers"
-                    :items="questionsReport"
-                    :search="search"
+    <v-data-table class="mb-5 mt-5" :headers="headers" :items="questionsReport" :search="search">
+        <template v-slot:item.qGainedPoints="{ item }">
+            <v-chip :color="getColor(item.qGainedPoints, item.qTotalPoints)" dark>{{ item.qGainedPoints }}</v-chip>
+        </template>
+        <template v-slot:item.qType="{ item }">
+            {{ item.qType }}
+        </template>
+        <template v-slot:item.qAttatchments="{ item }">
+            <div v-if="Array.isArray(item.qAttatchments)">
+                <ul v-for="file in item.qAttatchments" :key="file.name">
+                    <li v-if="file.content" >
+                        <a :href="file.content" target="_blank">{{ file.name }}</a>
+                    </li>
+                </ul>
+            </div>
+        </template>
+        <template v-slot:item.qAnswer="{ item }">
+            <div v-if="Array.isArray(item.qAnswer) && item.qType == 'File'">
+                <ul v-for="file in item.qAnswer" :key="file.id">
+                    <li v-if="file.content" >
+                        <a :href="file.content" target="_blank">{{ file.name }}</a>
+                    </li>
+                </ul>
+            </div>
+            <ul v-else-if="Array.isArray(item.qAnswer) && item.qType == 'Multiple choice'">
+                <li v-for="choice in item.qAnswer" :key="choice">
+                    {{choice}}
+                </li>
+            </ul>
+            <ul v-else-if="Array.isArray(item.qAnswer) && item.qType == 'Ranking'">
+                <li v-for="choice in item.qAnswer" :key="choice" v-html="choice">
                     
-                   >
+                </li>
+            </ul>
+            <div v-else>
+                {{item.qAnswer}}
+            </div>
+        </template>
+        <template v-slot:item.qCorrectiveActions="{ item }">
+            <ul v-if="Array.isArray(item.qCorrectiveActions)">
+                <li v-for="action in item.qCorrectiveActions" :key='action' v-html="action"></li>
+            </ul>
+            <p v-else v-html="item.qCorrectiveActions"></p>
+        </template>
+        <!-- <template slot="items" slot-scope="props">
+            <td>{{ props.item.qNum }}</td>
+            <td class="text-xs-left">{{ props.item.qText }}</td>
+            <td class="text-xs-left">{{ props.item.qAnswer }}</td>
+            <td class="text-xs-left">{{ props.item.qGainedPoints }}</td>
+            <td class="text-xs-right">{{ props.item.qTotalPoints }}</td>
+            <td class="text-xs-right">{{ props.item.qCorrectiveActions }}</td>
+        </template> -->
+        <v-alert slot="no-results" :value="true" color="error" icon="mdi-warning">
+            لا يوجد بحث يطابق بحثك الحالي
+        </v-alert>
+</v-data-table>
 
-
-                        <!-- <template v-slot:item.qGainedPoints="{ item }">
-                            <v-chip>سسس{{ item.qGainedPoints }}</v-chip>
-                        </template> -->
-
-                        
-                        <!-- <template v-slot:item.qGainedPoints="{ item }">
-                            <v-chip :color="getColor(item.qGainedPoints, item.qTotalPoints)" dark>{{ item.qGainedPoints }}</v-chip>
-                        </template>
-                        <template v-slot:item.qType="{ item }">
-                            {{ item.qType }}
-                        </template>
-                        <template v-slot:item.qAttatchments="{ item }">
-                            <div v-if="Array.isArray(item.qAttatchments)">
-                                <ul v-for="file in item.qAttatchments" :key="file.name">
-                                    <li v-if="file.content" >
-                                        <a :href="file.content" target="_blank">{{ file.name }}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </template>
-
-                        <template v-slot:item.qAnswer="{ item }">
-                            <div v-if="Array.isArray(item.qAnswer) && item.qType == 'File'">
-                            file
-                                <ul v-for="file in item.qAnswer" :key="file.id">
-                                    <li v-if="file.content" >
-                                        <a :href="file.content" target="_blank">{{ file.name }}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <ul v-if="Array.isArray(item.qAnswer) && item.qType == 'Multiple choice'">
-
-                            choices
-                                <li v-for="choice in item.qAnswer" :key="choice">
-                                 سسس   {{choice}}
-                                </li>
-                            </ul>
-                            <ul v-else-if="Array.isArray(item.qAnswer) && item.qType == 'Ranking'">
-                            rank
-                                <li v-for="choice in item.qAnswer" :key="choice" v-html="choice">
-                                    
-                                </li>
-                            </ul>
-                            <div v-else>
-                                else
-                                {{item.qAnswer}}
-                            </div>
-                        </template>
-                        <template v-slot:item.qCorrectiveActions="{ item }">
-                            <ul v-if="Array.isArray(item.qCorrectiveActions)">
-                                <li v-for="action in item.qCorrectiveActions" :key='action' v-html="action"></li>
-                            </ul>
-                            <p v-else v-html="item.qCorrectiveActions"></p>
-                        </template> -->
-                        <!-- <template slot="items" slot-scope="props">
-                            <td>{{ props.item.qNum }}</td>
-                            <td class="text-xs-left">{{ props.item.qText }}</td>
-                            <td class="text-xs-left">{{ props.item.qAnswer }}</td>
-                            <td class="text-xs-left">{{ props.item.qGainedPoints }}</td>
-                            <td class="text-xs-right">{{ props.item.qTotalPoints }}</td>
-                            <td class="text-xs-right">{{ props.item.qCorrectiveActions }}</td>
-                        </template> -->
-                        <!-- <v-alert slot="no-results" :value="true" color="error" icon="mdi-warning">
-                            {{search}}
-                        </v-alert> -->
-                    </v-data-table>
-                </v-card>
   </v-card>
 </template>
 
