@@ -71,7 +71,7 @@
 
 
 <div id="assessmentReport" data-SurveyId="<?= $survey->survey_id ?>"  data-UserId="<?= $user_id; ?>" data-tocken="<?= Yii::$app->user->getIdentity()->access_token ;?>" >
-<div class="content-header">
+<div class="content-header"  style="display:none">
     <div class="row mb-2">
         <div class="col-md-6">
             <h1 class="m-0 text-dark">تقرير {{assessmentTitle}}</h1>
@@ -87,13 +87,8 @@
     </div>
     <!-- /.row -->
 </div>
-    
-    
-    <div class="sectiontitle">
-        
-    </div>
 
-<div id="projectFacts" class="sectionClass">
+<div id="projectFacts" class="sectionClass" style="display:none">
                 <div class="fullWidth eight columns">
                     <div class="projectFactsWrap ">
                         <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible;">
@@ -123,20 +118,24 @@
                     </div>
                 </div>
             </div>
-<template>
-  <v-card>
-  <v-card-title class="mb-5">
-                   بيان الإستبيان
-                    <v-spacer></v-spacer>
-                    <v-text-field
-                    v-model="search"
-                    label="البحث"
-                    single-line
-                    hide-details
-                    ></v-text-field>
-                </v-card-title>
-    
 
+
+
+
+
+<div id="tabletemplate" style="display:none">
+<template >
+  <v-card>
+    <v-card-title class="mb-5">
+        بيان الإستبيان
+        <v-spacer></v-spacer>
+        <v-text-field
+        v-model="search"
+        label="البحث"
+        single-line
+        hide-details
+        ></v-text-field>
+    </v-card-title>
     <v-data-table class="mb-5 mt-5" :headers="headers" :items="questionsReport" :search="search">
         <template v-slot:item.qGainedPoints="{ item }">
             <v-chip :color="getColor(item.qGainedPoints, item.qTotalPoints)" dark>{{ item.qGainedPoints }}</v-chip>
@@ -192,11 +191,18 @@
         <v-alert slot="no-results" :value="true" color="error" icon="mdi-warning">
             لا يوجد بحث يطابق بحثك الحالي
         </v-alert>
-</v-data-table>
-
+    </v-data-table>
   </v-card>
 </template>
+</div>
 
+<div id="noreport" style="display:none">
+    <p> لا تملك الصلاحية للدخول إلي التقرير</p><div class="emptyassessment"><div class="img"></div><div class="name"></div></div><div class="emptyassessment"><div class="img"></div><div class="name"></div></div>
+
+    <div class="col-md-12 text-center">
+            <a class="btn btn-primary" href="/assessment/default/view?id=<?= $survey->survey_id ?>">العودة للإستبيان</a>        
+        </div>
+</div>
 
 
 
