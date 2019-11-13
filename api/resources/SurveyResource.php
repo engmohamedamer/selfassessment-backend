@@ -296,6 +296,7 @@ class SurveyResource extends Survey
                                     'id'=>$item->survey_user_answer_id,
                                     'name'=>$item->survey_user_answer_text,
                                     'content'=>$item->survey_user_answer_value
+                                    'type'=>$item->survey_user_answer_file_type
                                 ];
                             }
                         }
