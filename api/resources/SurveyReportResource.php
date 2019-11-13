@@ -57,7 +57,7 @@ class SurveyReportResource extends Survey
                     'total_points'=>50,
                     'gained_points'=>25,
                     'progress'=>$this->surveyProgress($model,$userId),
-                    'actual_time'=> gmdate("H:i:s", $time),
+                    'actual_time'=> $time,
 
                 ];
 

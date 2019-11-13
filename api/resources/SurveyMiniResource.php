@@ -45,7 +45,7 @@ class SurveyMiniResource extends Survey
 
             'actual_time'=> function($model){
                     $time = SurveyStat::actualTime($model->survey_id,\Yii::$app->user->identity->id);
-                    return gmdate("H:i:s", $time);
+                    return $time;
             },
             'expiryDate'=>function($model){
                 return $model->survey_expired_at;
