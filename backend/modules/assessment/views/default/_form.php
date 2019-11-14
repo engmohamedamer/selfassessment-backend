@@ -170,7 +170,7 @@ echo Dialog::widget();
 
             echo Html::beginTag('div', ['class' => 'row']);
 
-            echo Html::beginTag('div', ['class' => 'col-md-12']);
+            echo Html::beginTag('div', ['class' => 'col-md-2']);
                 echo $form->field($survey, "survey_point", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
                     )->input('number',['min'=>0]);
             echo Html::endTag('div'); // row

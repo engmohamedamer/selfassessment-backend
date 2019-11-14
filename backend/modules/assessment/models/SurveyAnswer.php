@@ -32,6 +32,17 @@ class SurveyAnswer extends \yii\db\ActiveRecord
         return 'survey_answer';
     }
 
+    public function maxPoint(){
+        $question_point = $this->question->survey_question_point;
+        $point = 0;
+        if (count($this->question->answers) > 1) {
+            foreach ($this->question->answers as $answers) {
+                $point += $answers->survey_answer_points;
+            }
+        }
+        return ($question_point - $point);
+    }
+
     /**
      * @inheritdoc
      */
@@ -41,6 +52,13 @@ class SurveyAnswer extends \yii\db\ActiveRecord
             [['survey_answer_descr','survey_answer_corrective_action'], 'string'],
             [['survey_answer_question_id', 'survey_answer_sort', 'survey_answer_points'], 'integer'],
             [['survey_answer_question_id', 'survey_answer_sort', 'survey_answer_points'], 'filter', 'filter' => 'intval'],
+            [['survey_answer_points'], 'required', 'when' => function($model){
+                return ($model->question->survey_question_point > 0);
+            }, 'message' => \Yii::t('survey', 'You must enter a answer point')],
+            [['survey_answer_points'],'number','min'=>0],
+            ['survey_answer_points', 'compare', 'compareValue' => $this->maxPoint(), 'operator' => '<=', 'type' => 'number', 'when' => function($model){
+                return (($model->maxPoint() + $model->survey_answer_points) < $model->question->survey_question_point) ;
+            }],
             [['survey_answer_show_descr','survey_answer_show_corrective_action'], 'boolean'],
             [['survey_answer_show_descr','survey_answer_show_corrective_action'], 'filter', 'filter' => 'boolval'],
             [['survey_answer_name'], 'string', 'max' => 100],

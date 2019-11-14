@@ -18,7 +18,7 @@ foreach ($question->answers as $i => $answer) {
     echo $form->field($answer, "[$question->survey_question_id][$i]survey_answer_name")->input('text',
         ['placeholder' => \Yii::t('survey', 'Enter an answer choice')])->label(false);
 
-    if ($question->survey_question_is_scorable) {
+    if ($question->survey_question_is_scorable || $question->survey->survey_point > 0) {
         echo Html::beginTag('div', ['class' => 'points-wrap']);
         if ($i === 0) {
             echo Html::tag('span', \Yii::t('survey', 'Points'), ['class' => 'points-title']);

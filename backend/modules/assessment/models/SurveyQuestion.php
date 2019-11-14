@@ -86,8 +86,10 @@ class SurveyQuestion extends \yii\db\ActiveRecord
     public function maxPoint(){
         $survey_point = $this->survey->survey_point;
         $point = 0;
-        foreach ($this->survey->questions as $questions) {
-            $point += $questions->survey_question_point;
+        if (count($this->survey->questions) > 1) {
+            foreach ($this->survey->questions as $questions) {
+                $point += $questions->survey_question_point;
+            }
         }
         return ($survey_point - $point);
     }
@@ -100,7 +102,12 @@ class SurveyQuestion extends \yii\db\ActiveRecord
             [['survey_question_descr'], 'string'],
             [['survey_question_type', 'survey_question_survey_id','steps','survey_question_point'], 'integer'],
             [['survey_question_point'],'number','min'=>0],
-            ['survey_question_point', 'compare', 'compareValue' => $this->maxPoint(), 'operator' => '<=', 'type' => 'number'],
+            [['survey_question_point'],'number','min'=>1 , 'when' => function($model){
+                return ($model->maxPoint() > 0);
+            }],
+            ['survey_question_point', 'compare', 'compareValue' => $this->maxPoint(), 'operator' => '<=', 'type' => 'number', 'when' => function($model){
+                return $model->maxPoint() > 0;
+            }],
             [['survey_question_point'], 'required', 'when' => function($model){
                 return ($model->survey->survey_point > 0);
             }, 'message' => \Yii::t('survey', 'You must enter a question point')],
