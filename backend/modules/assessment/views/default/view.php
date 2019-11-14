@@ -46,10 +46,6 @@ BootstrapPluginAsset::register($this);
                               title="<?= \Yii::t('survey', 'Questions') ?>">
                                <?= \Yii::t('survey', 'Questions') ?>: <?= $survey->getQuestions()->count() ?>
                         </span>
-<!--	                    <span class="survey-label btn btn-info btn-xs restricted-users-toggle" data-toggle="tooltip"-->
-<!--	                          title="--><?//= \Yii::t('survey', 'Restricted users') ?><!--">-->
-<!--                            --><?//= \Yii::t('survey', 'Restricted users') ?><!--: --><?//= $survey->getRestrictedUsersCount() ?>
-<!--                        </span>-->
                     </div>
 
                 </div>
@@ -187,16 +183,6 @@ BootstrapPluginAsset::register($this);
     ?>
 </div>
 
-<div class="hidden-modal-right " id="restricted-users-modal">
-    <div class="close-btn">&times;</div>
-    <?php
-
-    $surveyId = $survey->survey_id;
-
-    echo $this->render('restrictedUsers',
-        compact('searchModel', 'restrictedUserDataProvider', 'surveyId', 'withUserSearch'));
-    ?>
-</div>
 
 <?php
 $this->registerJs(<<<JS
