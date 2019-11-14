@@ -20,7 +20,7 @@ use yii\helpers\ArrayHelper;
  * @property boolean $survey_question_is_scorable
  * @property integer $steps
  * @property boolean $survey_question_attachment_file
- *
+ * @property integer $survey_question_point
  * @property SurveyAnswer[] $answers
  * @property Survey $survey
  * @property SurveyType $questionType
@@ -83,7 +83,14 @@ class SurveyQuestion extends \yii\db\ActiveRecord
 
         return true;
     }
-
+    public function maxPoint(){
+        $survey_point = $this->survey->survey_point;
+        $point = 0;
+        foreach ($this->survey->questions as $questions) {
+            $point += $questions->survey_question_point;
+        }
+        return ($survey_point - $point);
+    }
     /**
      * @inheritdoc
      */
@@ -91,7 +98,12 @@ class SurveyQuestion extends \yii\db\ActiveRecord
     {
         return [
             [['survey_question_descr'], 'string'],
-            [['survey_question_type', 'survey_question_survey_id','steps'], 'integer'],
+            [['survey_question_type', 'survey_question_survey_id','steps','survey_question_point'], 'integer'],
+            [['survey_question_point'],'number','min'=>0],
+            ['survey_question_point', 'compare', 'compareValue' => $this->maxPoint(), 'operator' => '<=', 'type' => 'number'],
+            [['survey_question_point'], 'required', 'when' => function($model){
+                return ($model->survey->survey_point > 0);
+            }, 'message' => \Yii::t('survey', 'You must enter a question point')],
             [['survey_question_type'], 'filter', 'filter' => 'intval'],
             [['survey_question_can_skip', 'survey_question_show_descr', 'survey_question_is_scorable','survey_question_attachment_file'], 'boolean'],
             [['survey_question_can_skip', 'survey_question_show_descr', 'survey_question_is_scorable'], 'filter', 'filter' => 'boolval'],
@@ -140,7 +152,8 @@ class SurveyQuestion extends \yii\db\ActiveRecord
             'survey_question_show_descr' => Yii::t('survey', 'Show detailed description'),
             'survey_question_is_scorable' => Yii::t('survey', 'Score this question'),
             'steps'=> Yii::t('survey', 'Steps Number'),
-            'survey_question_attachment_file'=> Yii::t('survey', 'Can Attach File')
+            'survey_question_attachment_file'=> Yii::t('survey', 'Can Attach File'),
+            'survey_question_point'=> Yii::t('survey', 'Survey Question Point'),
         ];
     }
 
