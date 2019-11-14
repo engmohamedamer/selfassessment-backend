@@ -39,12 +39,13 @@ class SurveyMiniResource extends Survey
                 return $model->survey_time_to_pass;
             },
             'remaining_time'=>function($model){
-                $time = SurveyStat::remainingTime($model,\Yii::$app->user->identity->id) / 60;
-                return round($time,2);
+                $time = SurveyStat::remainingTime($model,\Yii::$app->user->identity->id);
+                return gmdate("H:i:s", $time);
             },
 
             'actual_time'=> function($model){
-                    return SurveyStat::actualTime($model->survey_id,\Yii::$app->user->identity->id);
+                    $time = SurveyStat::actualTime($model->survey_id,\Yii::$app->user->identity->id);
+                    return $time;
             },
             'expiryDate'=>function($model){
                 return $model->survey_expired_at;

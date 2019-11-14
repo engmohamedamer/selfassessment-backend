@@ -52,11 +52,12 @@ class SurveyReportResource extends Survey
 
             'generalInfo'=>function($model){
                 $userId= $this->userId;
+                $time = SurveyStat::actualTime($model->survey_id,$userId);
                 return [
                     'total_points'=>50,
                     'gained_points'=>25,
                     'progress'=>$this->surveyProgress($model,$userId),
-                    'actual_time'=>SurveyStat::actualTime($model->survey_id,$userId),
+                    'actual_time'=> $time,
 
                 ];
 

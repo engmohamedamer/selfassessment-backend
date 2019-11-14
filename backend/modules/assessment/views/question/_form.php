@@ -103,6 +103,7 @@ JS
 JS
         ),]
 ]);
+echo $form->field($question, "[{$question->survey_question_id}]survey_question_point")->input('number');
 
 echo Html::tag('br', '');
 echo Html::tag('br', '');

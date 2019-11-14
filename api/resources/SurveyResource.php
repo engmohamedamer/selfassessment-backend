@@ -6,6 +6,7 @@ use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\SurveyType;
 use backend\modules\assessment\models\SurveyUserAnswer;
+use common\models\SurveyUserAnswerAttachments;
 
 class SurveyResource extends Survey
 {
@@ -211,23 +212,13 @@ class SurveyResource extends Survey
                 return $result;
             },
             'answers'=>function($model){
-
-                /*
-                {
-                   "44": [
-                      93,
-                      94
-                   ],
-                    "47": "Amer test"
-                }
-                */
                 $userId = \Yii::$app->user->identity->id;
                 $data = [];
                 //get survey questions then check user answers
 
-                foreach ($model->questions as  $question) {
-                    //echo $question->survey_question_id.'<br>';
+                foreach ($model->questions as $key => $question) {
                     // has one value
+                    $c = 0;
                     if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
                         || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
                         || $question->survey_question_type === SurveyType::TYPE_SLIDER
@@ -291,7 +282,6 @@ class SurveyResource extends Survey
                     }else if(
                         $question->survey_question_type === SurveyType::TYPE_FILE
                     ){
-                        // return $userId;
                         //fetch user answers
                         $userAnswersObj = SurveyUserAnswer::find()->where([
                             'survey_user_answer_user_id'=>$userId,
@@ -305,13 +295,33 @@ class SurveyResource extends Survey
                                 $data['q-'.$question->survey_question_id][] = [
                                     'id'=>$item->survey_user_answer_id,
                                     'name'=>$item->survey_user_answer_text,
-                                    'content'=>$item->survey_user_answer_value
+                                    'content'=>$item->survey_user_answer_value,
+                                    'type'=>$item->survey_user_answer_file_type
                                 ];
                             }
                         }
                     }
-                }
+                    
+                    $qAttatchments = [];
+                    $files = SurveyUserAnswerAttachments::findAll(['survey_user_answer_attachments_survey_id'=>$question->survey_question_survey_id ,
+                       'survey_user_answer_attachments_question_id'=>$question->survey_question_id,
+                       'survey_user_answer_attachments_user_id' => \Yii::$app->user->getId()
+                       ]);
+                    
+                    foreach ($files as $key => $file) {
+                        $qAttatchments[] = [
+                            'type'=>$file->type,
+                            'content'=>$file->path,
+                            'name'=>$file->name
+                        ];
+                    }
 
+                    if (count($files) > 0) {
+                        $data['a-'.$question->survey_question_id] = $qAttatchments;   
+                        $data['f-'.$question->survey_question_id] = true;   
+                    }
+
+                } // end questions for loop
 
                 return $data;
             }

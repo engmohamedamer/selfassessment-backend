@@ -73,4 +73,8 @@ return [
     'Will be presented one file field where respondent can attach file answer'=>'سيتم تقديم حقل ملف واحد حيث يمكن للمستفتى إرفاق إجابة علي هيئة ملف',
     'Steps Number'=>'عدد الخطوات',
     'Can Attach File'=>'يمكن إرفاق ملف',
+    'File Type'=>'نوع الملف',
+    'Survey Point'=>'درجة الاستبيان',
+    'Survey Question Point'=>'درجة السؤال',
+    'You must enter a question point'=>'يجب ادخال درجة السؤال',
 ];
