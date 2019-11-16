@@ -103,7 +103,9 @@ JS
 JS
         ),]
 ]);
+if ($question->survey->survey_point > 0) {
   echo $form->field($question, "[{$question->survey_question_id}]survey_question_point")->input('number');
+}
 echo Html::tag('br', '');
 echo Html::tag('br', '');
 
@@ -140,7 +142,7 @@ if (in_array($question->survey_question_type, [
     SurveyType::TYPE_DROPDOWN
 ]) and $question->survey->survey_point == 0) {
     echo Html::tag('br', '');
-    echo $form->field($question, "[{$question->survey_question_id}]survey_question_is_scorable")->checkbox(['class' => 'checkbox-updatable']);
+    // echo $form->field($question, "[{$question->survey_question_id}]survey_question_is_scorable")->checkbox(['class' => 'checkbox-updatable']);
 }
 ?>
     <div class="preloader">

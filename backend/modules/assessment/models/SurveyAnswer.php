@@ -32,15 +32,33 @@ class SurveyAnswer extends \yii\db\ActiveRecord
         return 'survey_answer';
     }
 
+    // public function maxPoint(){
+    //     $question_point = $this->question->survey_question_point;
+    //     $point = 0;
+    //     foreach ($this->question->answers as $answers) {
+    //         $point += $answers->survey_answer_points;
+    //     }
+    //     return ($question_point - $point);
+    // }
+
     public function maxPoint(){
         $question_point = $this->question->survey_question_point;
         $point = 0;
-        if (count($this->question->answers) > 1) {
-            foreach ($this->question->answers as $answers) {
-                $point += $answers->survey_answer_points;
-            }
+        foreach ($this->question->answers as $answers) {
+            $point += $answers->survey_answer_points;
         }
-        return ($question_point - $point);
+
+        if (($question_point - $point) == 0) {
+            $point = 0;
+            foreach ($this->question->answers as $answers) {
+                if ($answers->survey_answer_id != $this->survey_answer_id) {
+                    $point += $answers->survey_answer_points;
+                }
+            }
+            return ($question_point - $point);
+        }else{
+            return ($question_point - $point);
+        }
     }
 
     /**
@@ -55,9 +73,18 @@ class SurveyAnswer extends \yii\db\ActiveRecord
             [['survey_answer_points'], 'required', 'when' => function($model){
                 return ($model->question->survey_question_point > 0);
             }, 'message' => \Yii::t('survey', 'You must enter a answer point')],
-            [['survey_answer_points'],'number','min'=>0],
+            // [['survey_answer_points'],'number','min'=>0],
             ['survey_answer_points', 'compare', 'compareValue' => $this->maxPoint(), 'operator' => '<=', 'type' => 'number', 'when' => function($model){
-                return (($model->maxPoint() + $model->survey_answer_points) < $model->question->survey_question_point) ;
+                $point = 0;
+                foreach ($model->question->answers as $answers) {
+                    if ($answers->survey_answer_id != $model->survey_answer_id) {
+                        $point += $answers->survey_answer_points;
+                    }
+                }
+                if ($model->survey_answer_points + $point <=  $model->question->survey_question_point  ) {
+                    return false;
+                }
+                return true;
             }],
             [['survey_answer_show_descr','survey_answer_show_corrective_action'], 'boolean'],
             [['survey_answer_show_descr','survey_answer_show_corrective_action'], 'filter', 'filter' => 'boolval'],

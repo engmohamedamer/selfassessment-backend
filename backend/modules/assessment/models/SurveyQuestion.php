@@ -83,6 +83,7 @@ class SurveyQuestion extends \yii\db\ActiveRecord
 
         return true;
     }
+    
     public function maxPoint(){
         $survey_point = $this->survey->survey_point;
         $point = 0;
@@ -91,7 +92,18 @@ class SurveyQuestion extends \yii\db\ActiveRecord
                 $point += $questions->survey_question_point;
             }
         }
-        return ($survey_point - $point);
+
+        if (($survey_point - $point) == 0) {
+            $point = 0;
+            foreach ($this->survey->questions as $questions) {
+                if ($questions->survey_question_id != $this->survey_question_id) {
+                    $point += $questions->survey_question_point;
+                }
+            }
+            return ($survey_point - $point);
+        }else{
+            return ($survey_point - $point);
+        }
     }
     /**
      * @inheritdoc
@@ -106,7 +118,16 @@ class SurveyQuestion extends \yii\db\ActiveRecord
                 return ($model->maxPoint() > 0);
             }],
             ['survey_question_point', 'compare', 'compareValue' => $this->maxPoint(), 'operator' => '<=', 'type' => 'number', 'when' => function($model){
-                return $model->maxPoint() > 0;
+                $point = 0;
+                foreach ($model->survey->questions as $questions) {
+                    if ($questions->survey_question_id != $model->survey_question_id) {
+                        $point += $questions->survey_question_point;
+                    }
+                }
+                if ($model->survey_question_point + $point <=  $model->survey->survey_point  ) {
+                    return false;
+                }
+                return true;
             }],
             [['survey_question_point'], 'required', 'when' => function($model){
                 return ($model->survey->survey_point > 0);
