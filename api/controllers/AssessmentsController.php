@@ -166,7 +166,6 @@ class AssessmentsController extends  MyActiveController
                  $userAnswer->save(false);
               }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
                  || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
-                 || $question->survey_question_type === SurveyType::TYPE_CALENDAR
              ) {
                  //delete old answers and add new
                  SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
