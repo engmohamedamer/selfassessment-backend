@@ -44,6 +44,12 @@ class SurveyResource extends Survey
             'firstPageIsStarted'=>function($model){
                 return true;
             },
+            'goNextPageAutomatic'=>function($model){
+                return true;
+            },
+            'showQuestionNumbers'=>function($model){
+                return 'off';
+            },
             'startSurveyText'=>function($model){
                 return 'بدء الإستبيان';
             },
