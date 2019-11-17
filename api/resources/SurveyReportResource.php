@@ -53,12 +53,19 @@ class SurveyReportResource extends Survey
             'generalInfo'=>function($model){
                 $userId= $this->userId;
                 $time = SurveyStat::actualTime($model->survey_id,$userId);
+                $survey_end_at = date("Y-m-d",strtotime((SurveyStat::find(['survey_stat_user_id'=>$userId,'survey_stat_user_id'=>$model->survey_id])->one())->survey_stat_updated_at));
                 return [
+                    'survey_created_at'=>date("Y-m-d",strtotime($model->survey_created_at)),
+                    'survey_expired_at'=>date("Y-m-d",strtotime($model->survey_expired_at)),
+                    'survey_end_at'=>$survey_end_at,
+                    'survey_number'=>$model->survey_id .'/'. date("Y",strtotime($model->survey_created_at)) ,
+                    'survey_time_to_pass'=> $model->survey_time_to_pass,
+                    'survey_question_number'=> count($model->questions),
+                    'survey_corrective_number'=>rand(1,10),
                     'total_points'=>50,
                     'gained_points'=>25,
                     'progress'=>$this->surveyProgress($model,$userId),
                     'actual_time'=> $time,
-
                 ];
 
             },
