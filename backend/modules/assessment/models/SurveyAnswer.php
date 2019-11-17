@@ -32,15 +32,6 @@ class SurveyAnswer extends \yii\db\ActiveRecord
         return 'survey_answer';
     }
 
-    // public function maxPoint(){
-    //     $question_point = $this->question->survey_question_point;
-    //     $point = 0;
-    //     foreach ($this->question->answers as $answers) {
-    //         $point += $answers->survey_answer_points;
-    //     }
-    //     return ($question_point - $point);
-    // }
-
     public function maxPoint(){
         $question_point = $this->question->survey_question_point;
         $point = 0;
