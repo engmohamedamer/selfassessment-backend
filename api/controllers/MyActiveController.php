@@ -21,8 +21,8 @@ use yii\rest\ActiveController;
 class MyActiveController extends ActiveController
 {
 
-    public $defaultPageSize= 6; // 20
-    public $pageSize= 6;  // 50
+    public $defaultPageSize= 8; // 20
+    public $pageSize= 8;  // 50
     public $pageSizeLimit= [1,200];
 
 
