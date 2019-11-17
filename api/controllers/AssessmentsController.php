@@ -232,7 +232,7 @@ class AssessmentsController extends  MyActiveController
                       $userAnswer->survey_user_answer_value = $file['content'];
                       $userAnswer->survey_user_answer_text = $file['name'];
                       $userAnswer->survey_user_answer_file_type = $file['type'];
-                      $userAnswer->survey_user_answer_point = $answer->question->survey_question_point;
+                      $userAnswer->survey_user_answer_point = $question->survey_question_point;
                       $userAnswer->save(false);
                     }
                 }

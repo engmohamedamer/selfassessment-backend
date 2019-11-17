@@ -227,12 +227,15 @@ class SurveyReportResource extends Survey
                             'name'=>$file->name
                         ];
                     }
+
+
+                    $qGainedPoints =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '. \Yii::$app->user->getId() .' and survey_user_answer_question_id ='.$question->survey_question_id )->queryScalar();
                     $data = [
                         'qNum'=>$i++,
                         'qText'=>$question->survey_question_name,
                         'qAnswer'=>$answer,
-                        'qGainedPoints'=>rand(1,300),
-                        'qTotalPoints'=>'300',
+                        'qGainedPoints'=>$qGainedPoints,
+                        'qTotalPoints'=>$question->survey_question_point,
                         'qCorrectiveActions'=> $correctiveActions,
                         'qType'=>$type,
                         'qAttatchments'=> $qAttatchments
