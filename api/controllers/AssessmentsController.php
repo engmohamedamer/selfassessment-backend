@@ -9,6 +9,7 @@ use api\resources\SurveyMiniResource;
 use api\resources\SurveyReportResource;
 use api\resources\SurveyResource;
 use api\resources\User;
+use backend\modules\assessment\models\SurveyAnswer;
 use backend\modules\assessment\models\SurveyQuestion;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\SurveyType;
@@ -134,8 +135,7 @@ class AssessmentsController extends  MyActiveController
               $key=  (int)preg_replace('/\D/ui','',$key);
               $question = $this->findModel($key);
              //check question type
-             if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
-                  || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
+             if ( $question->survey_question_type === SurveyType::TYPE_DROPDOWN
                   || $question->survey_question_type === SurveyType::TYPE_SLIDER
                   || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
                   || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
@@ -148,7 +148,20 @@ class AssessmentsController extends  MyActiveController
                      'survey_user_answer_survey_id' => $question->survey_question_survey_id,
                      'survey_user_answer_question_id' => $question->survey_question_id,
                  ]));
-
+                 $userAnswer->survey_user_answer_point = $answer->question->survey_question_point;
+                 $userAnswer->survey_user_answer_value = $value;
+                 $userAnswer->save(false);
+              }if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
+              ){
+                 //handel one answer
+                 $userAnswers = $question->userAnswers;
+                 $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
+                     'survey_user_answer_user_id' => \Yii::$app->user->getId(),
+                     'survey_user_answer_survey_id' => $question->survey_question_survey_id,
+                     'survey_user_answer_question_id' => $question->survey_question_id,
+                 ]));
+                 $answerPoint = SurveyAnswer::findOne(['survey_answer_id'=>$value])->survey_answer_points;
+                 $userAnswer->survey_user_answer_point = $answerPoint;
                  $userAnswer->survey_user_answer_value = $value;
                  $userAnswer->save(false);
               }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
@@ -171,7 +184,7 @@ class AssessmentsController extends  MyActiveController
                             $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
                             $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
                             $userAnswer->survey_user_answer_value =1 ;
-
+                            $userAnswer->survey_user_answer_point = $answer->survey_answer_points;
                         $userAnswer->save(false);
                     }
 
@@ -197,6 +210,7 @@ class AssessmentsController extends  MyActiveController
                             $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
                             $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
                             $userAnswer->survey_user_answer_value = $value[$answer->survey_answer_id]['rate'];
+                            $userAnswer->survey_user_answer_point = $answer->survey_answer_points;
 
                         $userAnswer->save(false);
                     }
@@ -219,6 +233,7 @@ class AssessmentsController extends  MyActiveController
                       $userAnswer->survey_user_answer_value = $file['content'];
                       $userAnswer->survey_user_answer_text = $file['name'];
                       $userAnswer->survey_user_answer_file_type = $file['type'];
+                      $userAnswer->survey_user_answer_point = $answer->question->survey_question_point;
                       $userAnswer->save(false);
                     }
                 }

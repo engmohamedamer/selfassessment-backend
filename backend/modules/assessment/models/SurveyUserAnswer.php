@@ -15,7 +15,7 @@ use Yii;
  * @property string $survey_user_answer_value
  * @property string $survey_user_answer_text
  * @property string $survey_user_answer_file_type
- *
+ * @property integer $survey_user_answer_point
  * @property SurveyAnswer $surveyUserAnswerAnswer
  * @property SurveyQuestion $question
  * @property Survey $surveyUserAnswerSurvey
@@ -38,7 +38,7 @@ class SurveyUserAnswer extends \yii\db\ActiveRecord
     {
         return [
             [['survey_user_answer_user_id'], 'required'],
-            [['survey_user_answer_id', 'survey_user_answer_user_id', 'survey_user_answer_survey_id', 'survey_user_answer_question_id', 'survey_user_answer_answer_id'], 'integer'],
+            [['survey_user_answer_id', 'survey_user_answer_user_id', 'survey_user_answer_survey_id', 'survey_user_answer_question_id', 'survey_user_answer_answer_id','survey_user_answer_point'], 'integer'],
             [['survey_user_answer_value','survey_user_answer_file_type'], 'string', 'max' => 255],
             [['survey_user_answer_text'], 'string'],
 
@@ -89,7 +89,8 @@ class SurveyUserAnswer extends \yii\db\ActiveRecord
             'survey_user_answer_question_id' => Yii::t('survey', 'Survey User Answer Question ID'),
             'survey_user_answer_answer_id' => Yii::t('survey', 'Survey User Answer Answer ID'),
             'survey_user_answer_value' => Yii::t('survey', 'Answer'),
-            'survey_user_answer_file_type'=>  Yii::t('survey', 'File Type')
+            'survey_user_answer_file_type'=> Yii::t('survey', 'File Type'),
+            'survey_user_answer_point'=> Yii::t('survey','Answer Point'),
         ];
     }
 
