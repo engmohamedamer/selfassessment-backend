@@ -179,6 +179,8 @@ class AssessmentsController extends  MyActiveController
                      'survey_user_answer_user_id' => \Yii::$app->user->getId()
                      ]);
                  //save multiple
+                 $point =  $question->survey_question_point/ count(SurveyAnswer::findOne(['survey_answer_question_id'=>$question->survey_question_id,'correct'=>1]));
+
                  foreach ($question->answers as $i => $answer) {
                    $found = in_array($answer->survey_answer_id ,$value);
                     if($found){
@@ -190,7 +192,7 @@ class AssessmentsController extends  MyActiveController
                             $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
                             $userAnswer->survey_user_answer_value =1 ;
                             if ($answer->correct) {
-                                $userAnswer->survey_user_answer_point = $answer->survey_answer_points;
+                                $userAnswer->survey_user_answer_point = $point;
                             }
                         $userAnswer->save(false);
                     }

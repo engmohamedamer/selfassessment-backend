@@ -20,12 +20,12 @@ foreach ($question->answers as $i => $answer) {
         ['placeholder' => \Yii::t('survey', 'Enter an answer choice')])->label(false);
 
     if ($question->survey_question_is_scorable || $question->survey->survey_point > 0) {
-        echo Html::beginTag('div', ['class' => 'points-wrap']);
-        if ($i === 0) {
-            echo Html::tag('span', \Yii::t('survey', 'Points'), ['class' => 'points-title']);
-        }
-        echo $form->field($answer, "[$question->survey_question_id][$i]survey_answer_points")->input('number')->label(false);
-        echo Html::endTag('div');
+        // echo Html::beginTag('div', ['class' => 'points-wrap']);
+        // if ($i === 0) {
+            // echo Html::tag('span', \Yii::t('survey', 'Points'), ['class' => 'points-title']);
+        // }
+        // echo $form->field($answer, "[$question->survey_question_id][$i]survey_answer_points")->input('number')->label(false);
+        // echo Html::endTag('div');
     }
 
     echo Html::submitButton('<span class="glyphicon glyphicon-plus"></span>', ['class' => 'btn btn-success btn-add-answer survey-question-submit',
