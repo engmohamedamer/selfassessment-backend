@@ -80,14 +80,17 @@ echo Dialog::widget();
                 ]
             ]);
             echo Html::endTag('div');
-
-
             echo Html::tag('br', '');
 
+
+
             echo Html::beginTag('div', ['class' => 'survey-content-wrap']);
-            echo Html::beginTag('div', ['class' => 'row']);
-            echo Html::beginTag('div', ['class' => 'col-md-4']);
+            
+            echo Html::beginTag('div', ['class' => 'row', 'style' => 'justify-content: center;']);
+            echo Html::beginTag('div', ['class' => 'col-md-3', 'style' => 'background: beige; border-radius: 10px; text-align: center; margin:5px;']);
             echo Html::label(Yii::t('survey', 'Expired at') . ': ', 'survey-survey_expired_at');
+            echo Html::tag('br', '');
+
             echo Editable::widget([
                 'model' => $survey,
                 'attribute' => 'survey_expired_at',
@@ -119,10 +122,11 @@ echo Dialog::widget();
                     'label' => Yii::t('survey','Reset'),
                 ]
             ]);
-            echo Html::endTag('div'); // col-md-6
+            echo Html::endTag('div'); // col-md-3
 
-            echo Html::beginTag('div', ['class' => 'col-md-4']);
+            echo Html::beginTag('div', ['class' => 'col-md-3', 'style' => 'background: beige; border-radius: 10px; text-align: center; margin:5px;']);
             echo Html::label(Yii::t('survey', 'Time to pass') . ': ', 'survey-survey_time_to_pass');
+            echo Html::tag('br', '');
             echo Editable::widget([
                 'model' => $survey,
                 'attribute' => 'survey_time_to_pass',
@@ -140,16 +144,36 @@ echo Dialog::widget();
                 ]
             ]);
             echo Html::label(Yii::t('survey', 'minutes'));
-            echo Html::endTag('div'); // col-md-6
+            echo Html::endTag('div'); // col-md-3
 
-            echo Html::beginTag('div', ['class' => 'col-md-4']);
-            echo $form->field($survey, "survey_point", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
-                    )->input('number',['min'=>0]);
-            echo Html::endTag('div'); // col-md-6
 
+            echo Html::beginTag('div', ['class' => 'col-md-3', 'style' => 'background: beige; border-radius: 10px; text-align: center; margin:5px;']);
+            echo Html::label(Yii::t('survey', 'Survey Point') . ': ', 'survey-survey_point');
+            echo Html::tag('br', '');
+            echo Editable::widget([
+                'model' => $survey,
+                'attribute' => 'survey_point',
+                'asPopover' => true,
+                'header' => Yii::t('survey', 'Survey Point'),
+                'size' => 'md',
+                'formOptions' => [
+                    'action' => Url::toRoute(['default/update-editable', 'property' => 'survey_point'])
+                ],
+                'additionalData' => ['id' => $survey->survey_id],
+                'options' => [
+                    'class' => 'form-control',
+                    'placeholder' => Yii::t('survey', 'Enter Survey Point...'),
+                    'type' => 'number',
+                ]
+            ]);
+            echo Html::label(Yii::t('survey', 'Point'));
+            echo Html::endTag('div'); // col-md-3
             echo Html::endTag('div'); // row
 
 
+
+
+           
             Pjax::begin([
                 'id' => 'survey-pjax',
                 'enablePushState' => false,
@@ -172,8 +196,9 @@ echo Dialog::widget();
                     'labelOptions' => ['class' => ''],
                 ],
             ]);
-
             echo Html::beginTag('div', ['class' => 'row']);
+
+            
 
             echo Html::beginTag('div', ['class' => 'col-md-12']);
 

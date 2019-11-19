@@ -50,6 +50,96 @@ if(Yii::$app->user->isGuest){
         a:hover, a:active, a:focus {
             color: <?= $brandPrimColor ?> !important;
         }
+
+
+
+        .brandPrimColor {
+            color: <?= $brandPrimColor ?> !important;
+
+        }
+
+        .brandPrimBgColor {
+            background-color: <?= $brandPrimColor ?> !important;
+
+        }
+        .brandSecColor {
+            color: <?= $brandSecColor ?> !important;
+
+        }
+        .brandSecBgColor {
+            background-color: <?= $brandSecColor ?> !important;
+
+        }
+
+
+        .primBtn {
+            color: white !important;
+            background-color: <?= $brandPrimColor ?> !important;
+            border: 1px solid <?= $brandPrimColor ?> !important;
+            height: 44px !important;
+            min-width: 78px !important;
+            padding: 0 20px !important;
+            font-size: 1rem !important;
+            font-weight: 500 !important;
+            border-radius: 5px !important;
+            opacity: 1 !important;
+            font-size: 20px !important;
+            line-height: 40px !important;
+
+            transition: all .2s !important;
+
+
+            &:hover {
+                opacity: .8 !important;
+            }
+
+        }
+
+        .secBtn {
+            color: <?= $brandPrimColor ?> !important;
+            background-color: transparent !important;
+            border: 1px solid <?= $brandPrimColor ?> !important;
+            height: 44px !important;
+            min-width: 78px !important;
+            padding: 0 20px !important;
+            font-size: 1rem !important;
+            font-weight: 500 !important;
+            border-radius: 5px !important;
+            font-size: 20px !important;
+            line-height: 40px !important;
+
+            transition: all .2s !important;
+
+
+            &:hover {
+                color: white !important;
+                background-color: <?= $brandPrimColor ?> !important; 
+            }
+
+        }
+
+
+        .thirdBtn {
+            color: #000 !important;
+            background-color: transparent  !important;
+            height: 44px  !important;
+            min-width: 78px  !important;
+            padding: 0 20px  !important;
+            font-size: 1rem  !important;
+            box-shadow: none !important;
+            font-size: 20px !important;
+            line-height: 40px !important;
+
+            transition: all .2s  !important;
+
+
+            &:hover {
+                color: <?= $brandPrimColor ?> !important;
+            }
+
+        }
+
+
     </style>
     <?php $this->head() ?>
 </head>
