@@ -217,7 +217,9 @@ class AssessmentsController extends  MyActiveController
                             $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
                             $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
                             $userAnswer->survey_user_answer_value = $value[$answer->survey_answer_id]['rate'];
-                            $userAnswer->survey_user_answer_point = $answer->survey_answer_points;
+                            if ($i == 0) {
+                                $userAnswer->survey_user_answer_point = $answer->question->survey_answer_points;
+                            }
 
                         $userAnswer->save(false);
                     }
