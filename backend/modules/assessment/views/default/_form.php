@@ -23,6 +23,10 @@ use yii\widgets\Pjax;
 // widget with default options
 echo Dialog::widget();
 
+$brandPrimColor =  Yii::$app->user->identity->userProfile->organization->organizationTheme->brandPrimColor; 
+$brandSecColor =  Yii::$app->user->identity->userProfile->organization->organizationTheme->brandSecColor; 
+
+    
 ?>
     <div class="survey-container">
 
