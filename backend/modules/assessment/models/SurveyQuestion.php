@@ -113,10 +113,8 @@ class SurveyQuestion extends \yii\db\ActiveRecord
         return [
             [['survey_question_descr'], 'string'],
             [['survey_question_type', 'survey_question_survey_id','steps','survey_question_point'], 'integer'],
+            [['survey_question_point'], 'default', 'value'=> 0],
             [['survey_question_point'],'number','min'=>0],
-            [['survey_question_point'],'number','min'=>1 , 'when' => function($model){
-                return ($model->maxPoint() > 0);
-            }],
             ['survey_question_point', 'compare', 'compareValue' => $this->maxPoint(), 'operator' => '<=', 'type' => 'number', 'when' => function($model){
                 $point = 0;
                 foreach ($model->survey->questions as $questions) {
