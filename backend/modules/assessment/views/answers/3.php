@@ -19,7 +19,7 @@ foreach ($question->answers as $i => $answer) {
     if ($answer->correct) {
         $checked = 'checked';
     }
-    echo "<input type='radio' name='SurveyAnswer[$question->survey_question_id][correct]' value='$i' ".$checked." >";
+    echo "<label><input type='radio' name='SurveyAnswer[$question->survey_question_id][correct]' value='$i' ".$checked." > إجابة صحيحة </label>";
     // echo $form->field($answer, "[$question->survey_question_id][$i]correct")->radio();
     echo $form->field($answer, "[$question->survey_question_id][$i]survey_answer_name")->input('text',
         ['placeholder' => \Yii::t('survey', 'Enter an answer choice')])->label(false);
