@@ -139,6 +139,15 @@ if(Yii::$app->user->isGuest){
 
         }
 
+        section.content .survey-container .survey-block .survey-name-wrap, section.content .survey-container .survey-block .survey-question-name-wrap, section.content .survey-container .survey-block .survey-question-view-wrap, section.content .kv-editable-popover .survey-block .survey-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-view-wrap {
+            background-color: <?= $brandPrimColor ?> !important; 
+        }
+
+        section.content #survey-widget #survey-title, section.content #survey-view #survey-title {
+            background-color: <?= $brandPrimColor ?> !important; 
+            border: 8px solid <?= $brandSecColor ?>;
+        }
+
 
     </style>
     <?php $this->head() ?>

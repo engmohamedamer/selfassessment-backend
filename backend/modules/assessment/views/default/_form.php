@@ -87,7 +87,7 @@ echo Dialog::widget();
             echo Html::beginTag('div', ['class' => 'survey-content-wrap']);
             
             echo Html::beginTag('div', ['class' => 'row', 'style' => 'justify-content: center;']);
-            echo Html::beginTag('div', ['class' => 'col-md-3', 'style' => 'background: beige; border-radius: 10px; text-align: center; margin:5px;']);
+            echo Html::beginTag('div', ['class' => 'col-md-3', 'style' => 'background: '.$brandPrimColor.'; border-radius: 10px; text-align: center; margin:5px;']);
             echo Html::label(Yii::t('survey', 'Expired at') . ': ', 'survey-survey_expired_at');
             echo Html::tag('br', '');
 
