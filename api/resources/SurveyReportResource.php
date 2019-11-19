@@ -72,16 +72,6 @@ class SurveyReportResource extends Survey
 
             },
             'answers'=>function($model){
-
-                /*
-                {
-                   "44": [
-                      93,
-                      94
-                   ],
-                    "47": "Amer test"
-                }
-                */
                 $userId =$this->userId;
                 $data =$result= [];
                 //get survey questions then check user answers
