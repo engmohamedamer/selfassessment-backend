@@ -86,7 +86,7 @@ echo Dialog::widget();
 
             echo Html::beginTag('div', ['class' => 'survey-content-wrap']);
             echo Html::beginTag('div', ['class' => 'row']);
-            echo Html::beginTag('div', ['class' => 'col-md-6']);
+            echo Html::beginTag('div', ['class' => 'col-md-4']);
             echo Html::label(Yii::t('survey', 'Expired at') . ': ', 'survey-survey_expired_at');
             echo Editable::widget([
                 'model' => $survey,
@@ -121,7 +121,7 @@ echo Dialog::widget();
             ]);
             echo Html::endTag('div'); // col-md-6
 
-            echo Html::beginTag('div', ['class' => 'col-md-6']);
+            echo Html::beginTag('div', ['class' => 'col-md-4']);
             echo Html::label(Yii::t('survey', 'Time to pass') . ': ', 'survey-survey_time_to_pass');
             echo Editable::widget([
                 'model' => $survey,
@@ -140,6 +140,11 @@ echo Dialog::widget();
                 ]
             ]);
             echo Html::label(Yii::t('survey', 'minutes'));
+            echo Html::endTag('div'); // col-md-6
+
+            echo Html::beginTag('div', ['class' => 'col-md-4']);
+            echo $form->field($survey, "survey_point", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
+                    )->input('number',['min'=>0]);
             echo Html::endTag('div'); // col-md-6
 
             echo Html::endTag('div'); // row
@@ -170,17 +175,15 @@ echo Dialog::widget();
 
             echo Html::beginTag('div', ['class' => 'row']);
 
-            echo Html::beginTag('div', ['class' => 'col-md-2']);
-                echo $form->field($survey, "survey_point", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
-                    )->input('number',['min'=>0]);
-            echo Html::endTag('div'); // row
-
             echo Html::beginTag('div', ['class' => 'col-md-12']);
+
             echo $form->field($survey, "survey_descr", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
             )->textarea(['rows' => 3]);
 
             echo $form->field($survey, "start_info", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
-            )->textarea(['rows' => 3]);
+            )->textarea(['rows' => 3, 'style' => 'height:auto', ]);
+
+
                 echo Html::tag('div', '', ['class' => 'clearfix']);
                 echo Html::endTag('div'); // col-md-12
             echo Html::endTag('div'); // row

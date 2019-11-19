@@ -26,7 +26,7 @@ $this->title = Yii::t('backend', 'Dashboard');
 </div>
 
 <div class="row">
-          <div class="col-sm-6 col-md-3">
+          <div class="col-sm-6 col-md-4">
             <div class="info-box">
               <span class="info-box-icon bg-info elevation-1"><i class="fa fa-tag"></i></span>
 
@@ -38,7 +38,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-          <div class="col-sm-6 col-md-3">
+          <div class="col-sm-6 col-md-4">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-gear"></i></span>
 
@@ -54,7 +54,7 @@ $this->title = Yii::t('backend', 'Dashboard');
 
          
 
-          <div class="col-12 col-sm-6 col-md-3">
+          <div class="col-12 col-sm-6 col-md-4">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-success elevation-1"><i class="fa fa-users"></i></span>
 
@@ -64,6 +64,13 @@ $this->title = Yii::t('backend', 'Dashboard');
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
+          </div>
+
+          <div class='col-12 col-sm-12 dashboard-fancy-btn'>
+            <!-- <button type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> اضف استبيان جديد
+            </button> -->
+            <a href="/assessment/default/create" class="fancy-button bg-gradient1 "><span><i class="fa fa-file-signature mr-2 ml-2"></i> اضف استبيان جديد </span></a>
           </div>
           <!-- /.col -->
           <!-- /.col -->
