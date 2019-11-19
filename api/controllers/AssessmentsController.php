@@ -168,7 +168,7 @@ class AssessmentsController extends  MyActiveController
                     $userAnswer->survey_user_answer_point = $answerPoint->question->survey_question_point;
                  }
                  $userAnswer->survey_user_answer_answer_id = $value;
-                 $userAnswer->survey_user_answer_value = $value;
+                 $userAnswer->survey_user_answer_value = 1;
                  $userAnswer->save(false);
               }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
                  || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
@@ -232,7 +232,7 @@ class AssessmentsController extends  MyActiveController
                      'survey_user_answer_question_id'=>$question->survey_question_id,
                      'survey_user_answer_user_id' => \Yii::$app->user->getId()
                    ]);
-                   foreach ($value as $file) {
+                   foreach ($value as $k => $file) {
                       $userAnswer =  new SurveyUserAnswer();
                       $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
                       $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
@@ -240,7 +240,9 @@ class AssessmentsController extends  MyActiveController
                       $userAnswer->survey_user_answer_value = $file['content'];
                       $userAnswer->survey_user_answer_text = $file['name'];
                       $userAnswer->survey_user_answer_file_type = $file['type'];
-                      $userAnswer->survey_user_answer_point = $question->survey_question_point;
+                      if ($k == 0) {
+                        $userAnswer->survey_user_answer_point = $question->survey_question_point;
+                      }
                       $userAnswer->save(false);
                     }
                 }
