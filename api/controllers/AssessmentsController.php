@@ -148,20 +148,26 @@ class AssessmentsController extends  MyActiveController
                      'survey_user_answer_survey_id' => $question->survey_question_survey_id,
                      'survey_user_answer_question_id' => $question->survey_question_id,
                  ]));
-                 $userAnswer->survey_user_answer_point = $answer->question->survey_question_point;
+                 if ($answer->correct || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX) {
+                    $userAnswer->survey_user_answer_point = $answer->question->survey_question_point;
+                 }
                  $userAnswer->survey_user_answer_value = $value;
                  $userAnswer->save(false);
               }if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
               ){
+                // return var_dump($answer);
                  //handel one answer
+                $answerPoint = SurveyAnswer::findOne(['survey_answer_id'=>$value]);
                  $userAnswers = $question->userAnswers;
                  $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
                      'survey_user_answer_user_id' => \Yii::$app->user->getId(),
                      'survey_user_answer_survey_id' => $question->survey_question_survey_id,
                      'survey_user_answer_question_id' => $question->survey_question_id,
                  ]));
-                 $answerPoint = SurveyAnswer::findOne(['survey_answer_id'=>$value])->survey_answer_points;
-                 $userAnswer->survey_user_answer_point = $answerPoint;
+                 if ($answerPoint->correct) {
+                    $userAnswer->survey_user_answer_point = $answerPoint->question->survey_question_point;
+                 }
+                 $userAnswer->survey_user_answer_answer_id = $value;
                  $userAnswer->survey_user_answer_value = $value;
                  $userAnswer->save(false);
               }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
@@ -183,7 +189,9 @@ class AssessmentsController extends  MyActiveController
                             $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
                             $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
                             $userAnswer->survey_user_answer_value =1 ;
-                            $userAnswer->survey_user_answer_point = $answer->survey_answer_points;
+                            if ($answer->correct) {
+                                $userAnswer->survey_user_answer_point = $answer->survey_answer_points;
+                            }
                         $userAnswer->save(false);
                     }
 

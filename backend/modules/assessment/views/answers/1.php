@@ -14,7 +14,8 @@ use yii\helpers\Url;
 /** @var $form \yii\widgets\ActiveForm */
 
 foreach ($question->answers as $i => $answer) {
-    echo Html::checkbox('checkbox', false, ['class' => 'pseudo-checkbox']);
+    // echo Html::checkbox('checkbox', false, ['class' => 'pseudo-checkbox']);
+    echo $form->field($answer, "[$question->survey_question_id][$i]correct")->checkbox(['value' => "1"]);
     echo $form->field($answer, "[$question->survey_question_id][$i]survey_answer_name")->input('text',
         ['placeholder' => \Yii::t('survey', 'Enter an answer choice')])->label(false);
 

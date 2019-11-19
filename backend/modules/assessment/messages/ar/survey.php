@@ -78,4 +78,5 @@ return [
     'Survey Question Point'=>'درجة السؤال',
     'You must enter a question point'=>'يجب ادخال درجة السؤال',
     'Answer Point'=>'درجة السؤال',
+    'Correct Answer'=>'إجابة صحيحة',
 ];

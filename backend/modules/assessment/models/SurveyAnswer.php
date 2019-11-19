@@ -17,7 +17,7 @@ use yii\db\Query;
  * @property integer $survey_answer_sort
  * @property integer $survey_answer_points
  * @property boolean $survey_answer_show_descr
- *
+ * @property $integer $correct
  * @property SurveyQuestion $question
  * @property SurveyUserAnswer[] $userAnswers
  */
@@ -77,7 +77,7 @@ class SurveyAnswer extends \yii\db\ActiveRecord
                 }
                 return true;
             }],
-            [['survey_answer_show_descr','survey_answer_show_corrective_action'], 'boolean'],
+            [['survey_answer_show_descr','survey_answer_show_corrective_action','correct'], 'boolean'],
             [['survey_answer_show_descr','survey_answer_show_corrective_action'], 'filter', 'filter' => 'boolval'],
             [['survey_answer_name'], 'string', 'max' => 100],
             [['survey_answer_name'], 'required'],
@@ -118,6 +118,7 @@ class SurveyAnswer extends \yii\db\ActiveRecord
             'survey_answer_points' => Yii::t('survey', 'Points'),
             'survey_answer_show_corrective_action'=> Yii::t('survey', 'Show corrective action description'),
             'survey_answer_corrective_action'=> Yii::t('survey', 'Corrective action description'),
+            'correct'=> Yii::t('survey','Correct Answer'),
         ];
     }
 
