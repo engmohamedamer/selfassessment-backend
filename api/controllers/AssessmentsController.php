@@ -148,8 +148,10 @@ class AssessmentsController extends  MyActiveController
                      'survey_user_answer_survey_id' => $question->survey_question_survey_id,
                      'survey_user_answer_question_id' => $question->survey_question_id,
                  ]));
-                 if ($answer->correct || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX) {
+                 if ($answer->correct) {
                     $userAnswer->survey_user_answer_point = $answer->question->survey_question_point;
+                 }elseif($question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX){
+                    $userAnswer->survey_user_answer_point = $question->survey_question_point;
                  }
                  $userAnswer->survey_user_answer_value = $value;
                  $userAnswer->save(false);
