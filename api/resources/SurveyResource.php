@@ -51,10 +51,20 @@ class SurveyResource extends Survey
                 return 'off';
             },
             'startSurveyText'=>function($model){
-                return 'بدء الإستبيان';
+                $userId = \Yii::$app->user->identity->userProfile;
+                if ($userId->locale == 'en-US') {
+                    return 'Start Survey';
+                }else{
+                    return 'بدء الإستبيان';
+                }
             },
             'completedHtml'=>function($model){
-                return "<h3 class='mb-4'>جاري حفظ الإستبيان .. </h3>";
+                $userId = \Yii::$app->user->identity->userProfile;
+                if ($userId->locale == 'en-US') {
+                    return "<h3 class='mb-4'>Saving Survey .. </h3>";
+                }else{
+                    return "<h3 class='mb-4'>جاري حفظ الإستبيان .. </h3>";
+                }
             },
             'progress'=>function($model){
                 return  Survey::surveyProgress($model,\Yii::$app->user->identity->id);
@@ -79,6 +89,16 @@ class SurveyResource extends Survey
             },
 
             'pages'=>function($model){
+                $userId = \Yii::$app->user->identity->userProfile;
+                if ($userId->locale == 'en-US') {
+                    $attach = 'Do you want to attach some files?';
+                    $descr = 'Sorting';
+                    $info = '<h3>Important instructions</h3><p>  '. $model->start_info .' </p>';
+                }else{
+                    $attach = 'تريد إرفاق بعض الملفات؟';
+                    $descr = 'الترتيب';
+                    $info = '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>';
+                }
                 $result = [];
                 $result[] = [
                     'name'=> 'page1',
@@ -87,7 +107,7 @@ class SurveyResource extends Survey
                             'type'=>'html',
                             'name'=>'q',
                             'html'=>[
-                                'ar'=> '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>'
+                                'ar'=> $info
                             ]
                         ]
                     ]
@@ -170,12 +190,6 @@ class SurveyResource extends Survey
                                 ];
                             }
 
-                            $userId = \Yii::$app->user->identity->userProfile;
-                            if ($userId->locale == 'en-US') {
-                                $descr = 'Sorting';
-                            }else{
-                                $descr = 'الترتيب';
-                            }
                             $data[$c]['columns'] = [[
                                 "name"=>"rate",
                                 "title"=>$descr,
@@ -183,7 +197,7 @@ class SurveyResource extends Survey
                             ]];
                             $data[$c]['rows'] = $qAnswer;
                         }
-                        if ($question->survey_question_attachment_file) {
+                        if ($question->survey_question_attachment_file) {                            
                             $data[$c+1] = [
                                 'type'=> "panel",
                                 "startWithNewLine"=>false,
@@ -191,7 +205,7 @@ class SurveyResource extends Survey
                                     [
                                         'name'=>'f-'.$question->survey_question_id,
                                         'type'=> "boolean",
-                                        'label'=> "تريد إرفاق بعض الملفات؟",
+                                        'label'=> $attach,
                                     ],
                                     [
                                         "name"=> 'a-'.$question->survey_question_id,
