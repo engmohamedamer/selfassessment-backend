@@ -286,7 +286,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
         <div class="clearfix"></div>
         <hr>
         <div id="survey-questions">
-            <h2 class='mt-2 mb-3' style='color:#fff; margin: 20px auto; text-align: center;'>الأسئلة</h2>
+            <h2 class='mt-2 mb-3' style='color:#fff; margin: 20px auto; text-align: center;'>الأسئلة (0)</h2>
             <?php
             foreach ($survey->questions as $i => $question) {
                 echo $this->render('/question/_form', ['question' => $question]);
@@ -307,8 +307,8 @@ if (Yii::$app->user->identity->userProfile->organization) {
                 'skipOuterContainers' => true,
             ]
         ]);
-        echo Html::tag('div', Html::a('<span class="glyphicon glyphicon-plus"></span> ' . Yii::t('survey', 'Add question'), Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => 'btn btn-success secBtn']),
-            ['class' => 'text-center survey-btn ', 'id' => '']);
+        echo Html::tag('div', Html::a('<span class="glyphicon glyphicon-plus"></span> ' . Yii::t('survey', 'Add question'), Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => 'btn btn-success secBtn ']),
+            ['class' => 'text-center survey-btn addQPanel addQFixed', 'id' => '']);
         echo Html::tag('div', Html::submitButton('<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save'),
             ['class' => 'btn primBtn', 'data-default-text' => '<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save')]), ['class' => 'text-center survey-btn', 'id' => 'save', 'data-action' => Url::toRoute(['default/view', 'id' => $survey->survey_id])]);
 

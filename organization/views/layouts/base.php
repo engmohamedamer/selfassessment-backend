@@ -33,6 +33,9 @@ if(Yii::$app->user->isGuest){
     ?>
 
     <style>
+        /* /// Mahmoud Customizations On form Here Beside Base Style>>>>>>>> */
+
+
         .btn-primary{
             background-color: <?= $brandPrimColor ?> !important;
             border-color: <?= $brandPrimColor ?> !important;
@@ -109,7 +112,7 @@ if(Yii::$app->user->isGuest){
 
         }
 
-        .secBtn:hover {
+        .secBtn:hover, .secBtn:active, .secBtn:focus {
             color: white !important;
             background-color: <?= $brandPrimColor ?> !important; 
         }
@@ -176,6 +179,23 @@ if(Yii::$app->user->isGuest){
             border-bottom: 1px solid <?= $brandPrimColor ?> !important;
 
         }
+
+
+        .addQFixed {
+            position: fixed;
+            right: 3%;
+            bottom: 0;
+            z-index: 99999;
+            background: white;
+            padding: 10px;
+            /* height:50%; */
+            overflow:auto;
+            
+        }
+
+        /* .addQPanel {
+
+        } */
 
 
     </style>
