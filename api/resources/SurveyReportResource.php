@@ -261,7 +261,7 @@ class SurveyReportResource extends Survey
                     'survey_user_answer_survey_id'=>$model->survey_id,
                     'survey_user_answer_question_id'=>$question->survey_question_id
                 ]);
-                if($userAnswerObj){
+                if ($userAnswerObj->surveyUserAnswerAnswer->survey_answer_show_corrective_action) {
                     $correctiveActions++;
                 }
 
@@ -270,8 +270,6 @@ class SurveyReportResource extends Survey
                 || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
                 || $question->survey_question_type === SurveyType::TYPE_CALENDAR
             ){
-  
-                //fetch user answers
                 $userAnswersObj = SurveyUserAnswer::find()->where([
                     'survey_user_answer_user_id'=>$userId,
                     'survey_user_answer_survey_id'=>$model->survey_id,
