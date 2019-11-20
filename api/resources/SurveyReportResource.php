@@ -63,7 +63,7 @@ class SurveyReportResource extends Survey
                     'survey_number'=>$model->survey_id .'/'. date("Y",strtotime($model->survey_created_at)) ,
                     'survey_time_to_pass'=> $model->survey_time_to_pass,
                     'survey_question_number'=> count($model->questions),
-                    'survey_corrective_number'=>rand(1,10),
+                    'survey_corrective_number'=>$this->text($model),
                     'total_points'=> $model->survey_point ?: 0,
                     'gained_points'=>$gained_points ?: 0,
                     'progress'=>$this->surveyProgress($model,$userId),
@@ -244,7 +244,54 @@ class SurveyReportResource extends Survey
         ];
     }
 
+    public function text($model)
+    {
+        $userId =$this->userId;
+        $data =$result= [];
+        //get survey questions then check user answers
+        $i=1;
+        $correctiveActions = 0;
+        foreach ($model->questions as  $question) {
+            $type = null;
+            if($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
+                || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
+            ){
+                $userAnswerObj = SurveyUserAnswer::findOne([
+                    'survey_user_answer_user_id'=>$userId,
+                    'survey_user_answer_survey_id'=>$model->survey_id,
+                    'survey_user_answer_question_id'=>$question->survey_question_id
+                ]);
+                if($userAnswerObj){
+                    $correctiveActions++;
+                }
 
+            }else if(
+                $question->survey_question_type === SurveyType::TYPE_MULTIPLE
+                || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
+                || $question->survey_question_type === SurveyType::TYPE_CALENDAR
+            ){
+  
+                //fetch user answers
+                $userAnswersObj = SurveyUserAnswer::find()->where([
+                    'survey_user_answer_user_id'=>$userId,
+                    'survey_user_answer_survey_id'=>$model->survey_id,
+                    'survey_user_answer_question_id'=>$question->survey_question_id
+                ])->all();
+                if($userAnswersObj){
+                     foreach ($userAnswersObj as $item) {
+                        if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
+                            if ($item->surveyUserAnswerAnswer->survey_answer_show_corrective_action) {
+                                $correctiveActions++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        return $correctiveActions;
+    }
 
 
 
