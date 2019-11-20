@@ -140,7 +140,9 @@ class SurveyReportResource extends Survey
                             foreach ($userAnswersObj as $item) {
                                 if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
                                     $temp[] = $item->surveyUserAnswerAnswer->survey_answer_name;
-                                    $correctiveAction[] = $item->surveyUserAnswerAnswer->survey_answer_corrective_action;
+                                    if ($item->surveyUserAnswerAnswer->survey_answer_show_corrective_action) {
+                                        $correctiveAction[] = $item->surveyUserAnswerAnswer->survey_answer_corrective_action;
+                                    }
                                 }
 
                             }
