@@ -75,7 +75,7 @@ return [
     'Steps Number'=>'عدد الخطوات',
     'Can Attach File'=>'يمكن إرفاق ملف',
     'File Type'=>'نوع الملف',
-    'Survey Point'=>'درجة الاستبيان',
+    'Survey Point (optional)'=>'درجة الاستبيان (اختياري)',
     'Survey Question Point'=>'درجة السؤال',
     'You must enter a question point'=>'يجب ادخال درجة السؤال',
     'Answer Point'=>'درجة السؤال',

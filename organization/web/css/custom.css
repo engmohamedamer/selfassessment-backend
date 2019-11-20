@@ -537,9 +537,9 @@ height: 34px;
   margin-top: 10px;
 }
 .survey-container .survey-block .survey-question-name-wrap .form-control, .kv-editable-popover .survey-block .survey-question-name-wrap .form-control {
-  color: #fff !important;
+  /* color: #fff !important; */
   font-weight: normal;
-  border-bottom: 1px solid #fff !important;
+  /* border-bottom: 1px solid #fff !important; */
   background: transparent;
 }
 .survey-container .survey-block .survey-question-name-wrap .form-control::placeholder, .kv-editable-popover .survey-block .survey-question-name-wrap .form-control::placeholder {

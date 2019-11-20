@@ -51,7 +51,7 @@ echo Html::beginTag('div', ['class' => 'survey-block', 'id' => 'survey-question-
 
 echo Html::beginTag('div', ['class' => 'survey-question-name-wrap']);
 
-echo $form->field($question, "[{$question->survey_question_id}]survey_question_name")->input('text', ['placeholder' => \Yii::t('survey', 'Enter question name')])->label(false);
+echo $form->field($question, "[{$question->survey_question_id}]survey_question_name")->input('text', [])->label(\Yii::t('survey', 'Enter question name'));
 
 echo Html::a(\Yii::t('survey', '<span class="glyphicon glyphicon-trash"></span>'), Url::toRoute(['question/delete', 'id' => $question->survey_question_id]), [
     'class' => 'btn btn-danger pull-right btn-delete',

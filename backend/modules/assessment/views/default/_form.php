@@ -93,7 +93,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
             echo Html::beginTag('div', ['class' => 'survey-content-wrap']);
             
             echo Html::beginTag('div', ['class' => 'row', 'style' => 'justify-content: center;']);
-            echo Html::beginTag('div', ['class' => 'col-md-3', 'style' => 'background: '.$brandPrimColor.'; border-radius: 10px; text-align: center; margin:5px;']);
+            echo Html::beginTag('div', ['class' => 'col-md-3', 'style' => 'background: '.$brandSecColor.'; color:#000; border-radius: 10px; text-align: center; margin:5px;']);
             echo Html::label(Yii::t('survey', 'Expired at') . ': ', 'survey-survey_expired_at');
             echo Html::tag('br', '');
 
@@ -130,7 +130,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
             ]);
             echo Html::endTag('div'); // col-md-3
 
-            echo Html::beginTag('div', ['class' => 'col-md-3', 'style' => 'background: beige; border-radius: 10px; text-align: center; margin:5px;']);
+            echo Html::beginTag('div', ['class' => 'col-md-3', 'style' => 'background: '.$brandSecColor.'; color:#000; border-radius: 10px; text-align: center; margin:5px;']);
             echo Html::label(Yii::t('survey', 'Time to pass') . ': ', 'survey-survey_time_to_pass');
             echo Html::tag('br', '');
             echo Editable::widget([
@@ -153,8 +153,8 @@ if (Yii::$app->user->identity->userProfile->organization) {
             echo Html::endTag('div'); // col-md-3
 
 
-            echo Html::beginTag('div', ['class' => 'col-md-3', 'style' => 'background: beige; border-radius: 10px; text-align: center; margin:5px;']);
-            echo Html::label(Yii::t('survey', 'Survey Point') . ': ', 'survey-survey_point');
+            echo Html::beginTag('div', ['class' => 'col-md-3', 'style' => 'background: '.$brandSecColor.'; color:#000; border-radius: 10px; text-align: center; margin:5px;']);
+            echo Html::label(Yii::t('survey', 'Survey Point (optional)') . ': ', 'survey-survey_point');
             echo Html::tag('br', '');
             echo Editable::widget([
                 'model' => $survey,
@@ -286,6 +286,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
         <div class="clearfix"></div>
         <hr>
         <div id="survey-questions">
+            <h2 class='mt-2 mb-3' style='color:#fff; margin: 20px auto; text-align: center;'>الأسئلة</h2>
             <?php
             foreach ($survey->questions as $i => $question) {
                 echo $this->render('/question/_form', ['question' => $question]);
@@ -306,10 +307,10 @@ if (Yii::$app->user->identity->userProfile->organization) {
                 'skipOuterContainers' => true,
             ]
         ]);
-        echo Html::tag('div', Html::a('<span class="glyphicon glyphicon-plus"></span> ' . Yii::t('survey', 'Add question'), Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => 'btn btn-success']),
-            ['class' => 'text-center survey-btn', 'id' => '']);
+        echo Html::tag('div', Html::a('<span class="glyphicon glyphicon-plus"></span> ' . Yii::t('survey', 'Add question'), Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => 'btn btn-success secBtn']),
+            ['class' => 'text-center survey-btn ', 'id' => '']);
         echo Html::tag('div', Html::submitButton('<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save'),
-            ['class' => 'btn btn-primary', 'data-default-text' => '<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save')]), ['class' => 'text-center survey-btn', 'id' => 'save', 'data-action' => Url::toRoute(['default/view', 'id' => $survey->survey_id])]);
+            ['class' => 'btn primBtn', 'data-default-text' => '<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save')]), ['class' => 'text-center survey-btn', 'id' => 'save', 'data-action' => Url::toRoute(['default/view', 'id' => $survey->survey_id])]);
 
         Pjax::end(); ?>
 

@@ -85,15 +85,13 @@ if(Yii::$app->user->isGuest){
             opacity: 1 !important;
             font-size: 20px !important;
             line-height: 40px !important;
-
             transition: all .2s !important;
 
+        }
 
-            &:hover {
+        .primBtn:hover {
                 opacity: .8 !important;
             }
-
-        }
 
         .secBtn {
             color: <?= $brandPrimColor ?> !important;
@@ -107,15 +105,13 @@ if(Yii::$app->user->isGuest){
             border-radius: 5px !important;
             font-size: 20px !important;
             line-height: 40px !important;
-
             transition: all .2s !important;
 
+        }
 
-            &:hover {
-                color: white !important;
-                background-color: <?= $brandPrimColor ?> !important; 
-            }
-
+        .secBtn:hover {
+            color: white !important;
+            background-color: <?= $brandPrimColor ?> !important; 
         }
 
 
@@ -129,23 +125,56 @@ if(Yii::$app->user->isGuest){
             box-shadow: none !important;
             font-size: 20px !important;
             line-height: 40px !important;
-
             transition: all .2s  !important;
-
-
-            &:hover {
-                color: <?= $brandPrimColor ?> !important;
-            }
 
         }
 
-        section.content .survey-container .survey-block .survey-name-wrap, section.content .survey-container .survey-block .survey-question-name-wrap, section.content .survey-container .survey-block .survey-question-view-wrap, section.content .kv-editable-popover .survey-block .survey-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-view-wrap {
+        .thirdBtn:hover {
+            color: <?= $brandPrimColor ?> !important;
+        }
+
+        section.content .survey-container .survey-block .survey-name-wrap,  section.content .survey-container .survey-block .survey-question-view-wrap, section.content .kv-editable-popover .survey-block .survey-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-view-wrap {
             background-color: <?= $brandPrimColor ?> !important; 
+        }
+
+        section.content .survey-container .survey-block .survey-question-name-wrap {
+            background-color: <?= $brandSecColor ?> !important; 
+            color: <?= $brandPrimColor ?> !important;
+            border: 1px dashed <?= $brandPrimColor ?> !important;
+
+            
+        }
+
+        section.content .survey-container .survey-block  {
+            background-color: #fff !important; 
+            color: #000;
+            border: 2px dashed <?= $brandPrimColor ?>;
+
         }
 
         section.content #survey-widget #survey-title, section.content #survey-view #survey-title {
-            background-color: <?= $brandPrimColor ?> !important; 
-            border: 8px solid <?= $brandSecColor ?>;
+            background-color: #fff !important; 
+            color: #000;
+            border: 2px dashed <?= $brandPrimColor ?>;
+        }
+
+        #survey-questions {
+            background: <?= $brandPrimColor ?>;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        section.content .survey-container #survey-questions .survey-block  {
+            background-color: #fff !important; 
+            color: #000;
+            border: none !important;
+            margin-bottom: 15px !important;
+
+        }
+
+        .survey-container .form-control, .kv-editable-popover .form-control, .survey-container .survey-block .select2-container--krajee .select2-selection--single, .kv-editable-popover .survey-block .select2-container--krajee .select2-selection--single {
+            border-bottom: 1px solid <?= $brandPrimColor ?> !important;
+
         }
 
 
