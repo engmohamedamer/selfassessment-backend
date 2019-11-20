@@ -240,7 +240,6 @@ class SurveyResource extends Survey
                     // has one value
                     $c = 0;
                     if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
-                        || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
                         || $question->survey_question_type === SurveyType::TYPE_SLIDER
                         || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
                         || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
@@ -256,6 +255,19 @@ class SurveyResource extends Survey
                         if($userAnswerObj){
                             $data['q-'.$question->survey_question_id] = $userAnswerObj->survey_user_answer_value;
 
+                        }
+
+                    }elseif ($question->survey_question_type === SurveyType::TYPE_DROPDOWN
+                    ){
+                        //fetch user answers
+                        $userAnswerObj = SurveyUserAnswer::findOne([
+                            'survey_user_answer_user_id'=>$userId,
+                            'survey_user_answer_survey_id'=>$model->survey_id,
+                            'survey_user_answer_question_id'=>$question->survey_question_id
+
+                        ]);
+                        if($userAnswerObj){
+                            $data['q-'.$question->survey_question_id] = $userAnswerObj->survey_user_answer_answer_id;
                         }
 
                     }else if(
