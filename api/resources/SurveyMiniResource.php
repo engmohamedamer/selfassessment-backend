@@ -28,7 +28,14 @@ class SurveyMiniResource extends Survey
             'title'=>function($model){
                 return $model->survey_name;
             },
-
+            'isClosed'=>function($model){
+                if ($model->survey_is_closed) {
+                   return true;
+                }elseif(strtotime($model->survey_expired_at)){
+                    return time() >= strtotime($model->survey_expired_at);
+                }
+                return false;
+            },
 
             'description'=>function($model){
                 return $model->survey_descr;
