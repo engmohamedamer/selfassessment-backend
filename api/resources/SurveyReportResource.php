@@ -64,8 +64,8 @@ class SurveyReportResource extends Survey
                     'survey_time_to_pass'=> $model->survey_time_to_pass,
                     'survey_question_number'=> count($model->questions),
                     'survey_corrective_number'=>rand(1,10),
-                    'total_points'=> $model->survey_point,
-                    'gained_points'=>$gained_points,
+                    'total_points'=> $model->survey_point ?: 0,
+                    'gained_points'=>$gained_points ?: 0,
                     'progress'=>$this->surveyProgress($model,$userId),
                     'actual_time'=> $time,
                 ];
