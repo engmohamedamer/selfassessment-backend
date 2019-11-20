@@ -135,8 +135,7 @@ class AssessmentsController extends  MyActiveController
               $key=  (int)preg_replace('/\D/ui','',$key);
               $question = $this->findModel($key);
              //check question type
-             if ( $question->survey_question_type === SurveyType::TYPE_DROPDOWN
-                  || $question->survey_question_type === SurveyType::TYPE_SLIDER
+             if ($question->survey_question_type === SurveyType::TYPE_SLIDER
                   || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
                   || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
                  || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
@@ -148,14 +147,24 @@ class AssessmentsController extends  MyActiveController
                      'survey_user_answer_survey_id' => $question->survey_question_survey_id,
                      'survey_user_answer_question_id' => $question->survey_question_id,
                  ]));
-                 if ($answer->correct) {
-                    $userAnswer->survey_user_answer_point = $answer->question->survey_question_point;
-                 }else{
-                    $userAnswer->survey_user_answer_point = $question->survey_question_point;
-                 }
-                 $userAnswer->survey_user_answer_value = $value;
-                 $userAnswer->save(false);
-              }if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
+                
+                $userAnswer->survey_user_answer_point = $question->survey_question_point;
+                $userAnswer->survey_user_answer_value = $value;
+                $userAnswer->save(false);
+              }elseif ($question->survey_question_type === SurveyType::TYPE_DROPDOWN){
+                 $userAnswers = $question->userAnswers;
+                 $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
+                     'survey_user_answer_user_id' => \Yii::$app->user->getId(),
+                     'survey_user_answer_survey_id' => $question->survey_question_survey_id,
+                     'survey_user_answer_question_id' => $question->survey_question_id,
+                 ]));
+                $userAnswer->survey_user_answer_point = $question->survey_question_point;
+                $userAnswer->survey_user_answer_answer_id = $value;
+                $userAnswer->survey_user_answer_value = 1;
+                $userAnswer->save(false);
+              }
+
+              if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
               ){
                 // return var_dump($answer);
                  //handel one answer
@@ -183,7 +192,7 @@ class AssessmentsController extends  MyActiveController
                  //save multiple
 
                  $point =  $question->survey_question_point/ count(SurveyAnswer::find()->where(['survey_answer_question_id'=>$question->survey_question_id,'correct'=>1])->all());
-
+                 // return var_dump($point);
                  foreach ($question->answers as $i => $answer) {
                    $found = in_array($answer->survey_answer_id ,$value);
                     if($found){
@@ -231,8 +240,7 @@ class AssessmentsController extends  MyActiveController
 
                    }
 
-             }else if($question->survey_question_type === SurveyType::TYPE_FILE
-             ) {
+             }else if($question->survey_question_type === SurveyType::TYPE_FILE) {
                  //save multiple
                 if (count($value) > 0 ) {
                     SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
