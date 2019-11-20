@@ -231,6 +231,10 @@ class SurveyQuestion extends \yii\db\ActiveRecord
                     ->andWhere(['survey_user_answer_value' => 1])
                     ->count();
                 break;
+            case SurveyType::TYPE_SINGLE_TEXTBOX:
+                $result = SurveyUserAnswer::find()->where(['survey_user_answer_question_id' => $this->survey_question_id])
+                    ->count();
+                break;    
             case SurveyType::TYPE_ONE_OF_LIST:
             case SurveyType::TYPE_DROPDOWN:
                 $result = SurveyUserAnswer::find()->where(['survey_user_answer_question_id' => $this->survey_question_id])

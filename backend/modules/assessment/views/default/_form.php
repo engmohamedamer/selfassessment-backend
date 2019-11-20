@@ -286,7 +286,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
         <div class="clearfix"></div>
         <hr>
         <div id="survey-questions">
-            <h2 class='mt-2 mb-3' style='color:#fff; margin: 20px auto; text-align: center;'>الأسئلة (0)</h2>
+            <h2 class='mt-2 mb-3' style='color:#fff; margin: 20px auto; text-align: center;'><?= Yii::t('common','Questions')  ?> (<?= count($survey->questions)  ?>)</h2>
             <?php
             foreach ($survey->questions as $i => $question) {
                 echo $this->render('/question/_form', ['question' => $question]);

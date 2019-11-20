@@ -244,4 +244,5 @@ return [
     'Your account not activated yet'=>'حسابك لم يتم تفعيله بعد',
     'All Contributors'=>'كل المشاركين',
     'Latest Contributors'=>'أحدث المشاركين',
+    'Questions'=>'الأسئلة',
 ];
