@@ -15,11 +15,13 @@ use vova07\imperavi\Widget;
 
 //$form->field()
 foreach ($question->answers as $i => $answer) {
-    $checked = ' ';
-    if ($answer->correct) {
-        $checked = 'checked';
+    if ($question->survey->survey_point > 0) {
+        $checked = ' ';
+        if ($answer->correct) {
+            $checked = 'checked';
+        }
+        echo "<label><input type='radio' name='SurveyAnswer[$question->survey_question_id][correct]' value='$i' ".$checked." > إجابة صحيحة </label>";
     }
-    echo "<label><input type='radio' name='SurveyAnswer[$question->survey_question_id][correct]' value='$i' ".$checked." > إجابة صحيحة </label>";
     // echo $form->field($answer, "[$question->survey_question_id][$i]correct")->radio();
     echo $form->field($answer, "[$question->survey_question_id][$i]survey_answer_name")->input('text',
         ['placeholder' => \Yii::t('survey', 'Enter an answer choice')])->label(false);

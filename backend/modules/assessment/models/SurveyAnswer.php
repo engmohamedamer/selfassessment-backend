@@ -153,7 +153,7 @@ class SurveyAnswer extends \yii\db\ActiveRecord
                 break;
             case SurveyType::TYPE_ONE_OF_LIST:
             case SurveyType::TYPE_DROPDOWN:
-                $result = SurveyUserAnswer::find()->andWhere(['survey_user_answer_value' => $this->survey_answer_id])
+                $result = SurveyUserAnswer::find()->andWhere(['survey_user_answer_answer_id' => $this->survey_answer_id])
                     ->count();
                 break;
             case SurveyType::TYPE_RANKING:
