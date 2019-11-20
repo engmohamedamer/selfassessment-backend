@@ -242,4 +242,6 @@ return [
     
     'Social media links will be shown in the footer.'=>'* تظهر روابط التواصل الإجتماعي في أسفل الموقع .',
     'Your account not activated yet'=>'حسابك لم يتم تفعيله بعد',
+    'All Contributors'=>'كل المشاركين',
+    'Latest Contributors'=>'أحدث المشاركين',
 ];

@@ -46,16 +46,19 @@ class UserSearch extends User
      * Creates data provider instance with search query applied
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $limit = 0)
     {
 
         $query = User::find();
-
+        if ($limit) {
+            $query->limit($limit);
+        }
         $query->joinWith(['userProfile'])->where(['organization_id'=>$this->organization_id]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=> ['defaultOrder' => ['id'=>SORT_DESC]]
+            'sort'=> ['defaultOrder' => ['id'=>SORT_DESC]],
+            'pagination' => false,
         ]);
 
         if (!($this->load($params) && $this->validate())) {

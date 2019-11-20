@@ -73,8 +73,69 @@ $this->title = Yii::t('backend', 'Dashboard');
             <a href="/assessment/default/create" class="fancy-button bg-gradient1 "><span><i class="fa fa-file-signature mr-2 ml-2"></i> اضف استبيان جديد </span></a>
           </div>
           <!-- /.col -->
+         
           <!-- /.col -->
+            <div class="col-md-6">
+              <!-- USERS LIST -->
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title"><?= Yii::t('common', 'Latest Contributors') ?></h3>
+
+                  <div class="box-tools pull-right">
+                    <!-- <span class="label label-danger">8 New Members</span> -->
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <ul class="users-list clearfix">
+                    <?php foreach($contributors->getModels() as $contributor): ?>
+                    <li>
+                      <img src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">
+                      <a class="users-list-name" href="/user/view?id=<?= $contributor->id ?>"><?= $contributor->userProfile->fullname ?></a>
+                      <span class="users-list-date"><?= date('Y-m-d',$contributor->created_at) ?></span>
+                    </li>
+                    <?php endforeach; ?>
+                  </ul>
+                  <!-- /.users-list -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="/user/index" class="uppercase"><?= Yii::t('common', 'All Contributors') ?></a>
+                </div>
+                <!-- /.box-footer -->
+              </div>
+              <!--/.box -->
+            </div>
+
+
+            <div class="col-md-6">
+                  <div class="box box-danger">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Donut Chart</h3>
+
+                      <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                      </div>
+                    </div>
+                    <div class="box-body">
+                      <canvas id="pieChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+            </div>
+
+
+
+
         </div>
+
+
 <!-- <div class="row">
     <div class="col-lg-6">
         <div class="card">

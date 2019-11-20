@@ -3,6 +3,8 @@
 namespace organization\controllers;
 
 use Yii;
+use common\models\User;
+use organization\models\search\UserSearch;
 use yii\web\Controller;
 
 /**
@@ -22,7 +24,11 @@ class SiteController extends OrganizationController
 
     public function actionDashboard(){
 
-        return $this->render('dashboard');  //,compact()
+        $searchModel = new UserSearch();
+        $searchModel->user_role = User::ROLE_USER;
+        $searchModel->organization_id = Yii::$app->user->identity->userProfile->organization_id;
+        $contributors = $searchModel->search(null,8);
+        return $this->render('dashboard',compact('contributors'));  //,compact()
     }
 
 
