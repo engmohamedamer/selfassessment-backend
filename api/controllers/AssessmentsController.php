@@ -160,7 +160,7 @@ class AssessmentsController extends  MyActiveController
                  ]));
                 $userAnswer->survey_user_answer_point = $question->survey_question_point;
                 $userAnswer->survey_user_answer_answer_id = $value;
-                $userAnswer->survey_user_answer_value = 1;
+                $userAnswer->survey_user_answer_value = $value;
                 $userAnswer->save(false);
               }
 
@@ -179,7 +179,7 @@ class AssessmentsController extends  MyActiveController
                     $userAnswer->survey_user_answer_point = $answerPoint->question->survey_question_point;
                  }
                  $userAnswer->survey_user_answer_answer_id = $value;
-                 $userAnswer->survey_user_answer_value = 1;
+                 $userAnswer->survey_user_answer_value = $value;
                  $userAnswer->save(false);
               }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
                  || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
@@ -232,7 +232,7 @@ class AssessmentsController extends  MyActiveController
                             $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
                             $userAnswer->survey_user_answer_value = $value[$answer->survey_answer_id]['rate'];
                             if ($i == 0) {
-                                $userAnswer->survey_user_answer_point = $answer->question->survey_answer_points;
+                                $userAnswer->survey_user_answer_point = $answer->question->survey_question_point;
                             }
 
                         $userAnswer->save(false);
