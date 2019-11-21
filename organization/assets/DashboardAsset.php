@@ -21,7 +21,7 @@ class DashboardAsset extends AssetBundle
      * @var array
      */
     public $css = [
-        
+        "js/chart.js/Chart.min.css"
 
     ];
     /**
@@ -29,7 +29,9 @@ class DashboardAsset extends AssetBundle
      */
     public $js = [
         "js/chart.js/Chart.min.js",
-        "js/HomeCharts.js",
+        'js/views/landingCharts.js',
+
+        // "js/HomeCharts.js",
     ];
 
     /**

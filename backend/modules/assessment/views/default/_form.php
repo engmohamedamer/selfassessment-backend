@@ -286,7 +286,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
         <div class="clearfix"></div>
         <hr>
         <div id="survey-questions">
-            <h2 class='mt-2 mb-3' style='color:#fff; margin: 20px auto; text-align: center;'><?= Yii::t('common','Questions')  ?> (<?= count($survey->questions)  ?>)</h2>
+            <h2 class='mt-2 mb-3 qNumHeader' style='color:#fff; margin: 20px auto; text-align: center;'><?= Yii::t('common','Questions')  ?> (<span><?= count($survey->questions)  ?></span>)</h2>
             <?php
             foreach ($survey->questions as $i => $question) {
                 echo $this->render('/question/_form', ['question' => $question]);
@@ -337,6 +337,11 @@ CSS
 $this->registerJs(<<<JS
 $(document).ready(function (e) {
     $.fn.survey();
+
+    $('.addQPanel a').on('click', function () {
+        $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+        $('.qNumHeader span').html(parseInt($('.qNumHeader span').html())+ 1)
+    })
 });
 JS
 );
