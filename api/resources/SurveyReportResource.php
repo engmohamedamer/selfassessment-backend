@@ -139,7 +139,13 @@ class SurveyReportResource extends Survey
                             $correctiveAction= [];
                             foreach ($userAnswersObj as $item) {
                                 if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
-                                    $temp[] = ['value'=>$item->surveyUserAnswerAnswer->survey_answer_name,'correct'=> (bool)$item->surveyUserAnswerAnswer->correct];
+
+                                    if ($question->survey->survey_point) {
+                                        $correct = (bool)$item->surveyUserAnswerAnswer->correct;
+                                    }else{
+                                        $correct = true;
+                                    }
+                                    $temp[] = ['value'=>$item->surveyUserAnswerAnswer->survey_answer_name,'correct'=> $correct];
                                     if ($item->surveyUserAnswerAnswer->survey_answer_show_corrective_action) {
                                         $correctiveAction[] = $item->surveyUserAnswerAnswer->survey_answer_corrective_action;
                                     }
