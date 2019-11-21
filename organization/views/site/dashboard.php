@@ -19,7 +19,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                 <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Dashboard') ?></h1>
             </div>
             <div class='col-sm-6 dashboard-fancy-btn'>
-                <a href="/assessment/default/create" class="fancy-button bg-gradient1 "><span><i class="fa fa-file-signature mr-2 ml-2"></i> اضف استبيان جديد </span></a>
+                <a href="/assessment/default/create" class="fancy-button bg-gradient1 "><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('survey', 'Create new survey')?> </span></a>
             </div>
             <!-- <div class="col-sm-6"> -->
                 <!-- <a href="NewOrganization.html" class="btn btn-primary" style="float: right">New Organization</a> -->
@@ -72,7 +72,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             <!-- TABLE: LATEST ORDERS -->
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">أحدث الإستبيانات</h3>
+                    <h3 class="box-title"><?= \Yii::t('common', 'Latest Survey')?></h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -86,69 +86,34 @@ $this->title = Yii::t('backend', 'Dashboard');
                         <table class="table no-margin">
                             <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th>Item</th>
-                                <th>Status</th>
-                                <th>Popularity</th>
+                                <th>#</th>
+                                <th><?= \Yii::t('common', 'Survey')?></th>
+                                <th><?= \Yii::t('common', 'Status')?></th>
+                                <th><?= \Yii::t('common', 'Ends At')?></th>
                             </tr>
                             </thead>
                             <tbody>
+                            <?php 
+                                $i=1; 
+                                foreach($organizationSurvey as $survey):
+                                if ($survey->survey_is_closed) {
+                                    $class = 'danger';
+                                    $status = Yii::t('common','Closed');
+                                }else{
+                                    $class = 'success';
+                                    $status = Yii::t('common','Open');
+                                }
+                            ?>
+
                             <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td><span class="label label-success">Shipped</span></td>
+                                <td><?= $i++ ?></td>
+                                <td><a href="/assessment/default/view?id=<?= $survey->survey_id ?>"><?= $survey->survey_name ?></a></td>
+                                <td><span class="label label-<?=$class?>"><?= $status ?></span></td>
                                 <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><?= $survey->survey_expired_at ?></div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td><span class="label label-danger">Delivered</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="label label-info">Processing</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td><span class="label label-danger">Delivered</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td><span class="label label-success">Shipped</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                </td>
-                            </tr>
+                            <?php endforeach;?>
                             </tbody>
                         </table>
                     </div>
@@ -156,8 +121,8 @@ $this->title = Yii::t('backend', 'Dashboard');
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer clearfix">
-                    <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-                    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                    <a href="/assessment/default/create" class="btn btn-sm btn-info btn-flat pull-left"><?= \Yii::t('survey', 'Create new survey')?></a>
+                    <a href="/assessment" class="btn btn-sm btn-default btn-flat pull-right"><?= \Yii::t('survey', 'Assessments List') ?></a>
                 </div>
                 <!-- /.box-footer -->
             </div>

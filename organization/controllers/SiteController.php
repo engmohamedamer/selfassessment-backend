@@ -3,6 +3,8 @@
 namespace organization\controllers;
 
 use Yii;
+use backend\modules\assessment\models\Survey;
+use common\models\Organization;
 use common\models\User;
 use organization\models\search\UserSearch;
 use yii\web\Controller;
@@ -24,11 +26,14 @@ class SiteController extends OrganizationController
 
     public function actionDashboard(){
 
+        $organization  = Yii::$app->user->identity->userProfile->organization;
         $searchModel = new UserSearch();
         $searchModel->user_role = User::ROLE_USER;
-        $searchModel->organization_id = Yii::$app->user->identity->userProfile->organization_id;
+        $searchModel->organization_id = $organization->id;
         $contributors = $searchModel->search(null,8);
-        return $this->render('dashboard',compact('contributors'));  //,compact()
+
+        $organizationSurvey = Survey::find()->where(['org_id'=>$organization->id])->limit(5)->orderBy('survey_id desc')->all();
+        return $this->render('dashboard',compact('contributors','organizationSurvey'));  //,compact()
     }
 
 

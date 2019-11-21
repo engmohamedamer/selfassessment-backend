@@ -191,7 +191,12 @@ class AssessmentsController extends  MyActiveController
                      ]);
                  //save multiple
 
-                 $point =  $question->survey_question_point/ count(SurveyAnswer::find()->where(['survey_answer_question_id'=>$question->survey_question_id,'correct'=>1])->all());
+                 $correctCount = count(SurveyAnswer::find()->where(['survey_answer_question_id'=>$question->survey_question_id,'correct'=>1])->all());
+                if ($correctCount) {
+                    $point =  $question->survey_question_point/ $correctCount;
+                }else{
+                    $point = 0;
+                }
                  // return var_dump($point);
                  foreach ($question->answers as $i => $answer) {
                    $found = in_array($answer->survey_answer_id ,$value);
