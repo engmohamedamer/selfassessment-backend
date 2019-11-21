@@ -224,9 +224,9 @@ if (Yii::$app->user->identity->userProfile->organization) {
             echo $form->field($survey, "survey_is_closed", ['template' => "<div class='survey-form-field submit-on-click'>{input}{label}</div>",]
             )->checkbox(['class' => 'checkbox danger'], false);
             echo Html::tag('div', '', ['class' => 'clearfix']);
-            echo $form->field($survey, "survey_is_pinned", ['template' => "<div class='survey-form-field submit-on-click'>{input}{label}</div>",]
-            )->checkbox(['class' => 'checkbox'], false);
-            echo Html::tag('div', '', ['class' => 'clearfix']);
+            // echo $form->field($survey, "survey_is_pinned", ['template' => "<div class='survey-form-field submit-on-click'>{input}{label}</div>",]
+            // )->checkbox(['class' => 'checkbox'], false);
+            // echo Html::tag('div', '', ['class' => 'clearfix']);
             echo $form->field($survey, "survey_is_visible", ['template' => "<div class='survey-form-field submit-on-click'>{input}{label}</div>",]
             )->checkbox(['class' => 'checkbox'], false);
 			if ($withUserSearch) {
