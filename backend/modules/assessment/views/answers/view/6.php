@@ -26,28 +26,22 @@ echo Html::beginTag('div', ['class' => 'answers-stat']);
     }catch (\Exception $e){
         $percent = 0;
     }
-    echo Progress::widget([
-        'id' => 'progress-' . $answer->survey_answer_id,
-        'percent' => $percent,
-        'label' => $totalVotesCount,
-        'barOptions' => ['class' => 'progress-bar-info init']
-    ]);
+    // echo Progress::widget([
+    //     'id' => 'progress-' . $answer->survey_answer_id,
+    //     'percent' => $percent,
+    //     'label' => $totalVotesCount,
+    //     'barOptions' => ['class' => 'progress-bar-info init']
+    // ]);
+
+    echo "<div class='text-center'>
+            <p class='text-center'>
+                <strong>Answer Rate</strong>
+                (<strong>$totalVotesCount</strong>/$count)
+            </p>
+            <div class='chart' data-percentage='$percent'>
+              <div class='percentage'></div>
+              <div class='completed active'></div>
+            </div>
+        </div>";
 echo Html::endTag('div');
 ?>
-
-<div class="text-center">
-<p class="text-center">
-    <strong>Answer Rate</strong>
-    (<strong>50</strong>/100)
-    </p>
-<div class='chart' data-percentage='75'>
-  <div class='percentage'></div>
-  <div class='completed active'></div>
-  
-</div>
-
-</div>
-<style>
-
-
-</style>
