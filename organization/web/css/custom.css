@@ -231,7 +231,7 @@ a {
 }
 .dashboard-fancy-btn .fancy-button {
   display: inline-block;
-  margin: 30px;
+  /* margin: 30px; */
   /* font-family: 'Montserrat', Helvetica, Arial, sans-serif; */
   font-weight: bold;
   font-size: 17px;
