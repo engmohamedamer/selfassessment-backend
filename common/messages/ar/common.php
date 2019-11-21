@@ -245,4 +245,10 @@ return [
     'All Contributors'=>'كل المشاركين',
     'Latest Contributors'=>'أحدث المشاركين',
     'Questions'=>'الأسئلة',
+    'Latest Survey'=>'أحدث الإستبيانات',
+    'Survey'=>'الإستبيان',
+    'Status'=>'الحالة',
+    'Ends At'=>'ينتهي في',
+    'Closed'=>'مغلق',
+    'Open'=>'مفتوح',
 ];
