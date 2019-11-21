@@ -21,14 +21,14 @@ class DashboardAsset extends AssetBundle
      * @var array
      */
     public $css = [
-        "js/chart.js/Chart.min.css"
+        "js/chartJs/Chart.min.css"
 
     ];
     /**
      * @var array
      */
     public $js = [
-        "js/chart.js/Chart.min.js",
+        "js/chartJs/Chart.min.js",
         'js/views/landingCharts.js',
 
         // "js/HomeCharts.js",
