@@ -36,4 +36,20 @@ class SiteController extends OrganizationController
         return $this->render('test');
     }
 
+
+    public function actionOrgSurvey()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        
+        $organization = Yii::$app->user->identity->userProfile->organization;
+        $labels = [];
+        $data = [];
+        foreach ($organization->survey as $survey) {
+            $labels[] = $survey->survey_name;
+            $data[] = count($survey->stats);
+        }
+
+        return ['labels'=> $labels ,'data'=>$data];
+    }
+
 }
