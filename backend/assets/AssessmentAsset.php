@@ -35,6 +35,7 @@ class AssessmentAsset extends AssetBundle
      * @var array
      */
     public $js = [
+        
         "js/chartJs/Chart.min.js",
     ];
 
