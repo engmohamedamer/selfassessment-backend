@@ -30,7 +30,7 @@ foreach ($question->answers as $i => $answer) {
     $count = $answer->getTotalUserAnswersCount();
     echo '
         <div class="progress-group">
-            <span class="progress-text">'.$answer->survey_answer_name.'</span>
+            <span class="progress-text">'.$answer->survey_answer_name.' <i class="fas fa-info-circle"  data-toggle="popover" title="Corrective Actions" data-content="And heres some amazing content. Its very engaging. Right?"></i></span>
             <span class="progress-number"><b>'.$count.'</b>/'.$countUser.'</span>
             <div class="progress sm">
                 <div class="progress-bar progress-bar-'.$class[rand(0,3)].'" style="width: '. ($count / $countUser) * 100  .'%"></div>

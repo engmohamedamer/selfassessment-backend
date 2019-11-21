@@ -56,7 +56,7 @@ foreach ($question->answers as $i => $answer) {
     <div class="col-md-4">
         <ul class="chart-legend clearfix" style="margin-top:70px">
           <?php foreach($labels as  $i => $lable):?>
-            <li><i class="far fa-circle" style="color:<?= $colors[$i]?>"></i> <?= $lable ?></li>
+            <li><i class="far fa-circle" style="color:<?= $colors[$i]?>"></i> <?= $lable ?> <i class="fas fa-info-circle"  data-toggle="popover" title="Corrective Actions" data-content="And heres some amazing content. Its very engaging. Right?"></i></li>
           <?php endforeach;?>
         </ul>
     </div>
