@@ -11,7 +11,37 @@ use kartik\slider\Slider;
 use vova07\imperavi\Widget;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\bootstrap\Progress;
 
 /** @var $question \backend\modules\assessment\models\SurveyQuestion */
 /** @var $form \yii\widgets\ActiveForm */
+\backend\assets\AssessmentAsset::register($this);
 
+$totalVotesCount = $question->getTotalUserAnswersCount();
+
+echo Html::beginTag('div', ['class' => 'answers-stat']);
+ 	$count = count($question->survey->stats);
+    try {
+        $percent = ($count / $totalVotesCount) * 100;
+    }catch (\Exception $e){
+        $percent = 0;
+    }
+    // echo Progress::widget([
+    //     'id' => 'progress-' . $answer->survey_answer_id,
+    //     'percent' => $percent,
+    //     'label' => $totalVotesCount,
+    //     'barOptions' => ['class' => 'progress-bar-info init']
+    // ]);
+
+    echo "<div class='text-center'>
+            <p class='text-center'>
+                <strong>Answer Rate</strong>
+                (<strong>$totalVotesCount</strong>/$count)
+            </p>
+            <div class='chart' data-percentage='$percent'>
+              <div class='percentage'></div>
+              <div class='completed active'></div>
+            </div>
+        </div>";
+echo Html::endTag('div');
+?>
