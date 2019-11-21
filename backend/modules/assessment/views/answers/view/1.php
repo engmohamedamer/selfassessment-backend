@@ -28,20 +28,16 @@ $class = ['red','aqua','green','yellow'];
 $colors = ['#f56954','#00a65a','#f39c12','#00c0ef','#f56954','#00a65a','#f39c12','#00c0ef'];
 $labels = [];
 $answerCount = [];
+$correct = [];
 foreach ($question->answers as $i => $answer) {
     $labels[] = $answer->survey_answer_name;
     $answerCount [] = $answer->getTotalUserAnswersCount();
     $countUser = count($question->survey->stats);
-    $count = $answer->getTotalUserAnswersCount();
-    // echo '
-    //     <div class="progress-group">
-    //         <span class="progress-text">'.$answer->survey_answer_name.'</span>
-    //         <span class="progress-number"><b>'.$count.'</b>/'.$countUser.'</span>
-    //         <div class="progress sm">
-    //             <div class="progress-bar progress-bar-'.$class[rand(0,3)].'" style="width: '. ($count / $countUser) * 100  .'%"></div>
-    //         </div>
-    //     </div>
-    // ';
+    if ($answer->survey_answer_show_corrective_action) {
+        $correct[] = ' <i class="fas fa-info-circle"  data-toggle="popover" title="'. Yii::t('survey','Corrective action') .'" data-content="'.$answer->survey_answer_corrective_action.'"></i></span>';
+    }else{
+      $correct[]= '';
+    }
 }
 
 ?>
@@ -56,7 +52,7 @@ foreach ($question->answers as $i => $answer) {
     <div class="col-md-4">
         <ul class="chart-legend clearfix" style="margin-top:70px">
           <?php foreach($labels as  $i => $lable):?>
-            <li><i class="far fa-circle" style="color:<?= $colors[$i]?>"></i> <?= $lable ?> <i class="fas fa-info-circle"  data-toggle="popover" title="Corrective Actions" data-content="And heres some amazing content. Its very engaging. Right?"></i></li>
+            <li><i class="far fa-circle" style="color:<?= $colors[$i]?>"></i> <?= $lable ?> <?=  $correct[$i]?> </li>
           <?php endforeach;?>
         </ul>
     </div>
