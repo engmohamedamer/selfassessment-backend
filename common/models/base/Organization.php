@@ -3,6 +3,7 @@
 namespace common\models\base;
 
 use Yii;
+use backend\modules\assessment\models\Survey;
 use common\models\Pages;
 use common\models\UserProfile;
 use trntv\filekit\behaviors\UploadBehavior;
@@ -198,6 +199,11 @@ class Organization extends \yii\db\ActiveRecord
     public function getPages()
     {
         return $this->hasMany(Pages::className(), ['organization_id' => 'id']);
+    }
+
+    public function getSurvey()
+    {
+        return $this->hasMany(Survey::className(), ['org_id' => 'id']);
     }
 
     /**
