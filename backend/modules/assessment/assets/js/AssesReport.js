@@ -21,34 +21,31 @@ var api;
       SurveyId:$("#assessmentReport").attr("data-SurveyId"),
       UserId:$("#assessmentReport").attr("data-UserId"),
       Asses:{},
-
-
-
       search: '',
         headers: [
           { text: 'الرقم', align: '', sortable: true, value: 'qNum' },
           { text: 'السؤال', align: '', value: 'qText' },
           { text: 'الإجابة', align: '', value: 'qAnswer' },
-         { text: 'الملفات المرفقة', value: 'qAttatchments' },
+          { text: 'الملفات المرفقة', value: 'qAttatchments' },
           { text: 'النقاط المحصلة', align: 'center', value: 'qGainedPoints' },
-          { text: 'النقاط الإجمالية', align: 'center', value: 'qTotalPoints' },
+         // { text: 'النقاط الإجمالية', align: 'center', value: 'qTotalPoints' },
           { text: 'الإجرائات التصحيحية', value: 'qCorrectiveActions' },
         ],
-       
-
-
         assessmentData: {},
         surveyResults: {},
-
-      
-
         questionsReport: [],
         reportGeneralInfo: {},
         assessmentTitle: '',
         assessmentDesc: '',
-       
-
-
+        pagination: {
+          rowsPerPage: 100
+        },
+        methods: {
+          customFilter(items, search, filter) {
+              search = search.toString().toLowerCase();
+              return items.filter(row => filter(row["qNum"], search));
+          } 
+      },
      },
     mounted() {
       $.ajax({
@@ -80,7 +77,18 @@ var api;
       
     },
     methods: {
-      
+      getLevel(gained, total) {
+        if ((gained/total)*100 < 25 || total == 0) {
+            return 'red'
+        } else if ( (gained/total)*100 >= 25 && (gained/total)*100 < 50 ) {
+            return 'orange'
+        } else if ( (gained/total)*100 >= 50 && (gained/total)*100 < 75 ) {
+            return '#cebe32'
+        }
+        else {
+            return 'green'
+        }
+    },
      
   
     },
