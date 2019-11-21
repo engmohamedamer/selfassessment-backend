@@ -665,3 +665,28 @@ width: 100% !important;
   text-align: center;
 }
 /*# sourceMappingURL=custom.css.map */
+
+
+
+
+/* DASHBOARD CUSTOM STYLES */
+
+
+@media (min-width: 768px) {
+  .custom-dashboard .users-list>li.col-sm-4 {
+    width: 25%;
+  }
+}
+
+@media (min-width: 992px) {
+  .custom-dashboard .users-list>li.col-md-2 {
+    width: 16.66666667%;
+  }
+}
+
+/* @media (min-width: 1200px) {
+  .custom-dashboard .users-list>li.col-lg-1 {
+    width: 8.33333333%;
+  }
+  
+} */

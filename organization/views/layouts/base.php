@@ -196,6 +196,10 @@ DashboardAsset::register($this);
             
         }
 
+        .custom-dashboard .box-danger {
+            border-top-color: <?= $brandPrimColor ?> !important;
+        }
+
         /* .addQPanel {
 
         } */
