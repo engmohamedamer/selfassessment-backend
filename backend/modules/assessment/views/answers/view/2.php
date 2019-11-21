@@ -40,3 +40,4 @@ foreach ($question->answers as $i => $answer) {
 }
 
 ?>
+</div>
