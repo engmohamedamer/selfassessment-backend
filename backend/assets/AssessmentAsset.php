@@ -28,13 +28,13 @@ class AssessmentAsset extends AssetBundle
      * @var array
      */
     public $css = [
-        'css/Assessmentview.css'
+        '/css/Assessmentview.css'
     ];
     /**
      * @var array
      */
     public $js = [
-        "js/chart.js/Chart.min.js",
+        "/js/chart.js/Chart.min.js",
     ];
 
     /**
