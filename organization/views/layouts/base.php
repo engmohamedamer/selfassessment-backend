@@ -185,12 +185,12 @@ DashboardAsset::register($this);
 
 
         .addQFixed {
-            position: fixed;
-            right: 3%;
-            bottom: 0;
+            /* position: fixed; */
+            right: 20%;
+            bottom: 10%;
             z-index: 99999;
-            background: white;
-            padding: 10px;
+            /* background: white; */
+            /* padding: 10px; */
             /* height:50%; */
             overflow:auto;
             
