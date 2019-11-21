@@ -105,10 +105,10 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div> 
 
 
-        <div class="col-md-6">
+        <div class="col-md-12">
                 <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Donut Chart</h3>
+                    <h3 class="box-title">الإستبيان الأخير</h3>
 
                     <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -117,7 +117,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </div>
                 </div>
                 <div class="box-body">
-                    <canvas id="assessmentChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                    <canvas id="assessmentChart" style="height: 237px; width: 475px;" height="100%" width="475"></canvas>
                 </div>
                 <!-- /.box-body -->
                 </div>
