@@ -8,7 +8,7 @@ use yii\helpers\Html;
 /* @var $message string */
 /* @var $exception Exception */
 
-$this->title = Yii::t('backend', 'Dashboard'); 
+$this->title = Yii::t('backend', 'Dashboard');
 \organization\assets\DashboardAsset::register($this);
 ?>
 
@@ -67,11 +67,11 @@ $this->title = Yii::t('backend', 'Dashboard');
             <a href="/assessment/default/create" class="fancy-button bg-gradient1 "><span><i class="fa fa-file-signature mr-2 ml-2"></i> اضف استبيان جديد </span></a>
         </div>
         <!-- /.col -->
-        
+
         <div class="col-md-6">
                 <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Donut Chart</h3>
+                    <h3 class="box-title">عدد المشاركين في كل إستبيان</h3>
 
                     <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -80,7 +80,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </div>
                 </div>
                 <div class="box-body">
-                    <canvas id="assessmentChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                    <canvas id="assessmentParticipantsChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
                 </div>
                 <!-- /.box-body -->
                 </div>
@@ -89,7 +89,7 @@ $this->title = Yii::t('backend', 'Dashboard');
         <div class="col-md-6">
                 <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Donut Chart</h3>
+                    <h3 class="box-title">حالة الإستبيانات</h3>
 
                     <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -98,11 +98,31 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </div>
                 </div>
                 <div class="box-body">
-                    <canvas id="assessmentChart2" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                    <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
                 </div>
                 <!-- /.box-body -->
                 </div>
-        </div> 
+        </div>
+
+
+        <div class="col-md-12">
+                <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">الإستبيان الأخير</h3>
+
+                    <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <canvas id="assessmentChart" style="height: 237px; width: 475px;" height="100%" width="475"></canvas>
+                </div>
+                <!-- /.box-body -->
+                </div>
+        </div>
+
 
         <div class="col-md-12">
             <!-- USERS LIST -->
@@ -141,6 +161,102 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div>
 
 
+        <div class="col-md-12">
+        <!-- TABLE: LATEST ORDERS -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Latest Orders</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table class="table no-margin">
+                        <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Item</th>
+                            <th>Status</th>
+                            <th>Popularity</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                            <td>Call of Duty IV</td>
+                            <td><span class="label label-success">Shipped</span></td>
+                            <td>
+                                <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                            <td>Samsung Smart TV</td>
+                            <td><span class="label label-warning">Pending</span></td>
+                            <td>
+                                <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                            <td>iPhone 6 Plus</td>
+                            <td><span class="label label-danger">Delivered</span></td>
+                            <td>
+                                <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                            <td>Samsung Smart TV</td>
+                            <td><span class="label label-info">Processing</span></td>
+                            <td>
+                                <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                            <td>Samsung Smart TV</td>
+                            <td><span class="label label-warning">Pending</span></td>
+                            <td>
+                                <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                            <td>iPhone 6 Plus</td>
+                            <td><span class="label label-danger">Delivered</span></td>
+                            <td>
+                                <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                            <td>Call of Duty IV</td>
+                            <td><span class="label label-success">Shipped</span></td>
+                            <td>
+                                <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+                <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+            </div>
+            <!-- /.box-footer -->
+        </div>
+        <!-- /.box -->
+        </div>
+
 
     </div>
 
@@ -149,93 +265,6 @@ $this->title = Yii::t('backend', 'Dashboard');
 <?php
 $this->registerJs(<<<JS
 $(document).ready(function(e) {
- 
-
-     /* ChartJS
-     * -------
-     * Here we will create a few charts using ChartJS
-     */
-
-    //-------------
-    //- PIE CHART -
-    //-------------
-    // Get context with jQuery - using jQuery's .get() method.
-    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-    var pieChart       = new Chart(pieChartCanvas)
-    var PieData        = [
-      {
-        value    : 700,
-        color    : '#f56954',
-        highlight: '#f56954',
-        label    : 'Chrome'
-      },
-      {
-        value    : 500,
-        color    : '#00a65a',
-        highlight: '#00a65a',
-        label    : 'IE'
-      },
-      {
-        value    : 400,
-        color    : '#f39c12',
-        highlight: '#f39c12',
-        label    : 'FireFox'
-      },
-      {
-        value    : 600,
-        color    : '#00c0ef',
-        highlight: '#00c0ef',
-        label    : 'Safari'
-      },
-      {
-        value    : 300,
-        color    : '#3c8dbc',
-        highlight: '#3c8dbc',
-        label    : 'Opera'
-      },
-      {
-        value    : 100,
-        color    : '#d2d6de',
-        highlight: '#d2d6de',
-        label    : 'Navigator'
-      }
-    ]
-    var pieOptions     = {
-      //Boolean - Whether we should show a stroke on each segment
-      segmentShowStroke    : true,
-      //String - The colour of each segment stroke
-      segmentStrokeColor   : '#fff',
-      //Number - The width of each segment stroke
-      segmentStrokeWidth   : 2,
-      //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout: 50, // This is 0 for Pie charts
-      //Number - Amount of animation steps
-      animationSteps       : 100,
-      //String - Animation easing effect
-      animationEasing      : 'easeOutBounce',
-      //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate        : true,
-      //Boolean - Whether we animate scaling the Doughnut from the centre
-      animateScale         : false,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive           : true,
-      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio  : true,
-      //String - A legend template
-      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-    }
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions)
-
-
-
-
-
-
-
-
-
 
 });
 JS
@@ -380,7 +409,7 @@ JS
                 </div>
             </div>
             <div class="card-body p-0">
-               
+
                 <table class="table table-striped table-valign-middle">
                     <thead>
                         <tr>
@@ -394,7 +423,7 @@ JS
                         <tbody>
                             <tr>
                                 <td>
-                                   
+
                                     <a href="OrganizationView.html"> Organization Name</a>
                                 </td>
                                 <td><a href="AssessmentList.html">3</a></td>
@@ -413,7 +442,7 @@ JS
                             </tr>
                             <tr>
                                 <td>
-                                    
+
                                     <a href="OrganizationView.html"> Organization Name</a>
                                 </td>
                                 <td><a href="AssessmentList.html">3</a></td>
@@ -432,7 +461,7 @@ JS
                             </tr>
                             <tr>
                                 <td>
-                                    
+
                                     <a href="OrganizationView.html"> Organization Name</a>
                                 </td>
                                 <td><a href="AssessmentList.html">3</a></td>
@@ -451,7 +480,7 @@ JS
                             </tr>
                             <tr>
                                 <td>
-                                    
+
                                     <a href="OrganizationView.html"> Organization Name</a>
                                 </td>
                                 <td><a href="AssessmentList.html">3</a></td>
@@ -470,7 +499,7 @@ JS
                             </tr>
                             <tr>
                                 <td>
-                                    
+
                                     <a href="OrganizationView.html"> Organization Name</a>
                                 </td>
                                 <td><a href="AssessmentList.html">3</a></td>
@@ -602,7 +631,7 @@ JS
                             <span class="text-muted">Since last week</span>
                         </p>
                     </div>
-    
+
                     <div class="position-relative mb-4">
                         <canvas id="visitors-chart" height="200"></canvas>
                     </div>
@@ -618,7 +647,7 @@ JS
                     </div>
                 </div>
             </div>
-    
+
             <div class="card">
                 <div class="card-header border-0">
                     <h3 class="card-title">New Assessments</h3>
@@ -657,7 +686,7 @@ JS
                                             <a href="#" class="text-muted" title="Edit Assessment">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-        
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -674,7 +703,7 @@ JS
                                                 <a href="#" class="text-muted" title="Edit Assessment">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-            
+
                                             </td>
                                         </tr>
                                         <tr>
@@ -691,7 +720,7 @@ JS
                                                     <a href="#" class="text-muted" title="Edit Assessment">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                
+
                                                 </td>
                                             </tr>
                                             <tr>
@@ -708,7 +737,7 @@ JS
                                                         <a href="#" class="text-muted" title="Edit Assessment">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                    
+
                                                     </td>
                                                 </tr>
                             <tr>
