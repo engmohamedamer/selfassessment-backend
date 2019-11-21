@@ -65,7 +65,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div>
             <!~~ /.info-box ~~>
         </div> -->
-        
+
         <!-- /.col -->
 
         <div class="col-md-12">
@@ -93,8 +93,8 @@ $this->title = Yii::t('backend', 'Dashboard');
                             </tr>
                             </thead>
                             <tbody>
-                            <?php 
-                                $i=1; 
+                            <?php
+                                $i=1;
                                 foreach($organizationSurvey as $survey):
                                 if ($survey->survey_is_closed) {
                                     $class = 'danger';
@@ -128,7 +128,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div>
             <!-- /.box -->
         </div>
-        
+
 
         <div class="col-md-6">
                 <div class="box box-danger">
@@ -185,7 +185,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                 </div>
         </div>
 
-        
+
 
 
         <div class="col-md-12">
@@ -225,7 +225,7 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div>
 
 
-        
+
 
 
     </div>
