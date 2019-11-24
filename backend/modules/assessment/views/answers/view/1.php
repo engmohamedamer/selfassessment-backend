@@ -15,17 +15,24 @@ use yii\helpers\Html;
 \backend\assets\AssessmentAsset::register($this);
 $totalVotesCount = $question->getTotalUserAnswersCount();
 
-echo Html::beginTag('div', ['class' => 'answers-stat']);
+
+function random_color_part() {
+    return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
+}
+
+function random_color() {
+    return random_color_part() . random_color_part() . random_color_part();
+}
 
 echo '
+<div class="answers-stat" >
     <p class="text-center">
         <strong>Answers</strong>
     </p>
 ';
 ?>
 <?php
-$class = ['red','aqua','green','yellow'];
-$colors = ['#f56954','#00a65a','#f39c12','#00c0ef','#f56954','#00a65a','#f39c12','#00c0ef'];
+$colors = [];
 $labels = [];
 $answerCount = [];
 $correct = [];
@@ -51,7 +58,9 @@ foreach ($question->answers as $i => $answer) {
     </div>
     <div class="col-md-4">
         <ul class="chart-legend clearfix" style="margin-top:70px">
-          <?php foreach($labels as  $i => $lable):?>
+          <?php foreach($labels as  $i => $lable):
+            $colors[] = '#'.random_color();
+          ?>
             <li><i class="far fa-circle" style="color:<?= $colors[$i]?>"></i> <?= $lable ?> <?=  $correct[$i]?> </li>
           <?php endforeach;?>
         </ul>
@@ -62,7 +71,6 @@ foreach ($question->answers as $i => $answer) {
 </div>
 
 <?php
-
 $labelsData = json_encode($labels);
 $answerCountData = json_encode($answerCount);
 $colorsData = json_encode($colors);
