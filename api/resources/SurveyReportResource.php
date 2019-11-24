@@ -3,6 +3,7 @@
 namespace api\resources;
 
 use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyAnswer;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\SurveyType;
 use backend\modules\assessment\models\SurveyUserAnswer;
@@ -63,7 +64,7 @@ class SurveyReportResource extends Survey
                     'survey_number'=>$model->survey_id .'/'. date("Y",strtotime($model->survey_created_at)) ,
                     'survey_time_to_pass'=> $model->survey_time_to_pass,
                     'survey_question_number'=> count($model->questions),
-                    'survey_corrective_number'=>$this->text($model),
+                    'survey_corrective_number'=>$this->correctiveNumber($model),
                     'total_points'=> $model->survey_point ?: null,
                     'gained_points'=>$gained_points ?: null,
                     'progress'=>$this->surveyProgress($model,$userId),
@@ -74,6 +75,12 @@ class SurveyReportResource extends Survey
             'answers'=>function($model){
                 $userId =$this->userId;
                 $data =$result= [];
+                $userId = \Yii::$app->user->identity->userProfile;
+                if ($userId->locale == 'en-US') {
+                    $ShouldChoose = 'Should Choose ';
+                }else{
+                    $ShouldChoose = 'يجب اختيار ';
+                }
                 //get survey questions then check user answers
                 $i=1;
                 foreach ($model->questions as  $question) {
@@ -134,12 +141,18 @@ class SurveyReportResource extends Survey
                             'survey_user_answer_question_id'=>$question->survey_question_id
 
                         ])->all();
+
+                        $answersIdsCorrect = array_column(SurveyAnswer::find()->select('survey_answer_id')->where([
+                            'survey_answer_question_id'=>$question->survey_question_id,
+                            'correct'=> 1
+                        ])->asArray()->all(),'survey_answer_id');
+                        // return $answersIdsCorrect;
                         if($userAnswersObj){
                             $temp=[];
                             $correctiveAction= [];
                             foreach ($userAnswersObj as $item) {
+                                $ids[] =  $item->survey_user_answer_answer_id;
                                 if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
-
                                     if ($question->survey->survey_point) {
                                         $correct = (bool)$item->surveyUserAnswerAnswer->correct;
                                     }else{
@@ -151,6 +164,12 @@ class SurveyReportResource extends Survey
                                     }
                                 }
 
+                            }
+
+                            foreach ($answersIdsCorrect as $value) {
+                                if (!in_array($value, $ids)) {
+                                    $correctiveAction[] = $ShouldChoose.'( '.(SurveyAnswer::findOne(['survey_answer_id'=>$value]))->survey_answer_name .' )';
+                                }
                             }
 
                             $answer = $temp;
@@ -250,7 +269,7 @@ class SurveyReportResource extends Survey
         ];
     }
 
-    public function text($model)
+    public function correctiveNumber($model)
     {
         $userId =$this->userId;
         $data =$result= [];
