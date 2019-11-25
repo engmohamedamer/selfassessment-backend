@@ -3,9 +3,10 @@
 namespace backend\modules\assessment\models;
 
 use Yii;
+use backend\models\SurveyDegreeLevel;
+use yii\db\Expression;
 use yii\db\conditions\AndCondition;
 use yii\db\conditions\OrCondition;
-use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -46,6 +47,10 @@ class Survey extends \yii\db\ActiveRecord
 
     public $question = null;
     public $imageFile = null;
+    
+    public $level_title = null;
+    public $level_from = null;
+    public $level_to = null;
 
     /**
      * @inheritdoc
@@ -69,7 +74,7 @@ class Survey extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id','start_info'], 'safe'],
+            [['survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id','start_info','level_title','level_from','level_to'], 'safe'],
             [['survey_is_pinned', 'survey_is_closed', 'survey_is_private', 'survey_is_visible'], 'boolean'],
             [['survey_name'], 'string', 'max' => 45],
             [['survey_descr'], 'string'],
@@ -130,6 +135,12 @@ class Survey extends \yii\db\ActiveRecord
     public function getStats()
     {
         return $this->hasMany(SurveyStat::class, ['survey_stat_survey_id' => 'survey_id']);
+    }
+
+
+    public function getLevels()
+    {
+        return $this->hasMany(SurveyDegreeLevel::class, ['survey_degree_level_survey_id' => 'survey_id']);
     }
 
 

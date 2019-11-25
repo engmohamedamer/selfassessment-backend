@@ -204,7 +204,23 @@ if (Yii::$app->user->identity->userProfile->organization) {
             ]);
             echo Html::beginTag('div', ['class' => 'row']);
 
-            
+            echo Html::beginTag('div', ['class' => 'col-md-3']);
+                echo $form->field($survey, "level_title[]")->input('text',['value' => $survey->levels[0]->title ]);
+                echo $form->field($survey, "level_from[]")->input('number',['value' => $survey->levels[0]->from ]);
+                echo $form->field($survey, "level_to[]")->input('number',['value' => $survey->levels[0]->to ]);
+
+                echo $form->field($survey, "level_title[]")->input('text',['value' => $survey->levels[1]->title ]);
+                echo $form->field($survey, "level_from[]")->input('number',['value' => $survey->levels[1]->from ]);
+                echo $form->field($survey, "level_to[]")->input('number',['value' => $survey->levels[1]->to ]);
+
+                echo $form->field($survey, "level_title[]")->input('text',['value' => $survey->levels[2]->title ]);
+                echo $form->field($survey, "level_from[]")->input('number',['value' => $survey->levels[2]->from ]);
+                echo $form->field($survey, "level_to[]")->input('number',['value' => $survey->levels[2]->to ]);
+
+                echo $form->field($survey, "level_title[]")->input('text',['value' => $survey->levels[3]->title ]);
+                echo $form->field($survey, "level_from[]")->input('number',['value' => $survey->levels[3]->from ]);
+                echo $form->field($survey, "level_to[]")->input('number',['value' => $survey->levels[3]->to ]);
+            echo Html::endTag('div');
 
             echo Html::beginTag('div', ['class' => 'col-md-12']);
 
