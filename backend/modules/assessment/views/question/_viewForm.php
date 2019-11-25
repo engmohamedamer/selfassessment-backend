@@ -26,7 +26,12 @@ use yii\widgets\Pjax;
 echo Html::beginTag('div', ['class' => 'survey-block', 'id' => 'survey-question-' . $question->survey_question_id]);
 
 echo Html::beginTag('div', ['class' => 'survey-question-name-wrap']);
-echo ($number + 1) . '. ' . $question->survey_question_name;
+$point = '';
+if ($question->survey_question_point) {
+	$point = ' - (' . $question->survey_question_point .')';
+}
+
+echo ($number + 1) . '. ' . $question->survey_question_name . $point ;
 echo Html::endTag('div');
 
 

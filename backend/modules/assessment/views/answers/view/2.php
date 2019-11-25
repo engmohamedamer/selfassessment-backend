@@ -28,12 +28,16 @@ $class = ['red','aqua','green','yellow'];
 foreach ($question->answers as $i => $answer) {
     $countUser = count($question->survey->stats);
     $count = $answer->getTotalUserAnswersCount();
+    $percentage = 0;
+    if ($countUser) {
+        $percentage = ($count / $countUser) * 100 ;
+    }
     echo '
         <div class="progress-group">
             <span class="progress-text">'.$answer->survey_answer_name.'</span>
             <span class="progress-number"><b>'.$count.'</b>/'.$countUser.'</span>
             <div class="progress sm">
-                <div class="progress-bar progress-bar-'.$class[rand(0,3)].'" style="width: '. ($count / $countUser) * 100  .'%"></div>
+                <div class="progress-bar progress-bar-'.$class[rand(0,3)].'" style="width: '. $percentage .'%"></div>
             </div>
         </div>
     ';
