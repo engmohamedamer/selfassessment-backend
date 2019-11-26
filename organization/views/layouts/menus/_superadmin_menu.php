@@ -70,5 +70,13 @@ echo Menu::widget([
         ],
 
 
+        [
+            'label' => Yii::t('backend', 'Corrective Action Report'),
+            'url' => '/corrective-action-report',
+            'icon' => '<i class="fas fa-th nav-icon"></i>',
+            'options' => ['class' => 'nav-item'],
+            'active' => (Yii::$app->controller->module->id == 'corrective-action-report'),
+        ],
+
     ],
 ]) ?>

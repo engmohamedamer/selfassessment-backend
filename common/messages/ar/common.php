@@ -162,6 +162,7 @@ return [
     'Name En'=>'اسم المؤسسة بالانجليزية',
     'Update User'=>'تحديث بيانات المستخدم',
     'Contributors'=>'المشاركين',
+    'Contributor'=>'المشارك',
     'Mobile'=>'رقم الجوال',
     'Select color ...'=>'اختر لون ...',
     'Organization Theme'=>'الهوية البصرية',
