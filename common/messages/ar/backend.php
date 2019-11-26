@@ -464,6 +464,8 @@ return [
     'Export All Data'=>'استخراج الكل',
     'Name'=>'الاسم',
     'Update User'=>'تعديل المستخدم',
+    'Date-0'=>'From',
+    'Date-1'=>'To',
 
 ];
 

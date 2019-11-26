@@ -57,6 +57,17 @@ class SurveyReportResource extends Survey
                 $survey_end_at = date("Y-m-d",strtotime((SurveyStat::find(['survey_stat_user_id'=>$userId,'survey_stat_user_id'=>$model->survey_id])->one())->survey_stat_updated_at));
 
                 $gained_points =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '. \Yii::$app->user->getId() .' and survey_user_answer_survey_id ='.$model->survey_id )->queryScalar();
+
+                if ($model->survey_point) {
+                    $gained_points =  ($gained_points / $model->survey_point) * 100;
+                    foreach ($model->levels as $key => $value) {
+                        if ($value->from <= $gained_points and $gained_points <= $value->to) {
+                            $gained_points = $value->title;
+                            break;
+                        }
+                    }
+
+                }
                 return [
                     'survey_created_at'=>date("Y-m-d",strtotime($model->survey_created_at)),
                     'survey_expired_at'=>date("Y-m-d",strtotime($model->survey_expired_at)),
@@ -121,9 +132,16 @@ class SurveyReportResource extends Survey
                         ]);
                         if($userAnswerObj){
                             $answer = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_name;
-                            $correctiveActions = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_corrective_action;
+                            $correctiveActions[] = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_corrective_action;
 
+                            if (!$userAnswerObj->surveyUserAnswerValueAnswer->correct) {
+                                $correct = SurveyAnswer::find()->where([
+                                    'survey_answer_question_id'=>$question->survey_question_id,
+                                    'correct'=> 1
+                                ])->one();
+                                $correctiveActions[] = $ShouldChoose.'( '.$correct->survey_answer_name .' )';
 
+                            }
                         }
 
                     }else if(

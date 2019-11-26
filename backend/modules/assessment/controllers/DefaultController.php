@@ -2,15 +2,16 @@
 
 namespace backend\modules\assessment\controllers;
 
-use backend\modules\assessment\models\search\SurveySearch;
-use backend\modules\assessment\models\search\SurveyStatSearch;
+use Imagine\Image\Box;
+use Yii;
+use backend\models\SurveyDegreeLevel;
+use backend\modules\assessment\SurveyInterface;
 use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyAnswer;
 use backend\modules\assessment\models\SurveyQuestion;
 use backend\modules\assessment\models\SurveyStat;
-use Imagine\Image\Box;
-use backend\modules\assessment\SurveyInterface;
-use Yii;
+use backend\modules\assessment\models\search\SurveySearch;
+use backend\modules\assessment\models\search\SurveyStatSearch;
 use yii\base\Model;
 use yii\base\UserException;
 use yii\data\ActiveDataProvider;
@@ -120,6 +121,15 @@ class DefaultController extends Controller
         $survey->save(false);
         \Yii::$app->session->set('surveyUploadsSubpath', $survey->survey_id);
 
+        $levels =['مقبول'=>[0,50],'جيد'=>[51,65],'جيد جدا'=>[66,85],'ممتاز'=>[86,100]];
+        foreach ($levels as $key => $value) {
+            $new = new SurveyDegreeLevel();
+            $new->survey_degree_level_survey_id = $survey->survey_id;
+            $new->title = $key;
+            $new->from = $levels[$key][0];
+            $new->to = $levels[$key][1];
+            $new->save(false);
+        }
         return $this->render('create', [
         	'survey' => $survey,
 	        'withUserSearch' => $this->allowUserSearch()
@@ -289,6 +299,18 @@ class DefaultController extends Controller
 
         if (\Yii::$app->request->isPjax) {
             if ($survey->load(\Yii::$app->request->post()) && $survey->validate()) {
+                SurveyDegreeLevel::deleteAll(['survey_degree_level_survey_id'=> $survey->survey_id,
+               ]);
+
+                foreach ($survey['level_title'] as $key => $value) {
+                    $new = new SurveyDegreeLevel();
+                    $new->survey_degree_level_survey_id = $survey->survey_id;
+                    $new->title = $value;
+                    $new->from = $survey['level_from'][$key];
+                    $new->to = $survey['level_to'][$key];
+                    $new->save(false);
+                }
+
                 $survey->save();
 	            $survey->unlinkAll('restrictedUsers', true);
 

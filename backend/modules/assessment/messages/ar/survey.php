@@ -82,4 +82,7 @@ return [
     'You must enter a question point'=>'يجب ادخال درجة السؤال',
     'Answer Point'=>'درجة السؤال',
     'Correct Answer'=>'إجابة صحيحة',
+    'Corrective Action Date'=>'تاريخ الاجراء التصحيحي',
+    'Date From'=>'من',
+    'Date To'=>'الي',
 ];

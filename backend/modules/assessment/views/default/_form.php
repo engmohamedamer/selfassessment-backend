@@ -30,6 +30,12 @@ if (Yii::$app->user->identity->userProfile->organization) {
 
 
 ?>
+
+<style>
+.surveylevels .col-md-10,.surveylevels .col-md-4{
+    padding:0 15px;
+}
+</style>
     <div class="survey-container">
 
         <div class="survey-block">
@@ -202,10 +208,54 @@ if (Yii::$app->user->identity->userProfile->organization) {
                     'labelOptions' => ['class' => ''],
                 ],
             ]);
-            echo Html::beginTag('div', ['class' => 'row']);
+            echo Html::beginTag('div', ['class' => 'row surveylevels hide']);
 
-            
-
+            echo Html::beginTag('div', ['class' => 'col-md-10 col-md-offset-1']);
+            echo Html::beginTag('div', ['class' => 'col-md-4']);
+                echo $form->field($survey, "level_title[]")->input('text',['value' => $survey->levels[0]->title ]);
+                echo Html::endTag('div');
+                echo Html::beginTag('div', ['class' => 'col-md-4']);
+                echo $form->field($survey, "level_from[]")->input('number',['value' => $survey->levels[0]->from ]);
+                echo Html::endTag('div');
+                echo Html::beginTag('div', ['class' => 'col-md-4']);
+                echo $form->field($survey, "level_to[]")->input('number',['value' => $survey->levels[0]->to ]);
+                echo Html::endTag('div');
+                echo Html::endTag('div');
+            echo Html::beginTag('div', ['class' => 'col-md-10 col-md-offset-1']);
+            echo Html::beginTag('div', ['class' => 'col-md-4']);
+                echo $form->field($survey, "level_title[]")->input('text',['value' => $survey->levels[1]->title ]);
+                echo Html::endTag('div');
+                echo Html::beginTag('div', ['class' => 'col-md-4']);
+                echo $form->field($survey, "level_from[]")->input('number',['value' => $survey->levels[1]->from ]);
+                echo Html::endTag('div');
+                echo Html::beginTag('div', ['class' => 'col-md-4']);
+                echo $form->field($survey, "level_to[]")->input('number',['value' => $survey->levels[1]->to ]);
+            echo Html::endTag('div');
+            echo Html::endTag('div');
+            echo Html::beginTag('div', ['class' => 'col-md-10 col-md-offset-1']);
+            echo Html::beginTag('div', ['class' => 'col-md-4']);
+                echo $form->field($survey, "level_title[]")->input('text',['value' => $survey->levels[2]->title ]);
+                echo Html::endTag('div');
+                echo Html::beginTag('div', ['class' => 'col-md-4']);
+                echo $form->field($survey, "level_from[]")->input('number',['value' => $survey->levels[2]->from ]);
+                echo Html::endTag('div');
+                echo Html::beginTag('div', ['class' => 'col-md-4']);
+                echo $form->field($survey, "level_to[]")->input('number',['value' => $survey->levels[2]->to ]);
+                echo Html::endTag('div');
+                echo Html::endTag('div');
+            echo Html::beginTag('div', ['class' => 'col-md-10 col-md-offset-1']);
+            echo Html::beginTag('div', ['class' => 'col-md-4']);
+                echo $form->field($survey, "level_title[]")->input('text',['value' => $survey->levels[3]->title ]);
+                echo Html::endTag('div');
+                echo Html::beginTag('div', ['class' => 'col-md-4']);
+                echo $form->field($survey, "level_from[]")->input('number',['value' => $survey->levels[3]->from ]);
+                echo Html::endTag('div');
+                echo Html::beginTag('div', ['class' => 'col-md-4']);
+                echo $form->field($survey, "level_to[]")->input('number',['value' => $survey->levels[3]->to ]);
+           
+                echo Html::endTag('div');
+                     echo Html::endTag('div');
+            echo Html::endTag('div');
             echo Html::beginTag('div', ['class' => 'col-md-12']);
 
             echo $form->field($survey, "survey_descr", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
@@ -343,5 +393,20 @@ $(document).ready(function (e) {
         $('.qNumHeader span').html(parseInt($('.qNumHeader span').html())+ 1)
     })
 });
+
+
+
+
+
+$("#survey-survey_point-popover .kv-editable-submit").click(function(){
+    if($("#survey-survey_point").val()>0){
+        $(".surveylevels").removeClass("hide")
+    }else{
+        $(".surveylevels").addClass("hide")
+    }
+    
+   
+})
+
 JS
 );
