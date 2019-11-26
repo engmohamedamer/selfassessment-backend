@@ -143,7 +143,7 @@ return [
     'School Year'=>'السنة الدراسية',
 
     'Create Organization'=>'إضافة مؤسسة',
-    'Organization'=>'المؤسسا',
+    'Organization'=>'المؤسسة',
     'Address'=>'العنوان',
     'Select City first'=>'اختر المدينة اولا',
     'Organization Manager'=>'مسؤل المؤسسة',
