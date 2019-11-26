@@ -33,7 +33,8 @@ class CorrectiveActionReport extends \yii\db\ActiveRecord
 {
     use \mootensai\relation\RelationTrait;
 
-
+    const STATUS_NOT_ACTIVE = 0;
+    const STATUS_ACTIVE = 1;
     /**
     * This function helps \mootensai\relation\RelationTrait runs faster
     * @return array relation names of this model
@@ -138,5 +139,13 @@ class CorrectiveActionReport extends \yii\db\ActiveRecord
     public static function find()
     {
         return new \backend\models\activequery\CorrectiveActionReportQuery(get_called_class());
+    }
+
+    public static function status()
+    {
+        return [
+            self::STATUS_ACTIVE => Yii::t('common', 'Active'),
+            self::STATUS_NOT_ACTIVE => Yii::t('common', 'Not Active'),
+        ];
     }
 }
