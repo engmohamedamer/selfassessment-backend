@@ -26,7 +26,7 @@ $search = "$('.search-button').click(function(){
 $this->registerJs($search);
 $org_id = \Yii::$app->user->identity->userProfile->organization_id;
 
-$query = User::find()->select("id ,Concat(`firstname` , `lastname`  ) as name");
+$query = User::find()->select(["id","concat(firstname,' ', lastname) as name"]);
 $query->joinWith(['userProfile']);
 $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER]);
 $query->andFilterWhere(['organization_id'=>$org_id]);
