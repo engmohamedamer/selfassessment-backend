@@ -132,9 +132,16 @@ class SurveyReportResource extends Survey
                         ]);
                         if($userAnswerObj){
                             $answer = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_name;
-                            $correctiveActions = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_corrective_action;
+                            $correctiveActions[] = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_corrective_action;
 
+                            if (!$userAnswerObj->surveyUserAnswerValueAnswer->correct) {
+                                $correct = SurveyAnswer::find()->where([
+                                    'survey_answer_question_id'=>$question->survey_question_id,
+                                    'correct'=> 1
+                                ])->one();
+                                $correctiveActions[] = $ShouldChoose.'( '.$correct->survey_answer_name .' )';
 
+                            }
                         }
 
                     }else if(

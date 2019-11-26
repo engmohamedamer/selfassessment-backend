@@ -9,6 +9,7 @@ use api\resources\SurveyMiniResource;
 use api\resources\SurveyReportResource;
 use api\resources\SurveyResource;
 use api\resources\User;
+use backend\models\CorrectiveActionReport;
 use backend\modules\assessment\models\SurveyAnswer;
 use backend\modules\assessment\models\SurveyQuestion;
 use backend\modules\assessment\models\SurveyStat;
@@ -138,7 +139,6 @@ class AssessmentsController extends  MyActiveController
              if ($question->survey_question_type === SurveyType::TYPE_SLIDER
                   || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
                   || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
-                 || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
               ){
                  //handel one answer
                  $userAnswers = $question->userAnswers;
@@ -151,17 +151,46 @@ class AssessmentsController extends  MyActiveController
                 $userAnswer->survey_user_answer_point = $question->survey_question_point;
                 $userAnswer->survey_user_answer_value = $value;
                 $userAnswer->save(false);
-              }elseif ($question->survey_question_type === SurveyType::TYPE_DROPDOWN){
+              }if ($question->survey_question_type === SurveyType::TYPE_DATE_TIME
+              ){
+                 //handel one answer
                  $userAnswers = $question->userAnswers;
                  $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
                      'survey_user_answer_user_id' => \Yii::$app->user->getId(),
                      'survey_user_answer_survey_id' => $question->survey_question_survey_id,
                      'survey_user_answer_question_id' => $question->survey_question_id,
                  ]));
-                $userAnswer->survey_user_answer_point = $question->survey_question_point;
+                $point = 0;
+
+                $answerValue = strtotime($value);
+                $from = strtotime($question->answers[0]->survey_answer_name);
+                $to = strtotime($question->answers[1]->survey_answer_name);
+
+                if ($answerValue >= $from and $answerValue <= $to) {
+                    $point = $question->survey_question_point;
+                }
+                $userAnswer->survey_user_answer_point = $point;
+                $userAnswer->survey_user_answer_value = $value;
+                $userAnswer->save(false);
+              }elseif ($question->survey_question_type === SurveyType::TYPE_DROPDOWN){
+                 $answerPoint = SurveyAnswer::findOne(['survey_answer_id'=>$value]);
+                 $userAnswers = $question->userAnswers;
+                 $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
+                     'survey_user_answer_user_id' => \Yii::$app->user->getId(),
+                     'survey_user_answer_survey_id' => $question->survey_question_survey_id,
+                     'survey_user_answer_question_id' => $question->survey_question_id,
+                 ]));
+                if ($answerPoint->correct) {
+                    $userAnswer->survey_user_answer_point = $question->survey_question_point;
+                 }else{
+                    if ($params['status'] == 2) {
+                        $this->correctiveActionReport($question,$answerPoint);
+                    }
+                 }
                 $userAnswer->survey_user_answer_answer_id = $value;
                 $userAnswer->survey_user_answer_value = $value;
                 $userAnswer->save(false);
+
               }
 
               if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
@@ -177,6 +206,10 @@ class AssessmentsController extends  MyActiveController
                  ]));
                  if ($answerPoint->correct) {
                     $userAnswer->survey_user_answer_point = $answerPoint->question->survey_question_point;
+                 }else{
+                    if ($params['status'] == 2) {
+                        $this->correctiveActionReport($question,$answerPoint);
+                    }
                  }
                  $userAnswer->survey_user_answer_answer_id = $value;
                  $userAnswer->survey_user_answer_value = $value;
@@ -193,7 +226,7 @@ class AssessmentsController extends  MyActiveController
 
                  $correctCount = count(SurveyAnswer::find()->where(['survey_answer_question_id'=>$question->survey_question_id,'correct'=>1])->all());
                 if ($correctCount) {
-                    $point =  $question->survey_question_point/ $correctCount;
+                    $point =  $question->survey_question_point / $correctCount;
                 }else{
                     $point = 0;
                 }
@@ -210,6 +243,10 @@ class AssessmentsController extends  MyActiveController
                             $userAnswer->survey_user_answer_value =1 ;
                             if ($answer->correct) {
                                 $userAnswer->survey_user_answer_point = $point;
+                            }else{
+                                if ($params['status'] == 2) {
+                                    $this->correctiveActionReport($question,$answer);
+                                }
                             }
                         $userAnswer->save(false);
                     }
@@ -274,6 +311,23 @@ class AssessmentsController extends  MyActiveController
 
         return ResponseHelper::sendSuccessResponse();
 
+    }
+
+    public function correctiveActionReport($questionObj,$answerObj)
+    {
+        $user = \Yii::$app->user->identity->userProfile;
+        $report = CorrectiveActionReport::findOne(['user_id'=>$user->user_id,'answer_id'=> $answerObj->survey_answer_id]);
+        if (!$report) {
+            $report = new CorrectiveActionReport();
+            $report->org_id = $user->organization_id;
+            $report->user_id = $user->user_id;
+            $report->survey_id = $questionObj->survey->survey_id;
+            $report->question_id = $questionObj->survey_question_id;
+            $report->answer_id = $answerObj->survey_answer_id;
+            $report->corrective_action = $answerObj->survey_answer_corrective_action;
+            $report->corrective_action_date = $answerObj->corrective_action_date;
+            $report->save(false);
+        }
     }
 
 

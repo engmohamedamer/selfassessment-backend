@@ -58,7 +58,7 @@ class SurveyAnswer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['survey_answer_descr','survey_answer_corrective_action'], 'string'],
+            [['survey_answer_descr','survey_answer_corrective_action','corrective_action_date'], 'string'],
             [['survey_answer_question_id', 'survey_answer_sort', 'survey_answer_points'], 'integer'],
             [['survey_answer_question_id', 'survey_answer_sort', 'survey_answer_points'], 'filter', 'filter' => 'intval'],
             [['survey_answer_points'], 'required', 'when' => function($model){
@@ -119,6 +119,7 @@ class SurveyAnswer extends \yii\db\ActiveRecord
             'survey_answer_show_corrective_action'=> Yii::t('survey', 'Show corrective action description'),
             'survey_answer_corrective_action'=> Yii::t('survey', 'Corrective action description'),
             'correct'=> Yii::t('survey','Correct Answer'),
+            'corrective_action_date'=>Yii::t('survey','Corrective Action Date'),
         ];
     }
 
