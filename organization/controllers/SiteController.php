@@ -57,4 +57,36 @@ class SiteController extends OrganizationController
         return ['labels'=> $labels ,'data'=>$data];
     }
 
+    public function actionOrgSurveyCountDegree($id)
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        
+        $organization = Yii::$app->user->identity->userProfile->organization;
+        $survey = Survey::find()->where(['org_id'=>$organization->id,'survey_id'=>$id])->one();
+
+        if ($survey) {
+            foreach ($survey->stats as $stat) {
+                $gained_points =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '.$stat->survey_stat_user_id.' and survey_user_answer_survey_id ='.$survey->survey_id )->queryScalar();
+                $gained_score_title = [];
+                if ($survey->survey_point) {
+                    $gained_score =  ($gained_points / $survey->survey_point) * 100;
+                    foreach ($survey->levels as $key => $value) {
+                        if ($value->from <= $gained_score and $gained_score <= $value->to) {
+                            $gained_score_title[] = $value->title;
+                            break;
+                        }
+                    }
+
+                }
+            }
+            $titles = [];
+            $counts = [];
+            foreach ($survey->levels as $level) {
+                $titles[] = $level->title;
+                $counts[] = array_count_values($gained_score_title)[$level->title] ?: 0;
+            }
+            return ['labels'=> $titles ,'data'=>$counts];
+        }
+    }
+
 }

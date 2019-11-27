@@ -208,7 +208,14 @@ if (Yii::$app->user->identity->userProfile->organization) {
                     'labelOptions' => ['class' => ''],
                 ],
             ]);
-            echo Html::beginTag('div', ['class' => 'row surveylevels hide']);
+
+            if ($survey->survey_point) {
+                $hide = '';
+            }else{
+                $hide = 'hide';
+            }
+
+            echo Html::beginTag('div', ['class' => 'row surveylevels '.$hide]);
 
             echo Html::beginTag('div', ['class' => 'col-md-10 col-md-offset-1']);
             echo Html::beginTag('div', ['class' => 'col-md-4']);
