@@ -90,7 +90,8 @@ class AssessmentsController extends  MyActiveController
         $profile=$user->userProfile;
         $_SESSION['userID'] =$user_id;
 
-        $surveyObj = SurveyReportResource::findOne(['survey_id'=>$id,'survey_is_visible' => 1]);
+        $surveyObj = SurveyReportResource::findOne(['survey_id'=>$id]); //,'survey_is_visible' => 1
+
         if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found', 404]);
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
@@ -147,7 +148,7 @@ class AssessmentsController extends  MyActiveController
                      'survey_user_answer_survey_id' => $question->survey_question_survey_id,
                      'survey_user_answer_question_id' => $question->survey_question_id,
                  ]));
-                
+
                 $userAnswer->survey_user_answer_point = $question->survey_question_point;
                 $userAnswer->survey_user_answer_value = $value;
                 $userAnswer->save(false);
