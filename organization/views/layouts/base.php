@@ -200,9 +200,6 @@ DashboardAsset::register($this);
             border-top-color: <?= $brandPrimColor ?> !important;
         }
 
-        /* .addQPanel {
-
-        } */
 
 
     </style>
