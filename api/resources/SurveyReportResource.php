@@ -2,6 +2,7 @@
 
 namespace api\resources;
 
+use backend\models\CorrectiveActionReport;
 use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyAnswer;
 use backend\modules\assessment\models\SurveyStat;
@@ -68,6 +69,21 @@ class SurveyReportResource extends Survey
                     }
 
                 }
+
+                $correctiveActions= [];
+
+                $reportCorrective = CorrectiveActionReport::find(['user_id'=>$userId,'survey_id'=> $model->survey_id])->all();
+
+                foreach ($reportCorrective as $key => $corrective) {
+                    $correctiveActions[] = [
+                        'question'=>$corrective->question->survey_question_name,
+                        'answer'=>$corrective->answer->survey_answer_name,
+                        'corrective_action'=>$corrective->corrective_action,
+                        'corrective_action_date'=>$corrective->corrective_action_date,
+                    ];
+                }
+
+
                 return [
                     'survey_created_at'=>date("Y-m-d",strtotime($model->survey_created_at)),
                     'survey_expired_at'=>date("Y-m-d",strtotime($model->survey_expired_at)),
@@ -76,6 +92,7 @@ class SurveyReportResource extends Survey
                     'survey_time_to_pass'=> $model->survey_time_to_pass,
                     'survey_question_number'=> count($model->questions),
                     'survey_corrective_number'=>$this->correctiveNumber($model),
+                    'survey_corrective_actions'=>$correctiveActions,
                     'total_points'=> $model->survey_point ?: null,
                     'gained_points'=>$gained_points ?: null,
                     'gained_score'=>$gained_score ?: null,
@@ -102,7 +119,6 @@ class SurveyReportResource extends Survey
 
                     if ( $question->survey_question_type === SurveyType::TYPE_SLIDER
                         || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
-                        || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
                         || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
                     ){
                         $temp=[];
@@ -117,6 +133,27 @@ class SurveyReportResource extends Survey
                         if($userAnswerObj){
                             $answer = $userAnswerObj->survey_user_answer_value;
 
+                        }
+
+                    }elseif ( $question->survey_question_type === SurveyType::TYPE_DATE_TIME
+                    ){
+                        $temp=[];
+                        $correctiveActions= [];
+                        //fetch user answers
+                        $userAnswerObj = SurveyUserAnswer::findOne([
+                            'survey_user_answer_user_id'=>$userId,
+                            'survey_user_answer_survey_id'=>$model->survey_id,
+                            'survey_user_answer_question_id'=>$question->survey_question_id
+
+                        ]);
+                        if($userAnswerObj){
+                            $answer = $userAnswerObj->survey_user_answer_value;
+                            $answerValue = strtotime($answer);
+                            $from = strtotime($question->answers[0]->survey_answer_name);
+                            $to = strtotime($question->answers[1]->survey_answer_name);
+                            if ($answerValue < $from || $answerValue > $to) {
+                                $correctiveActions[]=  $question->answers[0]->survey_answer_name .' : ' . $question->answers[1]->survey_answer_name;
+                            }
                         }
 
                     }else if($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
