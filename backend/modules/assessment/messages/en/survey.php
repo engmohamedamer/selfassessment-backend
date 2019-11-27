@@ -8,4 +8,6 @@
 
 return [
     'Create new survey' => 'Create new survey',
+    'Date-0'=>'From',
+    'Date-1'=>'To',
 ];

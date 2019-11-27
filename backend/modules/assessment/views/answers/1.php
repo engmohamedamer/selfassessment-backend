@@ -55,6 +55,7 @@ foreach ($question->answers as $i => $answer) {
     echo Html::tag('br', '');
 
     if ($answer->survey_answer_show_corrective_action) {
+        echo $form->field($answer,"[{$question->survey_question_id}][$i]corrective_action_date")->input('date');
         echo $form->field($answer, "[{$question->survey_question_id}][$i]survey_answer_corrective_action")->widget(Widget::class, [
             'settings' => [
                 'lang' => 'en',

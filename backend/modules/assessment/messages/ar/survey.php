@@ -70,6 +70,7 @@ return [
     'Author'=>'إضافة بواسطة',
     'Created At'=>'انشئ في',
     'Show corrective action description'=>'إظهار تفاصيل اجراءت تصحيحية',
+    'Corrective action'=>'اجراءت تصحيحية',
     'Corrective action description'=>'اجراءت تصحيحية',
     'Will be presented one file field where respondent can attach file answer'=>'سيتم تقديم حقل ملف واحد حيث يمكن للمستفتى إرفاق إجابة علي هيئة ملف',
     'Steps Number'=>'عدد الخطوات',
@@ -81,4 +82,7 @@ return [
     'You must enter a question point'=>'يجب ادخال درجة السؤال',
     'Answer Point'=>'درجة السؤال',
     'Correct Answer'=>'إجابة صحيحة',
+    'Corrective Action Date'=>'تاريخ الاجراء التصحيحي',
+    'Date From'=>'من',
+    'Date To'=>'الي',
 ];

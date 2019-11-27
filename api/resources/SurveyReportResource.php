@@ -2,7 +2,9 @@
 
 namespace api\resources;
 
+use backend\models\CorrectiveActionReport;
 use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyAnswer;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\SurveyType;
 use backend\modules\assessment\models\SurveyUserAnswer;
@@ -56,6 +58,32 @@ class SurveyReportResource extends Survey
                 $survey_end_at = date("Y-m-d",strtotime((SurveyStat::find(['survey_stat_user_id'=>$userId,'survey_stat_user_id'=>$model->survey_id])->one())->survey_stat_updated_at));
 
                 $gained_points =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '. \Yii::$app->user->getId() .' and survey_user_answer_survey_id ='.$model->survey_id )->queryScalar();
+
+                if ($model->survey_point) {
+                    $gained_score =  ($gained_points / $model->survey_point) * 100;
+                    foreach ($model->levels as $key => $value) {
+                        if ($value->from <= $gained_score and $gained_score <= $value->to) {
+                            $gained_score = $value->title;
+                            break;
+                        }
+                    }
+
+                }
+
+                $correctiveActions= [];
+
+                $reportCorrective = CorrectiveActionReport::find(['user_id'=>$userId,'survey_id'=> $model->survey_id])->all();
+
+                foreach ($reportCorrective as $key => $corrective) {
+                    $correctiveActions[] = [
+                        'question'=>$corrective->question->survey_question_name,
+                        'answer'=>$corrective->answer->survey_answer_name,
+                        'corrective_action'=>$corrective->corrective_action,
+                        'corrective_action_date'=>$corrective->corrective_action_date,
+                    ];
+                }
+
+
                 return [
                     'survey_created_at'=>date("Y-m-d",strtotime($model->survey_created_at)),
                     'survey_expired_at'=>date("Y-m-d",strtotime($model->survey_expired_at)),
@@ -63,9 +91,11 @@ class SurveyReportResource extends Survey
                     'survey_number'=>$model->survey_id .'/'. date("Y",strtotime($model->survey_created_at)) ,
                     'survey_time_to_pass'=> $model->survey_time_to_pass,
                     'survey_question_number'=> count($model->questions),
-                    'survey_corrective_number'=>$this->text($model),
+                    'survey_corrective_number'=>$this->correctiveNumber($model),
+                    'survey_corrective_actions'=>$correctiveActions,
                     'total_points'=> $model->survey_point ?: null,
                     'gained_points'=>$gained_points ?: null,
+                    'gained_score'=>$gained_score ?: null,
                     'progress'=>$this->surveyProgress($model,$userId),
                     'actual_time'=> $time,
                 ];
@@ -74,6 +104,12 @@ class SurveyReportResource extends Survey
             'answers'=>function($model){
                 $userId =$this->userId;
                 $data =$result= [];
+                $userId = \Yii::$app->user->identity->userProfile;
+                if ($userId->locale == 'en-US') {
+                    $ShouldChoose = 'Should Choose ';
+                }else{
+                    $ShouldChoose = 'يجب اختيار ';
+                }
                 //get survey questions then check user answers
                 $i=1;
                 foreach ($model->questions as  $question) {
@@ -83,7 +119,6 @@ class SurveyReportResource extends Survey
 
                     if ( $question->survey_question_type === SurveyType::TYPE_SLIDER
                         || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
-                        || $question->survey_question_type === SurveyType::TYPE_DATE_TIME
                         || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
                     ){
                         $temp=[];
@@ -100,6 +135,27 @@ class SurveyReportResource extends Survey
 
                         }
 
+                    }elseif ( $question->survey_question_type === SurveyType::TYPE_DATE_TIME
+                    ){
+                        $temp=[];
+                        $correctiveActions= [];
+                        //fetch user answers
+                        $userAnswerObj = SurveyUserAnswer::findOne([
+                            'survey_user_answer_user_id'=>$userId,
+                            'survey_user_answer_survey_id'=>$model->survey_id,
+                            'survey_user_answer_question_id'=>$question->survey_question_id
+
+                        ]);
+                        if($userAnswerObj){
+                            $answer = $userAnswerObj->survey_user_answer_value;
+                            $answerValue = strtotime($answer);
+                            $from = strtotime($question->answers[0]->survey_answer_name);
+                            $to = strtotime($question->answers[1]->survey_answer_name);
+                            if ($answerValue < $from || $answerValue > $to) {
+                                $correctiveActions[]=  $question->answers[0]->survey_answer_name .' : ' . $question->answers[1]->survey_answer_name;
+                            }
+                        }
+
                     }else if($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
                         || $question->survey_question_type === SurveyType::TYPE_DROPDOWN
                     ){
@@ -114,9 +170,16 @@ class SurveyReportResource extends Survey
                         ]);
                         if($userAnswerObj){
                             $answer = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_name;
-                            $correctiveActions = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_corrective_action;
+                            $correctiveActions[] = $userAnswerObj->surveyUserAnswerValueAnswer->survey_answer_corrective_action;
 
+                            if (!$userAnswerObj->surveyUserAnswerValueAnswer->correct) {
+                                $correct = SurveyAnswer::find()->where([
+                                    'survey_answer_question_id'=>$question->survey_question_id,
+                                    'correct'=> 1
+                                ])->one();
+                                $correctiveActions[] = $ShouldChoose.'( '.$correct->survey_answer_name .' )';
 
+                            }
                         }
 
                     }else if(
@@ -134,12 +197,18 @@ class SurveyReportResource extends Survey
                             'survey_user_answer_question_id'=>$question->survey_question_id
 
                         ])->all();
+
+                        $answersIdsCorrect = array_column(SurveyAnswer::find()->select('survey_answer_id')->where([
+                            'survey_answer_question_id'=>$question->survey_question_id,
+                            'correct'=> 1
+                        ])->asArray()->all(),'survey_answer_id');
+                        // return $answersIdsCorrect;
                         if($userAnswersObj){
                             $temp=[];
                             $correctiveAction= [];
                             foreach ($userAnswersObj as $item) {
+                                $ids[] =  $item->survey_user_answer_answer_id;
                                 if($item->survey_user_answer_answer_id && $item->survey_user_answer_value==1) {
-
                                     if ($question->survey->survey_point) {
                                         $correct = (bool)$item->surveyUserAnswerAnswer->correct;
                                     }else{
@@ -151,6 +220,12 @@ class SurveyReportResource extends Survey
                                     }
                                 }
 
+                            }
+
+                            foreach ($answersIdsCorrect as $value) {
+                                if (!in_array($value, $ids)) {
+                                    $correctiveAction[] = $ShouldChoose.'( '.(SurveyAnswer::findOne(['survey_answer_id'=>$value]))->survey_answer_name .' )';
+                                }
                             }
 
                             $answer = $temp;
@@ -250,7 +325,7 @@ class SurveyReportResource extends Survey
         ];
     }
 
-    public function text($model)
+    public function correctiveNumber($model)
     {
         $userId =$this->userId;
         $data =$result= [];

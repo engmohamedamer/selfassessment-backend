@@ -464,6 +464,12 @@ return [
     'Export All Data'=>'استخراج الكل',
     'Name'=>'الاسم',
     'Update User'=>'تعديل المستخدم',
+    'Date-0'=>'From',
+    'Date-1'=>'To',
+    'Question'=>'السؤال',
+    'Corrective Action'=>'الاجراء التصحيحي',
+    'Corrective Action Date'=>'تاريخ الاجراء التصحيحي',
+    'Corrective Action Report'=>'تقرير الاجراء التصحيحي',
 
 ];
 

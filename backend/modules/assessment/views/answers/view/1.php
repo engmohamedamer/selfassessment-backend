@@ -15,29 +15,37 @@ use yii\helpers\Html;
 \backend\assets\AssessmentAsset::register($this);
 $totalVotesCount = $question->getTotalUserAnswersCount();
 
-echo Html::beginTag('div', ['class' => 'answers-stat']);
+
+function random_color_part() {
+    return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
+}
+
+function random_color() {
+    return random_color_part() . random_color_part() . random_color_part();
+}
 
 echo '
+<div class="answers-stat" >
     <p class="text-center">
         <strong>Answers</strong>
     </p>
 ';
 ?>
 <?php
-$class = ['red','aqua','green','yellow'];
-// foreach ($question->answers as $i => $answer) {
-//     $countUser = count($question->survey->stats);
-//     $count = $answer->getTotalUserAnswersCount();
-//     echo '
-//         <div class="progress-group">
-//             <span class="progress-text">'.$answer->survey_answer_name.'</span>
-//             <span class="progress-number"><b>'.$count.'</b>/'.$countUser.'</span>
-//             <div class="progress sm">
-//                 <div class="progress-bar progress-bar-'.$class[rand(0,3)].'" style="width: '. ($count / $countUser) * 100  .'%"></div>
-//             </div>
-//         </div>
-//     ';
-// }
+$colors = [];
+$labels = [];
+$answerCount = [];
+$correct = [];
+foreach ($question->answers as $i => $answer) {
+    $labels[] = $answer->survey_answer_name;
+    $answerCount [] = $answer->getTotalUserAnswersCount();
+    $countUser = count($question->survey->stats);
+    if ($answer->survey_answer_show_corrective_action) {
+        $correct[] = ' <i class="fas fa-info-circle"  data-toggle="popover" title="'. Yii::t('survey','Corrective action') .'" data-content="'.$answer->survey_answer_corrective_action.'"></i></span>';
+    }else{
+      $correct[]= '';
+    }
+}
 
 ?>
 <div class="row">
@@ -50,11 +58,11 @@ $class = ['red','aqua','green','yellow'];
     </div>
     <div class="col-md-4">
         <ul class="chart-legend clearfix" style="margin-top:70px">
-            <li><i class="far fa-circle" style="color:#f56954"></i> Answer 1</li>
-            <li><i class="far fa-circle" style="color:#00a65a"></i> Answer 2</li>
-            <li><i class="far fa-circle" style="color:#f39c12"></i> Answer 3</li>
-            <li><i class="far fa-circle" style="color:#00c0ef"></i> Answer 4</li>
-           
+          <?php foreach($labels as  $i => $lable):
+            $colors[] = '#'.random_color();
+          ?>
+            <li><i class="far fa-circle" style="color:<?= $colors[$i]?>"></i> <?= $lable ?> <?=  $correct[$i]?> </li>
+          <?php endforeach;?>
         </ul>
     </div>
 
@@ -62,31 +70,19 @@ $class = ['red','aqua','green','yellow'];
 
 </div>
 
-
-
 <?php
-$this->registerJs(<<<JS
-
-
- //-------------
-  //- PIE CHART -
-  //-------------
+$labelsData = json_encode($labels);
+$answerCountData = json_encode($answerCount);
+$colorsData = json_encode($colors);
+$js = <<<JS
   // Get context with jQuery - using jQuery's .get() method.
   var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
     var pieData        = {
-      labels: [
-          'Answer 1', 
-          'Answer 2',
-          'Answer 3', 
-          'Answer 4', 
-          
-      ],
+      labels: $labelsData,
       datasets: [
         {
-          data: [3,5,1,2],
-          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef'],
-          //backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
-
+          data: $answerCountData,
+          backgroundColor : $colorsData,
         }
       ]
     }
@@ -95,17 +91,13 @@ $this->registerJs(<<<JS
         display: false
       }
     }
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
     var pieChart = new Chart(pieChartCanvas, {
       type: 'doughnut',
       data: pieData,
       options: pieOptions      
     })
 
-
-JS
-);
-
+JS;
+$this->registerJs($js);
 ?>
 

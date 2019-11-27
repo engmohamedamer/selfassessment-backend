@@ -64,4 +64,6 @@ return [
 
     'Wallet Price' => 'В кошелек',
     'Status Price' => 'В статус',
+    'Date-0'=>'From',
+    'Date-1'=>'To',
 ];

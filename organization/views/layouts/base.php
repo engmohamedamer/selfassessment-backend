@@ -211,5 +211,16 @@ DashboardAsset::register($this);
         <?php echo $content ?>
     <?php $this->endBody() ?>
     </body>
+
+    <script>
+   
+
+
+  $(function () {
+    $('[data-toggle="popover"]').popover({
+    container: 'body'
+  })
+})
+    </script>
 </html>
 <?php $this->endPage() ?>
