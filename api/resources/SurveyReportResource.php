@@ -9,17 +9,13 @@ use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\SurveyType;
 use backend\modules\assessment\models\SurveyUserAnswer;
 use common\models\SurveyUserAnswerAttachments;
+use common\models\UserProfile;
 
 class SurveyReportResource extends Survey
 {
 
    public  function getUserId(){
-
-//       if(\Yii::$app->user->can('governmentRep')){
-//
-//       }
-
-       if(isset($_SESSION['userID'])){
+     if(isset($_SESSION['userID'])){
            return $_SESSION['userID'];
 
        }
@@ -57,7 +53,7 @@ class SurveyReportResource extends Survey
                 $time = SurveyStat::actualTime($model->survey_id,$userId);
                 $survey_end_at = date("Y-m-d",strtotime((SurveyStat::find(['survey_stat_user_id'=>$userId,'survey_stat_user_id'=>$model->survey_id])->one())->survey_stat_updated_at));
 
-                $gained_points =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '. \Yii::$app->user->getId() .' and survey_user_answer_survey_id ='.$model->survey_id )->queryScalar();
+                $gained_points =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '. $this->userId .' and survey_user_answer_survey_id ='.$model->survey_id )->queryScalar();
 
                 if ($model->survey_point) {
                     $gained_score =  ($gained_points / $model->survey_point) * 100;
@@ -104,8 +100,8 @@ class SurveyReportResource extends Survey
             'answers'=>function($model){
                 $userId =$this->userId;
                 $data =$result= [];
-                $userId = \Yii::$app->user->identity->userProfile;
-                if ($userId->locale == 'en-US') {
+                $userProfile = UserProfile::find()->where(['user_id'=>$userId])->one();
+                if ($userProfile->locale == 'en-US') {
                     $ShouldChoose = 'Should Choose ';
                 }else{
                     $ShouldChoose = 'يجب اختيار ';
@@ -291,7 +287,7 @@ class SurveyReportResource extends Survey
                     $qAttatchments = [];
                     $files = SurveyUserAnswerAttachments::findAll(['survey_user_answer_attachments_survey_id'=>$question->survey_question_survey_id ,
                        'survey_user_answer_attachments_question_id'=>$question->survey_question_id,
-                       'survey_user_answer_attachments_user_id' => \Yii::$app->user->getId()
+                       'survey_user_answer_attachments_user_id' => $this->userId
                        ]);
                     foreach ($files as $key => $file) {
                         $qAttatchments[] = [
@@ -302,7 +298,7 @@ class SurveyReportResource extends Survey
                     }
 
 
-                    $qGainedPoints =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '. \Yii::$app->user->getId() .' and survey_user_answer_question_id ='.$question->survey_question_id )->queryScalar();
+                    $qGainedPoints =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '. $this->userId .' and survey_user_answer_question_id ='.$question->survey_question_id )->queryScalar();
                     $data = [
                         'qNum'=>$i++,
                         'qText'=>$question->survey_question_name,

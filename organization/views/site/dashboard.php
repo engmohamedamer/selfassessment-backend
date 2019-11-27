@@ -19,7 +19,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                 <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Dashboard') ?></h1>
             </div>
             <div class='col-sm-6 dashboard-fancy-btn'>
-                <a href="/assessment/default/create" class="fancy-button bg-gradient1 "><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('survey', 'Create new survey')?> </span></a>
+                <a href="/assessment/default/create" class="fancy-button bg-gradient1 "><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('survey', 'Create new Assessment')?> </span></a>
             </div>
             <!-- <div class="col-sm-6"> -->
                 <!-- <a href="NewOrganization.html" class="btn btn-primary" style="float: right">New Organization</a> -->
@@ -65,14 +65,14 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div>
             <!~~ /.info-box ~~>
         </div> -->
-        
+
         <!-- /.col -->
 
         <div class="col-md-12">
             <!-- TABLE: LATEST ORDERS -->
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= \Yii::t('common', 'Latest Survey')?></h3>
+                    <h3 class="box-title"><?= \Yii::t('common', 'Latest Assessments')?></h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -93,8 +93,8 @@ $this->title = Yii::t('backend', 'Dashboard');
                             </tr>
                             </thead>
                             <tbody>
-                            <?php 
-                                $i=1; 
+                            <?php
+                                $i=1;
                                 foreach($organizationSurvey as $survey):
                                 if ($survey->survey_is_closed) {
                                     $class = 'danger';
@@ -128,7 +128,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div>
             <!-- /.box -->
         </div>
-        
+
 
         <div class="col-md-6">
                 <div class="box box-danger">
@@ -185,7 +185,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                 </div>
         </div>
 
-        
+
 
 
         <div class="col-md-12">
@@ -225,7 +225,7 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div>
 
 
-        
+
 
 
     </div>
