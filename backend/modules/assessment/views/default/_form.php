@@ -267,7 +267,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
 
                 echo Html::tag('div', '', ['class' => 'clearfix']);
                 echo Html::endTag('div'); // col-md-12
-            echo Html::endTag('div'); // row
+            // echo Html::endTag('div'); // row
 
             echo Html::beginTag('div', ['class' => 'row']);
             echo Html::beginTag('div', ['class' => 'col-md-3']);
