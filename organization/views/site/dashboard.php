@@ -17,7 +17,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             <div class="col-sm-6">
                 <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Dashboard') ?></h1>
             </div>
-            <div class='col-sm-6 dashboard-fancy-btn'>
+            <div class='dashboard-fancy-btn'>
                 <a href="/assessment/default/create" class="fancy-button bg-gradient1 "><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('common', 'Create new survey')?> </span></a>
             </div>
             <!-- <div class="col-sm-6"> -->
