@@ -29,12 +29,11 @@ $this->title = Yii::t('backend', 'Dashboard');
 
 <div class="row">
     <div class="col-lg-12">
-       <?/*?>
-     <div class="card">
+      
+        <div class="card">
             <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
                     <h3 class="card-title">Assessments Report</h3>
-                    <a href="javascript:void(0);">Full Report</a>
                 </div>
             </div>
             <div class="card-body">
@@ -68,16 +67,23 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div>
         </div>
 
-    <? */?>
+
+
+
         <!-- /.card -->
 
+        
+    </div>
+</div>
+    <!-- /.col-md-6 -->
+<div class="row">
+    <div class="col-lg-6">
         <div class="card">
             <div class="card-header border-0">
                 <h3 class="card-title"><?= Yii::t('common','New Organizations') ?></h3>
 
             </div>
             <div class="card-body p-0">
-               
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -93,7 +99,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                             <?php foreach($organizations as $organization):?>
                             <tr>
                                 <td>
-                                   
+                                    
                                     <a href="#"><?= $organization->name ?></a>
                                 </td>
                                 <td><a href="#"><?= count($organization->survey) ?></a></td>
@@ -116,16 +122,13 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </table>
             </div>
         </div>
-        <!-- /.card -->
+        <!-- /.card -->  
     </div>
-    <? /*?>
-    <!-- /.col-md-6 -->
     <div class="col-lg-6">
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
                     <h3 class="card-title">Sales</h3>
-                    <a href="javascript:void(0);">View Report</a>
                 </div>
             </div>
             <div class="card-body">
@@ -141,7 +144,6 @@ $this->title = Yii::t('backend', 'Dashboard');
                         <span class="text-muted">Since last month</span>
                     </p>
                 </div>
-                <!-- /.d-flex -->
 
                 <div class="position-relative mb-4">
                     <canvas id="sales-chart" height="200"></canvas>
@@ -149,28 +151,21 @@ $this->title = Yii::t('backend', 'Dashboard');
 
                 <div class="d-flex flex-row justify-content-end">
                     <span class="mr-2">
-<i class="fas fa-square text-primary"></i> This year
-</span>
+                    <i class="fas fa-square text-primary"></i> This year
+                    </span>
 
                     <span>
-<i class="fas fa-square text-gray"></i> Last year
-</span>
+                    <i class="fas fa-square text-gray"></i> Last year
+                    </span>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- /.card -->
 
-        <div class="card">
+        <div class="card overview">
             <div class="card-header border-0">
-                <h3 class="card-title">Assessments Overview</h3>
-                <div class="card-tools">
-                    <a href="#" class="btn btn-sm btn-tool">
-                        <i class="fas fa-download"></i>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-tool">
-                        <i class="fas fa-bars"></i>
-                    </a>
-                </div>
+                <h3 class="card-title">Overview</h3>
+               
             </div>
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
@@ -179,9 +174,9 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </p>
                     <p class="d-flex flex-column text-right">
                         <span class="font-weight-bold">
-    <i class="ion ion-android-arrow-up text-success"></i> 12%
-</span>
-                        <span class="text-muted">ASSESSMENTS RATE</span>
+                            <i class="ion ion-android-arrow-up text-success"></i> (50)
+                        </span>
+                        <span class="text-muted">ASSESSMENTS COUNT</span>
                     </p>
                 </div>
                 <!-- /.d-flex -->
@@ -191,9 +186,9 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </p>
                     <p class="d-flex flex-column text-right">
                         <span class="font-weight-bold">
-    <i class="ion ion-android-arrow-up text-warning"></i> 0.8%
-</span>
-                        <span class="text-muted">SALES RATE</span>
+                            <i class="ion ion-android-arrow-up text-warning"></i> 0.8%
+                        </span>
+                        <span class="text-muted">ASSESSMENTS CCOMPLETE</span>
                     </p>
                 </div>
                 <!-- /.d-flex -->
@@ -203,9 +198,9 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </p>
                     <p class="d-flex flex-column text-right">
                         <span class="font-weight-bold">
-    <i class="ion ion-android-arrow-down text-danger"></i> 1%
-</span>
-                        <span class="text-muted">REGISTRATION RATE</span>
+                            <i class="ion ion-android-arrow-down text-danger"></i> (500)
+                        </span>
+                        <span class="text-muted">CONTRIBUTORS COUNT</span>
                     </p>
                 </div>
                 <!-- /.d-flex -->
@@ -213,170 +208,10 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div>
     </div>
     <!-- /.col-md-6 -->
-    <? */?>
 </div>
-<? /*?>
+   
+    
+</div>
+
 <!-- /.row -->
-<div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header border-0">
-                    <div class="d-flex justify-content-between">
-                        <h3 class="card-title">Assessments Report</h3>
-                        <a href="javascript:void(0);">Full Report</a>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="d-flex">
-                        <p class="d-flex flex-column">
-                            <span class="text-bold text-lg">820</span>
-                            <span>Assessments Over Time</span>
-                        </p>
-                        <p class="ml-auto d-flex flex-column text-right">
-                            <span class="text-success">
-      <i class="fas fa-arrow-up"></i> 12.5%
-    </span>
-                            <span class="text-muted">Since last week</span>
-                        </p>
-                    </div>
-                    <!-- /.d-flex -->
 
-                    <div class="position-relative mb-4">
-                        <canvas id="visitors-chart" height="200"></canvas>
-                    </div>
-
-                    <div class="d-flex flex-row justify-content-end">
-                        <span class="mr-2">
-    <i class="fas fa-square text-primary"></i> This Week
-  </span>
-
-                        <span>
-    <i class="fas fa-square text-gray"></i> Last Week
-  </span>
-                    </div>
-                </div>
-            </div>
-            <!-- /.card -->
-
-            <div class="card">
-                <div class="card-header border-0">
-                    <h3 class="card-title">New Assessments</h3>
-                    <div class="card-tools">
-                        <a href="#" class="btn btn-tool btn-sm">
-                            <i class="fas fa-download"></i>
-                        </a>
-                        <a href="#" class="btn btn-tool btn-sm">
-                            <i class="fas fa-bars"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-body p-0">
-                    <table class="table table-striped table-valign-middle">
-                        <thead>
-                            <tr>
-                                <th>Assessment</th>
-                                <th>Organization</th>
-                                <th>Contributors</th>
-                                <th>Date</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                <tr>
-                                        <td>
-                                            <a href="AssessmentView.html"> Assessment Name</a>
-                                        </td>
-                                        <td><a href="OrganizationView.html">Organization Name</a></td>
-                                        <td><a href="ContributorsList.html">52</a></td>
-                                        <td>25/05/2019</td>
-                                        <td>
-                                            <a href="#" class="text-muted" title="View Report" style="margin-right: 10px">
-                                                <i class="fas fa-file-contract"></i>
-                                            </a>
-                                            <a href="#" class="text-muted" title="Edit Assessment">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-        
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                            <td>
-                                                <a href="AssessmentView.html"> Assessment Name</a>
-                                            </td>
-                                            <td><a href="OrganizationView.html">Organization Name</a></td>
-                                            <td><a href="ContributorsList.html">52</a></td>
-                                            <td>25/05/2019</td>
-                                            <td>
-                                                <a href="#" class="text-muted" title="View Report" style="margin-right: 10px">
-                                                    <i class="fas fa-file-contract"></i>
-                                                </a>
-                                                <a href="#" class="text-muted" title="Edit Assessment">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-            
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                                    <a href="AssessmentView.html"> Assessment Name</a>
-                                                </td>
-                                                <td><a href="OrganizationView.html">Organization Name</a></td>
-                                                <td><a href="ContributorsList.html">52</a></td>
-                                                <td>25/05/2019</td>
-                                                <td>
-                                                    <a href="#" class="text-muted" title="View Report" style="margin-right: 10px">
-                                                        <i class="fas fa-file-contract"></i>
-                                                    </a>
-                                                    <a href="#" class="text-muted" title="Edit Assessment">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                    <td>
-                                                        <a href="AssessmentView.html"> Assessment Name</a>
-                                                    </td>
-                                                    <td><a href="OrganizationView.html">Organization Name</a></td>
-                                                    <td><a href="ContributorsList.html">52</a></td>
-                                                    <td>25/05/2019</td>
-                                                    <td>
-                                                        <a href="#" class="text-muted" title="View Report" style="margin-right: 10px">
-                                                            <i class="fas fa-file-contract"></i>
-                                                        </a>
-                                                        <a href="#" class="text-muted" title="Edit Assessment">
-                                                            <i class="fas fa-edit"></i>
-                                                        </a>
-                    
-                                                    </td>
-                                                </tr>
-                            <tr>
-                                <td>
-                                    <a href="AssessmentView.html"> Assessment Name</a>
-                                </td>
-                                <td><a href="OrganizationView.html">Organization Name</a></td>
-                                <td><a href="ContributorsList.html">52</a></td>
-                                <td>25/05/2019</td>
-                                <td>
-                                    <a href="#" class="text-muted" title="View Report" style="margin-right: 10px">
-                                        <i class="fas fa-file-contract"></i>
-                                    </a>
-                                    <a href="#" class="text-muted" title="Edit Assessment">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- /.card -->
-        </div>
-        <!-- /.col-md-6 -->
-
-        <!-- /.col-md-6 -->
-    </div>
-    <!-- /.row -->
-
-<? */?>
