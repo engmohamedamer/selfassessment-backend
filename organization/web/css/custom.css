@@ -249,7 +249,7 @@ a {
 .dashboard-fancy-btn .fancy-button:before {
   content: '';
   display: inline-block;
-  height: 40px;
+  height: 20px;
   position: absolute;
   bottom: -5px;
   left: 30px;
@@ -270,7 +270,7 @@ a {
 }
 .dashboard-fancy-btn .fancy-button span {
   display: inline-block;
-  padding: 18px 60px;
+  padding: 10px 60px;
   border-radius: 50em;
   position: relative;
   z-index: 2;
@@ -710,5 +710,5 @@ width: 100% !important;
   height: 100%;
   z-index: 99999;
   padding: 30%;
-  background: white;
+  background: rgba(255, 255, 255, 0.562);
 }

@@ -3,7 +3,7 @@ use backend\assets\BackendAsset;
 use backend\assets\BackendArabic;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use organization\assets\DashboardAsset;
+
 
 
 if(Yii::$app->user->isGuest){
@@ -15,7 +15,6 @@ if(Yii::$app->user->isGuest){
         $bundle = BackendArabic::register($this);
     }
 }
-DashboardAsset::register($this);
 
 ?>
 

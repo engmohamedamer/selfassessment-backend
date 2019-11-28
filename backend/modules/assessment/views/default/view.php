@@ -159,24 +159,43 @@ BootstrapPluginAsset::register($this);
 
         </div>
         <?php if($survey->survey_point):?>
-        <div>
-            <div class="text-center surveyView-preloader preloader" style="display:none">
+        <div class='row'>
+            <!-- <div class="text-center surveyView-preloader preloader col-sm-12" style="display:none">
                 <img src="./img/preloader.gif" alt="">
-            </div>
-            <div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title">حالة الإستبيانات</h3>
+            </div> -->
+            <div class='col-md-6'>
+                <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">نسب التقييم في الاستبيان</h3>
 
-                <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <canvas id="surveyViewChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                </div>
+                <!-- /.box-body -->
                 </div>
             </div>
-            <div class="box-body">
-                <canvas id="surveyViewChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
-            </div>
-            <!-- /.box-body -->
+            <div class="col-md-6">
+                <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">نسب المشاركة في الإستبيان</h3>
+
+                    <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                </div>
+                <!-- /.box-body -->
+                </div>
             </div>
         </div>
         <?php endif;?>
@@ -223,6 +242,9 @@ $id  = $survey->survey_id;
 $js = <<<JS
 $(document).ready(function (e) {
     $.fn.survey();
+
+
+
     $.ajax({
     url: `/site/org-survey-count-degree?id=$id`,
     type: 'GET',
@@ -251,9 +273,34 @@ $(document).ready(function (e) {
     },
     error: function (err) {
         console.log(err);
-        $('.participantsStatus-preloader').hide()
+        $('.surveyView-preloader').hide()
     }
     });
+
+
+
+    var ctx = document.getElementById('participantsStatusChart').getContext('2d');
+        var chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: res.data,
+                backgroundColor: [
+                    "#ecf0f1",
+                    "#f39c12",
+                    "#2ecc71"
+                ],
+            }],
+            labels: res.labels
+        },
+        options: {
+            responsive: true
+        }
+        });
+
+
+
+
 });
 JS;
 $this->registerJs($js);
