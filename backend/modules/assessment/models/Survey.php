@@ -109,7 +109,10 @@ class Survey extends \yii\db\ActiveRecord
             'restrictedUserIds' => Yii::t('survey', 'Restricted users'),
             'imageFile' => '',
             'start_info'=>Yii::t('survey', 'Survey Start Info'),
-            'survey_point'=> Yii::t('survey', 'Survey Point')
+            'survey_point'=> Yii::t('survey', 'Survey Point'),
+            'level_title'=>Yii::t('survey', 'Level Title') ,
+            'level_from'=>Yii::t('survey', 'Level From') ,
+            'level_to'=>Yii::t('survey', 'Level To') ,
         ];
     }
 

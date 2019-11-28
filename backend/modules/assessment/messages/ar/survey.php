@@ -85,4 +85,7 @@ return [
     'Corrective Action Date'=>'تاريخ الاجراء التصحيحي',
     'Date From'=>'من',
     'Date To'=>'الي',
+    'Level Title'=>'عنوان المستوي',
+    'Level From'=>'من',
+    'Level To'=>'الي',
 ];

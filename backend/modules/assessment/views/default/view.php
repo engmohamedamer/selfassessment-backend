@@ -158,7 +158,7 @@ BootstrapPluginAsset::register($this);
             </div>
 
         </div>
-
+        <?php if($survey->survey_point):?>
         <div>
             <div class="text-center surveyView-preloader preloader" style="display:none">
                 <img src="./img/preloader.gif" alt="">
@@ -179,7 +179,7 @@ BootstrapPluginAsset::register($this);
             <!-- /.box-body -->
             </div>
         </div>
-
+        <?php endif;?>
         <div>
             <div class="survey-container">
 
@@ -219,17 +219,17 @@ $(document).ready(function(e) {
 });
 JS
 );
-
-$this->registerJs(<<<JS
+$id  = $survey->survey_id;
+$js = <<<JS
 $(document).ready(function (e) {
     $.fn.survey();
     
-    // let SurveyId = $("#survey-view").attr("data-SurveyId");
+    // let SurveyId = $('#survey-view').attr('data-SurveyId');
     // console.log(SurveyId);
 
     $.ajax({
-    url: `/site/org-survey-count-degree?id=${SurveyId}`,
-    type: "GET",
+    url: `/site/org-survey-count-degree?id=$id`,
+    type: 'GET',
     beforeSend: function () { $('.surveyView-preloader').show()},
     complete: function () { },
     success: res => {
@@ -240,9 +240,9 @@ $(document).ready(function (e) {
             datasets: [{
                 data: res.data,
                 backgroundColor: [
-                    "#ecf0f1",
-                    "#f39c12",
-                    "#2ecc71"
+                    '#ecf0f1',
+                    '#f39c12',
+                    '#2ecc71'
                 ],
             }],
             labels: res.labels
@@ -259,5 +259,5 @@ $(document).ready(function (e) {
     }
     });
 });
-JS
-);
+JS;
+$this->registerJs($js);
