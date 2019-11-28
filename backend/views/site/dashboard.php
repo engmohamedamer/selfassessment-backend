@@ -77,7 +77,7 @@ $this->title = Yii::t('backend', 'Dashboard');
 </div>
     <!-- /.col-md-6 -->
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-8">
         <div class="card">
             <div class="card-header border-0">
                 <h3 class="card-title"><?= Yii::t('common','New Organizations') ?></h3>
@@ -124,7 +124,7 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div>
         <!-- /.card -->  
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-4">
         <!-- <div class="card">
             <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
