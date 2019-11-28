@@ -369,6 +369,7 @@ a {
   border: 0 solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
   box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+  margin-bottom: 15px;
 }
 .card-body {
   flex: 1 1 auto;
@@ -711,4 +712,14 @@ width: 100% !important;
   z-index: 99999;
   padding: 30%;
   background: white;
+}
+.overview .text-xl{
+  width: 49%;
+  display: inline-block;
+  font-size: 3em;
+  padding: 0 5px;
+}
+.overview .text-right{
+  width: 49%;
+  display: inline-block;
 }
