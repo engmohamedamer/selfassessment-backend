@@ -4,8 +4,11 @@ namespace common\models\base;
 
 use Yii;
 use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyStat;
 use common\models\Pages;
+use common\models\User;
 use common\models\UserProfile;
+use organization\models\search\UserSearch;
 use trntv\filekit\behaviors\UploadBehavior;
 use webvimark\behaviors\multilanguage\MultiLanguageBehavior;
 use webvimark\behaviors\multilanguage\MultiLanguageTrait;
@@ -231,5 +234,24 @@ class Organization extends \yii\db\ActiveRecord
     public function logo()
     {
         return $this->first_image_base_url.$this->first_image_path;
+    }
+
+    public function countUsers()
+    {
+        $searchModel = new UserSearch();
+        $searchModel->user_role = User::ROLE_USER;
+        $searchModel->organization_id = $this->id;
+        $contributors = $searchModel->search([]);
+        return count($contributors->getModels());
+    }
+
+
+    public function startSurvey()
+    {
+        $countComplete = 0;
+        foreach ($this->survey as $survey) {
+            $countComplete += SurveyStat::find()->where(['survey_stat_survey_id'=> $survey->survey_id])->count();
+        }
+        return $countComplete;
     }
 }
