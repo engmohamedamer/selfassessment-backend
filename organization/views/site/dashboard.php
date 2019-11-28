@@ -33,19 +33,19 @@ $this->title = Yii::t('backend', 'Dashboard');
         <div class='guide'>
             <span>1</span>
             <h5>تعديل الهوية البصرية للموقع حتى تتلائم مع الهوية البصرية لمؤسستك.</h5>
-            <a href="#" class='btn small btn-primary'>تعديل الهوية البصرية</a>
+            <a href="/organization/update" class='btn small btn-primary'>تعديل البيانات الأساسية</a>
         </div>
         <div class='guide'>
             <span>2</span>
             <h5>إضافة المشاركين بالإستبيان من مؤسستك.</h5>
-            <a href="#" class='btn small btn-primary'>اضافة المشاركين</a>
+            <a href="/user/index" class='btn small btn-primary'>اضافة المشاركين</a>
         </div>
         <div class='guide'>
             <span>3</span>
             <h5> انشاء الإستبيان الأول لمؤسستك </h5>
             <br>
             <h6>" يجب تعديل حالة الإستبيان من مغلق إلى مرئي حتى يتثنى للمشاركين مشاهدة الإستبيان " </h6>
-            <a href="#" class='btn small btn-primary'>اضافة استبيان جديد</a>
+            <a href="/assessment/default/create" class='btn small btn-primary'><?= \Yii::t('common', 'Create new survey')?></a>
         </div>
         
         
