@@ -29,7 +29,7 @@ BootstrapPluginAsset::register($this);
 
 
 ?>
-    <div  id="survey-view">
+    <div  id="survey-view" data-SurveyId='<?= $survey->survey_id; ?>'>
         <div id="survey-title">
             <div class="subcontainer flex">
                 <h4><?= $survey->survey_name; ?></h4>
@@ -160,7 +160,7 @@ BootstrapPluginAsset::register($this);
         </div>
 
         <div>
-            <div class="text-center participantsStatus-preloader preloader" style="display:none">
+            <div class="text-center surveyView-preloader preloader" style="display:none">
                 <img src="./img/preloader.gif" alt="">
             </div>
             <div class="box box-danger">
@@ -174,7 +174,7 @@ BootstrapPluginAsset::register($this);
                 </div>
             </div>
             <div class="box-body">
-                <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                <canvas id="surveyViewChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
             </div>
             <!-- /.box-body -->
             </div>
@@ -211,10 +211,10 @@ $this->registerJs(<<<JS
 $(document).ready(function(e) {
     setTimeout(function() {
        $('.progress-bar').each(function(i, el) {
-    if ($(el).hasClass('init')){
-        $(el).removeClass('init');
-    }
-  })
+            if ($(el).hasClass('init')){
+                $(el).removeClass('init');
+            }
+        })
     }, 1000);
 });
 JS
@@ -223,14 +223,17 @@ JS
 $this->registerJs(<<<JS
 $(document).ready(function (e) {
     $.fn.survey();
+    
+    let SurveyId = $("#survey-view").attr("data-SurveyId");
+    console.log(SurveyId);
 
     $.ajax({
-    url: "/site/org-survey-count-degree?id=75",
+    url: `/site/org-survey-count-degree?id=${SurveyId}`,
     type: "GET",
-    beforeSend: function () { $('.participantsStatus-preloader').show()},
+    beforeSend: function () { $('.surveyView-preloader').show()},
     complete: function () { },
     success: res => {
-        var ctx = document.getElementById('participantsStatusChart').getContext('2d');
+        var ctx = document.getElementById('surveyViewChart').getContext('2d');
         var chart = new Chart(ctx, {
         type: 'pie',
         data: {
@@ -248,7 +251,7 @@ $(document).ready(function (e) {
             responsive: true
         }
         });
-        $('.participantsStatus-preloader').hide()
+        $('.surveyView-preloader').hide()
     },
     error: function (err) {
         console.log(err);
