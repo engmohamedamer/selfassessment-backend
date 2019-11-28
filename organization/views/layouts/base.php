@@ -15,7 +15,7 @@ if(Yii::$app->user->isGuest){
         $bundle = BackendArabic::register($this);
     }
 }
-//DashboardAsset::register($this);
+DashboardAsset::register($this);
 
 ?>
 
