@@ -68,7 +68,7 @@ class SurveyReportResource extends Survey
 
                 $correctiveActions= [];
 
-                $reportCorrective = CorrectiveActionReport::find(['user_id'=>$userId,'survey_id'=> $model->survey_id])->all();
+                $reportCorrective = CorrectiveActionReport::find()->where(['user_id'=>$userId,'survey_id'=> $model->survey_id])->all();
 
                 foreach ($reportCorrective as $key => $corrective) {
                     $correctiveActions[] = [
