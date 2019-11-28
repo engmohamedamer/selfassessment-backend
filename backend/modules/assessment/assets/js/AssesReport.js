@@ -117,9 +117,11 @@ var api;
                                     <i class="fas fa-tasks"></i>
                                     <p id="number1" class="number">{{reportGeneralInfo.survey_corrective_number}}</p>
                                     <span></span>
-                                    <p>الإجراءات التصحيحية
+                                    <p>عدد
+                                    <br>
+                                    الإجراءات التصحيحية</p>
+                                    <!-- <p>
                                         <br>
-                                        <div></div>
 
                                         <v-dialog
                                         width="800"
@@ -127,7 +129,7 @@ var api;
 
                                         >
                                             <template v-slot:activator="{ on }">
-                                                <v-btn
+                                                 <v-btn
                                                 text small
                                                 v-on="on"
                                                 >
@@ -159,7 +161,7 @@ var api;
                                                     </template>                                    
                                             </v-card>
                                         </v-dialog>
-                                    </p>
+                                    </p> -->
                                 </div>
                                 
                                 <div class="item wow fadeInUpBig animated animated" data-number="359" style="visibility: visible;">
