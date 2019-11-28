@@ -15,7 +15,7 @@ if(Yii::$app->user->isGuest){
         $bundle = BackendArabic::register($this);
     }
 }
-DashboardAsset::register($this);
+//DashboardAsset::register($this);
 
 ?>
 
@@ -26,12 +26,12 @@ DashboardAsset::register($this);
     <meta charset="<?php echo Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    
+
     <?php echo Html::csrfMetaTags() ?>
     <title><?php echo Html::encode($this->title) ?></title>
-    <?php 
-        $brandPrimColor =  Yii::$app->user->identity->userProfile->organization->organizationTheme->brandPrimColor; 
-        $brandSecColor =  Yii::$app->user->identity->userProfile->organization->organizationTheme->brandSecColor; 
+    <?php
+        $brandPrimColor =  Yii::$app->user->identity->userProfile->organization->organizationTheme->brandPrimColor;
+        $brandSecColor =  Yii::$app->user->identity->userProfile->organization->organizationTheme->brandSecColor;
 
     ?>
 
@@ -117,7 +117,7 @@ DashboardAsset::register($this);
 
         .secBtn:hover, .secBtn:active, .secBtn:focus {
             color: white !important;
-            background-color: <?= $brandPrimColor ?> !important; 
+            background-color: <?= $brandPrimColor ?> !important;
         }
 
 
@@ -140,26 +140,26 @@ DashboardAsset::register($this);
         }
 
         section.content .survey-container .survey-block .survey-name-wrap,  section.content .survey-container .survey-block .survey-question-view-wrap, section.content .kv-editable-popover .survey-block .survey-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-view-wrap {
-            background-color: <?= $brandPrimColor ?> !important; 
+            background-color: <?= $brandPrimColor ?> !important;
         }
 
         section.content .survey-container .survey-block .survey-question-name-wrap {
-            background-color: <?= $brandSecColor ?> !important; 
+            background-color: <?= $brandSecColor ?> !important;
             color: <?= $brandPrimColor ?> !important;
             border: 1px dashed <?= $brandPrimColor ?> !important;
 
-            
+
         }
 
         section.content .survey-container .survey-block  {
-            background-color: #fff !important; 
+            background-color: #fff !important;
             color: #000;
             border: 2px dashed <?= $brandPrimColor ?>;
 
         }
 
         section.content #survey-widget #survey-title, section.content #survey-view #survey-title {
-            background-color: #fff !important; 
+            background-color: #fff !important;
             color: #000;
             border: 2px dashed <?= $brandPrimColor ?>;
         }
@@ -171,7 +171,7 @@ DashboardAsset::register($this);
         }
 
         section.content .survey-container #survey-questions .survey-block  {
-            background-color: #fff !important; 
+            background-color: #fff !important;
             color: #000;
             border: none !important;
             margin-bottom: 15px !important;
@@ -193,7 +193,7 @@ DashboardAsset::register($this);
             /* padding: 10px; */
             /* height:50%; */
             overflow:auto;
-            
+
         }
 
         .custom-dashboard .box-danger {
@@ -213,13 +213,13 @@ DashboardAsset::register($this);
     </body>
 
     <script>
-   
+
 
 
   $(function () {
     $('[data-toggle="popover"]').popover({
-        container: 'body', 
-    html : true, 
+        container: 'body',
+    html : true,
   })
 })
     </script>
