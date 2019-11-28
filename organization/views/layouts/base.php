@@ -218,7 +218,8 @@ DashboardAsset::register($this);
 
   $(function () {
     $('[data-toggle="popover"]').popover({
-    container: 'body'
+        container: 'body', 
+    html : true, 
   })
 })
     </script>
