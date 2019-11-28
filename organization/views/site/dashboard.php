@@ -130,7 +130,7 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div>
 
 
-        <div class="col-md-6">
+        <div class="col-md-12">
                 <div class="box box-danger">
                 <div class="box-header with-border">
                     <h3 class="box-title">عدد المشاركين في كل إستبيان</h3>
@@ -167,7 +167,7 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div>
 
 
-        <div class="col-md-12">
+        <!-- <div class="col-md-12">
                 <div class="box box-danger">
                 <div class="box-header with-border">
                     <h3 class="box-title">الإستبيان الأخير</h3>
@@ -181,14 +181,14 @@ $this->title = Yii::t('backend', 'Dashboard');
                 <div class="box-body">
                     <canvas id="assessmentChart" style="height: 237px; width: 475px;" height="100%" width="475"></canvas>
                 </div>
-                <!-- /.box-body -->
+                <!~~ /.box-body ~~>
                 </div>
-        </div>
+        </div> -->
 
 
 
 
-        <div class="col-md-12">
+        <div class="col-md-6">
             <!-- USERS LIST -->
             <div class="box box-danger">
             <div class="box-header with-border">

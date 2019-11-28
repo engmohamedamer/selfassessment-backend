@@ -16,18 +16,15 @@ var api;
     el: "#assessmentReport",
     vuetify: new Vuetify(),
     template: `
-      <div >
 
-
-
-        <div class="text-center survey-preloader" style="display:none">
-            <v-progress-circular
-            indeterminate
-            color="primary"
-            :size="50"
-          ></v-progress-circular>
-        </div>
-        <div class="container" >
+        <div class="" width='100%' >
+          <div class="text-center survey-preloader" style="display:none">
+              <v-progress-circular
+              indeterminate
+              color="primary"
+              :size="50"
+            ></v-progress-circular>
+          </div>
                 <div class="row sectiontitle report-title" data-html2canvas-ignore="true">
                     <v-col cols="6">
                       <h2 class='mt-0'>التقرير</h2>
@@ -128,12 +125,12 @@ var api;
                                         width="800"
                                         >
                                             <template v-slot:activator="{ on }">
-                                                <!-- <v-btn
+                                                <v-btn
                                                 text small
                                                 v-on="on"
                                                 >
                                                 (عرض)
-                                                </v-btn> -->
+                                                </v-btn> 
                                             </template>
 
                                             <v-card>
@@ -171,7 +168,7 @@ var api;
                                     <span></span>
                                     <p>النقاط المحصلة
                                         <br>
-                                        ({{reportGeneralInfo.gained_score}})
+                                        ({{reportGeneralInfo.gained_score}}%)
                                     </p>
                                 </div>
                                 <div class="item wow fadeInUpBig animated animated" data-number="246" style="visibility: visible;">
@@ -272,18 +269,17 @@ var api;
                     </v-card>
                 </div>
       
+                <div id="noreport" style="display:none">
+                    <p> لا تملك الصلاحية للدخول إلي التقرير</p><div class="emptyassessment"><div class="img"></div><div class="name"></div></div><div class="emptyassessment"><div class="img"></div><div class="name"></div></div>
+        
+                    <div class="col-md-12 text-center">
+                            <a class="btn btn-primary" href="/assessment/default/view?id=<?= $survey->survey_id ?>">العودة للإستبيان</a>        
+                        </div>
+                </div>
         </div>
           
 
-        <div id="noreport" style="display:none">
-            <p> لا تملك الصلاحية للدخول إلي التقرير</p><div class="emptyassessment"><div class="img"></div><div class="name"></div></div><div class="emptyassessment"><div class="img"></div><div class="name"></div></div>
 
-            <div class="col-md-12 text-center">
-                    <a class="btn btn-primary" href="/assessment/default/view?id=<?= $survey->survey_id ?>">العودة للإستبيان</a>        
-                </div>
-        </div>
-
-      </div>
     `,
 
     data: {

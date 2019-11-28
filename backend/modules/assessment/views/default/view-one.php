@@ -290,6 +290,22 @@
   .tablepop table tr td{
       padding: 10px;
   }
+
+  .green {
+      background: green !important;
+  }
+
+  .red {
+      background: red !important;
+  }
+
+  .orange {
+      background: orange !important;
+  }
+
+  .#cebe32 {
+      background: #cebe32 !important;
+  }
 </style> 
 
 <div id="assessmentReport" data-SurveyId="<?= $survey->survey_id ?>"  data-UserId="<?= $user_id; ?>" data-tocken="<?= Yii::$app->user->getIdentity()->access_token ;?>" ></div>

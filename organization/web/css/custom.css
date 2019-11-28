@@ -84,6 +84,12 @@ a {
 .content-wrapper, .right-side, .main-footer,.main-header .navbar{
   margin-left: 250px;
 }
+
+@media (max-width: 992px){ 
+  .content-wrapper, .right-side, .main-footer,.main-header .navbar{
+    margin-right: 0 !important;
+  }
+}
 .sidebar-menu {
 
   padding: 5px;
@@ -678,7 +684,7 @@ width: 100% !important;
   }
 }
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
   .custom-dashboard .users-list>li.col-md-2 {
     width: 16.66666667%;
   }
