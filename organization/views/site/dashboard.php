@@ -26,7 +26,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             <!-- /.col -->
         </div>
     </div>
-
+    <?php if(count($organization->survey) == 0):?>
     <div class="row custom-dashboard text-center">
         <h2>مرحباً بك</h2>
         <h4>نوصيكم قبل البدء بإنشاء الإستبيانات القيام بالتالي</h4>
@@ -47,10 +47,8 @@ $this->title = Yii::t('backend', 'Dashboard');
             <h6>" يجب تعديل حالة الإستبيان من مغلق إلى مرئي حتى يتثنى للمشاركين مشاهدة الإستبيان " </h6>
             <a href="/assessment/default/create" class='btn small btn-primary'><?= \Yii::t('common', 'Create new survey')?></a>
         </div>
-        
-        
     </div>
-    
+    <?php endif;?>    
     <div>
         <div class="row custom-dashboard">
             <!-- <div class="col-sm-6 col-md-4">
