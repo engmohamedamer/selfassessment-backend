@@ -2,7 +2,6 @@
 
 use organization\models\Schools;
 use yii\helpers\Html;
-
 /* @var $this yii\web\View */
 /* @var $name string */
 /* @var $message string */
@@ -27,6 +26,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             <!-- /.col -->
         </div>
     </div>
+    
 
     <div class="row custom-dashboard">
         <!-- <div class="col-sm-6 col-md-4">
@@ -67,8 +67,43 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div> -->
 
         <!-- /.col -->
+        <div class="col-md-4">
+            <!-- USERS LIST -->
+            <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title"><?= Yii::t('common', 'Latest Contributors') ?></h3>
 
-        <div class="col-md-12">
+                <div class="box-tools pull-right">
+                <!-- <span class="label label-danger">8 New Members</span> -->
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+                <ul class="users-list clearfix row">
+                <?php foreach($contributors->getModels() as $contributor): ?>
+                <li class='col-sm-4 col-md-2 '>
+                    <img width='80%' src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">
+                    <a class="users-list-name" href="/user/view?id=<?= $contributor->id ?>"><?= $contributor->userProfile->fullname ?></a>
+                    <span class="users-list-date"><?= date('Y-m-d',$contributor->created_at) ?></span>
+                </li>
+                <?php endforeach; ?>
+                </ul>
+                <!-- /.users-list -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer text-center">
+                <a href="/user/index" class="uppercase"><?= Yii::t('common', 'All Contributors') ?></a>
+            </div>
+            <!-- /.box-footer -->
+            </div>
+            <!--/.box -->
+        </div>
+
+        <div class="col-md-8">
             <!-- TABLE: LATEST ORDERS -->
             <div class="box box-info">
                 <div class="box-header with-border">
@@ -129,11 +164,16 @@ $this->title = Yii::t('backend', 'Dashboard');
             <!-- /.box -->
         </div>
 
+    </div>
 
-        <div class="col-md-12">
-            <div class="text-center assessmentParticipants-preloader preloader" style="display:none">
-                <img src="./img/preloader.gif" alt="">
-            </div>
+    <div class="row custom-dashboard">
+
+        <div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
+            <img src="./img/preloader.gif" alt="">
+        </div>
+
+        <div class="col-md-6">
+            
             <div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title">عدد المشاركين في كل إستبيان</h3>
@@ -194,41 +234,7 @@ $this->title = Yii::t('backend', 'Dashboard');
 
 
 
-        <div class="col-md-6">
-            <!-- USERS LIST -->
-            <div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title"><?= Yii::t('common', 'Latest Contributors') ?></h3>
-
-                <div class="box-tools pull-right">
-                <!-- <span class="label label-danger">8 New Members</span> -->
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                </button>
-                </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-                <ul class="users-list clearfix row">
-                <?php foreach($contributors->getModels() as $contributor): ?>
-                <li class='col-sm-4 col-md-2 '>
-                    <img width='80%' src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">
-                    <a class="users-list-name" href="/user/view?id=<?= $contributor->id ?>"><?= $contributor->userProfile->fullname ?></a>
-                    <span class="users-list-date"><?= date('Y-m-d',$contributor->created_at) ?></span>
-                </li>
-                <?php endforeach; ?>
-                </ul>
-                <!-- /.users-list -->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer text-center">
-                <a href="/user/index" class="uppercase"><?= Yii::t('common', 'All Contributors') ?></a>
-            </div>
-            <!-- /.box-footer -->
-            </div>
-            <!--/.box -->
-        </div>
+        
 
 
 
