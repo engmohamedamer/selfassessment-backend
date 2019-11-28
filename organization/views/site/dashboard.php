@@ -152,9 +152,9 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div>
 
         <div class="col-md-6">
-            <div class="text-center participantsStatus-preloader preloader" style="display:none">
+            <!-- <div class="text-center participantsStatus-preloader preloader" style="display:none">
                 <img src="./img/preloader.gif" alt="">
-            </div>
+            </div> -->
             <div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title">حالة الإستبيانات</h3>

@@ -79,27 +79,27 @@ var api;
                     </v-item-group> -->
 
                     <div class="sectiontitle report-details">
-                        <h3 class="display-1 flex-grow-1 text-center">{{assessmentTitle}} ({{reportGeneralInfo.survey_number}})</h3>
-                        <p>{{assessmentDesc}}</p>
+                        <h3 class="display-1 brandPrimColor flex-grow-1 text-center">{{assessmentTitle}} ({{reportGeneralInfo.survey_number}})</h3>
+                        <p class='brandHTextColor'>{{assessmentDesc}}</p>
                         <v-row justify="center">
-                            <v-col cols="12" sm="6" md="4" lg="3" class="brandPrimColor">
+                            <v-col cols="12" sm="6" md="4" lg="3" class="">
                             تاريخ إنشاء الإستبيان: <span class="brandPTextColor">{{reportGeneralInfo.survey_created_at}}</span>
                             </v-col>
-                            <v-col cols="12" sm="6" md="4" lg="3" class="brandPrimColor">
+                            <v-col cols="12" sm="6" md="4" lg="3" class="">
                             ينتهي في: <span class="brandPTextColor">{{reportGeneralInfo.survey_expired_at}}</span>
                             </v-col>
-                            <v-col cols="12" sm="6" md="4" lg="3" class="brandPrimColor">
+                            <v-col cols="12" sm="6" md="4" lg="3" class="">
                             تاريخ ملىء الإستبيان: <span class="brandPTextColor">{{reportGeneralInfo.survey_end_at}}</span>
                             </v-col>
-                              <v-col cols="12" sm="6" md="4" lg="3" class="brandPrimColor">
+                              <v-col cols="12" sm="6" md="4" lg="3" class="">
                               الوقت المحدد: <span class="brandPTextColor">{{reportGeneralInfo.survey_time_to_pass}} دقيقة</span>
                             </v-col>
                         </v-row>
                         <!-- <v-row>
-                            <v-col cols="12" sm="6" md="4" lg="3" class="brandPrimColor">
+                            <v-col cols="12" sm="6" md="4" lg="3" class="">
                             عدد الأسئلة: <span class="brandPTextColor">{{reportGeneralInfo.survey_question_number}}</span>
                             </v-col>
-                            <v-col cols="12" sm="6" md="4" lg="3" class="brandPrimColor">
+                            <v-col cols="12" sm="6" md="4" lg="3" class="">
                             نسبة التقدم: <span class="brandPTextColor">{{Math.ceil(this.reportGeneralInfo.progress)}}%</span>
                             </v-col>
                             

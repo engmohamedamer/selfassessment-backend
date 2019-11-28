@@ -1,5 +1,5 @@
     $.ajax({
-    url: "/site/org-survey-count-degree?id=75",
+    url: "/site/org-survey-stats",
     type: "GET",
     beforeSend: function () { $('.participantsStatus-preloader').show()},
     complete: function () { },

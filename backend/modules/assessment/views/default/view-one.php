@@ -119,6 +119,13 @@
     min-height: 20px;
     }
 
+    .report-title {
+        background: white;
+    }
+
+    .report-details {
+        border:2px dashed #ddd;
+    }
     .sectiontitle h2 {
     font-size: 30px;
     color: #222;
