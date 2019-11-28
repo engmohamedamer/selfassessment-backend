@@ -262,8 +262,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
            
                 echo Html::endTag('div');
                      echo Html::endTag('div');
-            echo Html::endTag('div');
-            echo Html::beginTag('div', ['class' => 'col-md-12']);
+                     echo Html::beginTag('div', ['class' => 'col-md-12']);
 
             echo $form->field($survey, "survey_descr", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
             )->textarea(['rows' => 3]);
@@ -274,7 +273,8 @@ if (Yii::$app->user->identity->userProfile->organization) {
 
                 echo Html::tag('div', '', ['class' => 'clearfix']);
                 echo Html::endTag('div'); // col-md-12
-            // echo Html::endTag('div'); // row
+            echo Html::endTag('div');
+            
 
             echo Html::beginTag('div', ['class' => 'row']);
             echo Html::beginTag('div', ['class' => 'col-md-3']);

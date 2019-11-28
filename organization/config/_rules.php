@@ -32,7 +32,7 @@ return [
         'controllers' => ['user'],
         'allow' => false,
     ],
-       [
+    [
         'allow' => true,
            'roles' => ['governmentAdmin','governmentRep'],
     ],

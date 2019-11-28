@@ -9,7 +9,6 @@ $config = [
         ],
         'request' => [
             'cookieValidationKey' => env('ORGANIZATION_COOKIE_VALIDATION_KEY'),
-            'baseUrl' => env('BACKEND_BASE_URL'),
         ],
         'user' => [
             'class' => yii\web\User::class,
