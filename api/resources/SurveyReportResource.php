@@ -87,7 +87,7 @@ class SurveyReportResource extends Survey
                     'survey_number'=>$model->survey_id .'/'. date("Y",strtotime($model->survey_created_at)) ,
                     'survey_time_to_pass'=> $model->survey_time_to_pass,
                     'survey_question_number'=> count($model->questions),
-                    'survey_corrective_number'=>$this->correctiveNumber($model),
+                    'survey_corrective_number'=> $correctiveActions ? count($correctiveActions) : 0,
                     'survey_corrective_actions'=>$correctiveActions,
                     'total_points'=> $model->survey_point ?: null,
                     'gained_points'=>$gained_points ?: null,
