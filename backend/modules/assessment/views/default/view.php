@@ -223,10 +223,6 @@ $id  = $survey->survey_id;
 $js = <<<JS
 $(document).ready(function (e) {
     $.fn.survey();
-    
-    // let SurveyId = $('#survey-view').attr('data-SurveyId');
-    // console.log(SurveyId);
-
     $.ajax({
     url: `/site/org-survey-count-degree?id=$id`,
     type: 'GET',
