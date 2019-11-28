@@ -19,7 +19,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                 <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Dashboard') ?></h1>
             </div>
             <div class='col-sm-6 dashboard-fancy-btn'>
-                <a href="/assessment/default/create" class="fancy-button bg-gradient1 "><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('survey', 'Create new Assessment')?> </span></a>
+                <a href="/assessment/default/create" class="fancy-button bg-gradient1 "><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('common', 'Create new survey')?> </span></a>
             </div>
             <!-- <div class="col-sm-6"> -->
                 <!-- <a href="NewOrganization.html" class="btn btn-primary" style="float: right">New Organization</a> -->
@@ -121,8 +121,8 @@ $this->title = Yii::t('backend', 'Dashboard');
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer clearfix">
-                    <a href="/assessment/default/create" class="btn btn-sm btn-info btn-flat pull-left"><?= \Yii::t('survey', 'Create new survey')?></a>
-                    <a href="/assessment" class="btn btn-sm btn-default btn-flat pull-right"><?= \Yii::t('survey', 'Assessments List') ?></a>
+                    <a href="/assessment/default/create" class="btn btn-sm btn-info btn-flat pull-left"><?= \Yii::t('common', 'Create new survey')?></a>
+                    <a href="/assessment" class="btn btn-sm btn-default btn-flat pull-right"><?= \Yii::t('common', 'Assessments List') ?></a>
                 </div>
                 <!-- /.box-footer -->
             </div>
