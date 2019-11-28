@@ -4,6 +4,7 @@ namespace organization\controllers;
 
 use Yii;
 use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyStat;
 use common\models\Organization;
 use common\models\User;
 use organization\models\search\UserSearch;
@@ -56,6 +57,48 @@ class SiteController extends OrganizationController
         }
 
         return ['labels'=> $labels ,'data'=>$data];
+    }
+
+    public function actionOrgSurveyStats()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        
+        $organization = Yii::$app->user->identity->userProfile->organization;
+
+
+        $searchModel = new UserSearch();
+        $searchModel->user_role = User::ROLE_USER;
+        $searchModel->organization_id = $organization->id;
+        $dataProvider = $searchModel->search([]);
+        $orgUserCount =  count($dataProvider->getModels());
+        $stats = [];
+
+        $sumComplete  = 0;
+        $sumUncomplete  = 0;
+        $sumNotstart = 0;
+        foreach ($organization->survey as $survey) {
+            // $surveyIds[] = $survey->survey_id;
+            $countComplete = SurveyStat::find()->where(['survey_stat_survey_id'=> $survey->survey_id,'survey_stat_is_done'=>1])->count();
+            $countUncomplete = SurveyStat::find()->where(['survey_stat_survey_id'=> $survey->survey_id,'survey_stat_is_done'=>0])->count();
+            $complete = round(( $countComplete / $orgUserCount) * 100, 2);
+            $uncomplete = round(( $countUncomplete / $orgUserCount) * 100, 2);
+            $notstart = 100 - ( $complete + $uncomplete );
+            $sumComplete += $complete;
+            $sumUncomplete += $uncomplete;
+            $sumNotstart += $notstart;
+            // $stats[] = ['complete'=> $complete,'uncomplete'=> $uncomplete,'notstart'=> $notstart];
+        }
+
+        $basic = count($organization->survey) * 100;
+        // return ['sumComplete'=>$sumComplete,'sumUncomplete'=>$sumUncomplete,'sumNotstart'=>$sumNotstart];
+        return [
+            'labels'=> ['اكتمل','قيد الاستكمال','لم يبدأ'] ,
+            'data'=>[
+                round(($sumComplete / $basic) * 100,2),
+                round(($sumUncomplete / $basic) * 100,2),
+                round(($sumNotstart / $basic) * 100,2),
+            ]
+        ];
     }
 
     public function actionOrgSurveyCountDegree($id)
