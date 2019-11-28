@@ -1,16 +1,17 @@
 var currentHostname = window.location.hostname;
 var api;
 
-  if ( currentHostname  === 'organization.selfassest.localhost/') {
-         api ='http://api.selfassest.localhost/';
+  if ( currentHostname  == 'organization.selfassest.localhost') {
+         api ='http://api.selfassest.localhost';
   }
   // else if(currentHostname  === 'organization.selfassest.localhost' ){
   //       api = 'http://api.selfassest.localhost/';
   // }
   else{
-        api = '';
+        api = 'http://api.sahlit.com';
   } 
 
+  console.log(currentHostname)
 
   var app = new Vue({
     el: "#assessmentReport",
@@ -322,7 +323,7 @@ var api;
      },
     mounted() {
       $.ajax({
-        url:"http://api.selfassest.localhost/assessments/custom-report/"+this.SurveyId+"/"+this.UserId,
+        url:api+"/assessments/custom-report/"+this.SurveyId+"/"+this.UserId,
         method: "GET",
         "headers": {
           "Content-Type": "application/json",
