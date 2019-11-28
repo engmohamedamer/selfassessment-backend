@@ -82,8 +82,9 @@ $this->title = Yii::t('backend', 'Dashboard');
                     <thead>
                         <tr>
                             <th><?= Yii::t('common','Name') ?></th>
-                            <th>Assessments</th>
+                            <th><?= Yii::t('common','Assessments')?></th>
                             <th><?= Yii::t('common','Contributors')?></th>
+                            <th><?= Yii::t('common','Surveys Contributors')?></th>
                             <th><?= Yii::t('common','Status') ?></th>
                             <th><?= Yii::t('common','Actions') ?></th>
                         </tr>
@@ -93,10 +94,11 @@ $this->title = Yii::t('backend', 'Dashboard');
                             <tr>
                                 <td>
                                    
-                                    <a href="OrganizationView.html"><?= $organization->name ?></a>
+                                    <a href="#"><?= $organization->name ?></a>
                                 </td>
-                                <td><a href="AssessmentList.html">3</a></td>
-                                <td><a href="ContributorsList.html">52</a></td>
+                                <td><a href="#"><?= count($organization->survey) ?></a></td>
+                                <td><a href="#"><?= $organization->countUsers() ?></a></td>
+                                <td><a href="#"><?= $organization->startSurvey() ?></a></td>
                                 <td class="text-success"><?= $organization->status()[$organization->status] ?></td>
 
                                 <td>

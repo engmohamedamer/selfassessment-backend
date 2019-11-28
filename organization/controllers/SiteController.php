@@ -71,25 +71,20 @@ class SiteController extends OrganizationController
         $searchModel->organization_id = $organization->id;
         $dataProvider = $searchModel->search([]);
         $orgUserCount =  count($dataProvider->getModels());
-        $stats = [];
 
         $sumComplete  = 0;
         $sumUncomplete  = 0;
         $sumNotstart = 0;
         foreach ($organization->survey as $survey) {
-            // $surveyIds[] = $survey->survey_id;
             $countComplete = SurveyStat::find()->where(['survey_stat_survey_id'=> $survey->survey_id,'survey_stat_is_done'=>1])->count();
             $countUncomplete = SurveyStat::find()->where(['survey_stat_survey_id'=> $survey->survey_id,'survey_stat_is_done'=>0])->count();
             $notstart = $orgUserCount - ( $countComplete + $countUncomplete );
             $sumComplete += $countComplete;
             $sumUncomplete += $countUncomplete;
             $sumNotstart += $notstart;
-            $stats[] = ['complete'=> $sumComplete,'uncomplete'=> $sumUncomplete,'notstart'=> $sumNotstart];
         }
 
         $basic = count($organization->survey) * 100;
-        // return $stats;
-        // return ['sumComplete'=>$sumComplete,'sumUncomplete'=>$sumUncomplete,'sumNotstart'=>$sumNotstart];
         return [
             'labels'=> ['اكتمل','قيد الاستكمال','لم يبدأ'] ,
             'data'=>[

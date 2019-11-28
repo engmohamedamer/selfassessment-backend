@@ -252,7 +252,9 @@ return [
     'Ends At'=>'ينتهي في',
     'Closed'=>'مغلق',
     'Open'=>'مفتوح',
+    'Assessments'=>'الاستبيانات',
     'Latest Assessments'=>'أحدث الاستبيانات',
     'Create new survey'=>'اضافة استبيان جديد',
     'Assessments List'=>'قائمة الاستبيانات',
+    'Surveys Contributors'=>'المشاركين في الاستبيانات',
 ];
