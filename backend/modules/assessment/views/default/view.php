@@ -158,6 +158,28 @@ BootstrapPluginAsset::register($this);
             </div>
 
         </div>
+
+        <div>
+            <div class="text-center participantsStatus-preloader preloader" style="display:none">
+                <img src="./img/preloader.gif" alt="">
+            </div>
+            <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">حالة الإستبيانات</h3>
+
+                <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+            </div>
+            <!-- /.box-body -->
+            </div>
+        </div>
+
         <div>
             <div class="survey-container">
 
@@ -201,6 +223,38 @@ JS
 $this->registerJs(<<<JS
 $(document).ready(function (e) {
     $.fn.survey();
+
+    $.ajax({
+    url: "/site/org-survey-count-degree?id=75",
+    type: "GET",
+    beforeSend: function () { $('.participantsStatus-preloader').show()},
+    complete: function () { },
+    success: res => {
+        var ctx = document.getElementById('participantsStatusChart').getContext('2d');
+        var chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: res.data,
+                backgroundColor: [
+                    "#ecf0f1",
+                    "#f39c12",
+                    "#2ecc71"
+                ],
+            }],
+            labels: res.labels
+        },
+        options: {
+            responsive: true
+        }
+        });
+        $('.participantsStatus-preloader').hide()
+    },
+    error: function (err) {
+        console.log(err);
+        $('.participantsStatus-preloader').hide()
+    }
+    });
 });
 JS
 );

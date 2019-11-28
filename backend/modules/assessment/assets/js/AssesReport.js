@@ -123,6 +123,8 @@ var api;
 
                                         <v-dialog
                                         width="800"
+                                        v-model="dialog"
+
                                         >
                                             <template v-slot:activator="{ on }">
                                                 <v-btn
@@ -168,7 +170,7 @@ var api;
                                     <span></span>
                                     <p>النقاط المحصلة
                                         <br>
-                                        ({{reportGeneralInfo.gained_score}}%)
+                                        ({{reportGeneralInfo.gained_score}})
                                     </p>
                                 </div>
                                 <div class="item wow fadeInUpBig animated animated" data-number="246" style="visibility: visible;">
@@ -299,6 +301,7 @@ var api;
         { text: 'الإجرائات التصحيحية', value: 'qCorrectiveActions' },
       ],
       assessmentData: {},
+      dialog:false,
       surveyResults: {},
       answerValue: true,
       questionsReport: [],

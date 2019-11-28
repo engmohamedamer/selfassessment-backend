@@ -1,7 +1,7 @@
     $.ajax({
-    url: "/site/org-survey-count-degree?id=49",
+    url: "/site/org-survey-count-degree?id=75",
     type: "GET",
-    beforeSend: function () { },
+    beforeSend: function () { $('.participantsStatus-preloader').show()},
     complete: function () { },
     success: res => {
         var ctx = document.getElementById('participantsStatusChart').getContext('2d');
@@ -22,9 +22,11 @@
             responsive: true
         }
         });
+        $('.participantsStatus-preloader').hide()
     },
     error: function (err) {
         console.log(err);
+        $('.participantsStatus-preloader').hide()
     }
     });
 
@@ -82,7 +84,7 @@
     $.ajax({
     url: "/site/org-survey",
     type: "GET",
-    beforeSend: function () { },
+    beforeSend: function () { $('.assessmentParticipants-preloader').show()},
     complete: function () { },
     success: res => {
         var ctx = document.getElementById('assessmentParticipantsChart').getContext('2d');
@@ -94,23 +96,30 @@
                     label: 'عدد المشاركات في الإستبيان',
                     data: res.data,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
+                        // 'rgba(255, 99, 132, 0.2)',
+                        // 'rgba(54, 162, 235, 0.2)',
+                        // 'rgba(255, 206, 86, 0.2)',
+                        // 'rgba(75, 192, 192, 0.2)',
+                        // 'rgba(153, 102, 255, 0.2)',
+                        // 'rgba(153, 102, 255, 0.2)',
+                        // 'rgba(255, 159, 64, 0.2)'
+                        '#16a085',
+                        '#e67e22',
+                        '#2c3e50',
+                        '#2980b9',
+                        '#c0392b',
+                        '#27ae60',
+                        '#f39c12'
                     ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+                    // borderColor: [
+                    //     'rgba(255, 99, 132, 1)',
+                    //     'rgba(54, 162, 235, 1)',
+                    //     'rgba(255, 206, 86, 1)',
+                    //     'rgba(75, 192, 192, 1)',
+                    //     'rgba(153, 102, 255, 1)',
+                    //     'rgba(153, 102, 255, 1)',
+                    //     'rgba(255, 159, 64, 1)'
+                    // ],
                     borderWidth: 1
                 }]
             },
@@ -157,8 +166,11 @@
                 },
             }
         }); 
+        $('.assessmentParticipants-preloader').hide()
     },
     error: function (err) {
         console.log(err);
+        $('.assessmentParticipants-preloader').hide()
+
     }
     });
