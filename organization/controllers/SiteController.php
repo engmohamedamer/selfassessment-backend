@@ -47,9 +47,10 @@ class SiteController extends OrganizationController
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         
         $organization = Yii::$app->user->identity->userProfile->organization;
+        $organizationSurvey = Survey::find()->where(['org_id'=>$organization->id])->limit(6)->all();
         $labels = [];
         $data = [];
-        foreach ($organization->survey as $survey) {
+        foreach ($organizationSurvey as $survey) {
             $labels[] = $survey->survey_name;
             $data[] = count($survey->stats);
         }
