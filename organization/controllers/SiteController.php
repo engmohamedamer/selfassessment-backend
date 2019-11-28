@@ -80,23 +80,22 @@ class SiteController extends OrganizationController
             // $surveyIds[] = $survey->survey_id;
             $countComplete = SurveyStat::find()->where(['survey_stat_survey_id'=> $survey->survey_id,'survey_stat_is_done'=>1])->count();
             $countUncomplete = SurveyStat::find()->where(['survey_stat_survey_id'=> $survey->survey_id,'survey_stat_is_done'=>0])->count();
-            $complete = round(( $countComplete / $orgUserCount) * 100, 2);
-            $uncomplete = round(( $countUncomplete / $orgUserCount) * 100, 2);
-            $notstart = 100 - ( $complete + $uncomplete );
-            $sumComplete += $complete;
-            $sumUncomplete += $uncomplete;
+            $notstart = $orgUserCount - ( $countComplete + $countUncomplete );
+            $sumComplete += $countComplete;
+            $sumUncomplete += $countUncomplete;
             $sumNotstart += $notstart;
-            // $stats[] = ['complete'=> $complete,'uncomplete'=> $uncomplete,'notstart'=> $notstart];
+            $stats[] = ['complete'=> $sumComplete,'uncomplete'=> $sumUncomplete,'notstart'=> $sumNotstart];
         }
 
         $basic = count($organization->survey) * 100;
+        // return $stats;
         // return ['sumComplete'=>$sumComplete,'sumUncomplete'=>$sumUncomplete,'sumNotstart'=>$sumNotstart];
         return [
             'labels'=> ['اكتمل','قيد الاستكمال','لم يبدأ'] ,
             'data'=>[
-                round(($sumComplete / $basic) * 100,2),
-                round(($sumUncomplete / $basic) * 100,2),
-                round(($sumNotstart / $basic) * 100,2),
+                $sumComplete,
+                $sumUncomplete,
+                $sumNotstart,
             ]
         ];
     }
