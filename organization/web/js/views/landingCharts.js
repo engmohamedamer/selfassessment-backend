@@ -1,31 +1,31 @@
-
-    
-
-    var ctx = document.getElementById('participantsStatusChart').getContext('2d');
-    var chart = new Chart(ctx, {
-      type: 'pie',
-      data: {
-          datasets: [{
-              data: [
-                  20,
-                  30,
-                  50
-              ],
-              backgroundColor: [
-                  "#ecf0f1",
-                  "#f39c12",
-                  "#2ecc71"
-              ],
-          }],
-          labels: [
-              "لم يبدأ",
-              "قيد الإستكمال",
-              "اكتمل"
-          ]
-      },
-      options: {
-          responsive: true
-      }
+    $.ajax({
+    url: "/site/org-survey-count-degree?id=49",
+    type: "GET",
+    beforeSend: function () { },
+    complete: function () { },
+    success: res => {
+        var ctx = document.getElementById('participantsStatusChart').getContext('2d');
+        var chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: res.data,
+                backgroundColor: [
+                    "#ecf0f1",
+                    "#f39c12",
+                    "#2ecc71"
+                ],
+            }],
+            labels: res.labels
+        },
+        options: {
+            responsive: true
+        }
+        });
+    },
+    error: function (err) {
+        console.log(err);
+    }
     });
 
     // var ctx = document.getElementById('assessmentChart').getContext('2d');
@@ -79,28 +79,12 @@
 
 
 
-    var assessmentParticipants;
     $.ajax({
     url: "/site/org-survey",
     type: "GET",
     beforeSend: function () { },
     complete: function () { },
     success: res => {
-        console.log(res);
-        
-        // assessmentParticipants = JSON.parse(res)
-        // var line1 = assessmentParticipants.data1.map(Number);
-        // var line2 = assessmentParticipants.data2.map(Number);
-        // var MONTHS = assessmentParticipants.months;
-
-
-
-
-
-
-
-
-
         var ctx = document.getElementById('assessmentParticipantsChart').getContext('2d');
         var chart = new Chart(ctx, {
             type: 'bar',
@@ -131,99 +115,48 @@
                 }]
             },
             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                responsive: true,
+                
+                tooltips: {
+                mode: "index",
+                intersect: false
+                },
+                hover: {
+                mode: "nearest",
+                intersect: true
+                },
+                legend: {
+                labels: {
+                    // This more specific font property overrides the global property
+                    // fontColor: 'red'
                 }
+                },
+                scales: {
+                    xAxes: [
+                        {
+                        display: true,
+                        scaleLabel: {
+                            display: false,
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                        }
+                    ],
+                    yAxes: [
+                        {
+                        display: true,
+                        scaleLabel: {
+                            display: false
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                        }
+                    ]
+                },
             }
         }); 
-
-
-
-
-
-
-
-
-
-
-        // var config = {
-        // type: "line",
-        // data: {
-        //     labels: MONTHS,
-        //     datasets: [
-        //     {
-        //         label: "طلبات المدارس الجديدة",
-        //         backgroundColor: window.chartColors.red,
-        //         borderColor: window.chartColors.red,
-        //         data: line1,
-        //         fill: false
-        //     },
-        //     {
-        //         label: "المدارس المضافة",
-        //         fill: false,
-        //         backgroundColor: window.chartColors.blue,
-        //         borderColor: window.chartColors.blue,
-        //         data: line2
-        //     }
-        //     ]
-        // },
-        // options: {
-        //     responsive: true,
-        //     title: {
-        //     display: true,
-        //     text: "طلبات المدارس الجديدة",
-        //     fontColor: 'white',
-        //     },
-        //     tooltips: {
-        //     mode: "index",
-        //     intersect: false
-        //     },
-        //     hover: {
-        //     mode: "nearest",
-        //     intersect: true
-        //     },
-        //     legend: {
-        //     labels: {
-        //         // This more specific font property overrides the global property
-        //         fontColor: 'white'
-        //     }
-        //     },
-        //     scales: {
-        //     xAxes: [
-        //         {
-        //         display: true,
-        //         scaleLabel: {
-        //             display: false,
-        //             labelString: "Month"
-        //         },
-        //         ticks: {
-        //             beginAtZero: true,
-        //             fontColor: 'white'
-        //         }
-        //         }
-        //     ],
-        //     yAxes: [
-        //         {
-        //         display: true,
-        //         scaleLabel: {
-        //             display: false
-        //         },
-        //         ticks: {
-        //             beginAtZero: true,
-        //             fontColor: 'white'
-        //         },
-        //         }
-        //     ]
-        //     }
-        // }
-        // };
-
-        // var ctx = document.getElementById("linechart").getContext("2d");
-        // var myLine = new Chart(ctx, config);
     },
     error: function (err) {
         console.log(err);

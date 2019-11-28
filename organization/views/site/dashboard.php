@@ -142,7 +142,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </div>
                 </div>
                 <div class="box-body">
-                    <canvas id="assessmentParticipantsChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                    <canvas id="assessmentParticipantsChart"  ></canvas>
                 </div>
                 <!-- /.box-body -->
                 </div>
