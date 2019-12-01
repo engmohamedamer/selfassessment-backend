@@ -193,8 +193,11 @@ $this->title = Yii::t('backend', 'Dashboard');
 <!-- /.row -->
 
 <?php
-$this->registerJs(<<<JS
 
+$l = json_encode($labels);
+$d1 = json_encode($data1);
+$d2 = json_encode($data2);
+$js = <<<JS
 $(function () {
   'use strict'
 
@@ -208,10 +211,10 @@ $(function () {
     var Charts = $('#visitors-chart')
   var visitorsChart  = new Chart(Charts, {
     data   : {
-      labels  : ['18th', '20th', '22nd', '24th', '26th', '28th', '30th'],
+      labels  : $l,
       datasets: [{
         type                : 'line',
-        data                : [100, 120, 170, 167, 180, 177, 160],
+        data                : $d1,
         backgroundColor     : 'transparent',
         borderColor         : '#007bff',
         pointBorderColor    : '#007bff',
@@ -222,7 +225,7 @@ $(function () {
       },
         {
           type                : 'line',
-          data                : [60, 80, 70, 67, 80, 77, 100],
+          data                : $d2,
           backgroundColor     : 'tansparent',
           borderColor         : '#ced4da',
           pointBorderColor    : '#ced4da',
@@ -270,8 +273,8 @@ $(function () {
     }
   })
 })
-JS
-);
+JS;
+$this->registerJs($js);
 
 ?>
 

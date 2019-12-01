@@ -77,10 +77,6 @@ class SiteController extends BackendController
             $data2[($value->month - 1)] = $value->count_month;
         }
 
-        return var_dump($months,$data1,$data2);
-
-
-        
         $surveyCount = Survey::find()->count();
         $surveyStatsCount = SurveyStat::find()->count();
         $surveyCurrentMonth = Survey::find()->where(['MONTH(survey_created_at)'=>date('m')])->count();
