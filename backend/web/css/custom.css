@@ -723,3 +723,168 @@ width: 100% !important;
   width: 49%;
   display: inline-block;
 }
+
+
+/************************************************/
+
+
+.btn-primary{
+  background-color: #c32033 !important;
+  border-color: #c32033 !important;
+}
+.btn-danger{
+  background-color: #f4cccc !important;
+  border-color: #f4cccc !important;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+   background-color: #c32033 !important;
+}
+.table td a {
+  color: #c32033 !important;
+}
+a:hover, a:active, a:focus {
+  color: #c32033 !important;
+}
+
+
+
+.brandPrimColor {
+  color: #c32033 !important;
+
+}
+
+.brandPrimBgColor {
+  background-color: #c32033 !important;
+
+}
+.brandSecColor {
+  color: #f4cccc !important;
+
+}
+.brandSecBgColor {
+  background-color: #f4cccc !important;
+
+}
+
+
+.primBtn {
+  color: white !important;
+  background-color: #c32033 !important;
+  border: 1px solid #c32033 !important;
+  height: 44px !important;
+  min-width: 78px !important;
+  padding: 0 20px !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  border-radius: 5px !important;
+  opacity: 1 !important;
+  font-size: 20px !important;
+  line-height: 40px !important;
+  transition: all .2s !important;
+
+}
+
+.primBtn:hover {
+      opacity: .8 !important;
+  }
+
+.secBtn {
+  color: #c32033 !important;
+  background-color: transparent !important;
+  border: 1px solid #c32033 !important;
+  height: 44px !important;
+  min-width: 78px !important;
+  padding: 0 20px !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  border-radius: 5px !important;
+  font-size: 20px !important;
+  line-height: 40px !important;
+  transition: all .2s !important;
+
+}
+
+.secBtn:hover, .secBtn:active, .secBtn:focus {
+  color: white !important;
+  background-color: #c32033 !important;
+}
+
+
+.thirdBtn {
+  color: #000 !important;
+  background-color: transparent  !important;
+  height: 44px  !important;
+  min-width: 78px  !important;
+  padding: 0 20px  !important;
+  font-size: 1rem  !important;
+  box-shadow: none !important;
+  font-size: 20px !important;
+  line-height: 40px !important;
+  transition: all .2s  !important;
+
+}
+
+.thirdBtn:hover {
+  color: #c32033 !important;
+}
+
+section.content .survey-container .survey-block .survey-name-wrap,  section.content .survey-container .survey-block .survey-question-view-wrap, section.content .kv-editable-popover .survey-block .survey-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-view-wrap {
+  background-color: #c32033 !important;
+}
+
+section.content .survey-container .survey-block .survey-question-name-wrap {
+  background-color: #f4cccc !important;
+  color: #c32033 !important;
+  border: 1px dashed #c32033 !important;
+
+
+}
+
+section.content .survey-container .survey-block  {
+  background-color: #fff !important;
+  color: #000;
+  border: 2px dashed #c32033;
+
+}
+
+section.content #survey-widget #survey-title, section.content #survey-view #survey-title {
+  background-color: #fff !important;
+  color: #000;
+  border: 2px dashed #c32033;
+}
+
+#survey-questions {
+  background: #c32033;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+section.content .survey-container #survey-questions .survey-block  {
+  background-color: #fff !important;
+  color: #000;
+  border: none !important;
+  margin-bottom: 15px !important;
+
+}
+
+.survey-container .form-control, .kv-editable-popover .form-control, .survey-container .survey-block .select2-container--krajee .select2-selection--single, .kv-editable-popover .survey-block .select2-container--krajee .select2-selection--single {
+  border-bottom: 1px solid #c32033 !important;
+
+}
+
+
+.addQFixed {
+  /* position: fixed; */
+  right: 20%;
+  bottom: 10%;
+  z-index: 99999;
+  /* background: white; */
+  /* padding: 10px; */
+  /* height:50%; */
+  overflow:auto;
+
+}
+
+.custom-dashboard .box-danger {
+  border-top-color: #c32033 !important;
+}
