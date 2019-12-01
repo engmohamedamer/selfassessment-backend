@@ -162,7 +162,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div>
 
             <div class="info-box">
-                <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+                <span class="info-box-icon bg-red"><i class="fa fa-tasks"></i></span>
 
                 <div class="info-box-content">
                 <span class="info-box-text"><?= Yii::t('backend','Contributing Count') ?></span>
