@@ -13,7 +13,10 @@ use backend\models\NewsStatus;
 use backend\models\SchoolCategory;
 use backend\models\SchoolGender;
 use backend\models\Schools;
+use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyStat;
 use common\models\Organization;
+use common\models\User;
 
 /**
  * Site controller
@@ -46,7 +49,21 @@ class SiteController extends BackendController
 
     public function actionDashboard(){
         $organizations = Organization::find()->orderBy('id desc')->limit(6)->all();
-        return $this->render('dashboard',compact('organizations'));
+        
+        $surveyCount = Survey::find()->count();
+        $surveyStatsCount = SurveyStat::find()->count();
+        $surveyCurrentMonth = Survey::find()->where(['MONTH(survey_created_at)'=>date('m')])->count();
+        $surveyLastMonth = Survey::find()->where(['MONTH(survey_created_at)'=> date("m", strtotime("last month")) ])->count();
+        if ($surveyCurrentMonth > $surveyLastMonth ) {
+            $assessmentStatus = 'ion-android-arrow-up';
+        }else{
+            $assessmentStatus = 'ion-android-arrow-down';
+        }
+
+        $user = User::find()->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
+                ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER]);
+        $userCount = $user->count();
+        return $this->render('dashboard',compact('organizations','surveyCount','surveyCurrentMonth','surveyLastMonth','assessmentStatus','userCount','surveyStatsCount'));
     }
 
 }

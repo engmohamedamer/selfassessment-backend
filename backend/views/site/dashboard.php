@@ -174,7 +174,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </p>
                     <p class="d-flex flex-column text-right">
                         <span class="font-weight-bold">
-                            <i class="ion ion-android-arrow-up text-success"></i> (50)
+                            <i class="ion <?= $assessmentStatus ?> text-success"></i> (<?= $surveyCount?>)
                         </span>
                         <span class="text-muted">ASSESSMENTS COUNT</span>
                     </p>
@@ -186,9 +186,9 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </p>
                     <p class="d-flex flex-column text-right">
                         <span class="font-weight-bold">
-                            <i class="ion ion-android-arrow-up text-warning"></i> 0.8%
+                            <i class="text-warning"></i> (<?= $surveyStatsCount ?>)
                         </span>
-                        <span class="text-muted">ASSESSMENTS CCOMPLETE</span>
+                        <span class="text-muted">CONTRIBUTE COUNT</span>
                     </p>
                 </div>
                 <!-- /.d-flex -->
@@ -198,7 +198,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </p>
                     <p class="d-flex flex-column text-right">
                         <span class="font-weight-bold">
-                            <i class="ion ion-android-arrow-down text-danger"></i> (500)
+                            <i class="text-danger"></i> (<?= $userCount ?>)
                         </span>
                         <span class="text-muted">CONTRIBUTORS COUNT</span>
                     </p>
