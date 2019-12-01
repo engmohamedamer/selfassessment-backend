@@ -19,7 +19,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             <h1 class="m-0 text-dark"><?= Yii::t('backend','Dashboard') ?></h1>
         </div>
         <div class="col-sm-6 actionBtns">
-            <a href="NewOrganization.html" class="btn btn-primary">New Organization</a>
+            <a href="NewOrganization.html" class="btn btn-primary"><?= Yii::t('backend','New Organization') ?></a>
         </div>
         <!-- /.col -->
     </div>
@@ -33,22 +33,11 @@ $this->title = Yii::t('backend', 'Dashboard');
         <div class="card">
             <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                    <h3 class="card-title">Assessments Report</h3>
+                    <h3 class="card-title"><?= Yii::t('backend','Assessments Report') ?></h3>
                 </div>
             </div>
             <div class="card-body">
-                <div class="d-flex">
-                    <p class="d-flex flex-column">
-                        <span class="text-bold text-lg">820</span>
-                        <span>Assessments Over Time</span>
-                    </p>
-                    <p class="ml-auto d-flex flex-column text-right">
-                        <span class="text-success">
-                            <i class="fas fa-arrow-up"></i> 12.5%
-                        </span>
-                        <span class="text-muted">Since last week</span>
-                    </p>
-                </div>
+                
                 <!-- /.d-flex -->
 
                 <div class="position-relative mb-4">
@@ -57,12 +46,12 @@ $this->title = Yii::t('backend', 'Dashboard');
 
                 <div class="d-flex flex-row justify-content-end">
                     <span class="mr-2">
-<i class="fas fa-square text-primary"></i> This Week
-</span>
+                        <i class="fas fa-square text-primary"></i> <?= Yii::t('backend','Assessments Count') ?>
+                    </span>
 
                     <span>
-<i class="fas fa-square text-gray"></i> Last Week
-</span>
+                        <i class="fas fa-square text-gray"></i> <?= Yii::t('backend','Assessments Complete') ?>
+                    </span>
                 </div>
             </div>
         </div>
@@ -162,50 +151,38 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div> -->
         <!-- /.card -->
 
-        <div class="card overview">
-            <div class="card-header border-0">
-                <h3 class="card-title">Overview</h3>
-               
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fas fa-th"></i></span>
+
+                <div class="info-box-content">
+                <span class="info-box-text"><?= Yii::t('backend','Assessments Count') ?></span>
+                <span class="info-box-number"><?= $surveyCount?></span>
+                </div>
+                <!-- /.info-box-content -->
             </div>
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                    <p class="text-success text-xl">
-                        <i class="fas fa-th"></i>
-                    </p>
-                    <p class="d-flex flex-column text-right">
-                        <span class="font-weight-bold">
-                            <i class="ion <?= $assessmentStatus ?> text-success"></i> (<?= $surveyCount?>)
-                        </span>
-                        <span class="text-muted">ASSESSMENTS COUNT</span>
-                    </p>
+
+            <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+
+                <div class="info-box-content">
+                <span class="info-box-text"><?= Yii::t('backend','Contributing Count') ?></span>
+                <span class="info-box-number"><?= $surveyStatsCount ?></span>
                 </div>
-                <!-- /.d-flex -->
-                <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                    <p class="text-warning text-xl">
-                        <i class="fas fa-check"></i>
-                    </p>
-                    <p class="d-flex flex-column text-right">
-                        <span class="font-weight-bold">
-                            <i class="text-warning"></i> (<?= $surveyStatsCount ?>)
-                        </span>
-                        <span class="text-muted">CONTRIBUTE COUNT</span>
-                    </p>
-                </div>
-                <!-- /.d-flex -->
-                <div class="d-flex justify-content-between align-items-center mb-0">
-                    <p class="text-danger text-xl">
-                        <i class="fas fa-users"></i>
-                    </p>
-                    <p class="d-flex flex-column text-right">
-                        <span class="font-weight-bold">
-                            <i class="text-danger"></i> (<?= $userCount ?>)
-                        </span>
-                        <span class="text-muted">CONTRIBUTORS COUNT</span>
-                    </p>
-                </div>
-                <!-- /.d-flex -->
+                <!-- /.info-box-content -->
             </div>
-        </div>
+            <div class="info-box">
+                <span class="info-box-icon bg-green"> <i class="fas fa-users"></i></span>
+
+                <div class="info-box-content">
+                <span class="info-box-text"><?= Yii::t('backend','Contributors Count') ?></span>
+                <span class="info-box-number"><?= $userCount ?></span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+
+           
+           
+       
     </div>
     <!-- /.col-md-6 -->
 </div>

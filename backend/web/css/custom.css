@@ -888,3 +888,6 @@ section.content .survey-container #survey-questions .survey-block  {
 .custom-dashboard .box-danger {
   border-top-color: #c32033 !important;
 }
+.info-box-content{
+  padding-top: 23px;
+}
