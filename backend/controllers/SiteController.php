@@ -49,6 +49,37 @@ class SiteController extends BackendController
 
     public function actionDashboard(){
         $organizations = Organization::find()->orderBy('id desc')->limit(6)->all();
+
+        $surveyStatsCountPerMonth = SurveyStat::find()->select('MONTH(survey_stat_assigned_at) as month, count(MONTH(survey_stat_assigned_at)) as count_month')->where(['Year(survey_stat_assigned_at)'=>date('Y')])->groupBy('MONTH(survey_stat_assigned_at)')->all();
+
+        $usersCountPerMonth = User::find()->select('MONTH(FROM_UNIXTIME(user.created_at)) as month, count(MONTH(FROM_UNIXTIME(user.created_at))) as count_month')->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
+        ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])->andFilterWhere(['YEAR(FROM_UNIXTIME(user.created_at))'=>date('Y')])->groupBy('MONTH(FROM_UNIXTIME(user.created_at))')->all();
+
+        /*
+        labels  : ['18th', '20th', '22nd', '24th', '26th', '28th', '30th'],
+        data1 : [100, 120, 170, 167, 180, 177, 160],.
+        data2: [60, 80, 70, 67, 80, 77, 100],
+        */
+        $labels = [];
+        $data1 = [];
+        $data2 = [];
+        $months = array(1 => 'Jan.', 2 => 'Feb.', 3 => 'Mar.', 4 => 'Apr.', 5 => 'May', 6 => 'Jun.', 7 => 'Jul.', 8 => 'Aug.', 9 => 'Sep.', 10 => 'Oct.', 11 => 'Nov.', 12 => 'Dec.');
+        for ($i=1; $i <= date('m'); $i++) { 
+            $labels [] = $months[$i]; 
+            $data1 [] = 0;
+            $data2 [] = 0;
+        }
+
+        foreach ($usersCountPerMonth as $key => $value) {
+            $data1[($value->month - 1)] = $value->count_month;
+        }
+        foreach ($surveyStatsCountPerMonth as $key => $value) {
+            $data2[($value->month - 1)] = $value->count_month;
+        }
+
+        return var_dump($months,$data1,$data2);
+
+
         
         $surveyCount = Survey::find()->count();
         $surveyStatsCount = SurveyStat::find()->count();
@@ -63,7 +94,7 @@ class SiteController extends BackendController
         $user = User::find()->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
                 ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER]);
         $userCount = $user->count();
-        return $this->render('dashboard',compact('organizations','surveyCount','surveyCurrentMonth','surveyLastMonth','assessmentStatus','userCount','surveyStatsCount'));
+        return $this->render('dashboard',compact('organizations','surveyCount','surveyCurrentMonth','surveyLastMonth','assessmentStatus','userCount','surveyStatsCount','labels','data1','data2'));
     }
 
 }

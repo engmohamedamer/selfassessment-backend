@@ -48,6 +48,9 @@ class User extends ActiveRecord implements IdentityInterface
     const EVENT_AFTER_LOGIN = 'afterLogin';
     const SCENARIO_VALIDATE = 'validate';
 
+
+    public $month;
+    public $count_month;
     /**
      * @inheritdoc
      */

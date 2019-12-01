@@ -34,7 +34,9 @@ class SurveyStat extends \yii\db\ActiveRecord
 {
     const EVENT_SURVEY_AFTER_COMPLETE = 'surveyAfterComplete';
     const EVENT_SURVEY_HAS_BEEN_ASSIGN = 'surveyHasBeenAssign';
-
+    
+    public $month;
+    public $count_month;
     /**
      * @inheritdoc
      */
