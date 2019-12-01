@@ -34,7 +34,7 @@ class SiteController extends OrganizationController
         $contributors = $searchModel->search(null,8);
 
         $organizationSurvey = Survey::find()->where(['org_id'=>$organization->id])->limit(5)->orderBy('survey_id desc')->all();
-        return $this->render('dashboard',compact('contributors','organizationSurvey'));  //,compact()
+        return $this->render('dashboard',compact('contributors','organizationSurvey','organization'));  //,compact()
     }
 
 

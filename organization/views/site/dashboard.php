@@ -17,7 +17,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             <div class="col-sm-6">
                 <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Dashboard') ?></h1>
             </div>
-            <div class='col-sm-6 dashboard-fancy-btn'>
+            <div class='dashboard-fancy-btn'>
                 <a href="/assessment/default/create" class="fancy-button bg-gradient1 "><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('common', 'Create new survey')?> </span></a>
             </div>
             <!-- <div class="col-sm-6"> -->
@@ -26,197 +26,179 @@ $this->title = Yii::t('backend', 'Dashboard');
             <!-- /.col -->
         </div>
     </div>
-    
-
-    <div class="row custom-dashboard">
-        <!-- <div class="col-sm-6 col-md-4">
-            <div class="info-box">
-                <span class="info-box-icon bg-info elevation-1"><i class="fa fa-tag"></i></span>
-
-                <div class="info-box-content">
-                <span class="info-box-text"><a href="/organization/view"><?= Yii::t('common', 'Organization Show') ?></a></span>
-                </div>
-                <!~~ /.info-box-content ~~>
-            </div>
-            <!~~ /.info-box ~~>
+    <?php if(count($organization->survey) == 0):?>
+    <div class="row custom-dashboard text-center">
+        <h2>مرحباً بك</h2>
+        <h4>نوصيكم قبل البدء بإنشاء الإستبيانات القيام بالتالي</h4>
+        <div class='guide'>
+            <span>1</span>
+            <h5>تعديل الهوية البصرية للموقع حتى تتلائم مع الهوية البصرية لمؤسستك.</h5>
+            <a href="/organization/update" class='btn small btn-primary'>تعديل البيانات الأساسية</a>
         </div>
-        <!~~ /.col ~~>
-        <div class="col-sm-6 col-md-4">
-            <div class="info-box mb-3">
-                <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-gear"></i></span>
-
-                <div class="info-box-content">
-                <span class="info-box-text"><a href="/organization/update"><?= Yii::t('common', 'Organization Update') ?></a>
-                </span>
-                </div>
-                <!~~ /.info-box-content ~~>
-            </div>
-            <!~~ /.info-box ~~>
+        <div class='guide'>
+            <span>2</span>
+            <h5>إضافة المشاركين بالإستبيان من مؤسستك.</h5>
+            <a href="/user/index" class='btn small btn-primary'>اضافة المشاركين</a>
         </div>
-        <!~~ /.col ~~>
-        <div class="col-12 col-sm-6 col-md-4">
-            <div class="info-box mb-3">
-                <span class="info-box-icon bg-success elevation-1"><i class="fa fa-users"></i></span>
-
-                <div class="info-box-content">
-                <span class="info-box-text"><a href="/user/index"><?= Yii::t('common', 'Contributors') ?></a></span>
-                </div>
-                <!~~ /.info-box-content ~~>
-            </div>
-            <!~~ /.info-box ~~>
-        </div> -->
-
-        <!-- /.col -->
-        <div class="col-md-4">
-            <!-- USERS LIST -->
-            <div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title"><?= Yii::t('common', 'Latest Contributors') ?></h3>
-
-                <div class="box-tools pull-right">
-                <!-- <span class="label label-danger">8 New Members</span> -->
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                </button>
-                </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-                <ul class="users-list clearfix row">
-                <?php foreach($contributors->getModels() as $contributor): ?>
-                <li class='col-sm-4 col-md-2 '>
-                    <img width='80%' src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">
-                    <a class="users-list-name" href="/user/view?id=<?= $contributor->id ?>"><?= $contributor->userProfile->fullname ?></a>
-                    <span class="users-list-date"><?= date('Y-m-d',$contributor->created_at) ?></span>
-                </li>
-                <?php endforeach; ?>
-                </ul>
-                <!-- /.users-list -->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer text-center">
-                <a href="/user/index" class="uppercase"><?= Yii::t('common', 'All Contributors') ?></a>
-            </div>
-            <!-- /.box-footer -->
-            </div>
-            <!--/.box -->
+        <div class='guide'>
+            <span>3</span>
+            <h5> انشاء الإستبيان الأول لمؤسستك </h5>
+            <br>
+            <h6>" يجب تعديل حالة الإستبيان من مغلق إلى مرئي حتى يتثنى للمشاركين مشاهدة الإستبيان " </h6>
+            <a href="/assessment/default/create" class='btn small btn-primary'><?= \Yii::t('common', 'Create new survey')?></a>
         </div>
+    </div>
+    <?php endif;?>    
+    <div>
+        <div class="row custom-dashboard">
+            <!-- <div class="col-sm-6 col-md-4">
+                <div class="info-box">
+                    <span class="info-box-icon bg-info elevation-1"><i class="fa fa-tag"></i></span>
 
-        <div class="col-md-8">
-            <!-- TABLE: LATEST ORDERS -->
-            <div class="box box-info">
+                    <div class="info-box-content">
+                    <span class="info-box-text"><a href="/organization/view"><?= Yii::t('common', 'Organization Show') ?></a></span>
+                    </div>
+                    <!~~ /.info-box-content ~~>
+                </div>
+                <!~~ /.info-box ~~>
+            </div>
+            <!~~ /.col ~~>
+            <div class="col-sm-6 col-md-4">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-gear"></i></span>
+
+                    <div class="info-box-content">
+                    <span class="info-box-text"><a href="/organization/update"><?= Yii::t('common', 'Organization Update') ?></a>
+                    </span>
+                    </div>
+                    <!~~ /.info-box-content ~~>
+                </div>
+                <!~~ /.info-box ~~>
+            </div>
+            <!~~ /.col ~~>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-success elevation-1"><i class="fa fa-users"></i></span>
+
+                    <div class="info-box-content">
+                    <span class="info-box-text"><a href="/user/index"><?= Yii::t('common', 'Contributors') ?></a></span>
+                    </div>
+                    <!~~ /.info-box-content ~~>
+                </div>
+                <!~~ /.info-box ~~>
+            </div> -->
+
+            <!-- /.col -->
+            <div class="col-md-4">
+                <!-- USERS LIST -->
+                <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= \Yii::t('common', 'Latest Assessments')?></h3>
+                    <h3 class="box-title"><?= Yii::t('common', 'Latest Contributors') ?></h3>
 
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    <!-- <span class="label label-danger">8 New Members</span> -->
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
                     </div>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="table-responsive">
-                        <table class="table no-margin">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th><?= \Yii::t('common', 'Survey')?></th>
-                                <th><?= \Yii::t('common', 'Status')?></th>
-                                <th><?= \Yii::t('common', 'Ends At')?></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                $i=1;
-                                foreach($organizationSurvey as $survey):
-                                if ($survey->survey_is_closed) {
-                                    $class = 'danger';
-                                    $status = Yii::t('common','Closed');
-                                }else{
-                                    $class = 'success';
-                                    $status = Yii::t('common','Open');
-                                }
-                            ?>
-
-                            <tr>
-                                <td><?= $i++ ?></td>
-                                <td><a href="/assessment/default/view?id=<?= $survey->survey_id ?>"><?= $survey->survey_name ?></a></td>
-                                <td><span class="label label-<?=$class?>"><?= $status ?></span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><?= $survey->survey_expired_at ?></div>
-                                </td>
-                            </tr>
-                            <?php endforeach;?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.table-responsive -->
+                <div class="box-body no-padding">
+                    <ul class="users-list clearfix row">
+                    <?php foreach($contributors->getModels() as $contributor): ?>
+                    <li class='col-sm-4 col-md-2 '>
+                        <img width='80%' src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">
+                        <a class="users-list-name" href="/user/view?id=<?= $contributor->id ?>"><?= $contributor->userProfile->fullname ?></a>
+                        <span class="users-list-date"><?= date('Y-m-d',$contributor->created_at) ?></span>
+                    </li>
+                    <?php endforeach; ?>
+                    </ul>
+                    <!-- /.users-list -->
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer clearfix">
-                    <a href="/assessment/default/create" class="btn btn-sm btn-info btn-flat pull-left"><?= \Yii::t('common', 'Create new survey')?></a>
-                    <a href="/assessment" class="btn btn-sm btn-default btn-flat pull-right"><?= \Yii::t('common', 'Assessments List') ?></a>
+                <div class="box-footer text-center">
+                    <a href="/user/index" class="uppercase"><?= Yii::t('common', 'All Contributors') ?></a>
                 </div>
                 <!-- /.box-footer -->
-            </div>
-            <!-- /.box -->
-        </div>
-
-    </div>
-
-    <div class="row custom-dashboard">
-
-        <div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
-            <img src="./img/preloader.gif" alt="">
-        </div>
-
-        <div class="col-md-6">
-            
-            <div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title">عدد المشاركين في كل إستبيان</h3>
-
-                <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                 </div>
+                <!--/.box -->
             </div>
-            <div class="box-body">
-                <canvas id="assessmentParticipantsChart"  ></canvas>
+
+            <div class="col-md-8">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><?= \Yii::t('common', 'Latest Assessments')?></h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th><?= \Yii::t('common', 'Survey')?></th>
+                                    <th><?= \Yii::t('common', 'Status')?></th>
+                                    <th><?= \Yii::t('common', 'Ends At')?></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    $i=1;
+                                    foreach($organizationSurvey as $survey):
+                                    if ($survey->survey_is_closed) {
+                                        $class = 'danger';
+                                        $status = Yii::t('common','Closed');
+                                    }else{
+                                        $class = 'success';
+                                        $status = Yii::t('common','Open');
+                                    }
+                                ?>
+
+                                <tr>
+                                    <td><?= $i++ ?></td>
+                                    <td><a href="/assessment/default/view?id=<?= $survey->survey_id ?>"><?= $survey->survey_name ?></a></td>
+                                    <td><span class="label label-<?=$class?>"><?= $status ?></span></td>
+                                    <td>
+                                        <div class="sparkbar" data-color="#00a65a" data-height="20"><?= $survey->survey_expired_at ?></div>
+                                    </td>
+                                </tr>
+                                <?php endforeach;?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <a href="/assessment/default/create" class="btn btn-sm btn-info btn-flat pull-left"><?= \Yii::t('common', 'Create new survey')?></a>
+                        <a href="/assessment" class="btn btn-sm btn-default btn-flat pull-right"><?= \Yii::t('common', 'Assessments List') ?></a>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
             </div>
-            <!-- /.box-body -->
-            </div>
+
         </div>
 
-        <div class="col-md-6">
-            <!-- <div class="text-center participantsStatus-preloader preloader" style="display:none">
+        <div class="row custom-dashboard">
+
+            <div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
                 <img src="./img/preloader.gif" alt="">
-            </div> -->
-            <div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title">حالة الإستبيانات</h3>
-
-                <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                </div>
             </div>
-            <div class="box-body">
-                <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
-            </div>
-            <!-- /.box-body -->
-            </div>
-        </div>
 
-
-        <!-- <div class="col-md-12">
+            <div class="col-md-6">
+                
                 <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">الإستبيان الأخير</h3>
+                    <h3 class="box-title">عدد المشاركين في كل إستبيان</h3>
 
                     <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -225,21 +207,62 @@ $this->title = Yii::t('backend', 'Dashboard');
                     </div>
                 </div>
                 <div class="box-body">
-                    <canvas id="assessmentChart" style="height: 237px; width: 475px;" height="100%" width="475"></canvas>
+                    <canvas id="assessmentParticipantsChart"  ></canvas>
                 </div>
-                <!~~ /.box-body ~~>
+                <!-- /.box-body -->
                 </div>
-        </div> -->
+            </div>
+
+            <div class="col-md-6">
+                <!-- <div class="text-center participantsStatus-preloader preloader" style="display:none">
+                    <img src="./img/preloader.gif" alt="">
+                </div> -->
+                <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">حالة الإستبيانات</h3>
+
+                    <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                </div>
+                <!-- /.box-body -->
+                </div>
+            </div>
+
+
+            <!-- <div class="col-md-12">
+                    <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">الإستبيان الأخير</h3>
+
+                        <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <canvas id="assessmentChart" style="height: 237px; width: 475px;" height="100%" width="475"></canvas>
+                    </div>
+                    <!~~ /.box-body ~~>
+                    </div>
+            </div> -->
 
 
 
 
-        
+            
 
 
 
 
 
+        </div>
     </div>
 
 
