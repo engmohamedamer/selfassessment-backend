@@ -62,10 +62,10 @@ echo Menu::widget([
         ],
 
 
-        [
-            'label' => Yii::t('backend', 'Content'),
-            'options' => ['class' => 'header'],
-        ],
+        // [
+        //     'label' => Yii::t('backend', 'Content'),
+        //     'options' => ['class' => 'header'],
+        // ],
         // [
         //     'label' => Yii::t('backend', 'Static pages'),
         //     'url' => ['/content/page/index'],
