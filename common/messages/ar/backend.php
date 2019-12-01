@@ -470,6 +470,21 @@ return [
     'Corrective Action'=>'الاجراء التصحيحي',
     'Corrective Action Date'=>'تاريخ الاجراء التصحيحي',
     'Corrective Action Report'=>'تقرير الاجراء التصحيحي',
+    'New Organization'=>'إضافة مؤسسة جديدة',
+    'Assessments Report'=>'تقرير الأستبيانات الشهرية',
+    'Assessments Count'=>'عدد الأستبيانات',
+    'Assessments Complete'=>'عدد الأستبيانات المكتملة',
+    'System Overview'=>'نظرة عامة',
+    'Contributing Count'=>'عدد المشاركات في الأستبيانات',
+    'Contributors Count'=>'عدد المشاركين',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+
 
 ];
 
