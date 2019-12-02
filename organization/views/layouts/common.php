@@ -60,11 +60,11 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
                   <span class="dropdown-item dropdown-header"><?= Yii::t('common','Welcome')?>,  <?php echo Yii::$app->user->identity->userProfile->fullName; ?></span>
                   <div class="dropdown-divider"></div>
                   <a href="/sign-in/profile" class="dropdown-item">
-                      <i class="far fa-user-circle mr-2"></i> <?= Yii::t('common','My Profile')?>
+                      <i class="fas fa-user mr-2"></i> <?= Yii::t('common','My Profile')?>
                   </a>
                   <div class="dropdown-divider"></div>
                   <a href="/sign-in/account" class="dropdown-item">
-                      <i class="far fa-user mr-2"></i>  <?= Yii::t('common','My Account')?>
+                      <i class="fas fa-users-cog mr-2"></i>  <?= Yii::t('common','My Account')?>
                   </a>
                   <div class="dropdown-divider"></div>
 
