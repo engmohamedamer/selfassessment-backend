@@ -55,11 +55,6 @@ class SiteController extends BackendController
         $usersCountPerMonth = User::find()->select('MONTH(FROM_UNIXTIME(user.created_at)) as month, count(MONTH(FROM_UNIXTIME(user.created_at))) as count_month')->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
         ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])->andFilterWhere(['YEAR(FROM_UNIXTIME(user.created_at))'=>date('Y')])->groupBy('MONTH(FROM_UNIXTIME(user.created_at))')->all();
 
-        /*
-        labels  : ['18th', '20th', '22nd', '24th', '26th', '28th', '30th'],
-        data1 : [100, 120, 170, 167, 180, 177, 160],.
-        data2: [60, 80, 70, 67, 80, 77, 100],
-        */
         $labels = [];
         $data1 = [];
         $data2 = [];
