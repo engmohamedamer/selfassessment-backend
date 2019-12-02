@@ -62,6 +62,12 @@ class SignInController extends OrganizationController
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $userFirstLogin = Yii::$app->user->identity;
+            if (!$userFirstLogin->logged_at) {
+                $userFirstLogin->logged_at = time();
+                $userFirstLogin->save(false);
+                Yii::$app->getSession()->setFlash('first-login', []);
+            }
             return $this->goBack();
         } else {
             return $this->render('login', [

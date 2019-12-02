@@ -9,6 +9,8 @@ use yii\helpers\Html;
 
 $this->title = Yii::t('backend', 'Dashboard');
 \organization\assets\DashboardAsset::register($this);
+
+$i = 1;
 ?>
 
     <!-- Content Header (Page header) -->
@@ -26,29 +28,36 @@ $this->title = Yii::t('backend', 'Dashboard');
             <!-- /.col -->
         </div>
     </div>
-    <?php if(count($organization->survey) == 0):?>
     <div class="row custom-dashboard text-center">
+        <?php if (Yii::$app->session->hasFlash('first-login') || count($contributors->getModels()) == 0 || count($organization->survey) == 0): ?>
+
         <h2>مرحباً بك</h2>
         <h4>نوصيكم قبل البدء بإنشاء الإستبيانات القيام بالتالي</h4>
+        <?php endif; ?>
+        <?php if (Yii::$app->session->hasFlash('first-login')): ?>
         <div class='guide'>
-            <span>1</span>
+            <span><?= $i++ ?></span>
             <h5>تعديل الهوية البصرية للموقع حتى تتلائم مع الهوية البصرية لمؤسستك.</h5>
             <a href="/organization/update" class='btn small btn-primary'>تعديل البيانات الأساسية</a>
         </div>
+        <?php endif; ?>
+        <?php if(count($contributors->getModels()) == 0):?>
         <div class='guide'>
-            <span>2</span>
+            <span><?= $i++ ?></span>
             <h5>إضافة المشاركين بالإستبيان من مؤسستك.</h5>
             <a href="/user/index" class='btn small btn-primary'>اضافة المشاركين</a>
         </div>
+        <?php endif; ?>
+        <?php if(count($organization->survey) == 0):?>
         <div class='guide'>
-            <span>3</span>
+            <span><?= $i++ ?></span>
             <h5> انشاء الإستبيان الأول لمؤسستك </h5>
             <br>
             <h6>" يجب تعديل حالة الإستبيان من مغلق إلى مرئي حتى يتثنى للمشاركين مشاهدة الإستبيان " </h6>
             <a href="/assessment/default/create" class='btn small btn-primary'><?= \Yii::t('common', 'Create new survey')?></a>
         </div>
+        <?php endif; ?>
     </div>
-    <?php endif;?>    
     <div>
         <div class="row custom-dashboard">
             <!-- <div class="col-sm-6 col-md-4">
@@ -89,6 +98,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div> -->
 
             <!-- /.col -->
+            <?php if(count($contributors->getModels()) > 0):?>
             <div class="col-md-4">
                 <!-- USERS LIST -->
                 <div class="box box-danger">
@@ -124,7 +134,8 @@ $this->title = Yii::t('backend', 'Dashboard');
                 </div>
                 <!--/.box -->
             </div>
-
+            <?php endif;?>
+            <?php if(count($organization->survey) > 0):?>
             <div class="col-md-8">
                 <!-- TABLE: LATEST ORDERS -->
                 <div class="box box-info">
@@ -185,7 +196,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                 </div>
                 <!-- /.box -->
             </div>
-
+            <?php endif;?>
         </div>
 
         <div class="row custom-dashboard">
@@ -193,7 +204,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             <div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
                 <img src="./img/preloader.gif" alt="">
             </div>
-
+            <?php //if(count($contributors->getModels()) > 0 and count($organization->survey) > 0):?>
             <div class="col-md-6">
                 
                 <div class="box box-danger">
@@ -212,7 +223,9 @@ $this->title = Yii::t('backend', 'Dashboard');
                 <!-- /.box-body -->
                 </div>
             </div>
+            <?php //endif;?>
 
+            <?php if(count($organization->survey) > 0):?>
             <div class="col-md-6">
                 <!-- <div class="text-center participantsStatus-preloader preloader" style="display:none">
                     <img src="./img/preloader.gif" alt="">
@@ -233,7 +246,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                 <!-- /.box-body -->
                 </div>
             </div>
-
+            <?php endif;?>
 
             <!-- <div class="col-md-12">
                     <div class="box box-danger">
