@@ -6,6 +6,7 @@
  * Time: 14:24
  */
 
+use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\search\SurveyStatSearch;
 use cenotia\components\modal\RemoteModal;
@@ -247,7 +248,39 @@ $(document).ready(function(e) {
 JS
 );
 $id  = $survey->survey_id;
+
 $organization = Yii::$app->user->identity->userProfile->organization;
+$survey = Survey::find()->where(['org_id'=>$organization->id,'survey_id'=>$id])->one();
+
+foreach ($survey->stats as $stat) {
+    $gained_points =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '.$stat->survey_stat_user_id.' and survey_user_answer_survey_id ='.$survey->survey_id )->queryScalar();
+    $gained_score_title = [];
+    if ($survey->survey_point) {
+        $gained_score =  ($gained_points / $survey->survey_point) * 100;
+        foreach ($survey->levels as $key => $value) {
+            if ($value->from <= $gained_score and $gained_score <= $value->to) {
+                $gained_score_title[] = $value->title;
+                break;
+            }
+        }
+
+    }
+}
+$titles = [];
+$counts = [];
+foreach ($survey->levels as $level) {
+    $titles[] = $level->title;
+    $counts[] = array_count_values($gained_score_title)[$level->title] ?: 0;
+}
+$labelsData = json_encode($titles);
+$countData = json_encode($counts);
+
+// return var_dump($labelsData);
+// return ['labels'=> $titles ,'data'=>$counts];
+
+
+
+
 $searchModel = new UserSearch();
 $searchModel->user_role = User::ROLE_USER;
 $searchModel->organization_id = $organization->id;
@@ -261,14 +294,12 @@ $js = <<<JS
 $(document).ready(function (e) {
     $.fn.survey();
 
-
-
     var ctx = document.getElementById('surveyViewChart').getContext('2d');
     var chart = new Chart(ctx, {
     type: 'pie',
     data: {
         datasets: [{
-            data: res.data,
+            data: $countData,
             backgroundColor: [
                 '#c0392b',
                 '#e67e22',
@@ -276,7 +307,7 @@ $(document).ready(function (e) {
                 '#16a085'
             ],
         }],
-        labels: res.labels
+        labels: $labelsData
     },
     options: {
         responsive: true
