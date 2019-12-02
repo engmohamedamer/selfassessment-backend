@@ -444,7 +444,7 @@ select.form-control:not([size]):not([multiple]){
     border-top: 1px solid #ddd;
 }
 .table td a{
-  color: #007bff;
+  color: #b20d1d !important;
   margin-right: 10px;
 }
 .nav-pills .nav-link:not(.active):hover{
@@ -729,32 +729,32 @@ width: 100% !important;
 
 
 .btn-primary{
-  background-color: #c32033 !important;
-  border-color: #c32033 !important;
+  background-color: #f4941b !important;
+  border-color: #f4941b !important;
 }
 .btn-danger{
   background-color: #f4cccc !important;
   border-color: #f4cccc !important;
 }
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
-   background-color: #c32033 !important;
+   background-color: #f4941b !important;
 }
 .table td a {
-  color: #c32033 !important;
+  color: #b20d1d !important !important;
 }
 a:hover, a:active, a:focus {
-  color: #c32033 !important;
+  color: #f4941b !important;
 }
 
 
 
 .brandPrimColor {
-  color: #c32033 !important;
+  color: #f4941b !important;
 
 }
 
 .brandPrimBgColor {
-  background-color: #c32033 !important;
+  background-color: #f4941b !important;
 
 }
 .brandSecColor {
@@ -769,8 +769,8 @@ a:hover, a:active, a:focus {
 
 .primBtn {
   color: white !important;
-  background-color: #c32033 !important;
-  border: 1px solid #c32033 !important;
+  background-color: #f4941b !important;
+  border: 1px solid #f4941b !important;
   height: 44px !important;
   min-width: 78px !important;
   padding: 0 20px !important;
@@ -789,9 +789,9 @@ a:hover, a:active, a:focus {
   }
 
 .secBtn {
-  color: #c32033 !important;
+  color: #f4941b !important;
   background-color: transparent !important;
-  border: 1px solid #c32033 !important;
+  border: 1px solid #f4941b !important;
   height: 44px !important;
   min-width: 78px !important;
   padding: 0 20px !important;
@@ -806,7 +806,7 @@ a:hover, a:active, a:focus {
 
 .secBtn:hover, .secBtn:active, .secBtn:focus {
   color: white !important;
-  background-color: #c32033 !important;
+  background-color: #f4941b !important;
 }
 
 
@@ -825,17 +825,17 @@ a:hover, a:active, a:focus {
 }
 
 .thirdBtn:hover {
-  color: #c32033 !important;
+  color: #f4941b !important;
 }
 
 section.content .survey-container .survey-block .survey-name-wrap,  section.content .survey-container .survey-block .survey-question-view-wrap, section.content .kv-editable-popover .survey-block .survey-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-view-wrap {
-  background-color: #c32033 !important;
+  background-color: #f4941b !important;
 }
 
 section.content .survey-container .survey-block .survey-question-name-wrap {
   background-color: #f4cccc !important;
-  color: #c32033 !important;
-  border: 1px dashed #c32033 !important;
+  color: #f4941b !important;
+  border: 1px dashed #f4941b !important;
 
 
 }
@@ -843,18 +843,18 @@ section.content .survey-container .survey-block .survey-question-name-wrap {
 section.content .survey-container .survey-block  {
   background-color: #fff !important;
   color: #000;
-  border: 2px dashed #c32033;
+  border: 2px dashed #f4941b;
 
 }
 
 section.content #survey-widget #survey-title, section.content #survey-view #survey-title {
   background-color: #fff !important;
   color: #000;
-  border: 2px dashed #c32033;
+  border: 2px dashed #f4941b;
 }
 
 #survey-questions {
-  background: #c32033;
+  background: #f4941b;
   border-radius: 10px;
   padding: 20px;
 }
@@ -868,7 +868,7 @@ section.content .survey-container #survey-questions .survey-block  {
 }
 
 .survey-container .form-control, .kv-editable-popover .form-control, .survey-container .survey-block .select2-container--krajee .select2-selection--single, .kv-editable-popover .survey-block .select2-container--krajee .select2-selection--single {
-  border-bottom: 1px solid #c32033 !important;
+  border-bottom: 1px solid #f4941b !important;
 
 }
 
@@ -886,8 +886,16 @@ section.content .survey-container #survey-questions .survey-block  {
 }
 
 .custom-dashboard .box-danger {
-  border-top-color: #c32033 !important;
+  border-top-color: #f4941b !important;
 }
 .info-box-content{
   padding-top: 23px;
+}
+.panel-primary > .panel-heading {
+  color: #fff;
+  background-color: #b20d1d;
+  border-color: #b20d1d;
+}
+.panel-primary {
+  border-color: #b20d1d;
 }
