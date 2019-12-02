@@ -6,11 +6,14 @@
  * Time: 14:24
  */
 
-use cenotia\components\modal\RemoteModal;
-use kartik\select2\Select2;
+use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\search\SurveyStatSearch;
+use cenotia\components\modal\RemoteModal;
+use common\models\User;
 use kartik\editable\Editable;
 use kartik\helpers\Html;
+use kartik\select2\Select2;
+use organization\models\search\UserSearch;
 use wbraganca\dynamicform\DynamicFormWidget;
 use yii\bootstrap\BootstrapPluginAsset;
 use yii\helpers\Url;
@@ -239,6 +242,16 @@ $(document).ready(function(e) {
 JS
 );
 $id  = $survey->survey_id;
+$organization = Yii::$app->user->identity->userProfile->organization;
+$searchModel = new UserSearch();
+$searchModel->user_role = User::ROLE_USER;
+$searchModel->organization_id = $organization->id;
+$dataProvider = $searchModel->search([]);
+$orgUserCount =  count($dataProvider->getModels());
+$countComplete = SurveyStat::find()->where(['survey_stat_survey_id'=> $id,'survey_stat_is_done'=>1])->count();
+$countUncomplete = SurveyStat::find()->where(['survey_stat_survey_id'=> $id,'survey_stat_is_done'=>0])->count();
+$notstart = $orgUserCount - ( $countComplete + $countUncomplete );
+
 $js = <<<JS
 $(document).ready(function (e) {
     $.fn.survey();
@@ -284,14 +297,14 @@ $(document).ready(function (e) {
     type: 'pie',
     data: {
         datasets: [{
-            data: res.data,
+            data: [$countComplete,$countUncomplete,$notstart],
             backgroundColor: [
                 "#ecf0f1",
                 "#f39c12",
                 "#2ecc71"
             ],
         }],
-        labels: res.labels
+        labels: ['اكتمل','قيد الاستكمال','لم يبدأ']
     },
     options: {
         responsive: true

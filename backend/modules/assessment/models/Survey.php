@@ -111,8 +111,8 @@ class Survey extends \yii\db\ActiveRecord
             'start_info'=>Yii::t('survey', 'Survey Start Info'),
             'survey_point'=> Yii::t('survey', 'Survey Point'),
             'level_title'=>Yii::t('survey', 'Level Title') ,
-            'level_from'=>Yii::t('survey', 'Level From') ,
-            'level_to'=>Yii::t('survey', 'Level To') ,
+            'level_from'=>Yii::t('survey', 'From a percentage') ,
+            'level_to'=>Yii::t('survey', 'To a percentage') ,
         ];
     }
 

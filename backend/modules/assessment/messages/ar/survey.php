@@ -86,6 +86,6 @@ return [
     'Date From'=>'من',
     'Date To'=>'الي',
     'Level Title'=>'عنوان المستوي',
-    'Level From'=>'من',
-    'Level To'=>'الي',
+    'From a percentage'=>'من نسبة',
+    'To a percentage'=>'الي نسبة',
 ];

@@ -202,7 +202,7 @@ $i = 1;
             <div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
                 <img src="./img/preloader.gif" alt="">
             </div>
-            <?php //if(count($contributors->getModels()) > 0 and count($organization->survey) > 0):?>
+            <?php if(count($contributors->getModels()) > 0 and count($organization->survey) > 0):?>
             <div class="col-md-6">
                 
                 <div class="box box-danger">
@@ -220,7 +220,7 @@ $i = 1;
                 <!-- /.box-body -->
                 </div>
             </div>
-            <?php //endif;?>
+            <?php endif;?>
 
             <?php if(count($organization->survey) > 0):?>
             <div class="col-md-6">

@@ -83,8 +83,6 @@ class SiteController extends OrganizationController
             $sumUncomplete += $countUncomplete;
             $sumNotstart += $notstart;
         }
-
-        $basic = count($organization->survey) * 100;
         return [
             'labels'=> ['اكتمل','قيد الاستكمال','لم يبدأ'] ,
             'data'=>[
