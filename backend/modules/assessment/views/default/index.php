@@ -28,7 +28,7 @@ BootstrapPluginAsset::register($this);
             </div>
             <div class="col-md-6 actionBtns">
 
-                <?php echo Html::a(\Yii::t('survey', 'Create new survey'), Url::toRoute(['default/create']), ['class' => 'btn primBtn']); ?>
+                <?php echo Html::a(\Yii::t('survey', 'Create new survey'), Url::toRoute(['default/create']), ['class' => 'btn btn-primary']); ?>
             </div>
         </div>
         </div>

@@ -107,7 +107,7 @@ a {
 }
 .skin-blue .sidebar-menu .treeview-menu>li>a {
   color: #6c757d;
-  padding: 10px 15px 10px 5px;
+  padding: 10px 15px 10px 15px;
   margin-top: 4px;
 }
 .skin-blue .sidebar-menu .treeview-menu>li.active>a, .skin-blue .sidebar-menu .treeview-menu>li>a:hover {

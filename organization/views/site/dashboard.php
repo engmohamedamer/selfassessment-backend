@@ -16,11 +16,11 @@ $i = 1;
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="row mb-2">
-            <div class="col-sm-6">
+            <div class="col-md-6">
                 <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Dashboard') ?></h1>
             </div>
-            <div class='dashboard-fancy-btn'>
-                <a href="/assessment/default/create" class="fancy-button bg-gradient1 "><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('common', 'Create new survey')?> </span></a>
+            <div class='col-md-6 actionBtns'>
+                <a href="/assessment/default/create" class="btn btn-primary"><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('common', 'Create new survey')?> </span></a>
             </div>
             <!-- <div class="col-sm-6"> -->
                 <!-- <a href="NewOrganization.html" class="btn btn-primary" style="float: right">New Organization</a> -->
@@ -109,13 +109,12 @@ $i = 1;
                     <!-- <span class="label label-danger">8 New Members</span> -->
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                    </button>
+                   
                     </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
-                    <ul class="users-list clearfix row">
+                    <ul class="users-list clearfix">
                     <?php foreach($contributors->getModels() as $contributor): ?>
                     <li class='col-sm-4 col-md-2 '>
                         <img width='80%' src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">
@@ -145,7 +144,6 @@ $i = 1;
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
                     <!-- /.box-header -->
@@ -188,10 +186,10 @@ $i = 1;
                         <!-- /.table-responsive -->
                     </div>
                     <!-- /.box-body -->
-                    <div class="box-footer clearfix">
-                        <a href="/assessment/default/create" class="btn btn-sm btn-info btn-flat pull-left"><?= \Yii::t('common', 'Create new survey')?></a>
-                        <a href="/assessment" class="btn btn-sm btn-default btn-flat pull-right"><?= \Yii::t('common', 'Assessments List') ?></a>
-                    </div>
+                    <div class="box-footer text-center">
+                    <a href="/assessment" class="uppercase"><?= \Yii::t('common', 'Assessments List') ?></a>
+                </div>
+                   
                     <!-- /.box-footer -->
                 </div>
                 <!-- /.box -->
@@ -214,7 +212,6 @@ $i = 1;
                     <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                     </div>
                 </div>
                 <div class="box-body">

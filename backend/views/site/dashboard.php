@@ -30,7 +30,7 @@ $this->title = Yii::t('backend', 'Dashboard');
 <div class="row">
     <div class="col-lg-12">
       
-        <div class="card">
+        <div class="box box-danger">
             <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
                     <h3 class="card-title"><?= Yii::t('backend','Contributing Report') ?></h3>
@@ -67,7 +67,7 @@ $this->title = Yii::t('backend', 'Dashboard');
     <!-- /.col-md-6 -->
 <div class="row">
     <div class="col-lg-8">
-        <div class="card">
+        <div class="box box-danger">
             <div class="card-header border-0">
                 <h3 class="card-title"><?= Yii::t('common','New Organizations') ?></h3>
 
