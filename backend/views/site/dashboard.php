@@ -33,7 +33,7 @@ $this->title = Yii::t('backend', 'Dashboard');
         <div class="card">
             <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                    <h3 class="card-title"><?= Yii::t('backend','Assessments Report') ?></h3>
+                    <h3 class="card-title"><?= Yii::t('backend','Contributing Report') ?></h3>
                 </div>
             </div>
             <div class="card-body">
