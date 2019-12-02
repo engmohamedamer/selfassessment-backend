@@ -477,7 +477,7 @@ return [
     'System Overview'=>'نظرة عامة',
     'Contributing Count'=>'عدد المشاركات في الأستبيانات',
     'Contributors Count'=>'عدد المشاركين',
-    ''=>'',
+    'Contributors Participation'=>'المشاركة في الاستبيانات',
     ''=>'',
     ''=>'',
     ''=>'',

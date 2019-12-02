@@ -46,11 +46,11 @@ $this->title = Yii::t('backend', 'Dashboard');
 
                 <div class="d-flex flex-row justify-content-end">
                     <span class="mr-2">
-                        <i class="fas fa-square text-primary"></i> <?= Yii::t('backend','Assessments Count') ?>
+                        <i class="fas fa-square text-primary"></i> <?= Yii::t('backend','Contributors Count') ?>
                     </span>
 
                     <span>
-                        <i class="fas fa-square text-gray"></i> <?= Yii::t('backend','Assessments Complete') ?>
+                        <i class="fas fa-square text-gray"></i> <?= Yii::t('backend','Contributors Participation') ?>
                     </span>
                 </div>
             </div>
