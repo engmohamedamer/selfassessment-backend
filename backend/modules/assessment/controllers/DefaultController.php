@@ -299,16 +299,17 @@ class DefaultController extends Controller
 
         if (\Yii::$app->request->isPjax) {
             if ($survey->load(\Yii::$app->request->post()) && $survey->validate()) {
-                SurveyDegreeLevel::deleteAll(['survey_degree_level_survey_id'=> $survey->survey_id,
-               ]);
 
-                foreach ($survey['level_title'] as $key => $value) {
-                    $new = new SurveyDegreeLevel();
-                    $new->survey_degree_level_survey_id = $survey->survey_id;
-                    $new->title = $value;
-                    $new->from = $survey['level_from'][$key];
-                    $new->to = $survey['level_to'][$key];
-                    $new->save(false);
+                if (is_array($survey['level_title'])) {
+                    SurveyDegreeLevel::deleteAll(['survey_degree_level_survey_id'=> $survey->survey_id]);
+                    foreach ($survey['level_title'] as $key => $value) {
+                        $new = new SurveyDegreeLevel();
+                        $new->survey_degree_level_survey_id = $survey->survey_id;
+                        $new->title = $value;
+                        $new->from = $survey['level_from'][$key];
+                        $new->to = $survey['level_to'][$key];
+                        $new->save(false);
+                    }
                 }
 
                 $survey->save();
