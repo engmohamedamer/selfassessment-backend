@@ -318,16 +318,18 @@ class AssessmentsController extends  MyActiveController
     {
         $user = \Yii::$app->user->identity->userProfile;
         $report = CorrectiveActionReport::findOne(['user_id'=>$user->user_id,'answer_id'=> $answerObj->survey_answer_id]);
-        if (!$report) {
-            $report = new CorrectiveActionReport();
-            $report->org_id = $user->organization_id;
-            $report->user_id = $user->user_id;
-            $report->survey_id = $questionObj->survey->survey_id;
-            $report->question_id = $questionObj->survey_question_id;
-            $report->answer_id = $answerObj->survey_answer_id;
-            $report->corrective_action = $answerObj->survey_answer_corrective_action;
-            $report->corrective_action_date = $answerObj->corrective_action_date;
-            $report->save(false);
+        if ($answerObj->survey_answer_show_corrective_action) {
+            if (!$report) {
+                $report = new CorrectiveActionReport();
+                $report->org_id = $user->organization_id;
+                $report->user_id = $user->user_id;
+                $report->survey_id = $questionObj->survey->survey_id;
+                $report->question_id = $questionObj->survey_question_id;
+                $report->answer_id = $answerObj->survey_answer_id;
+                $report->corrective_action = $answerObj->survey_answer_corrective_action;
+                $report->corrective_action_date = $answerObj->corrective_action_date;
+                $report->save(false);
+            }
         }
     }
 
