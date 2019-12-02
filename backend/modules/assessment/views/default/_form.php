@@ -365,7 +365,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
             ]
         ]);
         echo Html::tag('div', Html::a('<span class="glyphicon glyphicon-plus"></span> ' . Yii::t('survey', 'Add question'), Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => 'btn btn-success secBtn ']),
-            ['class' => 'text-center survey-btn addQPanel addQFixed', 'id' => '']);
+            ['class' => 'text-center survey-btn', 'id' => '']);
         echo Html::tag('div', Html::submitButton('<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save'),
             ['class' => 'btn primBtn', 'data-default-text' => '<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save')]), ['class' => 'text-center survey-btn', 'id' => 'save', 'data-action' => Url::toRoute(['default/view', 'id' => $survey->survey_id])]);
 
