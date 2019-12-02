@@ -198,7 +198,17 @@ if(Yii::$app->user->isGuest){
         .custom-dashboard .box-danger {
             border-top-color: <?= $brandPrimColor ?> !important;
         }
-
+        .theme-edit .theme-nav ul.nav li.active a{
+            background-color:<?= $brandPrimColor ?> !important;
+        }
+        .login .form-group .btn{
+            background:<?= $brandPrimColor ?> !important;
+        }
+        .login .form-group a.btn {
+            background: <?= $brandSecColor ?> !important;
+            color: #333;
+        }
+        
 
 
     </style>
