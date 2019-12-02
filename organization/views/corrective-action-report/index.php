@@ -143,12 +143,12 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
        //         ],
        //     ])
        // ],
-        [
-            'class' => EnumColumn::class,
-            'attribute' => 'status',
-            'enum' => CorrectiveActionReport::status(),
-            'filter' => CorrectiveActionReport::status()
-        ],
+        // [
+        //     'class' => EnumColumn::class,
+        //     'attribute' => 'status',
+        //     'enum' => CorrectiveActionReport::status(),
+        //     'filter' => CorrectiveActionReport::status()
+        // ],
         // 'comment:ntext',
         [
             'class' => 'yii\grid\ActionColumn',

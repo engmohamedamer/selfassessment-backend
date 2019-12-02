@@ -60,13 +60,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'format'=>'raw'
         ],
         'corrective_action_date',
-        [
-            'attribute'=>'status',
-            'value'=>function($model){
-                return  CorrectiveActionReport::status()[$model->status];
-            },
-            'format'=>'raw'
-        ],
+        // [
+        //     'attribute'=>'status',
+        //     'value'=>function($model){
+        //         return  CorrectiveActionReport::status()[$model->status];
+        //     },
+        //     'format'=>'raw'
+        // ],
         'comment:ntext',
     ];
     echo DetailView::widget([
