@@ -747,6 +747,25 @@ width: 100% !important;
   color: #333 !important;
 }
 
+.btn-secondary{
+  background-color: #676767 !important;
+  color: #fff !important;
+}
+.btn{
+  -webkit-transition: all .3s ease-in-out;
+-moz-transition: all .3s ease-in-out;
+-ms-transition: all .3s ease-in-out;
+-o-transition: all .3s ease-in-out;
+transition: all .3s ease-in-out;
+}
+.btn:hover, .btn:focus{
+  opacity: .8;
+  -moz-transform: scale(1.02);
+-webkit-transform: scale(1.02);
+-o-transform: scale(1.02);
+-ms-transform: scale(1.02);
+transform: scale(1.02);
+}
 @media (max-width: 768px) {
   .custom-dashboard .guide {
     flex-direction: column;

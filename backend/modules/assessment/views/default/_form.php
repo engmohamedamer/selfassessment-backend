@@ -365,11 +365,11 @@ if (Yii::$app->user->identity->userProfile->organization) {
             ]
         ]);
 
-        echo Html::beginTag('div', ['class' => 'text-center survey-btn text-center survey-btn']);
-            echo Html::a('<span class="glyphicon glyphicon-plus"></span> ' . Yii::t('survey', 'Add question'), Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => 'btn btn-success secBtn ']);
+        echo Html::beginTag('div', ['class' => 'text-center survey-btn']);
+            echo Html::a('<span class="fa fa-plus"></span> ' . Yii::t('survey', 'Add question'), Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => 'btn btn-secondary']);
 
             echo Html::submitButton('<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save'),
-            ['class' => 'btn primBtn', 'data-default-text' => '<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save'),'id' => 'save', 'data-action' => Url::toRoute(['default/view', 'id' => $survey->survey_id])]);
+            ['class' => 'btn btn-primary', 'data-default-text' => '<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save'),'id' => 'save', 'data-action' => Url::toRoute(['default/view', 'id' => $survey->survey_id])]);
         echo Html::endTag('div');
 
         // echo Html::tag('div', , ['class' => '' ]);
