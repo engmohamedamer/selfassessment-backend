@@ -25,7 +25,7 @@ class OrganizationTheme extends BaseOrganizationTheme
             ['facebook', 'match', 'pattern' => '/^(?:https?:\/\/)?(?:www\.)?facebook\.com\/.(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-\.]*)$/' ,'message'=>Yii::t('common','Enter valid facebook link')],
             ['twitter', 'match', 'pattern' => '/^http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)$/' ,'message'=>Yii::t('common','Enter valid twitter link')],
             ['instagram', 'match', 'pattern' => '/(?:(?:http|https):\/\/)?(?:www.)?(?:instagram.com|instagr.am)\/([A-Za-z0-9-_]+)/im' ,'message'=>Yii::t('common','Enter valid instagram link')],
-            # ['linkedin', 'match', 'pattern' => '/^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)\/.[a-zA-Z0-9_]+$/' ,'message'=>Yii::t('common','Enter valid linkedin link')],
+            ['linkedin', 'match', 'pattern' => '/^https:\\/\\/[a-z]{2,3}\\.linkedin\\.com\\/.*$/' ,'message'=>Yii::t('common','Enter valid linkedin link')],
 
         ]);
     }
