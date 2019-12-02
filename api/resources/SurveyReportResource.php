@@ -306,7 +306,7 @@ class SurveyReportResource extends Survey
                         'qNum'=>$i++,
                         'qText'=>$question->survey_question_name,
                         'qAnswer'=>$answer,
-                        'qGainedPoints'=>$qGainedPoints,
+                        'qGainedPoints'=> round($qGainedPoints,2),
                         'qTotalPoints'=>$question->survey_question_point,
                         'qCorrectiveActions'=> $correctiveActions,
                         'qType'=>$type,
