@@ -24,7 +24,7 @@ foreach ($question->answers as $i => $answer) {
     echo "<label><input type='radio' name='SurveyAnswer[$question->survey_question_id][correct]' value='$i' ".$checked." class='checkbox-updatable'> ". Yii::t('survey','Correct Answer') ." </label>";
     }
     echo $form->field($answer, "[$question->survey_question_id][$i]survey_answer_name")->input('text',
-        ['placeholder' => \Yii::t('survey', 'Enter an answer choice')])->label(false);
+        ['placeholder' => \Yii::t('survey', 'Enter an answer choice'),'required'=>true])->label(false);
 
     if ($question->survey_question_is_scorable || $question->survey->survey_point > 0) {
         // echo Html::beginTag('div', ['class' => 'points-wrap']);

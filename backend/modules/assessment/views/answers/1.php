@@ -19,7 +19,7 @@ foreach ($question->answers as $i => $answer) {
         echo $form->field($answer, "[$question->survey_question_id][$i]correct")->checkbox(['value' => "1"]);
     }
     echo $form->field($answer, "[$question->survey_question_id][$i]survey_answer_name")->input('text',
-        ['placeholder' => \Yii::t('survey', 'Enter an answer choice')])->label(false);
+        ['placeholder' => \Yii::t('survey', 'Enter an answer choice'),'required'=>true])->label(false);
 
     if ($question->survey_question_is_scorable || $question->survey->survey_point > 0) {
         // echo Html::beginTag('div', ['class' => 'points-wrap']);

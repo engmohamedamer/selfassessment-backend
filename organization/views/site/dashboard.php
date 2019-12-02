@@ -31,29 +31,29 @@ $i = 1;
     <div class="row custom-dashboard text-center">
         <?php if (Yii::$app->session->hasFlash('first-login') || count($contributors->getModels()) == 0 || count($organization->survey) == 0): ?>
 
-        <h2>مرحباً بك</h2>
-        <h4>نوصيكم قبل البدء بإنشاء الإستبيانات القيام بالتالي</h4>
+        <h2><?= Yii::t('common','welcome'); ?></h2>
+        <h4><?= Yii::t('common','Before starting the assessments we recommend you do the following') ?></h4>
         <?php endif; ?>
         <?php if (Yii::$app->session->hasFlash('first-login')): ?>
         <div class='guide'>
             <span><?= $i++ ?></span>
-            <h5>تعديل الهوية البصرية للموقع حتى تتلائم مع الهوية البصرية لمؤسستك.</h5>
-            <a href="/organization/update" class='btn small btn-primary'>تعديل البيانات الأساسية</a>
+            <h5><?= Yii::t('common','Modify the visual identity of the site to match the visual identity of your organization'); ?></h5>
+            <a href="/organization/update" class='btn small btn-primary'><?= Yii::t('common','Modify basic data'); ?></a>
         </div>
         <?php endif; ?>
         <?php if(count($contributors->getModels()) == 0):?>
         <div class='guide'>
             <span><?= $i++ ?></span>
-            <h5>إضافة المشاركين بالإستبيان من مؤسستك.</h5>
-            <a href="/user/index" class='btn small btn-primary'>اضافة المشاركين</a>
+            <h5><?= Yii::t('common','Add assessment contributors from your organization.'); ?></h5>
+            <a href="/user/index" class='btn small btn-primary'><?= Yii::t('common','Add contributors'); ?></a>
         </div>
         <?php endif; ?>
         <?php if(count($organization->survey) == 0):?>
         <div class='guide'>
             <span><?= $i++ ?></span>
-            <h5> انشاء الإستبيان الأول لمؤسستك </h5>
+            <h5> <?= Yii::t('common','Create the first assessment for your organization'); ?></h5>
             <br>
-            <h6>" يجب تعديل حالة الإستبيان من مغلق إلى مرئي حتى يتثنى للمشاركين مشاهدة الإستبيان " </h6>
+            <h6>" <?= Yii::t('common','The status of the assessment must be modified from closed to visible so that participants can view the assessment'); ?> "</h6>
             <a href="/assessment/default/create" class='btn small btn-primary'><?= \Yii::t('common', 'Create new survey')?></a>
         </div>
         <?php endif; ?>
@@ -154,6 +154,7 @@ $i = 1;
                                 <tr>
                                     <th>#</th>
                                     <th><?= \Yii::t('common', 'Survey')?></th>
+                                    <th><?= \Yii::t('common', 'Contributors Count')?></th>
                                     <th><?= \Yii::t('common', 'Status')?></th>
                                     <th><?= \Yii::t('common', 'Ends At')?></th>
                                 </tr>
@@ -174,6 +175,7 @@ $i = 1;
                                 <tr>
                                     <td><?= $i++ ?></td>
                                     <td><a href="/assessment/default/view?id=<?= $survey->survey_id ?>"><?= $survey->survey_name ?></a></td>
+                                    <td><?= count($survey->stats) ?></td>
                                     <td><span class="label label-<?=$class?>"><?= $status ?></span></td>
                                     <td>
                                         <div class="sparkbar" data-color="#00a65a" data-height="20"><?= $survey->survey_expired_at ?></div>
@@ -207,7 +209,7 @@ $i = 1;
                 
                 <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">عدد المشاركين في كل إستبيان</h3>
+                    <h3 class="box-title"><?= Yii::t('common','Count Surveys Contributors')?></h3>
 
                     <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -229,7 +231,7 @@ $i = 1;
                 </div> -->
                 <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">حالة الإستبيانات</h3>
+                    <h3 class="box-title"><?= Yii::t('common','Assessments Status') ?></h3>
 
                     <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
