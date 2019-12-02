@@ -138,6 +138,18 @@ class QuestionController extends Controller
 
         $post = \Yii::$app->request->post();
 
+        if (in_array($post['SurveyQuestion'][$id]['survey_question_type'],[SurveyType::TYPE_ONE_OF_LIST,SurveyType::TYPE_DROPDOWN])) {
+            $correct = $post['SurveyAnswer'][$id]['correct'];
+            unset($post['SurveyAnswer'][$id]['correct']);
+            foreach ($post['SurveyAnswer'][$id] as $key =>  $value) {
+                if ($correct != $key ) {
+                    $post['SurveyAnswer'][$id][$key] = array_merge($post['SurveyAnswer'][$id][$key],['correct'=>0]);
+                }else{
+                    $post['SurveyAnswer'][$id][$key] = array_merge($post['SurveyAnswer'][$id][$key],['correct'=>1]);
+                }
+            }
+        }
+
         $questionData = ArrayHelper::getValue($post, "SurveyQuestion.{$question->survey_question_id}");
 
         $isTypeChanged = false;

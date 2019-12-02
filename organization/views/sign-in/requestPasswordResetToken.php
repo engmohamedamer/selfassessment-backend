@@ -14,14 +14,15 @@ use yii\bootstrap\ActiveForm;
 <div class="wrapper">
         <header>
             <div class="container">
-                <a href="" class="brand-link"><img src="/img/tamkeen-logo.png" width="150"> </a>
+                
 
 
                 <div class="row">
                     <div class="col-md-4">
                         <div class="login">
+                        <a href="" class="brand-link"><img src="/img/tamkeen-logo.png" width="150"> </a>
                             <h2>Change Password,</h2>
-                            <h4>Tamkeen Admin!</h4>
+                            <h4>Organization Admin!</h4>
                             <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
                                 <?php echo $form->field($model, 'email') ?> 
                                 <div class="form-group">

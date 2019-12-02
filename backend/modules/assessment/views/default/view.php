@@ -32,6 +32,11 @@ BootstrapPluginAsset::register($this);
 
 
 ?>
+<style>
+.surveylevels .col-md-10,.surveylevels .col-md-4{
+    padding:0 15px;
+}
+</style>
     <div  id="survey-view" data-SurveyId='<?= $survey->survey_id; ?>'>
         <div id="survey-title">
             <div class="subcontainer flex">
