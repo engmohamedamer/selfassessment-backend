@@ -20,7 +20,7 @@ foreach ($question->answers as $i => $answer) {
         if ($answer->correct) {
             $checked = 'checked';
         }
-        echo "<label><input type='radio' name='SurveyAnswer[$question->survey_question_id][correct]' value='$i' ".$checked." > ". Yii::t('survey','Correct Answer') ." </label>";
+        echo "<label><input type='radio' name='SurveyAnswer[$question->survey_question_id][correct]' value='$i' ".$checked." class='checkbox-updatable'> ". Yii::t('survey','Correct Answer') ." </label>";
     }
     // echo $form->field($answer, "[$question->survey_question_id][$i]correct")->radio();
     echo $form->field($answer, "[$question->survey_question_id][$i]survey_answer_name")->input('text',
