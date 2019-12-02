@@ -12,15 +12,23 @@ $this->title = $model->user->userProfile->firstname .' '. $model->user->userProf
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Corrective Action Report'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="corrective-action-report-view">
-
-    <div class="row">
-        <div class="col-sm-9">
-            <h2><?= Yii::t('backend', 'Corrective Action').' '. Html::encode($this->title) ?></h2>
+<div class="content-header">
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <h1>
+            <?= Yii::t('backend', 'Corrective Action').' '. Html::encode($this->title) ?></h1>
         </div>
+       
+        <!-- /.col -->
     </div>
+    <!-- /.row -->
+</div>
 
+   
     <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
 <?php 
     $gridColumn = [
         'id',
@@ -67,4 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]);
 ?>
  
+</div>
+</div>
+</div>
 </div>
