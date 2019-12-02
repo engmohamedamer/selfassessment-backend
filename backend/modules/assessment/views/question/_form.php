@@ -67,41 +67,14 @@ echo $form->field($question, "[{$question->survey_question_id}]survey_question_t
         'allowClear' => false
     ],
     'pluginEvents' => [
-
-        "select2:selecting" => new \yii\web\JsExpression(<<<JS
-                function _(e) {
-                     var that = $(this);
-                     var previous = that.val();
-                     var current = e.params.args.data.id;
-                     var updateBtn = $(this).closest('[data-pjax-container]').find('.update-question-btn');
-                  
-                     if (current === '5'){
-                          krajeeDialog.confirm('$confirmMessage', function (result) {
-                          if (result) {       
-                             updateBtn.click();
-                          } else {
-                              e.preventDefault();
-                              if (previous !== undefined){
-                                that.select2('val', previous);
-                              }
-                              return true;
-                          }
-                         });
-                     }
-                }
-JS
-        ),
         "change" => new \yii\web\JsExpression(<<<JS
                 function _(e) {
                      let current = e.target.value;
-                     if (current === '5'){
-                        return false;
-                     }
                      let updateBtn = $(this).closest('[data-pjax-container]').find('.update-question-btn');
                      updateBtn.click();
                 }
 JS
-        ),]
+    ),]
 ]);
 if ($question->survey->survey_point > 0) {
   echo $form->field($question, "[{$question->survey_question_id}]survey_question_point")->input('number');
