@@ -85,14 +85,14 @@ BootstrapPluginAsset::register($this);
                                            class="btn btn-info btn-xs" data-pjax="0"
                                            title="<?= \Yii::t('survey','Edit') ?>"><span class="glyphicon glyphicon-pencil"></span></a>
                                         <?php
-                                        echo Html::a(\Yii::t('survey', '<span class="glyphicon glyphicon-trash"></span>'), Url::toRoute(['default/delete', 'id' => $survey->survey_id]), [
-                                            'class' => 'btn btn-danger btn-xs pull-right btn-delete',
-                                            'data-pjax' => 0,
-                                            'role' => 'remote-modal',
-                                            'data-confirm-message' => \Yii::t('survey','Are you sure?'),
-                                            'data-method' => false,// for overide yii data api
-                                            'data-request-method' => 'post',
-                                        ]);
+                                        // echo Html::a(\Yii::t('survey', '<span class="glyphicon glyphicon-trash"></span>'), Url::toRoute(['default/delete', 'id' => $survey->survey_id]), [
+                                        //     'class' => 'btn btn-danger btn-xs pull-right btn-delete',
+                                        //     'data-pjax' => 0,
+                                        //     'role' => 'remote-modal',
+                                        //     'data-confirm-message' => \Yii::t('survey','Are you sure?'),
+                                        //     'data-method' => false,// for overide yii data api
+                                        //     'data-request-method' => 'post',
+                                        // ]);
                                         ?>
                                     </div>
                                 </div>
