@@ -19,7 +19,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             <h1 class="m-0 text-dark"><?= Yii::t('backend','Dashboard') ?></h1>
         </div>
         <div class="col-sm-6 actionBtns">
-            <a href="NewOrganization.html" class="btn btn-primary"><?= Yii::t('backend','New Organization') ?></a>
+            <a href="/organization/update" class="btn btn-primary"><?= Yii::t('backend','New Organization') ?></a>
         </div>
         <!-- /.col -->
     </div>
