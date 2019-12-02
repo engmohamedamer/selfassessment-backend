@@ -87,6 +87,7 @@
     beforeSend: function () { $('.assessmentParticipants-preloader').show()},
     complete: function () { },
     success: res => {
+        $('.assessmentParticipants-preloader').hide()
         var ctx = document.getElementById('assessmentParticipantsChart').getContext('2d');
         var chart = new Chart(ctx, {
             type: 'bar',
@@ -166,11 +167,10 @@
                 },
             }
         }); 
-        $('.assessmentParticipants-preloader').hide()
+        
     },
     error: function (err) {
         console.log(err);
         $('.assessmentParticipants-preloader').hide()
-
     }
     });
