@@ -133,6 +133,9 @@ class UserController extends BackendController
 
             Yii::$app->getSession()->setFlash('alert', [
                 'type' =>'success',
+                'options' => [
+                    'class' => 'alert-success',
+                ],
                 'body' => \Yii::t('backend', 'Data has been saved Successfully') ,
                 'title' =>'',
             ]);
