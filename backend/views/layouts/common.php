@@ -144,7 +144,7 @@ if(Yii::$app->user->isGuest){
         <strong>&nbsp;</strong>
         <div class="pull-right">
             <!-- <?php echo Yii::powered() ?> -->
-        selfassesment &copy;  <?php echo date('Y') ?>
+        Tamkeen Technologies &copy;  <?php echo date('Y') ?>
         </div>
   </footer>
 </div><!-- ./wrapper -->
