@@ -258,38 +258,25 @@ $(document).ready(function (e) {
 
 
 
-    $.ajax({
-    url: `/site/org-survey-count-degree?id=$id`,
-    type: 'GET',
-    beforeSend: function () { $('.surveyView-preloader').show()},
-    complete: function () { },
-    success: res => {
-        var ctx = document.getElementById('surveyViewChart').getContext('2d');
-        var chart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            datasets: [{
-                data: res.data,
-                backgroundColor: [
-                    '#ecf0f1',
-                    '#f39c12',
-                    '#2ecc71'
-                ],
-            }],
-            labels: res.labels
-        },
-        options: {
-            responsive: true
-        }
-        });
-        $('.surveyView-preloader').hide()
+    var ctx = document.getElementById('surveyViewChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        datasets: [{
+            data: res.data,
+            backgroundColor: [
+                '#c0392b',
+                '#e67e22',
+                '#2980b9',
+                '#16a085'
+            ],
+        }],
+        labels: res.labels
     },
-    error: function (err) {
-        console.log(err);
-        $('.surveyView-preloader').hide()
+    options: {
+        responsive: true
     }
     });
-
 
 
     var ctx = document.getElementById('participantsStatusChart').getContext('2d');
