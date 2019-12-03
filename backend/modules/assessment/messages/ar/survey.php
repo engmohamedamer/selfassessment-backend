@@ -88,4 +88,5 @@ return [
     'Level Title'=>'عنوان المستوي',
     'From a percentage'=>'من نسبة',
     'To a percentage'=>'الي نسبة',
+    'Status'=>'حالة الاستبيان'
 ];

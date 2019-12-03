@@ -273,4 +273,6 @@ return [
     'Participation in the assessment'=>'نسب المشاركة في الإستبيان',
     'Assessment ratios in the assessments'=>'نسب التقييم في الاستبيان',
     'Answers'=>'الأجابات',
+    'Closed'=>'مغلق',
+    'Visible'=>'مرئى',
 ];
