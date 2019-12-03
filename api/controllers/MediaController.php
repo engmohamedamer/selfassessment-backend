@@ -66,10 +66,9 @@ class MediaController extends  MyActiveController
         return ResponseHelper::sendSuccessResponse($links,200);
     }
 
-    public function actionDeleteFile()
+    public function actionDelete($id)
     {
-        $params = \Yii::$app->request->post();
-        $media = Media::findOne($params['id']);
+        $media = Media::findOne($id);
         if ($media) {
            unlink(\Yii::getAlias('@storage'). '/web/source/'.$media->path);
            $media->delete(false);

@@ -18,7 +18,7 @@ return [
         ['pattern' => '/assessments/custom-report/<id>/<user_id>', 'route' => 'assessments/custom-report'],
         ['pattern' => '/assessments/survey-start/<surveyId>', 'route' => 'assessments/survey-start'],
         ['pattern' => '/media/upload', 'route' => 'media/upload'],
-        ['pattern' => '/media/delete-file', 'route' => 'media/delete-file'],
+        ['pattern' => '/media/delete', 'route' => 'media/delete'],
 
         ['class' =>'yii\rest\UrlRule','controller'=>'user'
             ,'only'=>['login','signup','reset-password','request-reset-password','options']
@@ -50,11 +50,12 @@ return [
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'media',
-            'only'=>['create','delete-file','upload','options'],//'update',
+            'only'=>['create','delete','upload','options'],//'update',
             'extraPatterns'=>[
                 'POST ' => 'create' ,
                 'POST upload' => 'upload' ,
                 'DELETE delete-file' => 'delete-file',
+                'DELETE' => 'delete',
             ],
             'pluralize'=>false
         ],
