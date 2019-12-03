@@ -92,7 +92,7 @@ class LoginForm extends Model
                // echo Yii::$app->user->id .' -----------------------'; die;
 
                 Yii::$app->user->logout();
-                throw new ForbiddenHttpException;
+                throw new ForbiddenHttpException(Yii::t('backend', 'You Have no privilege on this dashbaord'));
             }
             return true;
         }

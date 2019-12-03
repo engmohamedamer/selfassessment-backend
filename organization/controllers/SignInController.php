@@ -4,15 +4,16 @@ namespace organization\controllers;
 use Intervention\Image\ImageManagerStatic;
 use Yii;
 use common\models\FirebaseAuth;
-use organization\models\AccountForm;
-use organization\models\LoginForm;
 use common\models\PasswordResetRequestForm;
 use common\models\ResetPasswordForm;
+use organization\models\AccountForm;
+use organization\models\LoginForm;
 use trntv\filekit\actions\DeleteAction;
 use trntv\filekit\actions\UploadAction;
 use yii\filters\VerbFilter;
 use yii\imagine\Image;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 
 class SignInController extends OrganizationController
 {
@@ -59,21 +60,29 @@ class SignInController extends OrganizationController
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            $userFirstLogin = Yii::$app->user->identity;
-            if (!$userFirstLogin->logged_at) {
-                $userFirstLogin->logged_at = time();
-                $userFirstLogin->save(false);
-                Yii::$app->getSession()->setFlash('first-login', []);
+        try{
+            $model = new LoginForm();
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+                $userFirstLogin = Yii::$app->user->identity;
+                if (!$userFirstLogin->logged_at) {
+                    $userFirstLogin->logged_at = time();
+                    $userFirstLogin->save(false);
+                    Yii::$app->getSession()->setFlash('first-login', []);
+                }
+                return $this->goBack();
             }
-            return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model
+        }catch(ForbiddenHttpException $ex){
+            Yii::$app->getSession()->setFlash('alert', [
+                'type' =>'success',
+                'options' => [
+                    'class' => 'alert-danger',
+                ],
+                'body' => $ex->getMessage(),
             ]);
         }
+        return $this->render('login', [
+            'model' => $model
+        ]);   
     }
 
     public function actionLogout()

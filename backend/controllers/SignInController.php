@@ -20,6 +20,7 @@ use trntv\filekit\actions\UploadAction;
 use yii\filters\VerbFilter;
 use yii\imagine\Image;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 
 class SignInController extends BackendController
 {
@@ -67,14 +68,23 @@ class SignInController extends BackendController
             return $this->goHome();
         }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model
+        try{
+            $model = new LoginForm();
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+                return $this->goBack();
+            }
+        }catch(ForbiddenHttpException $ex){
+            Yii::$app->getSession()->setFlash('alert', [
+                'type' =>'success',
+                'options' => [
+                    'class' => 'alert-danger',
+                ],
+                'body' => $ex->getMessage(),
             ]);
         }
+        return $this->render('login', [
+            'model' => $model
+        ]);   
     }
 
     public function actionLogout()

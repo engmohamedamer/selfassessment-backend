@@ -1,6 +1,7 @@
 <?php
-use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use kartik\widgets\Alert;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -25,6 +26,17 @@ $this->params['body-class'] = 'login-page';
                         <a href="" class="brand-link"><img src="/img/tamkeen-logo.png" width="150"> </a>
                             <h2>WELCOME,</h2>
                             <h4>Organization Admin!</h4>
+                            <?php if (Yii::$app->session->hasFlash('alert')): ?>
+                                <?php
+                                  echo Alert::widget([
+                                    'type' => Alert::TYPE_DANGER,
+                                    'icon' => 'fas fa-ok-circle',
+                                    'body' => Yii::$app->session->getFlash('alert')['body'],
+                                    'showSeparator' => true,
+                                    'delay' => 3000
+                                ]);
+                                ?>
+                            <?php endif; ?>
                             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
                                 <?php echo $form->field($model, 'username')->textInput(['placeholder'=>'Email'])->label(false) ?>
                                 <?php echo $form->field($model, 'password')->passwordInput(['placeholder'=>'Password'])->label(false) ?>

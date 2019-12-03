@@ -269,4 +269,5 @@ return [
     'Create the first assessment for your organization'=>'انشاء الإستبيان الأول لمؤسستك',
     'The status of the assessment must be modified from closed to visible so that participants can view the assessment'=>'يجب تعديل حالة الإستبيان من مغلق إلى مرئي حتى يتثنى للمشاركين مشاهدة الإستبيان',
     'About Organization'=>'عن المؤسسة',
+    'You do not have access'=>'لا تملك صلاحية الدخول',
 ];
