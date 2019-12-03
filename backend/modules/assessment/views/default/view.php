@@ -172,27 +172,29 @@ BootstrapPluginAsset::register($this);
             <!-- <div class="text-center surveyView-preloader preloader col-sm-12" style="display:none">
                 <img src="./img/preloader.gif" alt="">
             </div> -->
-            <div class='col-md-6'>
-                <div class="box box-danger">
-                <div class="box-header with-border">
-                    <h3 class="box-title">نسب التقييم في الاستبيان</h3>
-
-                    <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            <?php if(count($survey->stats)) :?>
+                <?php if(count($survey->levels)) :?>
+                    <div class='col-md-6'>
+                        <div class="box box-danger">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><?= Yii::t('common','Assessment ratios in the assessments') ?></h3>
+                            <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <canvas id="surveyViewChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                        </div>
+                        <!-- /.box-body -->
+                        </div>
                     </div>
-                </div>
-                <div class="box-body">
-                    <canvas id="surveyViewChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
-                </div>
-                <!-- /.box-body -->
-                </div>
-            </div>
+                <?php endif;?>
             <div class="col-md-6">
                 <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">نسب المشاركة في الإستبيان</h3>
+                    <h3 class="box-title"><?= Yii::t('common','Participation in the assessment') ?></h3>
 
                     <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -206,6 +208,7 @@ BootstrapPluginAsset::register($this);
                 <!-- /.box-body -->
                 </div>
             </div>
+            <?php endif;?>
         </div>
         <?php endif;?>
         <div>
@@ -270,7 +273,7 @@ $titles = [];
 $counts = [];
 foreach ($survey->levels as $level) {
     $titles[] = $level->title;
-    $counts[] = array_count_values($gained_score_title)[$level->title] ?: 0;
+    $counts[] = $gained_score_title ? array_count_values($gained_score_title)[$level->title] ?: 0 : 0;
 }
 $labelsData = json_encode($titles);
 $countData = json_encode($counts);

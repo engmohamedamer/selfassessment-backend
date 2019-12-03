@@ -33,6 +33,7 @@ class CorrectiveActionReportController extends Controller
     public function actionIndex()
     {
         $searchModel = new CorrectiveActionReportSearch();
+        $searchModel->org_id = \Yii::$app->user->identity->userProfile->organization_id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -114,7 +115,9 @@ class CorrectiveActionReportController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = CorrectiveActionReport::findOne($id)) !== null) {
+        $org_id = \Yii::$app->user->identity->userProfile->organization_id;
+        $model = CorrectiveActionReport::find()->where(['id'=>$id,'org_id'=>$org_id])->one();
+        if (($model !== null)) {
             return $model;
         } else {
             throw new NotFoundHttpException(Yii::t('backend', 'The requested page does not exist.'));

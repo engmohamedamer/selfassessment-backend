@@ -270,4 +270,6 @@ return [
     'The status of the assessment must be modified from closed to visible so that participants can view the assessment'=>'يجب تعديل حالة الإستبيان من مغلق إلى مرئي حتى يتثنى للمشاركين مشاهدة الإستبيان',
     'About Organization'=>'عن المؤسسة',
     'You do not have access'=>'لا تملك صلاحية الدخول',
+    'Participation in the assessment'=>'نسب المشاركة في الإستبيان',
+    'Assessment ratios in the assessments'=>'نسب التقييم في الاستبيان',
 ];
