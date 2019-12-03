@@ -27,7 +27,7 @@ return [
     'Active' => '',
     'Add Book' => '',
     'All' => '',
-    'Are you sure to delete this {item}?' => '',
+    'Are you sure to delete this {item}?' => 'هل انت متاكد من الحذف',
     'Book Listing' => '',
     'CSV' => '',
     'Clear selection' => '',

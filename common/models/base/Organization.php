@@ -110,8 +110,8 @@ class Organization extends \yii\db\ActiveRecord
                     'db_table'         => 'translations_with_text',
                     'attributes'       => [
                         'name','business_sector','address',
-                        'conatct_name','contact_position'
-
+                        'conatct_name','contact_position',
+                        'about',
                         ],
                     'admin_routes'     => [
                         'organization/update',
@@ -154,6 +154,7 @@ class Organization extends \yii\db\ActiveRecord
             'second_image' => Yii::t('common', 'Logo Icon Image'),
             'status' => Yii::t('common', 'Status'),
             'slug'=> Yii::t('common', 'Slug'),
+            'about'=>Yii::t('common','About Organization'),
         ];
     }
 

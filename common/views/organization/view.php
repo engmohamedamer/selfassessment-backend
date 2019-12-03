@@ -49,6 +49,7 @@ use yii\widgets\DetailView;
                                             return $model->district->title;
                                         },
                                     ],
+                                    'about',
                                     'limit_account',
                                     [
                                         'attribute'=>Yii::t('common','Locale'),
