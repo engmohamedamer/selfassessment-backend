@@ -27,7 +27,7 @@ function random_color() {
 echo '
 <div class="answers-stat" >
     <p class="text-center">
-        <strong>Answers</strong>
+        <strong>'. Yii::t('common','Answers') .'</strong>
     </p>
 ';
 ?>

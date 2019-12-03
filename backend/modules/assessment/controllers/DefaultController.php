@@ -354,8 +354,8 @@ class DefaultController extends Controller
                     // return JSON encoded output in the below format
                     return ['output' => $model->$property, 'message' => ''];
                 }
-
-                return ['output' => '', 'message' => $model->getFirstError($property)];
+                //  $model->getFirstError($property) 
+                return ['output' => '', 'message' =>array_values($model->errors)];
             } // else if nothing to do always return an empty JSON encoded output
             else {
                 return ['output' => '', 'message' => ''];
