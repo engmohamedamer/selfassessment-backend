@@ -14,6 +14,7 @@ use Yii;
  * @property int $size
  * @property string $name
  * @property int $created_at
+ * @property int $user_id
  * @property int $order
  * @property string $meta
  * @property string $deleted_by
@@ -35,7 +36,7 @@ class Media extends \yii\db\ActiveRecord
     {
         return [
             [['path'], 'required'],
-            [['size', 'created_at', 'order'], 'integer'],
+            [['size', 'created_at', 'order','user_id'], 'integer'],
             [['path', 'base_url', 'type', 'name', 'meta', 'deleted_by'], 'string', 'max' => 255],
         ];
     }

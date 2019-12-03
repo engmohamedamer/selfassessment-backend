@@ -51,17 +51,43 @@ class MediaController extends  MyActiveController
     public function actionUpload()
     {
         $links = [];
+        $user = \Yii::$app->user->identity->userProfile;
+        $user_id = $user->user_id;
+        $org_id = $user->organization_id;
+
+
+        $allowed_mime_types = array(
+            'image/jpeg',
+            'image/jpg',
+            'image/png',
+            'application/pdf',
+            'application/doc',
+            'text/csv',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'text/plain'
+        );
+
         foreach ($_FILES as $key => $file) {
-            $tmp_name = $_FILES[$key]["tmp_name"];
-            $name = basename($_FILES[$key]["name"]);
-            $uploaddir = \Yii::getAlias('@storage'). '/web/source/answers';
-            move_uploaded_file($tmp_name, $uploaddir.'/'.$name);
-            $media = new Media();
-            $media->path = 'answers/'.$name;
-            $media->base_url = \Yii::getAlias('@storageUrl'). '/source/';
-            $media->type = $_FILES[$key]["type"];
-            $media->save(false);
-            $links[] =  [$name=>['id'=>$media->id,'link'=>\Yii::getAlias('@storageUrl'). '/source/answers/'.$name]];
+            if (in_array($_FILES[$key]["type"], $allowed_mime_types) and $_FILES[$key]["size"] <= 10485760) {
+                $tmp_name = $_FILES[$key]["tmp_name"];
+                $name = 'File-'.time().basename($_FILES[$key]["name"]);
+                $uploaddir = \Yii::getAlias('@storage'). "/web/source/answers/$org_id/$user_id";
+                if (!file_exists($uploaddir)) {
+                    mkdir($uploaddir, 0777, true);
+                }
+                move_uploaded_file($tmp_name, $uploaddir.'/'.$name);
+                $media = new Media();
+                $media->path = 'answers/'.$name;
+                $media->base_url = \Yii::getAlias('@storageUrl'). '/source/';
+                $media->type = $_FILES[$key]["type"];
+                $media->created_at = time();
+                $media->user_id = $user_id;
+                $media->save(false);
+                $links[] =  [$name=>['id'=>$media->id,'link'=>\Yii::getAlias('@storageUrl'). "/source/answers/$org_id/$user_id/$name"]];
+            }else{
+                return ResponseHelper::sendFailedResponse("File Not Allowed",200);
+            }
+
         }
         return ResponseHelper::sendSuccessResponse($links,200);
     }
