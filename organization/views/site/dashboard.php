@@ -28,27 +28,22 @@ $i = 1;
             <!-- /.col -->
         </div>
     </div>
+    <?php if(count($contributors->getModels()) == 0 || count($organization->survey) == 0):?>
     <div class="row custom-dashboard text-center">
-        <?php if (Yii::$app->session->hasFlash('first-login') || count($contributors->getModels()) == 0 || count($organization->survey) == 0): ?>
 
         <h2><?= Yii::t('common','welcome'); ?></h2>
         <h4><?= Yii::t('common','Before starting the assessments we recommend you do the following') ?></h4>
-        <?php endif; ?>
-        <?php if (Yii::$app->session->hasFlash('first-login')): ?>
         <div class='guide'>
             <span><?= $i++ ?></span>
             <h5><?= Yii::t('common','Modify the visual identity of the site to match the visual identity of your organization'); ?></h5>
             <a href="/organization/update" class='btn small btn-primary'><?= Yii::t('common','Modify basic data'); ?></a>
         </div>
-        <?php endif; ?>
-        <?php if(count($contributors->getModels()) == 0):?>
+        
         <div class='guide'>
             <span><?= $i++ ?></span>
             <h5><?= Yii::t('common','Add assessment contributors from your organization.'); ?></h5>
             <a href="/user/index" class='btn small btn-primary'><?= Yii::t('common','Add contributors'); ?></a>
         </div>
-        <?php endif; ?>
-        <?php if(count($organization->survey) == 0):?>
         <div class='guide'>
             <span><?= $i++ ?></span>
             <h5> <?= Yii::t('common','Create the first assessment for your organization'); ?></h5>
@@ -56,49 +51,13 @@ $i = 1;
             <h6>" <?= Yii::t('common','The status of the assessment must be modified from closed to visible so that participants can view the assessment'); ?> "</h6>
             <a href="/assessment/default/create" class='btn small btn-primary'><?= \Yii::t('common', 'Create new survey')?></a>
         </div>
-        <?php endif; ?>
     </div>
+    <?php endif; ?>
+
+
+    <?php if(count($contributors->getModels()) > 0 && count($organization->survey) > 0):?>
     <div>
         <div class="row custom-dashboard">
-            <!-- <div class="col-sm-6 col-md-4">
-                <div class="info-box">
-                    <span class="info-box-icon bg-info elevation-1"><i class="fa fa-tag"></i></span>
-
-                    <div class="info-box-content">
-                    <span class="info-box-text"><a href="/organization/view"><?= Yii::t('common', 'Organization Show') ?></a></span>
-                    </div>
-                    <!~~ /.info-box-content ~~>
-                </div>
-                <!~~ /.info-box ~~>
-            </div>
-            <!~~ /.col ~~>
-            <div class="col-sm-6 col-md-4">
-                <div class="info-box mb-3">
-                    <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-gear"></i></span>
-
-                    <div class="info-box-content">
-                    <span class="info-box-text"><a href="/organization/update"><?= Yii::t('common', 'Organization Update') ?></a>
-                    </span>
-                    </div>
-                    <!~~ /.info-box-content ~~>
-                </div>
-                <!~~ /.info-box ~~>
-            </div>
-            <!~~ /.col ~~>
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="info-box mb-3">
-                    <span class="info-box-icon bg-success elevation-1"><i class="fa fa-users"></i></span>
-
-                    <div class="info-box-content">
-                    <span class="info-box-text"><a href="/user/index"><?= Yii::t('common', 'Contributors') ?></a></span>
-                    </div>
-                    <!~~ /.info-box-content ~~>
-                </div>
-                <!~~ /.info-box ~~>
-            </div> -->
-
-            <!-- /.col -->
-            <?php if(count($contributors->getModels()) > 0):?>
             <div class="col-md-4">
                 <!-- USERS LIST -->
                 <div class="box box-danger">
@@ -133,11 +92,9 @@ $i = 1;
                 </div>
                 <!--/.box -->
             </div>
-            <?php endif;?>
-            <?php if(count($organization->survey) > 0):?>
             <div class="col-md-8">
                 <!-- TABLE: LATEST ORDERS -->
-                <div class="box box-info">
+                <div class="box box-danger">
                     <div class="box-header with-border">
                         <h3 class="box-title"><?= \Yii::t('common', 'Latest Assessments')?></h3>
 
@@ -196,7 +153,6 @@ $i = 1;
                 </div>
                 <!-- /.box -->
             </div>
-            <?php endif;?>
         </div>
 
         <div class="row custom-dashboard">
@@ -204,7 +160,6 @@ $i = 1;
             <div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
                 <img src="./img/preloader.gif" alt="">
             </div>
-            <?php if(count($contributors->getModels()) > 0 and count($organization->survey) > 0):?>
             <div class="col-md-6">
                 
                 <div class="box box-danger">
@@ -222,9 +177,7 @@ $i = 1;
                 <!-- /.box-body -->
                 </div>
             </div>
-            <?php endif;?>
 
-            <?php if(count($organization->survey) > 0):?>
             <div class="col-md-6">
                 <!-- <div class="text-center participantsStatus-preloader preloader" style="display:none">
                     <img src="./img/preloader.gif" alt="">
@@ -244,37 +197,11 @@ $i = 1;
                 <!-- /.box-body -->
                 </div>
             </div>
-            <?php endif;?>
-
-            <!-- <div class="col-md-12">
-                    <div class="box box-danger">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">الإستبيان الأخير</h3>
-
-                        <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="assessmentChart" style="height: 237px; width: 475px;" height="100%" width="475"></canvas>
-                    </div>
-                    <!~~ /.box-body ~~>
-                    </div>
-            </div> -->
-
-
-
-
-            
-
-
-
-
 
         </div>
     </div>
+    <?php endif; ?>
+
 
 
 
