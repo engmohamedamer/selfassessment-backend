@@ -96,13 +96,13 @@ class ThemeController extends RestController
             ]
         ];
 
-        if ($locale =='ar' ) {
-            $about = "نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر.";
-        }else{
-            $about = "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
-        }
+        // if ($locale =='ar' ) {
+        //     $about = "نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر.";
+        // }else{
+        //     $about = "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
+        // }
 
-        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name,'address'=> $organization->address ,'about'=> $about, 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
+        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name,'address'=> $organization->address ,'about'=> $organization->about, 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
 
         return ['theme_version'=> strtotime($theme->updated_at),'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer];
     }

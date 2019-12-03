@@ -70,8 +70,10 @@ class SignupForm extends Model
             if (!$model->save()) {
                 throw new Exception('Model not saved');
             }
+            $name = explode(" ", $this->name,2);
             $profile = new UserProfile();
-        	$profile->firstname = $this->name;
+            $profile->firstname = $name[0];
+        	$profile->lastname = $name[1];
         	$profile->user_id = $model->id;
         	$profile->organization_id = $organization;
         	$profile->mobile = $this->mobile;

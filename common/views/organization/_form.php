@@ -104,6 +104,9 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 <?= $form->field($model, 'address')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
                             </div>
                             <div class="col-lg-6">
+                                <?= $form->field($model, 'about')->textarea(['rows' => '6'])->widget(MyMultiLanguageActiveField::className());  ?>
+                            </div>
+                            <div class="col-lg-6">
                             </div>
                             <hr class='mt-5 mb-5 col-lg-12 row'>
 
