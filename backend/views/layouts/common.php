@@ -33,88 +33,93 @@ if(Yii::$app->user->isGuest){
 <?php $this->beginContent('@backend/views/layouts/base.php'); ?>
 <div class="wrapper" style="height: auto; min-height: 100%;">
 
-<header class="main-header">
+    <header class="main-header">
 
-    <!-- Logo -->
-    <!-- Brand Logo -->
-
-
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-      </a>
-      <!-- Navbar Right Menu -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown user user-menu">
-
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                  <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>"
-                          class="user-image">
-              </a>
-              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                  <span class="dropdown-item dropdown-header"><?= Yii::t('common','Welcome')?>,  <?php echo Yii::$app->user->identity->userProfile->fullName; ?></span>
-                  <div class="dropdown-divider"></div>
-                  <a href="/sign-in/profile" class="dropdown-item">
-                      <i class="fas fa-user mr-2"></i> <?= Yii::t('common','My Profile')?>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a href="/sign-in/account" class="dropdown-item">
-                      <i class="fas fa-users-cog mr-2"></i>  <?= Yii::t('common','My Account')?>
-                  </a>
-                  <div class="dropdown-divider"></div>
-
-                  <?php echo Html::a(  '<i class="fas fa-sign-out-alt mr-2"></i> '. Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'dropdown-item', 'data-method' => 'post']) ?>
-
-              </div>
-
-          </li>
+        <!-- Logo -->
+        <!-- Brand Logo -->
 
 
-        </ul>
-      </div>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <!-- <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        </a> -->
 
-    </nav>
-  </header>
+        <div class="white-text dropdown-item dropdown-header"><div><?= Yii::t('common','Tamkeen Technologies Adminstrator')?></div></div>
+        
+        <div class='user-info-block'>
+            <span class="white-text dropdown-item dropdown-header"><?= Yii::t('common','welcome')?><div><?php echo strtoupper(Yii::$app->user->identity->userProfile->fullName) ?></div></span>
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown user user-menu">
 
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar ">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>"
+                                class="user-image">
 
-    <a href="/" class="logo">
-       <img src="/img/tamkeen-logo.png" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
+                    </a>
 
-    </a>
-            <!-- Sidebar -->
-            <section class="sidebar">
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="/sign-in/profile" class="dropdown-item">
+                            <i class="fas fa-user mr-2"></i> <?= Yii::t('common','My Profile')?>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/sign-in/account" class="dropdown-item">
+                            <i class="fas fa-users-cog mr-2"></i>  <?= Yii::t('common','My Account')?>
+                        </a>
+                        <div class="dropdown-divider"></div>
+
+                        <?php echo Html::a(  '<i class="fas fa-sign-out-alt mr-2"></i> '. Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'dropdown-item', 'data-method' => 'post']) ?>
+
+                    </div>
+
+                </li>
 
 
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
+                </ul>
+            </div>
+        </div>
+
+        </nav>
+    </header>
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar ">
+
+        <a href="/" class="logo">
+            <img src="/img/tamkeen-logo.png" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
+        </a>
+        <!-- Sidebar -->
+        <section class="sidebar">
 
 
-                    <?php
-                    if (Yii::$app->user->can('administrator')) {
-                    // $this->beginContent('@app/views/layouts/menus/_superadmin_menu.php');
-                        $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
-                        $this->endContent();
-                    } elseif (Yii::$app->user->can('manager') ) {
-                        $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
-                        $this->endContent();
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
 
-                    }else{
-                        //do no thing
-                        $this->beginContent('@app/views/layouts/menus/empty.php');
-                        $this->endContent();
-                    }
-                    ?>
 
-                </nav>
-                <!-- /.sidebar-menu -->
-            </section>
-            <!-- /.sidebar -->
-        </aside>
+                <?php
+                if (Yii::$app->user->can('administrator')) {
+                // $this->beginContent('@app/views/layouts/menus/_superadmin_menu.php');
+                    $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
+                    $this->endContent();
+                } elseif (Yii::$app->user->can('manager') ) {
+                    $this->beginContent('@app/views/layouts/menus/_manager_menu.php');
+                    $this->endContent();
+
+                }else{
+                    //do no thing
+                    $this->beginContent('@app/views/layouts/menus/empty.php');
+                    $this->endContent();
+                }
+                ?>
+
+            </nav>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
 
     <!-- Left side column. contains the logo and sidebar -->
 
@@ -141,8 +146,7 @@ if(Yii::$app->user->isGuest){
 
 
     <footer class="main-footer">
-        <strong>&nbsp;</strong>
-        <div class="pull-right">
+        <div class="">
             <!-- <?php echo Yii::powered() ?> -->
         Tamkeen Technologies &copy;  <?php echo date('Y') ?>
         </div>

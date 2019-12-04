@@ -101,7 +101,7 @@ ul {
 @media (min-width: 768px) {
     .content-wrapper, .main-footer, .main-header {
         transition: margin-right .3s ease-in-out;
-        margin-right: 250px;
+        margin-right: 300px;
         margin-left : 0;
         z-index: 3000;
     }
@@ -272,7 +272,7 @@ ul {
 
 .content-wrapper, .right-side, .main-footer{
     margin-left: 0;
-    margin-right: 250px;
+    margin-right: 300px;
 }
 .main-header .navbar{
     margin-left: 0;

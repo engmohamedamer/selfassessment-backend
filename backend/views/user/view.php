@@ -21,14 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
             </h1>
         </div>
         <div class="col-md-6 actionBtns">
-        <?php echo Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?php echo Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger mr-2',
-            'data' => [
-                'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
-                'method' => 'post',
-            ],
-        ]) ?>
+            <a href="/user/update?id=<?= $model->id ?>" class="btn btn-primary"><?= Yii::t('backend','Update Data') ?> <i class="icofont-ui-edit mr-2 ml-2"></i></a>
+            <a data-method="post" data-confirm="<?= Yii::t('backend', 'Are you sure you want to delete this item?') ?>" class="btn  btn-danger mr-5 ml-5"><?= Yii::t('backend','Delete') ?> <i class="icofont-ui-delete mr-2 ml-2"></i></a>
         </div>
         <!-- /.col -->
     </div>
