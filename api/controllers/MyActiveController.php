@@ -11,7 +11,10 @@ namespace api\controllers;
 use webvimark\behaviors\multilanguage\MultiLanguageHelper;
 use yii\data\ActiveDataProvider;
 use yii\filters\auth\CompositeAuth;
+use yii\filters\auth\HttpBasicAuth;
 use yii\filters\auth\HttpBearerAuth;
+use yii\filters\auth\HttpHeaderAuth;
+use yii\filters\auth\QueryParamAuth;
 use yii\rest\ActiveController;
 
 /**
@@ -75,7 +78,10 @@ class MyActiveController extends ActiveController
         $behaviors['authenticator'] = [
             'class' => CompositeAuth::class,
             'authMethods' => [
+                HttpBasicAuth::class,
                 HttpBearerAuth::class,
+                HttpHeaderAuth::class,
+                QueryParamAuth::class
             ]
         ];
         // avoid authentication on CORS-pre-flight requests (HTTP OPTIONS method)

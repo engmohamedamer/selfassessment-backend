@@ -11,7 +11,7 @@ namespace api\helpers;
 
          $path = \Yii::getAlias('@storage'). '/web/source/'.$upPath;
          if (!file_exists($path)) {
-             mkdir($path, 0777, true);
+             mkdir($path, 077, true);
          }
 
          $userImage= 'img-'.md5(uniqid(rand(), 1)) . "." . 'jpeg';
