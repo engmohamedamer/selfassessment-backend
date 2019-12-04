@@ -31,7 +31,7 @@ foreach ($question->answers as $i => $answer) {
     $correct = '';
     $percentage = 0;
     if ($countUser) {
-        $percentage = ($count / $countUser) * 100 ;
+        $percentage = ( $countUser / $count ) * 100 ;
     }
     if ($answer->survey_answer_show_corrective_action) {
         $correct = ' <i class="fas fa-info-circle"  data-toggle="popover" title="'. Yii::t('survey','Corrective action') .'" data-content="'.$answer->survey_answer_corrective_action.'"></i></span>';
