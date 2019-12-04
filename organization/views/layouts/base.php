@@ -214,7 +214,7 @@ if(Yii::$app->user->isGuest){
     </style>
     <?php $this->head() ?>
 </head>
-<body class="skin-blue sidebar-mini" cz-shortcut-listen="true" style="height: auto; min-height: 100%;">
+<body class="skin-blue sidebar-mini" cz-shortcut-listen="true" style="height: auto; min-height: 100%;" data-Primcolor="<?= $brandPrimColor ?>">
 
     <?php $this->beginBody() ?>
         <?php echo $content ?>

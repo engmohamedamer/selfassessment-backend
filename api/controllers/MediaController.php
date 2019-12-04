@@ -77,7 +77,7 @@ class MediaController extends  MyActiveController
                 }
                 move_uploaded_file($tmp_name, $uploaddir.'/'.$name);
                 $media = new Media();
-                $media->path = 'answers/'.$name;
+                $media->path = "answers/$org_id/$user_id/$name";
                 $media->base_url = \Yii::getAlias('@storageUrl'). '/source/';
                 $media->type = $_FILES[$key]["type"];
                 $media->created_at = time();
@@ -85,7 +85,7 @@ class MediaController extends  MyActiveController
                 $media->save(false);
                 $links[] =  [$name=>['id'=>$media->id,'link'=>\Yii::getAlias('@storageUrl'). "/source/answers/$org_id/$user_id/$name"]];
             }else{
-                return ResponseHelper::sendFailedResponse("File Not Allowed",200);
+                return ResponseHelper::sendFailedResponse(['message'=>"File Not Allowed"],400);
             }
 
         }
@@ -94,12 +94,15 @@ class MediaController extends  MyActiveController
 
     public function actionDelete($id)
     {
-        $media = Media::findOne($id);
+        $user_id = \Yii::$app->user->identity->userProfile->user_id;
+        $media = Media::find()->where(['id'=>$id,'user_id'=>$user_id])->one();
         if ($media) {
            unlink(\Yii::getAlias('@storage'). '/web/source/'.$media->path);
            $media->delete(false);
+            return ResponseHelper::sendSuccessResponse(['message'=>"File Delete Successfully"]);
+        }else{
+            return ResponseHelper::sendFailedResponse(['message'=>"File Not Found"],400);
         }
-        return ResponseHelper::sendSuccessResponse();
     }
 
 }

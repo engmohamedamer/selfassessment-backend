@@ -33,7 +33,7 @@ class BackendArabic extends AssetBundle
      * @var array
      */
     public $js = [
-        //'js/app.js'
+        'js/app.js',
         'https://kit.fontawesome.com/7bdd7e5637.js',
         //'js/adminlte.js'
     ];

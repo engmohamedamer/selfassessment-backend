@@ -53,8 +53,13 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
           <li class="dropdown user user-menu">
 
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                  <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>"
-                          class="user-image">
+
+                    <?php if(Yii::$app->user->identity->userProfile->avatar != null):?>
+                        <img class="user-image" src="<?= Yii::$app->user->identity->userProfile->avatar ?>" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>">
+                    <?php else:?>    
+                        <img class="user-image" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>" avatar="<?= Yii::$app->user->identity->userProfile->fullname ?>">
+                    <?php endif;?>
+                  
               </a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                   <span class="dropdown-item dropdown-header"><?= Yii::t('common','Welcome')?>,  <?php echo Yii::$app->user->identity->userProfile->fullName; ?></span>
