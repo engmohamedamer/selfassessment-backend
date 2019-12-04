@@ -5,6 +5,18 @@ return [
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
+
+        ['class' =>'yii\rest\UrlRule',
+            'controller'=>'posts',
+            'only'=>['index','view','create','update','delete','options'],//'update',
+            'extraPatterns'=>[
+                'GET ' => 'index' ,
+                'GET <id>' => 'view' ,
+                'PUT ' => 'update',
+            ],
+        ],
+
+
         ['pattern' => '/', 'route' => 'site/index'],
         ['pattern' => '/site', 'route' => 'site/index'],
         ['pattern' => '/site/index', 'route' => 'site/index'],

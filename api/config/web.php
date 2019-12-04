@@ -3,7 +3,7 @@ $config = [
     'homeUrl' => Yii::getAlias('@apiUrl'),
     'controllerNamespace' => 'api\controllers',
     'defaultRoute' => 'site/index',
-    'bootstrap' => ['maintenance'],
+    //'bootstrap' => ['maintenance'],
     'modules' => [
         //'v1' => \api\modules\v1\Module::class              //------------ hide for now -----------------------//
     ],
@@ -11,15 +11,15 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error'
         ],
-        'maintenance' => [
-            'class' => common\components\maintenance\Maintenance::class,
-            'enabled' => function ($app) {
-                if (env('APP_MAINTENANCE') === '1') {
-                    return true;
-                }
-                return $app->keyStorage->get('frontend.maintenance') === 'enabled';
-            }
-        ],
+//        'maintenance' => [
+//            'class' => common\components\maintenance\Maintenance::class,
+//            'enabled' => function ($app) {
+//                if (env('APP_MAINTENANCE') === '1') {
+//                    return true;
+//                }
+//                return $app->keyStorage->get('frontend.maintenance') === 'enabled';
+//            }
+//        ],
 
 
         'request' => [

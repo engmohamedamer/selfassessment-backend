@@ -1,0 +1,9 @@
+include:
+ # - backend
+   - api
+
+paths:
+  log: console/runtime/logs
+
+settings:
+  colors: true
