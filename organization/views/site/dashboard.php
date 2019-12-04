@@ -13,6 +13,10 @@ $this->title = Yii::t('backend', 'Dashboard');
 $i = 1;
 ?>
 
+<div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
+                <img src="./img/preloader.gif" alt="">
+            </div>
+
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="row mb-2">
@@ -57,7 +61,56 @@ $i = 1;
 
     <?php if(count($contributors->getModels()) > 0 && count($organization->survey) > 0):?>
     <div>
+    <div class="row custom-dashboard">
+
+        <!--Countributing in assessments-->
+        <div class="col-md-8">
+            
+            <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title"><?= Yii::t('common','Count Surveys Contributors')?></h3>
+
+                <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <canvas id="assessmentParticipantsChart"  ></canvas>
+            </div>
+            <!-- /.box-body -->
+            </div>
+        </div>
+        <!--Assessments status-->
+        <div class="col-md-4">
+            
+            <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title"><?= Yii::t('common','Assessments Status') ?></h3>
+
+                <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                <ul class="chart-legend clearfix" style="    margin: 20px;">
+                    <li><i class="fa fa-circle-o" style="color: #22cece;"></i> لم يبدأ (50)</li>
+                    <li>&nbsp;</li>
+                    <li><i class="fa fa-circle-o" style="color: #2ecc71;"></i> أكتمل (20)</li>
+                    <li>&nbsp;</li>
+                    <li><i class="fa fa-circle-o" style="color: #f39c12;"></i> قيد الإستكمال (10)</li>
+                   
+                  </ul>
+            </div>
+            <!-- /.box-body -->
+            </div>
+        </div>
+
+    </div>
         <div class="row custom-dashboard">
+            <!--Latest contributors-->
             <div class="col-md-4">
                 <!-- USERS LIST -->
                 <div class="box box-danger">
@@ -73,15 +126,25 @@ $i = 1;
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
-                    <ul class="users-list clearfix">
+                <ul class="products-list product-list-in-box">
                     <?php foreach($contributors->getModels() as $contributor): ?>
-                    <li class='col-sm-4 col-md-2 '>
-                        <img width='80%' src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">
-                        <a class="users-list-name" href="/user/view?id=<?= $contributor->id ?>"><?= $contributor->userProfile->fullname ?></a>
-                        <span class="users-list-date"><?= date('Y-m-d',$contributor->created_at) ?></span>
+                    <li class="item">
+                        <div class="product-img">
+                            <img src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>" avatar="<?= $contributor->userProfile->fullname ?>">
+                        </div>
+                        <div class="product-info">
+                            <a class="product-title" href="/user/view?id=<?= $contributor->id ?>"><?= $contributor->userProfile->fullname ?>
+                            
+                            </a>
+                            <span class="product-description">
+                            <?= date('Y-m-d',$contributor->created_at) ?>
+                                </span>
+                        </div>
                     </li>
                     <?php endforeach; ?>
-                    </ul>
+                    <!-- /.item -->
+                </ul>
+                    
                     <!-- /.users-list -->
                 </div>
                 <!-- /.box-body -->
@@ -92,6 +155,7 @@ $i = 1;
                 </div>
                 <!--/.box -->
             </div>
+            <!--Latest assessments-->
             <div class="col-md-8">
                 <!-- TABLE: LATEST ORDERS -->
                 <div class="box box-danger">
@@ -155,50 +219,7 @@ $i = 1;
             </div>
         </div>
 
-        <div class="row custom-dashboard">
-
-            <div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
-                <img src="./img/preloader.gif" alt="">
-            </div>
-            <div class="col-md-6">
-                
-                <div class="box box-danger">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><?= Yii::t('common','Count Surveys Contributors')?></h3>
-
-                    <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <canvas id="assessmentParticipantsChart"  ></canvas>
-                </div>
-                <!-- /.box-body -->
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <!-- <div class="text-center participantsStatus-preloader preloader" style="display:none">
-                    <img src="./img/preloader.gif" alt="">
-                </div> -->
-                <div class="box box-danger">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><?= Yii::t('common','Assessments Status') ?></h3>
-
-                    <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
-                </div>
-                <!-- /.box-body -->
-                </div>
-            </div>
-
-        </div>
+       
     </div>
     <?php endif; ?>
 

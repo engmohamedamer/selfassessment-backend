@@ -766,6 +766,13 @@ transition: all .3s ease-in-out;
 -ms-transform: scale(1.02);
 transform: scale(1.02);
 }
+.products-list .product-img img {
+  margin: 0 10px;
+  border-radius: 50px;
+}
+.products-list .product-info {
+  margin-top: 7px;
+}
 @media (max-width: 768px) {
   .custom-dashboard .guide {
     flex-direction: column;
