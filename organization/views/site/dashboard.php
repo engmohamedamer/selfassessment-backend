@@ -96,12 +96,11 @@ $i = 1;
             <div class="box-body">
                 <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
                 <ul class="chart-legend clearfix" style="    margin: 20px;">
-                    <li><i class="fa fa-circle-o" style="color: #22cece;"></i> لم يبدأ (50)</li>
+                    <li><i class="fa fa-circle-o" style="color: #2ecc71;"></i> <?= $orgSurveyStats['labels'][0] ?> (<?= $orgSurveyStats['data'][0] ?>)</li>
                     <li>&nbsp;</li>
-                    <li><i class="fa fa-circle-o" style="color: #2ecc71;"></i> أكتمل (20)</li>
+                    <li><i class="fa fa-circle-o" style="color: #f39c12;"></i></i> <?= $orgSurveyStats['labels'][1] ?> (<?= $orgSurveyStats['data'][1] ?>)</li>
                     <li>&nbsp;</li>
-                    <li><i class="fa fa-circle-o" style="color: #f39c12;"></i> قيد الإستكمال (10)</li>
-                   
+                    <li><i class="fa fa-circle-o" style="color: #22cece;"></i></i> <?= $orgSurveyStats['labels'][2] ?> (<?= $orgSurveyStats['data'][2] ?>)</li>
                   </ul>
             </div>
             <!-- /.box-body -->
