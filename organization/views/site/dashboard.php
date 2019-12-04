@@ -130,10 +130,10 @@ $i = 1;
                     <?php foreach($contributors->getModels() as $contributor): ?>
                     <li class="item">
                         <div class="product-img">
-                            <?php if($contributor->userProfile->avatar):?>
-                                <img src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>" avatar="<?= $contributor->userProfile->fullname ?>">
+                            <?php if($contributor->userProfile->avatar != null):?>
+                                <img src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">
                             <?php else:?>    
-                                <img src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>" avatar="<?= $contributor->userProfile->fullname ?>">
+                                <img alt="<?= $contributor->userProfile->fullname ?>" avatar="<?= $contributor->userProfile->fullname ?>">
                             <?php endif;?>    
                         </div>
                         <div class="product-info">
