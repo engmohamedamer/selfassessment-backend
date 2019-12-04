@@ -102,7 +102,7 @@ $i = 1;
                     <li>&nbsp;</li>
                     <li><i class="fa fa-circle-o" style="color: #f39c12;"></i> قيد الإستكمال (10)</li>
                    
-                  </ul>
+                </ul>
             </div>
             <!-- /.box-body -->
             </div>
