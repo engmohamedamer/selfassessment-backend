@@ -32,9 +32,10 @@ class SiteController extends OrganizationController
         $searchModel->user_role = User::ROLE_USER;
         $searchModel->organization_id = $organization->id;
         $contributors = $searchModel->search(null,8);
-
+        $orgSurveyStats = $this->actionOrgSurveyStats(false);
         $organizationSurvey = Survey::find()->where(['org_id'=>$organization->id])->limit(5)->orderBy('survey_id desc')->all();
-        return $this->render('dashboard',compact('contributors','organizationSurvey','organization'));  //,compact()
+        // return var_dump($orgSurveyStats);
+        return $this->render('dashboard',compact('contributors','organizationSurvey','organization','orgSurveyStats'));  //,compact()
     }
 
 
@@ -59,12 +60,13 @@ class SiteController extends OrganizationController
         return ['labels'=> $labels ,'data'=>$data];
     }
 
-    public function actionOrgSurveyStats()
+    public function actionOrgSurveyStats($api = true)
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        
-        $organization = Yii::$app->user->identity->userProfile->organization;
+        if ($api) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        }
 
+        $organization = Yii::$app->user->identity->userProfile->organization;
 
         $searchModel = new UserSearch();
         $searchModel->user_role = User::ROLE_USER;
