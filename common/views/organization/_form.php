@@ -59,8 +59,18 @@ if (isset($model->city_id) and !empty($model->city_id)) {
     </div>
 
     <div class='col-sm-10 col-lg-11 theme-edit-content'>
-        <!-- <h2 class='mt-2 mb-5'>تعديل البيانات</h2> -->
+       
         <div class='theme-edit-form'>
+            <div class="content-header" style="padding:0">
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <h1><?= Html::encode($this->title) ?></h1>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                    
+                </div>
+            </div>
             <div class="tab-content mt-5">
 
 
@@ -331,15 +341,22 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
 
             </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group edit-theme-btn">
+                        <?= Html::submitButton($model->isNewRecord ? Yii::t('common', 'Create') : Yii::t('common', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
+                    </div>
+                </div>
+            </div>
+           
+     
+
         </div>
+        
 
     </div>
 
-    <div class='col-sm-12'>
-        <div class="form-group edit-theme-btn">
-            <?= Html::submitButton($model->isNewRecord ? Yii::t('common', 'Create') : Yii::t('common', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
-        </div>
-    </div>
+    
 
 </div>
 

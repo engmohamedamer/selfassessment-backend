@@ -9,10 +9,21 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Organization */
 ?>
 
-<!-- /.content-header -->
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="col-md-6">
+                    <h1><?= Html::encode($this->title) ?></h1>
+                </div>
+                <div class="col-md-6 actionBtns">
+                    <a href="/organization/update?id=<?= $model->id ?>" class="btn btn-success"><i class="icofont-ui-edit"></i> <?= Yii::t('backend','Update Data') ?> </a>
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.content-header -->
             <div class="card-body">
                 <ul class="nav nav-pills innernavs">
                         <li class="nav-item active"><a class="nav-link " href="#tab1" data-toggle="tab" aria-expanded="true"><?php echo Yii::t('backend', 'Main Details') ?></a></li>
