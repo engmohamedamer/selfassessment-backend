@@ -948,16 +948,16 @@ a:hover, a:active, a:focus {
 /* *************************************************************************MAIN LAYOUT START*************** */
 
 header.main-header {
-  background: #333 !important;
+  background: #fff !important;
   /* background: #b20d1d !important; */
-  height: 70px !important;
-  /* border-bottom: 5px solid #b42126 !important; */
-  /* border-bottom: 5px solid #333 !important; */
-  /* box-shadow: 0 0 5px 0 #333; */
+  height: 55px !important;
+  /*border-bottom: 5px solid #b42126 !important;
+   border-bottom: 5px solid #333 !important; */
+  box-shadow:-6px -6px 11px 0 #333;
 }
 
 header nav {
-  height: 70px;
+  height: 55px;
   display: flex !important;
   justify-content: flex-end;
   align-items: center;
@@ -970,6 +970,13 @@ header div.dropdown-header div {
 
 header nav a {
   display: none;
+}
+.dropdown-footer, .dropdown-header{
+  text-align: left;
+}
+.main-sidebar, .left-side{
+  width: 250px;
+  background: #333 !important;
 }
 
 .user-menu .dropdown-toggle {
@@ -990,9 +997,10 @@ header nav a {
 }
 
 .main-sidebar .logo{
-  height: 70px;
+  height: 92px;
   padding: 5px 20px 0;
   margin-bottom: 30px;
+  background: transparent !important;
 }
 
 .main-sidebar {
@@ -1022,6 +1030,11 @@ header nav a {
     width: auto;
 
 }
+
+.skin-blue .sidebar a{
+  color: #fff;
+  font-size: 1.4rem !important;
+}
 .dropdown.user.user-menu.open .dropdown-menu a:first-child {
   padding-top: 8px;
 }
@@ -1037,14 +1050,18 @@ header nav a {
   z-index: 9999;
 }
 
-
+.sidebar-menu>li{
+  margin-bottom: 5px;
+}
 .skin-blue .sidebar-menu>li>a i {
-  margin: 0 10px;
-  font-size: 20px
+  margin: 0;
+  margin-right: 5px;
+  font-size: 17px;
 }
   .skin-blue .sidebar-menu>li>a {
-  padding: 10px 15px 10px !important;
+  padding: 10px 15px !important;
   font-size: 16px;
+  border-radius: 2px;
 }
 .sidebar-menu>li.active>a {
   background: #b20d1d !important;
@@ -1056,11 +1073,12 @@ header nav a {
 }
 
 .main-footer {
-  background: #363636;
+  background: #333;
   padding: 15px;
   color: rgb(255, 255, 255);
-  border-top: 1px solid #d2d6de;
+  border-top: 0;
   text-align: center;
+  margin: 0 !important;
 }
 
 .sub-nav-item {
@@ -1104,6 +1122,25 @@ justify-content: space-evenly;
   font-size: 12px;
   margin: auto;
   color: #b20d1d ;
+}
+.addOrg{
+  position: fixed;
+    bottom: 15px;
+    left: 15px;
+    width: 220px;
+    /* margin: 5%; */
+    background-color: #f4941b !important;
+    border-color: #f4941b !important;
+    padding: 8px;
+    box-shadow: -3px 4px 7px #212121;
+    border-radius: 25px;
+}
+.addOrg i{
+  font-size: 12px;
+  margin: 0 10px;
+}
+.card-title{
+  color: #333;
 }
 
 /* *************************************************************************MAIN LAYOUT END*************** */
