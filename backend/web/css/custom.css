@@ -811,6 +811,22 @@ section.content .survey-container #survey-questions .survey-block  {
 /* DASHBOARD REFACTOR TO TAMKEEN BRAND ID >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 /*******************************************************************************MAIN VARS**/
 
+.btn{
+  font-size: 14px;
+  border-radius: 3px;
+  -webkit-transition: all .5s ease-in-out;
+-moz-transition: all .5s ease-in-out;
+-ms-transition: all .5s ease-in-out;
+-o-transition: all .5s ease-in-out;
+transition: all .5s ease-in-out;
+}
+.btn:hover {
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+.btn i{
+  margin: 0 0 0 5px !important;
+}
 .btn-primary{
   background-color: #b20d1d !important;
   border-color: #b20d1d !important;
@@ -818,6 +834,10 @@ section.content .survey-container #survey-questions .survey-block  {
 .btn-danger{
   background-color: #333 !important;
   border-color: #333 !important;
+}
+.btn-success{
+  background-color: #00A65A !important;
+  border-color: #00A65A !important;
 }
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
    background-color: #b20d1d !important;
@@ -947,6 +967,9 @@ a:hover, a:active, a:focus {
 
 /* *************************************************************************MAIN LAYOUT START*************** */
 
+body{
+  background-color: #333;
+}
 header.main-header {
   background: #fff !important;
   /* background: #b20d1d !important; */
@@ -997,10 +1020,9 @@ header nav a {
 }
 
 .main-sidebar .logo{
-  height: 92px;
-  padding: 5px 20px 0;
-  margin-bottom: 30px;
-  background: transparent !important;
+  padding: 20px 10px 0 20px;
+    margin-bottom: 30px;
+    background: transparent !important;
 }
 
 .main-sidebar {
@@ -1008,8 +1030,8 @@ header nav a {
 
 }
 .main-sidebar .logo img{
-  height: 100%;
-  width: auto;
+  width: 180px;
+  margin: 0;
 }
 
 .white-text {
@@ -1039,7 +1061,7 @@ header nav a {
   padding-top: 8px;
 }
 
-.dropdown.user.user-menu.open:after {
+/* .dropdown.user.user-menu.open:after {
   content: '';
   border-top: 8px solid #b20d1d;
   border-left: 8px solid transparent;
@@ -1048,7 +1070,7 @@ header nav a {
   left: 33px;
   position: inherit;
   z-index: 9999;
-}
+} */
 
 .sidebar-menu>li{
   margin-bottom: 5px;
@@ -1082,8 +1104,9 @@ header nav a {
 }
 
 .sub-nav-item {
-  width: 80%;
+  
   margin: auto !important;
+  border-top: 1px solid #ddd;
 }
 
 .sub-nav-item a {
@@ -1100,11 +1123,11 @@ header nav a {
 }
 
 .sub-nav-item.add-admin i {
-  height: 20px;
-  width: 20px;
-  background: #8BC34A;
-  border-radius: 100px;
-  line-height: 20px;
+  height: 40px;
+  width: 40px;
+  background: #00a65a;
+  border-radius: 40px;
+  line-height: 40px;
   text-align: center;
   color: white;
 }
@@ -1115,7 +1138,7 @@ header nav a {
 }
 
 .sub-nav-item.add-admin a {
-justify-content: space-evenly;
+justify-content: space-between;
 }
 
 .all-admins a span {
@@ -1142,22 +1165,33 @@ justify-content: space-evenly;
 .card-title{
   color: #333;
 }
+.skin-blue .sidebar-menu>li>.treeview-menu{
+    background: #eee;
+    margin-top: -5px;
+    border-radius: 0 0 3px 3px;
+}
+.treeview.menu-open >a{
+  color: #b20d1d !important;
+}
 
+.content-wrapper, .right-side, .main-footer, .main-header .navbar{
+  margin-left: 250px;
+}
 /* *************************************************************************MAIN LAYOUT END*************** */
 /* *************************************************************************CONTENT DASHBOARD START*************** */
-
+.content-header {
+  padding: 15px 0 0;
+}
 .content-header h1 {
-  font-size: 25px;
-  border-right: 5px solid #f4941b;
-  display: inline-block;
-  padding: 8px 15px;
-  border-left: 5px solid #f4941b;
+  font-size: 20px;
   margin: 0 !important;
-  background: antiquewhite;
 }
 
 .content-header .row {
   margin-top: 5px;
+}
+.actionBtns .btn{
+  margin: 0;
 }
 
 .actionBtns a {
@@ -1170,15 +1204,40 @@ justify-content: space-evenly;
 .table td.skip-export a {
   margin-bottom: 5px;
   display: inline-block;
-  background: #b80f26;
+  background: #666;
   color: white !important;
-  width: 35px;
-  height: 35px;
-  line-height: 35px;
-  border-radius: 10px;
-  font-size: 15px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 3px;
+  font-size: 12px;
+  -webkit-transition: all .5s ease-in-out;
+-moz-transition: all .5s ease-in-out;
+-ms-transition: all .5s ease-in-out;
+-o-transition: all .5s ease-in-out;
+transition: all .5s ease-in-out;
+}
+.table td.skip-export a:hover{
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  background: #b20d1d;
 }
 
+.table .form-control{
+  border: 1px solid #dcdcdc;
+    box-shadow: none;
+    background: #f0f2f5;
+}
+.table > thead > tr > th ,.table > thead > tr > th a {
+  color: #333;
+  font-weight: normal;
+  font-size: 14px;
+}
+.table .select2-container--krajee .select2-selection--single {
+  border-radius: 0;
+  background: #f0f2f5;
+  border: 1px solid #dcdcdc;
+}
 .summary {
   position: absolute;
     bottom: 5px;
