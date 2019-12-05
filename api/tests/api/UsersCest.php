@@ -19,18 +19,17 @@ class UsersCest
     // tests
     public function signUp(ApiTester $I)
     {
-        //$I->haveHttpHeader('Content-Type', 'application/json');
-        $I->sendPOST('/user/signup', [
-            'name' => 'User One',
-            'email' => 'user@org1.com',
-            'password' => '123456',
-            'bio' => 'About User One',
-            'mobile' => '0519283612',
-            'organization' => 'org1',
-        ]);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); // 200
-        $I->seeResponseIsJson();
-        $I->seeResponseContains('{"success":true,"status":200,"data":{"message":"Account Created Successfully"}}');
+        // $I->sendPOST('/user/signup', [
+        //     'name' => 'User One',
+        //     'email' => 'user@org1.com',
+        //     'password' => '123456',
+        //     'bio' => 'About User One',
+        //     'mobile' => '0519283612',
+        //     'organization' => 'org1',
+        // ]);
+        // $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); // 200
+        // $I->seeResponseIsJson();
+        // $I->seeResponseContains('{"success":true,"status":200,"data":{"message":"Account Created Successfully"}}');
 
     }
 
