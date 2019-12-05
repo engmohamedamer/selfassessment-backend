@@ -11,7 +11,7 @@ use yii\bootstrap\ActiveForm;
 $this->title = Yii::t('backend', 'Edit profile');
     ?>
 
-
+<?php $form = ActiveForm::begin() ?>
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -28,7 +28,7 @@ $this->title = Yii::t('backend', 'Edit profile');
             </div>
             <!-- /.content-header -->
             <div class="card-body">
-    <?php $form = ActiveForm::begin() ?>
+   
 
     <div class="row">
         <div class="col-lg-12">
@@ -65,10 +65,11 @@ $this->title = Yii::t('backend', 'Edit profile');
     <div class="form-group center-align mt-5 mb-5">
     </div>
 
-    <?php ActiveForm::end() ?>
+    
 
     </div>
         </div>
     </div>
 </div>
 
+<?php ActiveForm::end() ?>
