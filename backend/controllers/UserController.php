@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Intervention\Image\ImageManagerStatic;
 use Yii;
+use backend\models\AccountForm;
 use backend\models\UserForm;
 use backend\models\search\UserSearch;
 use common\models\User;
@@ -237,6 +238,41 @@ class UserController extends BackendController
         $prof->save(false);
 
         return $prof;
+    }
+
+    public function actionProfile()
+    {
+        $model = Yii::$app->user->identity->userProfile;
+        if ($model->load($_POST) && $model->save()) {
+            Yii::$app->session->setFlash('alert', [
+                'options' => ['class' => 'alert-success'],
+                'body' => Yii::t('backend', 'Your profile has been successfully saved', [], $model->locale)
+            ]);
+            return $this->refresh();
+        }
+        return $this->render('../sign-in/profile', ['model' => $model]);
+    }
+
+    public function actionAccount()
+    {
+        $user = Yii::$app->user->identity;
+        $model = new AccountForm();
+        $model->username = $user->username;
+        $model->email = $user->email;
+        if ($model->load($_POST) && $model->validate()) {
+            $user->username = $model->username;
+            $user->email = $model->email;
+            if ($model->password) {
+                $user->setPassword($model->password);
+            }
+            $user->save();
+            Yii::$app->session->setFlash('alert', [
+                'options' => ['class' => 'alert-success'],
+                'body' => Yii::t('backend', 'Your account has been successfully saved')
+            ]);
+            return $this->refresh();
+        }
+        return $this->render('../sign-in/account', ['model' => $model]);
     }
 
 }
