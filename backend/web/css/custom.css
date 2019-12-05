@@ -1077,9 +1077,9 @@ header nav a {
 }
 
 .sub-nav-item {
-  width: 80%;
+  
   margin: auto !important;
-  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
 }
 
 .sub-nav-item a {
@@ -1128,6 +1128,14 @@ header nav a {
 }
 .card-title{
   color: #333;
+}
+.skin-blue .sidebar-menu>li>.treeview-menu{
+    background: #eee;
+    margin-top: -5px;
+    border-radius: 0 0 3px 3px;
+}
+.treeview.menu-open >a{
+  color: #b20d1d !important;
 }
 
 /* *************************************************************************MAIN LAYOUT END*************** */
