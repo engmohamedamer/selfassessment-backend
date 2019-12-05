@@ -24,42 +24,76 @@ echo Menu::widget([
         [
             'label' => Yii::t('backend', 'Dashboard'),
             'url' => '/',
-            'icon' => '<i class="nav-icon fas fa-tachometer-alt"></i>',
+            'icon' => '<i class="icofont-1x icofont-dashboard-web"></i>',
             'options' => ['class' => 'nav-item'],
+            'active' =>  (Yii::$app->controller->id == 'site'),
+
         ],
 
 
-        [
-            'label' => Yii::t('backend', 'Users Data'),
-            'options' => ['class' => 'header'],
-        ],
+        // [
+        //     'label' => Yii::t('backend', 'Users Data'),
+        //     'options' => ['class' => 'header'],
+        // ],
+        
+        // [
+        //     'label' => Yii::t('backend', 'Users'),
+        //     'url' => '#',
+        //     'icon' => '<i class="nav-icon fas fa-users"></i>',
+        //     'options' => ['class' => 'treeview'],
+        //     'active' => (Yii::$app->controller->module->id == 'user'),
+        //     'items' => [
 
-        [
-            'label' => Yii::t('backend', 'Users'),
-            'url' => '#',
-            'icon' => '<i class="nav-icon fas fa-users"></i>',
-            'options' => ['class' => 'treeview'],
-            'active' => (Yii::$app->controller->module->id == 'user'),
-            'items' => [
-
-                [
-                    'label' => Yii::t('backend', 'Managers'),
-                    'icon' => '<i class="nav-icon far fa-circle nav-icon"></i>',
-                    'url' => ['/user/index?user_role=manager'],
-                    'options' => ['class' => 'nav-item'],
-                    'active' => (Yii::$app->request->get('user_role') == 'schoolAdmin'),
-                    'visible' => (Yii::$app->user->can('administrator') or  Yii::$app->user->can('manager') ),
-                ],
-            ],
-        ],
+                
+        //     ],
+        // ],
 
 
         [
             'label' => Yii::t('common', 'Organizations'),
             'url' => '/organization',
-            'icon' => '<i class="nav-icon fas fa-th"></i>',
+            'icon' => '<i class="icofont-1x icofont-institution"></i>',
             'options' => ['class' => 'nav-item'],
+            'active' =>  (Yii::$app->controller->id == 'organization'),
+
         ],
+
+        [
+            'label' => Yii::t('common', 'Tamkeen Adminstrators'),
+            'icon' => '<i class="icofont-1x icofont-user-suited"></i>',
+            'url' => '#',
+            'options' => ['class' => 'treeview'],
+            'active' => (Yii::$app->request->get('user_role') == 'manager'),
+            'visible' => (Yii::$app->user->can('administrator') or  Yii::$app->user->can('manager') ),
+            'items' => [
+
+                [
+                    'label' => Yii::$app->user->identity->userProfile->fullName,
+                    'icon' => '<img src="./img/anonymous.jpg"/>',
+                    'url' => ['/user/view?id=2'],
+                    'options' => ['class' => 'sub-nav-item'],
+        
+                ],
+                [
+                    'label' => Yii::t('common', 'Add Adminstrator'),
+                    'icon' => '<i class="icofont-ui-add"></i>',
+                    'url' => ['/user/index?user_role=manager'],
+                    'options' => ['class' => 'sub-nav-item add-admin'],
+        
+                ],
+                [
+                    'label' => Yii::t('common', 'All Adminstrators'),
+                    'url' => ['/user/index?user_role=manager'],
+                    'options' => ['class' => 'sub-nav-item all-admins'],
+        
+                ],
+                
+                
+            ],
+            
+
+        ],
+
 
 
         // [

@@ -27,7 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Managers') ?></h1>
         </div>
         <div class="col-lg-6 actionBtns">
-            <?php echo Html::a(Yii::t('backend', 'Create New User'), ['create'], ['class' => 'btn btn-primary']) ?>
+            <a href="/user/create" class="btn btn-primary"><?= Yii::t('backend','Create New User') ?> <i class="icofont-ui-add mr-2 ml-2"></i></a>
+
         </div>
         <!-- /.col -->
     </div>

@@ -74,7 +74,7 @@ $model->roles =Yii::$app->session->get('UserRole');
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mt-5 mb-5 center-align">
                         <?php echo Html::submitButton(Yii::t('backend', 'Save'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                     </div>
                 </div>
