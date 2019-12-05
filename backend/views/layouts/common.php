@@ -65,11 +65,11 @@ if(Yii::$app->user->isGuest){
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="/sign-in/profile" class="dropdown-item">
+                        <a href="/user/profile" class="dropdown-item">
                             <i class="fas fa-user mr-2"></i> <?= Yii::t('common','My Profile')?>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="/sign-in/account" class="dropdown-item">
+                        <a href="/user/account" class="dropdown-item">
                             <i class="fas fa-users-cog mr-2"></i>  <?= Yii::t('common','My Account')?>
                         </a>
                         <div class="dropdown-divider"></div>
