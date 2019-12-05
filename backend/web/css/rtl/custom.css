@@ -322,3 +322,19 @@ ul {
   .emptyassessment .name{
       float: right;
   }
+
+/******************************************************************************/
+.content-wrapper, .main-footer, .main-header{
+    margin-right: 250px;
+}
+.dropdown-footer, .dropdown-header{
+    text-align: right;
+}
+.skin-blue .sidebar-menu>li>a i {
+    margin: 0;
+    margin-left: 5px;
+}
+.addOrg{
+      right: 15px;
+      left: auto;
+}

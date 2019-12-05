@@ -45,10 +45,10 @@ if(Yii::$app->user->isGuest){
         <!-- <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         </a> -->
 
-        <div class="white-text dropdown-item dropdown-header"><div><?= Yii::t('common','Tamkeen Technologies Adminstrator')?></div></div>
+        <div class="dropdown-item dropdown-header"><div><?= Yii::t('common','Tamkeen Technologies Adminstrator')?></div></div>
         
         <div class='user-info-block'>
-            <span class="white-text dropdown-item dropdown-header"><?= Yii::t('common','welcome')?><div><?php echo strtoupper(Yii::$app->user->identity->userProfile->fullName) ?></div></span>
+            <span class="dropdown-item dropdown-header"><?= Yii::t('common','welcome')?>, <?php echo strtoupper(Yii::$app->user->identity->userProfile->fullName) ?></span>
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
@@ -121,6 +121,9 @@ if(Yii::$app->user->isGuest){
             </nav>
             <!-- /.sidebar-menu -->
         </section>
+
+        <a href="/organization/create" class="btn btn-primary addOrg"><i class="icofont-plus"></i> <?= Yii::t('backend','New Organization') ?></a>
+
         <!-- /.sidebar -->
     </aside>
 
