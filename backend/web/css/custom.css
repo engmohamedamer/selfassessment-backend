@@ -1031,6 +1031,12 @@ header nav a {
   width: 180px;
   margin: 0;
 }
+.main-sidebar .logo img.ar{
+  display: none;
+}
+.main-sidebar .logo img.en{
+  display: block;
+}
 
 .white-text {
   color: white;
@@ -1045,7 +1051,8 @@ header nav a {
   font-size: 12px;
 }
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
-  left: 20px;
+  left: auto;
+  right: 20px;
     top: 50px;
     width: auto;
 
@@ -1258,5 +1265,16 @@ transition: all .5s ease-in-out;
 
 .panel.panel-primary {
   border-color: #ddd !important;
+}
+
+.fa-angle-left:before {
+  content: "\f105" !important;
+}
+.dropdown-menu{
+  left: auto;
+  right: 0;
+}
+.actionBtns .btn{
+  margin-left: 10px;
 }
 /* *************************************************************************CONTENT DASHBOARD END*************** */

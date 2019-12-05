@@ -335,6 +335,27 @@ ul {
     margin-left: 5px;
 }
 .addOrg{
-      right: 15px;
-      left: auto;
+    right: 15px;
+    left: auto;
 }
+.main-sidebar .logo img.en{
+    display: none;
+}
+.main-sidebar .logo img.ar{
+    display: block;
+}
+.fa-angle-left:before {
+    content: "\f104" !important;
+  }
+  .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+    left: 20px;
+    right: auto;  
+  }
+  .dropdown-menu{
+    left: 0;
+    right: auto;
+  }
+  .actionBtns .btn{
+    margin-left: 0;
+    margin-right: 10px;
+  }
