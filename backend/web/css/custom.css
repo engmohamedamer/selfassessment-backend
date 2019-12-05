@@ -1062,6 +1062,7 @@ header nav a {
 .sub-nav-item {
   width: 80%;
   margin: auto !important;
+  border-bottom: 1px solid #ddd;
 }
 
 .sub-nav-item a {
