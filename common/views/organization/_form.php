@@ -157,8 +157,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'limit_account')->textInput() ?>
                             </div>
-                            <div class="col-lg-6">
-                            </div>
+                           
 
                             <div class="col-lg-6 ">
                                 <?php echo  $form->field($theme, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
