@@ -120,7 +120,7 @@ class UserController extends BackendController
     public function actionCreate()
     {
         $model = new UserForm();
-        $model->roles = Yii::$app->session->get('UserRole');
+        $model->roles = Yii::$app->session->get('UserRole') ? : User::ROLE_MANAGER;
         $profile= new UserProfile();
 
         $model->setScenario('create');
