@@ -46,7 +46,7 @@ echo newerton\fancybox3\FancyBox::widget([
             <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
         </div>
         <div class="col-md-6 actionBtns">
-            <?= Html::a(Yii::t('common', 'Create Organization'), ['create'], ['class' => 'btn btn-primary']) ?>
+            <a href="/organization/create" class="btn btn-primary"><?= Yii::t('common', 'Create Organization') ?> <i class="icofont-ui-add mr-2 ml-2"></i></a>
         </div>
         <!-- /.col -->
     </div>

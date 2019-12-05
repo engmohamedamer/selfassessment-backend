@@ -41,8 +41,8 @@ $this->title = Yii::t('backend', 'Edit account')
 
 
 
-                <div class="form-group">
-                    <?php echo Html::submitButton(Yii::t('backend', 'Update'), ['class' => 'btn btn-primary']) ?>
+                <div class="form-group  center-align mt-5 mb-5" >
+                    <?php echo Html::submitButton(Yii::t('backend', 'Update Data'), ['class' => 'btn btn-primary']) ?>
                 </div>
 
                 <?php ActiveForm::end() ?>
