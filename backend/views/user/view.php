@@ -33,7 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card-body">
                 <div class="row">
                 <div class="col-md-3">
-                    <img src="<?= $model->userProfile->avatar ?>" class="img-thumbnail">
+                    <?php if($model->userProfile->avatar != null):?>
+                        <img class="user-image" src="<?= $model->userProfile->avatar ?>" alt="<?= $model->userProfile->fullname ?>">
+                    <?php else:?>    
+                        <img class="user-image" alt="<?= $model->userProfile->fullname ?>" avatar="<?= $model->userProfile->fullname ?>">
+                    <?php endif;?>
                 </div>
                 <div class="col-md-9">
                     <?php echo DetailView::widget([
