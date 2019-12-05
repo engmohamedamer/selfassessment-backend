@@ -29,21 +29,10 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             [['title'], 'required'],
-            [['content_markdown', 'content_html'], 'string'],
+            [['text', 'created_at', 'updated_at'], 'string'],
             [['title'], 'string', 'max' => 255],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'content_markdown' => 'Content Markdown',
-            'content_html' => 'Content Html',
+            ['status', 'safe']
         ];
     }
 }
+

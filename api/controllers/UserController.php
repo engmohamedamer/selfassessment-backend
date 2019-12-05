@@ -23,7 +23,7 @@ class UserController extends  RestController
 
     public function actionLogin(){
         $params = \Yii::$app->request->post();
-        
+
         if ($params['locale'] == 'ar') {
             \Yii::$app->language = 'ar';
         }
@@ -36,7 +36,7 @@ class UserController extends  RestController
             return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','Please Enter Valid Email')]);
         }
 
-          
+
         if(! $params['password']){
             return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','Please Enter Password')]);
         }
@@ -44,7 +44,7 @@ class UserController extends  RestController
         $valid_password = Yii::$app->getSecurity()->validatePassword($params['password'], $user->password_hash);
 
         if($valid_password){
-            
+
             $checkIsActive = User::find()->active()->andWhere(['or', ['username' => $params['identity'] ], ['email' => $params['identity']]])->one();
             if(!$checkIsActive){
                 return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common',Yii::t('common','Your account not activated yet'))]);
@@ -71,7 +71,7 @@ class UserController extends  RestController
 
         $params = \Yii::$app->request->post();
 
-        if ($params['locale'] == 'ar') {
+        if (isset($params['locale']) && $params['locale'] == 'ar') {
             \Yii::$app->language = 'ar';
         }
 
@@ -125,7 +125,7 @@ class UserController extends  RestController
         if ($params['locale'] == 'ar') {
             \Yii::$app->language = 'ar';
         }
-        
+
         try{
             $model = new ResetPassword($params['token']);
         } catch (InvalidArgumentException $e) {

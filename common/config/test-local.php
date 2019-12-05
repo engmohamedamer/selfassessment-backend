@@ -9,7 +9,9 @@ $config = [
                 'password' => env('TEST_DB_PASSWORD'),
                 'charset' => 'utf8',
             ],
-        ]
+        ],
+
+
 ];
 
 return $config ;
