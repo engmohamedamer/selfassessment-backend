@@ -34,9 +34,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                 <div class="col-md-3">
                     <?php if($model->userProfile->avatar != null):?>
-                        <img class="user-image" src="<?= $model->userProfile->avatar ?>" alt="<?= $model->userProfile->fullname ?>">
+                        <img class="img-thumbnail" style="width:200px" src="<?= $model->userProfile->avatar ?>" alt="<?= $model->userProfile->fullname ?>">
                     <?php else:?>    
-                        <img class="user-image" alt="<?= $model->userProfile->fullname ?>" avatar="<?= $model->userProfile->fullname ?>">
+                        <img class="img-thumbnail" style="width:200px" alt="<?= $model->userProfile->fullname ?>" avatar="<?= $model->userProfile->fullname ?>">
                     <?php endif;?>
                 </div>
                 <div class="col-md-9">
