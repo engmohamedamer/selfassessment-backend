@@ -26,6 +26,8 @@ if(Yii::$app->user->isGuest){
 
     <?php echo Html::csrfMetaTags() ?>
     <title><?php echo Html::encode($this->title) ?></title>
+    <link rel="stylesheet" href="/css/icofont/icofont.min.css">
+
 
     <link id="page-icon" rel="shortcut icon"  href="/img/logo-icon.png"  />
     <?php $this->head() ?>

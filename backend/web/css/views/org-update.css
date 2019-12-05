@@ -28,8 +28,8 @@
     text-align: center !important;
 }
 .edit-theme-btn button {
-    background-color:  rgb(0, 165, 121) !important;
-    border-color:  rgb(0, 165, 121) !important;
+    /* background-color:  rgb(0, 165, 121) !important; */
+    /* border-color:  rgb(0, 165, 121) !important; */
     margin: 20px auto;
     width: 100px;
 }

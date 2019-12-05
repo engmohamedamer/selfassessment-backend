@@ -4,6 +4,7 @@
   background-repeat: no-repeat !important;
   background-position: 80% 70px;
   background-size: contain;
+  background-color: #fff;
 }
 .help-block-error{
   display: block !important;

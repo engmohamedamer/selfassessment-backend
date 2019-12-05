@@ -39,23 +39,21 @@ echo newerton\fancybox3\FancyBox::widget([
     overflow-x: hidden;
 }
 </style>
-<!-- Content Header (Page header) -->
-<div class="content-header">
-    <div class="row mb-2">
-        <div class="col-md-6">
-            <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
-        </div>
-        <div class="col-md-6 actionBtns">
-            <?= Html::a(Yii::t('common', 'Create Organization'), ['create'], ['class' => 'btn btn-primary']) ?>
-        </div>
-        <!-- /.col -->
-    </div>
-    <!-- /.row -->
-</div>
-<!-- /.content-header -->
+
 <div class="row">
+
     <div class="col-lg-12">
         <div class="card">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="col-md-6">
+                    <h1><?= Html::encode($this->title) ?></h1>
+                </div>
+                <div class="col-md-6 actionBtns">
+                    <a href="/organization/create" class="btn btn-success"><i class="icofont-plus"></i> <?= Yii::t('common', 'Create Organization') ?></a>
+                </div>
+            </div>
+            <!-- /.content-header -->
 
             <div class="card-body">
 

@@ -779,3 +779,331 @@ transform: scale(1.02);
   
   }
 }
+
+
+
+
+
+/* DASHBOARD REFACTOR TO TAMKEEN BRAND ID >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/*******************************************************************************MAIN VARS**/
+
+.btn-primary{
+  background-color: #b20d1d !important;
+  border-color: #b20d1d !important;
+}
+.btn-danger{
+  background-color: #333 !important;
+  border-color: #333 !important;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+   background-color: #b20d1d !important;
+}
+.table td a {
+  color: #333 !important ;
+}
+a:hover, a:active, a:focus {
+  color: #b20d1d !important;
+}
+
+
+
+.brandPrimColor {
+  color: #b20d1d !important;
+
+}
+
+.brandPrimBgColor {
+  background-color: #b20d1d !important;
+
+}
+.brandSecColor {
+  color: #f4cccc !important;
+
+}
+.brandSecBgColor {
+  background-color: #f4cccc !important;
+
+}
+
+
+.primBtn {
+  color: white !important;
+  background-color: #b20d1d !important;
+  border: 1px solid #b20d1d !important;
+  height: 44px !important;
+  min-width: 78px !important;
+  padding: 0 20px !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  border-radius: 5px !important;
+  opacity: 1 !important;
+  font-size: 20px !important;
+  line-height: 40px !important;
+  transition: all .2s !important;
+
+}
+
+.primBtn:hover {
+      opacity: .8 !important;
+  }
+
+.secBtn {
+  color: #b20d1d !important;
+  background-color: transparent !important;
+  border: 1px solid #b20d1d !important;
+  height: 44px !important;
+  min-width: 78px !important;
+  padding: 0 20px !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  border-radius: 5px !important;
+  font-size: 20px !important;
+  line-height: 40px !important;
+  transition: all .2s !important;
+
+}
+
+.secBtn:hover, .secBtn:active, .secBtn:focus {
+  color: white !important;
+  background-color: #b20d1d !important;
+}
+
+
+.thirdBtn {
+  color: #000 !important;
+  background-color: transparent  !important;
+  height: 44px  !important;
+  min-width: 78px  !important;
+  padding: 0 20px  !important;
+  font-size: 1rem  !important;
+  box-shadow: none !important;
+  font-size: 20px !important;
+  line-height: 40px !important;
+  transition: all .2s  !important;
+
+}
+
+.thirdBtn:hover {
+  color: #b20d1d !important;
+}
+
+.mr-2 {
+  margin-right: 5px;
+}
+.mr-5 {
+  margin-right: 15px;
+}
+.ml-2 {
+  margin-left: 5px;
+}
+.ml-5 {
+  margin-left: 15px;
+}
+.mt-2 {
+  margin-top: 5px;
+}
+.mt-5 {
+  margin-top: 15px;
+}
+.mb-2 {
+  margin-bottom: 5px;
+}
+.mb-5 {
+  margin-bottom: 15px;
+}
+
+.center-align {
+  text-align: center;
+}
+/*******************************************************************************MAIN VARS END***************/
+
+
+
+
+
+/* *************************************************************************MAIN LAYOUT START*************** */
+
+header.main-header {
+  background: #333 !important;
+  /* background: #b20d1d !important; */
+  height: 70px !important;
+  border-bottom: 5px solid #b42126 !important;
+  /* border-bottom: 5px solid #333 !important; */
+  box-shadow: 0 0 5px 0 #333;
+}
+
+header nav {
+  height: 70px;
+  display: flex !important;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+header div.dropdown-header div {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+header nav a {
+  display: none;
+}
+
+.user-menu .dropdown-toggle {
+  padding: 0 20px;
+}
+
+.user-menu .dropdown-toggle img.user-image {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  width: 50px;
+  height: 50px;
+}
+
+.user-info-block {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+}
+
+.main-sidebar .logo{
+  height: 70px;
+  padding: 5px 20px 0;
+  margin-bottom: 30px;
+}
+
+.main-sidebar .logo img{
+  height: 100%;
+  width: auto;
+}
+
+.white-text {
+  color: white;
+}
+
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu a  {
+  font-size: 12px;  
+}
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu a i {
+  margin: 5px;
+  /* color: #b20d1d ; */
+  font-size: 12px;
+}
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+  left: 20px;
+    top: 50px;
+    width: auto;
+
+}
+.dropdown.user.user-menu.open .dropdown-menu a:first-child {
+  padding-top: 8px;
+}
+
+.dropdown.user.user-menu.open:after {
+  content: '';
+  border-top: 8px solid #b20d1d;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  top: 65px;
+  left: 33px;
+  position: inherit;
+  z-index: 9999;
+}
+
+
+.skin-blue .sidebar-menu>li>a i {
+  margin: 0 10px;
+  font-size: 20px
+}
+  .skin-blue .sidebar-menu>li>a {
+  padding: 10px 15px 10px !important;
+  font-size: 16px;
+}
+.sidebar-menu>li.active>a {
+  background: #b20d1d !important;
+  color: white !important;
+}
+
+.main-sidebar  {
+  box-shadow: -2px 1px 20px -9px rgba(121, 137, 162, 0.3) !important;
+}
+
+.main-footer {
+  background: #363636;
+  padding: 15px;
+  color: rgb(255, 255, 255);
+  border-top: 1px solid #d2d6de;
+  text-align: center;
+}
+
+.sub-nav-item {
+  width: 80%;
+  margin: auto !important;
+}
+
+.sub-nav-item a {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.sub-nav-item a img {
+  /* width: 50px; */
+  height: 40px;
+  border-radius: 100px;
+}
+
+.sub-nav-item.add-admin i {
+  height: 40px;
+  width: 40px;
+  background: #8BC34A;
+  border-radius: 100px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+}
+
+.all-admins a span {
+  font-size: 12px;
+  margin: auto;
+  color: #b20d1d ;
+}
+
+/* *************************************************************************MAIN LAYOUT END*************** */
+/* *************************************************************************CONTENT DASHBOARD START*************** */
+
+.content-header h1 {
+  font-size: 25px;
+  border-right: 5px solid #f4941b;
+  display: inline-block;
+  padding: 8px 15px;
+  border-left: 5px solid #f4941b;
+  margin: 0 !important;
+  background: antiquewhite;
+}
+
+.content-header .row {
+  margin-top: 5px;
+}
+
+.actionBtns a {
+  margin-top: 5px;
+}
+.actionBtns a i {
+  margin: 0 2px;
+}
+
+.table td.skip-export a {
+  margin-bottom: 5px;
+  display: inline-block;
+  background: #b80f26;
+  color: white !important;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+
+/* *************************************************************************CONTENT DASHBOARD END*************** */

@@ -11,35 +11,35 @@ use yii\bootstrap\ActiveForm;
 $this->title = Yii::t('backend', 'Edit profile');
     ?>
 
-<!-- Content Header (Page header) -->
-<div class="content-header">
-    <div class="row mb-2">
-        <div class="col-md-6">
-            <h1 class=""><?= Html::encode($this->title) ?></h1>
-        </div>
-
-        <!-- /.col -->
-    </div>
-    <!-- /.row -->
-</div>
-<!-- /.content-header -->
+<?php $form = ActiveForm::begin() ?>
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-body">
-    <?php $form = ActiveForm::begin() ?>
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="col-md-6">
+                    <h1><?= Html::encode($this->title) ?></h1>
+                </div>
+                <div class="col-md-6 actionBtns">
+                    <button type="submit" class="btn btn-success"><i class="icofont-verification-check"></i> <?= Yii::t('backend','Update Data');?></button>
 
-    <?php echo $form->field($model, 'picture')->widget(\trntv\filekit\widget\Upload::class, [
-        'url'=>['avatar-upload']
-    ]) ?>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.content-header -->
+            <div class="card-body">
+   
+
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-12">
+            <?php echo $form->field($model, 'picture')->widget(\trntv\filekit\widget\Upload::class, [
+                'url'=>['avatar-upload']
+            ]) ?>
+        </div>
+        <div class="col-lg-6">
          <?php echo $form->field($model, 'firstname')->textInput(['maxlength' => 255]) ?>
         </div>
-        <div class="col-lg-4">
-        <?php echo $form->field($model, 'middlename')->textInput(['maxlength' => 255]) ?>
-        </div>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
         <?php echo $form->field($model, 'lastname')->textInput(['maxlength' => 255]) ?>
         </div>
         <div class="col-lg-6">
@@ -62,14 +62,14 @@ $this->title = Yii::t('backend', 'Edit profile');
 
 
 
-    <div class="form-group">
-        <?php echo Html::submitButton(Yii::t('backend', 'Update'), ['class' => 'btn btn-primary']) ?>
+    <div class="form-group center-align mt-5 mb-5">
     </div>
 
-    <?php ActiveForm::end() ?>
+    
 
     </div>
         </div>
     </div>
 </div>
 
+<?php ActiveForm::end() ?>

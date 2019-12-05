@@ -101,7 +101,7 @@ ul {
 @media (min-width: 768px) {
     .content-wrapper, .main-footer, .main-header {
         transition: margin-right .3s ease-in-out;
-        margin-right: 250px;
+        margin-right: 300px;
         margin-left : 0;
         z-index: 3000;
     }
@@ -272,7 +272,7 @@ ul {
 
 .content-wrapper, .right-side, .main-footer{
     margin-left: 0;
-    margin-right: 250px;
+    margin-right: 300px;
 }
 .main-header .navbar{
     margin-left: 0;
@@ -321,4 +321,41 @@ ul {
   }
   .emptyassessment .name{
       float: right;
+  }
+
+/******************************************************************************/
+.content-wrapper, .main-footer, .main-header{
+    margin-right: 250px;
+}
+.dropdown-footer, .dropdown-header{
+    text-align: right;
+}
+.skin-blue .sidebar-menu>li>a i {
+    margin: 0;
+    margin-left: 5px;
+}
+.addOrg{
+    right: 15px;
+    left: auto;
+}
+.main-sidebar .logo img.en{
+    display: none;
+}
+.main-sidebar .logo img.ar{
+    display: block;
+}
+.fa-angle-left:before {
+    content: "\f104" !important;
+  }
+  .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+    left: 20px;
+    right: auto;  
+  }
+  .dropdown-menu{
+    left: 0;
+    right: auto;
+  }
+  .actionBtns .btn{
+    margin-left: 0;
+    margin-right: 10px;
   }
