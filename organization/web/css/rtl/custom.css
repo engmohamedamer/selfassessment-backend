@@ -19,7 +19,7 @@ ul {
     text-align: right;
 }
 .dropdown-footer, .dropdown-header {
-    text-align: center;
+    text-align: right;
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
@@ -345,3 +345,12 @@ ul {
 .datetimepicker.datetimepicker-rtl{
     right: auto !important;
 }
+
+
+/* CUSTOMIZATIONS ?>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+    left: 20px;
+    right: auto;
+  
+  }

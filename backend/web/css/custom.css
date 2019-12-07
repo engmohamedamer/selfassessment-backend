@@ -1025,7 +1025,7 @@ header div.dropdown-header div {
 }
 
 header nav a {
-  display: none;
+  /* display: none; */
 }
 .dropdown-footer, .user-info-block .dropdown-header{
   text-align: left;
@@ -1036,6 +1036,10 @@ header nav a {
 .main-sidebar, .left-side{
   width: 300px;
   background: #333 !important;
+}
+
+.main-sidebar nav ul li a:focus{
+  background: #eee;
 }
 
 .user-menu .dropdown-toggle {
@@ -1064,8 +1068,10 @@ header nav a {
 
 
 .main-sidebar .logo img{
-  width: 180px;
-  margin: 0;
+  max-height: 100%;
+  max-width: 100%;
+  text-align: center;
+  margin: auto;
 }
 .main-sidebar .logo img.ar{
   display: none;

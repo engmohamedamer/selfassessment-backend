@@ -138,8 +138,3 @@ $(function () {
   //   }
   // })
 })
-
-$('.nav-item').on('click', function (e) {
-  $(this).addClass('active');
-  
-})

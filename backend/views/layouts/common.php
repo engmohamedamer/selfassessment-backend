@@ -44,11 +44,9 @@ if(Yii::$app->user->isGuest){
         <!-- Sidebar toggle button-->
         <!-- <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         </a> -->
-        <? if((Yii::$app->controller->id == 'site')): ?>
         <div class="dropdown-item dropdown-header">
             <div><?= Yii::t('common','Tamkeen Technologies Adminstrator')?></div>
         </div>
-        <?php endif;?>
         <div class='user-info-block'>
             <span class="dropdown-item dropdown-header"><?= Yii::t('common','welcome')?>, <?php echo Yii::$app->user->identity->userProfile->fullName ?></span>
             <!-- Navbar Right Menu -->

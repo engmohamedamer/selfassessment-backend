@@ -84,16 +84,16 @@ if(Yii::$app->user->isGuest){
             color: white !important;
             background-color: <?= $brandPrimColor ?> !important;
             border: 1px solid <?= $brandPrimColor ?> !important;
-            height: 44px !important;
+            height: 24px !important;
             min-width: 78px !important;
-            padding: 0 20px !important;
+            padding: 0 16px !important;
             font-size: 1rem !important;
             font-weight: 500 !important;
             border-radius: 5px !important;
             opacity: 1 !important;
-            font-size: 20px !important;
-            line-height: 40px !important;
-            transition: all .2s !important;
+            font-size: 16px !important;
+            line-height: 16px !important;
+            /* transition: all .2s !important; */
 
         }
 
@@ -105,14 +105,14 @@ if(Yii::$app->user->isGuest){
             color: <?= $brandPrimColor ?> !important;
             background-color: transparent !important;
             border: 1px solid <?= $brandPrimColor ?> !important;
-            height: 44px !important;
+            height: 24px !important;
             min-width: 78px !important;
-            padding: 0 20px !important;
+            padding: 0 16px !important;
             font-size: 1rem !important;
             font-weight: 500 !important;
             border-radius: 5px !important;
-            font-size: 20px !important;
-            line-height: 40px !important;
+            font-size: 16px !important;
+            line-height: 16px !important;
             transition: all .2s !important;
 
         }
@@ -124,21 +124,25 @@ if(Yii::$app->user->isGuest){
 
 
         .thirdBtn {
-            color: #000 !important;
+            color: <?= $brandPrimColor ?> !important;
             background-color: transparent  !important;
-            height: 44px  !important;
+            height: 24px  !important;
             min-width: 78px  !important;
-            padding: 0 20px  !important;
+            padding: 0 16px  !important;
             font-size: 1rem  !important;
             box-shadow: none !important;
-            font-size: 20px !important;
-            line-height: 40px !important;
+            font-size: 16px !important;
+            line-height: 16px !important;
             transition: all .2s  !important;
+            border-radius: 5px !important;
+
 
         }
 
         .thirdBtn:hover {
-            color: <?= $brandPrimColor ?> !important;
+            color: white !important;
+            background-color: <?= $brandPrimColor ?>  !important;
+            text-decoration:none;
         }
 
         section.content .survey-container .survey-block .survey-name-wrap,  section.content .survey-container .survey-block .survey-question-view-wrap, section.content .kv-editable-popover .survey-block .survey-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-view-wrap {
@@ -241,6 +245,21 @@ if(Yii::$app->user->isGuest){
         .login .form-group a.btn {
             background: <?= $brandSecColor ?> !important;
             color: #333;
+        }
+
+        .treeview.menu-open >a{
+            color: <?= $brandPrimColor ?> !important;
+        }
+
+
+        .content-header h1 {
+            border-right: 5px solid <?= $brandPrimColor ?> !important ;
+            border-left: 5px solid <?= $brandPrimColor ?> !important;
+        }
+
+        .sidebar-menu>li.active>a {
+            background: <?= $brandPrimColor ?>!important;
+            color: white !important;
         }
         
 

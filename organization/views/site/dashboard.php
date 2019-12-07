@@ -13,17 +13,17 @@ $this->title = Yii::t('backend', 'Dashboard');
 $i = 1;
 ?>
 
-<div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
-                <img src="./img/preloader.gif" alt="">
-            </div>
+    <div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
+        <img src="./img/preloader.gif" alt="">
+    </div>
 
     <!-- Content Header (Page header) -->
     <div class="content-header">
-        <div class="row mb-2">
-            <div class="col-md-6">
+        <div class=" mb-2">
+            <div class="">
                 <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Dashboard') ?></h1>
             </div>
-            <div class='col-md-6 actionBtns'>
+            <div class='actionBtns'>
                 <a href="/assessment/default/create" class="btn btn-primary"><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('common', 'Create new survey')?> </span></a>
             </div>
             <!-- <div class="col-sm-6"> -->
@@ -38,22 +38,24 @@ $i = 1;
         <h2><?= Yii::t('common','welcome'); ?></h2>
         <h4><?= Yii::t('common','Before starting the assessments we recommend you do the following') ?></h4>
         <div class='guide'>
+        <div class='item'>
             <span><?= $i++ ?></span>
             <h5><?= Yii::t('common','Modify the visual identity of the site to match the visual identity of your organization'); ?></h5>
-            <a href="/organization/update" class='btn small btn-primary'><?= Yii::t('common','Modify basic data'); ?></a>
+            <a href="/organization/update" class='btn small thirdBtn'><?= Yii::t('common','Modify basic data'); ?></a>
         </div>
         
-        <div class='guide'>
+        <div class='item'>
             <span><?= $i++ ?></span>
             <h5><?= Yii::t('common','Add assessment contributors from your organization.'); ?></h5>
-            <a href="/user/index" class='btn small btn-primary'><?= Yii::t('common','Add contributors'); ?></a>
+            <a href="/user/index" class='btn small thirdBtn'><?= Yii::t('common','Add contributors'); ?></a>
         </div>
-        <div class='guide'>
+        <div class='item'>
             <span><?= $i++ ?></span>
             <h5> <?= Yii::t('common','Create the first assessment for your organization'); ?></h5>
             <br>
             <h6>" <?= Yii::t('common','The status of the assessment must be modified from closed to visible so that participants can view the assessment'); ?> "</h6>
-            <a href="/assessment/default/create" class='btn small btn-primary'><?= \Yii::t('common', 'Create new survey')?></a>
+            <a href="/assessment/default/create" class='btn small thirdBtn'><?= \Yii::t('common', 'Create new survey')?></a>
+        </div>
         </div>
     </div>
     <?php endif; ?>
@@ -63,24 +65,6 @@ $i = 1;
     <div>
     <div class="row custom-dashboard">
 
-        <!--Countributing in assessments-->
-        <div class="col-md-8">
-            
-            <div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title"><?= Yii::t('common','Count Surveys Contributors')?></h3>
-
-                <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                </div>
-            </div>
-            <div class="box-body">
-                <canvas id="assessmentParticipantsChart"  ></canvas>
-            </div>
-            <!-- /.box-body -->
-            </div>
-        </div>
         <!--Assessments status-->
         <div class="col-md-4">
             
@@ -106,6 +90,26 @@ $i = 1;
             <!-- /.box-body -->
             </div>
         </div>
+
+        <!--Countributing in assessments-->
+        <div class="col-md-8">
+            
+            <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title"><?= Yii::t('common','Count Surveys Contributors')?></h3>
+
+                <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <canvas id="assessmentParticipantsChart"  ></canvas>
+            </div>
+            <!-- /.box-body -->
+            </div>
+        </div>
+        
 
     </div>
         <div class="row custom-dashboard">
@@ -213,7 +217,7 @@ $i = 1;
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">
-                    <a href="/assessment" class="uppercase"><?= \Yii::t('common', 'Assessments List') ?></a>
+                    <a href="/assessment" class="uppercase thirdBtn"><?= \Yii::t('common', 'Assessments List') ?></a>
                 </div>
                    
                     <!-- /.box-footer -->
