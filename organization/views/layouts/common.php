@@ -44,43 +44,49 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-      </a>
+      <!-- <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      </a> -->
+        <div class="dropdown-item dropdown-header">
+            <div><?= $organization->name ?></div>
+            
+        </div>
       <!-- Navbar Right Menu -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown user user-menu">
+      <div class='user-info-block'>
+        <span class="dropdown-item dropdown-header"><?= Yii::t('common','Welcome')?>,  <?php echo Yii::$app->user->identity->userProfile->fullName; ?></span>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+            <!-- Messages: style can be found in dropdown.less-->
+            <li class="dropdown user user-menu">
 
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
 
-                    <?php if(Yii::$app->user->identity->userProfile->avatar != null):?>
-                        <img class="user-image" src="<?= Yii::$app->user->identity->userProfile->avatar ?>" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>">
-                    <?php else:?>    
-                        <img class="user-image" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>" avatar="<?= Yii::$app->user->identity->userProfile->fullname ?>">
-                    <?php endif;?>
-                  
-              </a>
-              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                  <span class="dropdown-item dropdown-header"><?= Yii::t('common','Welcome')?>,  <?php echo Yii::$app->user->identity->userProfile->fullName; ?></span>
-                  <div class="dropdown-divider"></div>
-                  <a href="/sign-in/profile" class="dropdown-item">
-                      <i class="fas fa-user mr-2"></i> <?= Yii::t('common','My Profile')?>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a href="/sign-in/account" class="dropdown-item">
-                      <i class="fas fa-users-cog mr-2"></i>  <?= Yii::t('common','My Account')?>
-                  </a>
-                  <div class="dropdown-divider"></div>
+                        <?php if(Yii::$app->user->identity->userProfile->avatar != null):?>
+                            <img class="user-image" src="<?= Yii::$app->user->identity->userProfile->avatar ?>" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>">
+                        <?php else:?>    
+                            <img class="user-image" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>" avatar="<?= Yii::$app->user->identity->userProfile->fullname ?>">
+                        <?php endif;?>
+                    
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <div class="dropdown-divider"></div>
+                    <a href="/sign-in/profile" class="dropdown-item">
+                        <i class="fas fa-user mr-2"></i> <?= Yii::t('common','My Profile')?>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="/sign-in/account" class="dropdown-item">
+                        <i class="fas fa-users-cog mr-2"></i>  <?= Yii::t('common','My Account')?>
+                    </a>
+                    <div class="dropdown-divider"></div>
 
-                  <?php echo Html::a(  '<i class="fas fa-sign-out-alt mr-2"></i> '. Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'dropdown-item', 'data-method' => 'post']) ?>
+                    <?php echo Html::a(  '<i class="fas fa-sign-out-alt mr-2"></i> '. Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'dropdown-item', 'data-method' => 'post']) ?>
 
-              </div>
+                </div>
 
-          </li>
+            </li>
 
 
-        </ul>
+            </ul>
+        </div>
       </div>
 
     </nav>
@@ -90,7 +96,7 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
         <aside class="main-sidebar ">
 
     <a href="/" class="logo">
-       <img src="<?= $logo ?>" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
+       <img src="<?= $logo ?>" alt="<?= $organization->name ?>" title="<?= $organization->name ?>" class="brand-image ">
 
     </a>
             <!-- Sidebar -->
@@ -147,7 +153,7 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
         <strong>&nbsp;</strong>
         <div class="pull-right">
             <!-- <?php echo Yii::powered() ?> -->
-        selfassesment &copy;  <?php echo date('Y') ?>
+            <?= $organization->name ?> &copy;  <?php echo date('Y') ?>
         </div>
   </footer>
 </div><!-- ./wrapper -->

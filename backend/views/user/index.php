@@ -20,22 +20,24 @@ $this->title = Yii::t('backend', 'Managers');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="col-md-6">
+<!-- Content Header (Page header) -->
+<div class="content-header">
+                <div>
+                <div class="">
                     <h1><?= Yii::t('backend', 'Managers') ?></h1>
                 </div>
-                <div class="col-md-6 actionBtns">
-                    <a href="/user/create" class="btn btn-success"><i class="icofont-plus"></i> <?= Yii::t('backend','Create New User') ?></a>
+                <div class=" actionBtns">
+                    <a href="/user/create" class="btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('backend','Create New User') ?></a>
 
+                </div>
                 </div>
                 <!-- /.col -->
             </div>
 <!-- /.content-header -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            
            
             <div class="card-body">
             <?php

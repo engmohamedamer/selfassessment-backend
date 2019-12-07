@@ -18,9 +18,13 @@ $model->roles =Yii::$app->session->get('UserRole');
     <?php $form = ActiveForm::begin() ?>
 <!-- Content Header (Page header) -->
 <div class="content-header">
-    <div class="row mb-2">
-        <div class="col-md-6">
+    <div class="">
+        <div class="">
             <h1 class="m-0 text-dark"><?= Yii::t('common','Contributors')?></h1>
+        </div>
+
+        <div class=" actionBtns">
+            <button type="submit" class="btn btn-primary"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('backend', 'Save');?></button>
         </div>
 
         <!-- /.col -->
@@ -72,12 +76,6 @@ $model->roles =Yii::$app->session->get('UserRole');
                     </div>
                     <div class="col-md-3 col-sm-12">
                         <?php echo $form->field($model, 'status')->dropDownList(User::statuses()) ?>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <?php echo Html::submitButton(Yii::t('backend', 'Save'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                     </div>
                 </div>
             </div>

@@ -10,12 +10,16 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = Yii::t('backend', 'Edit profile')
 ?>
+    <?php $form = ActiveForm::begin() ?>
 
 <!-- Content Header (Page header) -->
 <div class="content-header">
-    <div class="row mb-2">
-        <div class="col-md-6">
+    <div class="">
+        <div class="">
             <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
+        </div>
+        <div class=" actionBtns">
+            <button type="submit" class="btn btn btn-primary"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('backend', 'Update') ?></button>
         </div>
 
         <!-- /.col -->
@@ -29,7 +33,6 @@ $this->title = Yii::t('backend', 'Edit profile')
             <div class="card-body">
 
 
-    <?php $form = ActiveForm::begin() ?>
 
     <?php echo $form->field($model, 'picture')->widget(\trntv\filekit\widget\Upload::class, [
         'url'=>['avatar-upload']
@@ -54,9 +57,7 @@ $this->title = Yii::t('backend', 'Edit profile')
     ]) ?>
 </div>
     </div>
-    <div class="form-group">
-        <?php echo Html::submitButton(Yii::t('backend', 'Update'), ['class' => 'btn btn-primary']) ?>
-    </div>
+    
 
     <?php ActiveForm::end() ?>
 

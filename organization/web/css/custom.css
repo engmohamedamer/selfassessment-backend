@@ -144,7 +144,7 @@ a {
   border: 0;
 }
 .dropdown-footer, .dropdown-header{
-  text-align: center;
+  text-align: left;
   display: block;
 }
 .dropdown-divider {
@@ -720,7 +720,6 @@ width: 100% !important;
   color: #e67e22;
   width: 31px;
   height: 30px;
-  border-radius: 100px;
   line-height: 30px;
   font-weight: bold;
   font-size: 15px;
@@ -731,16 +730,27 @@ width: 100% !important;
   margin: 0 20px;
 
 }
+
 .custom-dashboard .guide {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+ 
   color: black !important;
   background: white;
-  margin: 20px 2%;
   padding: 10px;
-  border-radius: 50px;
+  border-radius: 10px;
   border: 2px solid #ddd;
+  margin: 20px 2%;
+
+
+}
+
+
+.custom-dashboard .guide .item {
+  display: flex;
+  margin: 20px 2%;
+  background: rgb(247, 247, 247);
+  /* justify-content: space-between; */
+  align-items: center;
+ 
 
 }
 .btn-box-tool:hover,.btn-box-tool:focus{
@@ -751,13 +761,13 @@ width: 100% !important;
   background-color: #676767 !important;
   color: #fff !important;
 }
-.btn{
+/* .btn{
   -webkit-transition: all .3s ease-in-out;
 -moz-transition: all .3s ease-in-out;
 -ms-transition: all .3s ease-in-out;
 -o-transition: all .3s ease-in-out;
 transition: all .3s ease-in-out;
-}
+} */
 .btn:hover, .btn:focus{
   opacity: .8;
   -moz-transform: scale(1.02);
@@ -784,25 +794,55 @@ transform: scale(1.02);
 
 
 
+
+
 /* DASHBOARD REFACTOR TO TAMKEEN BRAND ID >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 /*******************************************************************************MAIN VARS**/
 
+html {
+  background: #333;
+}
+/* .btn{
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 3px;
+  -webkit-transition: all .5s ease-in-out;
+-moz-transition: all .5s ease-in-out;
+-ms-transition: all .5s ease-in-out;
+-o-transition: all .5s ease-in-out;
+transition: all .5s ease-in-out;
+}
+.btn:hover {
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+} */
+
 /* .btn-primary{
-  background-color: #b20d1d !important;
-  border-color: #b20d1d !important;
+  background-color: #666 !important;
+  border-color: #666 !important;
 }
 .btn-danger{
-  background-color: #333 !important;
-  border-color: #333 !important;
+  background-color: #F44336 !important;
+  border-color: #F44336 !important;
+}
+.btn-success{
+  background-color: #666 !important;
+  border-color: #666 !important;
 }
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
    background-color: #b20d1d !important;
 }
 .table td a {
-  color: #333 !important ;
+  color: #666 !important ;
 }
 a:hover, a:active, a:focus {
   color: #b20d1d !important;
+}
+
+
+.btn-primary:hover, .btn-success:hover {
+  background-color: #b20d1d !important;
+  border-color: #b20d1d !important;
 }
 
 
@@ -823,13 +863,13 @@ a:hover, a:active, a:focus {
 .brandSecBgColor {
   background-color: #f4cccc !important;
 
-} */
+}
 
 
 .primBtn {
   color: white !important;
-  background-color: #b20d1d !important;
-  border: 1px solid #b20d1d !important;
+  background-color: #666 !important;
+  border: 1px solid #666 !important;
   height: 44px !important;
   min-width: 78px !important;
   padding: 0 20px !important;
@@ -870,7 +910,7 @@ a:hover, a:active, a:focus {
 
 
 .thirdBtn {
-  color: #000 !important;
+  color: #333 !important;
   background-color: transparent  !important;
   height: 44px  !important;
   min-width: 78px  !important;
@@ -885,7 +925,29 @@ a:hover, a:active, a:focus {
 
 .thirdBtn:hover {
   color: #b20d1d !important;
+} */
+
+.newOrgsActions i {
+  color: white !important;
 }
+
+.newOrgsActions {
+  color: white !important;
+  background-color: #666 !important;
+  border: 1px solid #666 !important;
+  padding: 0 10px;
+  margin: 10px !important;
+  border-radius: 5px;
+  transition: all .2s;
+
+}
+
+.newOrgsActions:hover {
+  background-color: #b20d1d !important;
+  border: 1px solid #b20d1d !important;
+
+}
+
 
 .mr-2 {
   margin-right: 5px;
@@ -923,29 +985,47 @@ a:hover, a:active, a:focus {
 
 /* *************************************************************************MAIN LAYOUT START*************** */
 
+body{
+  background-color: #666;
+}
 header.main-header {
-  background: #333 !important;
+  background: #fff !important;
   /* background: #b20d1d !important; */
-  height: 70px !important;
-  border-bottom: 5px solid #b42126 !important;
-  /* border-bottom: 5px solid #333 !important; */
-  box-shadow: 0 0 5px 0 #333;
+  height: 55px !important;
+  /*border-bottom: 5px solid #b42126 !important;
+   border-bottom: 5px solid #666 !important; */
+  box-shadow:-6px -6px 11px 0 #666;
 }
 
 header nav {
-  height: 70px;
+  height: 55px;
   display: flex !important;
   justify-content: flex-end;
   align-items: center;
 }
 
 header div.dropdown-header div {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 20px;
+  /* color: #b20d1d; */
 }
 
 header nav a {
-  display: none;
+  /* display: none; */
+}
+.dropdown-footer, .user-info-block .dropdown-header{
+  text-align: left;
+  font-size: 13px !important;
+  padding: 0;
+  
+}
+.main-sidebar, .left-side{
+  width: 300px;
+  background: #333 !important;
+}
+
+.main-sidebar nav ul li a:focus{
+  background: #eee;
 }
 
 .user-menu .dropdown-toggle {
@@ -966,14 +1046,25 @@ header nav a {
 }
 
 .main-sidebar .logo{
-  height: 70px;
-  padding: 5px 20px 0;
+  padding: 13px 10px 13px 20px;
   margin-bottom: 30px;
+  background: #fff !important;
+  height: 55px;
+     
 }
 
+
 .main-sidebar .logo img{
-  height: 100%;
-  width: auto;
+  max-height: 100%;
+  max-width: 100%;
+  text-align: center;
+  margin: auto;
+}
+.main-sidebar .logo img.ar{
+  display: none;
+}
+.main-sidebar .logo img.en{
+  display: block;
 }
 
 .white-text {
@@ -989,10 +1080,17 @@ header nav a {
   font-size: 12px;
 }
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
-  left: 20px;
+  left: auto;
+  right: 20px;
     top: 50px;
     width: auto;
 
+}
+
+.skin-blue .sidebar a{
+  color: #fff;
+  font-size: 1.4rem !important;
+  font-weight: 600;
 }
 .dropdown.user.user-menu.open .dropdown-menu a:first-child {
   padding-top: 8px;
@@ -1000,44 +1098,52 @@ header nav a {
 
 .dropdown.user.user-menu.open:after {
   content: '';
-  border-top: 8px solid #b20d1d;
+  border-top: 8px solid #666;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   top: 65px;
-  left: 33px;
+  left: 35px;
   position: inherit;
   z-index: 9999;
 }
 
-
+.sidebar-menu>li{
+  margin-bottom: 5px;
+}
 .skin-blue .sidebar-menu>li>a i {
-  margin: 0 10px;
-  font-size: 20px
+  /* margin: 0; */
+  margin-right: 5px;
+  font-size: 17px;
 }
   .skin-blue .sidebar-menu>li>a {
-  padding: 10px 15px 10px !important;
+  padding: 10px 15px !important;
   font-size: 16px;
+  border-radius: 2px;
 }
-.sidebar-menu>li.active>a {
-  background: #b20d1d !important;
-  color: white !important;
-}
+
 
 .main-sidebar  {
   box-shadow: -2px 1px 20px -9px rgba(121, 137, 162, 0.3) !important;
 }
 
 .main-footer {
-  background: #363636;
+  background: white !important;
   padding: 15px;
-  color: rgb(255, 255, 255);
-  border-top: 1px solid #d2d6de;
+  color: #666;
+  border-top: 0;
   text-align: center;
+  /* position: absolute; */
+    width: calc(100% - 300px);;
+    margin-right: 300px !important;
+  /* margin: 0 !important; */
+  display: flex;
+  justify-content: center;
 }
 
 .sub-nav-item {
-  width: 80%;
+  
   margin: auto !important;
+  border-top: 1px solid #ddd;
 }
 
 .sub-nav-item a {
@@ -1056,11 +1162,20 @@ header nav a {
 .sub-nav-item.add-admin i {
   height: 40px;
   width: 40px;
-  background: #8BC34A;
-  border-radius: 100px;
+  background: #00a65a;
+  border-radius: 40px;
   line-height: 40px;
   text-align: center;
   color: white;
+}
+
+.sub-nav-item.add-admin {
+  border-top: 1px solid #ddd;
+
+}
+
+.sub-nav-item.add-admin a {
+justify-content: space-between;
 }
 
 .all-admins a span {
@@ -1068,42 +1183,170 @@ header nav a {
   margin: auto;
   color: #b20d1d ;
 }
+.addOrg{
+  position: fixed;
+    bottom: 15px;
+    left: 15px;
+    width: 220px;
+    /* margin: 5%; */
+    background-color: #f4941b !important;
+    border-color: #f4941b !important;
+    padding: 8px;
+    box-shadow: -3px 4px 7px #212121;
+    border-radius: 25px;
+}
+.addOrg i{
+  font-size: 12px;
+  margin: 0 10px;
+}
+.card-title{
+  color: #666;
+}
+.skin-blue .sidebar-menu>li>.treeview-menu{
+    background: #eee;
+    margin-top: -5px;
+    border-radius: 0 0 3px 3px;
+}
+/* .treeview.menu-open >a{
+  color: #b20d1d !important;
+} */
 
+.content-wrapper, .right-side, .main-footer, .main-header .navbar{
+  margin-left: 300px;
+}
 /* *************************************************************************MAIN LAYOUT END*************** */
 /* *************************************************************************CONTENT DASHBOARD START*************** */
+.content-header {
+  padding: 15px 10px;
+  margin:5px 0 15px;
+  background: rgb(255, 255, 255) !important;
+  /* border: 2px dashed rgb(204, 204, 204); */
+  border-left: 10px solid rgb(204, 204, 204);
+  border-right: 10px solid rgb(204, 204, 204);
+  border-radius: 10px;
+  /* box-shadow: 0 3px 5px 0 rgba(102, 102, 102, 0.3); */
+}
+
+.content-header div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .content-header h1 {
-  font-size: 25px;
+  font-size: 20px;
   border-right: 5px solid #f4941b;
   display: inline-block;
   padding: 8px 15px;
   border-left: 5px solid #f4941b;
   margin: 0 !important;
-  background: antiquewhite;
+  background: #eee;
 }
+
 
 .content-header .row {
   margin-top: 5px;
+}
+.actionBtns .btn{
+  /* margin: 0; */
 }
 
 .actionBtns a {
   margin-top: 5px;
 }
 .actionBtns a i {
-  margin: 0 2px;
+  /* margin: 0 2px; */
 }
 
 .table td.skip-export a {
   margin-bottom: 5px;
   display: inline-block;
-  background: #b80f26;
+  background: #666;
   color: white !important;
-  width: 35px;
-  height: 35px;
-  line-height: 35px;
-  border-radius: 10px;
-  font-size: 15px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 3px;
+  font-size: 12px;
+  -webkit-transition: all .5s ease-in-out;
+-moz-transition: all .5s ease-in-out;
+-ms-transition: all .5s ease-in-out;
+-o-transition: all .5s ease-in-out;
+transition: all .5s ease-in-out;
+}
+/* .table td.skip-export a:hover{
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  background: #b20d1d;
+} */
+
+.table .form-control{
+  border: 1px solid #dcdcdc;
+    box-shadow: none;
+    background: #f0f2f5;
+}
+.table > thead > tr > th ,.table > thead > tr > th a {
+  color: #666;
+  font-weight: normal;
+  font-size: 14px;
+}
+.table .select2-container--krajee .select2-selection--single {
+  border-radius: 0;
+  background: #f0f2f5;
+  border: 1px solid #dcdcdc;
+}
+.summary {
+  position: absolute;
+    bottom: 5px;
+    left: 15px;
+  color: #666 !important;
+
 }
 
+.panel-heading {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  BORDER-RADIUS: 0;
+  width: 100%;
+  padding: 15px;
+  background: transparent !important;
+  color: #666 !important;
+  border: none !important;
+}
 
+.panel.panel-primary {
+  border-color: #ddd !important;
+}
+
+.fa-angle-left:before {
+  content: "\f105" !important;
+}
+.dropdown-menu{
+  left: auto;
+  right: 0;
+}
+.actionBtns .btn{
+  margin-left: 10px;
+}
 /* *************************************************************************CONTENT DASHBOARD END*************** */
+
+
+
+
+
+/* *************************************************************************ORG THEMING START*************** */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* *************************************************************************ORG THEMING END*************** */

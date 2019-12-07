@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cairo&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cairo:400,600,700,900&display=swap&subset=arabic');
 
 /*---------------------------------- End of fonts ---------------------------------- */
 
@@ -51,7 +51,7 @@ ul {
 }
 
 .control-sidebar, .control-sidebar:before {
-    left: -250px;
+    left: -300px;
     right: auto;
     transition: left .3s ease-in-out;
 }
@@ -110,7 +110,7 @@ ul {
 @media (max-width: 991.98px) {
     .main-sidebar, .main-sidebar:before {
         box-shadow: none!important;
-        margin-right: -250px;
+        margin-right: -300px;
         margin-left: 0;
     }
 
@@ -125,7 +125,7 @@ ul {
 }
 
 .sidebar-collapse .main-sidebar, .sidebar-collapse .main-sidebar:before {
-    margin-right: -250px;
+    margin-right: -300px;
 }
 
 .main-sidebar {
@@ -325,7 +325,7 @@ ul {
 
 /******************************************************************************/
 .content-wrapper, .main-footer, .main-header{
-    margin-right: 250px;
+    margin-right: 300px;
 }
 .dropdown-footer, .dropdown-header{
     text-align: right;
