@@ -278,5 +278,5 @@ return [
     'Closed'=>'مغلق',
     'Visible'=>'مرئى',
     'Account Created Successfully'=>'تم انشاء الحساب بنجاح',
-    'These credentials do not match our records.'=>'بيانات الاعتماد هذه غير متطابقة مع البيانات المسجلة لدينا.'
+    'These credentials do not match our records.'=>'البيانات المدخلة غير متطابقة مع البيانات المسجلة لدينا.',
 ];

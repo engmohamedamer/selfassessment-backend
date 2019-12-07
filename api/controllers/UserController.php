@@ -47,7 +47,7 @@ class UserController extends  RestController
             
             $checkIsActive = User::find()->active()->andWhere(['or', ['username' => $params['identity'] ], ['email' => $params['identity']]])->one();
             if(!$checkIsActive){
-                return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common',Yii::t('common','Your account not activated yet'))],400);
+                return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common',Yii::t('common','Your account not activated yet'))],401);
             }
 
             //check role
@@ -55,7 +55,7 @@ class UserController extends  RestController
            $currentRole=   array_keys($roles)[0];
 
            if( $currentRole != \common\models\User::ROLE_USER){
-               return ResponseHelper::sendFailedResponse(['INVALID_ROLE'=>'Invalid User Role'],401);
+               return ResponseHelper::sendFailedResponse(['INVALID_ROLE'=>Yii::t('common','You do not have access')],401);
            }
 
             $user->access_token = Yii::$app->getSecurity()->generateRandomString(40);
