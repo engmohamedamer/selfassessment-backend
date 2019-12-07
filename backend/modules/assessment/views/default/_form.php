@@ -374,15 +374,15 @@ if (Yii::$app->user->identity->userProfile->organization) {
                     // echo Html::endTag('div');
                     
                     // echo Html::a('<span class="fa fa-plus"></span> ' . Yii::t('survey', 'Add question'), Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => 'btn btn-secondary']);
-                    echo Html::a('<i class="icofont-ui-text-chat"></i> <span>سؤال نصي</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'سؤال نصي', 'title' => 'سؤال نصي']);
-                    echo Html::a('<i class="icofont-page"></i> <span>صندوق التعليقات</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'صندوق التعليقات', 'title' => 'صندوق التعليقات']);
-                    echo Html::a('<i class="icofont-sub-listing"></i> <span>خيار واحد من قائمة</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'خيار واحد من قائمة', 'title' => 'خيار واحد من قائمة']);
-                    echo Html::a('<i class="icofont-listing-box"></i> <span>خيارات من متعدد</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'خيارات من متعدد', 'title' => 'خيارات من متعدد']);
-                    echo Html::a('<i class="icofont-listing-number"></i> <span>خيار واحد من متعدد</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'خيار واحد من متعدد', 'title' => 'خيار واحد من متعدد']);
-                    echo Html::a('<i class="icofont-ui-calendar"></i> <span>تاريخ / وقت</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'تاريخ / وقت', 'title' => 'تاريخ / وقت']);
-                    echo Html::a('<i class="icofont-ui-rate-blank"></i> <span>تقييم</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'تقييم', 'title' => 'تقييم']);
-                    echo Html::a('<i class="icofont-attachment"></i> <span>ملف</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'ملف', 'title' => 'ملف']);
-                    echo Html::a('<i class="icofont-numbered"></i> <span>تصنيف</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'تصنيف', 'title' => 'تصنيف']);
+                    echo Html::a('<i class="icofont-ui-text-chat"></i> <span>سؤال نصي</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id,'type'=>6]), ['class' => '', 'alt' => 'سؤال نصي', 'title' => 'سؤال نصي']);
+                    echo Html::a('<i class="icofont-page"></i> <span>صندوق التعليقات</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id,'type'=>8]), ['class' => '', 'alt' => 'صندوق التعليقات', 'title' => 'صندوق التعليقات']);
+                    echo Html::a('<i class="icofont-sub-listing"></i> <span>خيار واحد من قائمة</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id,'type'=>3]), ['class' => '', 'alt' => 'خيار واحد من قائمة', 'title' => 'خيار واحد من قائمة']);
+                    echo Html::a('<i class="icofont-listing-box"></i> <span>خيارات من متعدد</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id,'type'=>1]), ['class' => '', 'alt' => 'خيارات من متعدد', 'title' => 'خيارات من متعدد']);
+                    echo Html::a('<i class="icofont-listing-number"></i> <span>خيار واحد من متعدد</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id,'type'=>2]), ['class' => '', 'alt' => 'خيار واحد من متعدد', 'title' => 'خيار واحد من متعدد']);
+                    echo Html::a('<i class="icofont-ui-calendar"></i> <span>تاريخ / وقت</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id,'type'=>9]), ['class' => '', 'alt' => 'تاريخ / وقت', 'title' => 'تاريخ / وقت']);
+                    echo Html::a('<i class="icofont-ui-rate-blank"></i> <span>تقييم</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id,'type'=>5]), ['class' => '', 'alt' => 'تقييم', 'title' => 'تقييم']);
+                    echo Html::a('<i class="icofont-attachment"></i> <span>ملف</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id,'type'=>11]), ['class' => '', 'alt' => 'ملف', 'title' => 'ملف']);
+                    echo Html::a('<i class="icofont-numbered"></i> <span>تصنيف</span>' , Url::toRoute(['question/create', 'id' => $survey->survey_id,'type'=>4]), ['class' => '', 'alt' => 'تصنيف', 'title' => 'تصنيف']);
 
                     echo Html::submitButton('<i class="icofont-save mr-2 ml-2"></i> ' . Yii::t('survey', 'Save'),
                     ['class' => 'btn btn-primary saveSurveyBtn', 'data-default-text' => '<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save'),'id' => 'save', 'data-action' => Url::toRoute(['default/view', 'id' => $survey->survey_id])]);
