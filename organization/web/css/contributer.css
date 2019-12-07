@@ -3,7 +3,10 @@
   background-image: url(/img/login-bg2.png) !important;
   background-repeat: no-repeat !important;
   background-position: 80% 70px;
-  background-size: contain;
+  /* background-size: contain; */
+}
+body {
+  background-color: #fff;
 }
 .help-block-error{
   display: block !important;
@@ -59,16 +62,19 @@ background-color:transparent;
   height: 45px;
   border-radius: 8px;
   border: 0;
-  background: #c32033 ;
+  background: #333 ;
+  margin-right: 10px;
 }
 
 .login .form-group a.btn {
   line-height: 2.2;
-  background: #ccc;
-  color: #6e84a3;
-}
-.login .form-group a.btn:hover {
+  background: #eee;
   color: #333;
+  margin-right: 10px;
+
+}
+.login .form-group .btn:hover {
+  background-color: #c32033;
 }
 
 .header {

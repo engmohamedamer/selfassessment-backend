@@ -812,7 +812,7 @@ section.content .survey-container #survey-questions .survey-block  {
 /*******************************************************************************MAIN VARS**/
 
 html {
-  background: #333;
+  /* background: #333; */
 }
 .btn{
   font-weight: 600;
