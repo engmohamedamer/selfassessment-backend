@@ -327,7 +327,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
 						]
 					]);
 			}
-            echo Html::endTag('div'); // col-md-9
+            echo Html::endTag('div'); // col-md-9 
             echo Html::endTag('div'); // row
 
             echo Html::submitButton('', ['class' => 'hidden']);
@@ -365,11 +365,21 @@ if (Yii::$app->user->identity->userProfile->organization) {
             ]
         ]);
 
-        echo Html::beginTag('div', ['class' => 'text-center survey-btn']);
-            echo Html::a('<span class="fa fa-plus"></span> ' . Yii::t('survey', 'Add question'), Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => 'btn btn-secondary']);
+        echo Html::beginTag('div', ['class' => 'text-center survey-btn addQFixed']);
+            
+            // echo Html::a('<span class="fa fa-plus"></span> ' . Yii::t('survey', 'Add question'), Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => 'btn btn-secondary']);
+            echo Html::a('<i class="icofont-ui-text-chat"></i>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'سؤال نصي', 'title' => 'سؤال نصي']);
+            echo Html::a('<i class="icofont-page"></i>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'صندوق التعليقات', 'title' => 'صندوق التعليقات']);
+            echo Html::a('<i class="icofont-sub-listing"></i>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'خيار واحد من قائمة', 'title' => 'خيار واحد من قائمة']);
+            echo Html::a('<i class="icofont-listing-box"></i>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'خيارات من متعدد', 'title' => 'خيارات من متعدد']);
+            echo Html::a('<i class="icofont-listing-number"></i>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'خيار واحد من متعدد', 'title' => 'خيار واحد من متعدد']);
+            echo Html::a('<i class="icofont-ui-calendar"></i>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'تاريخ / وقت', 'title' => 'تاريخ / وقت']);
+            echo Html::a('<i class="icofont-ui-rate-blank"></i>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'تقييم', 'title' => 'تقييم']);
+            echo Html::a('<i class="icofont-attachment"></i>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'ملف', 'title' => 'ملف']);
+            echo Html::a('<i class="icofont-numbered"></i>' , Url::toRoute(['question/create', 'id' => $survey->survey_id]), ['class' => '', 'alt' => 'تصنيف', 'title' => 'تصنيف']);
 
-            echo Html::submitButton('<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save'),
-            ['class' => 'btn btn-primary', 'data-default-text' => '<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save'),'id' => 'save', 'data-action' => Url::toRoute(['default/view', 'id' => $survey->survey_id])]);
+            echo Html::submitButton('<i class="icofont-save"></i> ' . Yii::t('survey', 'Save'),
+            ['class' => 'btn btn-primary saveSurveyBtn', 'data-default-text' => '<i class="fa fa-floppy-o" aria-hidden="true"></i> ' . Yii::t('survey', 'Save'),'id' => 'save', 'data-action' => Url::toRoute(['default/view', 'id' => $survey->survey_id])]);
         echo Html::endTag('div');
 
         // echo Html::tag('div', , ['class' => '' ]);
@@ -400,7 +410,7 @@ $this->registerJs(<<<JS
 $(document).ready(function (e) {
     $.fn.survey();
 
-    $('.addQPanel a').on('click', function () {
+    $('.addQFixed a').on('click', function () {
         $("html, body").animate({ scrollTop: $(document).height() }, 1000);
         $('.qNumHeader span').html(parseInt($('.qNumHeader span').html())+ 1)
     })

@@ -12,24 +12,26 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
-
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div>
+    <div class="">
+        <h1>
+        <?= $model->userProfile->firstname . ' ' . $model->userProfile->lastname  ?>
+        </h1>
+    </div>
+    <div class=" actionBtns">
+        <a href="/user/update?id=<?= $model->id ?>" class="btn btn-success"><i class="icofont-ui-edit mr-2 ml-2"></i> <?= Yii::t('backend','Update Data') ?> </a>
+        <a data-method="post" data-confirm="<?= Yii::t('backend', 'Are you sure you want to delete this item?') ?>" class="btn  btn-danger mr-5 ml-5"><i class="icofont-ui-delete mr-2 ml-2"></i> <?= Yii::t('backend','Delete') ?> </a>
+    </div>
+    <!-- /.col -->
+    </div>
+</div>
 
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="col-md-6">
-                    <h1>
-                    <?= $model->userProfile->firstname . ' ' . $model->userProfile->lastname  ?>
-                    </h1>
-                </div>
-                <div class="col-md-6 actionBtns">
-                    <a href="/user/update?id=<?= $model->id ?>" class="btn btn-success"><i class="icofont-ui-edit"></i> <?= Yii::t('backend','Update Data') ?> </a>
-                    <a data-method="post" data-confirm="<?= Yii::t('backend', 'Are you sure you want to delete this item?') ?>" class="btn  btn-danger mr-5 ml-5"><i class="icofont-ui-delete"></i> <?= Yii::t('backend','Delete') ?> </a>
-                </div>
-                <!-- /.col -->
-            </div>
+            
             <div class="card-body">
                 <div class="row">
                 <div class="col-md-3">

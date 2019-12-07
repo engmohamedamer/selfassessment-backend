@@ -39,10 +39,17 @@ if (isset($model->city_id) and !empty($model->city_id)) {
     </div>
 
 
+    <div class="content-header" style="">
+        <div class="">
+            <div class="">
+                <h1><?= Html::encode($this->title) ?></h1>
+            </div>
+            
+        </div>
+    </div>
 
 
-
-<div class="row theme-edit">
+<div class="row theme-edit" style='margin-right:0; margin-left:0;'>
 
     <div class='col-sm-2 col-lg-1 theme-nav' >
         <ul class="nav nav-pills nav-stacked">
@@ -57,20 +64,12 @@ if (isset($model->city_id) and !empty($model->city_id)) {
             <li role="presentation" class=""><a  href="#tab_5-5" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-users"></i></span><p><?php echo Yii::t('common', 'Socail Links') ?></p></a></li>
         </ul>
     </div>
+    
 
     <div class='col-sm-10 col-lg-11 theme-edit-content'>
        
         <div class='theme-edit-form'>
-            <div class="content-header" style="padding:0">
-                <div class="row mb-2">
-                    <div class="col-md-6">
-                        <h1><?= Html::encode($this->title) ?></h1>
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                    
-                </div>
-            </div>
+            
             <div class="tab-content mt-5">
 
 

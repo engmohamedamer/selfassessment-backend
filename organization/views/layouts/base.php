@@ -26,6 +26,9 @@ if(Yii::$app->user->isGuest){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+    <link rel="stylesheet" href="/css/icofont/icofont.min.css">
+
+
     <?php echo Html::csrfMetaTags() ?>
     <title><?php echo Html::encode($this->title) ?></title>
     <?php
@@ -184,15 +187,45 @@ if(Yii::$app->user->isGuest){
 
 
         .addQFixed {
-            /* position: fixed; */
-            right: 20%;
-            bottom: 10%;
+            position: fixed;
+            right: 250px;
+            bottom: 6%;
             z-index: 99999;
-            /* background: white; */
-            /* padding: 10px; */
-            /* height:50%; */
-            overflow:auto;
+            background: white;
+            padding: 10px 5px;
+            /* height: 50%; */
+            overflow: hidden;
+            width: 90px;
+            /* border: 2px solid #ddd; */
+            /* border-radius: 10px; */
+            box-shadow: 0 0 10px 0 #c5c5c5;
 
+        }
+
+        .addQFixed a:hover {
+            background: #a000aa;
+            color:white !important;
+            text-decoration: none !important;
+        }
+        .addQFixed a {
+            width: 100%;
+            display:inline-block;
+            color: #7d7d7d;
+            border-bottom: 1px solid #ddd;
+            font-size: 35px;
+
+            /* transition: all ease-in-out .2s; */
+        }
+
+        .addQFixed a i {
+            font-size: 35px;
+
+        }
+
+        
+
+        .addQFixed .saveSurveyBtn {
+            margin: 20px 0 !important;
         }
 
         .custom-dashboard .box-danger {
@@ -200,6 +233,7 @@ if(Yii::$app->user->isGuest){
         }
         .theme-edit .theme-nav ul.nav li.active a{
             background-color:<?= $brandPrimColor ?> !important;
+            border: 0;
         }
         .login .form-group .btn{
             background:<?= $brandPrimColor ?> !important;

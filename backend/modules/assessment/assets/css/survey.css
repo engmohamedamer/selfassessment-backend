@@ -1042,3 +1042,17 @@ input[type=radio].css-radio + label.css-label:before {
 }
 
 /*# sourceMappingURL=survey.css.map */
+
+
+.survey-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(51, 51, 51, 0.24);
+
+}
+
+section.content .survey-container .survey-block {
+  border: 2px dashed #ddd !important;
+  box-shadow: none !important;
+}

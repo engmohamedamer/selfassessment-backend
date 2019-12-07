@@ -50,7 +50,7 @@ if(Yii::$app->user->isGuest){
         </div>
         <?php endif;?>
         <div class='user-info-block'>
-            <span class="dropdown-item dropdown-header"><?= Yii::t('common','welcome')?>, <?php echo strtoupper(Yii::$app->user->identity->userProfile->fullName) ?></span>
+            <span class="dropdown-item dropdown-header"><?= Yii::t('common','welcome')?>, <?php echo Yii::$app->user->identity->userProfile->fullName ?></span>
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
@@ -126,7 +126,7 @@ if(Yii::$app->user->isGuest){
             <!-- /.sidebar-menu -->
         </section>
 
-        <a href="/organization/create" class="btn btn-primary addOrg"><i class="icofont-plus"></i> <?= Yii::t('backend','New Organization') ?></a>
+        <!-- <a href="/organization/create" class="btn btn-primary addOrg"><i class="icofont-plus"></i> <?= Yii::t('backend','New Organization') ?></a> -->
 
         <!-- /.sidebar -->
     </aside>
