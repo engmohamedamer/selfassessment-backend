@@ -37,7 +37,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
 }
 </style>
     <div class='row' style='padding:0 0px 70px;'>
-        <div class='col-sm-12 col-md-10'>
+        <div class='col-sm-12 col-md-12'>
             <div class="survey-container  ">
                 <div class="survey-block">
                     <?php
@@ -279,13 +279,14 @@ if (Yii::$app->user->identity->userProfile->organization) {
 
                     echo Html::beginTag('div', ['class' => 'row']);
                     echo Html::beginTag('div', ['class' => 'col-md-3']);
-                    echo $form->field($survey, "survey_is_closed", ['template' => "<div class='survey-form-field submit-on-click'>{input}{label}</div>",]
+                    
+                    echo $form->field($survey, "survey_is_closed", ['template' => "<div class='survey-form-field submit-on-click'><a class='btn btn-primary' tabindex='0' role='button' data-toggle='popover' data-trigger='focus' data-placement='bottom' title='مغلق أم لا' data-content='هل الإستبيان مغلق أم متاح للمشاركين؟'><i class='icofont-info-circle'></i></a>  {input}{label}</div>",]
                     )->checkbox(['class' => 'checkbox danger'], false);
                     echo Html::tag('div', '', ['class' => 'clearfix']);
                     // echo $form->field($survey, "survey_is_pinned", ['template' => "<div class='survey-form-field submit-on-click'>{input}{label}</div>",]
                     // )->checkbox(['class' => 'checkbox'], false);
                     // echo Html::tag('div', '', ['class' => 'clearfix']);
-                    echo $form->field($survey, "survey_is_visible", ['template' => "<div class='survey-form-field submit-on-click'>{input}{label}</div>",]
+                    echo $form->field($survey, "survey_is_visible", ['template' => "<div class='survey-form-field submit-on-click'><a class='btn btn-primary' tabindex='0' role='button' data-toggle='popover' data-trigger='focus' data-placement='bottom' title='مرئي أم لا' data-content='هل الإستبيان جاهز للظهور للمشاركين؟'><i class='icofont-info-circle'></i></a> {input}{label}</div>",]
                     )->checkbox(['class' => 'checkbox'], false);
                     if ($withUserSearch) {
                         echo Html::tag('div', '', ['class' => 'clearfix']);
@@ -396,14 +397,36 @@ if (Yii::$app->user->identity->userProfile->organization) {
         </div>
         
 
-        <div class='col-sm-12 col-md-2'>
+        <!-- <div class='col-sm-12 col-md-2'>
             <div class='survey-details'>
                 hhhhhhhhhh
             </div>
-        </div>
+        </div> -->
         
     
     </div>
+
+    <div class='survey-details'>
+        <div class='inner-details'>
+            <h5> <i class="icofont-paper mr-2 ml-2"></i>  تفاصيل الإستبيان 
+                <i title='closed' style='color:red' class="icofont-1x icofont-lock mr-2 ml-2"></i> 
+                <i title='invisible' style='color:red' class="icofont-1x mr-2 ml-2 icofont-eye-blocked"></i> 
+                <i title='visible' style='color:green' class="icofont-1x mr-2 ml-2 icofont-eye"></i>
+                <i title='open' style='color:green' class="icofont-1x mr-2 ml-2 icofont-unlocked"></i> 
+            </h5>
+            <hr>
+            <p><p><span>حالة الإستبيان :</span> مغلق - غير مرئي للمشاركين</p> </p>
+            <p><span>ينتهي بعد :</span> 20 يوم</p>
+            <hr>
+            
+            <p><span>عدد الأسئلة :</span> 50</p>
+            <p><span>عدد النقاط :</span> 100</p>
+            <p><span>النقاط المتبقية :</span> 10</p>
+            <p><span>متوسط النتائج :</span> جيد جداً</p>
+            <p><span>المشاركين :</span> 8/120</p>
+        </div>
+    </div>
+    
 
 <?php
 $this->registerJs(<<<JS
@@ -430,10 +453,12 @@ $(document).ready(function (e) {
         $("html, body").animate({ scrollTop: $(document).height() }, 1000);
         $('.qNumHeader span').html(parseInt($('.qNumHeader span').html())+ 1)
     })
+
+    $('.popover-dismiss').popover({
+        container: 'body',
+        trigger: 'focus'
+    })
 });
-
-
-
 
 
 $("#survey-survey_point-popover .kv-editable-submit").click(function(){

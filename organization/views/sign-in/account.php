@@ -8,12 +8,15 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 $this->title = Yii::t('backend', 'Edit account')
 ?>
-
+<?php $form = ActiveForm::begin() ?>
 <!-- Content Header (Page header) -->
 <div class="content-header">
-    <div class="row mb-2">
-        <div class="col-md-6">
+    <div class="">
+        <div class="">
             <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
+        </div>
+        <div class=" actionBtns">
+            <button type="submit" class="btn btn btn-primary"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('backend', 'Update') ?></button>
         </div>
 
         <!-- /.col -->
@@ -26,7 +29,6 @@ $this->title = Yii::t('backend', 'Edit account')
 
             <div class="card-body">
 
-                <?php $form = ActiveForm::begin() ?>
                 <div class="row">
                 			<div class="col-lg-6"><?php echo $form->field($model, 'username') ?></div>
                 			<div class="col-lg-6"><?php echo $form->field($model, 'email') ?></div>
@@ -34,9 +36,7 @@ $this->title = Yii::t('backend', 'Edit account')
                 			<div class="col-lg-6"><?php echo $form->field($model, 'password_confirm')->passwordInput() ?></div>
                 		</div>
 
-                <div class="form-group">
-                    <?php echo Html::submitButton(Yii::t('backend', 'Update'), ['class' => 'btn btn-primary']) ?>
-                </div>
+                
 
                 <?php ActiveForm::end() ?>
             </div>

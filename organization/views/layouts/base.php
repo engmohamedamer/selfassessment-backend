@@ -201,7 +201,7 @@ if(Yii::$app->user->isGuest){
             overflow: hidden;
             width: calc(100% - 300px);
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             flex-direction: row;
             flex-wrap: wrap;
@@ -213,7 +213,7 @@ if(Yii::$app->user->isGuest){
         }
 
         .addQFixed a:hover {
-            background: #a000aa;
+            background: <?= $brandPrimColor ?>;
             color:white !important;
             text-decoration: none !important;
         }
@@ -247,18 +247,43 @@ if(Yii::$app->user->isGuest){
             margin: 7px 0;
         }
 
-        
-
         .addQFixed .saveSurveyBtn {
             margin: 20px 0 !important;
         }
 
         .survey-details {
             background: #fff;
-            position:fixed;
+            position: fixed;
+            bottom: 110px;
+            right: 25px;
+            width: 250px;
+            z-index: 99999;
+            border-radius: 10px;
+            padding: 5px;
         }
 
+        .inner-details {
+            border: 2px dashed <?= $brandPrimColor ?>;
+            height:100%;
+            border-radius:10px;
+            padding:10px;
+        }
 
+        .inner-details h5 {
+            color: <?= $brandPrimColor ?>;
+        }
+
+        .inner-details p {
+            color: #333;
+        }
+
+        .inner-details p span {
+            color: #6e84a3;
+        }
+
+        .inner-details p i {
+            display:inline-block;
+        }
 
 
 
