@@ -192,17 +192,23 @@ if(Yii::$app->user->isGuest){
 
         .addQFixed {
             position: fixed;
-            right: 250px;
-            bottom: 6%;
+            right: 300px;
+            bottom: 0;
             z-index: 99999;
             background: white;
             padding: 10px 5px;
-            /* height: 50%; */
+            height: auto;
             overflow: hidden;
-            width: 90px;
+            width: calc(100% - 300px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
             /* border: 2px solid #ddd; */
             /* border-radius: 10px; */
             box-shadow: 0 0 10px 0 #c5c5c5;
+            margin:0 !important;
 
         }
 
@@ -212,11 +218,18 @@ if(Yii::$app->user->isGuest){
             text-decoration: none !important;
         }
         .addQFixed a {
-            width: 100%;
+            width: 9%;
             display:inline-block;
             color: #7d7d7d;
-            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            border-radius: 10px;
+            /* border-bottom: 1px solid #ddd; */
             font-size: 35px;
+            margin: 0 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
             /* transition: all ease-in-out .2s; */
         }
@@ -226,11 +239,40 @@ if(Yii::$app->user->isGuest){
 
         }
 
+        .addQFixed a span {
+            font-size: 12px;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            margin: 7px 0;
+        }
+
         
 
         .addQFixed .saveSurveyBtn {
             margin: 20px 0 !important;
         }
+
+        .survey-details {
+            background: #fff;
+            position:fixed;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         .custom-dashboard .box-danger {
             border-top-color: <?= $brandPrimColor ?> !important;
@@ -261,7 +303,19 @@ if(Yii::$app->user->isGuest){
             background: <?= $brandPrimColor ?>!important;
             color: white !important;
         }
+
+        .btn-success{
+            background-color: <?= $brandPrimColor ?> !important;
+            border-color: <?= $brandPrimColor ?> !important;
+        }
+
+        .table td.skip-export a:hover{
+            -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+            background: <?= $brandPrimColor ?>;
+        }
         
+                    
 
 
     </style>

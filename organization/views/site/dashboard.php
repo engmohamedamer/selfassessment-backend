@@ -65,6 +65,27 @@ $i = 1;
     <div>
     <div class="row custom-dashboard">
 
+        
+
+        <!--Countributing in assessments-->
+        <div class="col-md-8">
+            
+            <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title"><?= Yii::t('common','Count Surveys Contributors')?></h3>
+
+                <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <canvas id="assessmentParticipantsChart"  ></canvas>
+            </div>
+            <!-- /.box-body -->
+            </div>
+        </div>
+
         <!--Assessments status-->
         <div class="col-md-4">
             
@@ -90,78 +111,11 @@ $i = 1;
             <!-- /.box-body -->
             </div>
         </div>
-
-        <!--Countributing in assessments-->
-        <div class="col-md-8">
-            
-            <div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title"><?= Yii::t('common','Count Surveys Contributors')?></h3>
-
-                <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                </div>
-            </div>
-            <div class="box-body">
-                <canvas id="assessmentParticipantsChart"  ></canvas>
-            </div>
-            <!-- /.box-body -->
-            </div>
-        </div>
         
 
     </div>
         <div class="row custom-dashboard">
-            <!--Latest contributors-->
-            <div class="col-md-4">
-                <!-- USERS LIST -->
-                <div class="box box-danger">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><?= Yii::t('common', 'Latest Contributors') ?></h3>
-
-                    <div class="box-tools pull-right">
-                    <!-- <span class="label label-danger">8 New Members</span> -->
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                   
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body no-padding">
-                <ul class="products-list product-list-in-box">
-                    <?php foreach($contributors->getModels() as $contributor): ?>
-                    <li class="item">
-                        <div class="product-img">
-                            <?php if($contributor->userProfile->avatar != null):?>
-                                <img src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">
-                            <?php else:?>    
-                                <img alt="<?= $contributor->userProfile->fullname ?>" avatar="<?= $contributor->userProfile->fullname ?>">
-                            <?php endif;?>    
-                        </div>
-                        <div class="product-info">
-                            <a class="product-title" href="/user/view?id=<?= $contributor->id ?>"><?= $contributor->userProfile->fullname ?>
-                            
-                            </a>
-                            <span class="product-description">
-                            <?= date('Y-m-d',$contributor->created_at) ?>
-                                </span>
-                        </div>
-                    </li>
-                    <?php endforeach; ?>
-                    <!-- /.item -->
-                </ul>
-                    
-                    <!-- /.users-list -->
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer text-center">
-                    <a href="/user/index" class="uppercase"><?= Yii::t('common', 'All Contributors') ?></a>
-                </div>
-                <!-- /.box-footer -->
-                </div>
-                <!--/.box -->
-            </div>
+            
             <!--Latest assessments-->
             <div class="col-md-8">
                 <!-- TABLE: LATEST ORDERS -->
@@ -223,6 +177,56 @@ $i = 1;
                     <!-- /.box-footer -->
                 </div>
                 <!-- /.box -->
+            </div>
+
+            <!--Latest contributors-->
+            <div class="col-md-4">
+                <!-- USERS LIST -->
+                <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><?= Yii::t('common', 'Latest Contributors') ?></h3>
+
+                    <div class="box-tools pull-right">
+                    <!-- <span class="label label-danger">8 New Members</span> -->
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                   
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                <ul class="products-list product-list-in-box">
+                    <?php foreach($contributors->getModels() as $contributor): ?>
+                    <li class="item">
+                        <div class="product-img">
+                            <?php if($contributor->userProfile->avatar != null):?>
+                                <img src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">
+                            <?php else:?>    
+                                <img alt="<?= $contributor->userProfile->fullname ?>" avatar="<?= $contributor->userProfile->fullname ?>">
+                            <?php endif;?>    
+                        </div>
+                        <div class="product-info">
+                            <a class="product-title" href="/user/view?id=<?= $contributor->id ?>"><?= $contributor->userProfile->fullname ?>
+                            
+                            </a>
+                            <span class="product-description">
+                            <?= date('Y-m-d',$contributor->created_at) ?>
+                                </span>
+                        </div>
+                    </li>
+                    <?php endforeach; ?>
+                    <!-- /.item -->
+                </ul>
+                    
+                    <!-- /.users-list -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                    <a href="/user/index" class="uppercase thirdBtn"><?= Yii::t('common', 'All Contributors') ?></a>
+                </div>
+                <!-- /.box-footer -->
+                </div>
+                <!--/.box -->
             </div>
         </div>
 

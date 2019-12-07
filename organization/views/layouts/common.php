@@ -153,7 +153,7 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
         <strong>&nbsp;</strong>
         <div class="pull-right">
             <!-- <?php echo Yii::powered() ?> -->
-        selfassesment &copy;  <?php echo date('Y') ?>
+            <?= $organization->name ?> &copy;  <?php echo date('Y') ?>
         </div>
   </footer>
 </div><!-- ./wrapper -->

@@ -1149,7 +1149,7 @@ header nav a {
   border-top: 0;
   text-align: center;
   /* position: absolute; */
-    width: calc(100% - 300px);;
+    width: calc(100% - 300px);
     margin-right: 300px !important;
   /* margin: 0 !important; */
   display: flex;
