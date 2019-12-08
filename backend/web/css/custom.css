@@ -1345,4 +1345,21 @@ transition: all .5s ease-in-out;
 .actionBtns .btn{
   margin-left: 10px;
 }
+
+table.table thead tr:first-child {
+  background: #333;
+  border-bottom: 5px solid #f4941b;
+}
+
+table.table thead tr th {
+  color: white;
+}
+
+table.table thead tr th a {
+  color: white;
+}
+
+.nav.nav-pills.innernavs {
+  margin-bottom: 20px;
+}
 /* *************************************************************************CONTENT DASHBOARD END*************** */
