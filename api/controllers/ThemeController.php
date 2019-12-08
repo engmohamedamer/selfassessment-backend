@@ -14,28 +14,28 @@ use yii\web\NotFoundHttpException;
 class ThemeController extends RestController
 {
 
-    public function  behaviors()
-    {
-        $behaviors = parent::behaviors();
-        // remove authentication filter if there is one
-        unset($behaviors['authenticator']);
-
-        if (isset(apache_request_headers()['Authorization'])) {
-            $behaviors['authenticator'] = [
-                'class' => CompositeAuth::class,
-                'authMethods' => [
-                    HttpBearerAuth::class,
-                ]
-            ];
-            $behaviors['authenticator']['except'] = ['options'];
-        }
-        return $behaviors;
-    }
+//    public function  behaviors()
+//    {
+//        $behaviors = parent::behaviors();
+//        // remove authentication filter if there is one
+//        unset($behaviors['authenticator']);
+//
+//        if (isset(apache_request_headers()['Authorization'])) {
+//            $behaviors['authenticator'] = [
+//                'class' => CompositeAuth::class,
+//                'authMethods' => [
+//                    HttpBearerAuth::class,
+//                ]
+//            ];
+//            $behaviors['authenticator']['except'] = ['options'];
+//        }
+//        return $behaviors;
+//    }
 
     public function actionIndex(){
 
         $params = \Yii::$app->request->get();
-        $locale = $params['lang'] ?:null;
+        $locale = isset($params['lang']) ?:null;
         if (\Yii::$app->user->identity) {
             if (\Yii::$app->user->identity->userProfile->locale == 'ar-AR') {
                 $locale = 'ar';
