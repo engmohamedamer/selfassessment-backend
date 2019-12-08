@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cairo&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cairo:400,600,700,900&display=swap&subset=arabic');
 
 /*---------------------------------- End of fonts ---------------------------------- */
 
@@ -51,7 +51,7 @@ ul {
 }
 
 .control-sidebar, .control-sidebar:before {
-    left: -250px;
+    left: -300px;
     right: auto;
     transition: left .3s ease-in-out;
 }
@@ -110,7 +110,7 @@ ul {
 @media (max-width: 991.98px) {
     .main-sidebar, .main-sidebar:before {
         box-shadow: none!important;
-        margin-right: -250px;
+        margin-right: -300px;
         margin-left: 0;
     }
 
@@ -125,7 +125,7 @@ ul {
 }
 
 .sidebar-collapse .main-sidebar, .sidebar-collapse .main-sidebar:before {
-    margin-right: -250px;
+    margin-right: -300px;
 }
 
 .main-sidebar {
@@ -321,4 +321,41 @@ ul {
   }
   .emptyassessment .name{
       float: right;
+  }
+
+/******************************************************************************/
+.content-wrapper, .main-footer, .main-header{
+    margin-right: 300px;
+}
+.dropdown-footer, .dropdown-header{
+    text-align: right;
+}
+.skin-blue .sidebar-menu>li>a i {
+    margin: 0;
+    margin-left: 5px;
+}
+.addOrg{
+    right: 15px;
+    left: auto;
+}
+.main-sidebar .logo img.en{
+    display: none;
+}
+.main-sidebar .logo img.ar{
+    display: block;
+}
+.fa-angle-left:before {
+    content: "\f104" !important;
+  }
+  .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+    left: 20px;
+    right: auto;  
+  }
+  .dropdown-menu{
+    left: 0;
+    right: auto;
+  }
+  .actionBtns .btn{
+    margin-left: 0;
+    margin-right: 10px;
   }

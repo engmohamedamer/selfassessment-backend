@@ -19,33 +19,34 @@ echo Menu::widget([
     'options' => ['class' => 'sidebar-menu tree', 'data' => ['widget' => 'tree']],
     'linkTemplate' => '<a href="{url}">{icon}<span>{label}</span><span class="pull-right-container">{right-icon}{badge}</span></a>',
     'submenuTemplate' => "\n<ul class=\"treeview-menu\">\n{items}\n</ul>\n",
-    'activateParents' => true,
+    'activateParents' => true, 
     'items' => [
 
 
         [
             'label' => Yii::t('backend', 'Dashboard'),
             'url' => '/',
-            'icon' => '<i class="nav-icon fas fa-tachometer-alt"></i>',
+            'icon' => '<i class="icofont-1x icofont-dashboard-web mr-2 ml-2"></i>',
             'options' => ['class' => 'nav-item'],
+            'active' =>  (Yii::$app->controller->id == 'site'),
         ],
 
         [
             'label' => Yii::t('common', 'My Organization'),
             'url' => '#',
-            'icon' => '<i class="nav-icon fas fa-th"></i>',
+            'icon' => '<i class="icofont-1x icofont-institution mr-2 ml-2"></i>',
             'options' => ['class' => 'treeview'],
-            'active' => (Yii::$app->controller->module->id == 'organization'),
+            'active' => (Yii::$app->controller->id == 'organization'),
             'items' => [
                 [
                     'label' => Yii::t('common', 'Organization Show'),
-                    'icon' => '<i class="far fa-circle nav-icon"></i>',
+                    'icon' => '<i class="icofont-eye-alt mr-2 ml-2"></i>',
                     'url' => ['/organization/view'],
                     'options' => ['class' => 'nav-item'],
                 ],
                 [
                     'label' => Yii::t('common', 'Organization Update'),
-                    'icon' => '<i class="far fa-circle nav-icon"></i>',
+                    'icon' => '<i class="icofont-edit mr-2 ml-2"></i>',
                     'url' => ['/organization/update'],
                     'options' => ['class' => 'nav-item'],
                 ],
@@ -55,16 +56,16 @@ echo Menu::widget([
         [
             'label' => Yii::t('common', 'Contributors'),
             'url' => '/user/index',
-            'icon' => '<i class="fas fa-users nav-icon"></i>',
+            'icon' => '<i class="icofont-users-social mr-2 ml-2"></i>',
             'options' => ['class' => 'nav-item'],
-            'active' => (Yii::$app->controller->module->id == 'user'),
+            'active' => (Yii::$app->controller->id == 'user'),
         ],
 
 
         [
             'label' => Yii::t('common', 'Assessments List'),
             'url' => '/assessment',
-            'icon' => '<i class="fas fa-th nav-icon"></i>',
+            'icon' => '<i class="icofont-papers mr-2 ml-2"></i>',
             'options' => ['class' => 'nav-item'],
             'active' => (Yii::$app->controller->module->id == 'assessment'),
         ],
@@ -73,9 +74,9 @@ echo Menu::widget([
         [
             'label' => Yii::t('backend', 'Corrective Action Report'),
             'url' => '/corrective-action-report',
-            'icon' => '<i class="fas fa-th nav-icon"></i>',
+            'icon' => '<i class="icofont-tick-boxed mr-2 ml-2"></i>',
             'options' => ['class' => 'nav-item'],
-            'active' => (Yii::$app->controller->module->id == 'corrective-action-report'),
+            'active' => (Yii::$app->controller->id == 'corrective-action-report'),
         ],
 
     ],

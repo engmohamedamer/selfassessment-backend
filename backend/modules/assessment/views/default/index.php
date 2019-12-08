@@ -20,17 +20,16 @@ BootstrapPluginAsset::register($this);
 ?>
     <div id="survey-index">
         <div class="content-header">
-        <div class="row">
-            <div class="col-md-6">
-                <h1>
-               <?= \Yii::t('survey', 'Assessments List') ?>
-                </h1>
+            <div class="">
+                <div class="">
+                    <h1>
+                <?= \Yii::t('survey', 'Assessments List') ?>
+                    </h1>
+                </div>
+                <div class=" actionBtns">
+                    <a href="assessment/default/create" class="btn btn btn-primary"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('survey', 'Create new survey') ?></a>
+                </div>
             </div>
-            <div class="col-md-6 actionBtns">
-
-                <?php echo Html::a(\Yii::t('survey', 'Create new survey'), Url::toRoute(['default/create']), ['class' => 'btn btn-primary']); ?>
-            </div>
-        </div>
         </div>
         <div class="row">
 

@@ -96,4 +96,10 @@ class UserSearch extends User
 
         return $dataProvider;
     }
+
+    public static function listAdminInMenu()
+    {
+        return  User::find()->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
+            ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_MANAGER])->limit(3)->orderBy('user.id DESC')->all();
+    }
 }

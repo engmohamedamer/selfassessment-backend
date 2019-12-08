@@ -2,9 +2,11 @@
 
 
 use backend\assets\BackendAsset;
+use backend\models\search\UserSearch;
 use backend\modules\system\models\SystemLog;
 use backend\widgets\Menu;
 use common\models\TimelineEvent;
+use common\models\User;
 use yii\bootstrap\Alert;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -12,6 +14,35 @@ use yii\helpers\Url;
 use yii\log\Logger;
 use yii\widgets\Breadcrumbs;
 
+
+$users = UserSearch::listAdminInMenu();
+$admins = [];
+foreach ($users as $key => $user) {
+    if ($user->userProfile->avatar) {
+        $img = "<img class='user-image' src='{$user->userProfile->avatar}' alt='{$user->userProfile->fullname}'>";
+    }else{
+        $img = "<img class='user-image' alt='{$user->userProfile->fullname}' avatar='{$user->userProfile->fullname}'>";
+    }
+    $admins[] = [
+        'label' => $user->userProfile->fullName,
+        'icon' => $img,
+        'url' => ['/user/view?id='.$user->id],
+        'options' => ['class' => 'sub-nav-item'],
+    ];
+}
+
+$admins[] = [
+    'label' => Yii::t('common', 'Add Adminstrator'),
+    'icon' => '<i class="icofont-ui-add"></i>',
+    'url' => ['/user/create'],
+    'options' => ['class' => 'sub-nav-item add-admin'],
+];
+$admins[] =[
+    'label' => Yii::t('common', 'All Adminstrators'),
+    'url' => ['/user/index?user_role=manager'],
+    'options' => ['class' => 'sub-nav-item all-admins'],
+];
+// return var_dump($admins);
 
 echo Menu::widget([
     'options' => ['class' => 'sidebar-menu tree', 'data' => ['widget' => 'tree']],
@@ -63,35 +94,9 @@ echo Menu::widget([
             'icon' => '<i class="icofont-1x icofont-user-suited"></i>',
             'url' => '#',
             'options' => ['class' => 'treeview'],
-            'active' => (Yii::$app->request->get('user_role') == 'manager'),
+            'active' =>  (Yii::$app->controller->id == 'user'),
             'visible' => (Yii::$app->user->can('administrator') or  Yii::$app->user->can('manager') ),
-            'items' => [
-
-                [
-                    'label' => Yii::$app->user->identity->userProfile->fullName,
-                    'icon' => '<img src="./img/anonymous.jpg"/>',
-                    'url' => ['/user/view?id=2'],
-                    'options' => ['class' => 'sub-nav-item'],
-        
-                ],
-                [
-                    'label' => Yii::t('common', 'Add Adminstrator'),
-                    'icon' => '<i class="icofont-ui-add"></i>',
-                    'url' => ['/user/index?user_role=manager'],
-                    'options' => ['class' => 'sub-nav-item add-admin'],
-        
-                ],
-                [
-                    'label' => Yii::t('common', 'All Adminstrators'),
-                    'url' => ['/user/index?user_role=manager'],
-                    'options' => ['class' => 'sub-nav-item all-admins'],
-        
-                ],
-                
-                
-            ],
-            
-
+            'items' => $admins,
         ],
 
 

@@ -55,11 +55,11 @@ class QuestionController extends Controller
         ];
     }
 
-    public function actionCreate($id)
+    public function actionCreate($id,$type = 6)
     {
         $survey = $this->findSurveyModel($id);
         $question = new SurveyQuestion();
-        $question->loadDefaultValues();
+        $question->loadDefaultValues(true,$type);
         // $question->survey_question_name = \Yii::t('survey', 'New Question');
         $survey->link('questions', $question);
 
@@ -263,6 +263,15 @@ class QuestionController extends Controller
     protected function findSurveyModel($id)
     {
         if (($model = Survey::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    protected function findSurveyModelValidate($id)
+    {
+        if (($model = SurveyValidate::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

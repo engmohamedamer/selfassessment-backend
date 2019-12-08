@@ -21,19 +21,25 @@ $model->roles =Yii::$app->session->get('UserRole');
 
 <!-- Content Header (Page header) -->
 <div class="content-header">
-    <div class="row mb-2">
-        <div class="col-md-6">
-            <h1 class="m-0 text-dark"><?= Yii::t('backend','Users Data');?> </h1>
+    <div>
+        <div class="">
+            <h1><?= Yii::t('backend','Users Data');?> </h1>
         </div>
-        
-        <!-- /.col -->
+        <div class=" actionBtns">
+            <!-- <?php echo Html::submitButton(Yii::t('backend', 'Save'), ['class' => 'btn btn-success', 'name' => 'signup-button']) ?> -->
+            <button type="submit" class="btn btn-success"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('backend','Save');?></button>
     </div>
-    <!-- /.row -->
+    </div>
+    
+    <!-- /.col -->
 </div>
 <!-- /.content-header -->
+
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
+            
+            
             <div class="card-body">
                
                         <?php echo $form->field($profile, 'picture')->widget(Upload::class, [
@@ -75,7 +81,6 @@ $model->roles =Yii::$app->session->get('UserRole');
 
                 <div class="row">
                     <div class="col-md-12 mt-5 mb-5 center-align">
-                        <?php echo Html::submitButton(Yii::t('backend', 'Save'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                     </div>
                 </div>
             </div>

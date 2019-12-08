@@ -341,6 +341,7 @@ class DefaultController extends Controller
     public function actionUpdateEditable($property)
     {
         $model = $this->findModel(\Yii::$app->request->post('id'));
+        $model->scenario = 'scenarioupdate';
 
         // Check if there is an Editable ajax request
         if (isset($_POST['hasEditable'])) {

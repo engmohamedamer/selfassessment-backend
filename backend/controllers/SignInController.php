@@ -93,40 +93,40 @@ class SignInController extends BackendController
         return $this->goHome();
     }
 
-    public function actionProfile()
-    {
-        $model = Yii::$app->user->identity->userProfile;
-        if ($model->load($_POST) && $model->save()) {
-            Yii::$app->session->setFlash('alert', [
-                'options' => ['class' => 'alert-success'],
-                'body' => Yii::t('backend', 'Your profile has been successfully saved', [], $model->locale)
-            ]);
-            return $this->refresh();
-        }
-        return $this->render('profile', ['model' => $model]);
-    }
+    // public function actionProfile()
+    // {
+    //     $model = Yii::$app->user->identity->userProfile;
+    //     if ($model->load($_POST) && $model->save()) {
+    //         Yii::$app->session->setFlash('alert', [
+    //             'options' => ['class' => 'alert-success'],
+    //             'body' => Yii::t('backend', 'Your profile has been successfully saved', [], $model->locale)
+    //         ]);
+    //         return $this->refresh();
+    //     }
+    //     return $this->render('profile', ['model' => $model]);
+    // }
 
-    public function actionAccount()
-    {
-        $user = Yii::$app->user->identity;
-        $model = new AccountForm();
-        $model->username = $user->username;
-        $model->email = $user->email;
-        if ($model->load($_POST) && $model->validate()) {
-            $user->username = $model->username;
-            $user->email = $model->email;
-            if ($model->password) {
-                $user->setPassword($model->password);
-            }
-            $user->save();
-            Yii::$app->session->setFlash('alert', [
-                'options' => ['class' => 'alert-success'],
-                'body' => Yii::t('backend', 'Your account has been successfully saved')
-            ]);
-            return $this->refresh();
-        }
-        return $this->render('account', ['model' => $model]);
-    }
+    // public function actionAccount()
+    // {
+    //     $user = Yii::$app->user->identity;
+    //     $model = new AccountForm();
+    //     $model->username = $user->username;
+    //     $model->email = $user->email;
+    //     if ($model->load($_POST) && $model->validate()) {
+    //         $user->username = $model->username;
+    //         $user->email = $model->email;
+    //         if ($model->password) {
+    //             $user->setPassword($model->password);
+    //         }
+    //         $user->save();
+    //         Yii::$app->session->setFlash('alert', [
+    //             'options' => ['class' => 'alert-success'],
+    //             'body' => Yii::t('backend', 'Your account has been successfully saved')
+    //         ]);
+    //         return $this->refresh();
+    //     }
+    //     return $this->render('account', ['model' => $model]);
+    // }
 
     /**
      * @return string|Response

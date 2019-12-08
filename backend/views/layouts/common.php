@@ -44,11 +44,11 @@ if(Yii::$app->user->isGuest){
         <!-- Sidebar toggle button-->
         <!-- <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         </a> -->
-
-        <div class="white-text dropdown-item dropdown-header"><div><?= Yii::t('common','Tamkeen Technologies Adminstrator')?></div></div>
-        
+        <div class="dropdown-item dropdown-header">
+            <div><?= Yii::t('common','Tamkeen Technologies Adminstrator')?></div>
+        </div>
         <div class='user-info-block'>
-            <span class="white-text dropdown-item dropdown-header"><?= Yii::t('common','welcome')?><div><?php echo strtoupper(Yii::$app->user->identity->userProfile->fullName) ?></div></span>
+            <span class="dropdown-item dropdown-header"><?= Yii::t('common','welcome')?>, <?php echo Yii::$app->user->identity->userProfile->fullName ?></span>
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
@@ -56,17 +56,20 @@ if(Yii::$app->user->isGuest){
                 <li class="dropdown user user-menu">
 
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>"
-                                class="user-image">
+                    <?php if(Yii::$app->user->identity->userProfile->avatar != null):?>
+                        <img class="user-image" src="<?= Yii::$app->user->identity->userProfile->avatar ?>" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>">
+                    <?php else:?>    
+                        <img class="user-image" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>" avatar="<?= Yii::$app->user->identity->userProfile->fullname ?>">
+                    <?php endif;?>
 
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="/sign-in/profile" class="dropdown-item">
+                        <a href="/user/profile" class="dropdown-item">
                             <i class="fas fa-user mr-2"></i> <?= Yii::t('common','My Profile')?>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="/sign-in/account" class="dropdown-item">
+                        <a href="/user/account" class="dropdown-item">
                             <i class="fas fa-users-cog mr-2"></i>  <?= Yii::t('common','My Account')?>
                         </a>
                         <div class="dropdown-divider"></div>
@@ -89,7 +92,9 @@ if(Yii::$app->user->isGuest){
     <aside class="main-sidebar ">
 
         <a href="/" class="logo">
-            <img src="/img/tamkeen-logo.png" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
+            <img src="/img/tamkeen-logo2.png" class="ar" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
+            <img src="/img/tamkeen-logo2En.png" class="en" alt="<?php echo Yii::$app->name ?>" title="<?php echo Yii::$app->name ?>" class="brand-image ">
+
         </a>
         <!-- Sidebar -->
         <section class="sidebar">
@@ -118,6 +123,9 @@ if(Yii::$app->user->isGuest){
             </nav>
             <!-- /.sidebar-menu -->
         </section>
+
+        <!-- <a href="/organization/create" class="btn btn-primary addOrg"><i class="icofont-plus"></i> <?= Yii::t('backend','New Organization') ?></a> -->
+
         <!-- /.sidebar -->
     </aside>
 

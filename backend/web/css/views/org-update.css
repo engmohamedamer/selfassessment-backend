@@ -5,7 +5,7 @@
 .theme-edit .theme-nav ul.nav, .theme-edit .theme-nav ul.nav li, .theme-edit .theme-nav ul.nav li a {width:100%; margin: 0}
 .theme-edit .theme-nav ul.nav:hover {color: white; }
 .theme-nav .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus { color: white !important;}
-.theme-edit .theme-nav ul.nav li.active a { width: 100%;}
+.theme-edit .theme-nav ul.nav li.active a { width: 100%; border: 0;}
 .theme-nav .nav-stacked>li.active>a, .nav-stacked>li.active>a:hover { border-left: none !important;}
 .theme-edit .theme-nav ul.nav a {color: #7B89B3; padding: 10px; font-size: 15px; text-align: center;}
 .theme-edit .theme-nav ul.nav a:hover {color: white !important; background-color: #434d6e; }
