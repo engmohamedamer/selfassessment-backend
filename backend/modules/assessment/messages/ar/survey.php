@@ -88,5 +88,15 @@ return [
     'Level Title'=>'عنوان المستوي',
     'From a percentage'=>'من نسبة',
     'To a percentage'=>'الي نسبة',
-    'Status'=>'حالة الاستبيان'
+    'Status'=>'حالة الاستبيان',
+    'Dropdown'=>'خيار واحد من قائمة',
+    'Ranking'=>'تصنيف',
+    'Rating'=>'تقييم',
+    'Single textbox'=>'سؤال نصي',
+    'Multiple textboxes'=>'مربعات النص متعددة',
+    'Comment box'=>'صندوق التعليقات',
+    'Date/Time'=>'تاريخ / وقت',
+    'Calendar'=>'التقويم',
+    'File'=>'ملف',
+    'One choise of list'=>'خيار واحد من متعدد',
 ];
