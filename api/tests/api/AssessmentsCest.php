@@ -17,16 +17,30 @@ class AssessmentsCest
                 'dataFile' => codecept_data_dir() . 'assessments.php'
             ],
         ]);
+        $I->amBearerAuthenticated('fR4KSiyuXpHYst5c4JSDY0kJ2HLuOb05jMV4FDmD');
     }
 
     // tests
     public function list(ApiTester $I)
     {
-    	$I->amBearerAuthenticated('fR4KSiyuXpHYst5c4JSDY0kJ2HLuOb05jMV4FDmD');
     	$I->sendGET('assessments');
         $I->seeResponseCodeIs(200);
         $I->seeResponseContainsJson([
         	'items'=>[
+                [
+                    'id'=>2,
+                    'isClosed'=> true,
+                    'status'=> 0,
+                    'survey_time_to_pass'=>10,
+                    'expiryDate'=>'2019-12-26 13:50:00',
+                ],
+                [
+                    'id'=>1,
+                    'isClosed'=> false,
+                    'status'=> 0,
+                    'survey_time_to_pass'=>10,
+                    'expiryDate'=>'2019-12-26 13:50:00',
+                ]
         	],
     	]);
     	// $this->assessment = $I->grabDataFromResponseByJsonPath('$.items..id');
@@ -37,7 +51,6 @@ class AssessmentsCest
 	*/
     public function view(ApiTester $I, \Codeception\Example $example)
     {
-    	$I->amBearerAuthenticated('fR4KSiyuXpHYst5c4JSDY0kJ2HLuOb05jMV4FDmD');
     	$I->sendGET($example['url']);
         $I->seeResponseCodeIs($example['code']);
         $I->seeResponseContainsJson($example['contains']);
@@ -57,7 +70,7 @@ class AssessmentsCest
         		],
     		],
     		[
-            	'url'=>'assessments/77',
+            	'url'=>'assessments/2',
         		'code'=>404,
         		'contains'=>[
         			'errors'=>['message'=>'Survey not found'],
@@ -72,7 +85,6 @@ class AssessmentsCest
 	*/
     protected function answerAssessments(ApiTester $I, \Codeception\Example $example)
     {
-    	$I->amBearerAuthenticated('fR4KSiyuXpHYst5c4JSDY0kJ2HLuOb05jMV4FDmD');
     	$I->sendPUT($example['url']);
         $I->seeResponseContainsJson($example['contains']);
         $I->seeResponseCodeIs($example['code']);
