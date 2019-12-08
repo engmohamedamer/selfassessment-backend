@@ -62,6 +62,8 @@ BootstrapPluginAsset::register($this);
                             <div class="image" <?php
                             if (!empty($image)) {
                                 echo "style='background-image: url($image)'";
+                            }else{
+                                echo "style='background-image: url(/img/assessment.jpeg)'";
                             }
                             ?>></div>
                             <div class="description">

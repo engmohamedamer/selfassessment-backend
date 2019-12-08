@@ -176,10 +176,10 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
                 'target' => ExportMenu::TARGET_BLANK,
                 'fontAwesome' => true,
                 'dropdownOptions' => [
-                    'label' => 'Full',
+                    'label' => Yii::t('backend','Full'),
                     'class' => 'btn btn-default',
                     'itemsBefore' => [
-                        '<li class="dropdown-header">Export All Data</li>',
+                        '<li class="dropdown-header">'.Yii::t('backend','Export All Data').'</li>',
                     ],
                 ],
                 'exportConfig' => [
