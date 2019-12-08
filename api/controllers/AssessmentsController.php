@@ -62,11 +62,11 @@ class AssessmentsController extends  MyActiveController
     public function actionView($id)
     {
         $user= User::findOne(['id'=> \Yii::$app->user->identity->getId()]) ;
-        if(! $id) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],'404');
+        if(! $id) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],404);
         $profile=$user->userProfile;
 
         $surveyObj = SurveyResource::findOne(['survey_id'=>$id,'survey_is_visible' => 1]);
-        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found', 404]);
+        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found'],404);
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
     }
@@ -78,7 +78,7 @@ class AssessmentsController extends  MyActiveController
         $profile=$user->userProfile;
 
         $surveyObj = SurveyReportResource::findOne(['survey_id'=>$id,'survey_is_visible' => 1]);
-        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found', 404]);
+        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found'],404);
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
     }
@@ -92,7 +92,7 @@ class AssessmentsController extends  MyActiveController
 
         $surveyObj = SurveyReportResource::findOne(['survey_id'=>$id]); //,'survey_is_visible' => 1
 
-        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found', 404]);
+        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found'],404);
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
     }
@@ -100,18 +100,18 @@ class AssessmentsController extends  MyActiveController
     public function actionUpdate($id)
     {
         $user= User::findOne(['id'=> \Yii::$app->user->identity->getId()]) ;
-        if(! $id) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],'404');
+        if(! $id) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],404);
         $profile=$user->userProfile;
 
         $surveyObj = SurveyResource::findOne(['survey_id'=>$id,'survey_is_visible' => 1]);
-        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found', 404]);
+        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found'],404);
 
         $params = \Yii::$app->request->post();
 
         //add survey state
         $survey_done =  $this->CheckState($surveyObj->survey_id,$params['status'],$params['pageNo']);
 
-        if(!$survey_done)  return ResponseHelper::sendFailedResponse(['message'=>'Survey is Completed']);
+        if(!$survey_done)  return ResponseHelper::sendFailedResponse(['message'=>'Survey is Completed'],404);
 
         foreach ($params['answers'] as $key=>$value) {
 
