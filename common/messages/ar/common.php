@@ -19,12 +19,12 @@
 return [
 
      ''=>'',
-     ''=>'',
-     'Add Adminstrator'=>'إضافة مسئول',
-     'All Adminstrators'=>'كل المسئولين',
-     'Tamkeen Technologies Adminstrator'=>'مسئول تمكين للتقنيات',
-     'Tamkeen Adminstrators'=>'مسئولي تمكين',
-     'Tamkeen Technologies Adminstrators'=>'مسئولي تمكين للتقنيات',
+     'Organization Adminstrator'=>'مسؤول المؤسسة',
+     'Add Adminstrator'=>'إضافة مسؤول',
+     'All Adminstrators'=>'كل المسؤولين',
+     'Tamkeen Technologies Adminstrator'=>'مسؤول تمكين للتقنيات',
+     'Tamkeen Adminstrators'=>'مسؤولي تمكين',
+     'Tamkeen Technologies Adminstrators'=>'مسؤولي تمكين للتقنيات',
      'Assessments List'=>'قائمة الاستبيانات',
      'Welcome'=>'مرحبا',
      'Full Name'=>'اسم المستخدم',
@@ -277,4 +277,6 @@ return [
     'Answers'=>'الأجابات',
     'Closed'=>'مغلق',
     'Visible'=>'مرئى',
+    'Account Created Successfully'=>'تم انشاء الحساب بنجاح',
+    'These credentials do not match our records.'=>'البيانات المدخلة غير متطابقة مع البيانات المسجلة لدينا.',
 ];

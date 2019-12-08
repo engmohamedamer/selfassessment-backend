@@ -26,6 +26,9 @@ if(Yii::$app->user->isGuest){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+    <link rel="stylesheet" href="/css/icofont/icofont.min.css">
+
+
     <?php echo Html::csrfMetaTags() ?>
     <title><?php echo Html::encode($this->title) ?></title>
     <?php
@@ -81,16 +84,16 @@ if(Yii::$app->user->isGuest){
             color: white !important;
             background-color: <?= $brandPrimColor ?> !important;
             border: 1px solid <?= $brandPrimColor ?> !important;
-            height: 44px !important;
+            height: 24px !important;
             min-width: 78px !important;
-            padding: 0 20px !important;
+            padding: 0 16px !important;
             font-size: 1rem !important;
             font-weight: 500 !important;
             border-radius: 5px !important;
             opacity: 1 !important;
-            font-size: 20px !important;
-            line-height: 40px !important;
-            transition: all .2s !important;
+            font-size: 16px !important;
+            line-height: 16px !important;
+            /* transition: all .2s !important; */
 
         }
 
@@ -102,14 +105,14 @@ if(Yii::$app->user->isGuest){
             color: <?= $brandPrimColor ?> !important;
             background-color: transparent !important;
             border: 1px solid <?= $brandPrimColor ?> !important;
-            height: 44px !important;
+            height: 24px !important;
             min-width: 78px !important;
-            padding: 0 20px !important;
+            padding: 0 16px !important;
             font-size: 1rem !important;
             font-weight: 500 !important;
             border-radius: 5px !important;
-            font-size: 20px !important;
-            line-height: 40px !important;
+            font-size: 16px !important;
+            line-height: 16px !important;
             transition: all .2s !important;
 
         }
@@ -121,21 +124,25 @@ if(Yii::$app->user->isGuest){
 
 
         .thirdBtn {
-            color: #000 !important;
+            color: <?= $brandPrimColor ?> !important;
             background-color: transparent  !important;
-            height: 44px  !important;
+            height: 24px  !important;
             min-width: 78px  !important;
-            padding: 0 20px  !important;
+            padding: 0 16px  !important;
             font-size: 1rem  !important;
             box-shadow: none !important;
-            font-size: 20px !important;
-            line-height: 40px !important;
+            font-size: 16px !important;
+            line-height: 16px !important;
             transition: all .2s  !important;
+            border-radius: 5px !important;
+
 
         }
 
         .thirdBtn:hover {
-            color: <?= $brandPrimColor ?> !important;
+            color: white !important;
+            background-color: <?= $brandPrimColor ?>  !important;
+            text-decoration:none;
         }
 
         section.content .survey-container .survey-block .survey-name-wrap,  section.content .survey-container .survey-block .survey-question-view-wrap, section.content .kv-editable-popover .survey-block .survey-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-view-wrap {
@@ -184,22 +191,120 @@ if(Yii::$app->user->isGuest){
 
 
         .addQFixed {
-            /* position: fixed; */
-            right: 20%;
-            bottom: 10%;
+            position: fixed;
+            right: 300px;
+            bottom: 0;
             z-index: 99999;
-            /* background: white; */
-            /* padding: 10px; */
-            /* height:50%; */
-            overflow:auto;
+            background: white;
+            padding: 10px 5px;
+            height: auto;
+            overflow: hidden;
+            width: calc(100% - 300px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            /* border: 2px solid #ddd; */
+            /* border-radius: 10px; */
+            box-shadow: 0 0 10px 0 #c5c5c5;
+            margin:0 !important;
 
         }
+
+        .addQFixed a:hover {
+            background: <?= $brandPrimColor ?>;
+            color:white !important;
+            text-decoration: none !important;
+        }
+        .addQFixed a {
+            width: 9%;
+            display:inline-block;
+            color: #7d7d7d;
+            padding: 10px 0;
+            border-radius: 10px;
+            /* border-bottom: 1px solid #ddd; */
+            font-size: 35px;
+            margin: 0 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            /* transition: all ease-in-out .2s; */
+        }
+
+        .addQFixed a i {
+            font-size: 35px;
+
+        }
+
+        .addQFixed a span {
+            font-size: 12px;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            margin: 7px 0;
+        }
+
+        .addQFixed .saveSurveyBtn {
+            margin: 20px 0 !important;
+        }
+
+        .survey-details {
+            background: #fff;
+            position: fixed;
+            bottom: 110px;
+            right: 25px;
+            width: 250px;
+            z-index: 99999;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        .inner-details {
+            border: 2px dashed <?= $brandPrimColor ?>;
+            height:100%;
+            border-radius:10px;
+            padding:10px;
+        }
+
+        .inner-details h5 {
+            color: <?= $brandPrimColor ?>;
+        }
+
+        .inner-details p {
+            color: #333;
+        }
+
+        .inner-details p span {
+            color: #6e84a3;
+        }
+
+        .inner-details p i {
+            display:inline-block;
+        }
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
 
         .custom-dashboard .box-danger {
             border-top-color: <?= $brandPrimColor ?> !important;
         }
         .theme-edit .theme-nav ul.nav li.active a{
             background-color:<?= $brandPrimColor ?> !important;
+            border: 0;
         }
         .login .form-group .btn{
             background:<?= $brandPrimColor ?> !important;
@@ -208,7 +313,34 @@ if(Yii::$app->user->isGuest){
             background: <?= $brandSecColor ?> !important;
             color: #333;
         }
+
+        .treeview.menu-open >a{
+            color: <?= $brandPrimColor ?> !important;
+        }
+
+
+        .content-header h1 {
+            border-right: 5px solid <?= $brandPrimColor ?> !important ;
+            border-left: 5px solid <?= $brandPrimColor ?> !important;
+        }
+
+        .sidebar-menu>li.active>a {
+            background: <?= $brandPrimColor ?>!important;
+            color: white !important;
+        }
+
+        .btn-success{
+            background-color: <?= $brandPrimColor ?> !important;
+            border-color: <?= $brandPrimColor ?> !important;
+        }
+
+        .table td.skip-export a:hover{
+            -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+            background: <?= $brandPrimColor ?>;
+        }
         
+                    
 
 
     </style>

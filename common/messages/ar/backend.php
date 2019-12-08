@@ -441,7 +441,7 @@ return [
     'Birthdate'=>'تاريخ الميلاد',
     'CID'=>'رقم الحجز',
     'Schools Rep.'=>'قائد المنشاه التعليمية',
-    'Ministry Supervisor'=>'مسئول الوزارة',
+    'Ministry Supervisor'=>'مسؤول الوزارة',
     'User Details'=>'بيانات المستخدم',
     'Permissions'=>'الصلاحيات',
     'Main Details'=>'البيانات الأساسية',

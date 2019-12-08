@@ -33,12 +33,12 @@ class UserController extends  RestController
             ->one();
 
         if(! $user){
-            return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','Please Enter Valid Email')]);
+            return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','These credentials do not match our records.')],400);
         }
 
           
         if(! $params['password']){
-            return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','Please Enter Password')]);
+            return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','These credentials do not match our records.')],400);
         }
 
         $valid_password = Yii::$app->getSecurity()->validatePassword($params['password'], $user->password_hash);
@@ -47,7 +47,7 @@ class UserController extends  RestController
             
             $checkIsActive = User::find()->active()->andWhere(['or', ['username' => $params['identity'] ], ['email' => $params['identity']]])->one();
             if(!$checkIsActive){
-                return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common',Yii::t('common','Your account not activated yet'))]);
+                return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common',Yii::t('common','Your account not activated yet'))],401);
             }
 
             //check role
@@ -55,7 +55,7 @@ class UserController extends  RestController
            $currentRole=   array_keys($roles)[0];
 
            if( $currentRole != \common\models\User::ROLE_USER){
-               return ResponseHelper::sendFailedResponse(['INVALID_ROLE'=>'Invalid User Role']);
+               return ResponseHelper::sendFailedResponse(['INVALID_ROLE'=>Yii::t('common','You do not have access')],401);
            }
 
             $user->access_token = Yii::$app->getSecurity()->generateRandomString(40);
@@ -63,7 +63,7 @@ class UserController extends  RestController
             $data = ['token'=> $user->access_token, 'profile'=> $user ];
             return ResponseHelper::sendSuccessResponse($data);
         }else{
-            return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','Invalid Email or Password')]);
+            return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','These credentials do not match our records.')],400);
         }
     }
 
@@ -71,23 +71,23 @@ class UserController extends  RestController
 
         $params = \Yii::$app->request->post();
 
-        if ($params['locale'] == 'ar') {
-            \Yii::$app->language = 'ar';
+        if ($params['locale'] == 'en') {
+            \Yii::$app->language = 'en';
         }
 
         $organization = Organization::findOne(['slug'=>$params['organization']]);
 
         if (!$organization) {
-            return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>Yii::t('common','Organization Not Found')],401);
+            return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>Yii::t('common','Organization Not Found')],400);
         }
 
         $model = new SignupForm();
         if ($model->load(['SignupForm'=>$params]) && $user = $model->save($organization->id)) {
             $user= User::findOne(['id'=> $user->id]);
-            return ResponseHelper::sendSuccessResponse(['message'=>'Account Created Successfully']);
+            return ResponseHelper::sendSuccessResponse(['message'=>Yii::t('common','Account Created Successfully')]);
         }else{
             $errors =  ResponseHelper::customResponseError($model->errors);
-            return ResponseHelper::sendFailedResponse($errors,401);
+            return ResponseHelper::sendFailedResponse($errors,400);
         }
     }
 

@@ -12,21 +12,27 @@ $this->title = Yii::t('backend', 'Edit profile');
     ?>
 
 <?php $form = ActiveForm::begin() ?>
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div>
+    <div class="">
+        <h1><?= Html::encode($this->title) ?></h1>
+    </div>
+    <div class=" actionBtns">
+        <button type="submit" class="btn btn-success"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('backend','Update Data');?></button>
+
+    </div>
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.content-header -->
+
+
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="col-md-6">
-                    <h1><?= Html::encode($this->title) ?></h1>
-                </div>
-                <div class="col-md-6 actionBtns">
-                    <button type="submit" class="btn btn-success"><i class="icofont-verification-check"></i> <?= Yii::t('backend','Update Data');?></button>
-
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.content-header -->
+            
             <div class="card-body">
    
 

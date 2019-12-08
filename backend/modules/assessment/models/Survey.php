@@ -52,6 +52,7 @@ class Survey extends \yii\db\ActiveRecord
     public $level_from = null;
     public $level_to = null;
 
+    const SCENARIOUPDATE = 'scenarioupdate';
     /**
      * @inheritdoc
      */
@@ -79,7 +80,9 @@ class Survey extends \yii\db\ActiveRecord
             [['survey_name'], 'string', 'max' => 45],
             [['survey_descr'], 'string'],
             [['survey_tags', 'survey_image'], 'string', 'max' => 255],
-            [['survey_name','survey_expired_at'], 'required'],
+            // survey_expired_at
+            [['survey_name'], 'required'],
+            [['survey_expired_at'], 'required', 'on' => self::SCENARIOUPDATE],
             [['survey_wallet', 'survey_status', 'survey_created_by', 'survey_badge_id','org_id','survey_point'], 'integer'],
             ['survey_time_to_pass','integer','min'=>1],
             ['survey_point', 'compare', 'compareValue' => 0, 'operator' => '>=', 'type' => 'number'],

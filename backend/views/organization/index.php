@@ -40,20 +40,26 @@ echo newerton\fancybox3\FancyBox::widget([
 }
 </style>
 
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div>
+        <div class="">
+            <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+        <div class=" actionBtns">
+            <a href="/organization/create" class="btn btn-success"><i class="icofont-plus"></i> <?= Yii::t('common', 'Create Organization') ?></a>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->
+
+
 <div class="row">
 
     <div class="col-lg-12">
         <div class="card">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="col-md-6">
-                    <h1><?= Html::encode($this->title) ?></h1>
-                </div>
-                <div class="col-md-6 actionBtns">
-                    <a href="/organization/create" class="btn btn-success"><i class="icofont-plus"></i> <?= Yii::t('common', 'Create Organization') ?></a>
-                </div>
-            </div>
-            <!-- /.content-header -->
+            
 
             <div class="card-body">
 

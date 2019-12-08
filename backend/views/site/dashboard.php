@@ -13,18 +13,18 @@ $this->title = Yii::t('backend', 'Dashboard');
 ?>
 
 <!-- Content Header (Page header) -->
-<!-- <div class="content-header">
-    <div class="row mb-2">
-        <div class="col-sm-6">
+<div class="content-header">
+    <div class="">
+        <div class="">
             <h1 class=" m-0 text-dark"><?= Yii::t('backend','Dashboard') ?></h1>
         </div>
-        <div class="col-sm-6 actionBtns">
-            <a href="/organization/create" class="btn btn-primary"><?= Yii::t('backend','New Organization') ?> <i class="icofont-ui-add mr-2 ml-2"></i></a>
+        <div class=" actionBtns">
+            <a href="/organization/create" class="btn btn-primary"><i class="icofont-ui-add mr-2 ml-2"></i><?= Yii::t('backend','New Organization') ?> </a>
         </div>
  
     </div>
 
-</div> -->
+</div>
 <!-- /.content-header -->
 <div class="row">
     <div class="col-sm-12 col-md-4">
@@ -130,10 +130,10 @@ $this->title = Yii::t('backend', 'Dashboard');
                                 <td class="text-success"><?= $organization->status()[$organization->status] ?></td>
 
                                 <td>
-                                    <a href="/organization/view?id=<?= $organization->id ?>" class="text-muted" title="View Report" style="margin-right: 10px">
+                                    <a href="/organization/view?id=<?= $organization->id ?>" class="text-muted newOrgsActions" title="View Report" style="margin-right: 10px">
                                         <i class="fas fa-file-contract"></i>
                                     </a>
-                                    <a href="/organization/update?id=<?= $organization->id ?>" class="text-muted" title="Edit Assessment">
+                                    <a href="/organization/update?id=<?= $organization->id ?>" class="text-muted newOrgsActions" title="Edit Assessment">
                                         <i class="fas fa-edit"></i>
                                     </a>
 
@@ -151,7 +151,6 @@ $this->title = Yii::t('backend', 'Dashboard');
 </div>
    
     
-</div>
 
 <!-- /.row -->
 

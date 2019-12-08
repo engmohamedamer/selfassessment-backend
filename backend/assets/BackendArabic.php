@@ -24,7 +24,7 @@ class BackendArabic extends AssetBundle
         'css/rtl/AdminLTE-RTL.css', 
         'css/rtl/bootstrap-arabic.css', 
         'http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
-        'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700',
+        'https://fonts.googleapis.com/css?family=Cairo:400,600,700,900&display=swap&subset=arabic',
         'css/custom.css',
         'css/rtl/custom.css',
 
