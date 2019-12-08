@@ -76,7 +76,7 @@ BootstrapPluginAsset::register($this);
                                 </div>
                                 <div>
                                     <div class="survey-labels">
-                                        <span class="survey-label danger" data-toggle="tooltip"
+                                        <!-- <span class="survey-label danger" data-toggle="tooltip"
                                               title="<?= \Yii::t('survey', 'Status') ?>">
                                             <?php 
                                                 if ($survey->survey_is_visible) 
@@ -84,7 +84,7 @@ BootstrapPluginAsset::register($this);
                                                 else echo Yii::t('common','Closed');
                                             ?>
                                             
-                                        </span>      
+                                        </span>       -->
                                         <span class="survey-label respondents" data-toggle="tooltip"title="<?= \Yii::t('survey', 'Respondents count') ?>"><?= $survey->getRespondentsCount() ?></span>
                                         <span class="survey-label completed-respondents" data-toggle="tooltip"
                                               title="<?= \Yii::t('survey', 'Were interviewed') ?>"><?= $survey->getCompletedRespondentsCount() ?></span>
