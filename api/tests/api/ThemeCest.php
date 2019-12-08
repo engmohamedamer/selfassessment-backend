@@ -17,6 +17,10 @@ class ThemeCest
             'organizationTheme' => [
                 'class' => \common\fixtures\OrganizationThemeFixture::className(),
                 'dataFile' => codecept_data_dir() . 'organization_theme.php'
+            ],
+            'organizationFooterLinks' => [
+                'class' => \common\fixtures\OrganizationThemeFooterLinks::className(),
+                'dataFile' => codecept_data_dir() . 'organization_footer_links.php'
             ]
         ]);
     }
