@@ -1350,6 +1350,10 @@ transition: all .5s ease-in-out;
 .nav-pills > li.active > a:hover, .nav-pills > li.active > a {
   font-size: 15px;
 }
+
+.upload-kit-item.done.image img {
+  max-width: 100% !important;
+}
 /* *************************************************************************CONTENT DASHBOARD END*************** */
 
 
