@@ -66,8 +66,8 @@ class AssessmentsController extends  MyActiveController
         $profile=$user->userProfile;
 
         $surveyObj = SurveyResource::find()->where(['survey_id'=>$id,'survey_is_visible' => 1])->one();
-        $expired_at = time() >= strtotime($surveyObj->survey_expired_at);
         if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found'],404);
+        $expired_at = time() >= strtotime($surveyObj->survey_expired_at);
         if($surveyObj->survey_is_closed || $expired_at)  return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
 
         return ResponseHelper::sendSuccessResponse($surveyObj);
