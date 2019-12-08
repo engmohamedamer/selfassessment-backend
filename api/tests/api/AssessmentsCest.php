@@ -69,27 +69,35 @@ class AssessmentsCest
     protected function dataViewProvider() 
     {
     	return [
+            [
+                'url'=>'assessments/1000',
+                'code'=>404,
+                'contains'=>[
+                    'errors'=>['message'=>'Survey not found'],
+                ],
+            ],
     		[
             	'url'=>'assessments/1',
-        		'code'=>200,
+        		'code'=> 200,
         		'contains'=>[
         			'pages'=>[],
         		],
     		],
     		[
             	'url'=>'assessments/2',
-        		'code'=>404,
+        		'code'=> 403,
         		'contains'=>[
-        			'errors'=>['message'=>'Survey not found'],
+        			'errors'=>['message'=>'Forbidden'],
         		],
     		],
             [
                 'url'=>'assessments/3',
-                'code'=>404,
+                'code'=> 403,
                 'contains'=>[
-                    'errors'=>['message'=>'Survey not found'],
+                    'errors'=>['message'=>'Forbidden'],
                 ],
             ],
+            
     	];
     }
 

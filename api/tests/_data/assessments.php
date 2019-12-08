@@ -15,7 +15,7 @@ return [
         'start_info'=>'Start Info',
         'survey_point'=>10,
     ],
-    // closed assessment
+    // closed assessment 403 - Forbidden
     [
         'survey_id'=>2,
         'org_id'=>5,
@@ -30,7 +30,7 @@ return [
         'start_info'=>'Start Info',
         'survey_point'=>10,
     ],
-    // open but assessment expire at not available
+    // open but assessment expire at not available 403 - Forbidden
     [
         'survey_id'=>3,
         'org_id'=>5,
