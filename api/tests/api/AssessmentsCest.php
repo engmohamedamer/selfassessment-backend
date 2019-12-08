@@ -28,6 +28,13 @@ class AssessmentsCest
         $I->seeResponseContainsJson([
         	'items'=>[
                 [
+                    'id'=>3,
+                    'isClosed'=> true,
+                    'status'=> 0,
+                    'survey_time_to_pass'=>10,
+                    'expiryDate'=>'2019-12-01 13:50:00',
+                ],
+                [
                     'id'=>2,
                     'isClosed'=> true,
                     'status'=> 0,
@@ -76,6 +83,13 @@ class AssessmentsCest
         			'errors'=>['message'=>'Survey not found'],
         		],
     		],
+            [
+                'url'=>'assessments/3',
+                'code'=>404,
+                'contains'=>[
+                    'errors'=>['message'=>'Survey not found'],
+                ],
+            ],
     	];
     }
 
