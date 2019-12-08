@@ -42,7 +42,7 @@ class UsersCest
             'password' => '123456',
             'locale' => 'ar'
         ]);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::UNAUTHORIZED); // 401
+        $I->seeResponseCodeIs(400);
         $I->seeResponseIsJson();
     }
 
