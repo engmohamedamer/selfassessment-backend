@@ -65,7 +65,7 @@ class AssessmentsController extends  MyActiveController
         if(! $id) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],404);
         $profile=$user->userProfile;
 
-        $surveyObj = SurveyResource::findOne(['survey_id'=>$id,'survey_is_visible' => 1]);
+        $surveyObj = SurveyResource::find()->where(['survey_id'=>$id,'survey_is_visible' => 1])->andWhere(['!=','survey_is_closed',1])->one();
         if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found'],404);
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
