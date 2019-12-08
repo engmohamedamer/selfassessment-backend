@@ -16,6 +16,10 @@ class AssessmentsCest
                 'class' => \common\fixtures\AssessmentFixture::className(),
                 'dataFile' => codecept_data_dir() . 'assessments.php'
             ],
+            'assessmentsStats' => [
+                'class' => \common\fixtures\AssessmentsStatsFixture::className(),
+                'dataFile' => codecept_data_dir() . 'assessments_stats.php'
+            ],
         ]);
         $I->amBearerAuthenticated('fR4KSiyuXpHYst5c4JSDY0kJ2HLuOb05jMV4FDmD');
     }
@@ -27,6 +31,20 @@ class AssessmentsCest
         $I->seeResponseCodeIs(200);
         $I->seeResponseContainsJson([
         	'items'=>[
+                [
+                    'id'=>5,
+                    'isClosed'=> false,
+                    'status'=> 1,
+                    'survey_time_to_pass'=>10,
+                    'expiryDate'=>'2019-12-28 13:50:00',
+                ],
+                [
+                    'id'=>4,
+                    'isClosed'=> false,
+                    'status'=> 2,
+                    'survey_time_to_pass'=>10,
+                    'expiryDate'=>'2019-12-28 13:50:00',
+                ],
                 [
                     'id'=>3,
                     'isClosed'=> true,
@@ -95,6 +113,20 @@ class AssessmentsCest
                 'code'=> 403,
                 'contains'=>[
                     'errors'=>['message'=>'Forbidden'],
+                ],
+            ],
+            [
+                'url'=>'assessments/4',
+                'code'=> 403,
+                'contains'=>[
+                    'errors'=>['message'=>'Forbidden'],
+                ],
+            ],
+            [
+                'url'=>'assessments/5',
+                'code'=> 200,
+                'contains'=>[
+                    'pages'=>[],
                 ],
             ],
             
