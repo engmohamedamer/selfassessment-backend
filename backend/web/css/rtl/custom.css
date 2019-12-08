@@ -360,14 +360,9 @@ ul {
     margin-right: 10px;
   }
 
-  .user-menu .dropdown-toggle span::before {
-    content: '';
-    border-top: 8px solid #666;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    top: 15px;
-    left: 5px;
+  .user-menu .dropdown-toggle span div::before {
+    
+    left: 15px;
     right: auto;
-    position: relative;
-    z-index: 9999;
+   
   }
