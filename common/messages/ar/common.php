@@ -279,4 +279,6 @@ return [
     'Visible'=>'مرئى',
     'Account Created Successfully'=>'تم انشاء الحساب بنجاح',
     'These credentials do not match our records.'=>'البيانات المدخلة غير متطابقة مع البيانات المسجلة لدينا.',
+    'Assessments Contributor Status'=>'حالة المشاركة في الاستبيانات',
+    'Search'=>'ابحث هنا',
 ];

@@ -31,11 +31,15 @@ class SiteController extends OrganizationController
         $searchModel = new UserSearch();
         $searchModel->user_role = User::ROLE_USER;
         $searchModel->organization_id = $organization->id;
-        $contributors = $searchModel->search(null,8);
+        $contributors = $searchModel->search(null,5);
         $orgSurveyStats = $this->actionOrgSurveyStats(false);
         $organizationSurvey = Survey::find()->where(['org_id'=>$organization->id])->limit(5)->orderBy('survey_id desc')->all();
+        $countStats = 0;
+        foreach ($organization->survey as $survey) {
+            $countStats += SurveyStat::find()->where(['survey_stat_survey_id'=> $survey->survey_id])->count();
+        }
         // return var_dump($orgSurveyStats);
-        return $this->render('dashboard',compact('contributors','organizationSurvey','organization','orgSurveyStats'));  //,compact()
+        return $this->render('dashboard',compact('contributors','organizationSurvey','organization','orgSurveyStats','countStats'));  //,compact()
     }
 
 

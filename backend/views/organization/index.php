@@ -79,6 +79,10 @@ echo newerton\fancybox3\FancyBox::widget([
                 return Html::a( $model->name, ['/organization/view?id='.$model->id]) ;
             },
             'format' => 'raw',
+            'filterInputOptions' => [
+                'class'       => 'form-control',
+                'placeholder' => Yii::t('common','Search')
+             ]
         ],
         [
             'label' => Yii::t('common', 'Organization Manager'),
@@ -88,11 +92,42 @@ echo newerton\fancybox3\FancyBox::widget([
             },
             'format' => 'raw',
         ],
-        'business_sector',
-        'email:email',
-        'phone',
-        'conatct_name',
-        'contact_phone',
+        [
+            'attribute' => 'business_sector',
+            'filterInputOptions' => [
+                'class'       => 'form-control',
+                'placeholder' => Yii::t('common','Search')
+             ]
+        ],
+        [
+            'attribute' => 'email',
+            'format' => 'email',
+            'filterInputOptions' => [
+                'class'       => 'form-control',
+                'placeholder' => Yii::t('common','Search')
+             ]
+        ],
+        [
+            'attribute' => 'phone',
+            'filterInputOptions' => [
+                'class'       => 'form-control',
+                'placeholder' => Yii::t('common','Search')
+             ]
+        ],
+        [
+            'attribute' => 'conatct_name',
+            'filterInputOptions' => [
+                'class'       => 'form-control',
+                'placeholder' => Yii::t('common','Search')
+             ]
+        ],
+        [
+            'attribute' => 'contact_phone',
+            'filterInputOptions' => [
+                'class'       => 'form-control',
+                'placeholder' => Yii::t('common','Search')
+             ]
+        ],
         [
             'class' => 'kartik\grid\ActionColumn',
             'template'=>'{view}{update}'
