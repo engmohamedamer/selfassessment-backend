@@ -61,14 +61,18 @@ class AssessmentsController extends  MyActiveController
 
     public function actionView($id)
     {
-        $user= User::findOne(['id'=> \Yii::$app->user->identity->getId()]) ;
+        $user_id = \Yii::$app->user->identity->getId();
+        $user= User::findOne(['id'=> $user_id]) ;
         if(! $id) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],404);
         $profile=$user->userProfile;
 
         $surveyObj = SurveyResource::find()->where(['survey_id'=>$id,'survey_is_visible' => 1])->one();
         if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found'],404);
         $expired_at = time() >= strtotime($surveyObj->survey_expired_at);
-        if($surveyObj->survey_is_closed || $expired_at)  return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
+        $stats = SurveyStat::findOne(['survey_stat_survey_id'=>$id,'survey_stat_user_id'=> $user_id]);
+        
+        if($surveyObj->survey_is_closed || $expired_at || (isset($stats) and $stats->survey_stat_is_done))  return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
+        
 
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
