@@ -55,7 +55,7 @@ if(Yii::$app->user->isGuest){
                 <li class="dropdown user user-menu">
 
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <span class="dropdown-item dropdown-header mr-2 ml-2"><?= Yii::t('common','welcome')?>, <?php echo Yii::$app->user->identity->userProfile->fullName ?></span>
+                        <span class="dropdown-item dropdown-header mr-2 ml-2"><?= Yii::t('common','welcome')?><div><?php echo Yii::$app->user->identity->userProfile->fullName ?></div></span>
 
                         <?php if(Yii::$app->user->identity->userProfile->avatar != null):?>
                             <img class="user-image" src="<?= Yii::$app->user->identity->userProfile->avatar ?>" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>">

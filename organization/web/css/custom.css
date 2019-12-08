@@ -1015,7 +1015,7 @@ header nav a {
   /* display: none; */
 }
 .dropdown-footer, .user-info-block .dropdown-header{
-  text-align: left;
+  text-align: center;
   font-size: 13px !important;
   padding: 0;
   
@@ -1103,14 +1103,14 @@ header nav a {
   padding-top: 8px;
 }
 
-.user-menu .dropdown-toggle span::before {
+.user-menu .dropdown-toggle span div::before {
   content: '';
-  border-top: 8px solid #666;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  top: 15px;
+  border-top: 5px solid #666;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  top: 10px;
   left: auto;
-  right: 5px;
+  right: 15px;
   position: relative;
   z-index: 9999;
 }

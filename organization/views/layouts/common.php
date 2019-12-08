@@ -58,13 +58,13 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
             <li class="dropdown user user-menu">
 
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <span class="dropdown-item dropdown-header mr-2 ml-2"><?= Yii::t('common','Welcome')?>,  <?php echo Yii::$app->user->identity->userProfile->fullName; ?></span>
-
-                        <?php if(Yii::$app->user->identity->userProfile->avatar != null):?>
-                            <img class="user-image" src="<?= Yii::$app->user->identity->userProfile->avatar ?>" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>">
-                        <?php else:?>    
-                            <img class="user-image" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>" avatar="<?= Yii::$app->user->identity->userProfile->fullname ?>">
-                        <?php endif;?>
+                    
+                    <span class="dropdown-item dropdown-header mr-2 ml-2"><?= Yii::t('common','welcome')?><div><?php echo Yii::$app->user->identity->userProfile->fullName; ?></div></span>
+                    <?php if(Yii::$app->user->identity->userProfile->avatar != null):?>
+                    <img class="user-image" src="<?= Yii::$app->user->identity->userProfile->avatar ?>" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>">
+                    <?php else:?>    
+                    <img class="user-image" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>" avatar="<?= Yii::$app->user->identity->userProfile->fullname ?>">
+                    <?php endif;?>
                     
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
