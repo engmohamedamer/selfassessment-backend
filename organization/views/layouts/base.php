@@ -287,6 +287,7 @@ if(Yii::$app->user->isGuest){
 
 
 
+
   
 
 
@@ -338,6 +339,23 @@ if(Yii::$app->user->isGuest){
             -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
             box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
             background: <?= $brandPrimColor ?>;
+        }
+
+        table.table thead tr:first-child {
+        background: #333;
+        border-bottom: 5px solid <?= $brandPrimColor ?>;
+        }
+
+        table.table thead tr th {
+        color: white;
+        }
+
+        table.table thead tr th a {
+        color: white;
+        }
+
+        .nav.nav-pills.innernavs {
+            margin-bottom: 20px;
         }
         
                     
