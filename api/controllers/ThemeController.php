@@ -80,22 +80,21 @@ class ThemeController extends RestController
             'enfont'=> $theme->enfont,
         ];
 
-//        $footer = [
-//            'links'=>[
-//                ['title'=>$footerLinks->name_link1,'href'=>$footerLinks->link1],
-//                ['title'=>$footerLinks->name_link2,'href'=>$footerLinks->link2],
-//                ['title'=>$footerLinks->name_link3,'href'=>$footerLinks->link3],
-//                ['title'=>$footerLinks->name_link4,'href'=>$footerLinks->link4],
-//                ['title'=>$footerLinks->name_link5,'href'=>$footerLinks->link5],
-//            ],
-//            'social_media'=>[
-//                ['title'=>'facebook','href'=>$theme->facebook],
-//                ['title'=>'twitter','href'=>$theme->twitter],
-//                ['title'=>'linkedin','href'=>$theme->linkedin],
-//                ['title'=>'instagram','href'=>$theme->instagram],
-//            ]
-//        ];
-        $footer=[];
+       $footer = [
+           'links'=>[
+               ['title'=>$footerLinks->name_link1,'href'=>$footerLinks->link1],
+               ['title'=>$footerLinks->name_link2,'href'=>$footerLinks->link2],
+               ['title'=>$footerLinks->name_link3,'href'=>$footerLinks->link3],
+               ['title'=>$footerLinks->name_link4,'href'=>$footerLinks->link4],
+               ['title'=>$footerLinks->name_link5,'href'=>$footerLinks->link5],
+           ],
+           'social_media'=>[
+               ['title'=>'facebook','href'=>$theme->facebook],
+               ['title'=>'twitter','href'=>$theme->twitter],
+               ['title'=>'linkedin','href'=>$theme->linkedin],
+               ['title'=>'instagram','href'=>$theme->instagram],
+           ]
+       ];
 
         // if ($locale =='ar' ) {
         //     $about = "نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر.";

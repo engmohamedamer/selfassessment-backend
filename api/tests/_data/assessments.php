@@ -1,0 +1,17 @@
+<?php
+return [
+    [
+        'survey_id'=>1,
+        'org_id'=>5,
+        'survey_name' => 'Assessment one',
+        'survey_created_at'=>'2019-12-26 13:50:00',
+        'survey_expired_at'=>'2019-12-26 13:50:00',
+        'survey_is_pinned'=>0,
+        'survey_is_closed'=>0,
+        'survey_time_to_pass'=>10,
+        'survey_is_private'=>0,
+        'survey_is_visible'=>1,
+        'start_info'=>'Start Info',
+        'survey_point'=>'',
+    ],
+];

@@ -25,13 +25,42 @@ class ThemeCest
         ]);
     }
 
-    public function testTheme(ApiTester $I)
+    /**
+      * @dataProvider dataReportProvider
+    */
+    public function theme(ApiTester $I, \Codeception\Example $example)
     {
-        $I->sendPOST('/theme?org=org1', []);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); // 200
-        $I->seeResponseIsJson();
-        //$I->seeResponseContains(['status'=>\Codeception\Util\HttpCode::NOT_FOUND]);
+        $I->sendPOST($example['url']);
+        $I->seeResponseCodeIs($example['code']);
+        $I->seeResponseContainsJson($example['contains']);
+    }
 
+    /**
+     * @return array
+    */
+    protected function dataReportProvider() 
+    {
+        return [
+            [
+                'url'=>'/theme?org=org1',
+                'code'=>200,
+                'contains'=>[
+                    'organization'=>[],
+                    'colors'=>[],
+                    'footer'=>[
+                        'links'=>[],
+                        'social_media'=>[],
+                    ],
+                ],
+            ],
+            [
+                'url'=>'theme?org=org',
+                'code'=>404,
+                'contains'=>[
+                    'ORGANIZATION_NOT_FOUND'=>'Organization not found'
+                ],
+            ],
+        ];
     }
 
 
