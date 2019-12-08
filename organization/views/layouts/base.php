@@ -189,6 +189,11 @@ if(Yii::$app->user->isGuest){
 
         }
 
+        #survey-widget #survey-title .survey-labels .survey-label, #survey-view #survey-title .survey-labels .survey-label {
+            background: <?= $brandPrimColor ?> !important;
+            border-color: <?= $brandPrimColor ?> !important;
+        }
+
 
         .addQFixed {
             position: fixed;
