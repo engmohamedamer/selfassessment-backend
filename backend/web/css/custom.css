@@ -1033,6 +1033,12 @@ header nav a {
   padding: 0;
   
 }
+
+.user-info-block .dropdown-toggle {
+  display: flex;
+  align-items: center;
+
+}
 .main-sidebar, .left-side{
   width: 300px;
   background: #333 !important;
@@ -1093,7 +1099,7 @@ header nav a {
   font-size: 12px;
 }
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
-  left: auto;
+  left: 0;
   right: 20px;
     top: 50px;
     width: auto;
@@ -1109,14 +1115,15 @@ header nav a {
   padding-top: 8px;
 }
 
-.dropdown.user.user-menu.open:after {
+.user-menu .dropdown-toggle span::before {
   content: '';
   border-top: 8px solid #666;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  top: 65px;
-  left: 35px;
-  position: inherit;
+  top: 15px;
+  left: auto;
+  right: 5px;
+  position: relative;
   z-index: 9999;
 }
 

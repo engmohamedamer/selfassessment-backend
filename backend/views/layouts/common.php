@@ -48,7 +48,6 @@ if(Yii::$app->user->isGuest){
             <div><?= Yii::t('common','Tamkeen Technologies Adminstrator')?></div>
         </div>
         <div class='user-info-block'>
-            <span class="dropdown-item dropdown-header"><?= Yii::t('common','welcome')?>, <?php echo Yii::$app->user->identity->userProfile->fullName ?></span>
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
@@ -56,11 +55,13 @@ if(Yii::$app->user->isGuest){
                 <li class="dropdown user user-menu">
 
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                    <?php if(Yii::$app->user->identity->userProfile->avatar != null):?>
-                        <img class="user-image" src="<?= Yii::$app->user->identity->userProfile->avatar ?>" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>">
-                    <?php else:?>    
-                        <img class="user-image" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>" avatar="<?= Yii::$app->user->identity->userProfile->fullname ?>">
-                    <?php endif;?>
+                        <span class="dropdown-item dropdown-header mr-2 ml-2"><?= Yii::t('common','welcome')?>, <?php echo Yii::$app->user->identity->userProfile->fullName ?></span>
+
+                        <?php if(Yii::$app->user->identity->userProfile->avatar != null):?>
+                            <img class="user-image" src="<?= Yii::$app->user->identity->userProfile->avatar ?>" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>">
+                        <?php else:?>    
+                            <img class="user-image" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>" avatar="<?= Yii::$app->user->identity->userProfile->fullname ?>">
+                        <?php endif;?>
 
                     </a>
 
