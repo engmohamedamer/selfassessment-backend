@@ -351,6 +351,24 @@ ul {
 
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
     left: 20px;
+    right: 0;
+  
+  }
+
+  .dropdown-menu {
+    left: 20px;
     right: auto;
   
+  }
+
+  .user-menu .dropdown-toggle span::before {
+    content: '';
+    border-top: 8px solid #666;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    top: 15px;
+    left: 5px;
+    right: auto;
+    position: relative;
+    z-index: 9999;
   }

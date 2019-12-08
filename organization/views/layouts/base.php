@@ -320,10 +320,10 @@ if(Yii::$app->user->isGuest){
         }
 
 
-        .content-header h1 {
+        /* .content-header h1 {
             border-right: 5px solid <?= $brandPrimColor ?> !important ;
             border-left: 5px solid <?= $brandPrimColor ?> !important;
-        }
+        } */
 
         .sidebar-menu>li.active>a {
             background: <?= $brandPrimColor ?>!important;

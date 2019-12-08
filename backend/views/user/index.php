@@ -67,12 +67,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
 
                         ],
-                        'filterInputOptions'=>['placeholder'=>Yii::t('common', 'Full Name')],
+                        'filterInputOptions'=>['placeholder'=>Yii::t('common', 'Search')],
 
                     ],
 
-
-                    'email:email',
+                    [
+                        'attribute' => 'email',
+                        'format' => 'email',
+                        'filterInputOptions' => [
+                            'class'       => 'form-control',
+                            'placeholder' => Yii::t('common','Search')
+                        ]
+                    ],
                     [
                         'class' => EnumColumn::class,
                         'attribute' => 'status',

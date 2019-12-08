@@ -72,7 +72,7 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
             'filterWidgetOptions' => [
                 'pluginOptions' => ['allowClear' => true],
             ],
-            'filterInputOptions' => ['placeholder' =>  Yii::t('backend','Users'), 'id' => 'grid-corrective-action-report-search-user_id']
+            'filterInputOptions' => ['placeholder' =>  Yii::t('common','Search'), 'id' => 'grid-corrective-action-report-search-user_id']
         ],
         [
             'attribute' => 'survey_id',
@@ -88,7 +88,7 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
             'filterWidgetOptions' => [
                 'pluginOptions' => ['allowClear' => true],
             ],
-            'filterInputOptions' => ['placeholder' => Yii::t('common', 'Survey'), 'id' => 'grid-corrective-action-report-search-survey_id']
+            'filterInputOptions' => ['placeholder' => Yii::t('common', 'Search'), 'id' => 'grid-corrective-action-report-search-survey_id']
         ],
         [
             'attribute' => 'question_id',
@@ -99,6 +99,10 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
                 else
                 {return NULL;}
             },
+            'filterInputOptions' => [
+                'class'       => 'form-control',
+                'placeholder' => Yii::t('common','Search')
+            ]
             // 'filterType' => GridView::FILTER_SELECT2,
             // 'filter' => \yii\helpers\ArrayHelper::map(SurveyQuestion::find()->asArray()->all(), 'survey_question_id', 'survey_question_name'),
             // 'filterWidgetOptions' => [
@@ -125,8 +129,18 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
         [
             'attribute'=>'corrective_action',
             'format'=>'raw',
+            'filterInputOptions' => [
+                'class'       => 'form-control',
+                'placeholder' => Yii::t('common','Search')
+            ]
         ],
-        'corrective_action_date',
+        [
+            'attribute'=>'corrective_action_date',
+            'filterInputOptions' => [
+                'class'       => 'form-control',
+                'placeholder' => Yii::t('common','Search')
+            ]
+        ],
        // [
        //     'attribute' => 'corrective_action_date',
        //     'format' => 'datetime',
@@ -176,10 +190,10 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
                 'target' => ExportMenu::TARGET_BLANK,
                 'fontAwesome' => true,
                 'dropdownOptions' => [
-                    'label' => 'Full',
+                    'label' => Yii::t('backend','Full'),
                     'class' => 'btn btn-default',
                     'itemsBefore' => [
-                        '<li class="dropdown-header">Export All Data</li>',
+                        '<li class="dropdown-header">'.Yii::t('backend','Export All Data').'</li>',
                     ],
                 ],
                 'exportConfig' => [

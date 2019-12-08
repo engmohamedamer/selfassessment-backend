@@ -3089,9 +3089,9 @@ table.text-center th {
   width: 20px;
 }
 .treeview-menu > li > a > .pull-right-container > .fa-angle-left,
-.treeview-menu > li > a > .pull-right-container > .fa-angle-down,
+.treeview-menu > li > a > .pull-right-container > .fa-angle-left,
 .treeview-menu > li > a > .fa-angle-left,
-.treeview-menu > li > a > .fa-angle-down {
+.treeview-menu > li > a > .fa-angle-left {
   width: auto;
 }
 /*

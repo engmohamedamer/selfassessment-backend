@@ -197,7 +197,7 @@ $i = 1;
                 <div class="box-body no-padding">
                 <ul class="products-list product-list-in-box">
                     <?php foreach($contributors->getModels() as $contributor): ?>
-                    <li class="item">
+                    <li class="item col-lg-6">
                         <div class="product-img">
                             <?php if($contributor->userProfile->avatar != null):?>
                                 <img src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">
