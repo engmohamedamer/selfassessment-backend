@@ -17,8 +17,8 @@ class m191010_141946_EditRoles extends Migration
         INSERT INTO `rbac_auth_item` (`name`, `type`) VALUES ('governmentRep', '1');
         INSERT INTO `rbac_auth_item_child` (`parent`, `child`) VALUES ('governmentAdmin', 'loginToBackend');
         INSERT INTO `rbac_auth_item_child` (`parent`, `child`) VALUES ('governmentRep', 'loginToBackend');
-        UPDATE `rbac_auth_item` SET `description`='مسؤلى فرعى للمؤسسة', `created_at`='1552385505', `updated_at`='1552385505' WHERE (`name`='governmentRep')
-        UPDATE `rbac_auth_item` SET `description`='مسؤلى المؤسسة', `created_at`='1552385505', `updated_at`='1552385505' WHERE (`name`='governmentAdmin')
+        UPDATE `rbac_auth_item` SET `description`='مسؤولى فرعى للمؤسسة', `created_at`='1552385505', `updated_at`='1552385505' WHERE (`name`='governmentRep')
+        UPDATE `rbac_auth_item` SET `description`='مسؤولى المؤسسة', `created_at`='1552385505', `updated_at`='1552385505' WHERE (`name`='governmentAdmin')
         ");
 
     }
