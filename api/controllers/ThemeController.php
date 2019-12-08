@@ -14,23 +14,23 @@ use yii\web\NotFoundHttpException;
 class ThemeController extends RestController
 {
 
-//    public function  behaviors()
-//    {
-//        $behaviors = parent::behaviors();
-//        // remove authentication filter if there is one
-//        unset($behaviors['authenticator']);
-//
-//        if (isset(apache_request_headers()['Authorization'])) {
-//            $behaviors['authenticator'] = [
-//                'class' => CompositeAuth::class,
-//                'authMethods' => [
-//                    HttpBearerAuth::class,
-//                ]
-//            ];
-//            $behaviors['authenticator']['except'] = ['options'];
-//        }
-//        return $behaviors;
-//    }
+    public function  behaviors()
+    {
+        $behaviors = parent::behaviors();
+        // remove authentication filter if there is one
+        unset($behaviors['authenticator']);
+
+        if (isset($this->apache_request_headers()['Authorization'])) {
+            $behaviors['authenticator'] = [
+                'class' => CompositeAuth::class,
+                'authMethods' => [
+                    HttpBearerAuth::class,
+                ]
+            ];
+            $behaviors['authenticator']['except'] = ['options'];
+        }
+        return $behaviors;
+    }
 
     public function actionIndex(){
 
@@ -106,6 +106,27 @@ class ThemeController extends RestController
         $organizationDate = ['id'=> $organization->id,'name'=> $organization->name,'address'=> $organization->address ,'about'=> $organization->about, 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale];
 
         return ['theme_version'=> strtotime($theme->updated_at),'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer];
+    }
+
+
+  public function apache_request_headers() {
+        $arh = array();
+        $rx_http = '/\AHTTP_/';
+        foreach($_SERVER as $key => $val) {
+            if( preg_match($rx_http, $key) ) {
+                $arh_key = preg_replace($rx_http, '', $key);
+                $rx_matches = array();
+                // do some nasty string manipulations to restore the original letter case
+                // this should work in most cases
+                $rx_matches = explode('_', $arh_key);
+                if( count($rx_matches) > 0 and strlen($arh_key) > 2 ) {
+                    foreach($rx_matches as $ak_key => $ak_val) $rx_matches[$ak_key] = ucfirst($ak_val);
+                    $arh_key = implode('-', $rx_matches);
+                }
+                $arh[$arh_key] = $val;
+            }
+        }
+        return( $arh );
     }
 
 }
