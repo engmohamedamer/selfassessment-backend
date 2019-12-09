@@ -10,6 +10,7 @@ return [
     ''=>'',
     ''=>'',
     ''=>'',
+    'Multiple choice'=>'خيارات من متعدد',
     'Point'=>'درجة',
     'Enter Survey Point...'=>'ادخل درجة الإستبيان ...',
     'view Assessment Answers'=>'اعرض الاجابات',
