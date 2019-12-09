@@ -295,11 +295,11 @@ class DefaultController extends Controller
 	public function actionUpdate($id)
     {
         $survey = $this->findModel($id);
+        // $survey->scenario = 'scenarioupdate';
         \Yii::$app->session->set('surveyUploadsSubpath', $id);
 
         if (\Yii::$app->request->isPjax) {
             if ($survey->load(\Yii::$app->request->post()) && $survey->validate()) {
-
                 if (is_array($survey['level_title'])) {
                     SurveyDegreeLevel::deleteAll(['survey_degree_level_survey_id'=> $survey->survey_id]);
                     foreach ($survey['level_title'] as $key => $value) {
@@ -341,7 +341,6 @@ class DefaultController extends Controller
     public function actionUpdateEditable($property)
     {
         $model = $this->findModel(\Yii::$app->request->post('id'));
-        $model->scenario = 'scenarioupdate';
 
         // Check if there is an Editable ajax request
         if (isset($_POST['hasEditable'])) {

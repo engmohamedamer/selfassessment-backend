@@ -71,7 +71,7 @@ class AssessmentsController extends  MyActiveController
         $expired_at = time() >= strtotime($surveyObj->survey_expired_at);
         $stats = SurveyStat::findOne(['survey_stat_survey_id'=>$id,'survey_stat_user_id'=> $user_id]);
         
-        if($surveyObj->survey_is_closed || $expired_at || (isset($stats) and $stats->survey_stat_is_done))  return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
+        // if($surveyObj->survey_is_closed || $expired_at || (isset($stats) and $stats->survey_stat_is_done))  return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
         
 
         return ResponseHelper::sendSuccessResponse($surveyObj);
@@ -126,6 +126,7 @@ class AssessmentsController extends  MyActiveController
           if (strstr($key, 'a-')){
             $key=  (int)preg_replace('/\D/ui','',$key);
             $question = $this->findModel($key);
+            if ($question->survey_question_attachment_file) {
               SurveyUserAnswerAttachments::deleteAll(['survey_user_answer_attachments_survey_id'=>$question->survey_question_survey_id ,
                    'survey_user_answer_attachments_question_id'=>$question->survey_question_id,
                    'survey_user_answer_attachments_user_id' => \Yii::$app->user->getId()
@@ -141,6 +142,9 @@ class AssessmentsController extends  MyActiveController
                 $fileObj->type = $file['type'];
                 $fileObj->save();
               }
+            }else{
+                return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
+            }
           }elseif (strstr($key, 'q-')){
               $key=  (int)preg_replace('/\D/ui','',$key);
               $question = $this->findModel($key);

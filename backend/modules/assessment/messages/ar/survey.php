@@ -99,4 +99,5 @@ return [
     'Calendar'=>'التقويم',
     'File'=>'ملف',
     'One choise of list'=>'خيار واحد من متعدد',
+    'Multiple choice'=>'خيارات من متعدد',
 ];
