@@ -246,7 +246,8 @@ class SurveyStat extends \yii\db\ActiveRecord
             ->andWhere(['survey_stat_user_id' => $userId])->one();
         if ($result) {
             // $remainingTime = ($survey->survey_time_to_pass * 60) - $result->survey_stat_actual_time;
-            $time = ($result->survey_stat_actual_time /  ($survey->survey_time_to_pass * 60)) * 100;
+            $actual_time = ($result->survey_stat_actual_time /  ($survey->survey_time_to_pass * 60)) * 100;
+            $time = 100 - $actual_time;
             return round($time,2);
             // return $remainingTime;
         }
