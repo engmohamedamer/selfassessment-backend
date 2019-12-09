@@ -10,6 +10,6 @@ return [
         'brandGrayColor' => '35',
         'arfont' => '6',
         'enfont' => 'test@org1.com',
-        'locale'=>'en',
+        'locale'=>'ar-AR',
     ],
 ];

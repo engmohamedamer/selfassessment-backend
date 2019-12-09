@@ -47,6 +47,8 @@ class ThemeController extends RestController
             }else{
                 $locale = 'en';
             }
+        }else{
+            $locale = $params['lang'];
         }
 
         if (\Yii::$app->user->identity) {
