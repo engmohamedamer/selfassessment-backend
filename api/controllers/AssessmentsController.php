@@ -114,7 +114,8 @@ class AssessmentsController extends  MyActiveController
         if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found'],404);
 
         $params = \Yii::$app->request->post();
-
+        if (!isset($params['status'])) $params['status'] = null;
+        if (!isset($params['pageNo'])) $params['pageNo'] = null;
         //add survey state
         $survey_done =  $this->CheckState($surveyObj->survey_id,$params['status'],$params['pageNo']);
 

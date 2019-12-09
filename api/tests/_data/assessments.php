@@ -19,7 +19,7 @@ return [
     [
         'survey_id'=>2,
         'org_id'=>5,
-        'survey_name' => 'Assessment tow',
+        'survey_name' => 'Assessment two',
         'survey_created_at'=>'2019-12-01 13:50:00',
         'survey_expired_at'=>'2019-12-26 13:50:00',
         'survey_is_pinned'=>0,

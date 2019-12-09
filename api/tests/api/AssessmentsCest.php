@@ -1,6 +1,7 @@
 <?php 
 namespace api\tests\api;
 use api\tests\ApiTester;
+use common\fixtures\AssessmentQuestionsFixture;
 
 class AssessmentsCest
 {
@@ -19,6 +20,10 @@ class AssessmentsCest
             'assessmentsStats' => [
                 'class' => \common\fixtures\AssessmentsStatsFixture::className(),
                 'dataFile' => codecept_data_dir() . 'assessments_stats.php'
+            ],
+            'assessmentsQuestion' => [
+                'class' => \common\fixtures\AssessmentQuestionsFixture::className(),
+                'dataFile' => codecept_data_dir() . 'asessment_questions.php'
             ],
         ]);
         $I->amBearerAuthenticated('fR4KSiyuXpHYst5c4JSDY0kJ2HLuOb05jMV4FDmD');
@@ -137,9 +142,9 @@ class AssessmentsCest
     /**
 	  * @dataProvider dataAnswerProvider
 	*/
-    protected function answerAssessments(ApiTester $I, \Codeception\Example $example)
+    public function answerAssessments(ApiTester $I, \Codeception\Example $example)
     {
-    	$I->sendPUT($example['url']);
+    	$I->sendPUT($example['url'],$example['data']);
         $I->seeResponseContainsJson($example['contains']);
         $I->seeResponseCodeIs($example['code']);
     }
@@ -151,52 +156,45 @@ class AssessmentsCest
     {
     	return [
     		[
-            	'url'=>'assessments/33',
+            	'url'=>'assessments/1000',
         		'code'=>404,
             	'data'=>[
             		"answers"=>[
-				        "q-52"=>"نصي  جواب مع صورة",
-				        "f-52"=>true,
-				        "a-52"=>[
+				        "q-1"=>"نصي  جواب مع صورة",
+				        "f-1"=>true,
+				        "a-1"=>[
 				            [
 				                "name"=>"64682197_2320155574731095_6761853737519546368_n.png",
 				                "type"=>"image/png",
 				                "content"=>"http://storage.selfassest.localhost/source/answers/64682197_2320155574731095_6761853737519546368_n.png"
-				            ]
-				        ],
-				        "q-53"=>[
-				            "115",
-				            "114"
-				        ],
-				        "q-54"=>"116",
-				        "q-55"=>[
-				            [
-				                "name"=>"64682197_2320155574731095_6761853737519546368_n.png",
-				                "type"=>"image/png",
-				                "content"=>"http://storage.selfassest.localhost/source/answers/64682197_2320155574731095_6761853737519546368_n.png"
-				            ]
-				        ],
-				        "q-56"=>[
-				            "120"=>[
-				                "rate"=>1
 				            ],
-				            "121"=>[
-				                "rate"=>2
-				            ],
-				            "122"=>[
-				                "rate"=>3
-				            ],
-				            "123"=>[
-				                "rate"=>4
-				            ]
 				        ],
-				        "q-82"=>"Done"
-				    ]
+                    ],
             	],
-        		'contains'=>[
-        			'message'=>'Survey is Completed',
-        		],
+                'contains'=>[
+                    'message'=>'Survey not found',
+                ],
     		],
+            [
+                'url'=>'assessments/1',
+                'code'=>200,
+                'data'=>[
+                    "answers"=>[
+                        "q-1"=>"نصي  جواب مع صورة",
+                        "f-1"=>true,
+                        "a-1"=>[
+                            [
+                                "name"=>"64682197_2320155574731095_6761853737519546368_n.png",
+                                "type"=>"image/png",
+                                "content"=>"http://storage.selfassest.localhost/source/answers/64682197_2320155574731095_6761853737519546368_n.png"
+                            ],
+                        ],
+                    ],
+                ],
+                'contains'=>[
+                    'success'=>true,
+                ],
+            ],
     	];
     }
 }
