@@ -129,6 +129,7 @@ return [
     'Size' => 'الحجم',
     'Slug' => 'slug',
     'Status' => 'الحاله',
+    'status' => 'حالة',
     'Thumbnail' => 'صورة مصغره',
     'Title' => 'العنوان',
     'Type' => 'النوع',
