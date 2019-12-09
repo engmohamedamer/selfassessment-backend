@@ -41,7 +41,14 @@ class ThemeController extends RestController
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],404);
         }
 
-        $locale = !empty($params['lang']) ? $params['lang'] : $organization->organizationTheme->locale;
+        if (empty($params['lang'])) {
+            if ($organization->organizationTheme->locale == 'ar-AR') {
+                $locale = 'ar';
+            }else{
+                $locale = 'en';
+            }
+        }
+
         if (\Yii::$app->user->identity) {
             if (\Yii::$app->user->identity->userProfile->locale == 'ar-AR') {
                 $locale = 'ar';

@@ -45,7 +45,9 @@ class ThemeCest
                 'url'=>'/theme?org=org1',
                 'code'=>200,
                 'contains'=>[
-                    'organization'=>[],
+                    'organization'=>[
+                        'locale'=>'ar'
+                    ],
                     'colors'=>[],
                     'footer'=>[
                         'links'=>[],
