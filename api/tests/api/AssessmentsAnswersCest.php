@@ -87,7 +87,7 @@ class AssessmentsAnswersCest
                     ],
                 ],
                 'contains'=>[
-                    'errors'=>['message'=>'Forbidden'], // Forbidden because this question not allowed attach file
+                    'errors'=>['message'=>'Forbidden'], // forbidden because this question not allowed attach file
                 ],
             ],
             [
@@ -96,25 +96,25 @@ class AssessmentsAnswersCest
                 'data'=>[
                     "answers"=>[
                         "q-1"=>"نصي  جواب",
+                        "q-2"=>["2","3"],
                     ],
                 ],
                 'contains'=>[
-                    'success'=>true,
                 ],
             ],
-            // check update exist answer
-            [
-                'url'=>'assessments/1',
-                'code'=>200,
-                'data'=>[
-                    "answers"=>[
-                        "q-1"=>"نصي",
-                    ],
-                ],
-                'contains'=>[
-                    'success'=>true,
-                ],
-            ],
+            // // check update exist answer
+            // [
+            //     'url'=>'assessments/1',
+            //     'code'=>200,
+            //     'data'=>[
+            //         "answers"=>[
+            //             "q-1"=>"نصي",
+            //         ],
+            //     ],
+            //     'contains'=>[
+            //         'success'=>true,
+            //     ],
+            // ],
         ];
     }
 }

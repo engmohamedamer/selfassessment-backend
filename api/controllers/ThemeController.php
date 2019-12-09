@@ -35,7 +35,8 @@ class ThemeController extends RestController
     public function actionIndex(){
 
         $params = \Yii::$app->request->get();
-        $locale = isset($params['lang']) ?:null;
+        // $locale = isset($params['lang']) ?:null;
+        $locale = 'ar';
         if (\Yii::$app->user->identity) {
             if (\Yii::$app->user->identity->userProfile->locale == 'ar-AR') {
                 $locale = 'ar';
