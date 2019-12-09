@@ -83,7 +83,7 @@ class MediaController extends  MyActiveController
                 $media->created_at = time();
                 $media->user_id = $user_id;
                 $media->save(false);
-                $links[] =  [$name=>['id'=>$media->id,'link'=>\Yii::getAlias('@storageUrl'). "/source/answers/$org_id/$user_id/$name"]];
+                $links[] =  [$name=>['id'=>$media->id,'name'=>basename($_FILES[$key]["name"]),'link'=>\Yii::getAlias('@storageUrl'). "/source/answers/$org_id/$user_id/$name"]];
             }else{
                 return ResponseHelper::sendFailedResponse(['message'=>"File Not Allowed"],400);
             }

@@ -56,6 +56,20 @@ class ThemeCest
                 ],
             ],
             [
+                'url'=>'/theme?org=org1&lang=en',
+                'code'=>200,
+                'contains'=>[
+                    'organization'=>[
+                        'locale'=>'en'
+                    ],
+                    'colors'=>[],
+                    'footer'=>[
+                        'links'=>[],
+                        'social_media'=>[],
+                    ],
+                ],
+            ],
+            [
                 'url'=>'theme?org=org',
                 'code'=>404,
                 'contains'=>[
