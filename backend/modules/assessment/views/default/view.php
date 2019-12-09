@@ -222,6 +222,26 @@ BootstrapPluginAsset::register($this);
                     ?>
                 </div>
             </div>
+            <div class='survey-details'>
+                <div class='inner-details'>
+                    <h5> <i class="icofont-paper mr-2 ml-2"></i>  تفاصيل الإستبيان 
+                        <i title='closed' style='color:red' class="icofont-1x icofont-lock mr-2 ml-2"></i> 
+                        <i title='invisible' style='color:red' class="icofont-1x mr-2 ml-2 icofont-eye-blocked"></i> 
+                        <!-- <i title='visible' style='color:green' class="icofont-1x mr-2 ml-2 icofont-eye"></i> -->
+                        <!-- <i title='open' style='color:green' class="icofont-1x mr-2 ml-2 icofont-unlocked"></i>  -->
+                    </h5>
+                    <hr>
+                    <p><p><span>حالة الإستبيان :</span> مغلق - غير مرئي للمشاركين</p> </p>
+                    <p><span>ينتهي بعد :</span> 20 يوم</p>
+                    <hr>
+                    
+                    <p><span>عدد الأسئلة :</span> 50</p>
+                    <p><span>عدد النقاط :</span> 100</p>
+                    <p><span>النقاط المتبقية :</span> 10</p>
+                    <p><span>متوسط النتائج :</span> جيد جداً</p>
+                    <p><span>المشاركين :</span> 8/120</p>
+                </div>
+            </div>
         </div>
     </div>
 

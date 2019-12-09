@@ -25,9 +25,9 @@ class OrganizationController extends \yii\web\Controller
                 'class' => UploadAction::class,
                 'deleteRoute' => 'first-delete',
                 'on afterSave' => function ($event) {
-                    $file = $event->file;
-                    $img = ImageManagerStatic::make($file->read())->resize(90, 50);
-                    $file->put($img->encode());
+                    // $file = $event->file;
+                    // $img = ImageManagerStatic::make($file->read())->resize(90, 50);
+                    // $file->put($img->encode());
                 }
             ],
             'first-delete' => [
@@ -37,9 +37,9 @@ class OrganizationController extends \yii\web\Controller
                 'class' => UploadAction::class,
                 'deleteRoute' => 'second-delete',
                 'on afterSave' => function ($event) {
-                    $file = $event->file;
-                    $img = ImageManagerStatic::make($file->read())->resize(50, 50);
-                    $file->put($img->encode());
+                    // $file = $event->file;
+                    // $img = ImageManagerStatic::make($file->read())->resize(50, 50);
+                    // $file->put($img->encode());
                 }
             ],
             'second-delete' => [

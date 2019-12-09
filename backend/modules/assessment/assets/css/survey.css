@@ -1056,3 +1056,23 @@ section.content .survey-container .survey-block {
   border: 2px dashed #ddd !important;
   box-shadow: none !important;
 }
+
+/* SURVEY LISTING STYLES ?>>>>>>>>>>>>>>>>>>>>>>> */
+
+#survey-list .item .name {
+  font-size: 16px;
+  color: black;
+}
+
+#survey-list .item .name-wrap span {
+  margin: 0 10px;
+  display: block;
+}
+
+#survey-list .item .name:hover {
+  text-decoration: none;
+}
+
+#survey-list .col-md-12 {
+  text-align: center;
+}

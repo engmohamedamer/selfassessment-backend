@@ -351,6 +351,19 @@ ul {
 
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
     left: 20px;
+    right: 0;
+  
+  }
+
+  .dropdown-menu {
+    left: 20px;
     right: auto;
   
+  }
+
+  .user-menu .dropdown-toggle span div::before {
+    
+    left: 15px;
+    right: auto;
+   
   }

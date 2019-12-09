@@ -1007,6 +1007,7 @@ header nav {
 header div.dropdown-header div {
   font-weight: 600;
   font-size: 20px;
+  padding: 20px;
   /* color: #b20d1d; */
 }
 
@@ -1014,14 +1015,19 @@ header nav a {
   /* display: none; */
 }
 .dropdown-footer, .user-info-block .dropdown-header{
-  text-align: left;
+  text-align: center;
   font-size: 13px !important;
   padding: 0;
   
 }
+.user-info-block .dropdown-toggle {
+  display: flex;
+  align-items: center;
+
+}
 .main-sidebar, .left-side{
   width: 300px;
-  background: #333 !important;
+  background: #fff !important;
 }
 
 .main-sidebar nav ul li a:focus{
@@ -1046,7 +1052,7 @@ header nav a {
 }
 
 .main-sidebar .logo{
-  padding: 13px 10px 13px 20px;
+  padding: 13px 5px;
   margin-bottom: 30px;
   background: #fff !important;
   height: 55px;
@@ -1057,8 +1063,10 @@ header nav a {
 .main-sidebar .logo img{
   max-height: 100%;
   max-width: 100%;
-  text-align: center;
-  margin: auto;
+  width: auto;
+  height: auto;
+  /* text-align: center;
+  margin: auto; */
 }
 .main-sidebar .logo img.ar{
   display: none;
@@ -1080,7 +1088,7 @@ header nav a {
   font-size: 12px;
 }
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
-  left: auto;
+  left: 0;
   right: 20px;
     top: 50px;
     width: auto;
@@ -1088,7 +1096,6 @@ header nav a {
 }
 
 .skin-blue .sidebar a{
-  color: #fff;
   font-size: 1.4rem !important;
   font-weight: 600;
 }
@@ -1096,14 +1103,15 @@ header nav a {
   padding-top: 8px;
 }
 
-.dropdown.user.user-menu.open:after {
+.user-menu .dropdown-toggle span div::before {
   content: '';
-  border-top: 8px solid #666;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  top: 65px;
-  left: 35px;
-  position: inherit;
+  border-top: 5px solid #666;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  top: 10px;
+  left: auto;
+  right: 15px;
+  position: relative;
   z-index: 9999;
 }
 
@@ -1216,6 +1224,11 @@ justify-content: space-between;
 }
 /* *************************************************************************MAIN LAYOUT END*************** */
 /* *************************************************************************CONTENT DASHBOARD START*************** */
+
+.content {
+  padding: 30px !important;
+}
+
 .content-header {
   padding: 15px 10px;
   margin:5px 0 15px;
@@ -1223,7 +1236,7 @@ justify-content: space-between;
   /* border: 2px dashed rgb(204, 204, 204); */
   border-left: 10px solid rgb(204, 204, 204);
   border-right: 10px solid rgb(204, 204, 204);
-  border-radius: 10px;
+  /* border-radius: 10px; */
   /* box-shadow: 0 3px 5px 0 rgba(102, 102, 102, 0.3); */
 }
 
@@ -1235,12 +1248,12 @@ justify-content: space-between;
 
 .content-header h1 {
   font-size: 20px;
-  border-right: 5px solid #f4941b;
+  /* border-right: 5px solid #f4941b; */
   display: inline-block;
-  padding: 8px 15px;
-  border-left: 5px solid #f4941b;
+  padding: 8px 0;
+  /* border-left: 5px solid #f4941b; */
   margin: 0 !important;
-  background: #eee;
+  /* background: #eee; */
 }
 
 
@@ -1328,6 +1341,18 @@ transition: all .5s ease-in-out;
 }
 .actionBtns .btn{
   margin-left: 10px;
+}
+
+.box, .info-box {
+  box-shadow: -1px 7px 20px -9px rgba(121, 137, 162, 0.3);
+}
+
+.nav-pills > li.active > a:hover, .nav-pills > li.active > a {
+  font-size: 15px;
+}
+
+.upload-kit-item.done.image img {
+  max-width: 100% !important;
 }
 /* *************************************************************************CONTENT DASHBOARD END*************** */
 

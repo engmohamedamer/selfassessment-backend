@@ -91,7 +91,7 @@ $i = 1;
             
             <div class="box box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= Yii::t('common','Assessments Status') ?></h3>
+                <h3 class="box-title"><?= Yii::t('common','Assessments Contributor Status') .' ( '. $countStats .' '. Yii::t('common','status').')' ?></h3>
 
                 <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -197,7 +197,7 @@ $i = 1;
                 <div class="box-body no-padding">
                 <ul class="products-list product-list-in-box">
                     <?php foreach($contributors->getModels() as $contributor): ?>
-                    <li class="item">
+                    <li class="item col-lg-6">
                         <div class="product-img">
                             <?php if($contributor->userProfile->avatar != null):?>
                                 <img src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">

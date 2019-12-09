@@ -33,8 +33,8 @@ $this->title = Yii::t('backend', 'Dashboard');
                 <span class="info-box-icon bg-aqua"><i class="icofont-list"></i></span>
 
                 <div class="info-box-content">
-                <span class="info-box-text"><?= Yii::t('backend','Assessments Count') ?></span>
                 <span class="info-box-number"><?= $surveyCount?></span>
+                <span class="info-box-text"><?= Yii::t('backend','Assessments Count') ?></span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -45,8 +45,8 @@ $this->title = Yii::t('backend', 'Dashboard');
             <span class="info-box-icon bg-red"><i class="icofont-files-stack"></i></span>
 
             <div class="info-box-content">
-            <span class="info-box-text"><?= Yii::t('backend','Contributing Count') ?></span>
             <span class="info-box-number"><?= $surveyStatsCount ?></span>
+            <span class="info-box-text"><?= Yii::t('backend','Contributing Count') ?></span>
             </div>
             <!-- /.info-box-content -->
         </div>
@@ -58,8 +58,8 @@ $this->title = Yii::t('backend', 'Dashboard');
             <span class="info-box-icon bg-green"><i class="icofont-ui-user-group"></i></span>
 
             <div class="info-box-content">
-            <span class="info-box-text"><?= Yii::t('backend','Contributors Count') ?></span>
             <span class="info-box-number"><?= $userCount ?></span>
+            <span class="info-box-text"><?= Yii::t('backend','Contributors Count') ?></span>
             </div>
             <!-- /.info-box-content -->
         </div>

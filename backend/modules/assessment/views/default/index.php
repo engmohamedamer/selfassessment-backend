@@ -62,6 +62,8 @@ BootstrapPluginAsset::register($this);
                             <div class="image" <?php
                             if (!empty($image)) {
                                 echo "style='background-image: url($image)'";
+                            }else{
+                                echo "style='background-image: url(/img/assessment.jpeg)'";
                             }
                             ?>></div>
                             <div class="description">
@@ -69,17 +71,20 @@ BootstrapPluginAsset::register($this);
                                     <a href="<?= Url::toRoute(['default/view/', 'id' => $survey->survey_id]) ?>"
                                        class="name" data-pjax="0"
                                        title="<?= Html::encode($survey->survey_name) ?>"><?= Html::encode($survey->survey_name) ?></a>
+                                    <span class="date"><?= \Yii::t('survey', 'Created At') ?> : <?= \Yii::$app->formatter->asDate($survey->survey_created_at) ?></span>
+
                                 </div>
                                 <div>
                                     <div class="survey-labels">
-                                        <span class="survey-label" data-toggle="tooltip"
+                                        <!-- <span class="survey-label danger" data-toggle="tooltip"
                                               title="<?= \Yii::t('survey', 'Status') ?>">
                                             <?php 
                                                 if ($survey->survey_is_visible) 
                                                 echo Yii::t('survey','Visible');
                                                 else echo Yii::t('common','Closed');
                                             ?>
-                                        </span>      
+                                            
+                                        </span>       -->
                                         <span class="survey-label respondents" data-toggle="tooltip"title="<?= \Yii::t('survey', 'Respondents count') ?>"><?= $survey->getRespondentsCount() ?></span>
                                         <span class="survey-label completed-respondents" data-toggle="tooltip"
                                               title="<?= \Yii::t('survey', 'Were interviewed') ?>"><?= $survey->getCompletedRespondentsCount() ?></span>
@@ -89,7 +94,7 @@ BootstrapPluginAsset::register($this);
                                     <div class="survey-actions">
                                         <a href="<?= Url::toRoute(['default/update/', 'id' => $survey->survey_id]) ?>"
                                            class="btn btn-info btn-xs" data-pjax="0"
-                                           title="<?= \Yii::t('survey','Edit') ?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                                           title="<?= \Yii::t('survey','Edit') ?>"><span class="glyphicon glyphicon-pencil mr-2 ml-2"></span><?= \Yii::t('survey','Edit') ?></a>
                                         <?php
                                             if (count($survey->questions) == 0 and count($survey->stats) == 0) {
                                                 echo Html::a(\Yii::t('survey', '<span class="glyphicon glyphicon-trash"></span>'), Url::toRoute(['default/delete', 'id' => $survey->survey_id]), [
@@ -108,7 +113,6 @@ BootstrapPluginAsset::register($this);
                         </div>
                         <div class="second-line">
                             <!-- <span><?= \Yii::t('survey', 'Author') ?> : <?= $survey->getAuthorName() ?> </span>  -->
-                             <span class="date"><?= \Yii::t('survey', 'Created At') ?> : <?= \Yii::$app->formatter->asDate($survey->survey_created_at) ?></span>
                         </div>
                     </div>
                 </div>
