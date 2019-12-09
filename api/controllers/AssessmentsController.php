@@ -208,7 +208,6 @@ class AssessmentsController extends  MyActiveController
 
               if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
               ){
-                // return var_dump($answer);
                  //handel one answer
                 $answerPoint = SurveyAnswer::findOne(['survey_answer_id'=>$value]);
                  $userAnswers = $question->userAnswers;

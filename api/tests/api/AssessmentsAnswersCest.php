@@ -67,7 +67,7 @@ class AssessmentsAnswersCest
                     ],
                 ],
                 'contains'=>[
-                    'message'=>'Survey not found', // not found because assessment id not exist
+                    'message'=>'Survey not found', // not found because assessment id does not exist
                 ],
             ],
             [
@@ -96,25 +96,15 @@ class AssessmentsAnswersCest
                 'data'=>[
                     "answers"=>[
                         "q-1"=>"نصي  جواب",
-                        "q-2"=>["2","3"],
+                        "q-2"=>[2,1,3],
+                        "q-3"=>1,
                     ],
                 ],
                 'contains'=>[
+                    'success'=>true
                 ],
             ],
-            // // check update exist answer
-            // [
-            //     'url'=>'assessments/1',
-            //     'code'=>200,
-            //     'data'=>[
-            //         "answers"=>[
-            //             "q-1"=>"نصي",
-            //         ],
-            //     ],
-            //     'contains'=>[
-            //         'success'=>true,
-            //     ],
-            // ],
+
         ];
     }
 }

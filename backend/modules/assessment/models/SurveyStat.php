@@ -245,10 +245,12 @@ class SurveyStat extends \yii\db\ActiveRecord
         $result = SurveyStat::find()->where(['survey_stat_survey_id' => $survey->survey_id])
             ->andWhere(['survey_stat_user_id' => $userId])->one();
         if ($result) {
-            $remainingTime = ($survey->survey_time_to_pass * 60) - $result->survey_stat_actual_time;
-            return $remainingTime;
+            // $remainingTime = ($survey->survey_time_to_pass * 60) - $result->survey_stat_actual_time;
+            $time = ($result->survey_stat_actual_time /  ($survey->survey_time_to_pass * 60)) * 100;
+            return round($time,2);
+            // return $remainingTime;
         }
-        return $survey->survey_time_to_pass * 60;
+        return 100;
     }
 
 
