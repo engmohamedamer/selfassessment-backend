@@ -87,6 +87,7 @@ class AssessmentsAnswersCest
     */
     protected function dataQuestion1Provider() 
     {
+        // Single textbox id -> 6
         return [
             [
                 'url'=>'assessments/1',
@@ -398,7 +399,206 @@ class AssessmentsAnswersCest
                     'success'=>true
                 ],
             ],
+        ];
+    }
 
+    /**
+      * @dataProvider dataQuestion6Provider
+    */
+    public function answerQuestion6(ApiTester $I, \Codeception\Example $example)
+    {
+        $I->sendPUT($example['url'],$example['data']);
+        $I->seeResponseContainsJson($example['contains']);
+        $I->seeResponseCodeIs($example['code']);
+    }
+
+    /**
+     * @return array
+    */
+    protected function dataQuestion6Provider() 
+    {
+        // Rating -> 5
+        return [
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-6"=>[1,2,3],
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because question q-6 not allowed array type
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-6"=> -10,
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because question has range answer between 0-100
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-6"=>101,
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because question has range answer between 0-100
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>200,
+                'data'=>[
+                    "answers"=>[
+                        "q-6"=>50,
+                    ],
+                ],
+                'contains'=>[
+                    'success'=>true
+                ],
+            ],
+
+        ];
+    }
+
+
+    /**
+      * @dataProvider dataQuestion7Provider
+    */
+    public function answerQuestion7(ApiTester $I, \Codeception\Example $example)
+    {
+        $I->sendPUT($example['url'],$example['data']);
+        $I->seeResponseContainsJson($example['contains']);
+        $I->seeResponseCodeIs($example['code']);
+    }
+    /**
+     * @return array
+    */
+    protected function dataQuestion7Provider() 
+    {
+        // Comment box id -> 8
+        return [
+            [
+                'url'=>'assessments/1',
+                'code'=>403,
+                'data'=>[
+                    "answers"=>[
+                        "q-7"=>"تعليق مع صورة",
+                        "f-7"=>true,
+                        "a-7"=>[
+                            [
+                                "name"=>"64682197_2320155574731095_6761853737519546368_n.png",
+                                "type"=>"image/png",
+                                "content"=>"http://storage.selfassest.localhost/source/answers/64682197_2320155574731095_6761853737519546368_n.png"
+                            ],
+                        ],
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Forbidden'], // forbidden because this question not allowed attach file
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-7"=>[1,2,3],
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because this question not allowe array answers
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>200,
+                'data'=>[
+                    "answers"=>[
+                        "q-7"=>"Text Box",
+                    ],
+                ],
+                'contains'=>[
+                    'success'=>true
+                ],
+            ],
+        ];
+    }
+
+    /**
+      * @dataProvider dataQuestion8Provider
+    */
+    public function answerQuestion8(ApiTester $I, \Codeception\Example $example)
+    {
+        $I->sendPUT($example['url'],$example['data']);
+        $I->seeResponseContainsJson($example['contains']);
+        $I->seeResponseCodeIs($example['code']);
+    }
+    /**
+     * @return array
+    */
+    protected function dataQuestion8Provider() 
+    {
+        // Date/Time -> 9
+        return [
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-8"=>[1,2,3],
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because this question not allowe array answers
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-8"=>"",
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because this question is requried 
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-8"=>"1992-10",
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because sent invalid date
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>200,
+                'data'=>[
+                    "answers"=>[
+                        "q-8"=>"2019-11-28",
+                    ],
+                ],
+                'contains'=>[
+                    'success'=>true
+                ],
+            ],
         ];
     }
 }

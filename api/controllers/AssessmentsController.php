@@ -152,8 +152,7 @@ class AssessmentsController extends  MyActiveController
               $key=  (int)preg_replace('/\D/ui','',$key);
               $question = $this->findModel($key);
              //check question type
-             if (($question->survey_question_type === SurveyType::TYPE_SLIDER
-                  || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
+             if (($question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
                   || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX) and !is_array($value)
               ){
                  //handel one answer
@@ -167,27 +166,46 @@ class AssessmentsController extends  MyActiveController
                 $userAnswer->survey_user_answer_point = $question->survey_question_point;
                 $userAnswer->survey_user_answer_value = $value;
                 $userAnswer->save(false);
-              }elseif ($question->survey_question_type === SurveyType::TYPE_DATE_TIME
+              }elseif ($question->survey_question_type === SurveyType::TYPE_SLIDER and !is_array($value)
               ){
-                 //handel one answer
-                 $userAnswers = $question->userAnswers;
-                 $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
-                     'survey_user_answer_user_id' => \Yii::$app->user->getId(),
-                     'survey_user_answer_survey_id' => $question->survey_question_survey_id,
-                     'survey_user_answer_question_id' => $question->survey_question_id,
-                 ]));
-                $point = 0;
+                if ($question->answers[0]->survey_answer_name <= $value and $question->answers[1]->survey_answer_name >= $value) {
+                     $userAnswers = $question->userAnswers;
+                     $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
+                         'survey_user_answer_user_id' => \Yii::$app->user->getId(),
+                         'survey_user_answer_survey_id' => $question->survey_question_survey_id,
+                         'survey_user_answer_question_id' => $question->survey_question_id,
+                     ]));
 
-                $answerValue = strtotime($value);
-                $from = strtotime($question->answers[0]->survey_answer_name);
-                $to = strtotime($question->answers[1]->survey_answer_name);
-
-                if ($answerValue >= $from and $answerValue <= $to) {
-                    $point = $question->survey_question_point;
+                    $userAnswer->survey_user_answer_point = $question->survey_question_point;
+                    $userAnswer->survey_user_answer_value = $value;
+                    $userAnswer->save(false);
+                }else{
+                    return ResponseHelper::sendFailedResponse(['message'=>'Bad Request'],400);
                 }
-                $userAnswer->survey_user_answer_point = $point;
-                $userAnswer->survey_user_answer_value = $value;
-                $userAnswer->save(false);
+              }elseif ($question->survey_question_type === SurveyType::TYPE_DATE_TIME and !is_array($value)
+              ){
+                    if ($question->survey_question_can_skip == 0 and (date('Y-m-d', strtotime($value)) != $value)) {
+                        return ResponseHelper::sendFailedResponse(['message'=>'Bad Request'],400);
+                    }
+                    //handel one answer
+                    $userAnswers = $question->userAnswers;
+                    $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
+                         'survey_user_answer_user_id' => \Yii::$app->user->getId(),
+                         'survey_user_answer_survey_id' => $question->survey_question_survey_id,
+                         'survey_user_answer_question_id' => $question->survey_question_id,
+                    ]));
+                    $point = 0;
+
+                    $answerValue = strtotime($value);
+                    $from = strtotime($question->answers[0]->survey_answer_name);
+                    $to = strtotime($question->answers[1]->survey_answer_name);
+
+                    if ($answerValue >= $from and $answerValue <= $to) {
+                        $point = $question->survey_question_point;
+                    }
+                    $userAnswer->survey_user_answer_point = $point;
+                    $userAnswer->survey_user_answer_value = $value;
+                    $userAnswer->save(false);
               }elseif ($question->survey_question_type === SurveyType::TYPE_DROPDOWN and !is_array($value) and is_integer( (int) $value )){
                  $answerPoint = SurveyAnswer::findOne(['survey_answer_id'=>$value,'survey_answer_question_id'=>$question->survey_question_id]);
                 if ($answerPoint) {
