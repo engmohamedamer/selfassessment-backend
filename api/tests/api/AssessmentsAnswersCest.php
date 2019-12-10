@@ -157,26 +157,38 @@ class AssessmentsAnswersCest
                 'code'=>400,
                 'data'=>[
                     "answers"=>[
-                        "q-2"=>[],
-                        "q-3"=>[],
+                        "q-2"=> [
+                        ],
                     ],
                 ],
                 'contains'=>[
-                    'errors'=>['message'=>'Invalid Params'], // bad request because this question not allowe array answers
+                    'errors'=>['message'=>'Invalid Params'], // bad request because this question not allowe array answers - * you change it to success after fix remove answer from body request
                 ],
             ],
-            // [
-            //     'url'=>'assessments/1',
-            //     'code'=>200,
-            //     'data'=>[
-            //         "answers"=>[
-            //             "q-2"=>[1,2,3],
-            //         ],
-            //     ],
-            //     'contains'=>[
-            //         'success'=>true
-            //     ],
-            // ],
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-2"=>[4,5,6],
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because this question not have answers ids sent
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>200,
+                'data'=>[
+                    "answers"=>[
+                        "q-2"=>[1,2,3],
+                    ],
+                ],
+                'contains'=>[
+                    'success'=>true
+                ],
+            ],
         ];
     }
 
@@ -195,6 +207,7 @@ class AssessmentsAnswersCest
     */
     protected function dataQuestion3Provider() 
     {
+        // One choise of list -> 2
         return [
             [
                 'url'=>'assessments/1',
@@ -213,11 +226,176 @@ class AssessmentsAnswersCest
                 'code'=>400,
                 'data'=>[
                     "answers"=>[
-                        "q-3"=>100,
+                        "q-3"=>3,
                     ],
                 ],
                 'contains'=>[
-                    'errors'=>['message'=>'Bad Request'], // bad request because question q-3 not have answer id 100
+                    'errors'=>['message'=>'Bad Request'], // bad request because question q-3 not have answer id 3
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>200,
+                'data'=>[
+                    "answers"=>[
+                        "q-3"=>6,
+                    ],
+                ],
+                'contains'=>[
+                    'success'=>true
+                ],
+            ],
+
+        ];
+    }
+
+    /**
+      * @dataProvider dataQuestion4Provider
+    */
+    public function answerQuestion4(ApiTester $I, \Codeception\Example $example)
+    {
+        $I->sendPUT($example['url'],$example['data']);
+        $I->seeResponseContainsJson($example['contains']);
+        $I->seeResponseCodeIs($example['code']);
+    }
+
+    /**
+     * @return array
+    */
+    protected function dataQuestion4Provider() 
+    {
+        // Dropdown -> 3
+        return [
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-4"=>[1,2,3],
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because question q-4 not allowed array type
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-4"=>3,
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because question q-4 not have answer id 3
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>200,
+                'data'=>[
+                    "answers"=>[
+                        "q-4"=>9,
+                    ],
+                ],
+                'contains'=>[
+                    'success'=>true
+                ],
+            ],
+
+        ];
+    }
+
+
+    /**
+      * @dataProvider dataQuestion5Provider
+    */
+    public function answerQuestion5(ApiTester $I, \Codeception\Example $example)
+    {
+        $I->sendPUT($example['url'],$example['data']);
+        $I->seeResponseContainsJson($example['contains']);
+        $I->seeResponseCodeIs($example['code']);
+    }
+
+    /**
+     * @return array
+    */
+    protected function dataQuestion5Provider() 
+    {
+        // Ranking -> 4
+        return [
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-5"=>1,
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because question q-5 allowed array type
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-2"=>[4,5,6],
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because this question not have answers ids sent
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-5"=>[
+                            9=>[
+                                'rate'=>1
+                            ],
+                            10=>[
+                                'rate'=>1
+                            ],
+                            11=>[
+                                'rate'=>1
+                            ],
+                            12=>[
+                                'rat'=>1
+                            ],
+                        ],
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because key {rat} not allowed
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>200,
+                'data'=>[
+                    "answers"=>[
+                        "q-5"=>[
+                            9=>[
+                                'rate'=>1
+                            ],
+                            10=>[
+                                'rate'=>1
+                            ],
+                            11=>[
+                                'rate'=>1
+                            ],
+                            12=>[
+                                'rate'=>1
+                            ],
+                        ],
+                    ],
+                ],
+                'contains'=>[
+                    'success'=>true
                 ],
             ],
 
