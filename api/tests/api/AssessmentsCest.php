@@ -25,6 +25,10 @@ class AssessmentsCest
                 'class' => \common\fixtures\AssessmentQuestionsFixture::className(),
                 'dataFile' => codecept_data_dir() . 'asessment_questions.php'
             ],
+            'assessmentsQuestionAnswers' => [
+                'class' => \common\fixtures\AssessmentQuestionAnswersFixture::className(),
+                'dataFile' => codecept_data_dir() . 'asessment_questions_answers.php'
+            ],
         ]);
         $I->amBearerAuthenticated('fR4KSiyuXpHYst5c4JSDY0kJ2HLuOb05jMV4FDmD');
     }
@@ -106,27 +110,27 @@ class AssessmentsCest
         			'pages'=>[],
         		],
     		],
-    		[
-            	'url'=>'assessments/2',
-        		'code'=> 403,
-        		'contains'=>[
-        			'errors'=>['message'=>'Forbidden'],
-        		],
-    		],
-            [
-                'url'=>'assessments/3',
-                'code'=> 403,
-                'contains'=>[
-                    'errors'=>['message'=>'Forbidden'],
-                ],
-            ],
-            [
-                'url'=>'assessments/4',
-                'code'=> 403,
-                'contains'=>[
-                    'errors'=>['message'=>'Forbidden'],
-                ],
-            ],
+    		// [
+      //       	'url'=>'assessments/2',
+      //   		'code'=> 403,
+      //   		'contains'=>[
+      //   			'errors'=>['message'=>'Forbidden'],
+      //   		],
+    		// ],
+      //       [
+      //           'url'=>'assessments/3',
+      //           'code'=> 403,
+      //           'contains'=>[
+      //               'errors'=>['message'=>'Forbidden'],
+      //           ],
+      //       ],
+      //       [
+      //           'url'=>'assessments/4',
+      //           'code'=> 403,
+      //           'contains'=>[
+      //               'errors'=>['message'=>'Forbidden'],
+      //           ],
+      //       ],
             [
                 'url'=>'assessments/5',
                 'code'=> 200,
