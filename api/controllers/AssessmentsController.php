@@ -111,7 +111,7 @@ class AssessmentsController extends  MyActiveController
         $profile=$user->userProfile;
 
         $surveyObj = SurveyResource::findOne(['survey_id'=>$id,'survey_is_visible' => 1]);
-        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found'],404);
+        if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Assessment not found'],404);
 
         $params = \Yii::$app->request->post();
         if (!isset($params['status'])) $params['status'] = null;
@@ -120,9 +120,13 @@ class AssessmentsController extends  MyActiveController
         $survey_done =  $this->CheckState($surveyObj->survey_id,$params['status'],$params['pageNo']);
 
         if(!$survey_done)  return ResponseHelper::sendFailedResponse(['message'=>'Survey is Completed'],404);
+        
+        if (!isset($params['answers']) || !is_array($params['answers'])){
+            return isset($params['answers']);
+            return ResponseHelper::sendFailedResponse(['message'=>'Invalid Params'],400);
+        };
 
         foreach ($params['answers'] as $key=>$value) {
-
           if (strstr($key, 'a-')){
             $key=  (int)preg_replace('/\D/ui','',$key);
             $question = $this->findModel($key);
@@ -149,9 +153,9 @@ class AssessmentsController extends  MyActiveController
               $key=  (int)preg_replace('/\D/ui','',$key);
               $question = $this->findModel($key);
              //check question type
-             if ($question->survey_question_type === SurveyType::TYPE_SLIDER
+             if (($question->survey_question_type === SurveyType::TYPE_SLIDER
                   || $question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
-                  || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX
+                  || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX) and !is_array($value)
               ){
                  //handel one answer
                  $userAnswers = $question->userAnswers;
@@ -164,7 +168,7 @@ class AssessmentsController extends  MyActiveController
                 $userAnswer->survey_user_answer_point = $question->survey_question_point;
                 $userAnswer->survey_user_answer_value = $value;
                 $userAnswer->save(false);
-              }if ($question->survey_question_type === SurveyType::TYPE_DATE_TIME
+              }elseif ($question->survey_question_type === SurveyType::TYPE_DATE_TIME
               ){
                  //handel one answer
                  $userAnswers = $question->userAnswers;
@@ -204,28 +208,35 @@ class AssessmentsController extends  MyActiveController
                 $userAnswer->survey_user_answer_value = $value;
                 $userAnswer->save(false);
 
-              }
-
-              if ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
+              }elseif ($question->survey_question_type === SurveyType::TYPE_ONE_OF_LIST
               ){
                  //handel one answer
-                $answerPoint = SurveyAnswer::findOne(['survey_answer_id'=>$value]);
-                 $userAnswers = $question->userAnswers;
-                 $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
-                     'survey_user_answer_user_id' => \Yii::$app->user->getId(),
-                     'survey_user_answer_survey_id' => $question->survey_question_survey_id,
-                     'survey_user_answer_question_id' => $question->survey_question_id,
-                 ]));
-                 if ($answerPoint->correct) {
-                    $userAnswer->survey_user_answer_point = $answerPoint->question->survey_question_point;
-                 }else{
-                    if ($params['status'] == 2) {
-                        $this->correctiveActionReport($question,$answerPoint);
-                    }
-                 }
-                 $userAnswer->survey_user_answer_answer_id = $value;
-                 $userAnswer->survey_user_answer_value = $value;
-                 $userAnswer->save(false);
+                if (!is_array($value) and is_integer( (int) $value )) {
+                    // return $value;
+                    $answerPoint = SurveyAnswer::findOne(['survey_answer_id'=>$value]);
+                     if ($answerPoint) {
+                         $userAnswers = $question->userAnswers;
+                         $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
+                             'survey_user_answer_user_id' => \Yii::$app->user->getId(),
+                             'survey_user_answer_survey_id' => $question->survey_question_survey_id,
+                             'survey_user_answer_question_id' => $question->survey_question_id,
+                         ]));
+                         if ($answerPoint->correct) {
+                            $userAnswer->survey_user_answer_point = $answerPoint->question->survey_question_point;
+                         }else{
+                            if ($params['status'] == 2) {
+                                $this->correctiveActionReport($question,$answerPoint);
+                            }
+                         }
+                         $userAnswer->survey_user_answer_answer_id = $value;
+                         $userAnswer->survey_user_answer_value = $value;
+                         $userAnswer->save(false);
+                    }else{
+                        return ResponseHelper::sendFailedResponse(['message'=>'Invalid Params'],400);
+                    }   
+                }else{
+                    return ResponseHelper::sendFailedResponse(['message'=>'Bad Request'],400);
+                }
               }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
                  || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
              ) {
@@ -315,8 +326,10 @@ class AssessmentsController extends  MyActiveController
                       $userAnswer->save(false);
                     }
                 }
+             }else{
+                return ResponseHelper::sendFailedResponse(['message'=>'Bad Request'],400);
              }//end if
-          }
+          } // end if strstr
 
         }//end loap answers
 
