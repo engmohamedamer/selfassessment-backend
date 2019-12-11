@@ -459,3 +459,10 @@ ul.kv-tree,
 .kv-detail-heading {
     padding: 5px 15px 5px 5px;
 }
+
+.kv-carets {
+    position: absolute;
+    right: auto;
+    top: 8px;
+    left: 10px;
+}

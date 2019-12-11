@@ -60,7 +60,6 @@ $model->roles =Yii::$app->session->get('UserRole');
                         <?php echo $form->field($model, 'password')->passwordInput() ?>
                     </div>
                     <div class="col-md-4">
-                    <label class="control-label" for="userprofile-firstname">القسم</label>
                     <?php
                         echo $form->field($profile, 'sector_id')->widget(TreeViewInput::classname(),
                         [

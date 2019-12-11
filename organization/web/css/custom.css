@@ -1564,6 +1564,19 @@ header nav a {
     width: 100% !important;
 }
 
+.kv-tree-input-widget.kv-single-select {
+    height: auto !important;
+}
+
+.kv-tree-dropdown {
+    left: auto !important;
+}
+
+.kv-tree-input,
+.kv-tree-input.form-control {
+    height: 40px;
+}
+
 
 /* *************************************************************************CONTENT DASHBOARD END*************** */
 
