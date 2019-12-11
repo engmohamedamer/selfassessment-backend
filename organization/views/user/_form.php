@@ -1,5 +1,6 @@
 <?php
 
+use common\models\OrganizationStructure;
 use common\models\User;
 use common\models\UserProfile;
 use yii\bootstrap\ActiveForm;
@@ -57,7 +58,21 @@ $model->roles =Yii::$app->session->get('UserRole');
                     <div class="col-md-3">
                         <?php echo $form->field($model, 'password')->passwordInput() ?>
                     </div>
-                    
+                    <div class="col-md-6">
+                    <?php
+                        echo \kartik\tree\TreeViewInput::widget([
+                            'name' => 'kvTreeInput',
+                            'value' => 'true', // preselected values
+                            'query' => OrganizationStructure::find()->addOrderBy('root, lft'),
+                            'headingOptions' => ['label' => Yii::t('common','Sector')],
+                            'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
+                            'fontAwesome' => true,
+                            'asDropdown' => true,
+                            'multiple' => false,
+                            'options' => ['disabled' => false]
+                        ]);
+                    ?>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 col-sm-12">

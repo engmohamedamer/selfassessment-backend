@@ -286,7 +286,7 @@ return [
     'Child Allowed'=>'اضافة عناصر فرعية',
     'Organization Admins'=>'مسئولي المؤسسة',
     'Organization Admins List'=>'مسئولي المؤسسة',
-    ''=>'',
+    'Sector'=>'قطاع',
     ''=>'',
     ''=>'',
     ''=>'',
