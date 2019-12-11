@@ -46,19 +46,20 @@ $model->roles =Yii::$app->session->get('UserRole');
                     
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <?php echo $form->field($profile, 'firstname') ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <?php echo $form->field($profile, 'lastname') ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <?php echo $form->field($model, 'email') ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <?php echo $form->field($model, 'password')->passwordInput() ?>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                    <label class="control-label" for="userprofile-firstname">القسم</label>
                     <?php
                         echo \kartik\tree\TreeViewInput::widget([
                             'name' => 'kvTreeInput',
@@ -73,12 +74,11 @@ $model->roles =Yii::$app->session->get('UserRole');
                         ]);
                     ?>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 col-sm-12">
+                
+                    <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($profile, 'mobile') ?>
                     </div>
-                    <div class="col-md-3 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($profile, 'gender')->dropDownlist([
                             UserProfile::GENDER_MALE => Yii::t('backend', 'Male'),
                             UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female'),
@@ -86,10 +86,10 @@ $model->roles =Yii::$app->session->get('UserRole');
                     </div>
                     
 
-                    <div class="col-md-3 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                             <?php echo $form->field($profile, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
                     </div>
-                    <div class="col-md-3 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($model, 'status')->dropDownList(User::statuses()) ?>
                     </div>
                 </div>
