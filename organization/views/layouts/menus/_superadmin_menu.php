@@ -50,6 +50,12 @@ echo Menu::widget([
                     'url' => ['/organization/update'],
                     'options' => ['class' => 'nav-item'],
                 ],
+                [
+                    'label' => Yii::t('common', 'Organization Structure'),
+                    'url' => '/organization/structure',
+                    'icon' => '<i class="icofont-gears mr-2 ml-2"></i>',
+                    'options' => ['class' => 'nav-item'],
+                ],
             ],
         ],
 
