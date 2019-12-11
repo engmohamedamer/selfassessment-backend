@@ -135,4 +135,7 @@ class OrganizationController extends \yii\web\Controller
     public  function actionStructure(){
         return $this->render('structure');
     }
+    public  function actionAdmins(){
+        return $this->render('admins');
+    }
 }

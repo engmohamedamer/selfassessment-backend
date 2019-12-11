@@ -283,4 +283,10 @@ return [
     'Assessments Contributor Status'=>'حالة المشاركة في الاستبيانات',
     'Search'=>'ابحث هنا',
     'Organization Structure'=>'هيكلة المؤسسة',
+    'Organization Admins'=>'مسئولي المؤسسة',
+    'Organization Admins List'=>'مسئولي المؤسسة',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
 ];

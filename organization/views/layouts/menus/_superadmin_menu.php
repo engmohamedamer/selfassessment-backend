@@ -56,6 +56,12 @@ echo Menu::widget([
                     'icon' => '<i class="icofont-gears mr-2 ml-2"></i>',
                     'options' => ['class' => 'nav-item'],
                 ],
+                [
+                    'label' => Yii::t('common', 'Organization Admins'),
+                    'url' => '/organization/admins',
+                    'icon' => '<i class="icofont-users-alt-1 mr-2 ml-2"></i>',
+                    'options' => ['class' => 'nav-item'],
+                ],
             ],
         ],
 
