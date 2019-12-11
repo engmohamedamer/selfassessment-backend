@@ -11,7 +11,22 @@ use yii\web\View;
 $this->title = Yii::t('common', 'Organization Structure');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="organization-structure-index">
+<div class="content-header">
+    <div class="">
+        <div class="">
+            <h1 class="m-0 text-dark"><?= Yii::t('common','Organization Structure')?></h1>
+        </div>
+        <!-- <div class=" actionBtns">
+            <a href="/user/create" class="btn btn btn-primary"><i class="icofont-plus mr-2 ml-2"></i> إضافة مشارك</a>
+        </div> -->
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
     <?php
     echo TreeView::widget([
         'query' => OrganizationStructure::find()->addOrderBy('root, lft'),
@@ -30,4 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
          ],
     ]);
     ?>
+</div>
+</div>
+</div>
 </div>

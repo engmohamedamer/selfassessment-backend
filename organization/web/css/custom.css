@@ -1556,6 +1556,14 @@ header nav a {
     max-width: 100% !important;
 }
 
+.kv-header-container .row>.col-sm-6:first-child {
+    display: none;
+}
+
+.kv-header-container .row>.col-sm-6 {
+    width: 100% !important;
+}
+
 
 /* *************************************************************************CONTENT DASHBOARD END*************** */
 
