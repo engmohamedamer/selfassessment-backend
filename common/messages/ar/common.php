@@ -284,4 +284,10 @@ return [
     'Search'=>'ابحث هنا',
     'Organization Structure'=>'هيكلة المؤسسة',
     'Child Allowed'=>'اضافة عناصر فرعية',
+    'Organization Admins'=>'مسئولي المؤسسة',
+    'Organization Admins List'=>'مسئولي المؤسسة',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
 ];
