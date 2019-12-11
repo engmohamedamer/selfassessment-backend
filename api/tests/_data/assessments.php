@@ -1,6 +1,6 @@
 <?php
 return [
-    // open assessment
+    // for check assessment available for view api because contributor start it (status 1 in list)
     [
         'survey_id'=>1,
         'org_id'=>5,
@@ -60,7 +60,7 @@ return [
         'start_info'=>'Start Info',
         'survey_point'=>10,
     ],
-    // for check assessment available for view api because contributor start it (status 1 in list)
+    // open assessment
     [
         'survey_id'=>5,
         'org_id'=>5,

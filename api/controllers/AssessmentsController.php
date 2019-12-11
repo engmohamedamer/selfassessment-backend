@@ -86,6 +86,8 @@ class AssessmentsController extends  MyActiveController
 
         $surveyObj = SurveyReportResource::findOne(['survey_id'=>$id,'survey_is_visible' => 1]);
         if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found'],404);
+        $stat = SurveyStat::findOne(['survey_stat_survey_id'=>$id,'survey_stat_user_id'=>$user->id]);
+        if (!$stat) return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
     }
@@ -328,7 +330,7 @@ class AssessmentsController extends  MyActiveController
                 if (count($ids) > 0 and $valid_count == 0) {
                     return ResponseHelper::sendFailedResponse(['message'=>'Bad Request'],400);
                 }
-             }else if($question->survey_question_type === SurveyType::TYPE_FILE) {
+             }else if($question->survey_question_type === SurveyType::TYPE_FILE and is_array($value)) {
                  //save multiple
                 if (count($value) > 0 ) {
                     SurveyUserAnswer::deleteAll(['survey_user_answer_survey_id'=>$question->survey_question_survey_id ,
@@ -336,17 +338,21 @@ class AssessmentsController extends  MyActiveController
                      'survey_user_answer_user_id' => \Yii::$app->user->getId()
                    ]);
                    foreach ($value as $k => $file) {
-                      $userAnswer =  new SurveyUserAnswer();
-                      $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
-                      $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
-                      $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
-                      $userAnswer->survey_user_answer_value = $file['content'];
-                      $userAnswer->survey_user_answer_text = $file['name'];
-                      $userAnswer->survey_user_answer_file_type = $file['type'];
-                      if ($k == 0) {
-                        $userAnswer->survey_user_answer_point = $question->survey_question_point;
-                      }
-                      $userAnswer->save(false);
+                      if (preg_match('/((http|https):\/\/)?storage.selfassest.localhost.source\/answers\/.*/', $file['content'])) {
+                          $userAnswer =  new SurveyUserAnswer();
+                          $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
+                          $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
+                          $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
+                          $userAnswer->survey_user_answer_value = $file['content'];
+                          $userAnswer->survey_user_answer_text = $file['name'];
+                          $userAnswer->survey_user_answer_file_type = $file['type'];
+                          if ($k == 0) {
+                            $userAnswer->survey_user_answer_point = $question->survey_question_point;
+                          }
+                          $userAnswer->save(false);
+                        }else{
+                            return ResponseHelper::sendFailedResponse(['message'=>'Bad Request'],400);
+                        }
                     }
                 }
              }else{

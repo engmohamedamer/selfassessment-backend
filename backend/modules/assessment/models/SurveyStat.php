@@ -248,7 +248,7 @@ class SurveyStat extends \yii\db\ActiveRecord
             // $remainingTime = ($survey->survey_time_to_pass * 60) - $result->survey_stat_actual_time;
             $actual_time = ($result->survey_stat_actual_time /  ($survey->survey_time_to_pass * 60)) * 100;
             $time = 100 - $actual_time;
-            return round($time,2);
+            return round($time,0);
             // return $remainingTime;
         }
         return 100;
