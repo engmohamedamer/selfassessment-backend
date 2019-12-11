@@ -52,9 +52,10 @@ echo Menu::widget([
                 ],
                 [
                     'label' => Yii::t('common', 'Organization Structure'),
-                    'url' => '/organization/structure',
+                    'url' => '/organization-structure',
                     'icon' => '<i class="icofont-gears mr-2 ml-2"></i>',
                     'options' => ['class' => 'nav-item'],
+                    'active' => (Yii::$app->controller->id == 'organization-structure'),
                 ],
             ],
         ],
