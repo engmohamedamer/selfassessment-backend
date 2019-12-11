@@ -3,8 +3,6 @@
 namespace common\models\base;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
-use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the base model class for table "organization_structure".
@@ -34,20 +32,18 @@ use yii\behaviors\BlameableBehavior;
 class OrganizationStructure extends \kartik\tree\models\Tree
 {
 
-    public function __construct(){
-        parent::__construct();
-    }
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['root', 'lft', 'rgt', 'lvl'], 'integer'],
+          //  [['root', 'lft', 'rgt', 'lvl'], 'integer'],
             [['name'], 'required'],
-            [['name'], 'string', 'max' => 60],
-            [['icon'], 'string', 'max' => 255],
-            [['icon_type', 'active', 'selected', 'disabled', 'readonly', 'visible', 'collapsed', 'movable_u', 'movable_d', 'movable_l', 'movable_r', 'removable', 'removable_all', 'child_allowed'], 'string', 'max' => 1]
+           [['name'], 'string', 'max' => 60],
+           // [['icon'], 'string', 'max' => 255],
+            [['root', 'lft', 'rgt', 'lvl','icon_type', 'active', 'icon','selected', 'disabled', 'readonly', 'visible', 'collapsed', 'movable_u', 'movable_d',
+                'movable_l', 'movable_r', 'removable', 'removable_all', 'child_allowed'], 'safe']
         ];
     }
 
@@ -88,49 +84,6 @@ class OrganizationStructure extends \kartik\tree\models\Tree
             'child_allowed' => Yii::t('common', 'Child Allowed'),
         ];
     }
-
-    /**
-     * @inheritdoc
-     * @return array mixed
-     */
-    // public function behaviors()
-    // {
-    //     return array_merge(parent::behaviors(), [
-    //         'timestamp' => [
-    //             'class' => TimestampBehavior::className(),
-    //             'createdAtAttribute' => 'created_at',
-    //             'updatedAtAttribute' => 'updated_at',
-    //             'value' => new \yii\db\Expression('NOW()'),
-    //         ],
-    //         'blameable' => [
-    //             'class' => BlameableBehavior::className(),
-    //             'createdByAttribute' => 'created_by',
-    //             'updatedByAttribute' => 'updated_by',
-    //         ],
-    //     ]);
-    // }
-
-    /**
-     * The following code shows how to apply a default condition for all queries:
-     *
-     * ```php
-     * class Customer extends ActiveRecord
-     * {
-     *     public static function find()
-     *     {
-     *         return parent::find()->where(['deleted' => false]);
-     *     }
-     * }
-     *
-     * // Use andWhere()/orWhere() to apply the default condition
-     * // SELECT FROM customer WHERE `deleted`=:deleted AND age>30
-     * $customers = Customer::find()->andWhere('age>30')->all();
-     *
-     * // Use where() to ignore the default condition
-     * // SELECT FROM customer WHERE age>30
-     * $customers = Customer::find()->where('age>30')->all();
-     * ```
-     */
 
     /**
      * @inheritdoc

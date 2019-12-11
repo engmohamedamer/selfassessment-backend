@@ -30,9 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php
     echo TreeView::widget([
         'query' => OrganizationStructure::find()->addOrderBy('root, lft'),
-        'rootOptions' => ['label' => '<span class="text-primary">'.Yii::t('common', 'Organization Structure').'</span>'],
+        'rootOptions' => ['label' => '<span class="text-primary">'.Yii::t('common','Organization Structure').'</span>'],
         'fontAwesome' => false,
-        'isAdmin' => false,
+        'isAdmin' => false, // @TODO : put your isAdmin getter here
         'displayValue' => 0,
         'softDelete'=>true,
         'iconEditSettings'=> [
@@ -43,6 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
              ]
          ],
+        'cacheSettings' => ['enableCache' => true],
+        'nodeAddlViews' => [
+            Module::VIEW_PART_2 => '@app/views/organization-structure/_form'
+        ],
     ]);
     ?>
 </div>
