@@ -3,6 +3,7 @@
 use common\models\OrganizationStructure;
 use common\models\User;
 use common\models\UserProfile;
+use kartik\tree\TreeViewInput;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -60,7 +61,8 @@ $model->roles =Yii::$app->session->get('UserRole');
                     </div>
                     <div class="col-md-6">
                     <?php
-                        echo \kartik\tree\TreeViewInput::widget([
+                        echo $form->field($profile, 'sector_id')->widget(TreeViewInput::classname(),
+                        [
                             'name' => 'kvTreeInput',
                             'value' => 'true', // preselected values
                             'query' => OrganizationStructure::find()->addOrderBy('root, lft'),
