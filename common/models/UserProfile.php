@@ -40,6 +40,7 @@ class UserProfile extends ActiveRecord
      */
     public $picture;
     public $full_name;
+    public $sector_id;
     /**
      * @inheritdoc
      */
@@ -70,7 +71,7 @@ class UserProfile extends ActiveRecord
     {
         return [
             [['user_id','firstname'], 'required'],
-            [['user_id', 'gender','organization_id','draft'], 'integer'],
+            [['user_id', 'gender','organization_id','draft','sector_id'], 'integer'],
             [['gender'], 'in', 'range' => [NULL, self::GENDER_FEMALE, self::GENDER_MALE]],
             [['firstname', 'middlename', 'lastname', 'avatar_path', 'avatar_base_url','mobile','device_token'], 'string', 'max' => 255],
             ['locale', 'default', 'value' => Yii::$app->language],
@@ -98,6 +99,7 @@ class UserProfile extends ActiveRecord
             'organization_id'=> Yii::t('common', 'School Admin'),
             'mobile'=> Yii::t('common', 'Mobile'),
             'bio'=> Yii::t('common', 'Bio'),
+            'sector_id'=> Yii::t('common', 'Sector'),
         ];
     }
 
