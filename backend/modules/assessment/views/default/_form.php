@@ -6,10 +6,12 @@
  * Time: 14:24
  */
 
+use common\models\OrganizationStructure;
 use kartik\dialog\Dialog;
 use kartik\editable\Editable;
 use kartik\helpers\Html;
 use kartik\select2\Select2;
+use kartik\tree\TreeViewInput;
 use onmotion\yii2\widget\upload\crop\UploadCrop;
 use yii\helpers\Url;
 use yii\web\JsExpression;
@@ -298,7 +300,19 @@ if (Yii::$app->user->identity->userProfile->organization) {
                     echo Html::endTag('div'); // col-md-3
 
                     echo Html::beginTag('div', ['class' => 'col-md-9']);
-                    echo $form->field($survey, "survey_tags")->input('text', ['placeholder' => Yii::t('survey','Comma separated')]);
+                    // echo $form->field($survey, "survey_tags")->input('text', ['placeholder' => Yii::t('survey','Comma separated')]);
+                        echo $form->field($survey, 'sector_id')->widget(TreeViewInput::classname(),
+                        [
+                            'name' => 'kvTreeInput',
+                            'value' => 'true', // preselected values
+                            'query' => OrganizationStructure::find()->addOrderBy('root, lft'),
+                            'headingOptions' => ['label' => Yii::t('common','Sector')],
+                            'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
+                            'fontAwesome' => true,
+                            'asDropdown' => true,
+                            'multiple' => false,
+                            'options' => ['disabled' => false]
+                        ]);
                     if ($withUserSearch) {
                         echo Html::tag('div', '', ['class' => 'clearfix']);
                         echo $form->field($survey, 'restrictedUserIds')->widget(Select2::classname(),
