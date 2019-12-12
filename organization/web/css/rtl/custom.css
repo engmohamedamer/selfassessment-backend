@@ -466,3 +466,7 @@ ul.kv-tree,
     top: 8px;
     left: 10px;
 }
+
+.fa-angle-left:before {
+    content: "\f104" !important;
+}
