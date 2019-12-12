@@ -1577,6 +1577,19 @@ header nav a {
     height: 40px;
 }
 
+.form-control.kv-tree-wrapper {
+    height: auto;
+    background: #fff;
+}
+
+.dropdown-menu.kv-tree-dropdown {
+    padding: 0;
+}
+
+.kv-header-container .col-sm-6 {
+    width: 100% !important;
+}
+
 
 /* *************************************************************************CONTENT DASHBOARD END*************** */
 
