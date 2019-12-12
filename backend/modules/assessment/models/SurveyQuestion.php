@@ -28,7 +28,6 @@ use yii\helpers\ArrayHelper;
  */
 class SurveyQuestion extends \yii\db\ActiveRecord
 {
-
     /**
      * @inheritdoc
      */
@@ -131,7 +130,7 @@ class SurveyQuestion extends \yii\db\ActiveRecord
                 return ($model->survey->survey_point > 0);
             }, 'message' => \Yii::t('survey', 'You must enter a question point')],
             [['survey_question_type'], 'filter', 'filter' => 'intval'],
-            [['survey_question_can_skip', 'survey_question_show_descr', 'survey_question_is_scorable','survey_question_attachment_file'], 'boolean'],
+            [['survey_question_can_skip', 'survey_question_show_descr', 'survey_question_is_scorable','survey_question_attachment_file','survey_question_can_ignore'], 'boolean'],
             [['survey_question_can_skip', 'survey_question_show_descr', 'survey_question_is_scorable'], 'filter', 'filter' => 'boolval'],
             [['survey_question_name'], 'string', 'max' => 130],
             [['survey_question_name'], 'required'],
@@ -202,6 +201,7 @@ class SurveyQuestion extends \yii\db\ActiveRecord
             'steps'=> Yii::t('survey', 'Steps Number'),
             'survey_question_attachment_file'=> Yii::t('survey', 'Can Attach File'),
             'survey_question_point'=> Yii::t('survey', 'Survey Question Point'),
+            'survey_question_can_ignore'=>Yii::t('survey', 'Can Ignore'),
         ];
     }
 
