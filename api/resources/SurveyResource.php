@@ -139,8 +139,6 @@ class SurveyResource extends Survey
                             'type'=> $type,
                             'name'=>'q-'.$question->survey_question_id,
                             'title'=> $question->survey_question_name,
-                            'visibleIf'=> "{Q-$question->survey_question_id}='false'",
-                            'startWithNewLine'=> false, 
                         ];
                         if ($question->survey_question_show_descr == 1 ) {
                             $data[$c]['description'] = $question->survey_question_descr;
@@ -223,13 +221,7 @@ class SurveyResource extends Survey
                                     ]
                                 ],
                             ];
-                            $data[$c+2] = [
-                                'label'=> "هذا السؤال يمكن تجاهله، هل تريد تجاهله؟",
-                                'type'=> "boolean",
-                                'name'=> "Q-$question->survey_question_id",
-                                'defaultValue'=>false,
-                            ];
-                            $c = $c+3;
+                            $c = $c+2;
                         }else{
                             $c = $c+1;
                         }
