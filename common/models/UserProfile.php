@@ -40,7 +40,6 @@ class UserProfile extends ActiveRecord
      */
     public $picture;
     public $full_name;
-    public $sector_id;
     /**
      * @inheritdoc
      */
@@ -72,6 +71,7 @@ class UserProfile extends ActiveRecord
         return [
             [['user_id','firstname'], 'required'],
             [['user_id', 'gender','organization_id','draft','sector_id'], 'integer'],
+            [['sector_id'], 'default', 'value' => 0],
             [['gender'], 'in', 'range' => [NULL, self::GENDER_FEMALE, self::GENDER_MALE]],
             [['firstname', 'middlename', 'lastname', 'avatar_path', 'avatar_base_url','mobile','device_token'], 'string', 'max' => 255],
             ['locale', 'default', 'value' => Yii::$app->language],

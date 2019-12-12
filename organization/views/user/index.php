@@ -24,10 +24,20 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="content-header">
     <div class="">
         <div class="">
-            <h1 class="m-0 text-dark"><?= Yii::t('common','Contributors')?></h1>
+            <h1 class="m-0 text-dark">
+                <?php 
+                    if (Yii::$app->session->get('UserRole') == 'governmentAdmin') {
+                        echo Yii::t('common','Organization Admins');
+                    }else{
+                        echo Yii::t('common','Contributors');
+                    }
+
+                ?>
+                    
+            </h1>
         </div>
         <div class=" actionBtns">
-            <a href="/user/create" class="btn btn btn-primary"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('common', 'Create New Contributors') ?></a>
+            <a href="/user/create" class="btn btn btn-primary"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('common', 'Create') ?></a>
         </div>
         <!-- /.col -->
     </div>

@@ -22,7 +22,16 @@ $model->roles =Yii::$app->session->get('UserRole');
 <div class="content-header">
     <div class="">
         <div class="">
-            <h1 class="m-0 text-dark"><?= Yii::t('common','Contributors')?></h1>
+            <h1 class="m-0 text-dark">
+                <?php 
+                    if (Yii::$app->session->get('UserRole') == 'governmentAdmin') {
+                        echo Yii::t('common','Organization Admins');
+                    }else{
+                        echo Yii::t('common','Contributors');
+                    }
+
+                ?>
+            </h1>
         </div>
 
         <div class=" actionBtns">

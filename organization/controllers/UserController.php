@@ -62,7 +62,10 @@ class UserController extends Controller
     public function actionIndex()
     {
         $searchModel = new UserSearch();
-        $searchModel->user_role = User::ROLE_USER;
+        if(isset($_REQUEST['user_role'])){
+            Yii::$app->session->set('UserRole',$_REQUEST['user_role']);
+        }
+        $searchModel->user_role = Yii::$app->session->get('UserRole');
         $searchModel->organization_id = Yii::$app->user->identity->userProfile->organization_id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -125,7 +128,7 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new UserForm();
-        $model->roles = User::ROLE_USER;
+        $model->roles = Yii::$app->session->get('UserRole') ? : User::ROLE_USER;
         $profile = new UserProfile();
         $model->setScenario('create');
         $organization = Yii::$app->user->identity->userProfile->organization;
@@ -162,7 +165,7 @@ class UserController extends Controller
         $model = new UserForm();
         $model->setModel($this->findModel($id));        
         $profile= $model->getModel()->userProfile;
-        $model->roles = User::ROLE_USER;
+        $model->roles = Yii::$app->session->get('UserRole') ? : User::ROLE_USER;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $profile->load(Yii::$app->request->post());
@@ -226,6 +229,7 @@ class UserController extends Controller
         $prof->gender = $profile->gender;
         $prof->locale = $profile->locale;
         $prof->mobile = $profile->mobile;
+        $prof->sector_id = $prof->sector_id;
         if ($organization_id) {
             $prof->organization_id = $organization_id;
         }

@@ -59,7 +59,7 @@ echo Menu::widget([
                 ],
                 [
                     'label' => Yii::t('common', 'Organization Admins'),
-                    'url' => '/organization/admins',
+                    'url' => '/user/index?user_role=governmentAdmin',
                     'icon' => '<i class="icofont-users-alt-1 mr-2 ml-2"></i>',
                     'options' => ['class' => 'nav-item'],
                 ],
@@ -68,7 +68,7 @@ echo Menu::widget([
 
         [
             'label' => Yii::t('common', 'Contributors'),
-            'url' => '/user/index',
+            'url' => '/user/index?user_role=user',
             'icon' => '<i class="icofont-users-social mr-2 ml-2"></i>',
             'options' => ['class' => 'nav-item'],
             'active' => (Yii::$app->controller->id == 'user'),
