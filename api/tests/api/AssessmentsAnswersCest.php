@@ -31,13 +31,14 @@ class AssessmentsAnswersCest
                 'dataFile' => codecept_data_dir() . 'asessment_questions_answers.php'
             ],
         ]);
+        $I->haveHttpHeader('Content-Type', 'application/json');
         $I->amBearerAuthenticated('fR4KSiyuXpHYst5c4JSDY0kJ2HLuOb05jMV4FDmD');
     }
 
     /**
       * @dataProvider dataProvider
     */
-    public function answer(ApiTester $I, \Codeception\Example $example)
+    public function testAnswerAssessment(ApiTester $I, \Codeception\Example $example)
     {
         $I->sendPUT($example['url'],$example['data']);
         $I->seeResponseContainsJson($example['contains']);
@@ -63,19 +64,28 @@ class AssessmentsAnswersCest
                 'url'=>'assessments/1',
                 'code'=>400,
                 'data'=>[
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Invalid Params'], // because key answer not sent
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>200,
+                'data'=>[
                     "answers"=>[],
                 ],
                 'contains'=>[
-                    'errors'=>['message'=>'Invalid Params'], // because answer empty or not sent
+                    'success'=>true
                 ],
             ],
         ];
     }
 
     /**
-      * @dataProvider dataQuestion1Provider
+      * @dataProvider dataProviderForQuestionTypeText
     */
-    public function answerQuestion1(ApiTester $I, \Codeception\Example $example)
+    public function testAnswerForQuestionTypeText(ApiTester $I, \Codeception\Example $example)
     {
         $I->sendPUT($example['url'],$example['data']);
         $I->seeResponseContainsJson($example['contains']);
@@ -85,7 +95,7 @@ class AssessmentsAnswersCest
     /**
      * @return array
     */
-    protected function dataQuestion1Provider() 
+    protected function dataProviderForQuestionTypeText() 
     {
         // Single textbox id -> 6
         return [
@@ -137,9 +147,9 @@ class AssessmentsAnswersCest
     }
 
     /**
-      * @dataProvider dataQuestion2Provider
+      * @dataProvider dataProviderForQuestionTypeMultipleChoice
     */
-    public function answerQuestion2(ApiTester $I, \Codeception\Example $example)
+    public function testAnswerForQuestionTypeMultipleChoice(ApiTester $I, \Codeception\Example $example)
     {
         $I->sendPUT($example['url'],$example['data']);
         $I->seeResponseContainsJson($example['contains']);
@@ -149,21 +159,20 @@ class AssessmentsAnswersCest
     /**
      * @return array
     */
-    protected function dataQuestion2Provider() 
+    protected function dataProviderForQuestionTypeMultipleChoice() 
     {
         // Multiple choice id -> 1
         return [
             [
                 'url'=>'assessments/1',
-                'code'=>400,
+                'code'=>200,
                 'data'=>[
                     "answers"=>[
-                        "q-2"=> [
-                        ],
+                        "q-2"=> [],
                     ],
                 ],
                 'contains'=>[
-                    'errors'=>['message'=>'Invalid Params'], // bad request because this question not allowe array answers - * you change it to success after fix remove answer from body request
+                    'success'=>true
                 ],
             ],
             [
@@ -194,9 +203,9 @@ class AssessmentsAnswersCest
     }
 
     /**
-      * @dataProvider dataQuestion3Provider
+      * @dataProvider dataProviderForQuestionTypeOneChoiceOfList
     */
-    public function answerQuestion3(ApiTester $I, \Codeception\Example $example)
+    public function testAnswerForQuestionTypeOneChoiceOfList(ApiTester $I, \Codeception\Example $example)
     {
         $I->sendPUT($example['url'],$example['data']);
         $I->seeResponseContainsJson($example['contains']);
@@ -206,7 +215,7 @@ class AssessmentsAnswersCest
     /**
      * @return array
     */
-    protected function dataQuestion3Provider() 
+    protected function dataProviderForQuestionTypeOneChoiceOfList() 
     {
         // One choise of list -> 2
         return [
@@ -251,9 +260,9 @@ class AssessmentsAnswersCest
     }
 
     /**
-      * @dataProvider dataQuestion4Provider
+      * @dataProvider dataProviderForQuestionTypeDropdown
     */
-    public function answerQuestion4(ApiTester $I, \Codeception\Example $example)
+    public function testAnswerForQuestionTypeDropdown(ApiTester $I, \Codeception\Example $example)
     {
         $I->sendPUT($example['url'],$example['data']);
         $I->seeResponseContainsJson($example['contains']);
@@ -263,7 +272,7 @@ class AssessmentsAnswersCest
     /**
      * @return array
     */
-    protected function dataQuestion4Provider() 
+    protected function dataProviderForQuestionTypeDropdown() 
     {
         // Dropdown -> 3
         return [
@@ -309,9 +318,9 @@ class AssessmentsAnswersCest
 
 
     /**
-      * @dataProvider dataQuestion5Provider
+      * @dataProvider dataProviderForQuestionTypeRanking
     */
-    public function answerQuestion5(ApiTester $I, \Codeception\Example $example)
+    public function testAnswerForQuestionTypeRanking(ApiTester $I, \Codeception\Example $example)
     {
         $I->sendPUT($example['url'],$example['data']);
         $I->seeResponseContainsJson($example['contains']);
@@ -321,7 +330,7 @@ class AssessmentsAnswersCest
     /**
      * @return array
     */
-    protected function dataQuestion5Provider() 
+    protected function dataProviderForQuestionTypeRanking() 
     {
         // Ranking -> 4
         return [
@@ -342,7 +351,7 @@ class AssessmentsAnswersCest
                 'code'=>400,
                 'data'=>[
                     "answers"=>[
-                        "q-2"=>[4,5,6],
+                        "q-5"=>[4,5,6],
                     ],
                 ],
                 'contains'=>[
@@ -403,9 +412,9 @@ class AssessmentsAnswersCest
     }
 
     /**
-      * @dataProvider dataQuestion6Provider
+      * @dataProvider dataProviderForQuestionTypeRating
     */
-    public function answerQuestion6(ApiTester $I, \Codeception\Example $example)
+    public function testAnswerForQuestionTypeRating(ApiTester $I, \Codeception\Example $example)
     {
         $I->sendPUT($example['url'],$example['data']);
         $I->seeResponseContainsJson($example['contains']);
@@ -415,7 +424,7 @@ class AssessmentsAnswersCest
     /**
      * @return array
     */
-    protected function dataQuestion6Provider() 
+    protected function dataProviderForQuestionTypeRating() 
     {
         // Rating -> 5
         return [
@@ -473,9 +482,9 @@ class AssessmentsAnswersCest
 
 
     /**
-      * @dataProvider dataQuestion7Provider
+      * @dataProvider dataProviderForQuestionTypeCommentBox
     */
-    public function answerQuestion7(ApiTester $I, \Codeception\Example $example)
+    public function testAnswerForQuestionTypeCommentBox(ApiTester $I, \Codeception\Example $example)
     {
         $I->sendPUT($example['url'],$example['data']);
         $I->seeResponseContainsJson($example['contains']);
@@ -484,7 +493,7 @@ class AssessmentsAnswersCest
     /**
      * @return array
     */
-    protected function dataQuestion7Provider() 
+    protected function dataProviderForQuestionTypeCommentBox() 
     {
         // Comment box id -> 8
         return [
@@ -536,18 +545,19 @@ class AssessmentsAnswersCest
     }
 
     /**
-      * @dataProvider dataQuestion8Provider
+      * @dataProvider dataProviderForQuestionTypeDate
     */
-    public function answerQuestion8(ApiTester $I, \Codeception\Example $example)
+    public function testAnswerForQuestionTypeDate(ApiTester $I, \Codeception\Example $example)
     {
         $I->sendPUT($example['url'],$example['data']);
         $I->seeResponseContainsJson($example['contains']);
         $I->seeResponseCodeIs($example['code']);
     }
+
     /**
      * @return array
     */
-    protected function dataQuestion8Provider() 
+    protected function dataProviderForQuestionTypeDate() 
     {
         // Date/Time -> 9
         return [
@@ -593,6 +603,74 @@ class AssessmentsAnswersCest
                 'data'=>[
                     "answers"=>[
                         "q-8"=>"2019-11-28",
+                    ],
+                ],
+                'contains'=>[
+                    'success'=>true
+                ],
+            ],
+        ];
+    }
+
+    /**
+      * @dataProvider dataProviderForQuestionTypeFile
+    */
+    public function testAnswerForQuestionTypeFile(ApiTester $I, \Codeception\Example $example)
+    {
+        $I->sendPUT($example['url'],$example['data']);
+        $I->seeResponseContainsJson($example['contains']);
+        $I->seeResponseCodeIs($example['code']);
+    }
+    
+    /**
+     * @return array
+    */
+    protected function dataProviderForQuestionTypeFile() 
+    {
+        // File -> 11
+        return [
+            [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-9"=>"",
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because this question is allow array answers 
+                ],
+            ],
+             [
+                'url'=>'assessments/1',
+                'code'=>400,
+                'data'=>[
+                    "answers"=>[
+                        "q-9"=>[
+                            [
+                                "name"=>"64682197_2320155574731095_6761853737519546368_n.png",
+                                "type"=>"image/png",
+                                "content"=>"http://storage.localhost/source/answers/64682197_2320155574731095_6761853737519546368_n.png"
+                            ],
+                        ],
+                    ],
+                ],
+                'contains'=>[
+                    'errors'=>['message'=>'Bad Request'], // bad request because invalid content url
+                ],
+            ],
+            [
+                'url'=>'assessments/1',
+                'code'=>200,
+                'data'=>[
+                    "answers"=>[
+                        "q-9"=>[
+                            [
+                                "name"=>"64682197_2320155574731095_6761853737519546368_n.png",
+                                "type"=>"image/png",
+                                "content"=>"http://storage.selfassest.localhost/source/answers/64682197_2320155574731095_6761853737519546368_n.png"
+                            ],
+                        ],
                     ],
                 ],
                 'contains'=>[

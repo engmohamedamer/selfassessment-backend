@@ -266,6 +266,7 @@ class User extends ActiveRecord implements IdentityInterface
         ]));
         $profile = new UserProfile();
         $profile->locale = 'ar-AR';
+        $profile->sector_id = 0;
         $profile->load($profileData, '');
         $this->link('userProfile', $profile);
         $this->trigger(self::EVENT_AFTER_SIGNUP);

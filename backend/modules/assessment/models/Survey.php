@@ -51,7 +51,7 @@ class Survey extends \yii\db\ActiveRecord
     public $level_title = null;
     public $level_from = null;
     public $level_to = null;
-
+    public $sector_id;
     const SCENARIOUPDATE = 'scenarioupdate';
     /**
      * @inheritdoc
@@ -117,6 +117,7 @@ class Survey extends \yii\db\ActiveRecord
             'level_title'=>Yii::t('survey', 'Level Title') ,
             'level_from'=>Yii::t('survey', 'From a percentage') ,
             'level_to'=>Yii::t('survey', 'To a percentage') ,
+            'sector_id'=> Yii::t('common', 'Sector'),
         ];
     }
 

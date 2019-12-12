@@ -282,4 +282,12 @@ return [
     'These credentials do not match our records.'=>'البيانات المدخلة غير متطابقة مع البيانات المسجلة لدينا.',
     'Assessments Contributor Status'=>'حالة المشاركة في الاستبيانات',
     'Search'=>'ابحث هنا',
+    'Organization Structure'=>'هيكلة المؤسسة',
+    'Child Allowed'=>'اضافة عناصر فرعية',
+    'Organization Admins'=>'مسئولي المؤسسة',
+    'Organization Admins List'=>'مسئولي المؤسسة',
+    'Sector'=>'قطاع العمل',
+    ''=>'',
+    ''=>'',
+    ''=>'',
 ];

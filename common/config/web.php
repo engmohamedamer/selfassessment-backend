@@ -20,6 +20,25 @@ $config = [
 
     ],
 
+    'modules' => [
+        'treemanager' =>  [
+            'class' => '\kartik\tree\Module',
+            'i18n' => [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'basePath' => '@common/messages',
+                'forceTranslation' => true,
+                'fileMap' => [
+                    'common' => 'common.php',
+                    'backend' => 'backend.php',
+                    'frontend' => 'frontend.php',
+                    'kvtree' => 'kvtree.php',
+                ],
+                'on missingTranslation' => [backend\modules\translation\Module::class, 'missingTranslation']
+            ],
+        ]
+
+    ],
+
     'as locale' => [
         'class' => common\behaviors\LocaleBehavior::class,
         'enablePreferredLanguage' => true

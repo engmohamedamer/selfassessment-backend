@@ -132,4 +132,10 @@ class OrganizationController extends \yii\web\Controller
             throw new NotFoundHttpException(Yii::t('common', 'The requested page does not exist.'));
         }
     }
+    public  function actionStructure(){
+        return $this->render('structure');
+    }
+    public  function actionAdmins(){
+        return $this->render('admins');
+    }
 }

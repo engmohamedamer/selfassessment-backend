@@ -103,23 +103,13 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
 
                             </div>
-                            <div class="col-lg-6">
-                                <?= $form->field($model, 'conatct_name')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
-                            </div>
-                            <div class="col-lg-6">
-                                <?= $form->field($model, 'contact_position')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
-                            </div>
+                            
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'address')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
                             </div>
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'about')->textarea(['rows' => '6'])->widget(MyMultiLanguageActiveField::className());  ?>
                             </div>
-                            <div class="col-lg-6">
-                            </div>
-                            <hr class='mt-5 mb-5 col-lg-12 row'>
-
-
                             <div class="col-lg-6">
                                 <?php echo $form->field($model, 'city_id')->dropDownList([''=>Yii::t('common',  'Select')]+ArrayHelper::map($city, 'id', 'title'),['id'=>'City-id',]) ?>
                             </div>
@@ -146,12 +136,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 <?= $form->field($model, 'mobile')->textInput(['maxlength' => true]) ?>
                             </div>
 
-                            <div class="col-lg-6">
-                                <?= $form->field($model, 'contact_email')->textInput(['maxlength' => true]) ?>
-                            </div>
-                            <div class="col-lg-6">
-                                <?= $form->field($model, 'contact_phone')->textInput(['maxlength' => true]) ?>
-                            </div>
+                            
 
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'limit_account')->textInput() ?>
@@ -162,6 +147,21 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 <?php echo  $form->field($theme, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
                             </div>
 
+                            <hr class='mt-5 mb-5 col-lg-12 row'>
+
+                            <div class="col-lg-6">
+                                <?= $form->field($model, 'conatct_name')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
+                            </div>
+                            <div class="col-lg-6">
+                                <?= $form->field($model, 'contact_position')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
+                            </div>
+                            <div class="col-lg-6">
+                                <?= $form->field($model, 'contact_email')->textInput(['maxlength' => true]) ?>
+                            </div>
+                            <div class="col-lg-6">
+                                <?= $form->field($model, 'contact_phone')->textInput(['maxlength' => true]) ?>
+                            </div>
+                            
                        </div>
 
                        <div class='col-sm-0 col-lg-4 theme-edit-preview'>

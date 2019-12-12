@@ -9,9 +9,25 @@ class AssessmentsCest
 	public function _before(ApiTester $I)
     {
         $I->haveFixtures([
-        	'user' => [
+        	'organization' => [
+                'class' => \common\fixtures\OrganizationFixture::className(),
+                'dataFile' => codecept_data_dir() . 'organization.php'
+            ],
+            'organizationTheme' => [
+                'class' => \common\fixtures\OrganizationThemeFixture::className(),
+                'dataFile' => codecept_data_dir() . 'organization_theme.php'
+            ],
+            'organizationFooterLinks' => [
+                'class' => \common\fixtures\OrganizationThemeFooterLinks::className(),
+                'dataFile' => codecept_data_dir() . 'organization_footer_links.php'
+            ],
+            'user'=>[
                 'class' => \common\fixtures\UserFixture::className(),
                 'dataFile' => codecept_data_dir() . 'user.php'
+            ],
+            'userProfile'=>[
+                'class' => \common\fixtures\UserProfileFixture::className(),
+                'dataFile' => codecept_data_dir() . 'user_profile.php'
             ],
             'assessments' => [
                 'class' => \common\fixtures\AssessmentFixture::className(),
@@ -43,7 +59,7 @@ class AssessmentsCest
                 [
                     'id'=>5,
                     'isClosed'=> false,
-                    'status'=> 1,
+                    'status'=> 0,
                     'survey_time_to_pass'=>10,
                     'expiryDate'=>'2019-12-28 13:50:00',
                 ],
@@ -71,7 +87,7 @@ class AssessmentsCest
                 [
                     'id'=>1,
                     'isClosed'=> false,
-                    'status'=> 0,
+                    'status'=> 1,
                     'survey_time_to_pass'=>10,
                     'expiryDate'=>'2019-12-26 13:50:00',
                 ]

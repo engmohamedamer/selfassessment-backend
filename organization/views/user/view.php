@@ -51,6 +51,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             'email:email',
                             [
+                                'attribute' => Yii::t('common','Sector'),
+                                'value' => function($model){
+                                    if (Yii::t('common','Sector') == 'Sector') {
+                                        return 'General Accounts Department';
+                                    }
+                                    return 'قسم الحسابات العامة';
+                                },
+                            ],
+                            [
                                 'attribute' => Yii::t('common','Phone'),
                                 'value' => function($model){
                                     return $model->userProfile->mobile;

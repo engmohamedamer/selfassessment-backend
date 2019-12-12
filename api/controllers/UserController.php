@@ -19,15 +19,18 @@ use yii\web\NotFoundHttpException;
 class UserController extends  RestController
 {
 
-
-
     public function actionLogin(){
         $params = \Yii::$app->request->post();
 
-        if ($params['locale'] == 'ar') {
+        if (!isset($params['locale'])) {
             \Yii::$app->language = 'ar';
+        }else{
+            if ($params['locale'] == 'ar') {
+                \Yii::$app->language = 'ar';
+            }
         }
 
+    
         $user = User::find()
             ->andWhere(['or', ['username' => $params['identity'] ], ['email' => $params['identity']]])
             ->one();
@@ -37,7 +40,7 @@ class UserController extends  RestController
         }
 
 
-        if(! $params['password']){
+        if(!isset($params['password'])){
             return ResponseHelper::sendFailedResponse(['INVALID_USERNAME_OR_PASSWORD'=>Yii::t('common','These credentials do not match our records.')],400);
         }
 
@@ -70,9 +73,17 @@ class UserController extends  RestController
     public function actionSignup(){
 
         $params = \Yii::$app->request->post();
+      
+        if (!isset($params['locale'])) {
+            \Yii::$app->language = 'ar';
+        }else{
+            if ($params['locale'] == 'en') {
+                \Yii::$app->language = 'en';
+            }
+        }
 
-        if ($params['locale'] == 'en') {
-            \Yii::$app->language = 'en';
+        if (!isset($params['organization'])) {
+            return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>Yii::t('common','Organization Not Found')],400);
         }
 
         $organization = Organization::findOne(['slug'=>$params['organization']]);

@@ -20,6 +20,7 @@ class UserForm extends Model
     public $roles;
     public $firstname;
     private $model;
+    public $sector_id;
 
     /**
      * @inheritdoc
@@ -49,7 +50,7 @@ class UserForm extends Model
             ['password', 'required', 'on' => 'create'],
             ['password', 'string', 'min' => 6],
 
-            [['status'], 'integer'],
+            [['status','sector_id'], 'integer'],
             ['roles', 'string'],
 
 //            [['roles'], 'each',

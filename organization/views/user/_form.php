@@ -1,7 +1,9 @@
 <?php
 
+use common\models\OrganizationStructure;
 use common\models\User;
 use common\models\UserProfile;
+use kartik\tree\TreeViewInput;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -20,7 +22,16 @@ $model->roles =Yii::$app->session->get('UserRole');
 <div class="content-header">
     <div class="">
         <div class="">
-            <h1 class="m-0 text-dark"><?= Yii::t('common','Contributors')?></h1>
+            <h1 class="m-0 text-dark">
+                <?php 
+                    if (Yii::$app->session->get('UserRole') == 'governmentAdmin') {
+                        echo Yii::t('common','Organization Admins');
+                    }else{
+                        echo Yii::t('common','Contributors');
+                    }
+
+                ?>
+            </h1>
         </div>
 
         <div class=" actionBtns">
@@ -45,25 +56,39 @@ $model->roles =Yii::$app->session->get('UserRole');
                     
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <?php echo $form->field($profile, 'firstname') ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <?php echo $form->field($profile, 'lastname') ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <?php echo $form->field($model, 'email') ?>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <?php echo $form->field($model, 'password')->passwordInput() ?>
                     </div>
-                    
-                </div>
-                <div class="row">
-                    <div class="col-md-3 col-sm-12">
+                    <div class="col-md-4">
+                    <?php
+                        echo $form->field($profile, 'sector_id')->widget(TreeViewInput::classname(),
+                        [
+                            'name' => 'kvTreeInput',
+                            'value' => 'true', // preselected values
+                            'query' => OrganizationStructure::find()->addOrderBy('root, lft'),
+                            'headingOptions' => ['label' => Yii::t('common','Sector')],
+                            'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
+                            'fontAwesome' => true,
+                            'asDropdown' => true,
+                            'multiple' => false,
+                            'options' => ['disabled' => false]
+                        ]);
+                    ?>
+                    </div>
+                
+                    <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($profile, 'mobile') ?>
                     </div>
-                    <div class="col-md-3 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($profile, 'gender')->dropDownlist([
                             UserProfile::GENDER_MALE => Yii::t('backend', 'Male'),
                             UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female'),
@@ -71,10 +96,10 @@ $model->roles =Yii::$app->session->get('UserRole');
                     </div>
                     
 
-                    <div class="col-md-3 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                             <?php echo $form->field($profile, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
                     </div>
-                    <div class="col-md-3 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($model, 'status')->dropDownList(User::statuses()) ?>
                     </div>
                 </div>

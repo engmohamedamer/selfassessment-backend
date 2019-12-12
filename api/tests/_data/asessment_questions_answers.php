@@ -4,8 +4,8 @@ return [
     [
         'survey_answer_id'=>1,
         'survey_answer_question_id'=>2,
-        'survey_answer_name'=>'Q1 One choice',
-        'survey_answer_descr'=>'Q3 One desc',
+        'survey_answer_name'=>'Q2 One choice',
+        'survey_answer_descr'=>'Q2 One desc',
         'survey_answer_points'=>0,
         'survey_answer_show_descr'=>0,
         'survey_answer_show_corrective_action'=>0,
@@ -16,8 +16,8 @@ return [
     [
         'survey_answer_id'=>2,
         'survey_answer_question_id'=>2,
-        'survey_answer_name'=>'Q1 Two choice',
-        'survey_answer_descr'=>'Q3 Two desc',
+        'survey_answer_name'=>'Q2 Two choice',
+        'survey_answer_descr'=>'Q2 Two desc',
         'survey_answer_points'=>0,
         'survey_answer_show_descr'=>0,
         'survey_answer_show_corrective_action'=>0,
@@ -28,8 +28,8 @@ return [
     [
         'survey_answer_id'=>3,
         'survey_answer_question_id'=>2,
-        'survey_answer_name'=>'Q1 Three choice',
-        'survey_answer_descr'=>'Q3 Three desc',
+        'survey_answer_name'=>'Q2 Three choice',
+        'survey_answer_descr'=>'Q2 Three desc',
         'survey_answer_points'=>0,
         'survey_answer_show_descr'=>0,
         'survey_answer_show_corrective_action'=>0,
