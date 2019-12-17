@@ -38,7 +38,7 @@ class SurveyResource extends Survey
                 return 'top';
             },
             'maxTimeToFinish'=>function($model){
-                return SurveyStat::remainingTime($model,\Yii::$app->user->identity->id);
+                return SurveyStat::maxTimeToFinish($model,\Yii::$app->user->identity->id);
             },
 
             'firstPageIsStarted'=>function($model){

@@ -52,14 +52,12 @@ class AssessmentsReportCest
 	*/
     public function testReportApi(ApiTester $I, \Codeception\Example $example)
     {
+        $I->comment('Test Api For Report To Ckeck api work or not');
         $I->amBearerAuthenticated('fR4KSiyuXpHYst5c4JSDY0kJ2HLuOb05jMV4FDmD');
     	$I->sendGET($example['url']);
         $I->seeResponseContainsJson($example['contains']);
         $I->seeResponseCodeIs($example['code']);
-
         $qGainedPoints = $I->grabDataFromResponseByJsonPath('$.data..qGainedPoints');
-        // $I->assertEquals(4,5);
-        // $I->comment(implode(',', $qGainedPoints));
 
     }
 

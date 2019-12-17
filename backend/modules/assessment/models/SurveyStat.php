@@ -245,13 +245,25 @@ class SurveyStat extends \yii\db\ActiveRecord
         $result = SurveyStat::find()->where(['survey_stat_survey_id' => $survey->survey_id])
             ->andWhere(['survey_stat_user_id' => $userId])->one();
         if ($result) {
-            // $remainingTime = ($survey->survey_time_to_pass * 60) - $result->survey_stat_actual_time;
-            $actual_time = ($result->survey_stat_actual_time /  ($survey->survey_time_to_pass * 60)) * 100;
+            $surveyTime = $survey->survey_time_to_pass * 60;
+            $actual_time = ($result->survey_stat_actual_time / $surveyTime) * 100;
             $time = 100 - $actual_time;
+            if ($result->survey_stat_actual_time  >= $surveyTime) {
+                return 0;
+            }
             return round($time,0);
-            // return $remainingTime;
         }
         return 100;
+    }
+
+    public static function  maxTimeToFinish($survey,$userId){
+        $result = SurveyStat::find()->where(['survey_stat_survey_id' => $survey->survey_id])
+            ->andWhere(['survey_stat_user_id' => $userId])->one();
+        if ($result) {
+            $remainingTime = ($survey->survey_time_to_pass * 60) - $result->survey_stat_actual_time;
+            return $remainingTime;
+        }
+        return $survey->survey_time_to_pass * 60;
     }
 
 

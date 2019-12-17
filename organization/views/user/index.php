@@ -92,13 +92,34 @@ $this->params['breadcrumbs'][] = $this->title;
                         'filter' => User::statuses(),
                     ],
                     [
-                        'attribute' => 'updated_at',
-                        'format' => 'datetime',
+                        'attribute'=>'id',
+                        'header'=>'القطاع',
+                        'value'=>function(){
+                            return 'قطاع الأعمال';
+                        },
                     ],
                     [
-                        'attribute' => 'logged_at',
-                        'format' => 'datetime',
+                        'attribute'=>'id',
+                        'header'=>'الأدارة',
+                        'value'=>function(){
+                            return 'الإدارة المالية';
+                        },
                     ],
+                    [
+                        'attribute'=>'id',
+                        'header'=>'القسم',
+                        'value'=>function(){
+                            return 'قسم الحسابات العامة';
+                        },
+                    ],
+                    // [
+                    //     'attribute' => 'updated_at',
+                    //     'format' => 'datetime',
+                    // ],
+                    // [
+                    //     'attribute' => 'logged_at',
+                    //     'format' => 'datetime',
+                    // ],
                     [
                         'class' => 'kartik\grid\ActionColumn',
                         'template'=>'{view}{update}'
