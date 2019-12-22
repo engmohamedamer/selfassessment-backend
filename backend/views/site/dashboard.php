@@ -19,7 +19,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             <h1 class=" m-0 text-dark"><?= Yii::t('backend','Dashboard') ?></h1>
         </div>
         <div class=" actionBtns">
-            <a href="/organization/create" class="btn btn-primary"><i class="icofont-ui-add mr-2 ml-2"></i><?= Yii::t('backend','New Organization') ?> </a>
+            <a href="/organization/create" class="btn btn-success"><i class="icofont-plus"></i><?= Yii::t('backend','New Organization') ?> </a>
         </div>
  
     </div>
@@ -106,42 +106,44 @@ $this->title = Yii::t('backend', 'Dashboard');
 
             </div>
             <div class="card-body p-0">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th><?= Yii::t('common','Name') ?></th>
-                            <th><?= Yii::t('common','Assessments')?></th>
-                            <th><?= Yii::t('common','Contributors')?></th>
-                            <th><?= Yii::t('common','Surveys Contributors')?></th>
-                            <th><?= Yii::t('common','Status') ?></th>
-                            <th><?= Yii::t('common','Actions') ?></th>
-                        </tr>
-                    </thead>
-                        <tbody>
-                            <?php foreach($organizations as $organization):?>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <td>
-                                    
-                                    <a href="#"><?= $organization->name ?></a>
-                                </td>
-                                <td><a href="#"><?= count($organization->survey) ?></a></td>
-                                <td><a href="#"><?= $organization->countUsers() ?></a></td>
-                                <td><a href="#"><?= $organization->startSurvey() ?></a></td>
-                                <td class="text-success"><?= $organization->status()[$organization->status] ?></td>
-
-                                <td>
-                                    <a href="/organization/view?id=<?= $organization->id ?>" class="text-muted newOrgsActions" title="View Report" style="margin-right: 10px">
-                                        <i class="fas fa-file-contract"></i>
-                                    </a>
-                                    <a href="/organization/update?id=<?= $organization->id ?>" class="text-muted newOrgsActions" title="Edit Assessment">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-
-                                </td>
+                                <th><?= Yii::t('common','Name') ?></th>
+                                <th><?= Yii::t('common','Assessments')?></th>
+                                <th><?= Yii::t('common','Contributors')?></th>
+                                <th><?= Yii::t('common','Surveys Contributors')?></th>
+                                <th><?= Yii::t('common','Status') ?></th>
+                                <th><?= Yii::t('common','Actions') ?></th>
                             </tr>
-                            <?php endforeach;?>
-                        </tbody>
-                    </table>
+                        </thead>
+                            <tbody>
+                                <?php foreach($organizations as $organization):?>
+                                <tr>
+                                    <td>
+                                        
+                                        <a href="#"><?= $organization->name ?></a>
+                                    </td>
+                                    <td><a href="#"><?= count($organization->survey) ?></a></td>
+                                    <td><a href="#"><?= $organization->countUsers() ?></a></td>
+                                    <td><a href="#"><?= $organization->startSurvey() ?></a></td>
+                                    <td class="text-success"><?= $organization->status()[$organization->status] ?></td>
+
+                                    <td>
+                                        <a href="/organization/view?id=<?= $organization->id ?>" class="text-muted newOrgsActions" title="View Report" style="margin-right: 10px">
+                                            <i class="fas fa-file-contract"></i>
+                                        </a>
+                                        <a href="/organization/update?id=<?= $organization->id ?>" class="text-muted newOrgsActions" title="Edit Assessment">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+
+                                    </td>
+                                </tr>
+                                <?php endforeach;?>
+                            </tbody>
+                        </table>
+                </div>
             </div>
         </div>
         <!-- /.card -->  

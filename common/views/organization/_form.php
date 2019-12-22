@@ -95,20 +95,9 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                <?
                            }?>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name'])
                                     ->widget(MyMultiLanguageActiveField::className());  ?>
-                            </div>
-                            <div class="col-lg-6">
-                                <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
-
-                            </div>
-                            
-                            <div class="col-lg-6">
-                                <?= $form->field($model, 'address')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
-                            </div>
-                            <div class="col-lg-6">
-                                <?= $form->field($model, 'about')->textarea(['rows' => '6'])->widget(MyMultiLanguageActiveField::className());  ?>
                             </div>
                             <div class="col-lg-6">
                                 <?php echo $form->field($model, 'city_id')->dropDownList([''=>Yii::t('common',  'Select')]+ArrayHelper::map($city, 'id', 'title'),['id'=>'City-id',]) ?>
@@ -127,6 +116,24 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 ?>
                             </div>
                             <div class="col-lg-6">
+                                <?= $form->field($model, 'address')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
+                            </div>
+                            <div class="col-lg-6">
+                                <?= $form->field($model, 'about')->textarea(['rows' => '6'])->widget(MyMultiLanguageActiveField::className());  ?>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group highlight-addon field-organization-email required">
+                                    <label class="control-label has-star" for="organization-email">الرمز البريدي</label>
+                                    <input type="text" id="organization-email" class="form-control" name="Organization[email]" maxlength="150" aria-required="true">
+                                </div>                            
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group highlight-addon field-organization-email required">
+                                    <label class="control-label has-star" for="organization-email">صندوق البريد</label>
+                                    <input type="text" id="organization-email" class="form-control" name="Organization[email]" maxlength="150" aria-required="true">
+                                </div>                            
+                            </div>
+                            <div class="col-lg-6">
                                 <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
                             </div>
                             <div class="col-lg-6">
@@ -136,16 +143,18 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 <?= $form->field($model, 'mobile')->textInput(['maxlength' => true]) ?>
                             </div>
 
-                            
+
+
+
+
+
+
 
                             <div class="col-lg-6">
-                                <?= $form->field($model, 'limit_account')->textInput() ?>
-                            </div>
-                           
+                                <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
 
-                            <div class="col-lg-6 ">
-                                <?php echo  $form->field($theme, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
                             </div>
+                            
 
                             <hr class='mt-5 mb-5 col-lg-12 row'>
 
@@ -160,6 +169,15 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             </div>
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'contact_phone')->textInput(['maxlength' => true]) ?>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <?= $form->field($model, 'limit_account')->textInput() ?>
+                            </div>
+                           
+
+                            <div class="col-lg-6 ">
+                                <?php echo  $form->field($theme, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
                             </div>
                             
                        </div>
