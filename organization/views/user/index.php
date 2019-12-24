@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </h1>
         </div>
         <div class=" actionBtns">
-            <a href="/user/create" class="btn btn btn-primary"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('common', 'Create') ?></a>
+            <a href="/user/create" class="btn btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('common', 'Create') ?></a>
         </div>
         <!-- /.col -->
     </div>
