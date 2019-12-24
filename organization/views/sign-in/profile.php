@@ -19,7 +19,7 @@ $this->title = Yii::t('backend', 'Edit profile')
             <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
         </div>
         <div class=" actionBtns">
-            <button type="submit" class="btn btn btn-primary"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('backend', 'Update') ?></button>
+            <button type="submit" class="btn btn btn-success"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('backend', 'Update Data') ?></button>
         </div>
 
         <!-- /.col -->

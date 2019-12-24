@@ -35,7 +35,7 @@ $model->roles =Yii::$app->session->get('UserRole');
         </div>
 
         <div class=" actionBtns">
-            <button type="submit" class="btn btn-primary"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('backend', 'Save');?></button>
+            <button type="submit" class="btn btn-success"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('backend', 'Save');?></button>
         </div>
 
         <!-- /.col -->

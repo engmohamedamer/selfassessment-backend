@@ -34,6 +34,23 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
 ?>
 <div class="corrective-action-report-index">
 
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+        <div class=" mb-2">
+            <div class="">
+                <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Corrective Action Report') ?></h1>
+            </div>
+            <div class='actionBtns'>
+            </div>
+           
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <div class="search-form" style="display:none">
@@ -203,4 +220,8 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
         ],
     ]); ?>
 
+</div>
+</div>
+</div>
+</div>
 </div>

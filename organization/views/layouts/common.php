@@ -44,8 +44,8 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <!-- <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-      </a> -->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      </a>
         <div class="dropdown-item dropdown-header">
             <div><?= $organization->name ?></div>
             

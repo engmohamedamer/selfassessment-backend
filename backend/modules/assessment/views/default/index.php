@@ -27,7 +27,7 @@ BootstrapPluginAsset::register($this);
                     </h1>
                 </div>
                 <div class=" actionBtns">
-                    <a href="assessment/default/create" class="btn btn btn-primary"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('survey', 'Create new survey') ?></a>
+                    <a href="assessment/default/create" class="btn btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('survey', 'Create new survey') ?></a>
                 </div>
             </div>
         </div>
