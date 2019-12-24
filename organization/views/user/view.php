@@ -57,10 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => Yii::t('common','Sector'),
                                 'value' => function($model){
-                                    if (Yii::t('common','Sector') == 'Sector') {
-                                        return 'General Accounts Department';
-                                    }
-                                    return 'قسم الحسابات العامة';
+                                    return $model->userProfile->sector->name;
                                 },
                             ],
                             [

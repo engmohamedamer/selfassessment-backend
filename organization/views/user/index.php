@@ -94,22 +94,34 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute'=>'id',
                         'header'=>'القطاع',
-                        'value'=>function(){
-                            return 'قطاع الأعمال';
+                        'value'=>function($model){
+                            if($model->userProfile->sector->lvl == 0){
+                                return $model->userProfile->sector->name;
+                            }if($model->userProfile->sector->lvl == 1){
+                                return $model->userProfile->sector->administration->name;
+                            }elseif($model->userProfile->sector->lvl == 2){
+                                return $model->userProfile->sector->administration->parent->name;
+                            }
                         },
                     ],
                     [
                         'attribute'=>'id',
                         'header'=>'الأدارة',
-                        'value'=>function(){
-                            return 'الإدارة المالية';
+                        'value'=>function($model){
+                            if($model->userProfile->sector->lvl == 1){
+                                return $model->userProfile->sector->name;
+                            }elseif($model->userProfile->sector->lvl == 2){
+                                return $model->userProfile->sector->administration->name;
+                            }
                         },
                     ],
                     [
                         'attribute'=>'id',
                         'header'=>'القسم',
-                        'value'=>function(){
-                            return 'قسم الحسابات العامة';
+                        'value'=>function($model){
+                            if($model->userProfile->sector->lvl == 2){
+                                return $model->userProfile->sector->name;
+                            }
                         },
                     ],
                     // [

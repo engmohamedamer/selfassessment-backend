@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use backend\models\Schools;
 use common\models\Organization;
+use common\models\OrganizationStructure;
 use trntv\filekit\behaviors\UploadBehavior;
 use yii\db\ActiveRecord;
 
@@ -23,6 +24,7 @@ use yii\db\ActiveRecord;
  * @property integer $gender
  * @property string $device_token
  * @property string $bio
+ * @property integer $sector_id
  *
  * @property User $user
  */
@@ -115,6 +117,11 @@ class UserProfile extends ActiveRecord
     public function getOrganization()
     {
         return $this->hasOne(Organization::class, ['id' => 'organization_id']);
+    }
+
+    public function getSector()
+    {
+        return $this->hasOne(OrganizationStructure::class, ['id' => 'sector_id']);
     }
 
 

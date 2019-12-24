@@ -127,6 +127,7 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
+
         $model = new UserForm();
         $model->roles = Yii::$app->session->get('UserRole') ? : User::ROLE_USER;
         $profile = new UserProfile();
@@ -229,7 +230,7 @@ class UserController extends Controller
         $prof->gender = $profile->gender;
         $prof->locale = $profile->locale;
         $prof->mobile = $profile->mobile;
-        $prof->sector_id = $prof->sector_id;
+        $prof->sector_id = $profile->sector_id;
         if ($organization_id) {
             $prof->organization_id = $organization_id;
         }
