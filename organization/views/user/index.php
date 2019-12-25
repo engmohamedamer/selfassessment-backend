@@ -104,10 +104,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'attribute'=>'id',
-                        'header'=>'الوسم',
+                        'header'=> Yii::t('common','Tags'),
                         'value'=>function($model){
-                            
+                            return $model->tags;
                         },
+                        'format'=>'raw'
                     ],
                     // [
                     //     'attribute' => 'updated_at',

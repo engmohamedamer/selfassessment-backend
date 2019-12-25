@@ -10,11 +10,14 @@ use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\search\SurveyStatSearch;
 use cenotia\components\modal\RemoteModal;
+use common\models\OrganizationStructure;
 use common\models\User;
 use kartik\editable\Editable;
 use kartik\helpers\Html;
 use kartik\select2\Select2;
+use kartik\tree\TreeViewInput;
 use organization\models\search\UserSearch;
+use sjaakp\taggable\TagEditor;
 use wbraganca\dynamicform\DynamicFormWidget;
 use yii\bootstrap\BootstrapPluginAsset;
 use yii\helpers\Url;
@@ -152,7 +155,29 @@ BootstrapPluginAsset::register($this);
                 echo Html::endTag('div');
 
                 echo Html::beginTag('div', ['class' => 'col-md-9']);
-                echo $form->field($survey, "survey_tags")->input('text', ['placeholder' => Yii::t('survey','Comma separated')]);
+                    echo $form->field($survey, 'sector_id')->widget(TreeViewInput::classname(),
+                    [
+                        'name' => 'kvTreeInput',
+                        'value' => 'true', // preselected values
+                        'query' => OrganizationStructure::find()->addOrderBy('root, lft'),
+                        'headingOptions' => ['label' => Yii::t('common','Sector')],
+                        'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
+                        'fontAwesome' => true,
+                        'asDropdown' => true,
+                        'multiple' => false,
+                        'options' => ['disabled' => false]
+                    ]);
+                echo Html::endTag('div');
+
+                echo Html::beginTag('div', ['class' => 'col-md-12']);
+                echo $form->field($survey, "tags")->widget(TagEditor::class, [
+                    'clientOptions' => [
+                        'autocomplete' => [
+                            'source' => Url::toRoute(['/tag/suggest'])
+                        ],
+                        'disable'=>true
+                    ]
+                ]);
                 echo Html::endTag('div');
                 echo Html::endTag('div');
 

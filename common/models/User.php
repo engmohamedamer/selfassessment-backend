@@ -2,9 +2,11 @@
 
 namespace common\models;
 
-use common\commands\AddToTimelineCommand;
-use common\models\query\UserQuery;
 use Yii;
+use common\commands\AddToTimelineCommand;
+use common\models\Tag;
+use common\models\query\UserQuery;
+use sjaakp\taggable\TaggableBehavior;
 use yii\behaviors\AttributeBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -51,6 +53,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public $month;
     public $count_month;
+    public $name;
     /**
      * @inheritdoc
      */
@@ -139,6 +142,12 @@ class User extends ActiveRecord implements IdentityInterface
                 'value' => function () {
                     return Yii::$app->getSecurity()->generateRandomString(40);
                 }
+            ],
+            'taggable' => [
+                'class' => TaggableBehavior::class,
+                'junctionTable' => 'user_tag',
+                'tagClass' => Tag::class,
+                'modelKeyColumn'=>'user_id',
             ]
         ];
     }

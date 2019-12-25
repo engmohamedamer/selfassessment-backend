@@ -13,6 +13,9 @@ use kartik\helpers\Html;
 use kartik\select2\Select2;
 use kartik\tree\TreeViewInput;
 use onmotion\yii2\widget\upload\crop\UploadCrop;
+use organization\models\search\UserSearch;
+use sjaakp\taggable\TagEditor;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\web\JsExpression;
 use yii\widgets\ActiveForm;
@@ -22,6 +25,7 @@ use yii\widgets\Pjax;
 /* @var $survey \backend\modules\assessment\models\Survey */
 /* @var $withUserSearch boolean */
 
+// $withUserSearch = true;
 // widget with default options
 echo Dialog::widget();
 
@@ -313,6 +317,36 @@ if (Yii::$app->user->identity->userProfile->organization) {
                             'multiple' => false,
                             'options' => ['disabled' => false]
                         ]);
+                    echo Html::endTag('div'); // col-md-9 
+
+                    ?>
+                        <div class="col-md-4 col-md-12">
+                            <?= $form->field($survey, 'tags')->widget(TagEditor::class, [
+                                'clientOptions' => [
+                                    'autocomplete' => [
+                                        'source' => Url::toRoute(['/tag/suggest'])
+                                    ],
+                                ]
+                            ]) ?>
+                        </div>
+
+                    <?php
+
+                    $users = UserSearch::users(Yii::$app->user->identity->userProfile->organization_id);
+                    // return var_dump($users);
+                    $data = ArrayHelper::map($users, 'id', 'name');
+
+                    echo $form->field($survey, 'usersList')->widget(Select2::classname(), [
+                        'data' => $data,
+                        'size' => Select2::LARGE,
+                        'options' => ['placeholder' => Yii::t('common','Select'),'multiple' => true],
+                        'pluginOptions' => [
+                            'allowClear' => true,
+                            'dir'=>'rtl'
+                        ],
+                    ]);
+                    
+
                     if ($withUserSearch) {
                         echo Html::tag('div', '', ['class' => 'clearfix']);
                         echo $form->field($survey, 'restrictedUserIds')->widget(Select2::classname(),
@@ -343,11 +377,11 @@ if (Yii::$app->user->identity->userProfile->organization) {
                                 ]
                             ]);
                     }
-                    echo Html::endTag('div'); // col-md-9 
                     echo Html::endTag('div'); // row
 
                     echo Html::submitButton('', ['class' => 'hidden']);
                     echo Html::tag('div', '', ['class' => 'clearfix']);
+
 
                     ActiveForm::end();
 
@@ -355,6 +389,10 @@ if (Yii::$app->user->identity->userProfile->organization) {
                     echo Html::endTag('div');
 
                     ?>
+
+
+                    
+
                 </div>
                 <div class="clearfix"></div>
                 <hr>

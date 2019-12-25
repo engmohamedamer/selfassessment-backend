@@ -165,13 +165,13 @@ class UserController extends Controller
     {
         $model = new UserForm();
         $model->setModel($this->findModel($id));        
+        $model->tags = $this->findModel($id)->tags;        
         $profile= $model->getModel()->userProfile;
         $model->roles = Yii::$app->session->get('UserRole') ? : User::ROLE_USER;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $profile->load(Yii::$app->request->post());
             $this->UpdateUserRelatedTbls($model,$profile);
-
             Yii::$app->getSession()->setFlash('alert', [
                 'type' =>'success',
                 'body' => \Yii::t('backend', 'Data has been updated Successfully') ,
