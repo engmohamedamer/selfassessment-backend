@@ -124,7 +124,6 @@ class UserProfile extends ActiveRecord
         return $this->hasOne(OrganizationStructure::class, ['id' => 'sector_id']);
     }
 
-
     /**
      * @return null|string
      */

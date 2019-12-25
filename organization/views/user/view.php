@@ -1,8 +1,9 @@
 <?php
 
+use common\models\OrganizationStructure;
+use common\models\User;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use common\models\User;
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
 
@@ -57,7 +58,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => Yii::t('common','Sector'),
                                 'value' => function($model){
-                                    return $model->userProfile->sector->name;
+                                    $sectors = OrganizationStructure::find()->where(['root'=>$model->userProfile->sector->root])->andWhere(['<=','id',$model->userProfile->sector->id])->all();
+                                    $txt = '';
+                                    foreach ($sectors as $value) {
+                                        $txt .=  $value->name .' / ';
+                                    }
+                                    return trim($txt,' / ');
                                 },
                             ],
                             [

@@ -65,6 +65,8 @@ use yii\widgets\DetailView;
                                         },
                                     ],
                                     'about',
+                                    'postalcode',
+                                    'postalbox',
                                     'limit_account',
                                     [
                                         'attribute'=>Yii::t('common','Locale'),

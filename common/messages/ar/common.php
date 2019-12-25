@@ -287,7 +287,7 @@ return [
     'Organization Admins'=>'مسئولي المؤسسة',
     'Organization Admins List'=>'مسئولي المؤسسة',
     'Sector'=>'قطاع العمل',
-    ''=>'',
-    ''=>'',
+    'Postal Box'=>'صندوق البريد',
+    'Postal Code'=>'الرمز البريدي',
     ''=>'',
 ];

@@ -74,7 +74,7 @@ class UserSearch extends User
 
         if($this->user_role){
             $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
-                ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => $this->user_role]);
+                ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => $this->user_role])->andFilterWhere(['!=','{{%user}}.id', \Yii::$app->user->identity->id]);
         }
 
         $query->andFilterWhere([

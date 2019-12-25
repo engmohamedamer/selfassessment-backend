@@ -1,12 +1,11 @@
 <?php
 
 use common\grid\EnumColumn;
+use common\models\OrganizationStructure;
 use common\models\User;
+use kartik\grid\GridView;
 use trntv\yii\datetime\DateTimeWidget;
 use yii\helpers\Html;
-use kartik\grid\GridView;
-
-
 use yii\web\JsExpression;
 
 
@@ -93,35 +92,21 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'attribute'=>'id',
-                        'header'=>'القطاع',
-                        'value'=>function($model){
-                            if($model->userProfile->sector->lvl == 0){
-                                return $model->userProfile->sector->name;
-                            }if($model->userProfile->sector->lvl == 1){
-                                return $model->userProfile->sector->administration->name;
-                            }elseif($model->userProfile->sector->lvl == 2){
-                                return $model->userProfile->sector->administration->parent->name;
+                        'header'=>'قطاع العمل',
+                        'value' => function($model){
+                            $sectors = OrganizationStructure::find()->where(['root'=>$model->userProfile->sector->root])->andWhere(['<=','id',$model->userProfile->sector->id])->all();
+                            $txt = '';
+                            foreach ($sectors as $value) {
+                                $txt .=  $value->name .' / ';
                             }
+                            return trim($txt,' / ');
                         },
                     ],
                     [
                         'attribute'=>'id',
-                        'header'=>'الأدارة',
+                        'header'=>'الوسم',
                         'value'=>function($model){
-                            if($model->userProfile->sector->lvl == 1){
-                                return $model->userProfile->sector->name;
-                            }elseif($model->userProfile->sector->lvl == 2){
-                                return $model->userProfile->sector->administration->name;
-                            }
-                        },
-                    ],
-                    [
-                        'attribute'=>'id',
-                        'header'=>'القسم',
-                        'value'=>function($model){
-                            if($model->userProfile->sector->lvl == 2){
-                                return $model->userProfile->sector->name;
-                            }
+                            
                         },
                     ],
                     // [

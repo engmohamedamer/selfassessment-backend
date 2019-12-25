@@ -19,6 +19,7 @@ class Organization extends BaseOrganization
         return array_replace_recursive(parent::rules(),
 	    [
             [['name','slug','business_sector', 'address', 'phone', 'email', 'conatct_name', 'contact_phone', 'contact_email', 'contact_position','first_image','second_image','about'], 'required'],
+            [['postalbox','postalcode'], 'number'],
             [['city_id', 'district_id', 'limit_account'], 'integer'],
             [['name'], 'string', 'max' => 150],
             [['business_sector', 'email', 'conatct_name', 'contact_email', 'contact_position'], 'string', 'max' => 100],
