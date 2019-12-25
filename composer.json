@@ -63,7 +63,8 @@
     "kartik-v/yii2-icons": "@dev",
     "onmotion/yii2-survey": "*",
     "wbraganca/yii2-dynamicform": "*",
-    "flow/jsonpath": "dev-master"
+    "flow/jsonpath": "dev-master",
+    "sjaakp/yii2-taggable": "*"
 
 
   },
