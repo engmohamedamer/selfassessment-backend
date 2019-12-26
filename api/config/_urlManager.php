@@ -27,6 +27,8 @@ return [
         ['pattern' => '/theme', 'route' => 'theme/index'],
         ['pattern' => '/theme/<slug>/<lang>', 'route' => 'theme/index'],
         ['pattern' => '/assessments/report/<id>', 'route' => 'assessments/report'],
+        ['pattern' => '/assessments/completed', 'route' => 'assessments/completed'],
+        ['pattern' => '/assessments/not-complete', 'route' => 'assessments/not-complete'],
         ['pattern' => '/assessments/custom-report/<id>/<user_id>', 'route' => 'assessments/custom-report'],
         ['pattern' => '/assessments/survey-start/<surveyId>', 'route' => 'assessments/survey-start'],
         ['pattern' => '/media/upload', 'route' => 'media/upload'],
