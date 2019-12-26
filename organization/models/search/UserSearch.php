@@ -2,6 +2,7 @@
 
 namespace organization\models\search;
 
+use common\models\OrganizationStructure;
 use common\models\User;
 use common\models\UserProfile;
 use yii\base\Model;
@@ -74,7 +75,7 @@ class UserSearch extends User
 
         if($this->user_role){
             $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
-                ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => $this->user_role]);
+                ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => $this->user_role])->andFilterWhere(['!=','{{%user}}.id', \Yii::$app->user->identity->id]);
         }
 
         $query->andFilterWhere([
@@ -96,5 +97,34 @@ class UserSearch extends User
             $query->andFilterWhere(['>', 'id', 1]);  //super admin
         }
         return $dataProvider;
+    }
+
+    public static function users($organization_id)
+    {
+        $query = User::find()->select(['id','CONCAT(`firstname`, " ", `lastname`) as name']);
+        
+
+        $sector_id = \Yii::$app->user->identity->userProfile->sector_id;
+        if ($sector_id) {
+            $structure = OrganizationStructure::find()->select('id')->where(['root'=>$sector_id])->all();
+            $ids = [];
+            foreach ($structure as $value) {
+                $ids[] = $value->id;
+            }
+            $query->joinWith(['userProfile'])->andwhere(['organization_id'=>$organization_id])->andWhere(['in','sector_id',$ids]);
+        }else{
+            $query->joinWith(['userProfile'])->where(['organization_id'=>$organization_id]);
+        }
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort'=> ['defaultOrder' => ['id'=>SORT_DESC]],
+            'pagination' => false,
+        ]);
+
+        $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
+                ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])->andFilterWhere(['!=','{{%user}}.id', \Yii::$app->user->identity->id]);
+
+        return $dataProvider->getModels();
     }
 }

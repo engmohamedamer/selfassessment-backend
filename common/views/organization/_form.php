@@ -122,16 +122,10 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 <?= $form->field($model, 'about')->textarea(['rows' => '6'])->widget(MyMultiLanguageActiveField::className());  ?>
                             </div>
                             <div class="col-lg-6">
-                                <div class="form-group highlight-addon field-organization-email required">
-                                    <label class="control-label has-star" for="organization-email">الرمز البريدي</label>
-                                    <input type="text" id="organization-email" class="form-control" name="Organization[email]" maxlength="150" aria-required="true">
-                                </div>                            
+                                <?= $form->field($model, 'postalcode')->textInput(['maxlength' => true]) ?>
                             </div>
                             <div class="col-lg-6">
-                                <div class="form-group highlight-addon field-organization-email required">
-                                    <label class="control-label has-star" for="organization-email">صندوق البريد</label>
-                                    <input type="text" id="organization-email" class="form-control" name="Organization[email]" maxlength="150" aria-required="true">
-                                </div>                            
+                                <?= $form->field($model, 'postalbox')->textInput(['maxlength' => true]) ?>
                             </div>
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>

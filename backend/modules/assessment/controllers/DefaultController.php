@@ -12,6 +12,7 @@ use backend\modules\assessment\models\SurveyQuestion;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\search\SurveySearch;
 use backend\modules\assessment\models\search\SurveyStatSearch;
+use common\models\SurveySelectedUsers;
 use yii\base\Model;
 use yii\base\UserException;
 use yii\data\ActiveDataProvider;
@@ -100,7 +101,7 @@ class DefaultController extends Controller
         	'query' => $survey->getRestrictedUsers()
         ]);
 	    $restrictedUserDataProvider->pagination->pageSize = 10;
-
+        // $survey->usersList = $survey->surveySelectedUsers;
         return $this->render('view', [
         	'survey' => $survey,
 	        'searchModel' => $searchModel,
@@ -311,7 +312,15 @@ class DefaultController extends Controller
                         $new->save(false);
                     }
                 }
-
+                if (is_array($survey['usersList'])) {
+                    SurveySelectedUsers::deleteAll(['survey_id'=> $survey->survey_id]);
+                    foreach ($survey['usersList'] as $key => $value) {
+                        $selectedUser = new SurveySelectedUsers();
+                        $selectedUser->survey_id = $survey->survey_id;
+                        $selectedUser->user_id = $value;
+                        $selectedUser->save(false);
+                    }
+                }
                 $survey->save();
 	            $survey->unlinkAll('restrictedUsers', true);
 
@@ -330,7 +339,7 @@ class DefaultController extends Controller
                 ]);
             }
         }
-
+        $survey->usersList = $survey->surveySelectedUsers;
         return $this->render('update', [
         	'survey' => $survey,
 	        'withUserSearch' => $this->allowUserSearch()

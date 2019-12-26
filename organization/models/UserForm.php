@@ -21,7 +21,7 @@ class UserForm extends Model
     public $firstname;
     private $model;
     public $sector_id;
-
+    public $tags;
     /**
      * @inheritdoc
      */
@@ -49,7 +49,7 @@ class UserForm extends Model
 
             ['password', 'required', 'on' => 'create'],
             ['password', 'string', 'min' => 6],
-
+            ['tags','safe'],
             [['status','sector_id'], 'integer'],
             ['roles', 'string'],
 
@@ -102,6 +102,7 @@ class UserForm extends Model
             'password' => Yii::t('common', 'Password'),
             'roles' => Yii::t('common', 'Roles'),
             'firstname' => Yii::t('common', 'Firstname'),
+            'tags' => Yii::t('common', 'Tags'),
         ];
     }
 
@@ -118,6 +119,7 @@ class UserForm extends Model
             $model->username = $this->username;
             $model->email = $this->email;
             $model->status = $this->status;
+            $model->tags = $this->tags;
             if ($this->password) {
                 $model->setPassword($this->password);
             }

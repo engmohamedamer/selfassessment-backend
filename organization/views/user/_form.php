@@ -4,9 +4,11 @@ use common\models\OrganizationStructure;
 use common\models\User;
 use common\models\UserProfile;
 use kartik\tree\TreeViewInput;
+use sjaakp\taggable\TagEditor;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model organization\models\UserForm */
@@ -101,6 +103,15 @@ $model->roles =Yii::$app->session->get('UserRole');
                     </div>
                     <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($model, 'status')->dropDownList(User::statuses()) ?>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <?= $form->field($model, 'tags')->widget(TagEditor::class, [
+                            'clientOptions' => [
+                                'autocomplete' => [
+                                    'source' => Url::toRoute(['tag/suggest'])
+                                ],
+                            ]
+                        ]) ?>
                     </div>
                 </div>
             </div>

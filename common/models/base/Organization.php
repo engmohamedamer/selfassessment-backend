@@ -40,6 +40,8 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $status
+ * @property string $postalcode
+ * @property string $postalbox
  */
 class Organization extends \yii\db\ActiveRecord
 {
@@ -66,6 +68,7 @@ class Organization extends \yii\db\ActiveRecord
     {
         return [
             [['city_id', 'district_id', 'limit_account'], 'integer'],
+            [['postalbox','postalcode'], 'number'],
             ['name', 'string', 'max' => 150],
             [['business_sector', 'email', 'conatct_name', 'contact_email', 'contact_position'], 'string', 'max' => 100],
             [['address','slug'], 'string', 'max' => 255],
@@ -155,6 +158,8 @@ class Organization extends \yii\db\ActiveRecord
             'status' => Yii::t('common', 'Status'),
             'slug'=> Yii::t('common', 'Slug'),
             'about'=>Yii::t('common','About Organization'),
+            'postalbox'=>Yii::t('common','Postal Box'),
+            'postalcode'=>Yii::t('common','Postal Code'),
         ];
     }
 

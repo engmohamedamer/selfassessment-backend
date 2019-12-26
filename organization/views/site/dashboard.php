@@ -34,7 +34,7 @@ $i = 1;
             <!-- /.col -->
         </div>
     </div>
-    <div class="collapse in" id="filterCollapse">
+    <div class="collapse" id="filterCollapse">
         <div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-filter fa-xs"></i> <?= \Yii::t('common', 'Dashboard Filter')?></h3>
@@ -62,6 +62,19 @@ $i = 1;
                             <label><?= \Yii::t('common', 'Filter by section')?></label>
                             <input type="text" class="form-control" value="">
                             <small class="form-text text-muted">تخصيص لوحة التحكم حسب قطاع العمل</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label><?= \Yii::t('common', 'Filter by Tags')?></label>
+                            <input type="text" class="form-control" value="">
+                            <small class="form-text text-muted">تخصيص لوحة التحكم حسب الوسوم</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            
+                            <button class="btn btn-success" style="margin-top: 32px;"><?= \Yii::t('common', 'Filter')?></button>
                         </div>
                     </div>
                 </div>
@@ -112,8 +125,23 @@ $i = 1;
                 <h3 class="box-title"><?= Yii::t('common','Count Surveys Contributors')?></h3>
 
                 <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
+                   
+                    <div class="dropdown">
+                        <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cogs"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">اليوم</a>
+                            <a class="dropdown-item" href="#">اليوم السابق</a>
+                            <a class="dropdown-item" href="#">الاسبوع الحالي</a>
+                            <a class="dropdown-item" href="#">الاسبوع السابق</a>
+                            <a class="dropdown-item" href="#">الشهر الحالي</a>
+                            <a class="dropdown-item" href="#">الشهر السابق</a>
+                            <a class="dropdown-item" href="#">السنة الحالية</a>
+                            <a class="dropdown-item" href="#">السنة السابقة</a>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="box-body">
@@ -131,8 +159,22 @@ $i = 1;
                 <h3 class="box-title"><?= Yii::t('common','Assessments Contributor Status') .' ( '. $countStats .' '. Yii::t('common','status').')' ?></h3>
 
                 <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
+                <div class="dropdown">
+                        <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cogs"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">اليوم</a>
+                            <a class="dropdown-item" href="#">اليوم السابق</a>
+                            <a class="dropdown-item" href="#">الاسبوع الحالي</a>
+                            <a class="dropdown-item" href="#">الاسبوع السابق</a>
+                            <a class="dropdown-item" href="#">الشهر الحالي</a>
+                            <a class="dropdown-item" href="#">الشهر السابق</a>
+                            <a class="dropdown-item" href="#">السنة الحالية</a>
+                            <a class="dropdown-item" href="#">السنة السابقة</a>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="box-body">
@@ -161,8 +203,22 @@ $i = 1;
                         <h3 class="box-title"><?= \Yii::t('common', 'Latest Assessments')?></h3>
 
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
+                        <div class="dropdown">
+                        <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cogs"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">اليوم</a>
+                            <a class="dropdown-item" href="#">اليوم السابق</a>
+                            <a class="dropdown-item" href="#">الاسبوع الحالي</a>
+                            <a class="dropdown-item" href="#">الاسبوع السابق</a>
+                            <a class="dropdown-item" href="#">الشهر الحالي</a>
+                            <a class="dropdown-item" href="#">الشهر السابق</a>
+                            <a class="dropdown-item" href="#">السنة الحالية</a>
+                            <a class="dropdown-item" href="#">السنة السابقة</a>
+                            
+                        </div>
+                    </div>
                         </div>
                     </div>
                     <!-- /.box-header -->
@@ -225,8 +281,22 @@ $i = 1;
 
                     <div class="box-tools pull-right">
                     <!-- <span class="label label-danger">8 New Members</span> -->
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
+                    <div class="dropdown">
+                        <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cogs"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">اليوم</a>
+                            <a class="dropdown-item" href="#">اليوم السابق</a>
+                            <a class="dropdown-item" href="#">الاسبوع الحالي</a>
+                            <a class="dropdown-item" href="#">الاسبوع السابق</a>
+                            <a class="dropdown-item" href="#">الشهر الحالي</a>
+                            <a class="dropdown-item" href="#">الشهر السابق</a>
+                            <a class="dropdown-item" href="#">السنة الحالية</a>
+                            <a class="dropdown-item" href="#">السنة السابقة</a>
+                            
+                        </div>
+                    </div>
                    
                     </div>
                 </div>

@@ -4,6 +4,9 @@ namespace backend\modules\assessment\models;
 
 use Yii;
 use backend\models\SurveyDegreeLevel;
+use common\models\SurveySelectedUsers;
+use common\models\Tag;
+use sjaakp\taggable\TaggableBehavior;
 use yii\db\Expression;
 use yii\db\conditions\AndCondition;
 use yii\db\conditions\OrCondition;
@@ -51,7 +54,8 @@ class Survey extends \yii\db\ActiveRecord
     public $level_title = null;
     public $level_from = null;
     public $level_to = null;
-    public $sector_id;
+
+    public $usersList = [];
     const SCENARIOUPDATE = 'scenarioupdate';
     /**
      * @inheritdoc
@@ -69,13 +73,26 @@ class Survey extends \yii\db\ActiveRecord
         return parent::beforeSave($insert);
     }
 
+
+
+    public function behaviors()
+    {
+        return [
+            'taggable' => [
+                'class' => TaggableBehavior::class,
+                'junctionTable' => 'survey_tag',
+                'tagClass' => Tag::class,
+                'modelKeyColumn'=>'survey_id',
+            ]
+        ];
+    }
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id','start_info','level_title','level_from','level_to'], 'safe'],
+            [['survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id','start_info','level_title','level_from','level_to','tags','usersList'], 'safe'],
             [['survey_is_pinned', 'survey_is_closed', 'survey_is_private', 'survey_is_visible'], 'boolean'],
             [['survey_name'], 'string', 'max' => 45],
             [['survey_descr'], 'string'],
@@ -83,7 +100,7 @@ class Survey extends \yii\db\ActiveRecord
             // survey_expired_at
             [['survey_name'], 'required'],
             [['survey_expired_at'], 'required', 'on' => self::SCENARIOUPDATE],
-            [['survey_wallet', 'survey_status', 'survey_created_by', 'survey_badge_id','org_id','survey_point'], 'integer'],
+            [['survey_wallet', 'survey_status', 'survey_created_by', 'survey_badge_id','org_id','survey_point','sector_id'], 'integer'],
             ['survey_time_to_pass','integer','min'=>1],
             ['survey_point', 'compare', 'compareValue' => 0, 'operator' => '>=', 'type' => 'number'],
             [['imageFile'], 'file', 'mimeTypes' => 'image/jpeg, image/png', 'maxSize' => 5000000]
@@ -118,6 +135,8 @@ class Survey extends \yii\db\ActiveRecord
             'level_from'=>Yii::t('survey', 'From a percentage') ,
             'level_to'=>Yii::t('survey', 'To a percentage') ,
             'sector_id'=> Yii::t('common', 'Sector'),
+            'tags' => Yii::t('common', 'Tags'),
+            'usersList' => Yii::t('common', 'Selected Users'),
         ];
     }
 
@@ -301,6 +320,15 @@ class Survey extends \yii\db\ActiveRecord
         return $progress;
 
 
+    }
+
+    public  function getSurveySelectedUsers(){
+        $data=[];
+        $selectedList= SurveySelectedUsers::find()->where(['survey_id'=>$this->survey_id])->all();
+        foreach($selectedList as $item){
+            $data[] = $item->user_id ;
+        }
+        return $data ;
     }
 
 }

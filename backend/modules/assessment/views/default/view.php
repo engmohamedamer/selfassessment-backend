@@ -10,11 +10,14 @@ use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\search\SurveyStatSearch;
 use cenotia\components\modal\RemoteModal;
+use common\models\OrganizationStructure;
 use common\models\User;
 use kartik\editable\Editable;
 use kartik\helpers\Html;
 use kartik\select2\Select2;
+use kartik\tree\TreeViewInput;
 use organization\models\search\UserSearch;
+use sjaakp\taggable\TagEditor;
 use wbraganca\dynamicform\DynamicFormWidget;
 use yii\bootstrap\BootstrapPluginAsset;
 use yii\helpers\Url;
@@ -152,7 +155,29 @@ BootstrapPluginAsset::register($this);
                 echo Html::endTag('div');
 
                 echo Html::beginTag('div', ['class' => 'col-md-9']);
-                echo $form->field($survey, "survey_tags")->input('text', ['placeholder' => Yii::t('survey','Comma separated')]);
+                    echo $form->field($survey, 'sector_id')->widget(TreeViewInput::classname(),
+                    [
+                        'name' => 'kvTreeInput',
+                        'value' => 'true', // preselected values
+                        'query' => OrganizationStructure::find()->addOrderBy('root, lft'),
+                        'headingOptions' => ['label' => Yii::t('common','Sector')],
+                        'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
+                        'fontAwesome' => true,
+                        'asDropdown' => true,
+                        'multiple' => false,
+                        'options' => ['disabled' => false]
+                    ]);
+                echo Html::endTag('div');
+
+                echo Html::beginTag('div', ['class' => 'col-md-12']);
+                echo $form->field($survey, "tags")->widget(TagEditor::class, [
+                    'clientOptions' => [
+                        'autocomplete' => [
+                            'source' => Url::toRoute(['/tag/suggest'])
+                        ],
+                        'disable'=>true
+                    ]
+                ]);
                 echo Html::endTag('div');
                 echo Html::endTag('div');
 
@@ -274,26 +299,29 @@ $id  = $survey->survey_id;
 
 $organization = Yii::$app->user->identity->userProfile->organization;
 $survey = Survey::find()->where(['org_id'=>$organization->id,'survey_id'=>$id])->one();
-
-foreach ($survey->stats as $stat) {
-    $gained_points =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '.$stat->survey_stat_user_id.' and survey_user_answer_survey_id ='.$survey->survey_id )->queryScalar();
-    $gained_score_title = [];
-    if ($survey->survey_point) {
-        $gained_score =  ($gained_points / $survey->survey_point) * 100;
-        foreach ($survey->levels as $key => $value) {
-            if ($value->from <= $gained_score and $gained_score <= $value->to) {
-                $gained_score_title[] = $value->title;
-                break;
+if(isset($survey->stats)){
+    foreach ($survey->stats as $stat) {
+        $gained_points =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '.$stat->survey_stat_user_id.' and survey_user_answer_survey_id ='.$survey->survey_id )->queryScalar();
+        $gained_score_title = [];
+        if ($survey->survey_point) {
+            $gained_score =  ($gained_points / $survey->survey_point) * 100;
+            foreach ($survey->levels as $key => $value) {
+                if ($value->from <= $gained_score and $gained_score <= $value->to) {
+                    $gained_score_title[] = $value->title;
+                    break;
+                }
             }
-        }
 
+        }
     }
 }
 $titles = [];
 $counts = [];
+if(isset($survey->levels)){
 foreach ($survey->levels as $level) {
     $titles[] = $level->title;
     $counts[] = $gained_score_title ? array_count_values($gained_score_title)[$level->title] ?: 0 : 0;
+}
 }
 $labelsData = json_encode($titles);
 $countData = json_encode($counts);

@@ -91,11 +91,6 @@ class OrganizationStructure extends \kartik\tree\models\Tree
         return $this->hasOne(OrganizationStructure::class, ['id' => 'lvl']);
     }
 
-    public function getAdministration()
-    {
-        return $this->hasOne(OrganizationStructure::class, ['id' => 'lvl']);
-    }
-
     /**
      * @inheritdoc
      * @return \common\models\query\OrganizationStructureQuery the active query used by this AR class.
