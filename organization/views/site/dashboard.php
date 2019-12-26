@@ -25,11 +25,48 @@ $i = 1;
             </div>
             <div class='actionBtns'>
                 <a href="/assessment/default/create" class="btn btn-success"><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('common', 'Create new survey')?> </span></a>
+                <a data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse" class="btn btn-info"><span><i class="fa fa-filter mr-2 ml-2"></i> <?= \Yii::t('common', 'Filter Options')?> </span></a>
+
             </div>
             <!-- <div class="col-sm-6"> -->
                 <!-- <a href="NewOrganization.html" class="btn btn-primary" style="float: right">New Organization</a> -->
             <!-- </div> -->
             <!-- /.col -->
+        </div>
+    </div>
+    <div class="collapse in" id="filterCollapse">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-filter fa-xs"></i> <?= \Yii::t('common', 'Dashboard Filter')?></h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label><?= \Yii::t('common', 'Filter by time')?></label>
+                            <select class="form-control">
+                                <option>اليوم</option>
+                                <option>اليوم السابق</option>
+                                <option>الاسبوع الحالي</option>
+                                <option>الاسبوع السابق</option>
+                                <option>الشهر الحالي</option>
+                                <option>الشهر السابق</option>
+                                <option>السنة الحالية</option>
+                                <option>السنة السابقة</option>
+                            </select>
+                            <small class="form-text text-muted">تخصيص لوحة التحكم بالمدة الزمنية المحددة</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label><?= \Yii::t('common', 'Filter by section')?></label>
+                            <input type="text" class="form-control" value="">
+                            <small class="form-text text-muted">تخصيص لوحة التحكم حسب قطاع العمل</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
     <?php if(count($contributors->getModels()) == 0 || count($organization->survey) == 0):?>
