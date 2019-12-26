@@ -42,20 +42,33 @@ class AssessmentsController extends  MyActiveController
 
         $orgId = \Yii::$app->user->identity->userProfile->organization_id;
         if(! $orgId) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],'404');
-        $query = SurveyMiniResource::find()->orderBy('survey_id DESC');
-        $query->where(['org_id'=>$orgId]);
-        $query->where(['survey_is_visible' => 1]);
+        $queryCompleted = SurveyMiniResource::find()->orderBy('survey_id DESC');
+        $queryCompleted->joinWith(['stats'])->where(['survey_stat_is_done'=>1]);
+        $queryCompleted->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1]);
 
-        $activeData = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'defaultPageSize' => $this->defaultPageSize , // to set default count items on one page
-                'pageSize' => $this->pageSize, //to set count items on one page, if not set will be set from defaultPageSize
-                'pageSizeLimit' => $this->pageSizeLimit, //to set range for pageSize
+        $queryUnCompleted = SurveyMiniResource::find()->orderBy('survey_id DESC');
+        $queryUnCompleted->joinWith(['stats'])->where(['survey_stat_is_done'=>0]);
+        $queryUnCompleted->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1]);
 
-            ],
-        ]);
-        return $activeData;
+
+        $userId = \Yii::$app->user->identity->id;
+        $userSurveyStat =  SurveyStat::find()->select('survey_stat_survey_id')->where(['survey_stat_user_id'=>$userId])->asArray()->all();
+        $ids = ArrayHelper::getColumn($userSurveyStat, 'survey_stat_survey_id');
+        $queryNoStart = SurveyMiniResource::find()->orderBy('survey_id DESC');
+        $queryNoStart->andWhere(['NOT IN','survey_id',$ids])->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1]);
+
+
+        return ['completed'=>$queryCompleted->all(),'notcomplete'=>$queryUnCompleted->all(),'notstart'=>$queryNoStart->all()];
+        // $activeData = new ActiveDataProvider([
+        //     'query' => $query,
+        //     'pagination' => [
+        //         'defaultPageSize' => $this->defaultPageSize , // to set default count items on one page
+        //         'pageSize' => $this->pageSize, //to set count items on one page, if not set will be set from defaultPageSize
+        //         'pageSizeLimit' => $this->pageSizeLimit, //to set range for pageSize
+
+        //     ],
+        // ]);
+        // return $activeData;
     }
 
 

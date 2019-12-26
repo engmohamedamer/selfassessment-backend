@@ -111,7 +111,7 @@ class UserSearch extends User
             foreach ($structure as $value) {
                 $ids[] = $value->id;
             }
-            $query->joinWith(['userProfile'])->where(['organization_id'=>$organization_id])->andWhere(['in','sector_id',$ids]);
+            $query->joinWith(['userProfile'])->andwhere(['organization_id'=>$organization_id])->andWhere(['in','sector_id',$ids]);
         }else{
             $query->joinWith(['userProfile'])->where(['organization_id'=>$organization_id]);
         }
