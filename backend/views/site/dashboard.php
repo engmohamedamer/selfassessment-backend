@@ -20,11 +20,55 @@ $this->title = Yii::t('backend', 'Dashboard');
         </div>
         <div class=" actionBtns">
             <a href="/organization/create" class="btn btn-success"><i class="icofont-plus"></i><?= Yii::t('backend','New Organization') ?> </a>
+            <a data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse" class="btn btn-info"><span><i class="fa fa-filter mr-2 ml-2"></i> <?= \Yii::t('common', 'Filter Options')?> </span></a>
+
         </div>
  
     </div>
 
 </div>
+<div class="collapse" id="filterCollapse">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-filter fa-xs"></i> <?= \Yii::t('common', 'Dashboard Filter')?></h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label><?= \Yii::t('common', 'Filter by time')?></label>
+                            <select class="form-control">
+                                <option>اليوم</option>
+                                <option>اليوم السابق</option>
+                                <option>الاسبوع الحالي</option>
+                                <option>الاسبوع السابق</option>
+                                <option>الشهر الحالي</option>
+                                <option>الشهر السابق</option>
+                                <option>السنة الحالية</option>
+                                <option>السنة السابقة</option>
+                            </select>
+                            <small class="form-text text-muted">تخصيص لوحة التحكم بالمدة الزمنية المحددة</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label><?= \Yii::t('common', 'Filter by organizations')?></label>
+                            <input type="text" class="form-control" value="">
+                            <small class="form-text text-muted">تخصيص لوحة التحكم حسب المؤسسة</small>
+                        </div>
+                    </div>
+                   
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            
+                            <button class="btn btn-success" style="margin-top: 32px;"><?= \Yii::t('common', 'Filter')?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 <!-- /.content-header -->
 <div class="row">
     <div class="col-sm-12 col-md-4">
@@ -67,32 +111,48 @@ $this->title = Yii::t('backend', 'Dashboard');
 </div>
 <div class="row">
     <div class="col-sm-12">
-      
-        <div class="box box-dark">
-            <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                    <h3 class="card-title"><?= Yii::t('backend','Contributing Report') ?></h3>
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title"><?= Yii::t('backend','Contributing Report') ?></h3>
+                <div class="box-tools pull-right">
+                    <div class="dropdown">
+                        <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-cogs"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">اليوم</a>
+                            <a class="dropdown-item" href="#">اليوم السابق</a>
+                            <a class="dropdown-item" href="#">الاسبوع الحالي</a>
+                            <a class="dropdown-item" href="#">الاسبوع السابق</a>
+                            <a class="dropdown-item" href="#">الشهر الحالي</a>
+                            <a class="dropdown-item" href="#">الشهر السابق</a>
+                            <a class="dropdown-item" href="#">السنة الحالية</a>
+                            <a class="dropdown-item" href="#">السنة السابقة</a>
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body">
                 
-                <!-- /.d-flex -->
-
-                <div class="position-relative mb-4">
-                    <canvas id="visitors-chart" height="200"></canvas>
-                </div>
-
-                <div class="d-flex flex-row justify-content-end">
-                    <span class="mr-5 ml-5">
+            </div>
+            <div class="box-body">
+                <canvas id="visitors-chart" style="height: 237px" height="237" ></canvas>
+            
+                <!-- <div class="d-flex flex-row justify-content-end">
+                    
+                </div> -->
+            </div>
+            <div class="box-footer text-center">
+            <span class="mr-5 ml-5">
                         <i class="fas fa-square text-primary"></i> <?= Yii::t('backend','Contributors Count') ?>
                     </span>
 
                     <span class="mr-5 ml-5">
                         <i class="fas fa-square text-gray"></i> <?= Yii::t('backend','Contributing Count') ?>
                     </span>
-                </div>
             </div>
-        </div>
+        <!-- /.box-body -->
+        </div>  
+        
     </div>
 </div>
 
@@ -101,11 +161,29 @@ $this->title = Yii::t('backend', 'Dashboard');
 <div class="row">
     <div class="col-sm-12">
         <div class="box box-dark">
-            <div class="card-header border-0">
-                <h3 class="card-title"><?= Yii::t('common','New Organizations') ?></h3>
-
+            <div class="box-header with-border">
+                <h3 class="box-title"><?= Yii::t('common','New Organizations') ?></h3>
+                <div class="box-tools pull-right">
+                    <div class="dropdown">
+                        <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-cogs"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">اليوم</a>
+                            <a class="dropdown-item" href="#">اليوم السابق</a>
+                            <a class="dropdown-item" href="#">الاسبوع الحالي</a>
+                            <a class="dropdown-item" href="#">الاسبوع السابق</a>
+                            <a class="dropdown-item" href="#">الشهر الحالي</a>
+                            <a class="dropdown-item" href="#">الشهر السابق</a>
+                            <a class="dropdown-item" href="#">السنة الحالية</a>
+                            <a class="dropdown-item" href="#">السنة السابقة</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            <div class="card-body p-0">
+            <div class="box-body">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>

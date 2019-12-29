@@ -155,38 +155,38 @@ $i = 1;
         <div class="col-md-4">
             
             <div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title"><?= Yii::t('common','Assessments Contributor Status') .' ( '. $countStats .' '. Yii::t('common','status').')' ?></h3>
+                <div class="box-header with-border">
+                    <h3 class="box-title"><?= Yii::t('common','Assessments Contributor Status') .' ( '. $countStats .' '. Yii::t('common','status').')' ?></h3>
 
-                <div class="box-tools pull-right">
-                <div class="dropdown">
-                        <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-cogs"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">اليوم</a>
-                            <a class="dropdown-item" href="#">اليوم السابق</a>
-                            <a class="dropdown-item" href="#">الاسبوع الحالي</a>
-                            <a class="dropdown-item" href="#">الاسبوع السابق</a>
-                            <a class="dropdown-item" href="#">الشهر الحالي</a>
-                            <a class="dropdown-item" href="#">الشهر السابق</a>
-                            <a class="dropdown-item" href="#">السنة الحالية</a>
-                            <a class="dropdown-item" href="#">السنة السابقة</a>
-                            
+                    <div class="box-tools pull-right">
+                        <div class="dropdown">
+                            <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-cogs"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">اليوم</a>
+                                <a class="dropdown-item" href="#">اليوم السابق</a>
+                                <a class="dropdown-item" href="#">الاسبوع الحالي</a>
+                                <a class="dropdown-item" href="#">الاسبوع السابق</a>
+                                <a class="dropdown-item" href="#">الشهر الحالي</a>
+                                <a class="dropdown-item" href="#">الشهر السابق</a>
+                                <a class="dropdown-item" href="#">السنة الحالية</a>
+                                <a class="dropdown-item" href="#">السنة السابقة</a>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="box-body">
-                <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
-                <ul class="chart-legend clearfix" style="    margin: 20px;">
-                    <li><i class="fa fa-circle-o" style="color: #2ecc71;"></i> <?= $orgSurveyStats['labels'][0] ?> (<?= $orgSurveyStats['data'][0] ?>)</li>
-                    <li>&nbsp;</li>
-                    <li><i class="fa fa-circle-o" style="color: #f39c12;"></i></i> <?= $orgSurveyStats['labels'][1] ?> (<?= $orgSurveyStats['data'][1] ?>)</li>
-                    <li>&nbsp;</li>
-                    <li><i class="fa fa-circle-o" style="color: #22cece;"></i></i> <?= $orgSurveyStats['labels'][2] ?> (<?= $orgSurveyStats['data'][2] ?>)</li>
-                  </ul>
-            </div>
+                <div class="box-body">
+                    <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                    <ul class="chart-legend clearfix" style="    margin: 20px;">
+                        <li><i class="fa fa-circle-o" style="color: #2ecc71;"></i> <?= $orgSurveyStats['labels'][0] ?> (<?= $orgSurveyStats['data'][0] ?>)</li>
+                        <li>&nbsp;</li>
+                        <li><i class="fa fa-circle-o" style="color: #f39c12;"></i></i> <?= $orgSurveyStats['labels'][1] ?> (<?= $orgSurveyStats['data'][1] ?>)</li>
+                        <li>&nbsp;</li>
+                        <li><i class="fa fa-circle-o" style="color: #22cece;"></i></i> <?= $orgSurveyStats['labels'][2] ?> (<?= $orgSurveyStats['data'][2] ?>)</li>
+                    </ul>
+                </div>
             <!-- /.box-body -->
             </div>
         </div>

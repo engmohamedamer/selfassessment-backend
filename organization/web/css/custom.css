@@ -521,7 +521,7 @@ a:active {
 .btn {
     font-size: 14px;
     padding: .5rem 1.5rem;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .btn:hover,
@@ -1605,6 +1605,16 @@ header nav a {
 
 .collapse .card {
     margin-bottom: 15px;
+}
+
+.tag-editor {
+    height: 40px;
+    border: 1px solid #ccc;
+    padding: 6px;
+}
+
+.tag-editor li {
+    float: right;
 }
 
 
