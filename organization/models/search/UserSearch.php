@@ -106,11 +106,15 @@ class UserSearch extends User
 
         $sector_id = \Yii::$app->user->identity->userProfile->sector_id;
         if ($sector_id) {
-            $structure = OrganizationStructure::find()->select('id')->where(['root'=>$sector_id])->all();
+            // return $sector_id;
+            $str = OrganizationStructure::findOne($sector_id);
+            $structure = OrganizationStructure::find()->where(['root'=>$str->root])->andWhere(['>=','lvl',$str->lvl])->addOrderBy('root, lft')->all();
+            // $structure = OrganizationStructure::find()->select('id')->where(['root'=>$sector_id])->all();
             $ids = [];
             foreach ($structure as $value) {
                 $ids[] = $value->id;
             }
+            // return $ids;
             $query->joinWith(['userProfile'])->andwhere(['organization_id'=>$organization_id])->andWhere(['in','sector_id',$ids]);
         }else{
             $query->joinWith(['userProfile'])->where(['organization_id'=>$organization_id]);
@@ -122,8 +126,7 @@ class UserSearch extends User
             'pagination' => false,
         ]);
 
-        $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
-                ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])->andFilterWhere(['!=','{{%user}}.id', \Yii::$app->user->identity->id]);
+        $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])->andFilterWhere(['!=','{{%user}}.id', \Yii::$app->user->identity->id]);
 
         return $dataProvider->getModels();
     }

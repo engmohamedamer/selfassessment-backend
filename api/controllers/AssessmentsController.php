@@ -36,25 +36,68 @@ class AssessmentsController extends  MyActiveController
         return $actions;
     }
 
+
+
+    private function allowedSurvey()
+    {
+      
+      $connection = \Yii::$app->getDb();
+      $commandTags = $connection->createCommand("
+          SELECT survey.survey_id from user_profile
+          join survey on org_id = organization_id 
+          join survey_tag on survey_tag.survey_id = survey.survey_id
+          join user_tag on user_tag.user_id = user_profile.user_id
+          where user_tag.tag_id = survey_tag.tag_id and  org_id = :org_id and survey_is_visible = 1 and user_profile.user_id = :user_id group by survey.survey_id;
+      ", [':org_id' => 12,':user_id'=>65]);
+      $resultTags = $commandTags->queryAll();
+
+      $commandSelectedUsers = $connection->createCommand("
+          SELECT survey.survey_id from user_profile
+          join survey on org_id = organization_id 
+          join survey_selected_users on survey_selected_users.user_id = user_profile.user_id
+          where survey_selected_users.survey_id = survey.survey_id and  org_id = 12   and survey_is_visible = 1 and user_profile.user_id = 65 group by survey.survey_id;
+      ", [':org_id' => 12,':user_id'=>65]);
+      $resultSelectedUsers = $commandSelectedUsers->queryAll();
+
+      $commandSector = $connection->createCommand("
+          SELECT survey.survey_id from user_profile
+          join survey on org_id = organization_id 
+          join organization_structure as str on survey.sector_id = str.id where
+          user_profile.sector_id in ( select id from organization_structure where root = str.root  ) 
+          and org_id = :org_id and survey_is_visible = 1 and user_profile.user_id = :user_id group by survey.survey_id;
+      ", [':org_id' => 12,':user_id'=>65]);
+      $resultSector = $commandSector->queryAll();
+
+      $commandOpenForAll = $connection->createCommand("
+          SELECT survey.survey_id from survey 
+          where org_id = :org_id and survey_is_visible = 1
+          and (sector_id is null or sector_id < 1)
+          and survey_id 
+            not in ( select survey_id from survey_tag where survey_tag.survey_id = survey.survey_id) 
+          and survey_id 
+            not in ( select survey_id from survey_selected_users where survey_selected_users.survey_id = survey.survey_id);
+      ", [':org_id' => 12]);
+      $resultOpenForAll = $commandOpenForAll->queryAll();
+
+        $ids = ArrayHelper::getColumn(array_merge_recursive($resultTags,$resultSelectedUsers,$resultSector,$resultOpenForAll), 'survey_id');
+
+      return array_values(array_unique($ids));
+
+    }
+
     public function actionIndex(){
 
         $params= \Yii::$app->request->get();
         $orgId = \Yii::$app->user->identity->userProfile->organization_id;
         if(! $orgId) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],'404');
-        $queryCompleted = SurveyMiniResource::find()->orderBy('survey_id DESC');
-        $queryCompleted->joinWith(['stats'])->where(['survey_stat_is_done'=>1]);
-        $queryCompleted->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1]);
-
-        $queryUnCompleted = SurveyMiniResource::find()->orderBy('survey_id DESC');
-        $queryUnCompleted->joinWith(['stats'])->where(['survey_stat_is_done'=>0]);
-        $queryUnCompleted->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1]);
-
 
         $userId = \Yii::$app->user->identity->id;
         $userSurveyStat =  SurveyStat::find()->select('survey_stat_survey_id')->where(['survey_stat_user_id'=>$userId])->asArray()->all();
         $ids = ArrayHelper::getColumn($userSurveyStat, 'survey_stat_survey_id');
         $queryNoStart = SurveyMiniResource::find()->orderBy('survey_id DESC');
-        $queryNoStart->andWhere(['NOT IN','survey_id',$ids])->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1]);
+        $queryNoStart->andWhere(['NOT IN','survey_id',$ids])
+          ->andWhere(['IN','survey_id',$this->allowedSurvey()])
+          ->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1]);
 
         $activeData = new ActiveDataProvider([
             'query' => $queryNoStart,
@@ -75,7 +118,9 @@ class AssessmentsController extends  MyActiveController
         if(! $orgId) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],'404');
         $queryCompleted = SurveyMiniResource::find()->orderBy('survey_id DESC');
         $queryCompleted->joinWith(['stats'])->where(['survey_stat_is_done'=>1]);
-        $queryCompleted->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1]);
+        $queryCompleted->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1])
+            ->andWhere(['IN','survey_id',$this->allowedSurvey()]);
+
 
         $activeData = new ActiveDataProvider([
             'query' => $queryCompleted,
@@ -94,12 +139,13 @@ class AssessmentsController extends  MyActiveController
 
         $orgId = \Yii::$app->user->identity->userProfile->organization_id;
         if(! $orgId) return ResponseHelper::sendFailedResponse(['message'=>"Missing Data"],'404');
-        $queryCompleted = SurveyMiniResource::find()->orderBy('survey_id DESC');
-        $queryCompleted->joinWith(['stats'])->where(['survey_stat_is_done'=>0]);
-        $queryCompleted->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1]);
+        $queryNotComplete = SurveyMiniResource::find()->orderBy('survey_id DESC');
+        $queryNotComplete->joinWith(['stats'])->where(['survey_stat_is_done'=>0]);
+        $queryNotComplete->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1])
+            ->andWhere(['IN','survey_id',$this->allowedSurvey()]);
 
         $activeData = new ActiveDataProvider([
-            'query' => $queryCompleted,
+            'query' => $queryNotComplete,
             'pagination' => [
                 'defaultPageSize' => $this->defaultPageSize , // to set default count items on one page
                 'pageSize' => $this->pageSize, //to set count items on one page, if not set will be set from defaultPageSize
