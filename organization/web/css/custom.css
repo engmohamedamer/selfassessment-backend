@@ -464,7 +464,7 @@ a:active {
 }
 
 .btn i {
-    margin: 0 0 0 15px !important;
+    /* margin: 0 0 0 15px !important; */
     font-size: 14px;
 }
 
@@ -521,6 +521,7 @@ a:active {
 .btn {
     font-size: 14px;
     padding: .5rem 1.5rem;
+    border-radius: 20px;
 }
 
 .btn:hover,
@@ -1237,7 +1238,7 @@ header nav a {
     padding: 13px 5px;
     margin-bottom: 30px;
     background: #fff !important;
-    height: 55px;
+    height: 125px;
 }
 
 .main-sidebar .logo img {
@@ -1600,6 +1601,10 @@ header nav a {
 .sidebar-toggle {
     display: none !important;
     font-size: 20px;
+}
+
+.collapse .card {
+    margin-bottom: 15px;
 }
 
 
