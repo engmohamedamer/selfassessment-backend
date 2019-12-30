@@ -44,6 +44,10 @@ if (isset($model->city_id) and !empty($model->city_id)) {
             <div class="">
                 <h1><?= Html::encode($this->title) ?></h1>
             </div>
+            <div class="actionBtns">
+                <button type="submit" class="btn btn-success"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('common','Save Data');?></button>
+                <button type="submit" class="btn btn-success saveAndExit"><i class="icofont-exit mr-2 ml-2"></i> <?= Yii::t('common','Save and Exit');?></button>
+            </div>
             
         </div>
     </div>
@@ -351,13 +355,14 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
 
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-8">
                     <div class="form-group edit-theme-btn">
-                        <?= Html::submitButton($model->isNewRecord ? Yii::t('common', 'Create') : Yii::t('common', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
+                        <?= Html::submitButton($model->isNewRecord ? Yii::t('common', 'Create') : Yii::t('common', 'Save Data'), ['class' => $model->isNewRecord ? 'btn btn-success mr-5 ml-5 ' : 'btn btn-success mr-5 ml-5']) ?>
+                        <?= Html::submitButton($model->isNewRecord ? Yii::t('common', 'Create') : Yii::t('common', 'Save and Exit'), ['class' => $model->isNewRecord ? 'btn btn-success mr-5 ml-5' : 'btn btn-success mr-5 ml-5']) ?>
                     </div>
                 </div>
-            </div>
+            </div> -->
            
      
 

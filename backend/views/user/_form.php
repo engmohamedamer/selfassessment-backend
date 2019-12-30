@@ -23,7 +23,7 @@ $model->roles =Yii::$app->session->get('UserRole');
 <div class="content-header">
     <div>
         <div class="">
-            <h1><?= Yii::t('backend','Users Data');?> </h1>
+            <h1><?= Yii::t('backend','Add Adminstrator');?> </h1>
         </div>
         <div class=" actionBtns">
             <!-- <?php echo Html::submitButton(Yii::t('backend', 'Save'), ['class' => 'btn btn-success', 'name' => 'signup-button']) ?> -->

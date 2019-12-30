@@ -26,13 +26,17 @@
 
 .edit-theme-btn  {
     text-align: center !important;
+    margin: 30px auto;
+
 }
 .edit-theme-btn button {
    
-    margin: 20px auto;
     width: 100px;
 }
-
+.btn.btn-success.saveAndExit {
+    background-color: #323951 !important;
+    border-color: #323951 !important;
+}
 .theme-edit-content-panel {padding: 0 25px !important;}
 .theme-edit-content {padding: 0 20px !important;}
 .theme-edit-content .theme-edit-form{

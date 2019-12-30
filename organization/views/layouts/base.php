@@ -197,14 +197,14 @@ if(Yii::$app->user->isGuest){
 
         .addQFixed {
             position: fixed;
-            right: 300px;
+            right: 250px;
             bottom: 0;
             z-index: 99999;
             background: white;
             padding: 10px 5px;
             height: auto;
             overflow: hidden;
-            width: calc(100% - 300px);
+            width: calc(100% - 250px);
             display: flex;
             align-items: flex-start;
             justify-content: center;
@@ -261,7 +261,7 @@ if(Yii::$app->user->isGuest){
             position: fixed;
             bottom: 110px;
             right: 25px;
-            width: 250px;
+            width: 200px;
             z-index: 99999;
             border-radius: 10px;
             padding: 5px;

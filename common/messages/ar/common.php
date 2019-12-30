@@ -17,8 +17,9 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-
-     ''=>'',
+    'Add Another Admin'=>'إضافة مسؤول آخر',
+     'Save and Exit'=>'حفظ وخروج',
+     'Save Data'=>'حفظ البيانات',
      'Organization Adminstrator'=>'مسؤول المؤسسة',
      'Add Adminstrator'=>'إضافة مسؤول',
      'All Adminstrators'=>'كل المسؤولين',
