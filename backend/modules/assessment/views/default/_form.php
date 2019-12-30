@@ -41,6 +41,19 @@ if (Yii::$app->user->identity->userProfile->organization) {
 .surveylevels .col-md-10,.surveylevels .col-md-4{
     padding:0 15px;
 }
+.tag-editor {
+    background: #f9f9f9;
+    border:0px;
+    border-bottom: 1px solid #8e44ad !important;
+}
+.select2-container--krajee .select2-selection--multiple .select2-search--inline .select2-search__field{
+    background: #f9f9f9;
+    border-bottom: 1px solid #8e44ad !important;
+}
+.input-lg.select2-container--krajee .select2-selection--multiple, .input-group-lg .select2-container--krajee .select2-selection--multiple {
+    min-height: 40px;
+    border: 0;
+}
 </style>
     <div class='row' style='padding:0 0px 70px;'>
         <div class='col-sm-12 col-md-12'>
@@ -324,10 +337,10 @@ if (Yii::$app->user->identity->userProfile->organization) {
                             'multiple' => false,
                             'options' => ['disabled' => false]
                         ]);
-                    echo Html::endTag('div'); // col-md-9 
+                   
 
                     ?>
-                        <div class="col-md-4 col-md-12">
+                        <!-- <div class="col-md-4 col-md-12"> -->
                             <?= $form->field($survey, 'tags')->widget(TagEditor::class, [
                                 'clientOptions' => [
                                     'autocomplete' => [
@@ -335,14 +348,14 @@ if (Yii::$app->user->identity->userProfile->organization) {
                                     ],
                                 ]
                             ]) ?>
-                        </div>
+                       
 
                     <?php
 
                     $users = UserSearch::users(Yii::$app->user->identity->userProfile->organization_id);
                     // return var_dump($users);
                     $data = ArrayHelper::map($users, 'id', 'name');
-
+                    
                     echo $form->field($survey, 'usersList')->widget(Select2::classname(), [
                         'data' => $data,
                         'size' => Select2::LARGE,
@@ -385,7 +398,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
                             ]);
                     }
                     echo Html::endTag('div'); // row
-
+                    echo Html::endTag('div'); // col-md-9 
                     echo Html::submitButton('', ['class' => 'hidden']);
                     echo Html::tag('div', '', ['class' => 'clearfix']);
 

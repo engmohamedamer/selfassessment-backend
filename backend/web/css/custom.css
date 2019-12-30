@@ -971,7 +971,7 @@ section.content .survey-container #survey-questions .survey-block {
 .btn {
     font-weight: 600;
     font-size: 14px;
-    border-radius: 3px;
+    border-radius: 10px;
     -webkit-transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     -ms-transition: all .5s ease-in-out;
@@ -985,7 +985,7 @@ section.content .survey-container #survey-questions .survey-block {
 }
 
 .btn i {
-    margin: 0 0 0 15px !important;
+    /* margin: 0 !important; */
     font-size: 14px;
 }
 
@@ -1590,6 +1590,21 @@ table.table thead tr th a {
 .sidebar-toggle {
     display: none !important;
     font-size: 20px;
+}
+
+.btn-box-tool:hover,
+.btn-box-tool:focus {
+    color: #333 !important;
+}
+
+.tag-editor {
+    height: 40px;
+    border: 1px solid #ccc;
+    padding: 6px;
+}
+
+.tag-editor li {
+    float: right;
 }
 
 

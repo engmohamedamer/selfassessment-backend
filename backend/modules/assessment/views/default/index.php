@@ -28,9 +28,60 @@ BootstrapPluginAsset::register($this);
                 </div>
                 <div class=" actionBtns">
                     <a href="assessment/default/create" class="btn btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('survey', 'Create new survey') ?></a>
+                    <a data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse" class="btn btn-info"><span><i class="fa fa-filter mr-2 ml-2"></i> <?= \Yii::t('common', 'Advanced Search')?> </span></a>
+
+                
                 </div>
             </div>
         </div>
+        <div class="collapse" id="filterCollapse">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-filter fa-xs"></i> <?= \Yii::t('common', "Advanced Search")?></h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label><?= \Yii::t('common','Search by time')?></label>
+                            <select class="form-control">
+                                <option>اليوم</option>
+                                <option>اليوم السابق</option>
+                                <option>الاسبوع الحالي</option>
+                                <option>الاسبوع السابق</option>
+                                <option>الشهر الحالي</option>
+                                <option>الشهر السابق</option>
+                                <option>السنة الحالية</option>
+                                <option>السنة السابقة</option>
+                            </select>
+                            <small class="form-text text-muted">بحث الإستبيانات بالمدة الزمنية المحددة</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label><?= \Yii::t('common', 'Search by section')?></label>
+                            <input type="text" class="form-control" value="">
+                            <small class="form-text text-muted">بحث الإستبيانات حسب قطاع العمل</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label><?= \Yii::t('common', 'Search by Tags')?></label>
+                            <input type="text" class="form-control" value="">
+                            <small class="form-text text-muted">بحث الإستبيانات حسب الوسوم</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            
+                            <button class="btn btn-success" style="margin-top: 32px;"><?= \Yii::t('common', 'Advanced Search')?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
         <div class="row">
 
         <div class="col-md-12">
