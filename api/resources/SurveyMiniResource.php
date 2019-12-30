@@ -22,7 +22,8 @@ class SurveyMiniResource extends Survey
                 return $userSurveyStat->survey_stat_is_done ? 2 : 1;
             },
             'progress'=>function($model){
-                return  Survey::surveyProgress($model,\Yii::$app->user->identity->id);
+                $progress = Survey::surveyProgress($model,\Yii::$app->user->identity->id);
+                return  round($progress);
             },
 
             'title'=>function($model){
@@ -53,7 +54,7 @@ class SurveyMiniResource extends Survey
                 return SurveyStat::actualTime($model->survey_id,\Yii::$app->user->identity->id);
             },
             'expiryDate'=>function($model){
-                return $model->survey_expired_at;
+                return date('Y-m-d',strtotime($model->survey_expired_at));
             },
             'qNum'=>function($model){
                 return count($model->questions);
