@@ -45,8 +45,12 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                 <h1><?= Html::encode($this->title) ?></h1>
             </div>
             <div class="actionBtns">
-                <button type="submit" class="btn btn-success"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('common','Save Data');?></button>
-                <button type="submit" class="btn btn-success saveAndExit"><i class="icofont-exit mr-2 ml-2"></i> <?= Yii::t('common','Save and Exit');?></button>
+                <?php if($model->isNewRecord) :?>
+                    <button type="submit" class="btn btn-success"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('common','Create');?></button>
+                <?php else: ?>
+                    <button type="submit" class="btn btn-success" name="Organization[save_exit]" value="save"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('common','Save Data');?></button>
+                    <button type="submit" class="btn btn-success saveAndExit" name="Organization[save_exit]" value="exit"><i class="icofont-exit mr-2 ml-2"></i> <?= Yii::t('common','Save and Exit');?></button>
+                <?php endif ?>
             </div>
             
         </div>

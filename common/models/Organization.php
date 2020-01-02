@@ -10,6 +10,7 @@ use \common\models\base\Organization as BaseOrganization;
  */
 class Organization extends BaseOrganization
 {
+    public $save_exit;
 
     /**
      * @inheritdoc
@@ -26,7 +27,7 @@ class Organization extends BaseOrganization
             [['address'], 'string', 'max' => 255],
             [['phone', 'mobile', 'contact_phone'], 'string', 'max' => 20],
             [['first_image_base_url', 'first_image_path', 'second_image_base_url', 'second_image_path'], 'string', 'max' => 1024],
-            [['first_image','second_image','status'],'safe'],
+            [['first_image','second_image','status','save_exit'],'safe'],
             ['slug','unique'],
             
         ]);
