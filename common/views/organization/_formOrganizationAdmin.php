@@ -19,7 +19,9 @@ use yii\widgets\ActiveForm;
             ]) ?>
         </div>
     </div>
+    <div  id="getCloned">
     <div class="row">
+        <h4 class="col-md-12 col-sm-12"><b>مسئول جديد</b></h4>
         <div class="col-md-4 col-sm-12">
             <?php echo $form->field($user, 'email') ?>
         </div>
@@ -49,9 +51,17 @@ use yii\widgets\ActiveForm;
         <div class="col-md-4 col-sm-12">
             <?php echo $form->field($user, 'mobile') ?>
         </div>
-        <div class="addAnotherOrgAdmin  col-sm-12" style='text-align:center; margin:20px auto;'>
-                <a  href='#' class=""><i class="icofont-plus-circle mr-2 ml-2"></i> <?= Yii::t('common','Add Another Admin');?></a>
-            </div>
+        
 
     </div>
+    </div>
+    <div class="CloneHere"></div>
 
+    <div class="addAnotherOrgAdmin  col-sm-12" style='text-align:center; margin:20px auto;'>
+        <a  href='javascript:void(0)' class="clone" ><i class="icofont-plus-circle mr-2 ml-2"></i> <?= Yii::t('common','Add Another Admin');?></a>
+    </div>
+
+
+<script>
+
+</script>
