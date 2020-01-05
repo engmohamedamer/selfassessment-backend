@@ -246,14 +246,14 @@ class SurveyStat extends \yii\db\ActiveRecord
             ->andWhere(['survey_stat_user_id' => $userId])->one();
         if ($result) {
             $surveyTime = $survey->survey_time_to_pass * 60;
-            $actual_time = ($result->survey_stat_actual_time / $surveyTime) * 100;
-            $time = 100 - $actual_time;
+            $remaining = $surveyTime - $result->survey_stat_actual_time ;
             if ($result->survey_stat_actual_time  >= $surveyTime) {
                 return 0;
             }
-            return round($time,0);
+            return ltrim(gmdate("i", $remaining),'0');   
+
         }
-        return 100;
+        return gmdate("i", $survey->survey_time_to_pass * 60);
     }
 
     public static function  maxTimeToFinish($survey,$userId){

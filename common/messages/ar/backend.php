@@ -19,10 +19,11 @@
 return [
     ''=>'',
     ''=>'',
-    ''=>'',
+    'Add Contributor'=>'إضافة / تعديل بيانات المشاركين',
     'Survey'=>'قائمة الاستبيانات',
     'You Have no privilege on this dashbaord'=>'ليس لديك صلاحيه للدخول الى النظام',
     'Users Data'=>'بيانات المستخدمين',
+    'Add Adminstrator'=>'إضافة / تعديل بيانات المسؤول',
     'Users'=>'المستخدمين',
 
     'Published'=>'تم النشر',

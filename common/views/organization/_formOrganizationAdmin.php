@@ -49,6 +49,9 @@ use yii\widgets\ActiveForm;
         <div class="col-md-4 col-sm-12">
             <?php echo $form->field($user, 'mobile') ?>
         </div>
+        <div class="addAnotherOrgAdmin  col-sm-12" style='text-align:center; margin:20px auto;'>
+                <a  href='#' class=""><i class="icofont-plus-circle mr-2 ml-2"></i> <?= Yii::t('common','Add Another Admin');?></a>
+            </div>
 
     </div>
 

@@ -21,6 +21,8 @@ foreach ($question->answers as $i => $answer) {
     echo $form->field($answer, "[$question->survey_question_id][$i]survey_answer_name")->input('text',
         ['placeholder' => \Yii::t('survey', 'Enter an answer choice'),'required'=>true])->label(false);
 
+    echo $form->field($answer, "[$question->survey_question_id][$i]survey_answer_name")->input('text',
+        ['placeholder' => \Yii::t('survey', 'Question Point'),'required'=>true])->label(false);
     if ($question->survey_question_is_scorable || $question->survey->survey_point > 0) {
         // echo Html::beginTag('div', ['class' => 'points-wrap']);
         // if ($i === 0) {

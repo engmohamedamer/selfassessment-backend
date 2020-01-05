@@ -29,7 +29,7 @@ $model->roles =Yii::$app->session->get('UserRole');
                     if (Yii::$app->session->get('UserRole') == 'governmentAdmin') {
                         echo Yii::t('common','Organization Admins');
                     }else{
-                        echo Yii::t('common','Contributors');
+                        echo Yii::t('backend','Add Contributor');
                     }
 
                 ?>
