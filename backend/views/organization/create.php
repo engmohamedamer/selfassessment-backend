@@ -23,11 +23,13 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div> -->
 <!-- /.content-header -->
+
 <?= OrganizationForm::widget([
     'model' => $model,
     'theme'=> $theme,
     'user'=> $user,
     'profile'=> $profile,
-    'themeFooterLinks'=> $themeFooterLinks
+    'themeFooterLinks'=> $themeFooterLinks,
+    'modelsAdmins'=>$modelsAdmins
 ]) ?>
 

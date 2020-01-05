@@ -6,6 +6,8 @@ use Intervention\Image\ImageManagerStatic;
 use Yii;
 use backend\models\UserForm;
 use common\models\FooterLinks;
+use common\models\MultiModel;
+use common\models\OrgAdmin;
 use common\models\Organization;
 use common\models\OrganizationSearch;
 use common\models\OrganizationTheme;
@@ -13,6 +15,8 @@ use common\models\User;
 use common\models\UserProfile;
 use trntv\filekit\actions\DeleteAction;
 use trntv\filekit\actions\UploadAction;
+use yii\base\Exception;
+use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -110,45 +114,51 @@ class OrganizationController extends BackendController
     public function actionCreate()
     {
         $model   = new Organization();
-        $user    = new UserForm();
-        $user->roles = User::ROLE_GOVERNMENT_ADMIN; 
-        $user->status = User::STATUS_ACTIVE;
-        $profile = new UserProfile();
         $theme = new OrganizationTheme();
         $themeFooterLinks = new FooterLinks();
-
-        $user->setScenario('create');
+        $modelsAdmins = [new OrgAdmin];
 
         if ($model->load(Yii::$app->request->post()) &&  
-            $user->load(Yii::$app->request->post()) &&
-            $model->validate() && $user->validate() && 
-            $profile->load(Yii::$app->request->post()) && 
-            $theme->load(Yii::$app->request->post()) && 
+            $model->validate() && $theme->load(Yii::$app->request->post()) && 
             $themeFooterLinks->load(Yii::$app->request->post())  
         ) {
-
-            if ($model->validate() && $user->validate() && $theme->validate() && 
-                $themeFooterLinks->validate()) {
-                $model->save();
-                $user->save();
-                $profile->load(Yii::$app->request->post());
-                $this->UpdateUserRelatedTbls($user,$profile,$model->id);
-
-                $theme->organization_id = $model->id;
-                $themeFooterLinks->organization_id = $model->id;
-                
-                if($themeFooterLinks->save() && $theme->save()) {
-                    return $this->redirect(['view', 'id' => $model->id]);
+            $modelsAdmins = MultiModel::createMultiple(OrgAdmin::classname());
+            MultiModel::loadMultiple($modelsAdmins, Yii::$app->request->post());
+            $valid = MultiModel::validateMultiple($modelsAdmins);
+            if ($valid) {
+                //save model and its related models
+                $transaction = \Yii::$app->db->beginTransaction();
+                try {
+                    if ($flag = $model->save(false)) {
+                        foreach ($modelsAdmins as $modelAdmin) {
+                            $modelAdmin->organization_id = $model->id;
+                            if (! ($flag = $modelAdmin->save(false))) {
+                                $transaction->rollBack();
+                                break;
+                            }
+                        }
+                    }
+                    if ($flag && $model->validate() && $theme->validate() && $themeFooterLinks->validate()) {
+                        $theme->organization_id = $model->id;
+                        $themeFooterLinks->organization_id = $model->id;
+                        if($themeFooterLinks->save() && $theme->save()) {
+                            $transaction->commit();
+                            return $this->redirect(['view', 'id' => $model->id]);
+                        }
+                    }
+                } catch (Exception $e) {
+                    $transaction->rollBack();
+                    return var_dump($e);
                 }
             }
         }
-
         return $this->render('create', [
             'model' => $model,
             'user' => $user,
             'profile' => $profile,
             'theme'=> $theme,
-            'themeFooterLinks'=> $themeFooterLinks
+            'themeFooterLinks'=> $themeFooterLinks,
+            'modelsAdmins'=>$modelsAdmins
         ]);
 
     }

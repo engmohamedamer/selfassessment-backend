@@ -13,9 +13,25 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use common\helpers\multiLang\MyMultiLanguageActiveField;
-
+use wbraganca\dynamicform\DynamicFormWidget;
 \organization\assets\OrgUpdate::register($this);
 
+
+$js = '
+jQuery(".dynamicform_wrapper").on("afterInsert", function(e, item) {
+    jQuery(".dynamicform_wrapper .panel-title-address").each(function(index) {
+        jQuery(this).html("Admin: " + (index + 1))
+    });
+});
+
+jQuery(".dynamicform_wrapper").on("afterDelete", function(e) {
+    jQuery(".dynamicform_wrapper .panel-title-address").each(function(index) {
+        jQuery(this).html("Admin: " + (index + 1))
+    });
+});
+';
+
+$this->registerJs($js);
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Organization */
@@ -32,7 +48,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
 
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
 
     <div class="alert alert-danger error-summary mt-2" style="display: none;">
         <?php  echo $form->errorSummary($model); ?>
@@ -258,6 +274,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 'form' => $form,
                                 'user' => $user,
                                 'profile' => $profile,
+                                'modelsAdmins'=>$modelsAdmins
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>

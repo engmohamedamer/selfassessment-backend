@@ -17,6 +17,7 @@ class OrganizationForm extends Widget
     public $profile;
     public $theme;
     public $themeFooterLinks;
+    public $modelsAdmins;
     
     public function init()
     {
@@ -31,6 +32,7 @@ class OrganizationForm extends Widget
            'user' => $this->user,
            'profile' => $this->profile,
            'themeFooterLinks' => $this->themeFooterLinks,
+           'modelsAdmins'=>$this->modelsAdmins
         ]);
     }
 }
