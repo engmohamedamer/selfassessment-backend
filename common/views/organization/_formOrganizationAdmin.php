@@ -26,32 +26,34 @@ use wbraganca\dynamicform\DynamicFormWidget;
             'email',
         ],
     ]); ?>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <i class="fa fa-envelope"></i> <?= Yii::t('common', 'Organization Admin') ?>
+
+  
+
+   
+    <div class="col-md-12 cloneDivHeader">
+        <h5><i class="icofont-1x icofont-user-suited"></i> <b><?= Yii::t('common', 'Add Organization Admin') ?></b>
             <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i><?= Yii::t('common', 'Organization Admin') ?></button>
-            <div class="clearfix"></div>
-        </div>
-        <div class="panel-body container-items"><!-- widgetContainer -->
-            <?php foreach ($modelsAdmins as $index => $modelAdmin): ?>
-                <div class="item panel panel-default"><!-- widgetBody -->
-                    <div class="panel-heading">
-                        <span class="panel-title-address"><?= Yii::t('common', 'Organization Admin') ?> : <?= ($index + 1) ?></span>
-                        <button type="button" class="pull-right remove-item btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="panel-body">
-                        <?= $form->field($modelAdmin, "[{$index}]full_name")->textInput(['maxlength' => true]) ?>
-                        <?php echo $form->field($modelAdmin, "[{$index}]email") ?>
-                        <?php echo $form->field($modelAdmin, "[{$index}]password")->passwordInput() ?>
-                        <?php echo $form->field($modelAdmin, "[{$index}]gender")->dropDownlist([
-                            UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female'),
-                            UserProfile::GENDER_MALE => Yii::t('backend', 'Male')
-                        ]) ?>
-                        <?= $form->field($modelAdmin, "[{$index}]mobile")->textInput(['maxlength' => true]) ?>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
+        </h5>
+        <div class="clearfix"></div>
     </div>
+
+    <div class="col-md-12 container-items"><!-- widgetContainer -->
+        <?php foreach ($modelsAdmins as $index => $modelAdmin): ?>
+            <div class="item card ClonedDiv"><!-- widgetBody -->
+                <button type="button" class="remove-item btn btn-danger"><i class="fa fa-times"></i></button>
+
+                <div class="card-body">
+                    <?= $form->field($modelAdmin, "[{$index}]full_name")->textInput(['maxlength' => true]) ?>
+                    <?php echo $form->field($modelAdmin, "[{$index}]email") ?>
+                    <?php echo $form->field($modelAdmin, "[{$index}]password")->passwordInput() ?>
+                    <?php echo $form->field($modelAdmin, "[{$index}]gender")->dropDownlist([
+                        UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female'),
+                        UserProfile::GENDER_MALE => Yii::t('backend', 'Male')
+                    ]) ?>
+                    <?= $form->field($modelAdmin, "[{$index}]mobile")->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
     <?php DynamicFormWidget::end(); ?>
