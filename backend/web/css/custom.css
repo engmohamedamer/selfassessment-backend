@@ -1195,6 +1195,7 @@ header nav a {
     text-align: center;
     font-size: 14px !important;
     padding: 0;
+    position: relative;
 }
 
 .user-info-block .dropdown-toggle {
@@ -1284,15 +1285,15 @@ header nav a {
     padding-top: 8px;
 }
 
-.user-menu .dropdown-toggle span div::before {
+.user-menu .dropdown-toggle span::before {
     content: '';
     border-top: 5px solid #666;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    top: 10px;
+    top: 18px;
     left: auto;
-    right: 15px;
-    position: relative;
+    right: -15px;
+    position: absolute;
     z-index: 9999;
 }
 
@@ -1413,7 +1414,7 @@ header nav a {
 .right-side,
 .main-footer,
 .main-header .navbar {
-    margin-left: 300px;
+    margin-left: 250px;
 }
 
 
@@ -1648,6 +1649,9 @@ table.table thead tr th a {
         width: 32px;
         overflow: hidden;
         padding: .5rem .75rem;
+    }
+    .actionBtns a i {
+        margin: 0 1px 0 7px;
     }
 }
 
