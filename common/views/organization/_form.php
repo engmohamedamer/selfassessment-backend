@@ -286,10 +286,10 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <h2 class=''> <?php echo Yii::t('common', 'Preview') ?></h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active">
-                                    <p><?php echo Yii::t('common', 'Colors will present your organization identity in the website parts like buttons and backgrounds.') ?></p>
-                                    <p><?php echo Yii::t('common', 'Please enter your main color and the second color with lower opacity.') ?></p>
-                                    <p> <?php echo Yii::t('common', '-- Examples --') ?> </p>
-                                    <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'>
+                                    <p><?php echo Yii::t('common', 'You can create as mush as you want of organizations admins.') ?></p>
+                                    <p><?php echo Yii::t('common', 'Every Organization Admin has the ability to manage the organization details,create new assessments and invite new contributors.') ?></p>
+                                    <!-- <p> <?php echo Yii::t('common', '-- Examples --') ?> </p>
+                                    <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'> -->
                                     <hr class='mt-5 mb-5'>
                                 </div>
                             </div>

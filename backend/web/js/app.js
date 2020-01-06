@@ -116,7 +116,17 @@ $(function() {});
 })(window, document);
 
 
-
+////////////////////Clone Create Org Admins
 $(".clone").click(function() {
     $("#getCloned").clone().appendTo(".CloneHere");
 })
+
+////////////////////Loader Function
+$(window).on("load", function() {
+
+    setTimeout(function() {
+
+        $(".LoaderDiv").addClass("hide");
+    }, 1000);
+
+});
