@@ -32,7 +32,14 @@ if(Yii::$app->user->isGuest){
 
 <?php $this->beginContent('@backend/views/layouts/base.php'); ?>
 <div class="wrapper" style="height: auto; min-height: 100%;">
-
+    <div class="LoaderDiv">
+        <div class='loader'>
+            <div class='preloader-pulse'>
+                <div class='pulse-center'></div>
+                <div class='pulse-explosion'></div>
+            </div>
+        </div>
+    </div>
     <header class="main-header">
 
         <!-- Logo -->
