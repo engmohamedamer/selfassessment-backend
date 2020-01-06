@@ -141,8 +141,11 @@ class OrganizationController extends BackendController
                 $transaction = \Yii::$app->db->beginTransaction();
                 try {
                     if ($flag = $model->save(false)) {
-                        foreach ($modelsAdmins as $modelAdmin) {
+                        foreach ($modelsAdmins as $index => $modelAdmin) {
                             $modelAdmin->organization_id = $model->id;
+                            if ($index == 0) {
+                                $modelAdmin->main_admin = 1;
+                            }
                             if (! ($flag = $modelAdmin->save(false))) {
                                 $transaction->rollBack();
                                 break;

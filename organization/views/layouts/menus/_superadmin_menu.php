@@ -63,6 +63,7 @@ echo Menu::widget([
                     'icon' => '<i class="icofont-users-alt-1 mr-2 ml-2"></i>',
                     'active' => (Yii::$app->request->url == '/user/index?user_role=governmentAdmin'),
                     'options' => ['class' => 'nav-item'],
+                    'visible'=> (Yii::$app->user->identity->userProfile->main_admin)
                 ],
             ],
         ],

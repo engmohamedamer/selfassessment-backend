@@ -202,7 +202,7 @@ class Organization extends \yii\db\ActiveRecord
      */
     public function getManager()
     {
-        return $this->hasOne(UserProfile::className(), ['organization_id' => 'id']);
+        return $this->hasOne(UserProfile::className(), ['organization_id' => 'id'])->andWhere(['main_admin'=>1]);
     }
 
     public function getPages()

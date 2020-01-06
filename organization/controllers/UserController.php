@@ -61,6 +61,9 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
+        if (!Yii::$app->user->identity->userProfile->main_admin) {
+            return $this->redirect(['/']);
+        }
         $searchModel = new UserSearch();
         if(isset($_REQUEST['user_role'])){
             Yii::$app->session->set('UserRole',$_REQUEST['user_role']);

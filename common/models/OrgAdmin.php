@@ -14,7 +14,7 @@ class OrgAdmin extends UserProfile
 	public $email;
 	public $password;
 	public $mobile;
-
+    public $main_admin;
 
 	/**
      * @inheritdoc
@@ -78,6 +78,7 @@ class OrgAdmin extends UserProfile
         $prof->lastname  =  $name[1];
         $prof->gender    = $this->gender;
         $prof->organization_id = $this->organization_id;
+        $prof->main_admin = $this->main_admin ? : 0;
         $prof->sector_id = 0;
         $prof->save(false);
         return $prof;
