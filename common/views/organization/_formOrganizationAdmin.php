@@ -17,7 +17,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
         'widgetBody' => '.container-items', // required: css class selector
         'widgetItem' => '.item', // required: css class
         'limit' => 4, // the maximum times, an element can be cloned (default 999)
-        'min' => 0, // 0 or 1 (default 1)
+        'min' => 1, // 0 or 1 (default 1)
         'insertButton' => '.add-item', // css class
         'deleteButton' => '.remove-item', // css class
         'model' => $modelsAdmins[0],
@@ -32,7 +32,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
    
     <div class="col-md-12 cloneDivHeader">
         <h5><i class="icofont-1x icofont-user-suited"></i> <b><?= Yii::t('common', 'Add Organization Admin') ?></b>
-            <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i><?= Yii::t('common', 'Organization Admin') ?></button>
+            <button type="button" class="pull-right add-item btn btn-success btn-xs"><i class="fa fa-plus"></i> <?= Yii::t('common', 'Add Another Organization Admin') ?></button>
         </h5>
         <div class="clearfix"></div>
     </div>
@@ -44,7 +44,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
 
                 <div class="card-body">
                     <?= $form->field($modelAdmin, "[{$index}]full_name")->textInput(['maxlength' => true]) ?>
-                    <?php echo $form->field($modelAdmin, "[{$index}]email") ?>
+                    <?php echo $form->field($modelAdmin, "[{$index}]email",['enableAjaxValidation' => true]) ?>
                     <?php echo $form->field($modelAdmin, "[{$index}]password")->passwordInput() ?>
                     <?php echo $form->field($modelAdmin, "[{$index}]gender")->dropDownlist([
                         UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female'),

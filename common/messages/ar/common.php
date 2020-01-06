@@ -307,5 +307,8 @@ return [
     'Add Organization Admin'=>'إضافة مسئول مؤسسة',
     'You can create as mush as you want of organizations admins.'=>'يمكن إضافة العديد من مسئولي المؤسسة.',
     'Every Organization Admin has the ability to manage the organization details,create new assessments and invite new contributors.'=>'يمكن لمسئولي تمكين التحكم في بيانات المؤسسة و اضافة الإستبيانات او إضافة مشاركين في الإستبيانات.',
+    'Add Organization Admin'=>'إضافة مسؤول مؤسسة',
+    'Add Another Organization Admin'=>'إضافة مسؤول أخر',
+    ''=>'',
     ''=>'',
 ];

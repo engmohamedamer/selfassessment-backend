@@ -17,6 +17,7 @@ use trntv\filekit\actions\DeleteAction;
 use trntv\filekit\actions\UploadAction;
 use yii\base\Exception;
 use yii\base\Model;
+use yii\base\Response;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -118,10 +119,20 @@ class OrganizationController extends BackendController
         $themeFooterLinks = new FooterLinks();
         $modelsAdmins = [new OrgAdmin];
 
+        // ajax validation
+        if (Yii::$app->request->isAjax) {
+
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            $modelsAdmins = MultiModel::createMultiple(OrgAdmin::classname());
+            MultiModel::loadMultiple($modelsAdmins, Yii::$app->request->post());
+            return MultiModel::validateMultiple($modelsAdmins);
+        }
+        
         if ($model->load(Yii::$app->request->post()) &&  
             $model->validate() && $theme->load(Yii::$app->request->post()) && 
             $themeFooterLinks->load(Yii::$app->request->post())  
         ) {
+
             $modelsAdmins = MultiModel::createMultiple(OrgAdmin::classname());
             MultiModel::loadMultiple($modelsAdmins, Yii::$app->request->post());
             $valid = MultiModel::validateMultiple($modelsAdmins);
@@ -146,12 +157,17 @@ class OrganizationController extends BackendController
                             return $this->redirect(['view', 'id' => $model->id]);
                         }
                     }
+                    $transaction->rollBack();
                 } catch (Exception $e) {
                     $transaction->rollBack();
-                    return var_dump($e);
                 }
             }
+            Yii::$app->session->setFlash('errors', \Yii::t('backend','Something went wrong when adding an admin'));
+            $model->isNewRecord = true;
+            $theme->isNewRecord = true;
+            $themeFooterLinks->isNewRecord = true;
         }
+
         return $this->render('create', [
             'model' => $model,
             'user' => $user,

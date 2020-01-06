@@ -126,10 +126,12 @@ use yii\widgets\DetailView;
                                     }
                                 ],
                             ];
-                            echo DetailView::widget([
-                                'model' => $model->manager,
-                                'attributes' => $gridColumn
-                            ]);
+                            if ($model->manager) {
+                                echo DetailView::widget([
+                                    'model' => $model->manager,
+                                    'attributes' => $gridColumn
+                                ]);
+                            }
                         ?>
                     </div>
                     <div class="tab-pane" id="tab4">
