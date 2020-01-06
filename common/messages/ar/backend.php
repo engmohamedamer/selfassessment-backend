@@ -481,8 +481,8 @@ return [
     'Contributors Participation'=>'عدد المشاركين في الاستبيانات',
     'Contributing Report'=>'نسبة المشاركة في الإستبيانات',
     'Update Data'=>'تعديل البيانات',
-    ''=>'',
-    ''=>'',
+    'This email address has already been taken.'=>'البريد الإلكتروني مستخدم من قبل',
+    'Something went wrong when adding an admin'=>'حدث خطا ما عند اضافة مسؤول',
     ''=>'',
     ''=>'',
 

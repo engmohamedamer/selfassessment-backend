@@ -23,6 +23,8 @@ class OrgAdmin extends UserProfile
     {
 
     	return [
+            ['email', 'unique', 'targetClass' => '\common\models\User', 
+                'message' => Yii::t('backend','This email address has already been taken.')],
             [['full_name','email','password','mobile'], 'required'],
             [['gender','organization_id'], 'integer'],
             [['gender'], 'in', 'range' => [NULL, self::GENDER_FEMALE, self::GENDER_MALE]],
@@ -57,7 +59,7 @@ class OrgAdmin extends UserProfile
                 $model->setPassword($this->password);
             }
             if (!$model->save()) {
-            	return var_dump($model->errors);
+            	Yii::$app->session->setFlash('errors', $model->errors);
                 throw new Exception('Model not saved');
             }
             $model->afterSignup();

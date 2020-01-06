@@ -54,6 +54,11 @@ if (isset($model->city_id) and !empty($model->city_id)) {
         <?php  echo $form->errorSummary($model); ?>
     </div>
 
+    <?php if (Yii::$app->session->hasFlash('errors')): ?>
+        <div class="alert alert-danger error-summary mt-2">
+            <?= Yii::$app->session->getFlash('errors') ?>
+        </div>
+    <?php endif; ?>
 
     <div class="content-header" style="">
         <div class="">

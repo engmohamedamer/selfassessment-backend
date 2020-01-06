@@ -304,8 +304,8 @@ return [
     'Search by time'=>'البحث بالتاريخ',
     'Search by section'=>'بحث حسب قطاع العمل',
     'Search by Tags'=>'بحث حسب الوسوم',
-    'Add Organization Admin'=>'إضافة مسئول مؤسسة',
-    ''=>'',
+    'Add Organization Admin'=>'إضافة مسؤول مؤسسة',
+    'Add Another Organization Admin'=>'إضافة مسؤول أخر',
     ''=>'',
     ''=>'',
 ];
