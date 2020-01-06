@@ -47,14 +47,14 @@ $this->title = Yii::t('backend', 'Dashboard');
                                 <option>السنة الحالية</option>
                                 <option>السنة السابقة</option>
                             </select>
-                            <small class="form-text text-muted">تخصيص لوحة التحكم بالمدة الزمنية المحددة</small>
+                            <small class="form-text text-muted"><?= \Yii::t('common', 'Filter the dashboard by time.')?></small>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label><?= \Yii::t('common', 'Filter by organizations')?></label>
                             <input type="text" class="form-control" value="">
-                            <small class="form-text text-muted">تخصيص لوحة التحكم حسب المؤسسة</small>
+                            <small class="form-text text-muted"><?= \Yii::t('common', 'Filter the dashboard by organization.')?></small>
                         </div>
                     </div>
                    

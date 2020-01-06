@@ -309,6 +309,13 @@ return [
     'Every Organization Admin has the ability to manage the organization details,create new assessments and invite new contributors.'=>'يمكن لمسئولي تمكين التحكم في بيانات المؤسسة و اضافة الإستبيانات او إضافة مشاركين في الإستبيانات.',
     'Add Organization Admin'=>'إضافة مسؤول مؤسسة',
     'Add Another Organization Admin'=>'إضافة مسؤول أخر',
+    'Filter the dashboard by time.'=>'تخصيص لوحة التحكم بالمدة الزمنية المحددة.',
+    'Filter the dashboard by organization.'=>'تخصيص لوحة التحكم حسب المؤسسة',
     ''=>'',
     ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+
 ];
