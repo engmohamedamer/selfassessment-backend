@@ -23,7 +23,7 @@ $this->params['body-class'] = 'login-page';
                 <div class="row">
                     <div class="col-md-4">
                         <div class="login">
-                        <a href="" class="brand-link"><img src="/img/tamkeen-logo.png" width="150"> </a>
+                        <a href="" class="brand-link"><img src="/img/tamkeen-logo2.png" width="150"> </a>
                             <h2>WELCOME,</h2>
                             <h4>Tamkeen Admin!</h4>
                             <?php if (Yii::$app->session->hasFlash('alert')): ?>

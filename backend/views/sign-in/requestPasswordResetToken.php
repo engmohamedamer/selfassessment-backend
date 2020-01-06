@@ -19,7 +19,7 @@ use yii\bootstrap\ActiveForm;
                 <div class="row">
                     <div class="col-md-4">
                         <div class="login">
-                        <a href="" class="brand-link"><img src="/img/tamkeen-logo.png" width="150"> </a>
+                        <a href="" class="brand-link"><img src="/img/tamkeen-logo2.png" width="150"> </a>
                             <h2>Change Password,</h2>
                             <h4>Tamkeen Admin!</h4>
                             <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
