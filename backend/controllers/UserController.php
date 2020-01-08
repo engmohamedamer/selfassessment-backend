@@ -81,6 +81,23 @@ class UserController extends BackendController
         ]);
     }
 
+
+    public function actionOrganizationAdmins($organization_id)
+    {
+        $searchModel = new \organization\models\search\UserSearch();
+        $searchModel->user_role = 'governmentAdmin';
+        $searchModel->organization_id = $organization_id;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $dataProvider->sort = [
+            'defaultOrder' => ['id' => SORT_DESC]
+        ];
+        return $this->render('organization_admins', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
      * Displays a single User model.
      * @param integer $id
@@ -142,6 +159,42 @@ class UserController extends BackendController
             ]);
 
 
+            return $this->redirect(['index']);
+        }
+        return $this->render('create', [
+            'model' => $model,
+            'profile' => $profile,
+            'roles' => ArrayHelper::map(Yii::$app->authManager->getRoles(), 'name', 'name')
+        ]);
+    }
+
+    /**
+     * Creates a new User model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreateOrganizationAdmin($organization_id)
+    {
+        $model = new UserForm();
+        $model->roles = 'governmentAdmin';
+        $profile = new UserProfile();
+        $profile->organization_id = $organization_id;
+        $model->setScenario('create');
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->username = $model->email;
+            $model->save();
+
+            $profile->load(Yii::$app->request->post());
+            $user = $this->UpdateUserRelatedTbls($model,$profile)->user;
+
+            Yii::$app->getSession()->setFlash('alert', [
+                'type' =>'success',
+                'options' => [
+                    'class' => 'alert-success',
+                ],
+                'body' => \Yii::t('backend', 'Data has been saved Successfully') ,
+                'title' =>'',
+            ]);
             return $this->redirect(['index']);
         }
         return $this->render('create', [

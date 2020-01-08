@@ -150,7 +150,7 @@ return [
     'Organization'=>'المؤسسة',
     'Address'=>'العنوان',
     'Select City first'=>'اختر المدينة اولا',
-    'Organization Manager'=>'مسؤول المؤسسة',
+    'Organization Manager'=>'مسؤولي المؤسسة',
     'Bio'=>'الوصف',
     'Business Sector'=>'تخصص المؤسسة',
     'Contact Name'=>'اسم مسؤول التواصل',

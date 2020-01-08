@@ -88,7 +88,9 @@ echo newerton\fancybox3\FancyBox::widget([
             'label' => Yii::t('common', 'Organization Manager'),
             'attribute' => 'manager',
             'value'=>function ($model) {
-                return  ' <a data-src="/organization/manager?id='.$model->manager->user_id.'" data-fancybox data-type="iframe" href="javascript:;" >'.$model->manager->firstname.'</a> ' ;
+
+                return  ' <a href="/user/organization-admins?organization_id='.$model->id.'">'.Yii::t('common', 'Organization Manager').'</a> ' ;
+                // return  ' <a data-src="/organization/manager?id='.$model->manager->user_id.'" data-fancybox data-type="iframe" href="javascript:;" >'.$model->manager->firstname.'</a> ' ;
             },
             'format' => 'raw',
         ],
