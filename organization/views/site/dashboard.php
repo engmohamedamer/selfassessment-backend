@@ -24,7 +24,7 @@ $i = 1;
                 <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Dashboard') ?></h1>
             </div>
             <div class='actionBtns'>
-                <a href="/assessment/default/create" class="btn btn-success"><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('common', 'Create new survey')?> </span></a>
+                <!-- <a href="/assessment/default/create" class="btn btn-success"><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('common', 'Create new survey')?> </span></a> -->
                 <a data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse" class="btn btn-info"><span><i class="fa fa-filter mr-2 ml-2"></i> <?= \Yii::t('common', 'Filter Options')?> </span></a>
 
             </div>
@@ -118,7 +118,7 @@ $i = 1;
         
 
         <!--Countributing in assessments-->
-        <div class="col-md-8">
+        <div class="col-md-12">
             
             <div class="box box-danger">
             <div class="box-header with-border">
@@ -152,52 +152,14 @@ $i = 1;
         </div>
 
         <!--Assessments status-->
-        <div class="col-md-4">
-            
-            <div class="box box-danger">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><?= Yii::t('common','Assessments Contributor Status') .' ( '. $countStats .' '. Yii::t('common','status').')' ?></h3>
-
-                    <div class="box-tools pull-right">
-                        <div class="dropdown">
-                            <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-cogs"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">اليوم</a>
-                                <a class="dropdown-item" href="#">اليوم السابق</a>
-                                <a class="dropdown-item" href="#">الاسبوع الحالي</a>
-                                <a class="dropdown-item" href="#">الاسبوع السابق</a>
-                                <a class="dropdown-item" href="#">الشهر الحالي</a>
-                                <a class="dropdown-item" href="#">الشهر السابق</a>
-                                <a class="dropdown-item" href="#">السنة الحالية</a>
-                                <a class="dropdown-item" href="#">السنة السابقة</a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
-                    <ul class="chart-legend clearfix" style="    margin: 20px;">
-                        <li><i class="fa fa-circle-o" style="color: #2ecc71;"></i> <?= $orgSurveyStats['labels'][0] ?> (<?= $orgSurveyStats['data'][0] ?>)</li>
-                        <li>&nbsp;</li>
-                        <li><i class="fa fa-circle-o" style="color: #f39c12;"></i></i> <?= $orgSurveyStats['labels'][1] ?> (<?= $orgSurveyStats['data'][1] ?>)</li>
-                        <li>&nbsp;</li>
-                        <li><i class="fa fa-circle-o" style="color: #22cece;"></i></i> <?= $orgSurveyStats['labels'][2] ?> (<?= $orgSurveyStats['data'][2] ?>)</li>
-                    </ul>
-                </div>
-            <!-- /.box-body -->
-            </div>
-        </div>
+        
         
 
     </div>
         <div class="row custom-dashboard">
             
             <!--Latest assessments-->
-            <div class="col-md-8">
-                <!-- TABLE: LATEST ORDERS -->
+            <!-- <div class="col-md-8">
                 <div class="box box-danger">
                     <div class="box-header with-border">
                         <h3 class="box-title"><?= \Yii::t('common', 'Latest Assessments')?></h3>
@@ -221,7 +183,6 @@ $i = 1;
                     </div>
                         </div>
                     </div>
-                    <!-- /.box-header -->
                     <div class="box-body">
                         <div class="table-responsive">
                             <table class="table no-margin">
@@ -260,20 +221,53 @@ $i = 1;
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.table-responsive -->
                     </div>
-                    <!-- /.box-body -->
                     <div class="box-footer text-center">
                     <a href="/assessment" class="uppercase thirdBtn"><?= \Yii::t('common', 'Assessments List') ?></a>
                 </div>
                    
-                    <!-- /.box-footer -->
                 </div>
-                <!-- /.box -->
-            </div>
+            </div> -->
+            <div class="col-md-6">
+            
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><?= Yii::t('common','Assessments Contributor Status') .' ( '. $countStats .' '. Yii::t('common','status').')' ?></h3>
 
+                    <div class="box-tools pull-right">
+                        <div class="dropdown">
+                            <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-cogs"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">اليوم</a>
+                                <a class="dropdown-item" href="#">اليوم السابق</a>
+                                <a class="dropdown-item" href="#">الاسبوع الحالي</a>
+                                <a class="dropdown-item" href="#">الاسبوع السابق</a>
+                                <a class="dropdown-item" href="#">الشهر الحالي</a>
+                                <a class="dropdown-item" href="#">الشهر السابق</a>
+                                <a class="dropdown-item" href="#">السنة الحالية</a>
+                                <a class="dropdown-item" href="#">السنة السابقة</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                    <ul class="chart-legend clearfix" style="    margin: 20px;">
+                        <li><i class="fa fa-circle-o" style="color: #2ecc71;"></i> <?= $orgSurveyStats['labels'][0] ?> (<?= $orgSurveyStats['data'][0] ?>)</li>
+                        <li>&nbsp;</li>
+                        <li><i class="fa fa-circle-o" style="color: #f39c12;"></i></i> <?= $orgSurveyStats['labels'][1] ?> (<?= $orgSurveyStats['data'][1] ?>)</li>
+                        <li>&nbsp;</li>
+                        <li><i class="fa fa-circle-o" style="color: #22cece;"></i></i> <?= $orgSurveyStats['labels'][2] ?> (<?= $orgSurveyStats['data'][2] ?>)</li>
+                    </ul>
+                </div>
+            <!-- /.box-body -->
+            </div>
+        </div>
             <!--Latest contributors-->
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <!-- USERS LIST -->
                 <div class="box box-danger">
                 <div class="box-header with-border">

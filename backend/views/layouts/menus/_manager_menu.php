@@ -89,15 +89,15 @@ echo Menu::widget([
 
         ],
 
-        [
-            'label' => Yii::t('common', 'Tamkeen Adminstrators'),
-            'icon' => '<i class="icofont-1x icofont-user-suited"></i>',
-            'url' => '#',
-            'options' => ['class' => 'treeview'],
-            'active' =>  (Yii::$app->controller->id == 'user'),
-            'visible' => (Yii::$app->user->can('administrator') or  Yii::$app->user->can('manager') ),
-            'items' => $admins,
-        ],
+        // [
+        //     'label' => Yii::t('common', 'Tamkeen Adminstrators'),
+        //     'icon' => '<i class="icofont-1x icofont-user-suited"></i>',
+        //     'url' => '#',
+        //     'options' => ['class' => 'treeview'],
+        //     'active' =>  (Yii::$app->controller->id == 'user'),
+        //     'visible' => (Yii::$app->user->can('administrator') or  Yii::$app->user->can('manager') ),
+        //     'items' => $admins,
+        // ],
 
 
 
