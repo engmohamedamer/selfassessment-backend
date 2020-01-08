@@ -1734,6 +1734,16 @@ table.table thead tr th a {
     }
 }
 
+html:lang(en) .dropdown-footer,
+html:lang(en) .dropdown-header {
+    text-align: left
+}
+
+html:lang(en) .user-menu .dropdown-toggle span::before {
+    left: -15px;
+    right: auto;
+}
+
 
 /**********************************Responsive mobile view
 **********************************************/

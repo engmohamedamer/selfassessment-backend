@@ -336,8 +336,8 @@ if(Yii::$app->user->isGuest){
         }
 
         .btn-success{
-            background-color: <?= $brandPrimColor ?> !important;
-            border-color: <?= $brandPrimColor ?> !important;
+            /* background-color: <?= $brandPrimColor ?> !important;
+            border-color: <?= $brandPrimColor ?> !important; */
         }
 
         .table td.skip-export a:hover{
