@@ -87,7 +87,7 @@ class Organization extends \yii\db\ActiveRecord
                 'class' => TimestampBehavior::className(),
                 'createdAtAttribute' => 'created_at',
                 'updatedAtAttribute' => 'updated_at',
-                'value' => date('now'),
+                'value' => time(),
             ],
             [
                 'class' => UploadBehavior::class,
