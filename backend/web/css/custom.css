@@ -1744,6 +1744,10 @@ html:lang(en) .user-menu .dropdown-toggle span::before {
     right: auto;
 }
 
+html:lang(en) .skin-blue .sidebar-menu .treeview-menu>li>a {
+    padding: 10px 15px 10px 15px;
+}
+
 
 /**********************************Responsive mobile view
 **********************************************/

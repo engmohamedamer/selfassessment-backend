@@ -1022,11 +1022,12 @@ html {
     color: #666 !important;
 }
 
-a:hover,
+
+/* a:hover,
 a:active,
 a:focus {
     color: #b20d1d !important;
-}
+} */
 
 .brandPrimColor {
     color: #b20d1d !important;
@@ -1740,6 +1741,10 @@ html:lang(en) .dropdown-header {
 html:lang(en) .user-menu .dropdown-toggle span::before {
     left: -15px;
     right: auto;
+}
+
+html:lang(en) .skin-blue .sidebar-menu .treeview-menu>li>a {
+    padding: 10px 15px 10px 15px;
 }
 
 
