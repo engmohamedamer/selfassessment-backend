@@ -13,9 +13,9 @@ $this->title = Yii::t('backend', 'Dashboard');
 $i = 1;
 ?>
 
-    <div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
+    <!-- <div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
         <img src="./img/preloader.gif" alt="">
-    </div>
+    </div> -->
 
     <!-- Content Header (Page header) -->
     <div class="content-header">

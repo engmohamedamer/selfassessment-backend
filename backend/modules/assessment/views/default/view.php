@@ -34,7 +34,7 @@ $this->title = Yii::t('survey', 'Survey') . ' - ' . $survey->survey_name;
 
 BootstrapPluginAsset::register($this);
 
-
+error_reporting(0);
 ?>
 <style>
 .surveylevels .col-md-10,.surveylevels .col-md-4{
