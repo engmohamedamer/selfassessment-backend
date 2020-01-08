@@ -7,6 +7,7 @@ use Yii;
 use backend\models\AccountForm;
 use backend\models\UserForm;
 use backend\models\search\UserSearch;
+use common\models\Organization;
 use common\models\User;
 use common\models\UserProfile;
 use common\models\UserToken;
@@ -89,12 +90,14 @@ class UserController extends BackendController
         $searchModel->organization_id = $organization_id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $organization = Organization::findOne($organization_id);
         $dataProvider->sort = [
             'defaultOrder' => ['id' => SORT_DESC]
         ];
         return $this->render('organization_admins', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'organization'=>$organization
         ]);
     }
 
@@ -195,7 +198,7 @@ class UserController extends BackendController
                 'body' => \Yii::t('backend', 'Data has been saved Successfully') ,
                 'title' =>'',
             ]);
-            return $this->redirect(['index']);
+            return $this->redirect(['/user/organization-admins?organization_id='.$organization_id]);
         }
         return $this->render('create', [
             'model' => $model,
@@ -284,6 +287,7 @@ class UserController extends BackendController
         $prof->lastname = $profile->lastname ;
         $prof->mobile = $profile->mobile ;
         $prof->gender = $profile->gender;
+        $prof->organization_id = $profile->organization_id;
         $prof->avatar_base_url = isset($profile->picture['base_url']) ? $profile->picture['base_url'] : null;
         $prof->avatar_path= isset($profile->picture['path'])? $profile->picture['path']: null ;
 

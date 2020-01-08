@@ -483,8 +483,10 @@ return [
     'Update Data'=>'تعديل البيانات',
     'This email address has already been taken.'=>'البريد الإلكتروني مستخدم من قبل',
     'Something went wrong when adding an admin'=>'حدث خطا ما عند اضافة مسؤول',
-    ''=>'',
-    ''=>'',
+    'Create New Adminstrators'=>'إضافة مسؤول',
+    'Adminstrator Name'=>'اسم المسؤول',
+    'Organization Admins'=>'مسؤولي مؤسسة : ',
+    'Organization Name'=>'اسم المؤسسة',
 
 
 ];
