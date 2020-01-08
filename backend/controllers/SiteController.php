@@ -58,7 +58,7 @@ class SiteController extends BackendController
         $labels = [];
         $data1 = [];
         $data2 = [];
-        $months = array(1 => 'Jan.', 2 => 'Feb.', 3 => 'Mar.', 4 => 'Apr.', 5 => 'May', 6 => 'Jun.', 7 => 'Jul.', 8 => 'Aug.', 9 => 'Sep.', 10 => 'Oct.', 11 => 'Nov.', 12 => 'Dec.');
+        $months = $this->months();
         for ($i=1; $i <= date('m'); $i++) { 
             $labels[] = $months[$i]; 
             $data1 [] = 0;
@@ -86,6 +86,11 @@ class SiteController extends BackendController
                 ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER]);
         $userCount = $user->count();
         return $this->render('dashboard',compact('organizations','surveyCount','surveyCurrentMonth','surveyLastMonth','assessmentStatus','userCount','surveyStatsCount','labels','data1','data2'));
+    }
+
+    public function months()
+    {
+        return array(1 => 'Jan.', 2 => 'Feb.', 3 => 'Mar.', 4 => 'Apr.', 5 => 'May', 6 => 'Jun.', 7 => 'Jul.', 8 => 'Aug.', 9 => 'Sep.', 10 => 'Oct.', 11 => 'Nov.', 12 => 'Dec.');
     }
 
 }

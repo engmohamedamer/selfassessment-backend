@@ -8,7 +8,7 @@ use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
 
-$this->title = Yii::t('common', 'Organization');
+$this->title = Yii::t('common', 'Organizations');
 $this->params['breadcrumbs'][] = $this->title;
 $search = "$('.search-button').click(function(){
     $('.search-form').toggle(1000);
@@ -74,6 +74,7 @@ echo newerton\fancybox3\FancyBox::widget([
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
         [
+            'header'=> Yii::t('backend','Organization Name'),
             'attribute' => 'name',
             'value'=>function ($model) {
                 return Html::a( $model->name, ['/organization/view?id='.$model->id]) ;
@@ -88,7 +89,9 @@ echo newerton\fancybox3\FancyBox::widget([
             'label' => Yii::t('common', 'Organization Manager'),
             'attribute' => 'manager',
             'value'=>function ($model) {
-                return  ' <a data-src="/organization/manager?id='.$model->manager->user_id.'" data-fancybox data-type="iframe" href="javascript:;" >'.$model->manager->firstname.'</a> ' ;
+
+                return  ' <a href="/user/organization-admins?organization_id='.$model->id.'">'.Yii::t('common', 'Organization Manager').'</a> ' ;
+                // return  ' <a data-src="/organization/manager?id='.$model->manager->user_id.'" data-fancybox data-type="iframe" href="javascript:;" >'.$model->manager->firstname.'</a> ' ;
             },
             'format' => 'raw',
         ],

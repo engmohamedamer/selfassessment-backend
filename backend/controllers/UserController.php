@@ -7,6 +7,7 @@ use Yii;
 use backend\models\AccountForm;
 use backend\models\UserForm;
 use backend\models\search\UserSearch;
+use common\models\Organization;
 use common\models\User;
 use common\models\UserProfile;
 use common\models\UserToken;
@@ -81,6 +82,25 @@ class UserController extends BackendController
         ]);
     }
 
+
+    public function actionOrganizationAdmins($organization_id)
+    {
+        $searchModel = new \organization\models\search\UserSearch();
+        $searchModel->user_role = 'governmentAdmin';
+        $searchModel->organization_id = $organization_id;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $organization = Organization::findOne($organization_id);
+        $dataProvider->sort = [
+            'defaultOrder' => ['id' => SORT_DESC]
+        ];
+        return $this->render('organization_admins', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'organization'=>$organization
+        ]);
+    }
+
     /**
      * Displays a single User model.
      * @param integer $id
@@ -143,6 +163,42 @@ class UserController extends BackendController
 
 
             return $this->redirect(['index']);
+        }
+        return $this->render('create', [
+            'model' => $model,
+            'profile' => $profile,
+            'roles' => ArrayHelper::map(Yii::$app->authManager->getRoles(), 'name', 'name')
+        ]);
+    }
+
+    /**
+     * Creates a new User model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreateOrganizationAdmin($organization_id)
+    {
+        $model = new UserForm();
+        $model->roles = 'governmentAdmin';
+        $profile = new UserProfile();
+        $profile->organization_id = $organization_id;
+        $model->setScenario('create');
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->username = $model->email;
+            $model->save();
+
+            $profile->load(Yii::$app->request->post());
+            $user = $this->UpdateUserRelatedTbls($model,$profile)->user;
+
+            Yii::$app->getSession()->setFlash('alert', [
+                'type' =>'success',
+                'options' => [
+                    'class' => 'alert-success',
+                ],
+                'body' => \Yii::t('backend', 'Data has been saved Successfully') ,
+                'title' =>'',
+            ]);
+            return $this->redirect(['/user/organization-admins?organization_id='.$organization_id]);
         }
         return $this->render('create', [
             'model' => $model,
@@ -231,6 +287,7 @@ class UserController extends BackendController
         $prof->lastname = $profile->lastname ;
         $prof->mobile = $profile->mobile ;
         $prof->gender = $profile->gender;
+        $prof->organization_id = $profile->organization_id;
         $prof->avatar_base_url = isset($profile->picture['base_url']) ? $profile->picture['base_url'] : null;
         $prof->avatar_path= isset($profile->picture['path'])? $profile->picture['path']: null ;
 
