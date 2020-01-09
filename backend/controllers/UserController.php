@@ -231,8 +231,8 @@ class UserController extends BackendController
                 'body' => \Yii::t('backend', 'Data has been updated Successfully') ,
                 'title' =>'',
             ]);
-            if ($profile->org_id) {
-                return $this->redirect(['/user/organization-admins?organization_id='.$profile->org_id]);
+            if ($profile->organization_id) {
+                return $this->redirect(['/user/organization-admins?organization_id='.$profile->organization_id]);
             }
             return $this->redirect(['index']);
         }
