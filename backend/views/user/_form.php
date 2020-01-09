@@ -54,9 +54,6 @@ $model->roles =Yii::$app->session->get('UserRole');
                                 <?php echo $form->field($profile, 'firstname') ?>
                             </div>
                             <div class="col-md-3">
-                                <?php echo $form->field($profile, 'lastname') ?>
-                            </div>
-                            <div class="col-md-3">
                                 <?php echo $form->field($model, 'email') ?>
                             </div>
                             <div class="col-md-3">
