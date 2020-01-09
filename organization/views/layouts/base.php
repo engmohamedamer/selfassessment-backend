@@ -89,7 +89,7 @@ if(Yii::$app->user->isGuest){
             padding: 0 16px !important;
             font-size: 1rem !important;
             font-weight: 500 !important;
-            border-radius: 5px !important;
+            border-radius: 10px !important;
             opacity: 1 !important;
             font-size: 16px !important;
             line-height: 16px !important;
@@ -110,7 +110,7 @@ if(Yii::$app->user->isGuest){
             padding: 0 16px !important;
             font-size: 1rem !important;
             font-weight: 500 !important;
-            border-radius: 5px !important;
+            border-radius: 10px !important;
             font-size: 16px !important;
             line-height: 16px !important;
             transition: all .2s !important;
@@ -134,7 +134,7 @@ if(Yii::$app->user->isGuest){
             font-size: 16px !important;
             line-height: 16px !important;
             transition: all .2s  !important;
-            border-radius: 5px !important;
+            border-radius: 10px !important;
 
 
         }
@@ -336,8 +336,8 @@ if(Yii::$app->user->isGuest){
         }
 
         .btn-success{
-            background-color: <?= $brandPrimColor ?> !important;
-            border-color: <?= $brandPrimColor ?> !important;
+            /* background-color: <?= $brandPrimColor ?> !important;
+            border-color: <?= $brandPrimColor ?> !important; */
         }
 
         .table td.skip-export a:hover{

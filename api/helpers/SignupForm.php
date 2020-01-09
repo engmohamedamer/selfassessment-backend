@@ -19,6 +19,7 @@ class SignupForm extends Model
     public $password;
     public $bio;
     public $mobile;
+    public $sector_id;
 
     /**
      * @inheritdoc
@@ -32,6 +33,7 @@ class SignupForm extends Model
             ['email', 'email'],
             ['email', 'unique', 'targetClass' => User::class],
             ['password', 'string', 'min' => 6],
+            ['sector_id', 'safe'],
             ['mobile', 'match', 'pattern' => '/^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/' ,'message'=>Yii::t('common','Enter valid phone')],
         ];
     }
@@ -78,7 +80,8 @@ class SignupForm extends Model
         	$profile->organization_id = $organization;
         	$profile->mobile = $this->mobile;
         	$profile->bio = $this->bio;
-        	$profile->locale = 'ar-AR';
+            $profile->locale = 'ar-AR';
+        	$profile->sector_id = $this->sector_id ?: ' ';
         	$profile->save(false);
             $auth = Yii::$app->authManager;
             $auth->revokeAll($model->getId());
