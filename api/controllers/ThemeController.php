@@ -35,8 +35,8 @@ class ThemeController extends RestController
     public function actionIndex(){
 
         $params = \Yii::$app->request->get();
-        $organization = Organization::findOne(['slug'=>$params['org']]);
-        
+        $organization = Organization::find()->where(['slug'=>$params['org']])->one();
+
         if (!$organization) {
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],404);
         }
