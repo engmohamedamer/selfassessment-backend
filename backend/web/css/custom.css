@@ -1235,6 +1235,9 @@ header nav a {
     margin-bottom: 30px;
     background: #fff !important;
     height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main-sidebar .logo img {
