@@ -6,10 +6,12 @@ use Yii;
 use api\helpers\ResetPassword;
 use api\helpers\ResponseHelper;
 use api\helpers\SignupForm;
+use api\resources\OrganizationStructureResource;
 use api\resources\User;
 use cheatsheet\Time;
 use common\commands\SendEmailCommand;
 use common\models\Organization;
+use common\models\OrganizationStructure;
 use common\models\UserProfile;
 use common\models\UserToken;
 use organization\models\UserForm;
@@ -84,7 +86,7 @@ class UserController extends  RestController
             }
         }
 
-        return $params['locale'];
+        // return $params['locale'];
         if (!isset($params['organization'])) {
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>Yii::t('common','Organization Not Found')],400);
         }
@@ -103,6 +105,79 @@ class UserController extends  RestController
             $errors =  ResponseHelper::customResponseError($model->errors);
             return ResponseHelper::sendFailedResponse($errors,400);
         }
+    }
+
+    public function actionSectors(){
+        $organizationStructure = OrganizationStructureResource::find()->where(['lvl'=>0])->addOrderBy('root, lft')->all();
+        $data = [];
+        foreach ($organizationStructure as $key => $value) {
+            $one = OrganizationStructureResource::find()->where(['root'=>$value->id,'lvl'=>1])->andWhere(['!=','id',$value->id])->all();
+            $childrenOne = [];
+            foreach ($one as $v) {
+                $two = OrganizationStructureResource::find()->where(['root'=>$value->id,'lvl'=>2])->andWhere(['!=','id',$value->id])->all();
+                $childrenTwo = [];
+                foreach ($two as $v2) {
+                    $childrenTwo[] = [
+                        'id'=> $v2->id,
+                        'label'=> $v2->name,
+                        'children'=> $childrenOne,
+                    ];
+                }
+                $childrenOne[] = [
+                    'id'=> $v->id,
+                    'label'=> $v->name,
+                    'children'=> $childrenTwo,
+                ];
+            }
+            $data[] = [
+                'id'=> $value->id,
+                'label'=> $value->name,
+                'children'=> $childrenOne,
+            ];
+        }
+        return ResponseHelper::sendSuccessResponse($data);
+    }
+
+    private function buildTree($elements, $parentId = 0) {
+        $branch = array();
+
+        foreach ($elements as $value) {
+            $organizationStructure = OrganizationStructureResource::find()->where(['lvl'=>0])->addOrderBy('root, lft')->all();
+            $branch [] = [
+                'id'=>$value->id,
+                'lable'=>$value->name,
+                'children'=>$this->buildTree(),
+            ];
+        }
+        return $branch;
+    }
+
+    private function sectorTreeItem($root)
+    {
+        $i = 1;
+        $data = OrganizationStructureResource::find()->where(['root'=>$root,'lvl'=>$i])->andWhere(['!=','id',$root])->all();
+
+        $childrenOne = [];
+
+        foreach ($data as $v) {
+            $i++;
+            $two = OrganizationStructureResource::find()->where(['root'=>$root,'lvl'=>$i])->andWhere(['!=','id',$root])->all();
+            if (count($two)>0) {
+                return var_dump(count($two),'two');
+                $d = $this->sectorTreeItem($root,$i); 
+            }else{
+                return var_dump($i,'i');
+            }
+
+            $childrenOne[] = [
+                'id'=> $v->id,
+                'label'=> $v->name,
+                'children'=> $d,
+            ];
+        }
+
+        return $childrenOne;
+
     }
 
     public function actionVerify(){
