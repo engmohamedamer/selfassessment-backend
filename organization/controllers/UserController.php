@@ -61,7 +61,7 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
-        if (!Yii::$app->user->identity->userProfile->main_admin) {
+        if (!Yii::$app->user->identity->userProfile->main_admin and $_GET['user_role'] == 'governmentAdmin') {
             return $this->redirect(['/']);
         }
         $searchModel = new UserSearch();

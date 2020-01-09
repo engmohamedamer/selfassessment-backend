@@ -77,11 +77,14 @@ class UserController extends  RestController
         if (!isset($params['locale'])) {
             \Yii::$app->language = 'ar';
         }else{
-            if ($params['locale'] == 'en') {
+            if ($params['locale'] == 'ar') {
+                \Yii::$app->language = 'ar';
+            }else{
                 \Yii::$app->language = 'en';
             }
         }
 
+        return $params['locale'];
         if (!isset($params['organization'])) {
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>Yii::t('common','Organization Not Found')],400);
         }

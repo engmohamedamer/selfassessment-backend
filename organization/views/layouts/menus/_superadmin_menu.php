@@ -77,22 +77,22 @@ echo Menu::widget([
         ],
 
 
-        [
-            'label' => Yii::t('common', 'Assessments List'),
-            'url' => '/assessment',
-            'icon' => '<i class="icofont-papers mr-2 ml-2"></i>',
-            'options' => ['class' => 'nav-item'],
-            'active' => (Yii::$app->controller->module->id == 'assessment'),
-        ],
+        // [
+        //     'label' => Yii::t('common', 'Assessments List'),
+        //     'url' => '/assessment',
+        //     'icon' => '<i class="icofont-papers mr-2 ml-2"></i>',
+        //     'options' => ['class' => 'nav-item'],
+        //     'active' => (Yii::$app->controller->module->id == 'assessment'),
+        // ],
 
 
-        [
-            'label' => Yii::t('backend', 'Corrective Action Report'),
-            'url' => '/corrective-action-report',
-            'icon' => '<i class="icofont-tick-boxed mr-2 ml-2"></i>',
-            'options' => ['class' => 'nav-item'],
-            'active' => (Yii::$app->controller->id == 'corrective-action-report'),
-        ],
+        // [
+        //     'label' => Yii::t('backend', 'Corrective Action Report'),
+        //     'url' => '/corrective-action-report',
+        //     'icon' => '<i class="icofont-tick-boxed mr-2 ml-2"></i>',
+        //     'options' => ['class' => 'nav-item'],
+        //     'active' => (Yii::$app->controller->id == 'corrective-action-report'),
+        // ],
 
     ],
 ]) ?>
