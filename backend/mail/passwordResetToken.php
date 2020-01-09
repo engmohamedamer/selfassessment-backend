@@ -1,11 +1,12 @@
 <?php
 use yii\helpers\Html;
 $resetLink = Yii::getAlias('@backendUrl').'/sign-in/reset-password?token='.$token;
+$logo  = Yii::getAlias('@frontendUrl').'/images/Tamkeen.png';
 ?>
 
   <!-- start preheader -->
   <div class="preheader" style="display: none; max-width: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #fff; opacity: 0;">
-    تعديل كلمة المرور الخاصة بحسابك علي selfassessment.com
+    تعديل كلمة المرور الخاصة بحسابك علي <?= Yii::getAlias('@frontendUrl')  ?>
   </div>
   <!-- end preheader -->
 
@@ -23,8 +24,8 @@ $resetLink = Yii::getAlias('@backendUrl').'/sign-in/reset-password?token='.$toke
         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
           <tr>
             <td align="center" valign="top" style="padding:20px;">
-              <a href="https://selfassessment.com" target="_blank" style="display: inline-block;">
-                <img src="tamkeen-logo.png" alt="Logo" border="0" width="170" style="display: block; width: 170px; max-width: 170px; min-width: 170px;">
+              <a href="<?= Yii::getAlias('@frontendUrl'); ?>" target="_blank" style="display: inline-block;">
+                <img src="<?= $logo ; ?>" alt="Logo" border="0" width="170" style="display: block; width: 170px; max-width: 170px; min-width: 170px;">
               </a>
             </td>
           </tr>
@@ -117,7 +118,7 @@ $resetLink = Yii::getAlias('@backendUrl').'/sign-in/reset-password?token='.$toke
           </tr>
           <!-- end copy -->
 
-          
+
 
         </table>
         <!--[if (gte mso 9)|(IE)]>
@@ -149,7 +150,7 @@ $resetLink = Yii::getAlias('@backendUrl').'/sign-in/reset-password?token='.$toke
           </tr>
           <!-- end permission -->
 
-         
+
         </table>
         <!--[if (gte mso 9)|(IE)]>
         </td>
