@@ -22,6 +22,7 @@ return [
         ['pattern' => '/site/index', 'route' => 'site/index'],
         ['pattern' => '/login', 'route' => 'user/login'],
         ['pattern' => '/signup', 'route' => 'user/signup'],
+        ['pattern' => '/sectors', 'route' => 'user/sectors'],
         ['pattern' => '/reset-password', 'route' => 'user/reset-password'],
         ['pattern' => '/request-reset-password', 'route' => 'user/request-reset-password'],
         ['pattern' => '/theme', 'route' => 'theme/index'],
@@ -35,9 +36,10 @@ return [
         ['pattern' => '/media/delete', 'route' => 'media/delete'],
 
         ['class' =>'yii\rest\UrlRule','controller'=>'user'
-            ,'only'=>['login','signup','reset-password','request-reset-password','options']
+            ,'only'=>['login','signup','reset-password','request-reset-password','sectors','options']
             ,'extraPatterns'=>[
                 'POST  signup' => 'signup',
+                'POST  sectors' => 'sectors',
                 'POST login' => 'login',
                 'POST reset-password'=>'reset-password',
                 'POST request-reset-password'=>'request-reset-password',
