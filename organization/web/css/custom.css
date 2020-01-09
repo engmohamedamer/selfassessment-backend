@@ -1101,7 +1101,7 @@ a:focus {
 }
 
 .thirdBtn:hover {
-    color: #b20d1d !important;
+    /* color: #b20d1d !important; */
 }
 
 .newOrgsActions i {
