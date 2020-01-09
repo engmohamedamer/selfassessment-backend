@@ -209,10 +209,10 @@ $this->title = Yii::t('backend', 'Dashboard');
                                     <td class="text-success"><?= $organization->status()[$organization->status] ?></td>
 
                                     <td>
-                                        <a href="/organization/view?id=<?= $organization->id ?>" class="text-muted newOrgsActions" title="View Report" style="margin-right: 10px">
+                                        <a href="/organization/view?id=<?= $organization->id ?>" class="text-muted newOrgsActions" style="margin-right: 10px">
                                             <i class="fas fa-file-contract"></i>
                                         </a>
-                                        <a href="/organization/update?id=<?= $organization->id ?>" class="text-muted newOrgsActions" title="Edit Assessment">
+                                        <a href="/organization/update?id=<?= $organization->id ?>" class="text-muted newOrgsActions" >
                                             <i class="fas fa-edit"></i>
                                         </a>
 
