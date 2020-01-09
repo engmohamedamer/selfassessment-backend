@@ -1238,7 +1238,7 @@ header nav a {
 
 .main-sidebar .logo {
     padding: 13px 5px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     background: #fff !important;
     height: 125px;
     display: flex;
