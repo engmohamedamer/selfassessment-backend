@@ -39,7 +39,7 @@ return [
             ,'only'=>['login','signup','reset-password','request-reset-password','sectors','options']
             ,'extraPatterns'=>[
                 'POST  signup' => 'signup',
-                'POST  sectors' => 'sectors',
+                'GET  sectors' => 'sectors',
                 'POST login' => 'login',
                 'POST reset-password'=>'reset-password',
                 'POST request-reset-password'=>'request-reset-password',
