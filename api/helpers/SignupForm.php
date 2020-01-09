@@ -81,7 +81,7 @@ class SignupForm extends Model
         	$profile->mobile = $this->mobile;
         	$profile->bio = $this->bio;
             $profile->locale = 'ar-AR';
-        	$profile->sector_id = $this->sector_id ?: '';
+        	$profile->sector_id = $this->sector_id ?: ' ';
         	$profile->save(false);
             $auth = Yii::$app->authManager;
             $auth->revokeAll($model->getId());
