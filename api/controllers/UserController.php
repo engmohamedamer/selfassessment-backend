@@ -79,6 +79,8 @@ class UserController extends  RestController
         }else{
             if ($params['locale'] == 'ar') {
                 \Yii::$app->language = 'ar';
+            }else{
+                \Yii::$app->language = 'en';
             }
         }
 
