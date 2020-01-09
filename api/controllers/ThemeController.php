@@ -37,6 +37,12 @@ class ThemeController extends RestController
         $params = \Yii::$app->request->get();
         $organization = Organization::find()->where(['slug'=>$params['org']])->one();
 
+
+        var_dump($params['org']);
+
+        var_dump($organization);
+
+        die;
         if (!$organization) {
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>'Organization not found'],404);
         }
