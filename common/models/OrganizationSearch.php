@@ -66,7 +66,7 @@ use common\models\Organization;
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['BETWEEN', 'DATE(FROM_UNIXTIME(created_at))',$this->from, $this->to])
+            ->andFilterWhere(['BETWEEN', 'DATE(FROM_UNIXTIME(created_at))',$this->from, date('Y-m-d', strtotime("+1 day", strtotime($this->to)))])
             ->andFilterWhere(['like', 'business_sector', $this->business_sector])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'email', $this->email])
