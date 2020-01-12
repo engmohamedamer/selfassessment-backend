@@ -147,11 +147,11 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div>
             <div class="box-footer text-center">
             <span class="mr-5 ml-5">
-                        <i class="fas fa-square text-primary"></i> <?= Yii::t('backend','Contributors Count') ?>
+                        <i class="fas fa-square text-primary" style="color:#00a65a !important"></i> <?= Yii::t('backend','Contributors Count') ?>
                     </span>
 
                     <span class="mr-5 ml-5">
-                        <i class="fas fa-square text-gray"></i> <?= Yii::t('backend','Contributing Count') ?>
+                        <i class="fas fa-square text-gray" style="color:#dd4b39 !important"></i> <?= Yii::t('backend','Contributing Count') ?>
                     </span>
             </div>
         <!-- /.box-body -->
@@ -243,9 +243,9 @@ $(function () {
         type                : 'line',
         data                : $d1,
         backgroundColor     : 'transparent',
-        borderColor         : '#007bff',
-        pointBorderColor    : '#007bff',
-        pointBackgroundColor: '#007bff',
+        borderColor         : '#00a65a ',
+        pointBorderColor    : '#00a65a ',
+        pointBackgroundColor: '#00a65a ',
         fill                : false
         // pointHoverBackgroundColor: '#007bff',
         // pointHoverBorderColor    : '#007bff'
@@ -254,9 +254,9 @@ $(function () {
           type                : 'line',
           data                : $d2,
           backgroundColor     : 'tansparent',
-          borderColor         : '#ced4da',
-          pointBorderColor    : '#ced4da',
-          pointBackgroundColor: '#ced4da',
+          borderColor         : '#dd4b39 ',
+          pointBorderColor    : '#dd4b39 ',
+          pointBackgroundColor: '#dd4b39 ',
           fill                : false
           // pointHoverBackgroundColor: '#ced4da',
           // pointHoverBorderColor    : '#ced4da'
