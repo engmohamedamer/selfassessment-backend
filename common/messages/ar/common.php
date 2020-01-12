@@ -313,7 +313,7 @@ return [
     'Filter the dashboard by organization.'=>'تخصيص لوحة التحكم حسب المؤسسة',
     'From'=>'من',
     'To'=>'الي',
-    ''=>'',
+    'No results'=>'لا يوجد نتائج',
     ''=>'',
     ''=>'',
     ''=>'',

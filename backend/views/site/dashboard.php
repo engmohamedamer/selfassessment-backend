@@ -170,6 +170,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div>
             <div class="box-body">
                 <div class="table-responsive">
+                    <?php if(count($organizations)):?>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -206,6 +207,9 @@ $this->title = Yii::t('backend', 'Dashboard');
                                 <?php endforeach;?>
                             </tbody>
                         </table>
+                    <?php else:?>
+                        <p><?= Yii::t('common','No results') ?></p>
+                    <?php endif;?>
                 </div>
             </div>
         </div>
