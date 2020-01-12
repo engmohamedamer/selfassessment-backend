@@ -127,7 +127,16 @@ $this->title = Yii::t('backend', 'Dashboard');
     <div class="col-sm-12">
         <div class="box box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= Yii::t('backend','Contributing Report') ?></h3>
+                <h3 class="box-title">
+                    <?= Yii::t('backend','Contributing Report') ?>
+                    <?php
+                        if ($_GET['date'] == 'dateLastYear') {
+                            echo Yii::t('backend','Last Year');
+                        }else{
+                            echo Yii::t('backend','Current Year');
+                        }
+                    ?>
+                </h3>
             </div>
             <div class="box-body">
                 <canvas id="visitors-chart" style="height: 237px" height="237" ></canvas>

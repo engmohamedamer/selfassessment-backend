@@ -487,7 +487,8 @@ return [
     'Adminstrator Name'=>'اسم المسؤول',
     'Organization Admins'=>'مسؤولي مؤسسة : ',
     'Organization Name'=>'اسم المؤسسة',
-
+    'Current Year'=>'( السنة الحالة ) ',
+    'Last Year'=>'( السنة السابقة ) ',
 
 ];
 
