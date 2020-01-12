@@ -128,25 +128,6 @@ $this->title = Yii::t('backend', 'Dashboard');
         <div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title"><?= Yii::t('backend','Contributing Report') ?></h3>
-                <div class="box-tools pull-right">
-                    <div class="dropdown">
-                        <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-cogs"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">اليوم</a>
-                            <a class="dropdown-item" href="#">اليوم السابق</a>
-                            <a class="dropdown-item" href="#">الاسبوع الحالي</a>
-                            <a class="dropdown-item" href="#">الاسبوع السابق</a>
-                            <a class="dropdown-item" href="#">الشهر الحالي</a>
-                            <a class="dropdown-item" href="#">الشهر السابق</a>
-                            <a class="dropdown-item" href="#">السنة الحالية</a>
-                            <a class="dropdown-item" href="#">السنة السابقة</a>
-                            
-                        </div>
-                    </div>
-                </div>
-                
             </div>
             <div class="box-body">
                 <canvas id="visitors-chart" style="height: 237px" height="237" ></canvas>
@@ -177,25 +158,6 @@ $this->title = Yii::t('backend', 'Dashboard');
         <div class="box box-dark">
             <div class="box-header with-border">
                 <h3 class="box-title"><?= Yii::t('common','New Organizations') ?></h3>
-                <div class="box-tools pull-right">
-                    <div class="dropdown">
-                        <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-cogs"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">اليوم</a>
-                            <a class="dropdown-item" href="#">اليوم السابق</a>
-                            <a class="dropdown-item" href="#">الاسبوع الحالي</a>
-                            <a class="dropdown-item" href="#">الاسبوع السابق</a>
-                            <a class="dropdown-item" href="#">الشهر الحالي</a>
-                            <a class="dropdown-item" href="#">الشهر السابق</a>
-                            <a class="dropdown-item" href="#">السنة الحالية</a>
-                            <a class="dropdown-item" href="#">السنة السابقة</a>
-                            
-                        </div>
-                    </div>
-                </div>
-                
             </div>
             <div class="box-body">
                 <div class="table-responsive">

@@ -41,6 +41,8 @@ class AssessmentsController extends  MyActiveController
     private function allowedSurvey()
     {
       
+      $orgId = \Yii::$app->user->identity->userProfile->organization_id;
+      $user_id = \Yii::$app->user->identity->userProfile->user_id;
       $connection = \Yii::$app->getDb();
       $commandTags = $connection->createCommand("
           SELECT survey.survey_id from user_profile
@@ -48,15 +50,15 @@ class AssessmentsController extends  MyActiveController
           join survey_tag on survey_tag.survey_id = survey.survey_id
           join user_tag on user_tag.user_id = user_profile.user_id
           where user_tag.tag_id = survey_tag.tag_id and  org_id = :org_id and survey_is_visible = 1 and user_profile.user_id = :user_id group by survey.survey_id;
-      ", [':org_id' => 12,':user_id'=>65]);
+      ", [':org_id' => $orgId,':user_id'=> $user_id]);
       $resultTags = $commandTags->queryAll();
 
       $commandSelectedUsers = $connection->createCommand("
           SELECT survey.survey_id from user_profile
           join survey on org_id = organization_id 
           join survey_selected_users on survey_selected_users.user_id = user_profile.user_id
-          where survey_selected_users.survey_id = survey.survey_id and  org_id = 12   and survey_is_visible = 1 and user_profile.user_id = 65 group by survey.survey_id;
-      ", [':org_id' => 12,':user_id'=>65]);
+          where survey_selected_users.survey_id = survey.survey_id and  org_id = $orgId   and survey_is_visible = 1 and user_profile.user_id =  $user_id group by survey.survey_id;
+      ", [':org_id' => $orgId,':user_id'=> $user_id]);
       $resultSelectedUsers = $commandSelectedUsers->queryAll();
 
       $commandSector = $connection->createCommand("
@@ -65,7 +67,7 @@ class AssessmentsController extends  MyActiveController
           join organization_structure as str on survey.sector_id = str.id where
           user_profile.sector_id in ( select id from organization_structure where root = str.root  ) 
           and org_id = :org_id and survey_is_visible = 1 and user_profile.user_id = :user_id group by survey.survey_id;
-      ", [':org_id' => 12,':user_id'=>65]);
+      ", [':org_id' => $orgId,':user_id'=> $user_id]);
       $resultSector = $commandSector->queryAll();
 
       $commandOpenForAll = $connection->createCommand("
@@ -76,7 +78,7 @@ class AssessmentsController extends  MyActiveController
             not in ( select survey_id from survey_tag where survey_tag.survey_id = survey.survey_id) 
           and survey_id 
             not in ( select survey_id from survey_selected_users where survey_selected_users.survey_id = survey.survey_id);
-      ", [':org_id' => 12]);
+      ", [':org_id' => $orgId]);
       $resultOpenForAll = $commandOpenForAll->queryAll();
 
         $ids = ArrayHelper::getColumn(array_merge_recursive($resultTags,$resultSelectedUsers,$resultSector,$resultOpenForAll), 'survey_id');

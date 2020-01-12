@@ -49,23 +49,32 @@ class SiteController extends BackendController
 
     public function actionDashboard(){
 
-        $dateOrganizations = $this->dateFilterUnixTime('created_at');
-        $organizations = Organization::find()->where($dateOrganizations)->orderBy('id desc')->limit(6)->all();
+        $dateOrganizations = $this->dateFilter('created_at',true);
+        $organizations = Organization::find()
+            ->where($dateOrganizations)
+            ->orderBy('id desc')
+            ->limit(6)
+            ->all();
         // charts data
         $labels = $this->chartData('labels'); 
         $data1  = $this->chartData('data1'); 
         $data2  = $this->chartData('data2'); 
-
+        
         $dateStats = $this->dateFilter('survey_stat_assigned_at');
         $surveyStatsCount  = SurveyStat::find()->where($dateStats)->count();
         
         $dateSurvey = $this->dateFilter('survey_created_at');
-        $surveyCount = Survey::find()->where($dateSurvey)->andWhere($this->filterByOrganization('org_id'))->count();
+        $surveyCount = Survey::find()
+            ->where($dateSurvey)
+            ->andWhere($this->filterByOrganization('org_id'))->count();
 
-        $dateUser = $this->dateFilterUnixTime('created_at','user.');
-        $user = User::find()->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
+        $dateUser = $this->dateFilter('created_at',true,'user.');
+        $user = User::find()
+            ->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
             ->join('LEFT JOIN','{{%user_profile}}','{{%user_profile}}.user_id = {{%user}}.id')
-            ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])->andWhere($dateUser)->andWhere($this->filterByOrganization('organization_id'));
+            ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])
+            ->andWhere($dateUser)
+            ->andWhere($this->filterByOrganization('organization_id'));
         $userCount = $user->count();
         return $this->render('dashboard',compact('organizations','surveyCount','assessmentStatus','userCount','surveyStatsCount','labels','data1','data2'));
     }
@@ -77,58 +86,49 @@ class SiteController extends BackendController
         return [$organization_column=>$key];
     }
 
-    private function dateFilter($column_date)
+    private function dateFilter($column_date, $unix = false, $prefix = '')
     {
         $key = $_GET['date'] ?: null;
 
-        if ($key == null) return ['IS NOT',$column_date,null];
+        if ($key == null) return ['IS NOT',$prefix.$column_date,null];
+        
+        $dateFormat  = $unix ? "DATE(FROM_UNIXTIME($prefix$column_date))"  : "DATE($column_date)";
+        $monthFormat = $unix ? "MONTH(FROM_UNIXTIME($prefix$column_date))" : "MONTH($column_date)";
+        $yearForamt  = $unix ? "YEAR(FROM_UNIXTIME($prefix$column_date))"  : "YEAR($column_date)";
 
-        $date['dateCurrentDay']   = ["DATE($column_date)"=>date('Y-m-d')];
-        $date['dateLastDay']   = ["DATE($column_date)"=>date('Y-m-d',strtotime("-1 day"))];
+        $date['dateCurrentDay']   = [$dateFormat => date('Y-m-d')];
+        $date['dateLastDay']      = [$dateFormat => date('Y-m-d',strtotime("-1 day"))];
         
         $date['dateCurrentWeek']   = ["BETWEEN", "$column_date",date("Y-m-d",strtotime("last saturday")),date("Y-m-d",strtotime("1 day"))];
         $date["dateLastWeek"]      = ["BETWEEN", "$column_date", date("Y-m-d",strtotime("-7 days",strtotime(date("Y-m-d",strtotime("last saturday"))))),date("Y-m-d",strtotime("last saturday"))];
 
-        $date["dateCurrentMonth"]  = ["MONTH($column_date)"=> date("m"),"YEAR($column_date)"=>date("Y")];
-        $date["dateLastMonth"]     = ["MONTH($column_date)"=> date("m",strtotime("-1 month")),
-            "YEAR($column_date)"=> (date("m",strtotime("-1 month")) == "12" ) ? date("Y",strtotime("-1 year")) : date("Y")
+        $date["dateCurrentMonth"]  = [ $monthFormat => date("m"),"YEAR($column_date)"=>date("Y")];
+        $date["dateLastMonth"]     = [  $monthFormat => date("m",strtotime("-1 month")),
+            $yearForamt => (date("m",strtotime("-1 month")) == "12" ) ? date("Y",strtotime("-1 year")) : date("Y")
         ];
         
-        $date["dateCurrentYear"]  = ["YEAR($column_date)"=> date("Y")];
-        $date["dateLastYear"]     = ["YEAR($column_date)"=> date("Y",strtotime("-1 year"))];
+        $date["dateCurrentYear"]  = [ $yearForamt => date("Y")];
+        $date["dateLastYear"]     = [ $yearForamt => date("Y",strtotime("-1 year"))];
 
         return $date[$key];
     }
 
-    private function dateFilterUnixTime($column_date,$prefix = '')
+    private function chartData($chartKey)
     {
-        $key = $_GET['date'] ?: null;
-        if ($key == null) return ['IS NOT',$prefix.$column_date,null];
-
-        $date['dateCurrentDay']   = ["DATE(FROM_UNIXTIME($prefix$column_date))"=>date('Y-m-d')];
-        $date['dateLastDay']      = ["DATE(FROM_UNIXTIME($prefix$column_date))"=>date('Y-m-d',strtotime("-1 day"))];
-
-        $date['dateCurrentWeek']   = ["BETWEEN", "DATE(FROM_UNIXTIME($prefix$column_date))",date("Y-m-d",strtotime("last saturday")),date("Y-m-d",strtotime("1 day"))];
-        $date["dateLastWeek"]      = ["BETWEEN", "DATE(FROM_UNIXTIME($prefix$column_date))", date("Y-m-d",strtotime("-7 days",strtotime(date("Y-m-d",strtotime("last saturday"))))),date("Y-m-d",strtotime("last saturday"))];
-
-        $date["dateCurrentMonth"]  = ["MONTH(FROM_UNIXTIME($prefix$column_date))"=> date("m"),"YEAR($column_date)"=>date("Y")];
-        $date["dateLastMonth"]     = ["MONTH(FROM_UNIXTIME($prefix$column_date))"=> date("m",strtotime("-1 month")),
-            "YEAR(FROM_UNIXTIME($prefix$column_date))"=> (date("m",strtotime("-1 month")) == "12" ) ? date("Y",strtotime("-1 year")) : date("Y")
-        ];
-        
-        $date["dateCurrentYear"]  = ["YEAR(FROM_UNIXTIME($prefix$column_date))"=> date("Y")];
-        $date["dateLastYear"]     = ["YEAR(FROM_UNIXTIME($prefix$column_date))"=> date("Y",strtotime("-1 year"))];
-
-        return $date[$key];
-    }
-
-
-    private function chartData($key)
-    {
-        $surveyStatsCountPerMonth = SurveyStat::find()->select('MONTH(survey_stat_assigned_at) as month, count(MONTH(survey_stat_assigned_at)) as count_month')->where(['Year(survey_stat_assigned_at)'=>date('Y')])->groupBy('MONTH(survey_stat_assigned_at)')->all();
-
-        $usersCountPerMonth = User::find()->select('MONTH(FROM_UNIXTIME(user.created_at)) as month, count(MONTH(FROM_UNIXTIME(user.created_at))) as count_month')->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
-        ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])->andFilterWhere(['YEAR(FROM_UNIXTIME(user.created_at))'=>date('Y')])->groupBy('MONTH(FROM_UNIXTIME(user.created_at))')->all();
+        $surveyStatsCountPerMonth = SurveyStat::find()
+            ->select('MONTH(survey_stat_assigned_at) as month, count(MONTH(survey_stat_assigned_at)) as count_month')
+            ->where(['Year(survey_stat_assigned_at)'=>date('Y')])
+            ->groupBy('MONTH(survey_stat_assigned_at)')
+            ->all();
+        // return var_dump($surveyStatsCountPerMonth);
+        $usersCountPerMonth = User::find()
+            ->select('MONTH(FROM_UNIXTIME(user.created_at)) as month, count(MONTH(FROM_UNIXTIME(user.created_at))) as count_month')
+            ->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
+            ->join('LEFT JOIN','{{%user_profile}}','{{%user_profile}}.user_id = {{%user}}.id')
+            ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])
+            ->andFilterWhere(['YEAR(FROM_UNIXTIME(user.created_at))'=>date('Y')])
+            ->groupBy('MONTH(FROM_UNIXTIME(user.created_at))')
+            ->all();
 
         $labels = [];
         $data1 = [];
@@ -146,7 +146,7 @@ class SiteController extends BackendController
             $data2[($value->month - 1)] = $value->count_month;
         }
         $data = ['data1'=>$data1,'data2'=>$data2,'labels'=>$labels];
-        return $data[$key];
+        return $data[$chartKey];
     }
 
     private function months()
