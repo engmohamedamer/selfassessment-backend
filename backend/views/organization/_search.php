@@ -1,5 +1,6 @@
 <?php
 
+use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -15,15 +16,28 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id')->textInput(['placeholder' => 'Id']) ?>
+    <? /* echo $form->field($model, 'id')->textInput(['placeholder' => 'Id'])  */ ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name']) ?>
+    <?php  echo $form->field($model, 'from')->widget(DatePicker::classname(), [
+        'options' => ['placeholder' => 'Enter date ...'],
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd'
+        ]
+    ]); ?>
+    <?php  echo $form->field($model, 'to')->widget(DatePicker::classname(), [
+        'options' => ['placeholder' => 'Enter date ...'],
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd'
+        ],
+    ]); ?>
 
-    <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true, 'placeholder' => 'Business Sector']) ?>
+    <?php /* echo $form->field($model, 'business_sector')->textInput(['maxlength' => true, 'placeholder' => 'Business Sector']) */ ?>
 
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true, 'placeholder' => 'Address']) ?>
+    <?php /* echo$form->field($model, 'address')->textInput(['maxlength' => true, 'placeholder' => 'Address'])  ?>
 
-    <?= $form->field($model, 'city_id')->textInput(['placeholder' => 'City']) ?>
+    <? /* echo $form->field($model, 'city_id')->textInput(['placeholder' => 'City']) */ ?>
 
     <?php /* echo $form->field($model, 'district_id')->textInput(['placeholder' => 'District']) */ ?>
 

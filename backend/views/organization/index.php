@@ -47,9 +47,12 @@ echo newerton\fancybox3\FancyBox::widget([
         <div class="">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
+                <?= Html::a(Yii::t('backend', 'Advance Search'), '#', ['class' => 'btn btn-default search-button']) ?>
+
         <div class=" actionBtns">
             <a href="/organization/create" class="btn btn-success"><i class="icofont-plus"></i> <?= Yii::t('common', 'Create Organization') ?></a>
         </div>
+        
     </div>
 </div>
 <!-- /.content-header -->
@@ -62,9 +65,6 @@ echo newerton\fancybox3\FancyBox::widget([
             
 
             <div class="card-body">
-
-
-
     <p>
     </p>
     <div class="search-form" style="display:none">

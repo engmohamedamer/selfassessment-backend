@@ -160,6 +160,8 @@ class Organization extends \yii\db\ActiveRecord
             'about'=>Yii::t('common','About Organization'),
             'postalbox'=>Yii::t('common','Postal Box'),
             'postalcode'=>Yii::t('common','Postal Code'),
+            'from'=>Yii::t('common','From'),
+            'to'=>Yii::t('common','To'),
         ];
     }
 

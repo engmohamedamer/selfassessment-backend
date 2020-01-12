@@ -12,6 +12,8 @@ use common\models\Organization;
  */
  class OrganizationSearch extends Organization
 {
+    public $from;
+    public $to;
     /**
      * @inheritdoc
      */
@@ -19,7 +21,7 @@ use common\models\Organization;
     {
         return [
             [['id', 'city_id', 'district_id', 'limit_account', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'business_sector', 'address', 'email', 'phone', 'mobile', 'conatct_name', 'contact_email', 'contact_phone', 'contact_position', 'first_image_base_url', 'first_image_path', 'second_image_base_url', 'second_image_path'], 'safe'],
+            [['name', 'business_sector', 'address', 'email', 'phone', 'mobile', 'conatct_name', 'contact_email', 'contact_phone', 'contact_position', 'first_image_base_url', 'first_image_path', 'second_image_base_url', 'second_image_path','from','to'], 'safe'],
         ];
     }
 
@@ -61,11 +63,10 @@ use common\models\Organization;
             'city_id' => $this->city_id,
             'district_id' => $this->district_id,
             'limit_account' => $this->limit_account,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['BETWEEN', 'DATE(FROM_UNIXTIME(created_at))',$this->from, $this->to])
             ->andFilterWhere(['like', 'business_sector', $this->business_sector])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'email', $this->email])
