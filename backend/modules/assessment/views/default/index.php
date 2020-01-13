@@ -4,6 +4,8 @@
 
 use cenotia\components\modal\RemoteModal;
 use common\models\OrganizationStructure;
+use common\models\base\Tag;
+use kartik\select2\Select2;
 use kartik\tree\TreeViewInput;
 use yii\bootstrap\BootstrapPluginAsset;
 use yii\bootstrap\Modal;
@@ -36,7 +38,7 @@ BootstrapPluginAsset::register($this);
                 </div>
             </div>
         </div>
-        <div class="collapse" id="filterCollapse">
+        <div class="collapse <?php if(isset($_GET['date']) || isset($_GET['SurveySearch']['sector_id']) || isset($_GET['SurveySearch']['tags'])) echo 'in' ;?>" id="filterCollapse">
         <div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-filter fa-xs"></i> <?= \Yii::t('common', "Advanced Search")?></h3>
@@ -44,7 +46,7 @@ BootstrapPluginAsset::register($this);
             <div class="box-body">
                 <div class="row">
                     <form method="GET">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label><?= \Yii::t('common', 'Filter by time')?></label>
                                 <select class="form-control" name="date">
@@ -84,10 +86,21 @@ BootstrapPluginAsset::register($this);
                                 <small class="form-text text-muted">بحث الإستبيانات حسب قطاع العمل</small>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label><?= \Yii::t('common', 'Search by Tags')?></label>
-                                
+                                <?php
+                                    $tags = \yii\helpers\ArrayHelper::map(Tag::find()->all(), 'id', 'name');
+                                    echo Select2::widget([
+                                        'name' => 'SurveySearch[tags]',
+                                        'value' => $_GET['SurveySearch']['tags'], // initial value
+                                        'data' => $tags,
+                                        'options' => [
+                                            'placeholder' => Yii::t('common', 'Search by Tags'),
+                                            'multiple' => true
+                                        ],
+                                    ]);
+                                ?>
                                 <small class="form-text text-muted">بحث الإستبيانات حسب الوسوم</small>
                             </div>
                         </div>
