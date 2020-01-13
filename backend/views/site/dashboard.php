@@ -28,7 +28,7 @@ $this->title = Yii::t('backend', 'Dashboard');
     </div>
 
 </div>
-<div class="collapse" id="filterCollapse">
+    <div class="collapse" id="filterCollapse">
         <div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-filter fa-xs"></i> <?= \Yii::t('common', 'Dashboard Filter')?></h3>
@@ -212,6 +212,9 @@ $this->title = Yii::t('backend', 'Dashboard');
                     <?php endif;?>
                 </div>
             </div>
+            <div class="box-footer text-center">
+                    <a href="/organization" class="btn btn-success"><?= Yii::t('common','All Organizations') ?></a>
+                </div>
         </div>
         <!-- /.card -->  
     </div>

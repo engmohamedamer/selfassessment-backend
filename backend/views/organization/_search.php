@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
     ]); ?>
 
     <? /* echo $form->field($model, 'id')->textInput(['placeholder' => 'Id'])  */ ?>
-
+    <div class="col-md-4">
     <?php  echo $form->field($model, 'from')->widget(DatePicker::classname(), [
         'options' => ['placeholder' => 'Enter date ...'],
         'pluginOptions' => [
@@ -25,6 +25,8 @@ use yii\widgets\ActiveForm;
             'format' => 'yyyy-mm-dd'
         ]
     ]); ?>
+    </div>
+    <div class="col-md-4">
     <?php  echo $form->field($model, 'to')->widget(DatePicker::classname(), [
         'options' => ['placeholder' => 'Enter date ...'],
         'pluginOptions' => [
@@ -32,7 +34,7 @@ use yii\widgets\ActiveForm;
             'format' => 'yyyy-mm-dd'
         ],
     ]); ?>
-
+</div>
     <?php /* echo $form->field($model, 'business_sector')->textInput(['maxlength' => true, 'placeholder' => 'Business Sector']) */ ?>
 
     <?php /* echo$form->field($model, 'address')->textInput(['maxlength' => true, 'placeholder' => 'Address'])  ?>
@@ -64,10 +66,11 @@ use yii\widgets\ActiveForm;
     <?php /* echo $form->field($model, 'second_image_base_url')->textInput(['maxlength' => true, 'placeholder' => 'Second Image Base Url']) */ ?>
 
     <?php /* echo $form->field($model, 'second_image_path')->textInput(['maxlength' => true, 'placeholder' => 'Second Image Path']) */ ?>
-
+    <div class="col-md-4">
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('common', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('common', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('common', 'Filter'), ['class' => 'btn btn-success','style'=>'margin-top: 32px']) ?>
+        <!-- <?= Html::resetButton(Yii::t('common', 'Reset'), ['class' => 'btn btn-default']) ?> -->
+    </div>
     </div>
 
     <?php ActiveForm::end(); ?>

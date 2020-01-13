@@ -47,16 +47,31 @@ echo newerton\fancybox3\FancyBox::widget([
         <div class="">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
-                <?= Html::a(Yii::t('backend', 'Advance Search'), '#', ['class' => 'btn btn-default search-button']) ?>
 
         <div class=" actionBtns">
             <a href="/organization/create" class="btn btn-success"><i class="icofont-plus"></i> <?= Yii::t('common', 'Create Organization') ?></a>
+            <!-- <a href="#" class="btn btn-info search-button"><span><i class="fa fa-filter mr-2 ml-2" aria-hidden="true"></i> تخصيص </span></a> -->
+            <a data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse" class="btn btn-info"><span><i class="fa fa-filter mr-2 ml-2"></i> <?= \Yii::t('common', 'Filter Options')?> </span></a>
+
         </div>
         
     </div>
 </div>
 <!-- /.content-header -->
+<div class="collapse" id="filterCollapse">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-filter fa-xs"></i> <?= \Yii::t('common', 'Filter')?></h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <?=  $this->render('_search', ['model' => $searchModel]); ?>
 
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
 <div class="row">
 
@@ -65,11 +80,7 @@ echo newerton\fancybox3\FancyBox::widget([
             
 
             <div class="card-body">
-    <p>
-    </p>
-    <div class="search-form" style="display:none">
-        <?=  $this->render('_search', ['model' => $searchModel]); ?>
-    </div>
+
     <?php
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
