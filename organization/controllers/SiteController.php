@@ -35,8 +35,13 @@ class SiteController extends OrganizationController
         $orgSurveyStats = $this->actionOrgSurveyStats(false);
         $organizationSurvey = Survey::find()->where(['org_id'=>$organization->id])->limit(5)->orderBy('survey_id desc')->all();
         $countStats = $orgSurveyStats['data'][0] + $orgSurveyStats['data'][1] + $orgSurveyStats['data'][2];
-        // return var_dump($orgSurveyStats);
-        return $this->render('dashboard',compact('contributors','organizationSurvey','organization','orgSurveyStats','countStats'));  //,compact()
+
+        $surveyChart       = $this->surveyChart();
+        $surveyChartLabels = $surveyChart['labels'];
+        $surveyChartDate   = $surveyChart['data'];
+
+
+        return $this->render('dashboard',compact('contributors','organizationSurvey','organization','orgSurveyStats','countStats','surveyChartLabels','surveyChartDate'));
     }
 
 
@@ -45,12 +50,14 @@ class SiteController extends OrganizationController
     }
 
 
-    public function actionOrgSurvey()
+    private function surveyChart()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         
         $organization = Yii::$app->user->identity->userProfile->organization;
-        $organizationSurvey = Survey::find()->where(['org_id'=>$organization->id])->limit(6)->all();
+        $organizationSurvey = Survey::find()->where(['org_id'=>$organization->id])
+            ->orderBy('survey_id DESC')
+            ->limit(8)
+            ->all();
         $labels = [];
         $data = [];
         foreach ($organizationSurvey as $survey) {
