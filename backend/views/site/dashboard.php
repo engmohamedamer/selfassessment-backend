@@ -178,7 +178,6 @@ $this->title = Yii::t('backend', 'Dashboard');
                                 <th><?= Yii::t('common','Assessments')?></th>
                                 <th><?= Yii::t('common','Contributors')?></th>
                                 <th><?= Yii::t('common','Surveys Contributors')?></th>
-                                <th><?= Yii::t('common','Status') ?></th>
                                 <th><?= Yii::t('common','Actions') ?></th>
                             </tr>
                         </thead>
@@ -187,13 +186,14 @@ $this->title = Yii::t('backend', 'Dashboard');
                                 <tr>
                                     <td>
                                         
-                                        <a href="#"><?= $organization->name ?></a>
+                                        <a href="/organization/view?id=<?= $organization->id ?>"><?= $organization->name ?></a>
                                     </td>
-                                    <td><a href="#"><?= count($organization->survey) ?></a></td>
+                                    <td><a ><?= count($organization->survey) ?></a></td>
                                     <td><a href="#"><?= $organization->countUsers() ?></a></td>
                                     <td><a href="#"><?= $organization->startSurvey() ?></a></td>
-                                    <td class="text-success"><?= $organization->status()[$organization->status] ?></td>
-
+                                    <!-- <td class="text-success">
+                                        <?php // echo $organization->status()[$organization->status] ?>
+                                    </td> -->
                                     <td>
                                         <a href="/organization/view?id=<?= $organization->id ?>" class="text-muted newOrgsActions" style="margin-right: 10px">
                                             <i class="fas fa-file-contract"></i>
@@ -207,14 +207,14 @@ $this->title = Yii::t('backend', 'Dashboard');
                                 <?php endforeach;?>
                             </tbody>
                         </table>
+                        <div class="box-footer text-center">
+                            <a href="/organization" class="btn btn-success"><?= Yii::t('common','More') ?></a>
+                        </div>
                     <?php else:?>
                         <p><?= Yii::t('common','No results') ?></p>
                     <?php endif;?>
                 </div>
             </div>
-            <div class="box-footer text-center">
-                    <a href="/organization" class="btn btn-success"><?= Yii::t('common','All Organizations') ?></a>
-                </div>
         </div>
         <!-- /.card -->  
     </div>
