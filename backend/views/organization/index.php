@@ -58,7 +58,7 @@ echo newerton\fancybox3\FancyBox::widget([
     </div>
 </div>
 <!-- /.content-header -->
-<div class="collapse" id="filterCollapse">
+<div class="collapse <?php if(isset($_GET["OrganizationSearch"]['from']) || isset($_GET["OrganizationSearch"]['to'])) echo 'in' ;?>" id="filterCollapse">
         <div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-filter fa-xs"></i> <?= \Yii::t('common', 'Filter')?></h3>

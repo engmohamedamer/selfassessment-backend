@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
     <? /* echo $form->field($model, 'id')->textInput(['placeholder' => 'Id'])  */ ?>
     <div class="col-md-4">
     <?php  echo $form->field($model, 'from')->widget(DatePicker::classname(), [
-        'options' => ['placeholder' => 'Enter date ...'],
+        'options' => ['placeholder' => Yii::t('common','From')],
         'pluginOptions' => [
             'autoclose' => true,
             'format' => 'yyyy-mm-dd'
@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="col-md-4">
     <?php  echo $form->field($model, 'to')->widget(DatePicker::classname(), [
-        'options' => ['placeholder' => 'Enter date ...'],
+        'options' => ['placeholder' => Yii::t('common','To')],
         'pluginOptions' => [
             'autoclose' => true,
             'format' => 'yyyy-mm-dd'

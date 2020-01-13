@@ -86,6 +86,7 @@ class OrganizationController extends BackendController
     public function actionIndex()
     {
         $searchModel = new OrganizationSearch();
+        $searchModel->to = date('Y-m-d');
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

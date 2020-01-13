@@ -61,6 +61,7 @@ return [
     'All News'=>'عرض اﻻخبار',
     'Content'=>'المحتوى',
     'Available From To'=>'متاح في',
+    'All'=>'الكل',
     'All time'=>'كل الوقت',
 
     'Identity'=>'رقم الهوية',

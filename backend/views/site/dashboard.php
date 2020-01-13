@@ -28,7 +28,7 @@ $this->title = Yii::t('backend', 'Dashboard');
     </div>
 
 </div>
-    <div class="collapse" id="filterCollapse">
+    <div class="collapse <?php if(isset($_GET['date']) || isset($_GET['organization_id'])) echo 'in' ;?>" id="filterCollapse">
         <div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-filter fa-xs"></i> <?= \Yii::t('common', 'Dashboard Filter')?></h3>
@@ -41,7 +41,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                         <div class="form-group">
                             <label><?= \Yii::t('common', 'Filter by time')?></label>
                             <select class="form-control" name="date">
-                                <option value="">الكل</option>
+                                <option value=""><?= Yii::t('backend','All');  ?></option>
                                 <option value="dateCurrentDay" <?php if($_GET['date'] == 'dateCurrentDay') echo "selected"; ;?> >اليوم</option>
                                 <option value="dateLastDay" <?php if($_GET['date'] == 'dateLastDay') echo "selected"; ;?>>اليوم السابق</option>
                                 <option value="dateCurrentWeek" <?php if($_GET['date'] == 'dateCurrentWeek') echo "selected"; ;?>>الاسبوع الحالي</option>
@@ -59,7 +59,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                             <label><?= \Yii::t('common', 'Filter by organizations')?></label>
 
                             <select class="form-control" name="organization_id">
-                                <option></option>
+                                <option value=""><?= Yii::t('backend','All');  ?></option>
                                 <?php foreach(Organization::find()->all() as $org): ?>
                                     <option value="<?= $org->id ?>"  <?php if($_GET['organization_id'] == $org->id) echo "selected"; ;?> ><?= $org->name ?></option>
                                 <?php endforeach; ?>
@@ -178,7 +178,6 @@ $this->title = Yii::t('backend', 'Dashboard');
                                 <th><?= Yii::t('common','Assessments')?></th>
                                 <th><?= Yii::t('common','Contributors')?></th>
                                 <th><?= Yii::t('common','Surveys Contributors')?></th>
-                                <th><?= Yii::t('common','Status') ?></th>
                                 <th><?= Yii::t('common','Actions') ?></th>
                             </tr>
                         </thead>
@@ -187,13 +186,14 @@ $this->title = Yii::t('backend', 'Dashboard');
                                 <tr>
                                     <td>
                                         
-                                        <a href="#"><?= $organization->name ?></a>
+                                        <a href="/organization/view?id=<?= $organization->id ?>"><?= $organization->name ?></a>
                                     </td>
-                                    <td><a href="#"><?= count($organization->survey) ?></a></td>
+                                    <td><a ><?= count($organization->survey) ?></a></td>
                                     <td><a href="#"><?= $organization->countUsers() ?></a></td>
                                     <td><a href="#"><?= $organization->startSurvey() ?></a></td>
-                                    <td class="text-success"><?= $organization->status()[$organization->status] ?></td>
-
+                                    <!-- <td class="text-success">
+                                        <?php // echo $organization->status()[$organization->status] ?>
+                                    </td> -->
                                     <td>
                                         <a href="/organization/view?id=<?= $organization->id ?>" class="text-muted newOrgsActions" style="margin-right: 10px">
                                             <i class="fas fa-file-contract"></i>
@@ -207,14 +207,14 @@ $this->title = Yii::t('backend', 'Dashboard');
                                 <?php endforeach;?>
                             </tbody>
                         </table>
+                        <div class="box-footer text-center">
+                            <a href="/organization" class="btn btn-success"><?= Yii::t('common','More') ?></a>
+                        </div>
                     <?php else:?>
                         <p><?= Yii::t('common','No results') ?></p>
                     <?php endif;?>
                 </div>
             </div>
-            <div class="box-footer text-center">
-                    <a href="/organization" class="btn btn-success"><?= Yii::t('common','All Organizations') ?></a>
-                </div>
         </div>
         <!-- /.card -->  
     </div>

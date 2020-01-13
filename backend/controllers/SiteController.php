@@ -51,10 +51,10 @@ class SiteController extends BackendController
     public function actionDashboard(){
 
         $dateOrganizations = $this->dateFilter('created_at',true);
-        $organizations = Organization::find()
+        $organizations = Organization::find()->select('id,name')
             ->where($dateOrganizations)
-            ->orderBy('id desc')
-            ->limit(20)
+            ->orderBy('id DESC')
+            ->limit(10)
             ->all();
         // charts data
         $chartData = $this->chartData() ;

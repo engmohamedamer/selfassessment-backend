@@ -119,12 +119,12 @@ use yii\widgets\DetailView;
                                 'lastname',
                                 'user.email',
                                 'mobile',
-                                [
-                                    'attribute'=>Yii::t('common','Status'),
-                                    'value'=>function($model){
-                                        return User::statuses()[$model->user->status];
-                                    }
-                                ],
+                                // [
+                                //     'attribute'=>Yii::t('common','Status'),
+                                //     'value'=>function($model){
+                                //         return User::statuses()[$model->user->status];
+                                //     }
+                                // ],
                             ];
                             if ($model->manager) {
                                 echo DetailView::widget([
