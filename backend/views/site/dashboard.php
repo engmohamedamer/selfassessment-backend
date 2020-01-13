@@ -28,7 +28,7 @@ $this->title = Yii::t('backend', 'Dashboard');
     </div>
 
 </div>
-    <div class="collapse" id="filterCollapse">
+    <div class="collapse <?php if(isset($_GET['date']) || isset($_GET['organization_id'])) echo 'in' ;?>" id="filterCollapse">
         <div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-filter fa-xs"></i> <?= \Yii::t('common', 'Dashboard Filter')?></h3>
@@ -41,7 +41,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                         <div class="form-group">
                             <label><?= \Yii::t('common', 'Filter by time')?></label>
                             <select class="form-control" name="date">
-                                <option value="">الكل</option>
+                                <option value=""><?= Yii::t('backend','All');  ?></option>
                                 <option value="dateCurrentDay" <?php if($_GET['date'] == 'dateCurrentDay') echo "selected"; ;?> >اليوم</option>
                                 <option value="dateLastDay" <?php if($_GET['date'] == 'dateLastDay') echo "selected"; ;?>>اليوم السابق</option>
                                 <option value="dateCurrentWeek" <?php if($_GET['date'] == 'dateCurrentWeek') echo "selected"; ;?>>الاسبوع الحالي</option>
@@ -59,7 +59,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                             <label><?= \Yii::t('common', 'Filter by organizations')?></label>
 
                             <select class="form-control" name="organization_id">
-                                <option></option>
+                                <option value=""><?= Yii::t('backend','All');  ?></option>
                                 <?php foreach(Organization::find()->all() as $org): ?>
                                     <option value="<?= $org->id ?>"  <?php if($_GET['organization_id'] == $org->id) echo "selected"; ;?> ><?= $org->name ?></option>
                                 <?php endforeach; ?>
