@@ -44,9 +44,10 @@ BootstrapPluginAsset::register($this);
                 <h3 class="box-title"><i class="fa fa-filter fa-xs"></i> <?= \Yii::t('common', "Advanced Search")?></h3>
             </div>
             <div class="box-body">
-                <div class="row">
-                    <form method="GET">
-                        <div class="col-md-4">
+                
+                <form method="GET">
+                    <div class="row">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label><?= \Yii::t('common', 'Filter by time')?></label>
                                 <select class="form-control" name="date">
@@ -63,7 +64,7 @@ BootstrapPluginAsset::register($this);
                                 <small class="form-text text-muted">بحث الإستبيانات بالمدة الزمنية المحددة</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label><?= \Yii::t('common', 'Search by section')?></label>
                                 <?php 
@@ -86,7 +87,7 @@ BootstrapPluginAsset::register($this);
                                 <small class="form-text text-muted">بحث الإستبيانات حسب قطاع العمل</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label><?= \Yii::t('common', 'Search by Tags')?></label>
                                 <?php
@@ -110,8 +111,9 @@ BootstrapPluginAsset::register($this);
                                 <button class="btn btn-success" style="margin-top: 32px;"><?= \Yii::t('common', 'Advanced Search')?></button>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    
+                    </div>
+                </form>
             </div>
             
         </div>
