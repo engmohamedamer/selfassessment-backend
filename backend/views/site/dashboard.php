@@ -253,9 +253,9 @@ $(function () {
         borderColor         : '#00a65a ',
         pointBorderColor    : '#00a65a ',
         pointBackgroundColor: '#00a65a ',
-        fill                : false
-        // pointHoverBackgroundColor: '#007bff',
-        // pointHoverBorderColor    : '#007bff'
+        fill                : false,
+        pointHoverBackgroundColor: '#00a65a',
+        pointHoverBorderColor    : '#00a65a'
       },
         {
           type                : 'line',
@@ -264,9 +264,9 @@ $(function () {
           borderColor         : '#dd4b39 ',
           pointBorderColor    : '#dd4b39 ',
           pointBackgroundColor: '#dd4b39 ',
-          fill                : false
-          // pointHoverBackgroundColor: '#ced4da',
-          // pointHoverBorderColor    : '#ced4da'
+          fill                : false,
+          pointHoverBackgroundColor: '#dd4b39',
+          pointHoverBorderColor    : '#dd4b39'
         }]
     },
     options: {
