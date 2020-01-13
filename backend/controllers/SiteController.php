@@ -15,6 +15,7 @@ use backend\models\SchoolGender;
 use backend\models\Schools;
 use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
+use common\helpers\Filter;
 use common\models\Organization;
 use common\models\User;
 use yii\helpers\ArrayHelper;
@@ -50,7 +51,7 @@ class SiteController extends BackendController
 
     public function actionDashboard(){
 
-        $dateOrganizations = $this->dateFilter('created_at',true);
+        $dateOrganizations = Filter::dateFilter('created_at',true);
         $organizations = Organization::find()->select('id,name')
             ->where($dateOrganizations)
             ->orderBy('id DESC')
@@ -62,12 +63,12 @@ class SiteController extends BackendController
         $data1  = $chartData['data1']; 
         $data2  = $chartData['data2']; 
         
-        $dateSurvey = $this->dateFilter('survey_created_at');
+        $dateSurvey = Filter::dateFilter('survey_created_at');
         $surveyCount = Survey::find()
             ->where($dateSurvey)
             ->andWhere($this->filterByOrganization('org_id'))->count();
 
-        $dateStats = $this->dateFilter('survey_stat_assigned_at');
+        $dateStats = Filter::dateFilter('survey_stat_assigned_at');
         $surveyStatsCount  = SurveyStat::find()->where($dateStats);
 
         if (!empty($_GET['organization_id'])) {
@@ -76,7 +77,7 @@ class SiteController extends BackendController
         }
         $surveyStatsCount  = $surveyStatsCount->count();
         
-        $dateUser = $this->dateFilter('created_at',true,'user.');
+        $dateUser = Filter::dateFilter('created_at',true,'user.');
         $user = User::find()
             ->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
             ->join('LEFT JOIN','{{%user_profile}}','{{%user_profile}}.user_id = {{%user}}.id')
@@ -94,32 +95,7 @@ class SiteController extends BackendController
         return [$organization_column=>$key];
     }
 
-    private function dateFilter($column_date, $unix = false, $prefix = '')
-    {
-        $key = $_GET['date'] ?: null;
-
-        if ($key == null) return ['IS NOT',$prefix.$column_date,null];
-        $column_date = empty($prefix) ? $column_date : $prefix.$column_date;
-        $dateFormat  = $unix ? "DATE(FROM_UNIXTIME($column_date))"  : "DATE($column_date)";
-        $monthFormat = $unix ? "MONTH(FROM_UNIXTIME($column_date))" : "MONTH($column_date)";
-        $yearForamt  = $unix ? "YEAR(FROM_UNIXTIME($column_date))"  : "YEAR($column_date)";
-
-        $date['dateCurrentDay']   = [$dateFormat => date('Y-m-d')];
-        $date['dateLastDay']      = [$dateFormat => date('Y-m-d',strtotime("-1 day"))];
-        
-        $date['dateCurrentWeek']   = ["BETWEEN", "$column_date",date("Y-m-d",strtotime("last saturday")),date("Y-m-d",strtotime("1 day"))];
-        $date["dateLastWeek"]      = ["BETWEEN", "$column_date", date("Y-m-d",strtotime("-7 days",strtotime(date("Y-m-d",strtotime("last saturday"))))),date("Y-m-d",strtotime("last saturday"))];
-
-        $date["dateCurrentMonth"]  = [ $monthFormat => date("m"),$yearForamt=>date("Y")];
-        $date["dateLastMonth"]     = [  $monthFormat => date("m",strtotime("-1 month")),
-            $yearForamt => (date("m",strtotime("-1 month")) == "12" ) ? date("Y",strtotime("-1 year")) : date("Y")
-        ];
-        
-        $date["dateCurrentYear"]  = [ $yearForamt => date("Y")];
-        $date["dateLastYear"]     = [ $yearForamt => date("Y",strtotime("-1 year"))];
-
-        return $date[$key];
-    }
+    
 
     private function chartData()
     {

@@ -58,6 +58,7 @@ class DefaultController extends Controller
     {
         $searchModel = new SurveySearch();
         $searchModel->org_id = $this->organization_id ;
+        // return var_dump(\Yii::$app->request->queryParams);
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
 
         return $this->render('index', [

@@ -3,9 +3,10 @@
 namespace backend\modules\assessment\models\search;
 
 use Yii;
+use backend\modules\assessment\models\Survey;
+use common\helpers\Filter;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\modules\assessment\models\Survey;
 
 /**
  * SurveySearch represents the model behind the search form about `backend\modules\assessment\models\Survey`.
@@ -18,7 +19,7 @@ class SurveySearch extends Survey
     public function rules()
     {
         return [
-            [['survey_id', 'survey_badge_id','org_id'], 'integer'],
+            [['survey_id', 'survey_badge_id','org_id','sector_id'], 'integer'],
             [['survey_name', 'survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id'], 'safe'],
             [['survey_is_pinned', 'survey_is_closed'], 'boolean'],
         ];
@@ -58,9 +59,14 @@ class SurveySearch extends Survey
            // return $dataProvider;
         }
 
+
+
+        $query->andFilterWhere(Filter::dateFilter('survey_created_at'));
+
         $query->andFilterWhere([
             'survey_id' => $this->survey_id,
             'org_id' => $this->org_id,
+            'sector_id' => $this->sector_id,
             'survey_created_at' => $this->survey_created_at,
             'survey_updated_at' => $this->survey_updated_at,
             'survey_expired_at' => $this->survey_expired_at,

@@ -3,6 +3,8 @@
 /* @var $this yii\web\View */
 
 use cenotia\components\modal\RemoteModal;
+use common\models\OrganizationStructure;
+use kartik\tree\TreeViewInput;
 use yii\bootstrap\BootstrapPluginAsset;
 use yii\bootstrap\Modal;
 use yii\helpers\Html;
@@ -41,42 +43,61 @@ BootstrapPluginAsset::register($this);
             </div>
             <div class="box-body">
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label><?= \Yii::t('common','Search by time')?></label>
-                            <select class="form-control">
-                                <option>اليوم</option>
-                                <option>اليوم السابق</option>
-                                <option>الاسبوع الحالي</option>
-                                <option>الاسبوع السابق</option>
-                                <option>الشهر الحالي</option>
-                                <option>الشهر السابق</option>
-                                <option>السنة الحالية</option>
-                                <option>السنة السابقة</option>
-                            </select>
-                            <small class="form-text text-muted">بحث الإستبيانات بالمدة الزمنية المحددة</small>
+                    <form method="GET">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label><?= \Yii::t('common', 'Filter by time')?></label>
+                                <select class="form-control" name="date">
+                                    <option value=""><?= Yii::t('backend','All');  ?></option>
+                                    <option value="dateCurrentDay" <?php if($_GET['date'] == 'dateCurrentDay') echo "selected"; ;?> >اليوم</option>
+                                    <option value="dateLastDay" <?php if($_GET['date'] == 'dateLastDay') echo "selected"; ;?>>اليوم السابق</option>
+                                    <option value="dateCurrentWeek" <?php if($_GET['date'] == 'dateCurrentWeek') echo "selected"; ;?>>الاسبوع الحالي</option>
+                                    <option value="dateLastWeek" <?php if($_GET['date'] == 'dateLastWeek') echo "selected"; ;?>>الاسبوع السابق</option>
+                                    <option value="dateCurrentMonth" <?php if($_GET['date'] == 'dateCurrentMonth') echo "selected"; ;?>>الشهر الحالي</option>
+                                    <option value="dateLastMonth" <?php if($_GET['date'] == 'dateLastMonth') echo "selected"; ;?>>الشهر السابق</option>
+                                    <option value="dateCurrentYear" <?php if($_GET['date'] == 'dateCurrentYear') echo "selected"; ;?>>السنة الحالية</option>
+                                    <option value="dateLastYear" <?php if($_GET['date'] == 'dateLastYear') echo "selected"; ;?>>السنة السابقة</option>
+                                </select>
+                                <small class="form-text text-muted">بحث الإستبيانات بالمدة الزمنية المحددة</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label><?= \Yii::t('common', 'Search by section')?></label>
-                            <input type="text" class="form-control" value="">
-                            <small class="form-text text-muted">بحث الإستبيانات حسب قطاع العمل</small>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label><?= \Yii::t('common', 'Search by section')?></label>
+                                <?php 
+                                    echo TreeViewInput::widget([
+                                        // single query fetch to render the tree
+                                        // use the Product model you have in the previous step
+                                        'query' => OrganizationStructure::find()->addOrderBy('root, lft'), 
+                                        'headingOptions'=>['label'=>'Categories'],
+                                        'value' => $_GET['SurveySearch']['sector_id'],     // values selected (comma separated for multiple select)
+                                        'name' => 'SurveySearch[sector_id]', // input name
+                                        'asDropdown' => true,   // will render the tree input widget as a dropdown.
+                                        'multiple' => false,     // set to false if you do not need multiple selection
+                                        'fontAwesome' => true,  // render font awesome icons
+                                        'rootOptions' => [
+                                            'label'=>'<i class="fa fa-tree"></i>',  // custom root label
+                                            'class'=>'text-success'
+                                        ],
+                                    ]);
+                                ?>
+                                <small class="form-text text-muted">بحث الإستبيانات حسب قطاع العمل</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label><?= \Yii::t('common', 'Search by Tags')?></label>
-                            <input type="text" class="form-control" value="">
-                            <small class="form-text text-muted">بحث الإستبيانات حسب الوسوم</small>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label><?= \Yii::t('common', 'Search by Tags')?></label>
+                                
+                                <small class="form-text text-muted">بحث الإستبيانات حسب الوسوم</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            
-                            <button class="btn btn-success" style="margin-top: 32px;"><?= \Yii::t('common', 'Advanced Search')?></button>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                
+                                <button class="btn btn-success" style="margin-top: 32px;"><?= \Yii::t('common', 'Advanced Search')?></button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             
