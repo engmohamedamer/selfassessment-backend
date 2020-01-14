@@ -144,6 +144,9 @@ if(Yii::$app->user->isGuest){
             background-color: <?= $brandPrimColor ?>  !important;
             text-decoration:none;
         }
+        .table td a {
+            color: <?= $brandPrimColor ?>  !important;
+        }
 
         section.content .survey-container .survey-block .survey-name-wrap,  section.content .survey-container .survey-block .survey-question-view-wrap, section.content .kv-editable-popover .survey-block .survey-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-name-wrap, section.content .kv-editable-popover .survey-block .survey-question-view-wrap {
             background-color: <?= $brandPrimColor ?> !important;

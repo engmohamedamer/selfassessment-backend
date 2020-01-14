@@ -299,13 +299,13 @@ if (Yii::$app->user->identity->userProfile->organization) {
                     echo Html::beginTag('div', ['class' => 'row']);
                     echo Html::beginTag('div', ['class' => 'col-md-3']);
                     
-                    echo $form->field($survey, "survey_is_closed", ['template' => "<div class='survey-form-field submit-on-click'><a class='btn btn-primary' tabindex='0' role='button' data-toggle='popover' data-trigger='focus' data-placement='bottom' title='مغلق أم لا' data-content='هل الإستبيان مغلق أم متاح للمشاركين؟'><i class='icofont-info-circle'></i></a>  {input}{label}</div>",]
+                    echo $form->field($survey, "survey_is_closed", ['template' => "<div class='survey-form-field submit-on-click tooltipdiv' data-toggle='tooltip' data-placement='top' title='هل الإستبيان مغلق أم متاح للمشاركين؟'>  {input}{label}</div>",]
                     )->checkbox(['class' => 'checkbox danger'], false);
                     echo Html::tag('div', '', ['class' => 'clearfix']);
                     // echo $form->field($survey, "survey_is_pinned", ['template' => "<div class='survey-form-field submit-on-click'>{input}{label}</div>",]
                     // )->checkbox(['class' => 'checkbox'], false);
                     // echo Html::tag('div', '', ['class' => 'clearfix']);
-                    echo $form->field($survey, "survey_is_visible", ['template' => "<div class='survey-form-field submit-on-click'><a class='btn btn-primary' tabindex='0' role='button' data-toggle='popover' data-trigger='focus' data-placement='bottom' title='مرئي أم لا' data-content='هل الإستبيان جاهز للظهور للمشاركين؟'><i class='icofont-info-circle'></i></a> {input}{label}</div>",]
+                    echo $form->field($survey, "survey_is_visible", ['template' => "<div class='survey-form-field submit-on-click tooltipdiv' data-toggle='tooltip' data-placement='top' title='هل الإستبيان جاهز للظهور للمشاركين؟'> {input}{label}</div>",]
                     )->checkbox(['class' => 'checkbox'], false);
                     if ($withUserSearch) {
                         echo Html::tag('div', '', ['class' => 'clearfix']);

@@ -47,7 +47,7 @@ $i = 1;
             <div class="box-body">
                 <div class="row">
                     <form method="GET">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label><?= \Yii::t('common', 'Filter by time')?></label>
                                 <select class="form-control" name="date">
@@ -64,7 +64,7 @@ $i = 1;
                                 <small class="form-text text-muted">بحث الإستبيانات بالمدة الزمنية المحددة</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label><?= \Yii::t('common', 'Search by section')?></label>
                                 <?php 
@@ -87,7 +87,7 @@ $i = 1;
                                 <small class="form-text text-muted">بحث الإستبيانات حسب قطاع العمل</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label><?= \Yii::t('common', 'Search by Tags')?></label>
                                 <?php
@@ -160,7 +160,7 @@ $i = 1;
                 <h3 class="box-title"><?= Yii::t('common','Count Surveys Contributors')?></h3>
             </div>
             <div class="box-body">
-                <canvas id="assessmentParticipantsChart"  ></canvas>
+                <canvas id="assessmentParticipantsChart"></canvas>
             </div>
             <!-- /.box-body -->
             </div>
