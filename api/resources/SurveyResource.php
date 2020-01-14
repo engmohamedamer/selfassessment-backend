@@ -45,7 +45,7 @@ class SurveyResource extends Survey
                 return true;
             },
             'goNextPageAutomatic'=>function($model){
-                return true;
+                return false;
             },
             'showQuestionNumbers'=>function($model){
                 return 'off';
