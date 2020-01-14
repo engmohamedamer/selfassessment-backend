@@ -545,7 +545,6 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .table td a {
-    color: #007bff;
     margin-right: 10px;
 }
 
@@ -1016,10 +1015,6 @@ html {
 .nav-pills>li.active>a:hover,
 .nav-pills>li.active>a:focus {
     background-color: #7F7BB1 !important;
-}
-
-.table td a {
-    color: #666 !important;
 }
 
 
@@ -1734,6 +1729,10 @@ header nav a {
         transform: scale(1);
         opacity: 0;
     }
+}
+
+.form-control.kv-tree-wrapper {
+    height: auto !important;
 }
 
 html:lang(en) .dropdown-footer,

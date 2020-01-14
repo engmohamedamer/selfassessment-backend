@@ -126,3 +126,5 @@ $(window).on("load", function() {
     }, 1000);
 
 });
+
+$('.tooltipdiv').tooltip()
