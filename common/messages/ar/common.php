@@ -316,6 +316,8 @@ return [
     'No results'=>'لا يوجد نتائج',
     'All Organizations'=>'كل المؤسسات',
     'More'=>'المزيد',
-    ''=>'',
+    'Completed'=>'اكتمل',
+    'Under completion'=>'قيد الاستكمال',
+    'Not started'=>'لم يبدأ',
 
 ];

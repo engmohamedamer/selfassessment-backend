@@ -2,11 +2,14 @@
 
 namespace organization\models\search;
 
+use common\helpers\Filter;
 use common\models\OrganizationStructure;
 use common\models\User;
 use common\models\UserProfile;
+use common\models\UserTag;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use yii\helpers\ArrayHelper;
 
 /**
  * UserSearch represents the model behind the search form about `common\models\User`.
@@ -55,6 +58,14 @@ class UserSearch extends User
             $query->limit($limit);
         }
         $query->joinWith(['userProfile'])->where(['organization_id'=>$this->organization_id]);
+        if (!empty($_GET['SurveySearch']['sector_id'])) {
+            $query->andFilterWhere(['sector_id'=>$_GET['SurveySearch']['sector_id']]);
+        }
+
+        if (!empty($_GET['SurveySearch']['tags'])) {
+            $tagsUser = ArrayHelper::getColumn(UserTag::find()->where(['IN','tag_id',$_GET['SurveySearch']['tags']])->all(),'user_id');
+            $query->andFilterWhere(['IN','id',array_unique($tagsUser)]);
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -87,6 +98,8 @@ class UserSearch extends User
         if ($this->created_at !== null) {
             $query->andFilterWhere(['between', 'created_at', $this->created_at, $this->created_at + 3600 * 24]);
         }
+
+        $query->andFilterWhere(Filter::dateFilter('created_at',true,'user.'));
 
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'auth_key', $this->auth_key])

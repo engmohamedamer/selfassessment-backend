@@ -2,6 +2,11 @@
 
 use organization\models\Schools;
 use yii\helpers\Html;
+use common\models\base\Tag;
+use kartik\select2\Select2;
+use kartik\tree\TreeViewInput;
+use common\models\OrganizationStructure;
+
 /* @var $this yii\web\View */
 /* @var $name string */
 /* @var $message string */
@@ -42,7 +47,7 @@ $i = 1;
             <div class="box-body">
                 <div class="row">
                     <form method="GET">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label><?= \Yii::t('common', 'Filter by time')?></label>
                                 <select class="form-control" name="date">
@@ -56,26 +61,54 @@ $i = 1;
                                     <option value="dateCurrentYear" <?php if($_GET['date'] == 'dateCurrentYear') echo "selected"; ;?>>السنة الحالية</option>
                                     <option value="dateLastYear" <?php if($_GET['date'] == 'dateLastYear') echo "selected"; ;?>>السنة السابقة</option>
                                 </select>
-                                <small class="form-text text-muted">تخصيص لوحة التحكم بالمدة الزمنية المحددة</small>
+                                <small class="form-text text-muted">بحث الإستبيانات بالمدة الزمنية المحددة</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label><?= \Yii::t('common', 'Search by section')?></label>
+                                <?php 
+                                    echo TreeViewInput::widget([
+                                        // single query fetch to render the tree
+                                        // use the Product model you have in the previous step
+                                        'query' => OrganizationStructure::find()->addOrderBy('root, lft'), 
+                                        'headingOptions'=>['label'=>'Categories'],
+                                        'value' => $_GET['SurveySearch']['sector_id'],     // values selected (comma separated for multiple select)
+                                        'name' => 'SurveySearch[sector_id]', // input name
+                                        'asDropdown' => true,   // will render the tree input widget as a dropdown.
+                                        'multiple' => false,     // set to false if you do not need multiple selection
+                                        'fontAwesome' => true,  // render font awesome icons
+                                        'rootOptions' => [
+                                            'label'=>'<i class="fa fa-tree"></i>',  // custom root label
+                                            'class'=>'text-success'
+                                        ],
+                                    ]);
+                                ?>
+                                <small class="form-text text-muted">بحث الإستبيانات حسب قطاع العمل</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label><?= \Yii::t('common', 'Search by Tags')?></label>
+                                <?php
+                                    $tags = \yii\helpers\ArrayHelper::map(Tag::find()->all(), 'id', 'name');
+                                    echo Select2::widget([
+                                        'name' => 'SurveySearch[tags]',
+                                        'value' => $_GET['SurveySearch']['tags'], // initial value
+                                        'data' => $tags,
+                                        'options' => [
+                                            'placeholder' => Yii::t('common', 'Search by Tags'),
+                                            'multiple' => true
+                                        ],
+                                    ]);
+                                ?>
+                                <small class="form-text text-muted">بحث الإستبيانات حسب الوسوم</small>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label><?= \Yii::t('common', 'Filter by section')?></label>
-                                <input type="text" class="form-control" value="">
-                                <small class="form-text text-muted">تخصيص لوحة التحكم حسب قطاع العمل</small>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label><?= \Yii::t('common', 'Filter by Tags')?></label>
-                                <input type="text" class="form-control" value="">
-                                <small class="form-text text-muted">تخصيص لوحة التحكم حسب الوسوم</small>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <button class="btn btn-success" style="margin-top: 32px;"><?= \Yii::t('common', 'Filter')?></button>
+                                
+                                <button class="btn btn-success" style="margin-top: 32px;"><?= \Yii::t('common', 'Advanced Search')?></button>
                             </div>
                         </div>
                     </form>
@@ -84,7 +117,7 @@ $i = 1;
             
         </div>
     </div>
-    <?php if(count($contributors->getModels()) == 0 || count($organization->survey) == 0):?>
+    <?php if( (count($contributors->getModels()) == 0 || count($organization->survey) == 0) and (empty($_GET['date']) and  empty($_GET['SurveySearch']['sector_id']) and  empty($_GET['SurveySearch']['tags'])  ) ):?>
     <div class="row custom-dashboard text-center">
 
         <h2><?= Yii::t('common','welcome'); ?></h2>
@@ -140,81 +173,11 @@ $i = 1;
     </div>
         <div class="row custom-dashboard">
             
-            <!--Latest assessments-->
-            <!-- <div class="col-md-8">
-                <div class="box box-danger">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"><?= \Yii::t('common', 'Latest Assessments')?></h3>
-
-                        <div class="box-tools pull-right">
-                        <div class="dropdown">
-                        <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-cogs"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">اليوم</a>
-                            <a class="dropdown-item" href="#">اليوم السابق</a>
-                            <a class="dropdown-item" href="#">الاسبوع الحالي</a>
-                            <a class="dropdown-item" href="#">الاسبوع السابق</a>
-                            <a class="dropdown-item" href="#">الشهر الحالي</a>
-                            <a class="dropdown-item" href="#">الشهر السابق</a>
-                            <a class="dropdown-item" href="#">السنة الحالية</a>
-                            <a class="dropdown-item" href="#">السنة السابقة</a>
-                            
-                        </div>
-                    </div>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <div class="table-responsive">
-                            <table class="table no-margin">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th><?= \Yii::t('common', 'Survey')?></th>
-                                    <th><?= \Yii::t('common', 'Contributors Count')?></th>
-                                    <th><?= \Yii::t('common', 'Status')?></th>
-                                    <th><?= \Yii::t('common', 'Ends At')?></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                    $i=1;
-                                    foreach($organizationSurvey as $survey):
-                                    if ($survey->survey_is_closed) {
-                                        $class = 'danger';
-                                        $status = Yii::t('common','Closed');
-                                    }else{
-                                        $class = 'success';
-                                        $status = Yii::t('common','Open');
-                                    }
-                                ?>
-
-                                <tr>
-                                    <td><?= $i++ ?></td>
-                                    <td><a href="/assessment/default/view?id=<?= $survey->survey_id ?>"><?= $survey->survey_name ?></a></td>
-                                    <td><?= count($survey->stats) ?></td>
-                                    <td><span class="label label-<?=$class?>"><?= $status ?></span></td>
-                                    <td>
-                                        <div class="sparkbar" data-color="#00a65a" data-height="20"><?= $survey->survey_expired_at ?></div>
-                                    </td>
-                                </tr>
-                                <?php endforeach;?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="box-footer text-center">
-                    <a href="/assessment" class="uppercase thirdBtn"><?= \Yii::t('common', 'Assessments List') ?></a>
-                </div>
-                   
-                </div>
-            </div> -->
             <div class="col-md-6">
             
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= Yii::t('common','Assessments Contributor Status') .' ( '. $countStats .' '. Yii::t('common','status').')' ?></h3>
+                    <h3 class="box-title"><?= Yii::t('common','Assessments Contributor Status') .' ( '. $orgSurveyStats['countStats'] .' '. Yii::t('common','status').')' ?></h3>
                 </div>
                 <div class="box-body">
                     <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
@@ -281,6 +244,12 @@ $i = 1;
 
 
 <?php
+
+$surveyChartLabels = json_encode($surveyChart['labels']);
+$surveyChartDate = json_encode($surveyChart['data']);
+
+$orgSurveyStatsLabels = json_encode($orgSurveyStats['labels']);
+$orgSurveyStatsData = json_encode($orgSurveyStats['data']);
 $this->registerJs(<<<JS
 
 
@@ -289,14 +258,14 @@ var chart = new Chart(ctx, {
 type: 'doughnut',
 data: {
     datasets: [{
-        data: [20,50,30],
+        data: $orgSurveyStatsData,
         backgroundColor: [
             "#2ecc71",
             "#f39c12",
             "#22CECE"
         ],
     }],
-    labels:["bie1","bie2","bie3"]
+    labels: $orgSurveyStatsLabels
 },
 options: {
     responsive: true,
@@ -320,10 +289,10 @@ var ctx = document.getElementById('assessmentParticipantsChart').getContext('2d'
 var chart = new Chart(ctx, {  
     type: 'line',
     data: {
-        labels: ["one","two","three"],
+        labels: $surveyChartLabels,
         datasets: [{
             label: 'عدد المشاركين في الإستبيان',
-            data:[1,2,3],
+            data: $surveyChartDate,
             backgroundColor     : 'transparent',
             borderColor         : primcolor,
             pointBorderColor    : primcolor,

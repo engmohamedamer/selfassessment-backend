@@ -5,9 +5,12 @@ namespace organization\controllers;
 use Yii;
 use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
+use common\helpers\Filter;
 use common\models\Organization;
+use common\models\SurveyTag;
 use common\models\User;
 use organization\models\search\UserSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
 /**
@@ -27,53 +30,30 @@ class SiteController extends OrganizationController
 
     public function actionDashboard(){
 
-        $organization  = Yii::$app->user->identity->userProfile->organization;
-        $searchModel = new UserSearch();
+        $organization = Yii::$app->user->identity->userProfile->organization;
+        $searchModel  = new UserSearch();
         $searchModel->user_role = User::ROLE_USER;
         $searchModel->organization_id = $organization->id;
         $contributors = $searchModel->search(null,6);
-        $orgSurveyStats = $this->actionOrgSurveyStats(false);
-        $organizationSurvey = Survey::find()->where(['org_id'=>$organization->id])->limit(5)->orderBy('survey_id desc')->all();
-        $countStats = $orgSurveyStats['data'][0] + $orgSurveyStats['data'][1] + $orgSurveyStats['data'][2];
+        
+        $orgSurveyStats = $this->organizationSurveyStats();
+        $surveyChart    = $this->surveyChart();
 
-        $surveyChart       = $this->surveyChart();
-        $surveyChartLabels = $surveyChart['labels'];
-        $surveyChartDate   = $surveyChart['data'];
-
-
-        return $this->render('dashboard',compact('contributors','organizationSurvey','organization','orgSurveyStats','countStats','surveyChartLabels','surveyChartDate'));
-    }
-
-
-    public  function actionTest(){
-        return $this->render('test');
+        return $this->render('dashboard',compact('contributors','organization','orgSurveyStats','surveyChart'));
     }
 
 
     private function surveyChart()
     {
-        
         $organization = Yii::$app->user->identity->userProfile->organization;
-        $organizationSurvey = Survey::find()->where(['org_id'=>$organization->id])
-            ->orderBy('survey_id DESC')
-            ->limit(8)
-            ->all();
-        $labels = [];
-        $data = [];
-        foreach ($organizationSurvey as $survey) {
-            $labels[] = $survey->survey_name;
-            $data[] = count($survey->stats);
-        }
-
+        $data = $this->organizationSurveys($organization->id)->limit(10)->all();     
+        $labels = ArrayHelper::getColumn($data,'survey_name');
+        $data   = ArrayHelper::getColumn($data,'survey_stat');
         return ['labels'=> $labels ,'data'=>$data];
     }
 
-    public function actionOrgSurveyStats($api = true)
+    private function organizationSurveyStats()
     {
-        if ($api) {
-            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        }
-
         $organization = Yii::$app->user->identity->userProfile->organization;
 
         $searchModel = new UserSearch();
@@ -82,25 +62,54 @@ class SiteController extends OrganizationController
         $dataProvider = $searchModel->search([]);
         $orgUserCount =  count($dataProvider->getModels());
 
-        $sumComplete  = 0;
-        $sumUncomplete  = 0;
-        $sumNotstart = 0;
-        foreach ($organization->survey as $survey) {
-            $countComplete = SurveyStat::find()->where(['survey_stat_survey_id'=> $survey->survey_id,'survey_stat_is_done'=>1])->count();
-            $countUncomplete = SurveyStat::find()->where(['survey_stat_survey_id'=> $survey->survey_id,'survey_stat_is_done'=>0])->count();
-            $notstart = $orgUserCount - ( $countComplete + $countUncomplete );
-            $sumComplete += $countComplete;
-            $sumUncomplete += $countUncomplete;
-            $sumNotstart += $notstart;
-        }
+        $organizationSurveyIds = ArrayHelper::getColumn($this->organizationSurveys($organization->id)->all(),'survey_id');
+
+        $surveyStat = $this->surveyStat($organizationSurveyIds);
+        $sumComplete   = $surveyStat['sumComplete'];
+        $sumUncomplete = $surveyStat['sumUncomplete'];
+        $sumNotstart   = ($orgUserCount * count($organization->survey) ) - ( $sumComplete + $sumUncomplete );
+
         return [
-            'labels'=> ['اكتمل','قيد الاستكمال','لم يبدأ'] ,
+            'labels'=> [ 
+                \Yii::t('common','Completed'),
+                \Yii::t('common','Under completion'),
+                \Yii::t('common','Not started'),
+            ],
             'data'=>[
                 $sumComplete,
                 $sumUncomplete,
                 $sumNotstart,
-            ]
+            ],
+            'countStats'=> $sumComplete + $sumUncomplete + $sumNotstart
         ];
     }
 
+    private function organizationSurveys($organization_id)
+    {
+        $organizationSurvey = Survey::find()->select('survey_id, survey_name, count(survey_stat.survey_stat_id) as survey_stat')
+            ->join('LEFT JOIN','{{%survey_stat}}','{{%survey_stat}}.survey_stat_survey_id = {{%survey}}.survey_id')
+            ->where(['org_id'=>$organization_id])
+            ->andWhere(Filter::dateFilter('survey_created_at'));
+        
+        if (!empty($_GET['SurveySearch']['tags'])) {
+            $tagsSurvey = ArrayHelper::getColumn(SurveyTag::find()->where(['IN','tag_id',$_GET['SurveySearch']['tags']])->all(),'survey_id');
+            $organizationSurvey->andFilterWhere(['IN','survey_id',array_unique($tagsSurvey)]);
+        }
+
+        if (!empty($_GET['SurveySearch']['sector_id'])) {
+            $organizationSurvey->andFilterWhere(['sector_id'=>$_GET['SurveySearch']['sector_id']]);
+        }
+
+        $organizationSurvey->groupBy('survey_id')
+            ->orderBy('survey_id DESC');
+        return $organizationSurvey;
+    }
+
+    private function surveyStat($surveyIds)
+    {
+        return [
+            'sumComplete' => SurveyStat::find()->where(['IN','survey_stat_survey_id', $surveyIds])->andWhere(['survey_stat_is_done'=>1])->count(),
+            'sumUncomplete' => SurveyStat::find()->where(['IN','survey_stat_survey_id', $surveyIds])->andWhere(['survey_stat_is_done'=>0])->count()
+        ];
+    }
 }

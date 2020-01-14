@@ -57,6 +57,8 @@ class Survey extends \yii\db\ActiveRecord
 
     public $usersList = [];
     const SCENARIOUPDATE = 'scenarioupdate';
+
+    public $survey_stat;
     /**
      * @inheritdoc
      */
@@ -162,6 +164,16 @@ class Survey extends \yii\db\ActiveRecord
     public function getStats()
     {
         return $this->hasMany(SurveyStat::class, ['survey_stat_survey_id' => 'survey_id']);
+    }
+
+    public function getStatsComplete()
+    {
+        return $this->hasMany(SurveyStat::class, ['survey_stat_survey_id' => 'survey_id'])->where(['survey_stat_is_done'=>1])->count();
+    }
+
+    public function getStatsNotComplete()
+    {
+        return $this->hasMany(SurveyStat::class, ['survey_stat_survey_id' => 'survey_id'])->where(['survey_stat_is_done'=>0])->count();
     }
 
 
