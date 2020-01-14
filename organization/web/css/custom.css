@@ -1755,6 +1755,13 @@ html:lang(en) .skin-blue .sidebar-menu .treeview-menu>li>a {
 **********************************************/
 
 @media (max-width: 768px) {
+    header nav {
+        justify-content: space-between;
+    }
+    header nav .dropdown-header {
+        max-width: 50%;
+        overflow: hidden;
+    }
     .sidebar-toggle {
         display: block !important;
     }

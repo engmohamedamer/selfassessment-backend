@@ -208,7 +208,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                             </tbody>
                         </table>
                         <div class="box-footer text-center">
-                            <a href="/organization" class="btn btn-success"><?= Yii::t('common','More') ?></a>
+                            <a href="/organization" class="btn btn-success"><?= Yii::t('common','All Organizations') ?></a>
                         </div>
                     <?php else:?>
                         <p><?= Yii::t('common','No results') ?></p>
