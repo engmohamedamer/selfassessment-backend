@@ -10,9 +10,12 @@ use common\models\SurveyUserAnswerAttachments;
 
 class SurveyResource extends Survey
 {
+
+    public $maxTimeToFinish;
+    public $showTimerPanel;
     public function fields()
     {
-        return [
+        $fields = [
             'id'=>function($model){
                 return $model->survey_id;
             },
@@ -45,7 +48,7 @@ class SurveyResource extends Survey
                 return true;
             },
             'goNextPageAutomatic'=>function($model){
-                return true;
+                return false;
             },
             'showQuestionNumbers'=>function($model){
                 return 'off';
@@ -358,6 +361,13 @@ class SurveyResource extends Survey
                 return $data;
             }
         ];
+
+        if (!$this->survey_time_to_pass) {
+            unset($fields['showTimerPanel']);
+            unset($fields['maxTimeToFinish']);
+        }
+
+        return $fields;
     }
 
 

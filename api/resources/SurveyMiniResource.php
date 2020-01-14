@@ -54,6 +54,9 @@ class SurveyMiniResource extends Survey
                 return SurveyStat::actualTime($model->survey_id,\Yii::$app->user->identity->id);
             },
             'expiryDate'=>function($model){
+                if (is_null($model->survey_expired_at)) {
+                    return null;
+                }
                 return date('Y-m-d',strtotime($model->survey_expired_at));
             },
             'qNum'=>function($model){
