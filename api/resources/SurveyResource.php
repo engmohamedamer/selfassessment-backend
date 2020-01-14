@@ -61,6 +61,12 @@ class SurveyResource extends Survey
                     return 'بدء الإستبيان';
                 }
             },
+            'AssessmentTimer'=>function($model){
+                if (is_null($model->survey_expired_at)) {
+                    return false;
+                }
+                return true;
+            },
             'completedHtml'=>function($model){
                 $userId = \Yii::$app->user->identity->userProfile;
                 if ($userId->locale == 'en-US') {

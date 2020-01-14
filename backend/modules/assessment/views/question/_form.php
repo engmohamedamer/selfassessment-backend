@@ -76,9 +76,15 @@ echo $form->field($question, "[{$question->survey_question_id}]survey_question_t
 JS
     ),]
 ]);
-if ($question->survey->survey_point > 0) {
-  echo $form->field($question, "[{$question->survey_question_id}]survey_question_point")->input('number');
+
+if (in_array($question->survey_question_type, [
+    SurveyType::TYPE_MULTIPLE,
+    SurveyType::TYPE_ONE_OF_LIST,
+    SurveyType::TYPE_DROPDOWN
+]) and $question->survey->survey_point > 0) {
+    echo $form->field($question, "[{$question->survey_question_id}]survey_question_point")->input('number');
 }
+
 echo Html::tag('br', '');
 echo Html::tag('br', '');
 

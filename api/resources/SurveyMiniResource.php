@@ -61,6 +61,12 @@ class SurveyMiniResource extends Survey
             },
             'qNum'=>function($model){
                 return count($model->questions);
+            },
+            'AssessmentTimer'=>function($model){
+                if (is_null($model->survey_expired_at)) {
+                    return false;
+                }
+                return true;
             }
         ];
     }
