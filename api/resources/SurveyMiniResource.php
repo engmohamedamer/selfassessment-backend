@@ -4,6 +4,7 @@ namespace api\resources;
 
 use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
+use common\models\OrganizationStructure;
 
 class SurveyMiniResource extends Survey
 {
@@ -41,8 +42,17 @@ class SurveyMiniResource extends Survey
             'description'=>function($model){
                 return $model->survey_descr;
             },
-
-
+            'department'=>function($model){
+                $sectors = OrganizationStructure::find()->where(['root'=>$model->sector->root])->andWhere(['<=','id',$model->sector->id])->all();
+                $txt = '';
+                foreach ($sectors as $value) {
+                    $txt .=  $value->name .' / ';
+                }
+                return trim($txt,' / ');
+            },
+            'tags'=>function($model){
+                return $model->tags;
+            },
             'survey_time_to_pass'=>function($model){
                 return $model->survey_time_to_pass;
             },

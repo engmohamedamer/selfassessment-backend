@@ -4,6 +4,7 @@ namespace backend\modules\assessment\models;
 
 use Yii;
 use backend\models\SurveyDegreeLevel;
+use common\models\OrganizationStructure;
 use common\models\SurveySelectedUsers;
 use common\models\Tag;
 use sjaakp\taggable\TaggableBehavior;
@@ -343,4 +344,8 @@ class Survey extends \yii\db\ActiveRecord
         return $data ;
     }
 
+    public function getSector()
+    {
+        return $this->hasOne(OrganizationStructure::class, ['id' => 'sector_id']);
+    }
 }

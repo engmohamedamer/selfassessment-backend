@@ -297,7 +297,7 @@ class DefaultController extends Controller
         $survey = $this->findModel($id);
         // $survey->scenario = 'scenarioupdate';
         \Yii::$app->session->set('surveyUploadsSubpath', $id);
-
+        
         if (\Yii::$app->request->isPjax) {
             if ($survey->load(\Yii::$app->request->post()) && $survey->validate()) {
                 if (is_array($survey['level_title'])) {
