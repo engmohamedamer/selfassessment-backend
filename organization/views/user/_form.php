@@ -1,5 +1,6 @@
 <?php
 
+use common\helpers\Filter;
 use common\models\OrganizationStructure;
 use common\models\User;
 use common\models\UserProfile;
@@ -69,11 +70,12 @@ $model->roles =Yii::$app->session->get('UserRole');
                     </div>
                     <div class="col-md-4">
                     <?php
+                        
                         echo $form->field($profile, 'sector_id')->widget(TreeViewInput::classname(),
                         [
                             'name' => 'kvTreeInput',
                             'value' => 'true', // preselected values
-                            'query' => OrganizationStructure::find()->addOrderBy('root, lft'),
+                            'query' => Filter::organizationStructureQuery(),
                             'headingOptions' => ['label' => Yii::t('common','Sector')],
                             'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
                             'fontAwesome' => true,

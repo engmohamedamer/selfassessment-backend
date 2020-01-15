@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use cenotia\components\modal\RemoteModal;
+use common\helpers\Filter;
 use common\models\OrganizationStructure;
 use common\models\base\Tag;
 use kartik\select2\Select2;
@@ -71,8 +72,8 @@ BootstrapPluginAsset::register($this);
                                     echo TreeViewInput::widget([
                                         // single query fetch to render the tree
                                         // use the Product model you have in the previous step
-                                        'query' => OrganizationStructure::find()->addOrderBy('root, lft'), 
-                                        'headingOptions'=>['label'=>'Categories'],
+                                        'query' => Filter::organizationStructureQuery(), 
+                                        'headingOptions'=>['label'=>\Yii::t('common', 'Search by section')],
                                         'value' => $_GET['SurveySearch']['sector_id'],     // values selected (comma separated for multiple select)
                                         'name' => 'SurveySearch[sector_id]', // input name
                                         'asDropdown' => true,   // will render the tree input widget as a dropdown.

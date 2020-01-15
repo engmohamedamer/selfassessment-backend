@@ -10,6 +10,7 @@ use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\search\SurveyStatSearch;
 use cenotia\components\modal\RemoteModal;
+use common\helpers\Filter;
 use common\models\OrganizationStructure;
 use common\models\User;
 use kartik\editable\Editable;
@@ -159,7 +160,7 @@ error_reporting(0);
                     [
                         'name' => 'kvTreeInput',
                         'value' => 'true', // preselected values
-                        'query' => OrganizationStructure::find()->addOrderBy('root, lft'),
+                        'query' => Filter::organizationStructureQuery(),
                         'headingOptions' => ['label' => Yii::t('common','Sector')],
                         'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
                         'fontAwesome' => true,

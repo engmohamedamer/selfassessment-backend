@@ -6,6 +6,7 @@
  * Time: 14:24
  */
 
+use common\helpers\Filter;
 use common\models\OrganizationStructure;
 use kartik\dialog\Dialog;
 use kartik\editable\Editable;
@@ -317,19 +318,11 @@ if (Yii::$app->user->identity->userProfile->organization) {
                     echo Html::endTag('div'); // col-md-3
 
                     echo Html::beginTag('div', ['class' => 'col-md-9']);
-                        $sector_id = \Yii::$app->user->identity->userProfile->sector_id;
-                        if ($sector_id) {
-                            $str = OrganizationStructure::findOne($sector_id);
-                            $query = OrganizationStructure::find()->where(['root'=>$str->root])->andWhere(['>=','lvl',$str->lvl])->addOrderBy('root, lft');
-                        }else{
-                            $query = OrganizationStructure::find()->addOrderBy('root, lft');
-                        }
-                        // $query = OrganizationStructure::find()->addOrderBy('root, lft');
                         echo $form->field($survey, 'sector_id')->widget(TreeViewInput::classname(),
                         [
                             'name' => 'kvTreeInput',
                             'value' => 'true', // preselected values
-                            'query' => $query,
+                            'query' => Filter::organizationStructureQuery(),
                             'headingOptions' => ['label' => Yii::t('common','Sector')],
                             'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
                             'fontAwesome' => true,
@@ -340,24 +333,20 @@ if (Yii::$app->user->identity->userProfile->organization) {
                    
 
                     ?>
-                        <!-- <div class="col-md-4 col-md-12"> -->
-                            <?= $form->field($survey, 'tags')->widget(TagEditor::class, [
-                                'clientOptions' => [
-                                    'autocomplete' => [
-                                        'source' => Url::toRoute(['/tag/suggest'])
-                                    ],
-                                ]
-                            ]) ?>
-                       
-
+                    
+                    <?= $form->field($survey, 'tags')->widget(TagEditor::class, [
+                        'clientOptions' => [
+                            'autocomplete' => [
+                                'source' => Url::toRoute(['/tag/suggest'])
+                            ],
+                        ]
+                    ]) ?>
                     <?php
 
-                    $users = UserSearch::users(Yii::$app->user->identity->userProfile->organization_id);
-                    // return var_dump($users);
-                    $data = ArrayHelper::map($users, 'id', 'name');
-                    
+                    $users = UserSearch::usersBySector(Yii::$app->user->identity->userProfile->organization_id);
+
                     echo $form->field($survey, 'usersList')->widget(Select2::classname(), [
-                        'data' => $data,
+                        'data' => $users,
                         'size' => Select2::LARGE,
                         'options' => ['placeholder' => Yii::t('common','Select'),'multiple' => true],
                         'pluginOptions' => [

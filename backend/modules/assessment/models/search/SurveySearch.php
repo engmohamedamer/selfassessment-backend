@@ -51,6 +51,13 @@ class SurveySearch extends Survey
 
         $query = Survey::find();
 
+        if (!\Yii::$app->user->identity->userProfile->main_admin) {
+            $sctor_ids = Filter::adminAllowedSectorIds();
+            if (!empty($sctor_ids)) {
+                $query->andFilterWhere(['IN','sector_id',$sctor_ids]);
+                $query->orFilterWhere(['is','sector_id',new \yii\db\Expression('null')]);
+            }
+        }
 
         if (!empty($this->tags)) {
             $tagsSurvey = ArrayHelper::getColumn(SurveyTag::find()->where(['IN','tag_id',$this->tags])->all(),'survey_id');
@@ -90,14 +97,14 @@ class SurveySearch extends Survey
     public function searchValidAssessment()
     {
 
-//       $sql =   "
-//             SELECT g.*, COUNT(m.survey_question_survey_id) AS question
-// FROM survey AS g
-// LEFT JOIN survey_question AS m ON g.survey_id = m.survey_question_survey_id
-// where org_id = 12
-// GROUP BY g.survey_id
-// HAVING question > 0 
-//         "
+        // $sql =   "
+        //   SELECT g.*, COUNT(m.survey_question_survey_id) AS question
+        // FROM survey AS g
+        // LEFT JOIN survey_question AS m ON g.survey_id = m.survey_question_survey_id
+        // where org_id = 12
+        // GROUP BY g.survey_id
+        // HAVING question > 0 
+        //  "
         $sql = "SELECT `s`.* FROM `survey` `s` WHERE 
                 ((select count(*)
                 from survey_question q

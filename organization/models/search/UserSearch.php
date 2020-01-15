@@ -58,19 +58,14 @@ class UserSearch extends User
             $query->limit($limit);
         }
         $query->joinWith(['userProfile'])->where(['organization_id'=>$this->organization_id]);
-        if (!empty($_GET['SurveySearch']['sector_id'])) {
-            $query->andFilterWhere(['sector_id'=>$_GET['SurveySearch']['sector_id']]);
-        }
 
-        if (!empty($_GET['SurveySearch']['tags'])) {
-            $tagsUser = ArrayHelper::getColumn(UserTag::find()->where(['IN','tag_id',$_GET['SurveySearch']['tags']])->all(),'user_id');
-            $query->andFilterWhere(['IN','id',array_unique($tagsUser)]);
-        }
+        self::filter($query);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort'=> ['defaultOrder' => ['id'=>SORT_DESC]],
-            'pagination' => false,
+            'pagination' => false, //['defaultPageSize' => 10],
+
         ]);
 
         if (!($this->load($params) && $this->validate())) {
@@ -99,11 +94,8 @@ class UserSearch extends User
             $query->andFilterWhere(['between', 'created_at', $this->created_at, $this->created_at + 3600 * 24]);
         }
 
-        $query->andFilterWhere(Filter::dateFilter('created_at',true,'user.'));
 
         $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
-            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
             ->andFilterWhere(['like', 'email', $this->email]);
 
         if(! \Yii::$app->user->can('administrator')) {
@@ -112,36 +104,42 @@ class UserSearch extends User
         return $dataProvider;
     }
 
-    public static function users($organization_id)
+    private static function filter($query)
     {
-        $query = User::find()->select(['id','CONCAT(`firstname`, " ", `lastname`) as name']);
-        
 
-        $sector_id = \Yii::$app->user->identity->userProfile->sector_id;
-        if ($sector_id) {
-            // return $sector_id;
-            $str = OrganizationStructure::findOne($sector_id);
-            $structure = OrganizationStructure::find()->where(['root'=>$str->root])->andWhere(['>=','lvl',$str->lvl])->addOrderBy('root, lft')->all();
-            // $structure = OrganizationStructure::find()->select('id')->where(['root'=>$sector_id])->all();
-            $ids = [];
-            foreach ($structure as $value) {
-                $ids[] = $value->id;
+        if ($_GET['user_role'] != 'governmentAdmin') {
+            if (!\Yii::$app->user->identity->userProfile->main_admin) {
+                self::querySector($query);        
             }
-            // return $ids;
-            $query->joinWith(['userProfile'])->andwhere(['organization_id'=>$organization_id])->andWhere(['in','sector_id',$ids]);
-        }else{
-            $query->joinWith(['userProfile'])->where(['organization_id'=>$organization_id]);
         }
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'sort'=> ['defaultOrder' => ['id'=>SORT_DESC]],
-            'pagination' => false,
-        ]);
+        if (!empty($_GET['SurveySearch']['sector_id'])) {
+            $query->andFilterWhere(['sector_id'=>$_GET['SurveySearch']['sector_id']]);
+        }
 
-        $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])->andFilterWhere(['!=','{{%user}}.id', \Yii::$app->user->identity->id]);
+        if (!empty($_GET['SurveySearch']['tags'])) {
+            $tagsUser = ArrayHelper::getColumn(UserTag::find()->where(['IN','tag_id',$_GET['SurveySearch']['tags']])->all(),'user_id');
+            $query->andFilterWhere(['IN','id',array_unique($tagsUser)]);
+        }
 
-        return $dataProvider->getModels();
+        $query->andFilterWhere(Filter::dateFilter('created_at',true,'user.'));
+    }
+
+    // show list users who have the same admin sector and sub sector
+    public static function usersBySector($organization_id)
+    {
+        $query = User::find()->select(['id','CONCAT(`firstname`, " ", `lastname`) as name']);
+        $query->joinWith(['userProfile'])->where(['organization_id'=>$organization_id]);
+
+        if (!\Yii::$app->user->identity->userProfile->main_admin) {
+            self::querySector($query);        
+        }
+
+        $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
+            ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])
+            ->andFilterWhere(['!=','{{%user}}.id', \Yii::$app->user->identity->id]);
+
+        return ArrayHelper::map($query->all(), 'id', 'name');
     }
 
     public  function usersList($params = [],$organization_id)
@@ -178,5 +176,25 @@ class UserSearch extends User
         $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => $this->user_role])->andFilterWhere(['!=','{{%user}}.id', \Yii::$app->user->identity->id]);
 
         return $dataProvider;
+    }
+
+    private static function querySector($query)
+    {
+        $sector_id = \Yii::$app->user->identity->userProfile->sector_id;
+        
+        if ($sector_id) {
+            
+            $structureRoot = OrganizationStructure::findOne($sector_id);
+            
+            $structure = OrganizationStructure::find()->select('id')
+                ->where(['root'=>$structureRoot->root])
+                ->andWhere(['>=','lvl',$structureRoot->lvl])
+                ->addOrderBy('root, lft')
+                ->all();
+            
+            $ids = ArrayHelper::getColumn($structure,'id');
+            
+            $query->andWhere(['in','sector_id',$ids]);
+        }
     }
 }

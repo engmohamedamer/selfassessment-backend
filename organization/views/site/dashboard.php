@@ -1,11 +1,12 @@
 <?php
 
-use organization\models\Schools;
-use yii\helpers\Html;
+use common\helpers\Filter;
+use common\models\OrganizationStructure;
 use common\models\base\Tag;
 use kartik\select2\Select2;
 use kartik\tree\TreeViewInput;
-use common\models\OrganizationStructure;
+use organization\models\Schools;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $name string */
@@ -71,7 +72,7 @@ $i = 1;
                                     echo TreeViewInput::widget([
                                         // single query fetch to render the tree
                                         // use the Product model you have in the previous step
-                                        'query' => OrganizationStructure::find()->addOrderBy('root, lft'), 
+                                        'query' => Filter::organizationStructureQuery(), 
                                         'headingOptions'=>['label'=>'Categories'],
                                         'value' => $_GET['SurveySearch']['sector_id'],     // values selected (comma separated for multiple select)
                                         'name' => 'SurveySearch[sector_id]', // input name

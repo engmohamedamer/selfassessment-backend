@@ -2,6 +2,9 @@
 
 namespace common\helpers;
 
+use common\models\OrganizationStructure;
+use yii\helpers\ArrayHelper;
+
 class Filter  
 {
     public static function dateFilter($column_date, $unix = false, $prefix = '')
@@ -29,5 +32,26 @@ class Filter
         $date["dateLastYear"]     = [ $yearForamt => date("Y",strtotime("-1 year"))];
 
         return $date[$key];
+    }
+
+    public static function organizationStructureQuery()
+    {
+        $sector_id = \Yii::$app->user->identity->userProfile->sector_id;
+        if ($sector_id) {
+            $str = OrganizationStructure::findOne($sector_id);
+            return OrganizationStructure::find()->where(['root'=>$str->root])
+            ->andWhere(['>=','lvl',$str->lvl])
+            ->addOrderBy('root, lft');
+        }
+        return OrganizationStructure::find()->addOrderBy('root, lft');
+    }
+
+    public static function adminAllowedSectorIds()
+    {
+        $organizationStructure = self::organizationStructureQuery()->all();
+        if (count($organizationStructure)) {
+            return ArrayHelper::getColumn($organizationStructure,'id');
+        }
+        return [];
     }
 }
