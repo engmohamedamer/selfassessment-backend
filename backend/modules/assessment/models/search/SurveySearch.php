@@ -49,7 +49,8 @@ class SurveySearch extends Survey
 
         $this->load($params);
 
-        $query = Survey::find();
+        $query = Survey::find()->join('LEFT JOIN','{{%survey_question}}','{{%survey_question}}.survey_question_survey_id = {{%survey}}.survey_id');
+        $query->having(['>','count(survey_question.survey_question_id)',0]);
 
         if (!\Yii::$app->user->identity->userProfile->main_admin) {
             $sctor_ids = Filter::adminAllowedSectorIds();
@@ -78,7 +79,6 @@ class SurveySearch extends Survey
         $query->andFilterWhere(Filter::dateFilter('survey_created_at'));
 
         $query->andFilterWhere([
-            // 'survey_id' => $this->survey_id,
             'org_id' => $this->org_id,
             'sector_id' => $this->sector_id,
             'survey_created_at' => $this->survey_created_at,
@@ -89,7 +89,7 @@ class SurveySearch extends Survey
         ]);
 
         $query->andFilterWhere(['like', 'survey_name', $this->survey_name]);
-
+        $query->groupBy('survey_id');
         return $dataProvider;
     }
 
