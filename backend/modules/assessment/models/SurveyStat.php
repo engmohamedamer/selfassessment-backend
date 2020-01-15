@@ -227,6 +227,9 @@ class SurveyStat extends \yii\db\ActiveRecord
 
     public static function  actualTime($surveyId,$userId){
         $survey = Survey::findOne($surveyId);
+        if(is_null($survey->survey_time_to_pass)){
+            return null;
+        }
         $result = SurveyStat::find()->where(['survey_stat_survey_id' => $surveyId])
             ->andWhere(['survey_stat_user_id' => $userId])->one();
         $time = 0;
@@ -234,7 +237,7 @@ class SurveyStat extends \yii\db\ActiveRecord
             if ($survey->survey_time_to_pass <= gmdate("i", $result->survey_stat_actual_time) ) {
                 $time = $survey->survey_time_to_pass;
             }else{
-                $time = gmdate("H:i:s", $result->survey_stat_actual_time);
+                $time = gmdate("i", $result->survey_stat_actual_time);
             }
         }    
         return $time;

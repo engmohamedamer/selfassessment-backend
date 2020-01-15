@@ -27,7 +27,7 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            [['name','password','email','bio','mobile'], 'required'],
+            [['name','password','email','mobile'], 'required'],
             ['name', 'string', 'min' => 2, 'max' => 255],
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'email'],
@@ -79,7 +79,6 @@ class SignupForm extends Model
         	$profile->user_id = $model->id;
         	$profile->organization_id = $organization;
         	$profile->mobile = $this->mobile;
-        	$profile->bio = $this->bio;
             $profile->locale = 'ar-AR';
         	$profile->sector_id = $this->sector_id ?: ' ';
         	$profile->save(false);
