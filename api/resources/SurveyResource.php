@@ -148,16 +148,16 @@ class SurveyResource extends Survey
                             'type'=> $type,
                             'name'=>'q-'.$question->survey_question_id,
                             'title'=> $question->survey_question_name,
+                            "visibleIf"=>"{Q-".$question->survey_question_id."IsIgnored}='flase'",
                         ];
                         if ($question->survey_question_show_descr == 1 ) {
                             $data[$c]['description'] = $question->survey_question_descr;
                         }
 
                         if ($question->survey_question_can_skip == 1 ) {
-                            $data[$c]['isRequired'] = false;
-                        }else{
                             $data[$c]['isRequired'] = true;
-
+                        }else{
+                            $data[$c]['isRequired'] = false;
                         }
 
                         if ($type == 'dropdown' || $type == 'checkbox' || $type == 'radiogroup') {
@@ -232,6 +232,38 @@ class SurveyResource extends Survey
                             ];
                             $c = $c+2;
                         }else{
+                            $c = $c+1;
+                        }
+
+                        if($question->survey_question_attachment_file and $question->survey_question_can_ignore){
+                            $data[$c] = [
+                                'type'=> "panel",
+                                "startWithNewLine"=>false,
+                                'elements'=> [
+                                    [
+                                        'label'=>'هذا السؤال يمكن تجاهله، هل تريد تجاهله؟',
+                                        'type'=> "boolean",
+                                        'name'=>'Q-'.$question->survey_question_id.'IsIgnored',
+                                        'defaultValue'=> false,
+                                    ],
+                                ],
+                            ];
+                            $c = $c+1;
+                        }
+
+                        if(!$question->survey_question_attachment_file and $question->survey_question_can_ignore){
+                            $data[$c] = [
+                                'type'=> "panel",
+                                "startWithNewLine"=>false,
+                                'elements'=> [
+                                    [
+                                        'label'=>'هذا السؤال يمكن تجاهله، هل تريد تجاهله؟',
+                                        'type'=> "boolean",
+                                        'name'=>'Q-'.$question->survey_question_id.'IsIgnored',
+                                        'defaultValue'=> false,
+                                    ],
+                                ],
+                            ];
                             $c = $c+1;
                         }
                     }

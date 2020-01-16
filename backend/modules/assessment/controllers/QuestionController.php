@@ -60,7 +60,7 @@ class QuestionController extends Controller
         $survey = $this->findSurveyModel($id);
         $question = new SurveyQuestion();
         $question->loadDefaultValues(true,$type);
-        // $question->survey_question_name = \Yii::t('survey', 'New Question');
+        $question->survey_question_can_skip = 1;
         $survey->link('questions', $question);
 
         for ($i = 1; $i <= 2; ++$i) {
@@ -170,6 +170,12 @@ class QuestionController extends Controller
             }
         }
 
+
+        if ($question->survey_question_can_ignore == 1) {
+            $question->survey_question_can_skip = 0;
+            $question->save(false);
+        }
+
         $question->refresh();
 
         return $this->renderAjax('_form', ['question' => $question]);
@@ -246,6 +252,11 @@ class QuestionController extends Controller
             foreach ($question->answers as $answer) {
                 $answer->save();
             }
+        }
+
+        if ($question->survey_question_can_ignore == 1) {
+            $question->survey_question_can_skip = 0;
+            $question->save(false);
         }
         return $this->renderAjax('cardView', ['question' => $question]);
     }
