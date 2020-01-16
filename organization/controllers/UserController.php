@@ -4,11 +4,12 @@ namespace organization\controllers;
 
 use Intervention\Image\ImageManagerStatic;
 use Yii;
-use organization\models\UserForm;
-use organization\models\search\UserSearch;
+use common\commands\SendEmailCommand;
 use common\models\User;
 use common\models\UserProfile;
 use common\models\UserToken;
+use organization\models\UserForm;
+use organization\models\search\UserSearch;
 use trntv\filekit\actions\DeleteAction;
 use trntv\filekit\actions\UploadAction;
 use yii\filters\VerbFilter;
@@ -201,6 +202,17 @@ class UserController extends Controller
         if ($model->status == User::STATUS_NOT_ACTIVE){
             $model->status = User::STATUS_ACTIVE;
             $model->save();
+
+            Yii::$app->commandBus->handle(new SendEmailCommand([
+                'to' => $model->email,
+                'subject' => \Yii::t('frontend', \Yii::t('common','Active Account')),
+                'view' => 'activeUser',
+                'params' => [
+                    'user' => $model,
+                    'organization' => $model->userProfile->organization
+                ]
+            ]));
+
             Yii::$app->getSession()->setFlash('alert', [
                 'type' =>'success',
                 'body' => \Yii::t('backend', 'Data has been updated Successfully') ,

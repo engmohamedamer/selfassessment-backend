@@ -322,4 +322,5 @@ return [
     'Requests'=>'الطلبات',
     'Are you sure you want to delete this user?'=>'هل انت متأكد من الحذف ؟',
     'Are you sure you want to active this user?'=>'هل انت متأكد من تفعيل المستخدم ؟',
+    'Active Account'=>'تفعيل الحساب',
 ];
