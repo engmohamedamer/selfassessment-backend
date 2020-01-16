@@ -490,6 +490,7 @@ return [
     'Organization Name'=>'اسم المؤسسة',
     'Current Year'=>'( السنة الحالة ) ',
     'Last Year'=>'( السنة السابقة ) ',
+    'Approve Request'=>'الموافقة علي الطلب',
 
 ];
 
