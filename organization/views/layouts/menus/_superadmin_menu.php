@@ -70,10 +70,28 @@ echo Menu::widget([
 
         [
             'label' => Yii::t('common', 'Contributors'),
-            'url' => '/user/index?user_role=user',
+            'url' => '#',
             'icon' => '<i class="icofont-users-social mr-2 ml-2"></i>',
-            'options' => ['class' => 'nav-item'],
+            'options' => ['class' => 'treeview'],
             'active' => (Yii::$app->request->url == '/user/index?user_role=user'),
+            'items' => [
+                [
+                    'label' => Yii::t('common', 'All Contributors'),
+                    'url' => '/user/index?user_role=user',
+                    'icon' => '<i class="icofont-users-social mr-2 ml-2"></i>',
+                    'active' => (Yii::$app->request->url == '/user/index?user_role=user'),
+                    'options' => ['class' => 'nav-item'],
+                ],
+                [
+                    'label' => Yii::t('common', 'Requests'),
+                    'url' => '/user/index?user_role=user',
+                    'icon' => '<i class="icofont-users-social mr-2 ml-2"></i>',
+                    'active' => (Yii::$app->request->url == '/user/index?user_role=user'),
+                    'options' => ['class' => 'nav-item'],
+                ],
+            ]
+
+                
         ],
 
 

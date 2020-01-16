@@ -319,5 +319,6 @@ return [
     'Completed'=>'اكتمل',
     'Under completion'=>'قيد الاستكمال',
     'Not started'=>'لم يبدأ',
+    'Requests'=>'الطلبات',
 
 ];
