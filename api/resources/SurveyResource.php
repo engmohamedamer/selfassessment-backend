@@ -148,7 +148,7 @@ class SurveyResource extends Survey
                             'type'=> $type,
                             'name'=>'q-'.$question->survey_question_id,
                             'title'=> $question->survey_question_name,
-                            "visibleIf"=>"{Q-".$question->survey_question_id."IsIgnored} == true",
+                            "visibleIf"=>"{Q-".$question->survey_question_id."IsIgnored} == false",
                         ];
                         if ($question->survey_question_show_descr == 1 ) {
                             $data[$c]['description'] = $question->survey_question_descr;
