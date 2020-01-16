@@ -120,29 +120,8 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
                 'class'       => 'form-control',
                 'placeholder' => Yii::t('common','Search')
             ]
-            // 'filterType' => GridView::FILTER_SELECT2,
-            // 'filter' => \yii\helpers\ArrayHelper::map(SurveyQuestion::find()->asArray()->all(), 'survey_question_id', 'survey_question_name'),
-            // 'filterWidgetOptions' => [
-            //     'pluginOptions' => ['allowClear' => true],
-            // ],
-            // 'filterInputOptions' => ['placeholder' => Yii::t('backend', 'Question'), 'id' => 'grid-corrective-action-report-search-question_id']
         ],
-        // [
-        //     'attribute' => 'answer_id',
-        //     'label' => Yii::t('backend', 'Answer'),
-        //     'value' => function($model){
-        //         if ($model->answer)
-        //         {return $model->answer->survey_answer_name;}
-        //         else
-        //         {return NULL;}
-        //     },
-        //     'filterType' => GridView::FILTER_SELECT2,
-        //     'filter' => \yii\helpers\ArrayHelper::map(SurveyAnswer::find()->asArray()->all(), 'survey_answer_id', 'survey_answer_id'),
-        //     'filterWidgetOptions' => [
-        //         'pluginOptions' => ['allowClear' => true],
-        //     ],
-        //     'filterInputOptions' => ['placeholder' => 'Survey answer', 'id' => 'grid-corrective-action-report-search-answer_id']
-        // ],
+
         [
             'attribute'=>'corrective_action',
             'format'=>'raw',
@@ -158,31 +137,8 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
                 'placeholder' => Yii::t('common','Search')
             ]
         ],
-       // [
-       //     'attribute' => 'corrective_action_date',
-       //     'format' => 'datetime',
-       //     'filter' => DateTimeWidget::widget([
-       //         'model' => $searchModel,
-       //         'attribute' => 'corrective_action_date',
-       //         'phpDatetimeFormat' => 'YYYY-MM-DD',
-       //         'momentDatetimeFormat' => 'YYYY-MM-DD',
-       //         'clientOptions'=>[
-       //          'locale'=>'en',
-       //         ],
-       //         'clientEvents' => [
-       //             'dp.change' => new JsExpression('(e) => $(e.target).find("input").trigger("change.yiiGridView")')
-       //         ],
-       //     ])
-       // ],
-        // [
-        //     'class' => EnumColumn::class,
-        //     'attribute' => 'status',
-        //     'enum' => CorrectiveActionReport::status(),
-        //     'filter' => CorrectiveActionReport::status()
-        // ],
-        // 'comment:ntext',
         [
-            'class' => 'yii\grid\ActionColumn',
+            'class' => 'kartik\grid\ActionColumn',
             'template'=>'{view}'
         ],
     ]; 
@@ -197,6 +153,7 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
             'type' => GridView::TYPE_PRIMARY,
             'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),
         ],
+        'toggleDataContainer' => ['class' => 'btn-group mr-2'],
         'export' => false,
         // your toolbar can include the additional full export menu
         'toolbar' => [
