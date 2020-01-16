@@ -213,8 +213,14 @@ class SurveyResource extends Survey
                                 'elements'=> [
                                     [
                                         'name'=>'f-'.$question->survey_question_id,
-                                        'type'=> "boolean",
-                                        'label'=> $attach,
+                                        'type'=> "radiogroup",
+                                        // 'label'=> $attach,
+                                        'title'=> $attach,
+                                        'colCount'=> 2,
+                                        'choices'=> [
+                                            "نعم",
+                                            "لا"
+                                        ]
                                     ],
                                     [
                                         "name"=> 'a-'.$question->survey_question_id,
@@ -241,10 +247,7 @@ class SurveyResource extends Survey
                                 "startWithNewLine"=>false,
                                 'elements'=> [
                                     [
-                                        // 'label'=>'هذا السؤال يمكن تجاهله، هل تريد تجاهله؟',
                                         'type'=> "radiogroup",
-                                        // 'name'=>'Q-'.$question->survey_question_id.'IsIgnored',
-                                        // // 'defaultValue'=> true,
                                         'name'=> "f-97",
                                         'title'=> "هذا السؤال يمكن تجاهله، هل تريد تجاهل",
                                         'colCount'=> 2,
