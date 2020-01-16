@@ -235,23 +235,7 @@ class SurveyResource extends Survey
                             $c = $c+1;
                         }
 
-                        if($question->survey_question_attachment_file and $question->survey_question_can_ignore){
-                            $data[$c] = [
-                                'type'=> "panel",
-                                "startWithNewLine"=>false,
-                                'elements'=> [
-                                    [
-                                        'label'=>'هذا السؤال يمكن تجاهله، هل تريد تجاهله؟',
-                                        'type'=> "boolean",
-                                        'name'=>'Q-'.$question->survey_question_id.'IsIgnored',
-                                        'defaultValue'=> false,
-                                    ],
-                                ],
-                            ];
-                            $c = $c+1;
-                        }
-
-                        if(!$question->survey_question_attachment_file and $question->survey_question_can_ignore){
+                        if($question->survey_question_can_ignore){
                             $data[$c] = [
                                 'type'=> "panel",
                                 "startWithNewLine"=>false,
