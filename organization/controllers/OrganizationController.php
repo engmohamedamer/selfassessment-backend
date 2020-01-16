@@ -109,7 +109,7 @@ class OrganizationController extends \yii\web\Controller
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             if ($themeFooterLinks->load(\Yii::$app->request->post()) && $theme->load(\Yii::$app->request->post()) && $themeFooterLinks->save() && $theme->save()) {
                 if ($model->save_exit == 'exit') {
-                    return $this->redirect(['/']);
+                    return $this->redirect(['view', 'id' => $model->id]);
                 }elseif($model->save_exit == 'save'){
                     return $this->render('update', [
                         'model' => $model,

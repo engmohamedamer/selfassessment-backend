@@ -88,13 +88,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'format'=>'raw'
                             ],
                             [
-                                'attribute' => Yii::t('common','Gender'),
-                                'value' => function($model){
-                                    return $model->userProfile->genderList()[$model->userProfile->gender];
-                                },
-                                'format'=>'raw',
-                            ],
-                            [
                                 'attribute' => 'status',
                                 'value' => function($model){
                                     return User::statuses()[$model->status];

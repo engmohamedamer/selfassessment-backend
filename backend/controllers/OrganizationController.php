@@ -202,7 +202,7 @@ class OrganizationController extends BackendController
             if ($themeFooterLinks->load(\Yii::$app->request->post()) && $theme->load(\Yii::$app->request->post()) && $themeFooterLinks->save() && $theme->save()) {
 
                 if ($model->save_exit == 'exit') {
-                    return $this->redirect(['/']);
+                    return $this->redirect(['view', 'id' => $model->id]);
                 }
             }
         }
