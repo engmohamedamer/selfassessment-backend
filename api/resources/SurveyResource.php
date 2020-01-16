@@ -237,23 +237,23 @@ class SurveyResource extends Survey
 
                         if($question->survey_question_can_ignore){
                             $data[$c] = [
-                                'type'=> "radiogroup",
-                                // "startWithNewLine"=>false,
-                                // 'elements'=> [
-                                    // [
+                                'type'=> "panel",//radiogroup
+                                "startWithNewLine"=>false,
+                                'elements'=> [
+                                    [
                                         // 'label'=>'هذا السؤال يمكن تجاهله، هل تريد تجاهله؟',
-                                        // 'type'=> "boolean",
+                                        'type'=> "radiogroup",
                                         // 'name'=>'Q-'.$question->survey_question_id.'IsIgnored',
                                         // // 'defaultValue'=> true,
-                                        'name'=>'Q-'.$question->survey_question_id.'IsIgnored',
-                                        'title'=> "تريد إرفاق بعض الملفات؟",
+                                        'name'=> "f-97",
+                                        'title'=> "هذا السؤال يمكن تجاهله، هل تريد تجاهل",
                                         'colCount'=> 2,
                                         'choices'=> [
                                             "نعم",
                                             "لا"
                                         ]
-                                    // ],
-                                // ],
+                                    ],
+                                ],
                             ];
                             $c = $c+1;
                         }
