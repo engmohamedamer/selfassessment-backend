@@ -228,6 +228,24 @@ class AssessmentsController extends  MyActiveController
         };
 
         foreach ($params['answers'] as $key=>$value) {
+
+          // if (strstr($key, 'Q-')) {
+          //     $key         = (int)preg_replace('/\D/ui','',$key);
+          //     $question    = $this->findModel($key);
+          //     if ($question->survey_question_can_ignore and ($value == 'Yes' || $value == 'نعم')) {
+          //       if ($question->survey_question_type === SurveyType::TYPE_DROPDOWN) {
+          //         $userAnswers = $question->userAnswers;
+          //         $userAnswer  = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
+          //                    'survey_user_answer_user_id' => \Yii::$app->user->getId(),
+          //                    'survey_user_answer_survey_id' => $question->survey_question_survey_id,
+          //                    'survey_user_answer_question_id' => $question->survey_question_id,
+          //                ]));
+          //             $userAnswer->survey_user_answer_point = $question->survey_question_point;
+          //         $userAnswer->save(false);
+          //       }
+          //     }
+          // }
+
           if (strstr($key, 'a-')){
             $key=  (int)preg_replace('/\D/ui','',$key);
             $question = $this->findModel($key);
@@ -317,7 +335,7 @@ class AssessmentsController extends  MyActiveController
                          'survey_user_answer_survey_id' => $question->survey_question_survey_id,
                          'survey_user_answer_question_id' => $question->survey_question_id,
                      ]));
-                    if ($answerPoint->correct || $question->survey_question_can_ignore) {
+                    if ($answerPoint->correct ) {
                         $userAnswer->survey_user_answer_point = $question->survey_question_point;
                      }else{
                         if ($params['status'] == 2) {
@@ -342,7 +360,7 @@ class AssessmentsController extends  MyActiveController
                          'survey_user_answer_survey_id' => $question->survey_question_survey_id,
                          'survey_user_answer_question_id' => $question->survey_question_id,
                      ]));
-                     if ($answerPoint->correct || $question->survey_question_can_ignore) {
+                     if ($answerPoint->correct ) {
                         $userAnswer->survey_user_answer_point = $answerPoint->question->survey_question_point;
                      }else{
                         if ($params['status'] == 2) {
@@ -383,7 +401,7 @@ class AssessmentsController extends  MyActiveController
                             $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
                             $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
                             $userAnswer->survey_user_answer_value =1 ;
-                            if ($answer->correct || $question->survey_question_can_ignore) {
+                            if ($answer->correct ) {
                                 $userAnswer->survey_user_answer_point = $point;
                             }else{
                                 if ($params['status'] == 2) {

@@ -248,7 +248,7 @@ class SurveyResource extends Survey
                                 'elements'=> [
                                     [
                                         'type'=> "radiogroup",
-                                        'name'=> "Q-".$question->survey_question_id."IsIgnored",
+                                        'name'=> "Q-".$question->survey_question_id,
                                         'title'=> "هذا السؤال يمكن تجاهله، هل تريد تجاهل",
                                         'colCount'=> 2,
                                         'choices'=> [
