@@ -244,7 +244,7 @@ class SurveyResource extends Survey
                                         'label'=>'هذا السؤال يمكن تجاهله، هل تريد تجاهله؟',
                                         'type'=> "boolean",
                                         'name'=>'Q-'.$question->survey_question_id.'IsIgnored',
-                                        'defaultValue'=> false,
+                                        'defaultValue'=> true,
                                     ],
                                 ],
                             ];
