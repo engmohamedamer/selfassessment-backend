@@ -317,7 +317,7 @@ class AssessmentsController extends  MyActiveController
                          'survey_user_answer_survey_id' => $question->survey_question_survey_id,
                          'survey_user_answer_question_id' => $question->survey_question_id,
                      ]));
-                    if ($answerPoint->correct) {
+                    if ($answerPoint->correct || $question->survey_question_can_ignore) {
                         $userAnswer->survey_user_answer_point = $question->survey_question_point;
                      }else{
                         if ($params['status'] == 2) {
@@ -342,7 +342,7 @@ class AssessmentsController extends  MyActiveController
                          'survey_user_answer_survey_id' => $question->survey_question_survey_id,
                          'survey_user_answer_question_id' => $question->survey_question_id,
                      ]));
-                     if ($answerPoint->correct) {
+                     if ($answerPoint->correct || $question->survey_question_can_ignore) {
                         $userAnswer->survey_user_answer_point = $answerPoint->question->survey_question_point;
                      }else{
                         if ($params['status'] == 2) {
@@ -383,7 +383,7 @@ class AssessmentsController extends  MyActiveController
                             $userAnswer->survey_user_answer_question_id = $question->survey_question_id;
                             $userAnswer->survey_user_answer_answer_id = $answer->survey_answer_id;
                             $userAnswer->survey_user_answer_value =1 ;
-                            if ($answer->correct) {
+                            if ($answer->correct || $question->survey_question_can_ignore) {
                                 $userAnswer->survey_user_answer_point = $point;
                             }else{
                                 if ($params['status'] == 2) {
