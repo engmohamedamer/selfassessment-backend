@@ -237,10 +237,10 @@ class SurveyResource extends Survey
 
                         if($question->survey_question_can_ignore){
                             $data[$c] = [
-                                // 'type'=> "radiogroup",
+                                'type'=> "radiogroup",
                                 // "startWithNewLine"=>false,
-                                'elements'=> [
-                                    [
+                                // 'elements'=> [
+                                    // [
                                         // 'label'=>'هذا السؤال يمكن تجاهله، هل تريد تجاهله؟',
                                         // 'type'=> "boolean",
                                         // 'name'=>'Q-'.$question->survey_question_id.'IsIgnored',
@@ -252,8 +252,8 @@ class SurveyResource extends Survey
                                             "نعم",
                                             "لا"
                                         ]
-                                    ],
-                                ],
+                                    // ],
+                                // ],
                             ];
                             $c = $c+1;
                         }
