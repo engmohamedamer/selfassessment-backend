@@ -30,7 +30,7 @@ $i = 1;
                 <h1 class="m-0 text-dark"><?= Yii::t('backend', 'Dashboard') ?></h1>
             </div>
             <div class='actionBtns'>
-                <!-- <a href="/assessment/default/create" class="btn btn-success"><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('common', 'Create new survey')?> </span></a> -->
+                <a href="/assessment/default/create" class="btn btn-success"><span><i class="fa fa-file-signature mr-2 ml-2"></i> <?= \Yii::t('common', 'Create new survey')?> </span></a>
                 <a data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse" class="btn btn-info"><span><i class="fa fa-filter mr-2 ml-2"></i> <?= \Yii::t('common', 'Filter Options')?> </span></a>
 
             </div>
