@@ -73,7 +73,7 @@ echo Menu::widget([
             'url' => '#',
             'icon' => '<i class="icofont-users-social mr-2 ml-2"></i>',
             'options' => ['class' => 'treeview'],
-            'active' => (Yii::$app->request->url == '/user/index?user_role=user'),
+            'active' => (Yii::$app->request->url == '/user/index?user_role=user' || Yii::$app->request->url == '/user/index?user_role=user&status=unactive'),
             'items' => [
                 [
                     'label' => Yii::t('common', 'All Contributors'),
@@ -84,9 +84,9 @@ echo Menu::widget([
                 ],
                 [
                     'label' => Yii::t('common', 'Requests'),
-                    'url' => '/user/index?user_role=user',
+                    'url' => '/user/index?user_role=user&status=unactive',
                     'icon' => '<i class="icofont-users-social mr-2 ml-2"></i>',
-                    'active' => (Yii::$app->request->url == '/user/index?user_role=user'),
+                    'active' => (Yii::$app->request->url == '/user/index?user_role=user&status=unactive'),
                     'options' => ['class' => 'nav-item'],
                 ],
             ]

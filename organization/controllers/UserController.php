@@ -68,6 +68,11 @@ class UserController extends Controller
         if(isset($_REQUEST['user_role'])){
             Yii::$app->session->set('UserRole',$_REQUEST['user_role']);
         }
+        if ($_GET['status'] == 'unactive') {
+            $searchModel->status = User::STATUS_NOT_ACTIVE;
+        }else{
+            $searchModel->status = User::STATUS_ACTIVE;
+        }
         $searchModel->user_role = Yii::$app->session->get('UserRole');
         $searchModel->organization_id = Yii::$app->user->identity->userProfile->organization_id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
