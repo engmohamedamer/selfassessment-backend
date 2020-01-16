@@ -110,18 +110,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         },
                         'format'=>'raw'
                     ],
-                    // [
-                    //     'attribute' => 'updated_at',
-                    //     'format' => 'datetime',
-                    // ],
-                    // [
-                    //     'attribute' => 'logged_at',
-                    //     'format' => 'datetime',
-                    // ],
                     [
                         'class' => 'kartik\grid\ActionColumn',
-                        'template'=>'{view}{update}'
-                    
+                        // 'template'=>'{view}{update}'
                     ],
                 ];
 

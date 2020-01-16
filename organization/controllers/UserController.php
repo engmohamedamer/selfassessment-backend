@@ -195,6 +195,21 @@ class UserController extends Controller
         ]);
     }
 
+    public function actionActive($id)
+    {
+        $model = $this->findModel($id);
+        if ($model->status == User::STATUS_NOT_ACTIVE){
+            $model->status = User::STATUS_ACTIVE;
+            $model->save();
+            Yii::$app->getSession()->setFlash('alert', [
+                'type' =>'success',
+                'body' => \Yii::t('backend', 'Data has been updated Successfully') ,
+                'title' =>'',
+            ]);
+        }
+        return $this->redirect(['index?user_role=user']);
+    }
+
     /**
      * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -204,8 +219,11 @@ class UserController extends Controller
     public function actionDelete($id)
     {
         Yii::$app->authManager->revokeAll($id);
+        $model = $this->findModel($id);
         $this->findModel($id)->delete();
-
+        if ($model->status == User::STATUS_NOT_ACTIVE) {
+            return $this->redirect(['index?user_role=user&status=unactive']);
+        }
         return $this->redirect(['index']);
     }
 
