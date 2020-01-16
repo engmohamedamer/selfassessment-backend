@@ -89,13 +89,6 @@ $model->roles =Yii::$app->session->get('UserRole');
                     <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($profile, 'mobile') ?>
                     </div>
-                    <div class="col-md-4 col-sm-12">
-                        <?php echo $form->field($profile, 'gender')->dropDownlist([
-                            UserProfile::GENDER_MALE => Yii::t('backend', 'Male'),
-                            UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female'),
-                        ]) ?>
-                    </div>
-                    
 
                     <div class="col-md-4 col-sm-12">
                             <?php echo $form->field($profile, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
