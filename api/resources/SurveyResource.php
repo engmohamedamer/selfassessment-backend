@@ -238,7 +238,7 @@ class SurveyResource extends Survey
                         if($question->survey_question_can_ignore){
                             $data[$c] = [
                                 'type'=> "panel",
-                                "startWithNewLine"=>false,
+                                "startWithNewLine"=>true,
                                 'elements'=> [
                                     [
                                         'label'=>'هذا السؤال يمكن تجاهله، هل تريد تجاهله؟',
