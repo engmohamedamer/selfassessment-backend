@@ -248,7 +248,7 @@ error_reporting(0);
                     ?>
                 </div>
             </div>
-            <div class='survey-details'>
+            <div class='survey-details' style="display:none">
                 <div class='inner-details'>
                     <h5> <i class="icofont-paper mr-2 ml-2"></i>  تفاصيل الإستبيان 
                         <i title='closed' style='color:red' class="icofont-1x icofont-lock mr-2 ml-2"></i> 

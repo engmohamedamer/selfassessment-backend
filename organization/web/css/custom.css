@@ -1731,8 +1731,28 @@ header nav a {
     }
 }
 
+.popover .kv-editable-reset {
+    color: #393939 !important;
+}
+
 .form-control.kv-tree-wrapper {
     height: auto !important;
+}
+
+.tag-editor .tag-editor-tag {
+    color: #ffffff;
+    background: #8e44ad;
+    border-radius: 15px 0 0 15px;
+    padding: 1px 4px 7px 17px;
+}
+
+.tag-editor .tag-editor-delete {
+    background: #8e44ad;
+    cursor: pointer;
+    border-radius: 0 15px 15px 0;
+    padding-left: 3px;
+    padding-right: 4px;
+    padding: 5px 4px 3px;
 }
 
 html:lang(en) .dropdown-footer,

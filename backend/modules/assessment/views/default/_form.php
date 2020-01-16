@@ -281,8 +281,10 @@ if (Yii::$app->user->identity->userProfile->organization) {
                         echo Html::beginTag('div', ['class' => 'col-md-4']);
                         echo $form->field($survey, "level_to[]")->input('number',['value' => $survey->levels[3]->to ]);
 
-                        echo Html::endTag('div');
+                    echo Html::endTag('div');
                             echo Html::endTag('div');
+                            echo Html::endTag('div');
+                            echo Html::beginTag('div', ['class' => 'row']);
                             echo Html::beginTag('div', ['class' => 'col-md-12']);
 
                     echo $form->field($survey, "survey_descr", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
@@ -295,7 +297,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
                         echo Html::tag('div', '', ['class' => 'clearfix']);
                         echo Html::endTag('div'); // col-md-12
                     echo Html::endTag('div');
-                    
+                    // echo Html::endTag('div');
 
                     echo Html::beginTag('div', ['class' => 'row']);
                     echo Html::beginTag('div', ['class' => 'col-md-3']);
@@ -467,7 +469,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
     
     </div>
 
-    <div class='survey-details'>
+    <div class='survey-details' style="display:none">
         <div class='inner-details'>
             <h5> <i class="icofont-paper mr-2 ml-2"></i>  تفاصيل الإستبيان 
                 <!-- <i title='closed' style='color:red' class="icofont-1x icofont-lock mr-2 ml-2"></i>  -->

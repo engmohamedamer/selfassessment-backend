@@ -1734,6 +1734,10 @@ table.table thead tr th a {
     }
 }
 
+.popover .kv-editable-reset {
+    color: #393939 !important;
+}
+
 html:lang(en) .dropdown-footer,
 html:lang(en) .dropdown-header {
     text-align: left
