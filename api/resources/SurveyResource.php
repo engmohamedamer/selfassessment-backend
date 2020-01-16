@@ -209,7 +209,7 @@ class SurveyResource extends Survey
                         if ($question->survey_question_attachment_file) {                            
                             $data[$c+1] = [
                                 'type'=> "panel",
-                                "startWithNewLine"=>true,
+                                "startWithNewLine"=>false,
                                 'elements'=> [
                                     [
                                         'name'=>'f-'.$question->survey_question_id,
@@ -238,7 +238,7 @@ class SurveyResource extends Survey
                         if($question->survey_question_can_ignore){
                             $data[$c] = [
                                 'type'=> "panel",
-                                "startWithNewLine"=>true,
+                                "startWithNewLine"=>false,
                                 'elements'=> [
                                     [
                                         'label'=>'هذا السؤال يمكن تجاهله، هل تريد تجاهله؟',
