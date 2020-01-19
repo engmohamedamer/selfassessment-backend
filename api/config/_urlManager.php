@@ -81,7 +81,7 @@ return [
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'notification',
-            'only'=>['index'],
+            'only'=>['index','options'],
             'extraPatterns'=>[
                 'GET ' => 'index' ,
             ],
