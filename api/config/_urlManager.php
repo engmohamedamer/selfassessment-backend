@@ -34,7 +34,8 @@ return [
         ['pattern' => '/assessments/survey-start/<surveyId>', 'route' => 'assessments/survey-start'],
         ['pattern' => '/media/upload', 'route' => 'media/upload'],
         ['pattern' => '/media/delete', 'route' => 'media/delete'],
-        ['pattern' => '/notification', 'route' => 'notification/index'],
+        
+        // ['pattern' => '/notification', 'route' => 'notification/index'],
 
         ['class' =>'yii\rest\UrlRule','controller'=>'user'
             ,'only'=>['login','signup','reset-password','request-reset-password','sectors','options']
