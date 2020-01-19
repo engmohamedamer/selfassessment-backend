@@ -34,6 +34,7 @@ return [
         ['pattern' => '/assessments/survey-start/<surveyId>', 'route' => 'assessments/survey-start'],
         ['pattern' => '/media/upload', 'route' => 'media/upload'],
         ['pattern' => '/media/delete', 'route' => 'media/delete'],
+        ['pattern' => '/notification', 'route' => 'notification/index'],
 
         ['class' =>'yii\rest\UrlRule','controller'=>'user'
             ,'only'=>['login','signup','reset-password','request-reset-password','sectors','options']
@@ -74,6 +75,15 @@ return [
                 'POST upload' => 'upload' ,
                 'DELETE delete-file' => 'delete-file',
                 'DELETE' => 'delete',
+            ],
+            'pluralize'=>false
+        ],
+
+        ['class' =>'yii\rest\UrlRule',
+            'controller'=>'notification',
+            'only'=>['index'],
+            'extraPatterns'=>[
+                'GET ' => 'index' ,
             ],
             'pluralize'=>false
         ],
