@@ -300,12 +300,23 @@ class SurveyReportResource extends Survey
                         ];
                     }
 
+                    $userAnswersObjCheckNotApplicable = SurveyUserAnswer::find()->where([
+                            'survey_user_answer_user_id'=>$userId,
+                            'survey_user_answer_survey_id'=>$model->survey_id,
+                            'survey_user_answer_question_id'=>$question->survey_question_id
+
+                        ])->one();
+                    $notApplicable = '';
+                    if ($userAnswersObjCheckNotApplicable->not_applicable) {
+                        $notApplicable = $userAnswersObjCheckNotApplicable->survey_user_answer_text;
+                    }
 
                     $qGainedPoints =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '. $this->userId .' and survey_user_answer_question_id ='.$question->survey_question_id )->queryScalar();
                     $data = [
                         'qNum'=>$i++,
                         'qText'=>$question->survey_question_name,
                         'qAnswer'=>$answer ?: ' ',
+                        'qNotApplicable'=>$notApplicable ?: '',
                         'qGainedPoints'=> round($qGainedPoints,2),
                         'qTotalPoints'=>$question->survey_question_point,
                         'qCorrectiveActions'=> $correctiveActions,
