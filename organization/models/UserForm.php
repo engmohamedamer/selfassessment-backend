@@ -51,6 +51,7 @@ class UserForm extends Model
             ['password', 'string', 'min' => 6],
             ['tags','safe'],
             [['status','sector_id'], 'integer'],
+            ['sector_id','required'],
             ['roles', 'string'],
 
 //            [['roles'], 'each',
@@ -103,6 +104,8 @@ class UserForm extends Model
             'roles' => Yii::t('common', 'Roles'),
             'firstname' => Yii::t('common', 'Firstname'),
             'tags' => Yii::t('common', 'Tags'),
+            'sector_id'=> Yii::t('common', 'Sector'),
+
         ];
     }
 
