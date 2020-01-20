@@ -90,12 +90,15 @@ $model->roles =Yii::$app->session->get('UserRole');
                     </div>
 
                     <div class="col-md-4 col-sm-12">
+                        <?php echo $form->field($profile, 'position') ?>
+                    </div>
+                    
+
+                    <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($profile, 'mobile') ?>
                     </div>
 
-                    <div class="col-md-4 col-sm-12">
-                        <?php echo $form->field($profile, 'position') ?>
-                    </div>
+
 
 
                 </div>
