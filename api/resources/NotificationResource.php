@@ -12,7 +12,7 @@ class NotificationResource extends CorrectiveActionReport
                 return $model->survey->survey_name;
             },
             'message'=>function($model){
-                // return 'لديك إجراء تصحيحي - '.$model->corrective_action .' - يجب الانتهاء منه قبل '. $model->corrective_action_date;
+                return 'لديك إجراء تصحيحي يجب الانتهاء منه';
             },
             'survey_id'=>function($model){
                 return $model->survey_id;
