@@ -85,7 +85,19 @@ $this->title = Yii::t('backend', 'Dashboard');
     </div>
 <!-- /.content-header -->
 <div class="row">
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
+
+        <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="icofont-institution"></i></span>
+
+            <div class="info-box-content">
+            <span class="info-box-number"><?= $surveyCount?></span>
+            <span class="info-box-text"><?= Yii::t('backend','Organizations Count') ?></span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-3">
 
             <div class="info-box">
                 <span class="info-box-icon bg-aqua"><i class="icofont-list"></i></span>
@@ -98,7 +110,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div>
     </div>
 
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
         <div class="info-box">
             <span class="info-box-icon bg-red"><i class="icofont-files-stack"></i></span>
 
@@ -111,7 +123,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                 
     </div>
 
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
         <div class="info-box">
             <span class="info-box-icon bg-green"><i class="icofont-ui-user-group"></i></span>
 
@@ -195,10 +207,10 @@ $this->title = Yii::t('backend', 'Dashboard');
                                         <?php // echo $organization->status()[$organization->status] ?>
                                     </td> -->
                                     <td>
-                                        <a href="/organization/view?id=<?= $organization->id ?>" class="text-muted newOrgsActions" style="margin-right: 10px">
+                                        <a href="/organization/view?id=<?= $organization->id ?>" class="text-muted newOrgsActions" title="<?= Yii::t('common','View') ?>" style="margin-right: 10px">
                                             <i class="fas fa-file-contract"></i>
                                         </a>
-                                        <a href="/organization/update?id=<?= $organization->id ?>" class="text-muted newOrgsActions" >
+                                        <a href="/organization/update?id=<?= $organization->id ?>" class="text-muted newOrgsActions"  title="<?= Yii::t('common','Edit') ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
 
