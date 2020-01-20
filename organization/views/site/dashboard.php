@@ -68,11 +68,11 @@ $i = 1;
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label><?= \Yii::t('common', 'Search by section')?></label>
-                                <?php 
+                                <?php
                                     echo TreeViewInput::widget([
                                         // single query fetch to render the tree
                                         // use the Product model you have in the previous step
-                                        'query' => Filter::organizationStructureQuery(), 
+                                        'query' => Filter::organizationStructureQuery(),
                                         'headingOptions'=>['label'=>'Categories'],
                                         'value' => $_GET['SurveySearch']['sector_id'],     // values selected (comma separated for multiple select)
                                         'name' => 'SurveySearch[sector_id]', // input name
@@ -108,14 +108,14 @@ $i = 1;
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                
+
                                 <button class="btn btn-success" style="margin-top: 32px;"><?= \Yii::t('common', 'Advanced Search')?></button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            
+
         </div>
     </div>
     <?php if( (count($contributors->getModels()) == 0 || count($organization->survey) == 0) and (empty($_GET['date']) and  empty($_GET['SurveySearch']['sector_id']) and  empty($_GET['SurveySearch']['tags'])  ) ):?>
@@ -129,7 +129,7 @@ $i = 1;
             <h5><?= Yii::t('common','Modify the visual identity of the site to match the visual identity of your organization'); ?></h5>
             <a href="/organization/update" class='btn small thirdBtn'><?= Yii::t('common','Modify basic data'); ?></a>
         </div>
-        
+
         <div class='item'>
             <span><?= $i++ ?></span>
             <h5><?= Yii::t('common','Add assessment contributors from your organization.'); ?></h5>
@@ -151,11 +151,11 @@ $i = 1;
     <div>
     <div class="row custom-dashboard">
 
-        
+
 
         <!--Countributing in assessments-->
-        <div class="col-md-12">
-            
+        <div class="col-md-6">
+
             <div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title"><?= Yii::t('common','Count Surveys Contributors')?></h3>
@@ -168,14 +168,14 @@ $i = 1;
         </div>
 
         <!--Assessments status-->
-        
-        
+
+
 
     </div>
         <div class="row custom-dashboard">
-            
+
             <div class="col-md-6">
-            
+
             <div class="box box-danger">
                 <div class="box-header with-border">
                     <h3 class="box-title"><?= Yii::t('common','Assessments Contributor Status') .' ( '. $orgSurveyStats['countStats'] .' '. Yii::t('common','status').')' ?></h3>
@@ -208,13 +208,13 @@ $i = 1;
                         <div class="product-img">
                             <?php if($contributor->userProfile->avatar != null):?>
                                 <img src="<?= $contributor->userProfile->avatar ?>" alt="<?= $contributor->userProfile->fullname ?>">
-                            <?php else:?>    
+                            <?php else:?>
                                 <img alt="<?= $contributor->userProfile->fullname ?>" avatar="<?= $contributor->userProfile->fullname ?>">
-                            <?php endif;?>    
+                            <?php endif;?>
                         </div>
                         <div class="product-info">
                             <a class="product-title" href="/user/view?id=<?= $contributor->id ?>"><?= $contributor->userProfile->fullname ?>
-                            
+
                             </a>
                             <span class="product-description">
                             <?= date('Y-m-d',$contributor->created_at) ?>
@@ -224,7 +224,7 @@ $i = 1;
                     <?php endforeach; ?>
                     <!-- /.item -->
                 </ul>
-                    
+
                     <!-- /.users-list -->
                 </div>
                 <!-- /.box-body -->
@@ -237,7 +237,7 @@ $i = 1;
             </div>
         </div>
 
-       
+
     </div>
     <?php endif; ?>
 
