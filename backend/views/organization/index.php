@@ -10,27 +10,9 @@ use kartik\grid\GridView;
 
 $this->title = Yii::t('common', 'Organizations');
 $this->params['breadcrumbs'][] = $this->title;
-$search = "$('.search-button').click(function(){
-    $('.search-form').toggle(1000);
-    return false;
-});";
-$this->registerJs($search);
 
 
-// echo newerton\fancybox3\FancyBox::widget([
 
-//     'config'=>[
-//         'iframe' => [
-
-//             'preload'       => false,
-//             'css'=>[
-//                 'width'=>'900px',
-//                 'height'=>'500px'
-//             ]
-//         ],
-
-//     ],
-// ]);
 
 ?>
 <style>
