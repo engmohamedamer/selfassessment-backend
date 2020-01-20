@@ -27,7 +27,7 @@ class m200119_120007_notification extends Migration
                 PRIMARY KEY (`id`),
                 KEY `fromField` (`from`),
                 KEY `UserField` (`user_id`)
-            ) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=utf8
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
         ");
     }
 
