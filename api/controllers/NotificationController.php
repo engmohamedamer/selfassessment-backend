@@ -20,7 +20,7 @@ class NotificationController extends  MyActiveController
     }
 
     public function actionIndex(){
-    	$notifications = NotificationResource::find()->where(['user_id'=>\Yii::$app->user->identity->getId()])->limit(5)->all();
+    	$notifications = NotificationResource::find()->where(['user_id'=>\Yii::$app->user->identity->getId()])->orderBy('corrective_action_date ASC')->limit(5)->all();
         return ResponseHelper::sendSuccessResponse($notifications);
     }
 

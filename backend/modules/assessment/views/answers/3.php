@@ -51,26 +51,9 @@ foreach ($question->answers as $i => $answer) {
 
     if ($answer->survey_answer_show_corrective_action) {
         echo $form->field($answer,"[{$question->survey_question_id}][$i]corrective_action_date")->input('date');
-        echo $form->field($answer, "[{$question->survey_question_id}][$i]survey_answer_corrective_action")->widget(Widget::class, [
-            'settings' => [
-                'lang' => 'en',
-                'minHeight' => 100,
-                'toolbarFixed' => false,
-                'imageManagerJson' => Url::toRoute(['question/images-get']),
-                'imageUpload' => Url::toRoute(['question/image-upload']),
-                'fileManagerJson' => Url::toRoute(['question/files-get']),
-                'fileUpload' => Url::toRoute(['question/file-upload']),
-                'plugins' => [
-                    'imagemanager',
-                    'video',
-                    'fullscreen',
-                    'filemanager',
-                    'fontsize',
-                    'fontcolor',
-                    'table',
-                ]
-            ]
-        ])->label(false);
+        echo Html::beginTag('div', ['class' => 'desc-100']);
+            echo $form->field($answer, "[{$question->survey_question_id}][$i]survey_answer_corrective_action")->textarea(['rows'=>'5','cols'=>'10'])->label(false);
+        echo Html::endTag('div');
     }
 
         echo Html::tag('br', '');

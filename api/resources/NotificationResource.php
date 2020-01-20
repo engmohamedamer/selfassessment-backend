@@ -1,19 +1,23 @@
 <?php
 
 namespace api\resources;
-use common\models\Notification;
+use backend\models\CorrectiveActionReport;
 
-class NotificationResource extends Notification
+class NotificationResource extends CorrectiveActionReport
 {
     public function fields()
     {
         return [
             'id',
-            'title',
-            'message',
+            'title'=>function($model){
+                return $model->survey->survey_name;
+            },
+            'message'=>function($model){
+                return 'لديك إجراء تصحيحي - '.$model->corrective_action .' - يجب الانتهاء منه قبل '. $model->corrective_action_date;
+            },
             'status',
             'type'=>function($model){
-            	return $model->module;
+            	return 'CorrectiveAction';
             },
         ];
     }
