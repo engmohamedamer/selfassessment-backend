@@ -176,7 +176,7 @@ $i = 1;
                     <h3 class="box-title"><?= Yii::t('common','Assessments Contributor Status') .' ( '. $orgSurveyStats['countStats'] .' '. Yii::t('common','status').')' ?></h3>
                 </div>
                 <div class="box-body">
-                    <canvas id="participantsStatusChart" style="height: 237px; width: 475px;" height="237" width="475"></canvas>
+                    <canvas id="participantsStatusChart"  height="150" width="475"></canvas>
                     <ul class="chart-legend clearfix" style="    margin: 20px;">
                         <li><i class="fa fa-circle-o" style="color: #2ecc71;"></i> <?= $orgSurveyStats['labels'][0] ?> (<?= $orgSurveyStats['data'][0] ?>)</li>
                         <li>&nbsp;</li>
@@ -234,6 +234,77 @@ $i = 1;
                 <!-- /.box-footer -->
                 </div>
                 <!--/.box -->
+            </div>
+
+            <!--Latest assessments-->
+            <div class="col-md-6">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><?= \Yii::t('common', 'Latest Assessments')?></h3>
+
+                        <div class="box-tools pull-right">
+                        <div class="dropdown">
+                        <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cogs"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">اليوم</a>
+                            <a class="dropdown-item" href="#">اليوم السابق</a>
+                            <a class="dropdown-item" href="#">الاسبوع الحالي</a>
+                            <a class="dropdown-item" href="#">الاسبوع السابق</a>
+                            <a class="dropdown-item" href="#">الشهر الحالي</a>
+                            <a class="dropdown-item" href="#">الشهر السابق</a>
+                            <a class="dropdown-item" href="#">السنة الحالية</a>
+                            <a class="dropdown-item" href="#">السنة السابقة</a>
+
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th><?= \Yii::t('common', 'Survey')?></th>
+                                    <th><?= \Yii::t('common', 'Contributors Count')?></th>
+                                    <th><?= \Yii::t('common', 'Status')?></th>
+                                    <th><?= \Yii::t('common', 'Ends At')?></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    $i=1;
+                                    foreach($orgSurveyStats as $survey):
+                                    if ($survey->survey_is_closed) {
+                                        $class = 'danger';
+                                        $status = Yii::t('common','Closed');
+                                    }else{
+                                        $class = 'success';
+                                        $status = Yii::t('common','Open');
+                                    }
+                                ?>
+
+                                <tr>
+                                    <td><?= $i++ ?></td>
+                                    <td><a href="/assessment/default/view?id=<?= $survey->survey_id ?>"><?= $survey->survey_name ?></a></td>
+                                    <td><?= count($survey->stats) ?></td>
+                                    <td><span class="label label-<?=$class?>"><?= $status ?></span></td>
+                                    <td>
+                                        <div class="sparkbar" data-color="#00a65a" data-height="20"><?= $survey->survey_expired_at ?></div>
+                                    </td>
+                                </tr>
+                                <?php endforeach;?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box-footer text-center">
+                    <a href="/assessment" class="uppercase thirdBtn"><?= \Yii::t('common', 'Assessments List') ?></a>
+                </div>
+
+                </div>
             </div>
         </div>
 

@@ -43,7 +43,7 @@ class OrganizationStructure extends \kartik\tree\models\Tree
            [['name'], 'string', 'max' => 60],
            // [['icon'], 'string', 'max' => 255],
             [['root', 'lft', 'rgt', 'lvl','icon_type', 'active', 'icon','selected', 'disabled', 'readonly', 'visible', 'collapsed', 'movable_u', 'movable_d',
-                'movable_l', 'movable_r', 'removable', 'removable_all', 'child_allowed'], 'safe']
+                'movable_l', 'movable_r', 'removable', 'removable_all', 'child_allowed','organization_id'], 'safe']
         ];
     }
 
