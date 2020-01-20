@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
     <?php
     echo TreeView::widget([
-        'query' => OrganizationStructure::find()->addOrderBy('root, lft'),
+        'query' => OrganizationStructure::find()->where(['organization_id'=>\Yii::$app->user->identity->userProfile->organization_id ])->addOrderBy('root, lft'),
         'rootOptions' => ['label' => '<span class="text-primary">'.Yii::t('common','Organization Structure').'</span>'],
         'fontAwesome' => false,
         'isAdmin' => false, // @TODO : put your isAdmin getter here
