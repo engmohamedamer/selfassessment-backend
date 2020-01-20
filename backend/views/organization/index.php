@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="box-body">
                 <div class="row">
-                    <? //=  $this->render('_search', ['model' => $searchModel]); ?>
+                    <?=  $this->render('_search', ['model' => $searchModel]); ?>
 
                 </div>
             </div>
