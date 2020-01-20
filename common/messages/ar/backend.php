@@ -488,7 +488,7 @@ return [
     'Adminstrator Name'=>'اسم المسؤول',
     'Organization Admins'=>'مسؤولي مؤسسة : ',
     'Organization Name'=>'اسم المؤسسة',
-    'Current Year'=>'( السنة الحالة ) ',
+    'Current Year'=>'( السنة الحالية ) ',
     'Last Year'=>'( السنة السابقة ) ',
     'Approve Request'=>'الموافقة علي الطلب',
 
