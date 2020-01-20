@@ -76,12 +76,13 @@ class UserProfile extends ActiveRecord
             [['user_id', 'gender','organization_id','draft','sector_id','main_admin'], 'integer'],
             [['sector_id'], 'default', 'value' => 0],
             [['gender'], 'in', 'range' => [NULL, self::GENDER_FEMALE, self::GENDER_MALE]],
-            [['firstname', 'middlename', 'lastname', 'avatar_path', 'avatar_base_url','mobile','device_token'], 'string', 'max' => 255],
+            [['firstname', 'middlename', 'lastname', 'avatar_path', 'avatar_base_url','mobile','device_token','position'], 'string', 'max' => 255],
             ['locale', 'default', 'value' => Yii::$app->language],
             ['locale', 'in', 'range' => array_keys(Yii::$app->params['availableLocales'])],
             [['picture','nationality_id','specialization_id','job','activity','active','bio'], 'safe'],
             [['nationality_id','specialization_id','job','activity','mobile'],'required', 'on'=>self::SCENARIO_VALIDATE],
             ['firstname','required','message' => 'full_name يجب ادخاله', 'on'=>self::SCENARIO_VALIDATE],
+            ['position','safe'],
 
         ];
     }
@@ -103,6 +104,7 @@ class UserProfile extends ActiveRecord
             'mobile'=> Yii::t('common', 'Mobile'),
             'bio'=> Yii::t('common', 'Bio'),
             'sector_id'=> Yii::t('common', 'Sector'),
+            'position'=> Yii::t('common', 'User Position'),
         ];
     }
 
