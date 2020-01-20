@@ -57,6 +57,11 @@ class SiteController extends BackendController
             ->orderBy('id DESC')
             ->limit(10)
             ->all();
+        
+        $organizationsCount = Organization::find()->select('id,name')
+            ->where($dateOrganizations)
+            ->count();
+        
         // charts data
         $chartData = $this->chartData() ;
         $labels = $chartData['labels']; 
@@ -85,7 +90,7 @@ class SiteController extends BackendController
             ->andWhere($dateUser)
             ->andWhere($this->filterByOrganization('organization_id'));
         $userCount = $user->count();
-        return $this->render('dashboard',compact('organizations','surveyCount','assessmentStatus','userCount','surveyStatsCount','labels','data1','data2'));
+        return $this->render('dashboard',compact('organizations','organizationsCount','surveyCount','assessmentStatus','userCount','surveyStatsCount','labels','data1','data2'));
     }
 
     public function filterByOrganization($organization_column)

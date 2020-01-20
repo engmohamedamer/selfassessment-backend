@@ -125,6 +125,12 @@ $this->params['breadcrumbs'][] = $this->title;
              ]
         ],
         [
+            'attribute' => 'created_at',
+            'value'=>function ($model) {
+                return  date('Y-m-d',$model->created_at);
+            },
+        ],
+        [
             'class' => 'kartik\grid\ActionColumn',
             'template'=>'{view}{update}'
         ],

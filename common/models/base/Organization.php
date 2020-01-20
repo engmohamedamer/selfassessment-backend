@@ -162,6 +162,7 @@ class Organization extends \yii\db\ActiveRecord
             'postalcode'=>Yii::t('common','Postal Code'),
             'from'=>Yii::t('common','From'),
             'to'=>Yii::t('common','To'),
+            'created_at'=>Yii::t('common','Created At'),
         ];
     }
 
