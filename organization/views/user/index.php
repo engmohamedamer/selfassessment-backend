@@ -104,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'attribute'=>'id',
-                        'header'=> Yii::t('common','Tags'),
+                        'header'=> Yii::t('common','Tag'),
                         'value'=>function($model){
                             return $model->tags;
                         },
@@ -113,6 +113,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'class' => 'kartik\grid\ActionColumn',
                         // 'template'=>'{view}{update}'
+                        'width'=>'25%',
+
                     ],
                 ];
 
