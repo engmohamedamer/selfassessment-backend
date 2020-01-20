@@ -145,9 +145,9 @@ class SiteController extends BackendController
             $data2 [] = 0;
         }
 
-        foreach ($usersCountPerMonth as $key => $value) {
-            $data1[($value->month - 1)] = $value->count_month;
-        }
+        // foreach ($usersCountPerMonth as $key => $value) {
+        //     $data1[($value->month - 1)] = $value->count_month;
+        // }
 
         foreach ($surveyStatsCountPerMonth as $key => $value) {
             $data2[($value->month - 1)] = $value->count_month;
