@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <a data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse" class="btn btn-info"><span><i class="fa fa-filter mr-2 ml-2"></i> <?= \Yii::t('common', 'Filter Options')?> </span></a>
 
         </div>
-        
+
     </div>
 </div>
 <!-- /.content-header -->
@@ -47,11 +47,11 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="box-body">
                 <div class="row">
-                    <?=  $this->render('_search', ['model' => $searchModel]); ?>
+                    <? //=  $this->render('_search', ['model' => $searchModel]); ?>
 
                 </div>
             </div>
-            
+
         </div>
     </div>
 
@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="col-lg-12">
         <div class="card">
-            
+
 
             <div class="card-body">
 
