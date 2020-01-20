@@ -17,20 +17,20 @@ $search = "$('.search-button').click(function(){
 $this->registerJs($search);
 
 
-echo newerton\fancybox3\FancyBox::widget([
+// echo newerton\fancybox3\FancyBox::widget([
 
-    'config'=>[
-        'iframe' => [
+//     'config'=>[
+//         'iframe' => [
 
-            'preload'       => false,
-            'css'=>[
-                'width'=>'900px',
-                'height'=>'500px'
-            ]
-        ],
+//             'preload'       => false,
+//             'css'=>[
+//                 'width'=>'900px',
+//                 'height'=>'500px'
+//             ]
+//         ],
 
-    ],
-]);
+//     ],
+// ]);
 
 ?>
 <style>
