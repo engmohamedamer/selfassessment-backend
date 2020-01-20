@@ -19,7 +19,8 @@
 return [
     ''=>'',
     ''=>'',
-    'Add Contributor'=>'إضافة / تعديل بيانات المشاركين',
+    'Update Contributor'=>' تعديل بيانات المشارك ',
+    'Add Contributor'=>'إضافة بيانات المشارك',
     'Survey'=>'قائمة الاستبيانات',
     'You Have no privilege on this dashbaord'=>'ليس لديك صلاحيه للدخول الى النظام',
     'Users Data'=>'بيانات المستخدمين',
