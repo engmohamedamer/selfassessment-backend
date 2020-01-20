@@ -20,7 +20,7 @@ use common\models\Organization;
     public function rules()
     {
         return [
-            [['id', 'city_id', 'district_id', 'limit_account', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'city_id', 'district_id', 'limit_account', 'updated_at'], 'integer'],
             [['name', 'business_sector', 'address', 'email', 'phone', 'mobile', 'conatct_name', 'contact_email', 'contact_phone', 'contact_position', 'first_image_base_url', 'first_image_path', 'second_image_base_url', 'second_image_path','from','to'], 'safe'],
         ];
     }

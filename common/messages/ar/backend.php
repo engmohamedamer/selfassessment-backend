@@ -491,6 +491,7 @@ return [
     'Current Year'=>'( السنة الحالية ) ',
     'Last Year'=>'( السنة السابقة ) ',
     'Approve Request'=>'الموافقة علي الطلب',
+    'Organizations Count'=>'عدد المؤسسات',
 
 ];
 

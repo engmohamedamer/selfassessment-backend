@@ -85,7 +85,19 @@ $this->title = Yii::t('backend', 'Dashboard');
     </div>
 <!-- /.content-header -->
 <div class="row">
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
+
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="icofont-1x icofont-institution"></i></span>
+
+                <div class="info-box-content">
+                <span class="info-box-number"><?= $organizationsCount ?></span>
+                <span class="info-box-text"><?= Yii::t('backend','Organizations Count') ?></span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+    </div>
+    <div class="col-sm-12 col-md-3">
 
             <div class="info-box">
                 <span class="info-box-icon bg-aqua"><i class="icofont-list"></i></span>
@@ -98,7 +110,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div>
     </div>
 
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
         <div class="info-box">
             <span class="info-box-icon bg-red"><i class="icofont-files-stack"></i></span>
 
@@ -111,7 +123,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                 
     </div>
 
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
         <div class="info-box">
             <span class="info-box-icon bg-green"><i class="icofont-ui-user-group"></i></span>
 
@@ -177,7 +189,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                                 <th><?= Yii::t('common','Name') ?></th>
                                 <th><?= Yii::t('common','Assessments')?></th>
                                 <th><?= Yii::t('common','Contributors')?></th>
-                                <th><?= Yii::t('common','Surveys Contributors')?></th>
+                                <th><?= Yii::t('backend','Contributing Count')?></th>
                                 <th><?= Yii::t('common','Actions') ?></th>
                             </tr>
                         </thead>
