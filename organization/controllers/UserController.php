@@ -143,7 +143,9 @@ class UserController extends Controller
         $model->setScenario('create');
         $organization = Yii::$app->user->identity->userProfile->organization;
         if ( !$organization->limit_account ||  ( $organization->limit_account and $organization->limit_account >= $this->userCount() ) ) {
-            if ($model->load(Yii::$app->request->post()) && $profile->load(Yii::$app->request->post()) &&  $model->save()) {
+            if ($model->load(Yii::$app->request->post()) && $profile->load(Yii::$app->request->post()) &&  $model->validate()) {
+                $model->save();
+                $profile->sector_id = $model->sector_id ;
 
                 $organization_id = Yii::$app->user->identity->userProfile->organization_id;
                 $user = $this->UpdateUserRelatedTbls($model,$profile,$organization_id)->user;
@@ -173,13 +175,15 @@ class UserController extends Controller
     public function actionUpdate($id)
     {
         $model = new UserForm();
-        $model->setModel($this->findModel($id));        
-        $model->tags = $this->findModel($id)->tags;        
+        $model->setModel($this->findModel($id));
+        $model->tags = $this->findModel($id)->tags;
         $profile= $model->getModel()->userProfile;
+        $model->sector_id =  $profile->sector_id;
         $model->roles = Yii::$app->session->get('UserRole') ? : User::ROLE_USER;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $profile->load(Yii::$app->request->post());
+            $profile->sector_id =  $model->sector_id;
             $this->UpdateUserRelatedTbls($model,$profile);
             Yii::$app->getSession()->setFlash('alert', [
                 'type' =>'success',

@@ -155,5 +155,5 @@ class UserProfile extends ActiveRecord
             UserProfile::GENDER_FEMALE => Yii::t('backend', 'Female'),
         ];
     }
-    
+
 }
