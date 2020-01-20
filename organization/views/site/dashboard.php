@@ -169,12 +169,7 @@ $i = 1;
 
         <!--Assessments status-->
 
-
-
-    </div>
-        <div class="row custom-dashboard">
-
-            <div class="col-md-6">
+        <div class="col-md-6">
 
             <div class="box box-danger">
                 <div class="box-header with-border">
@@ -190,9 +185,14 @@ $i = 1;
                         <li><i class="fa fa-circle-o" style="color: #22cece;"></i></i> <?= $orgSurveyStats['labels'][2] ?> (<?= $orgSurveyStats['data'][2] ?>)</li>
                     </ul>
                 </div>
-            <!-- /.box-body -->
+                <!-- /.box-body -->
             </div>
         </div>
+
+
+    </div>
+        <div class="row custom-dashboard">
+
             <!--Latest contributors-->
             <div class="col-md-6">
                 <!-- USERS LIST -->
