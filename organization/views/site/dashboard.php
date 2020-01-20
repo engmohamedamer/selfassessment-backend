@@ -237,7 +237,7 @@ $i = 1;
             </div>
 
             <!--Latest assessments-->
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="box box-danger">
                     <div class="box-header with-border">
                         <h3 class="box-title"><?= \Yii::t('common', 'Latest Assessments')?></h3>
