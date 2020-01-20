@@ -39,7 +39,9 @@ class SiteController extends OrganizationController
         $orgSurveyStats = $this->organizationSurveyStats();
         $surveyChart    = $this->surveyChart();
 
-        return $this->render('dashboard',compact('contributors','organization','orgSurveyStats','surveyChart'));
+        $organizationLastSurveys = $this->organizationSurveys($organization->id)->limit(6)->all();
+
+        return $this->render('dashboard',compact('contributors','organization','orgSurveyStats','surveyChart','organizationLastSurveys'));
     }
 
 
@@ -87,7 +89,7 @@ class SiteController extends OrganizationController
 
     private function organizationSurveys($organization_id)
     {
-        $organizationSurvey = Survey::find()->select('survey_id, survey_name, count(survey_stat.survey_stat_id) as survey_stat')
+        $organizationSurvey = Survey::find()->select('survey_id, survey_is_closed, survey_expired_at, survey_name, count(survey_stat.survey_stat_id) as survey_stat')
             ->join('LEFT JOIN','{{%survey_question}}','{{%survey_question}}.survey_question_survey_id = {{%survey}}.survey_id')
             ->join('LEFT JOIN','{{%survey_stat}}','{{%survey_stat}}.survey_stat_survey_id = {{%survey}}.survey_id')
             ->where(['org_id'=>$organization_id])
