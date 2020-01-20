@@ -20,7 +20,7 @@ return [
 
     ''=>'',
     ''=>'',
-    ''=>'',
+    'User Position'=>'المسمى الوظيفى',
     'Contributor Name'=>'اسم المشارك',
 
     'Add Another Admin'=>'إضافة مسؤول آخر',

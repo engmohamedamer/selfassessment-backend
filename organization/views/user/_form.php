@@ -94,12 +94,17 @@ $model->roles =Yii::$app->session->get('UserRole');
                     </div>
 
                     <div class="col-md-4 col-sm-12">
-                            <?php echo $form->field($profile, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
+                        <?php echo $form->field($profile, 'position') ?>
                     </div>
+
+
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($model, 'status')->dropDownList(User::statuses()) ?>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <?php echo $form->field($profile, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
                     </div>
                     <div class="col-md-4 col-sm-12">
                         <?= $form->field($model, 'tags')->widget(TagEditor::class, [
