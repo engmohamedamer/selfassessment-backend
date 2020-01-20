@@ -115,7 +115,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
                                <div class="col-sm-12 slugaddon">
                                    <?= $form->field($model, 'slug',[
-                                       'addon' => ['prepend' => ['content'=>'.selfasses.com']]
+                                       'addon' => ['prepend' => ['content'=> str_ireplace('backend', '',$_SERVER['SERVER_NAME'])]]
                                    ])->textInput(['maxlength' => true]) ?>
                                </div>
                                <hr class='mt-5 mb-5 col-lg-12 row'>

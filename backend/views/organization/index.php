@@ -4,9 +4,10 @@
 /* @var $searchModel common\models\OrganizationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = Yii::t('common', 'Organizations');
 $this->params['breadcrumbs'][] = $this->title;
@@ -96,15 +97,6 @@ $this->params['breadcrumbs'][] = $this->title;
         //      ]
         // ],
         [
-            'label' => Yii::t('common','Organization Link'),
-            'attribute' => 'manager',
-            'value'=>function ($model) {
-
-                return  ' <a href="/user/organization-admins?organization_id='.$model->slug.'">'.$model->slug.'</a> ' ;
-            },
-            'format' => 'raw',
-        ],
-        [
             'attribute' => 'email',
             'format' => 'email',
             'filterInputOptions' => [
@@ -141,7 +133,16 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'class' => 'kartik\grid\ActionColumn',
-            'template'=>'{view}{update}',
+            'template'=>'{view}{update}{link}',
+            'buttons'=>[
+              'link' => function ($url, $model) {  
+                    $link = 'http://'.str_ireplace('backend','',$model->slug.$_SERVER['SERVER_NAME']);
+                    return Html::a("<i class='fas fa-link'></i>", $link, [
+                        'title' => Yii::t('common', 'Organization Link'),
+                        'target'=>'_blank'
+                    ]); 
+              }
+            ],
             'width'=>'15%'
         ],
     ];
