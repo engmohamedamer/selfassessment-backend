@@ -17,6 +17,12 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    'Contributor Name'=>'اسم المشارك',
+
     'Add Another Admin'=>'إضافة مسؤول آخر',
      'Save and Exit'=>'حفظ وخروج',
      'Save Data'=>'حفظ البيانات',
@@ -235,16 +241,16 @@ return [
     '- must be in PNG format.'=>'* يجب ان يكون بصيغة PNG',
     '- size must be 1MB at max.'=>'* يجب ألا يزيد حجم الملف عن 1 ميجابايت',
     '- logo will be presented on white background so make sure that it suits it.'=>'* أن يتناسب الشعار في تباينه مع الخلفية البيضاء اللون',
-    
-    
-    
+
+
+
     'Colors will present your organization identity in the website parts like buttons and backgrounds.'=>'* تظهر الالوان المدخلة بشكل أساسي في الموقع وتعكس هوية المؤسسة مثل الخلفيات والأزرار الرئيسية.',
     'Please enter your main color and the second color with lower opacity.'=>'* برجاء ادخال اللون الرئيسي لهوية المؤسسة وادخال اللون الفرعي بشفافية أقل.',
-    
-    
+
+
     'Footer links will be shown in the footer and contains 5 links with short naming.'=>'* تظهر روابط تذييل الصفحة في أسفل الموقع ويحتوي على 5 روابط يهم المؤسسة إظاهرهم للمستخدم.',
     'Please enter your links names in the required languages.'=>'* برجاء ادخال اسم الرابط الذي سيظهر به باللغتين ثم ادخال الرابط المراد ربطه به.',
-    
+
     'Social media links will be shown in the footer.'=>'* تظهر روابط التواصل الإجتماعي في أسفل الموقع .',
     'Your account not activated yet'=>'حسابك لم يتم تفعيله بعد',
     'All Contributors'=>'كل المشاركين',

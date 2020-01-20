@@ -30,7 +30,7 @@ $model->roles =Yii::$app->session->get('UserRole');
                     if (Yii::$app->session->get('UserRole') == 'governmentAdmin') {
                         echo Yii::t('common','Organization Admins');
                     }else{
-                        echo Yii::t('backend','Add Contributor');
+                        echo $profile->isNewRecord ? Yii::t('backend','Add Contributor') :  Yii::t('backend','Update Contributor');
                     }
 
                 ?>
@@ -38,7 +38,8 @@ $model->roles =Yii::$app->session->get('UserRole');
         </div>
 
         <div class=" actionBtns">
-            <button type="submit" class="btn btn-success"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('backend', 'Save');?></button>
+            <button type="submit" class="btn btn-success"><i class="icofont-verification-check mr-2 ml-2"></i>
+                <?= $profile->isNewRecord ?  Yii::t('backend', 'Save') : Yii::t('backend', 'Update');?></button>
         </div>
 
         <!-- /.col -->

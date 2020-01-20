@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="">
         <div class="">
             <h1 class="m-0 text-dark">
-                <?php 
+                <?php
                     if (Yii::$app->session->get('UserRole') == 'governmentAdmin') {
                         echo Yii::t('common','Organization Admins');
                     }else{
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
 
                 ?>
-                    
+
             </h1>
         </div>
         <div class=" actionBtns">
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 $gridColumns=[
                     ['class' => 'yii\grid\SerialColumn'],
                     [
-                        'header'=> Yii::t('common', 'Full Name') ,
+                        'header'=> Yii::t('common', 'Contributor Name') ,
                         'attribute' => 'SearchFullName',
                         'format'    => 'raw',
                         'value'     => function ($model) {
@@ -145,7 +145,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         '{export}',
                         '{toggleData}',
-                    ],  
+                    ],
                     'toggleDataContainer' => ['class' => 'btn-group mr-2'],
                     // set export properties
                     'export' => [
