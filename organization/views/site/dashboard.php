@@ -276,7 +276,7 @@ $i = 1;
                                 <tbody>
                                 <?php
                                     $i=1;
-                                    foreach($orgSurveyStats as $survey):
+                                    foreach($organizationLastSurveys as $survey):
                                     if ($survey->survey_is_closed) {
                                         $class = 'danger';
                                         $status = Yii::t('common','Closed');
@@ -289,7 +289,7 @@ $i = 1;
                                 <tr>
                                     <td><?= $i++ ?></td>
                                     <td><a href="/assessment/default/view?id=<?= $survey->survey_id ?>"><?= $survey->survey_name ?></a></td>
-                                    <td><?= count($survey->stats) ?></td>
+                                    <td><?= $survey->stats ? count($survey->stats) : 0 ?></td>
                                     <td><span class="label label-<?=$class?>"><?= $status ?></span></td>
                                     <td>
                                         <div class="sparkbar" data-color="#00a65a" data-height="20"><?= $survey->survey_expired_at ?></div>

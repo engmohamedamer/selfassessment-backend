@@ -19,7 +19,8 @@
 return [
     ''=>'',
     ''=>'',
-    'Add Contributor'=>'إضافة / تعديل بيانات المشاركين',
+    'Update Contributor'=>' تعديل بيانات المشارك ',
+    'Add Contributor'=>'إضافة بيانات المشارك',
     'Survey'=>'قائمة الاستبيانات',
     'You Have no privilege on this dashbaord'=>'ليس لديك صلاحيه للدخول الى النظام',
     'Users Data'=>'بيانات المستخدمين',
@@ -478,7 +479,7 @@ return [
     'Assessments Complete'=>'عدد الإستبيانات المكتملة',
     'System Overview'=>'نظرة عامة',
     'Contributing Count'=>'مرات ملىء الإستبيانات',
-    'Contributors Count'=>'مستخدمين لهم حق المشاركة في الإستبيانات',
+    'Contributors Count'=>'عدد المشاركين',
     'Contributors Participation'=>'عدد المشاركين في الاستبيانات',
     'Contributing Report'=>'نسبة المشاركة في الإستبيانات',
     'Update Data'=>'تعديل البيانات',

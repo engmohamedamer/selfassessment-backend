@@ -30,7 +30,7 @@ $model->roles =Yii::$app->session->get('UserRole');
                     if (Yii::$app->session->get('UserRole') == 'governmentAdmin') {
                         echo Yii::t('common','Organization Admins');
                     }else{
-                        echo Yii::t('backend','Add Contributor');
+                        echo $profile->isNewRecord ? Yii::t('backend','Add Contributor') :  Yii::t('backend','Update Contributor');
                     }
 
                 ?>
@@ -38,7 +38,8 @@ $model->roles =Yii::$app->session->get('UserRole');
         </div>
 
         <div class=" actionBtns">
-            <button type="submit" class="btn btn-success"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('backend', 'Save');?></button>
+            <button type="submit" class="btn btn-success"><i class="icofont-verification-check mr-2 ml-2"></i>
+                <?= $profile->isNewRecord ?  Yii::t('backend', 'Save') : Yii::t('backend', 'Update');?></button>
         </div>
 
         <!-- /.col -->
@@ -89,16 +90,24 @@ $model->roles =Yii::$app->session->get('UserRole');
                     </div>
 
                     <div class="col-md-4 col-sm-12">
+                        <?php echo $form->field($profile, 'position') ?>
+                    </div>
+                    
+
+                    <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($profile, 'mobile') ?>
                     </div>
 
-                    <div class="col-md-4 col-sm-12">
-                            <?php echo $form->field($profile, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
-                    </div>
+
+
+
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-sm-12">
                         <?php echo $form->field($model, 'status')->dropDownList(User::statuses()) ?>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <?php echo $form->field($profile, 'locale')->dropDownlist(Yii::$app->params['availableLocales']) ?>
                     </div>
                     <div class="col-md-4 col-sm-12">
                         <?= $form->field($model, 'tags')->widget(TagEditor::class, [
