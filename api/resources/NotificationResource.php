@@ -12,7 +12,13 @@ class NotificationResource extends CorrectiveActionReport
                 return $model->survey->survey_name;
             },
             'message'=>function($model){
-                // return 'لديك إجراء تصحيحي - '.$model->corrective_action .' - يجب الانتهاء منه قبل '. $model->corrective_action_date;
+                $userId = \Yii::$app->user->identity->userProfile;
+                if ($userId->locale == 'en-US') {
+                    $message = 'You have corrective action to be completed';
+                }else{
+                    $message = 'لديك إجراء تصحيحي يجب الانتهاء منه';
+                }
+                return $message;
             },
             'survey_id'=>function($model){
                 return $model->survey_id;
