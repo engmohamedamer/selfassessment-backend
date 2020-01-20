@@ -4,9 +4,10 @@
 /* @var $searchModel common\models\OrganizationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = Yii::t('common', 'Organizations');
 $this->params['breadcrumbs'][] = $this->title;
@@ -88,13 +89,13 @@ $this->params['breadcrumbs'][] = $this->title;
             },
             'format' => 'raw',
         ],
-        [
-            'attribute' => 'business_sector',
-            'filterInputOptions' => [
-                'class'       => 'form-control',
-                'placeholder' => Yii::t('common','Search')
-             ]
-        ],
+        // [
+        //     'attribute' => 'business_sector',
+        //     'filterInputOptions' => [
+        //         'class'       => 'form-control',
+        //         'placeholder' => Yii::t('common','Search')
+        //      ]
+        // ],
         [
             'attribute' => 'email',
             'format' => 'email',
@@ -110,20 +111,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 'placeholder' => Yii::t('common','Search')
              ]
         ],
-        [
-            'attribute' => 'conatct_name',
-            'filterInputOptions' => [
-                'class'       => 'form-control',
-                'placeholder' => Yii::t('common','Search')
-             ]
-        ],
-        [
-            'attribute' => 'contact_phone',
-            'filterInputOptions' => [
-                'class'       => 'form-control',
-                'placeholder' => Yii::t('common','Search')
-             ]
-        ],
+        // [
+        //     'attribute' => 'conatct_name',
+        //     'filterInputOptions' => [
+        //         'class'       => 'form-control',
+        //         'placeholder' => Yii::t('common','Search')
+        //      ]
+        // ],
+        // [
+        //     'attribute' => 'contact_phone',
+        //     'filterInputOptions' => [
+        //         'class'       => 'form-control',
+        //         'placeholder' => Yii::t('common','Search')
+        //      ]
+        // ],
         [
             'attribute' => 'created_at',
             'value'=>function ($model) {
@@ -132,7 +133,17 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'class' => 'kartik\grid\ActionColumn',
-            'template'=>'{view}{update}'
+            'template'=>'{view}{update}{link}',
+            'buttons'=>[
+              'link' => function ($url, $model) {  
+                    $link = 'http://'.str_ireplace('backend','',$model->slug.$_SERVER['SERVER_NAME']);
+                    return Html::a("<i class='fas fa-link'></i>", $link, [
+                        'title' => Yii::t('common', 'Organization Link'),
+                        'target'=>'_blank'
+                    ]); 
+              }
+            ],
+            'width'=>'15%'
         ],
     ];
     ?>

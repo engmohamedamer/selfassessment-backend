@@ -59,6 +59,7 @@ class SiteController extends OrganizationController
         $searchModel = new UserSearch();
         $searchModel->user_role = User::ROLE_USER;
         $searchModel->organization_id = $organization->id;
+        $searchModel->status = 2;
         $dataProvider = $searchModel->search([]);
         $orgUserCount =  count($dataProvider->getModels());
 
@@ -67,7 +68,7 @@ class SiteController extends OrganizationController
         $surveyStat = $this->surveyStat($organizationSurveyIds);
         $sumComplete   = $surveyStat['sumComplete'];
         $sumUncomplete = $surveyStat['sumUncomplete'];
-        $sumNotstart   = ($orgUserCount * count($organization->survey) ) - ( $sumComplete + $sumUncomplete );
+        $sumNotstart   = ($orgUserCount * count($organizationSurveyIds) ) - ( $sumComplete + $sumUncomplete );
 
         return [
             'labels'=> [ 
@@ -87,6 +88,7 @@ class SiteController extends OrganizationController
     private function organizationSurveys($organization_id)
     {
         $organizationSurvey = Survey::find()->select('survey_id, survey_name, count(survey_stat.survey_stat_id) as survey_stat')
+            ->join('LEFT JOIN','{{%survey_question}}','{{%survey_question}}.survey_question_survey_id = {{%survey}}.survey_id')
             ->join('LEFT JOIN','{{%survey_stat}}','{{%survey_stat}}.survey_stat_survey_id = {{%survey}}.survey_id')
             ->where(['org_id'=>$organization_id])
             ->andWhere(Filter::dateFilter('survey_created_at'));
@@ -100,7 +102,8 @@ class SiteController extends OrganizationController
             $organizationSurvey->andFilterWhere(['sector_id'=>$_GET['SurveySearch']['sector_id']]);
         }
 
-        $organizationSurvey->groupBy('survey_id')
+        $organizationSurvey->having(['>','count(survey_question.survey_question_id)',0])
+            ->groupBy('survey_id')
             ->orderBy('survey_id DESC');
         return $organizationSurvey;
     }
