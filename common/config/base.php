@@ -199,12 +199,12 @@ $config['components']['mailer']['transport'] = [
 ];
 
 //alwys log email warning
-$config['components']['log']['targets']['email'] = [
-    'class' => yii\log\EmailTarget::class,
-    'except' => ['yii\web\HttpException:*'],
-    'levels' => ['error', 'warning'],
-    'message' => ['from' => env('ROBOT_EMAIL'), 'to' => env('ADMIN_EMAIL')]
-];
+//$config['components']['log']['targets']['email'] = [
+//    'class' => yii\log\EmailTarget::class,
+//    'except' => ['yii\web\HttpException:*'],
+//    'levels' => ['error', 'warning'],
+//    'message' => ['from' => env('ROBOT_EMAIL'), 'to' => env('ADMIN_EMAIL')]
+//];
 
 
 

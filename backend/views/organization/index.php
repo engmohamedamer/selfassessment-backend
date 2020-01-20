@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="box-body">
                 <div class="row">
-                    <? //=  $this->render('_search', ['model' => $searchModel]); ?>
+                    <?=  $this->render('_search', ['model' => $searchModel]); ?>
 
                 </div>
             </div>
@@ -88,12 +88,21 @@ $this->params['breadcrumbs'][] = $this->title;
             },
             'format' => 'raw',
         ],
+        // [
+        //     'attribute' => 'business_sector',
+        //     'filterInputOptions' => [
+        //         'class'       => 'form-control',
+        //         'placeholder' => Yii::t('common','Search')
+        //      ]
+        // ],
         [
-            'attribute' => 'business_sector',
-            'filterInputOptions' => [
-                'class'       => 'form-control',
-                'placeholder' => Yii::t('common','Search')
-             ]
+            'label' => Yii::t('common','Organization Link'),
+            'attribute' => 'manager',
+            'value'=>function ($model) {
+
+                return  ' <a href="/user/organization-admins?organization_id='.$model->slug.'">'.$model->slug.'</a> ' ;
+            },
+            'format' => 'raw',
         ],
         [
             'attribute' => 'email',
@@ -110,20 +119,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 'placeholder' => Yii::t('common','Search')
              ]
         ],
-        [
-            'attribute' => 'conatct_name',
-            'filterInputOptions' => [
-                'class'       => 'form-control',
-                'placeholder' => Yii::t('common','Search')
-             ]
-        ],
-        [
-            'attribute' => 'contact_phone',
-            'filterInputOptions' => [
-                'class'       => 'form-control',
-                'placeholder' => Yii::t('common','Search')
-             ]
-        ],
+        // [
+        //     'attribute' => 'conatct_name',
+        //     'filterInputOptions' => [
+        //         'class'       => 'form-control',
+        //         'placeholder' => Yii::t('common','Search')
+        //      ]
+        // ],
+        // [
+        //     'attribute' => 'contact_phone',
+        //     'filterInputOptions' => [
+        //         'class'       => 'form-control',
+        //         'placeholder' => Yii::t('common','Search')
+        //      ]
+        // ],
         [
             'attribute' => 'created_at',
             'value'=>function ($model) {
@@ -132,7 +141,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'class' => 'kartik\grid\ActionColumn',
-            'template'=>'{view}{update}'
+            'template'=>'{view}{update}',
+            'width'=>'15%'
         ],
     ];
     ?>

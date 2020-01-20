@@ -125,15 +125,15 @@ class SiteController extends BackendController
             ->groupBy('MONTH(survey_stat_assigned_at)')
             ->all();
 
-        $usersCountPerMonth = User::find()
-            ->select('MONTH(FROM_UNIXTIME(user.created_at)) as month, count(MONTH(FROM_UNIXTIME(user.created_at))) as count_month')
-            ->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
-            ->join('LEFT JOIN','{{%user_profile}}','{{%user_profile}}.user_id = {{%user}}.id')
-            ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])
-            ->andFilterWhere(['YEAR(FROM_UNIXTIME(user.created_at))'=> $year])
-            ->andWhere($this->filterByOrganization('organization_id'))
-            ->groupBy('MONTH(FROM_UNIXTIME(user.created_at))')
-            ->all();
+        // $usersCountPerMonth = User::find()
+        //     ->select('MONTH(FROM_UNIXTIME(user.created_at)) as month, count(MONTH(FROM_UNIXTIME(user.created_at))) as count_month')
+        //     ->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
+        //     ->join('LEFT JOIN','{{%user_profile}}','{{%user_profile}}.user_id = {{%user}}.id')
+        //     ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER])
+        //     ->andFilterWhere(['YEAR(FROM_UNIXTIME(user.created_at))'=> $year])
+        //     ->andWhere($this->filterByOrganization('organization_id'))
+        //     ->groupBy('MONTH(FROM_UNIXTIME(user.created_at))')
+        //     ->all();
         $labels = [];
         $data1 = [];
         $data2 = [];
