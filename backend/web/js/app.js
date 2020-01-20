@@ -122,6 +122,7 @@ $(".clone").click(function() {
 })
 
 ////////////////////Loader Function
+$(".LoaderDiv").addClass("hide");
 $(window).on("load", function() {
 
     setTimeout(function() {
