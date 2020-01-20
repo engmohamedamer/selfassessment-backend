@@ -110,7 +110,16 @@ if (isset($question->survey_question_type)) {
 echo Html::endTag('div');
 
 echo Html::tag('hr', '');
-echo $form->field($question, "[{$question->survey_question_id}]survey_question_can_ignore")->checkbox();
+echo $form->field($question, "[{$question->survey_question_id}]survey_question_can_ignore")->checkbox([
+        'onclick' =>'
+        var id = "surveyquestion-'.$question->survey_question_id.'-survey_question_can_skip";
+        var ignoreid = "surveyquestion-'.$question->survey_question_id.'-survey_question_can_ignore";
+        if(document.getElementById(ignoreid).checked){
+            document.getElementById(id).checked = false;
+        }else{
+            document.getElementById(id).checked = true;
+        }
+    ']);
 echo $form->field($question, "[{$question->survey_question_id}]survey_question_can_skip")->checkbox();
 if ($question->survey_question_type != SurveyType::TYPE_FILE){
     echo $form->field($question, "[{$question->survey_question_id}]survey_question_attachment_file")->checkbox(['class' => 'checkbox-updatable']);
