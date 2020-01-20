@@ -33,7 +33,7 @@ class OrganizationStructureController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => OrganizationStructure::find(),
+            'query' => OrganizationStructure::find()->where(['organization_id'=>\Yii::$app->user->identity->userProfile->organization_id ]),
         ]);
 
         return $this->render('index', [
