@@ -256,7 +256,7 @@ $i = 1;
                             <a class="dropdown-item" href="#">الشهر السابق</a>
                             <a class="dropdown-item" href="#">السنة الحالية</a>
                             <a class="dropdown-item" href="#">السنة السابقة</a>
-                            
+
                         </div>
                     </div>
                         </div>
@@ -276,7 +276,7 @@ $i = 1;
                                 <tbody>
                                 <?php
                                     $i=1;
-                                    foreach($organizationSurvey as $survey):
+                                    foreach($orgSurveyStats as $survey):
                                     if ($survey->survey_is_closed) {
                                         $class = 'danger';
                                         $status = Yii::t('common','Closed');
@@ -303,7 +303,7 @@ $i = 1;
                     <div class="box-footer text-center">
                     <a href="/assessment" class="uppercase thirdBtn"><?= \Yii::t('common', 'Assessments List') ?></a>
                 </div>
-                   
+
                 </div>
             </div>
         </div>
