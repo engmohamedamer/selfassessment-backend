@@ -138,8 +138,7 @@ class SiteController extends BackendController
         $data1 = [];
         $data2 = [];
 
-        $count = ($year < date('Y')) ? '12' : date('m');
-        for ($i=1; $i <= $count; $i++) { 
+        for ($i=1; $i <= 12; $i++) { 
             $labels[] = $this->months()[$i]; 
             $data1 [] = 0;
             $data2 [] = 0;
