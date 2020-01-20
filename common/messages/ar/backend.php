@@ -479,7 +479,7 @@ return [
     'Assessments Complete'=>'عدد الإستبيانات المكتملة',
     'System Overview'=>'نظرة عامة',
     'Contributing Count'=>'مرات ملىء الإستبيانات',
-    'Contributors Count'=>'مستخدمين لهم حق المشاركة في الإستبيانات',
+    'Contributors Count'=>'عدد المشاركين',
     'Contributors Participation'=>'عدد المشاركين في الاستبيانات',
     'Contributing Report'=>'نسبة المشاركة في الإستبيانات',
     'Update Data'=>'تعديل البيانات',
