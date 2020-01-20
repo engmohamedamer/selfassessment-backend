@@ -88,7 +88,7 @@ $this->title = Yii::t('backend', 'Dashboard');
     <div class="col-sm-12 col-md-3">
 
             <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="icofont-institution"></i></span>
+                <span class="info-box-icon bg-yellow"><i class="icofont-institution"></i></span>
 
                 <div class="info-box-content">
                 <span class="info-box-number"><?= $organizationsCount ?></span>
@@ -158,9 +158,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                 </div> -->
             </div>
             <div class="box-footer text-center">
-            <span class="mr-5 ml-5">
-                        <i class="fas fa-square text-primary" style="color:#00a65a !important"></i> <?= Yii::t('backend','Contributors Count') ?>
-                    </span>
+           
 
                     <span class="mr-5 ml-5">
                         <i class="fas fa-square text-gray" style="color:#dd4b39 !important"></i> <?= Yii::t('backend','Contributing Count') ?>
@@ -258,17 +256,7 @@ $(function () {
   var visitorsChart  = new Chart(Charts, {
     data   : {
       labels  : $l,
-      datasets: [{
-        type                : 'line',
-        data                : $d1,
-        backgroundColor     : 'transparent',
-        borderColor         : '#00a65a ',
-        pointBorderColor    : '#00a65a ',
-        pointBackgroundColor: '#00a65a ',
-        fill                : false,
-        pointHoverBackgroundColor: '#00a65a',
-        pointHoverBorderColor    : '#00a65a'
-      },
+      datasets: [
         {
           type                : 'line',
           data                : $d2,
