@@ -208,7 +208,7 @@ class UserSearch extends User
             
             $ids = ArrayHelper::getColumn($structure,'id');
             
-            $query->andWhere(['in','sector_id',$ids]);
+            $query->andWhere(['in','sector_i',$ids]);
         }
     }
 }
