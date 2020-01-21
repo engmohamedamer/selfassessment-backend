@@ -129,6 +129,11 @@ $i = 1;
             <h5><?= Yii::t('common','Modify the visual identity of the site to match the visual identity of your organization'); ?></h5>
             <a href="/organization/update" class='btn small thirdBtn'><?= Yii::t('common','Modify basic data'); ?></a>
         </div>
+        <div class='item'>
+            <span><?= $i++ ?></span>
+            <h5><?= Yii::t('common','Add Your organization structure.'); ?></h5>
+            <a href="/organization-structure" class='btn small thirdBtn'><?= Yii::t('common','Create new structure'); ?></a>
+        </div>
 
         <div class='item'>
             <span><?= $i++ ?></span>
