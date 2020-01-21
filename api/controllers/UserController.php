@@ -108,7 +108,9 @@ class UserController extends  RestController
     }
 
     public function actionSectors(){
-        $organizationStructure = OrganizationStructureResource::find()->where(['lvl'=>0])->addOrderBy('root, lft')->all();
+        $params = \Yii::$app->request->get();
+        $organization = Organization::findOne(['slug'=>$params['organization']]);
+        $organizationStructure = OrganizationStructureResource::find()->where(['organization_id'=>$organization->id,'lvl'=>0])->addOrderBy('root, lft')->all();
         $data = [];
         foreach ($organizationStructure as $key => $value) {
             $one = OrganizationStructureResource::find()->where(['root'=>$value->id,'lvl'=>1])->andWhere(['!=','id',$value->id])->all();
