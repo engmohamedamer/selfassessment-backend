@@ -148,7 +148,7 @@ class SurveyReportResource extends Survey
                             $from = strtotime($question->answers[0]->survey_answer_name);
                             $to = strtotime($question->answers[1]->survey_answer_name);
                             if ($answerValue < $from || $answerValue > $to) {
-                                $correctiveActions[]=  $question->answers[0]->survey_answer_name .' : ' . $question->answers[1]->survey_answer_name;
+                                $correctiveActions[]= $ShouldChoose.'( '. $question->answers[0]->survey_answer_name .' : ' . $question->answers[1]->survey_answer_name .' )';;
                             }
                         }
 
