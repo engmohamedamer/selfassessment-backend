@@ -237,7 +237,7 @@ class SurveyStat extends \yii\db\ActiveRecord
             if ($survey->survey_time_to_pass <= gmdate("i", $result->survey_stat_actual_time) ) {
                 $time = $survey->survey_time_to_pass;
             }else{
-                $time = gmdate("i", $result->survey_stat_actual_time);
+                return $result->survey_stat_actual_time > 60  ? round($result->survey_stat_actual_time / 60,0) : 1;
             }
         }    
         return $time;

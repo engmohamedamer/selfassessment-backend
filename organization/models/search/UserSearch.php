@@ -57,6 +57,20 @@ class UserSearch extends User
         if ($limit) {
             $query->limit($limit);
         }
+
+        // $sector_id = \Yii::$app->user->identity->userProfile->sector_id;
+        // if ($sector_id) {
+        //     $str = OrganizationStructure::findOne($sector_id);
+        //     $structure = OrganizationStructure::find()->where(['root'=>$str->root])->andWhere(['>=','lvl',$str->lvl])->addOrderBy('root, lft')->all();
+        //     $ids = [];
+        //     foreach ($structure as $value) {
+        //         $ids[] = $value->id;
+        //     }
+        //     $query->joinWith(['userProfile'])->andwhere(['organization_id'=>$this->organization_id])->andWhere(['in','sector_i',$ids]);
+        // }else{
+        //     $query->joinWith(['userProfile'])->where(['organization_id'=>$this->organization_id]);
+        // }
+
         $query->joinWith(['userProfile'])->where(['organization_id'=>$this->organization_id]);
 
         self::filter($query);
