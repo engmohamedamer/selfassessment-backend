@@ -309,6 +309,7 @@ class SurveyReportResource extends Survey
                     $notApplicable = '';
                     if ($userAnswersObjCheckNotApplicable->not_applicable) {
                         $notApplicable = $userAnswersObjCheckNotApplicable->survey_user_answer_text;
+                        $correctiveActions = [];
                     }
 
                     $qGainedPoints =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '. $this->userId .' and survey_user_answer_question_id ='.$question->survey_question_id )->queryScalar();
