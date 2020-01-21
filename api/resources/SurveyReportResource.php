@@ -82,7 +82,7 @@ class SurveyReportResource extends Survey
 
                 return [
                     'survey_created_at'=>date("Y-m-d",strtotime($model->survey_created_at)),
-                    'survey_expired_at'=>date("Y-m-d",strtotime($model->survey_expired_at)),
+                    'survey_expired_at'=> $model->survey_expired_at ? date("Y-m-d",strtotime($model->survey_expired_at)) : null,
                     'survey_end_at'=>$survey_end_at,
                     'survey_number'=>$model->survey_id .'/'. date("Y",strtotime($model->survey_created_at)) ,
                     'survey_time_to_pass'=> $model->survey_time_to_pass,
