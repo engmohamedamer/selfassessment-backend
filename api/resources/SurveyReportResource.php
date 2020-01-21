@@ -90,7 +90,7 @@ class SurveyReportResource extends Survey
                     'survey_corrective_number'=> $correctiveActions ? count($correctiveActions) : 0,
                     'survey_corrective_actions'=>$correctiveActions,
                     'total_points'=> $model->survey_point ?: null,
-                    'gained_points'=>$gained_points ?: null,
+                    'gained_points'=>$gained_points ? round($gained_points,2): null,
                     'gained_score'=>$gained_score ?: null,
                     'progress'=>$this->surveyProgress($model,$userId),
                     'actual_time'=> $time,
