@@ -73,10 +73,10 @@ class AssessmentsController extends  MyActiveController
       $commandOpenForAll = $connection->createCommand("
           SELECT survey.survey_id from survey 
           where org_id = :org_id and survey_is_visible = 1
-          and (sector_id is null or sector_id < 1)
-          and survey_id 
+          or (sector_id is null or sector_id < 1)
+          or survey_id 
             not in ( select survey_id from survey_tag where survey_tag.survey_id = survey.survey_id) 
-          and survey_id 
+          or survey_id 
             not in ( select survey_id from survey_selected_users where survey_selected_users.survey_id = survey.survey_id);
       ", [':org_id' => $orgId]);
       $resultOpenForAll = $commandOpenForAll->queryAll();
