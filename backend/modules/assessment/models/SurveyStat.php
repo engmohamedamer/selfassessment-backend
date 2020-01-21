@@ -259,7 +259,7 @@ class SurveyStat extends \yii\db\ActiveRecord
             return ltrim(gmdate("i", $remaining),'0');   
 
         }
-        return gmdate("i", $survey->survey_time_to_pass * 60);
+        return $survey->survey_time_to_pass;
     }
 
     public static function  maxTimeToFinish($survey,$userId){

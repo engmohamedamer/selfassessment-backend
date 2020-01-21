@@ -97,7 +97,7 @@ class Survey extends \yii\db\ActiveRecord
         return [
             [['survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id','start_info','level_title','level_from','level_to','tags','usersList'], 'safe'],
             [['survey_is_pinned', 'survey_is_closed', 'survey_is_private', 'survey_is_visible'], 'boolean'],
-            [['survey_name'], 'string', 'max' => 45],
+            [['survey_name'], 'string', 'max' => 100],
             [['survey_descr'], 'string'],
             [['survey_tags', 'survey_image'], 'string', 'max' => 255],
             // survey_descr
