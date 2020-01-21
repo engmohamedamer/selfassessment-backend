@@ -36,10 +36,11 @@ class Filter
 
     public static function organizationStructureQuery()
     {
+        $organization_id = \Yii::$app->user->identity->userProfile->organization_id;
         $sector_id = \Yii::$app->user->identity->userProfile->sector_id;
         if ($sector_id) {
             $str = OrganizationStructure::findOne($sector_id);
-            return OrganizationStructure::find()->where(['root'=>$str->root])
+            return OrganizationStructure::find()->where(['organization_id'=>$organization_id,'root'=>$str->root])
             ->andWhere(['>=','lvl',$str->lvl])
             ->addOrderBy('root, lft');
         }
