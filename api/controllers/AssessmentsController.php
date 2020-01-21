@@ -308,6 +308,8 @@ class AssessmentsController extends  MyActiveController
                     if ($question->survey_question_can_skip == 0 and (date('Y-m-d', strtotime($value)) != $value)) {
                         return ResponseHelper::sendFailedResponse(['message'=>'Bad Request'],400);
                     }
+
+                    $answerPoint = SurveyAnswer::findOne(['survey_answer_id'=>$value,'survey_answer_question_id'=>$question->survey_question_id]);
                     //handel one answer
                     $userAnswers = $question->userAnswers;
                     $userAnswer = !empty(current($userAnswers)) ? current($userAnswers) : (new SurveyUserAnswer([
@@ -323,6 +325,10 @@ class AssessmentsController extends  MyActiveController
 
                     if ($answerValue >= $from and $answerValue <= $to) {
                         $point = $question->survey_question_point;
+                    }else{
+                        if ($params['status'] == 2) {
+                            $this->correctiveActionReport($question,$answerPoint);
+                        }
                     }
                     $userAnswer->survey_user_answer_point = $point;
                     $userAnswer->survey_user_answer_value = $value;
