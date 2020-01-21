@@ -142,7 +142,7 @@ class UserSearch extends User
     // show list users who have the same admin sector and sub sector
     public static function usersBySector($organization_id)
     {
-        $query = User::find()->select(['id','CONCAT(`firstname`, " ", `lastname`) as name']);
+        $query = User::find()->select(['id','CONCAT(`firstname`, " ", COALESCE(`lastname`)) as name']);
         $query->joinWith(['userProfile'])->where(['organization_id'=>$organization_id]);
 
         if (!\Yii::$app->user->identity->userProfile->main_admin) {
