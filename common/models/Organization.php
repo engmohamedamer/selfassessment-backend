@@ -20,7 +20,7 @@ class Organization extends BaseOrganization
         return 
 	    [
             [['contact_email','email'],'email'],
-            [['contact_phone','phone'], 'match', 'pattern' => '/^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/' ,'message'=>Yii::t('common','Enter valid phone')],
+            [['contact_phone','phone'], 'match', 'pattern' => '/^(009665|9665|\+9665|\+9661|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/' ,'message'=>Yii::t('common','Enter valid phone')],
 
             [['name','slug','business_sector', 'address', 'phone', 'email', 'conatct_name', 'contact_phone', 'contact_email', 'contact_position','first_image','second_image','about'], 'required'],
             [['postalbox','postalcode','mobile'], 'number'],

@@ -44,7 +44,7 @@ class Filter
             ->andWhere(['>=','lvl',$str->lvl])
             ->addOrderBy('root, lft');
         }
-        return OrganizationStructure::find()->addOrderBy('root, lft');
+        return OrganizationStructure::find()->where(['organization_id'=>$organization_id])->addOrderBy('root, lft');
     }
 
     public static function adminAllowedSectorIds()
