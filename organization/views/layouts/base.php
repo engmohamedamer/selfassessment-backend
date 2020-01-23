@@ -153,8 +153,9 @@ if(Yii::$app->user->isGuest){
         }
 
         section.content .survey-container .survey-block .survey-question-name-wrap {
-            background-color: <?= $brandSecColor ?> !important;
-            color: <?= $brandPrimColor ?> !important;
+            /* background-color: <?= $brandSecColor ?> !important;
+            color: <?= $brandPrimColor ?> !important; */
+            background-color: #e4e3e3 !important;
             border: 1px dashed <?= $brandPrimColor ?> !important;
 
 
