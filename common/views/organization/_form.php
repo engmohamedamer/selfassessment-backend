@@ -124,9 +124,13 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                <?
                            }?>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name'])
                                     ->widget(MyMultiLanguageActiveField::className());  ?>
+                            </div>
+                            <div class="col-lg-6">
+                                <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
+
                             </div>
                             <div class="col-lg-6">
                                 <?php echo $form->field($model, 'city_id')->dropDownList([''=>Yii::t('common',  'Select')]+ArrayHelper::map($city, 'id', 'title'),['id'=>'City-id',]) ?>
@@ -166,17 +170,21 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'mobile')->textInput(['maxlength' => true]) ?>
                             </div>
-
- 
-                            <div class="col-lg-6">
-                                <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
-
-                            </div>
                             
-                            <div class="col-lg-6">
+                            <!-- <div class="col-lg-6">
                                 <?= $form->field($model, 'allow_registration')->checkBox(); 
                                 ?>
+                            </div> -->
+
+                            <div class="col-lg-6 allowReg">
+                                <b class='allowLabel'>السماح بالتسجيل للمشاركين</b>
+                                <br>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
                             </div>
+
 
                             <hr class='mt-5 mb-5 col-lg-12 row'>
 

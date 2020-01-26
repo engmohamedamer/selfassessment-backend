@@ -366,7 +366,80 @@ if(Yii::$app->user->isGuest){
         .nav.nav-pills.innernavs {
             margin-bottom: 20px;
         }
-        
+
+
+
+
+        .allowReg .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 25px;
+        }
+
+        .allowReg .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+        }
+
+        .allowReg .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        .allowReg .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        .allowReg input:checked + .slider {
+        background-color:  <?= $brandPrimColor ?>;
+        }
+
+        .allowReg input:focus + .slider {
+        box-shadow: 0 0 1px  <?= $brandPrimColor ?>;
+        }
+
+        .allowReg input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .allowReg .slider.round {
+        border-radius: 34px;
+        }
+
+        .allowReg .slider.round:before {
+        border-radius: 50%;
+        }
+
+        .allowReg .allowLabel {
+            display: block;
+            margin-bottom:0px;
+        }
+
+        .listingReg.allowReg  {
+            flex-direction: column;
+            margin: 0 20px;
+        }
+                
                     
 
 

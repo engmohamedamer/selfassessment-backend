@@ -36,6 +36,14 @@ $this->params['breadcrumbs'][] = $this->title;
             </h1>
         </div>
         <div class=" actionBtns">
+            <div class="allowReg listingReg">
+                <b class='allowLabel'>السماح بالتسجيل للمشاركين</b>
+                <br>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
             <a href="/user/create" class="btn btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('common', 'Create') ?></a>
         </div>
         <!-- /.col -->
