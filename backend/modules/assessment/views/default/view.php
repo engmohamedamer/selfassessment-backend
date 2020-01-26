@@ -119,11 +119,12 @@ error_reporting(0);
                 ]);
 
                 echo Html::beginTag('div', ['class' => 'row']);
-
-                echo Html::beginTag('div', ['class' => 'col-md-3']);
-                    echo $form->field($survey, "survey_point", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
-                    )->input('number',['min'=>0]);
-                echo Html::endTag('div'); // row
+                if ($survey->survey_point) {
+                    echo Html::beginTag('div', ['class' => 'col-md-3']);
+                        echo $form->field($survey, "survey_point", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
+                        )->input('number',['min'=>0]);
+                    echo Html::endTag('div'); // row
+                }
 
                 echo Html::beginTag('div', ['class' => 'col-md-12']);
                 echo $form->field($survey, "survey_descr", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
@@ -154,32 +155,35 @@ error_reporting(0);
 					)->checkbox(['class' => 'checkbox danger'], false);
 				}
                 echo Html::endTag('div');
+                if ($survey->sector_id) {
+                    echo Html::beginTag('div', ['class' => 'col-md-9']);
+                        echo $form->field($survey, 'sector_id')->widget(TreeViewInput::classname(),
+                        [
+                            'name' => 'kvTreeInput',
+                            'value' => 'true', // preselected values
+                            'query' => Filter::organizationStructureQuery(),
+                            'headingOptions' => ['label' => Yii::t('common','Sector')],
+                            'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
+                            'fontAwesome' => true,
+                            'asDropdown' => true,
+                            'multiple' => false,
+                            'options' => ['disabled' => false]
+                        ]);
+                    echo Html::endTag('div');
+                }
 
-                echo Html::beginTag('div', ['class' => 'col-md-9']);
-                    echo $form->field($survey, 'sector_id')->widget(TreeViewInput::classname(),
-                    [
-                        'name' => 'kvTreeInput',
-                        'value' => 'true', // preselected values
-                        'query' => Filter::organizationStructureQuery(),
-                        'headingOptions' => ['label' => Yii::t('common','Sector')],
-                        'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
-                        'fontAwesome' => true,
-                        'asDropdown' => true,
-                        'multiple' => false,
-                        'options' => ['disabled' => false]
+                if ($survey->tags) {
+                    echo Html::beginTag('div', ['class' => 'col-md-12']);
+                    echo $form->field($survey, "tags")->widget(TagEditor::class, [
+                        'clientOptions' => [
+                            'autocomplete' => [
+                                'source' => Url::toRoute(['/tag/suggest'])
+                            ],
+                            'disable'=>true
+                        ]
                     ]);
-                echo Html::endTag('div');
-
-                echo Html::beginTag('div', ['class' => 'col-md-12']);
-                echo $form->field($survey, "tags")->widget(TagEditor::class, [
-                    'clientOptions' => [
-                        'autocomplete' => [
-                            'source' => Url::toRoute(['/tag/suggest'])
-                        ],
-                        'disable'=>true
-                    ]
-                ]);
-                echo Html::endTag('div');
+                    echo Html::endTag('div');
+                }
                 echo Html::endTag('div');
 
                 echo Html::submitButton('', ['class' => 'hidden']);

@@ -159,6 +159,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
                             </div>
+
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
                             </div>
@@ -166,18 +167,16 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 <?= $form->field($model, 'mobile')->textInput(['maxlength' => true]) ?>
                             </div>
 
-
-
-
-
-
-
-
+ 
                             <div class="col-lg-6">
                                 <?= $form->field($model, 'business_sector')->textInput(['maxlength' => true])->widget(MyMultiLanguageActiveField::className());  ?>
 
                             </div>
                             
+                            <div class="col-lg-6">
+                                <?= $form->field($model, 'allow_registration')->checkBox(); 
+                                ?>
+                            </div>
 
                             <hr class='mt-5 mb-5 col-lg-12 row'>
 

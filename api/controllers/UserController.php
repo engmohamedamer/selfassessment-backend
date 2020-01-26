@@ -101,6 +101,10 @@ class UserController extends  RestController
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>Yii::t('common','Organization Not Found')],400);
         }
 
+        if ($organization->allow_registration != 1) {
+            return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>Yii::t('common','There is no possibility of registration')],400);
+        }
+
         $model = new SignupForm();
         if ($model->load(['SignupForm'=>$params]) && $user = $model->save($organization->id)) {
             $user= User::findOne(['id'=> $user->id]);

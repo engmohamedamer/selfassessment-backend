@@ -39,7 +39,8 @@ use yii\behaviors\TimestampBehavior;
  * @property string $second_image_path
  * @property integer $created_at
  * @property integer $updated_at
- * @property integer $status
+ * @property integer $status 
+ * @property integer $allow_registration
  * @property string $postalcode
  * @property string $postalbox
  */
@@ -67,7 +68,7 @@ class Organization extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['city_id', 'district_id', 'limit_account'], 'integer'],
+            [['city_id', 'district_id', 'limit_account','allow_registration'], 'integer'],
             [['postalbox','postalcode'], 'number'],
             ['name', 'string', 'max' => 150],
             [['business_sector', 'email', 'conatct_name', 'contact_email', 'contact_position'], 'string', 'max' => 100],
@@ -163,6 +164,7 @@ class Organization extends \yii\db\ActiveRecord
             'from'=>Yii::t('common','From'),
             'to'=>Yii::t('common','To'),
             'created_at'=>Yii::t('common','Created At'),
+            'allow_registration'=> Yii::t('common','Allow User Registration') ,
         ];
     }
 

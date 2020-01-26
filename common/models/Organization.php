@@ -24,7 +24,7 @@ class Organization extends BaseOrganization
 
             [['name','slug','business_sector', 'address', 'phone', 'email', 'conatct_name', 'contact_phone', 'contact_email', 'contact_position','first_image','second_image','about'], 'required'],
             [['postalbox','postalcode','mobile'], 'number'],
-            [['city_id', 'district_id', 'limit_account'], 'integer'],
+            [['city_id', 'district_id', 'limit_account','allow_registration'], 'integer'],
             [['name'], 'string', 'max' => 150],
             [['business_sector', 'conatct_name', 'contact_position'], 'string', 'max' => 100],
             [['address'], 'string', 'max' => 255],
