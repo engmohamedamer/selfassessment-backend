@@ -293,7 +293,7 @@ $(function () {
           },
           ticks    : $.extend({
             beginAtZero : true,
-            suggestedMax: 200
+            suggestedMax: 20
           }, ticksStyle)
         }],
         xAxes: [{
