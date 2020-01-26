@@ -20,19 +20,15 @@ use yii\bootstrap\Progress;
 $totalVotesCount = $question->getTotalUserAnswersCount();
 
 echo Html::beginTag('div', ['class' => 'answers-stat']);
+    $percent = 0;
  	$count = count($question->survey->stats);
     try {
-        $percent = round(( $totalVotesCount / $count ) * 100,2);
+        if ($count != 0 ) {
+            $percent = round(( $totalVotesCount / $count ) * 100,2);
+        }
     }catch (\Exception $e){
         $percent = 0;
     }
-    // echo Progress::widget([
-    //     'id' => 'progress-' . $answer->survey_answer_id,
-    //     'percent' => $percent,
-    //     'label' => $totalVotesCount,
-    //     'barOptions' => ['class' => 'progress-bar-info init']
-    // ]);
-
     echo "<div class='text-center'>
             <p class='text-center'>
                 <strong>Answer Rate</strong>
