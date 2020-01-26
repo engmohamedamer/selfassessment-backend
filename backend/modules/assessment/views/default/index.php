@@ -109,7 +109,7 @@ BootstrapPluginAsset::register($this);
                         <div class="col-md-3">
                             <div class="form-group">
                                 
-                                <button class="btn btn-success" style="margin-top: 32px;"><?= \Yii::t('common', 'Advanced Search')?></button>
+                                <button class="btn btn-success" style="margin-top: 32px;"><?= \Yii::t('common', 'Search')?></button>
                             </div>
                         </div>
                     
