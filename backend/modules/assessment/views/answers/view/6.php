@@ -20,9 +20,12 @@ use yii\bootstrap\Progress;
 $totalVotesCount = $question->getTotalUserAnswersCount();
 
 echo "<div class='answers-stat'>";
+    $percent = 0;
  	$count = count($question->survey->stats);
     try {
-        $percent = round(( $totalVotesCount / $count) * 100,2);
+        if ($count != 0 ) {
+            $percent = round(( $totalVotesCount / $count) * 100,2);
+        }
     }catch (\Exception $e){
         $percent = 0;
     }

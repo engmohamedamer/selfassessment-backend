@@ -21,8 +21,11 @@ $totalVotesCount = $question->getTotalUserAnswersCount();
 
 echo "<div class='answers-stat'>";
  	$count = count($question->survey->stats);
+    $percent = 0;
     try {
-        $percent = round(( $totalVotesCount / $count) * 100,2);
+        if ($count != 0 ) {
+            $percent = round(( $totalVotesCount / $count) * 100,2);
+        }
     }catch (\Exception $e){
         $percent = 0;
     }
