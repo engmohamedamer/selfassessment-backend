@@ -141,6 +141,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
                             
                             'pluginOptions' => [
                                 'autoclose' => true,
+                                'startDate' => date('Y-m-d h:i:s',time()),
                                 // 'format' => 'd.m.Y H:i'
                             ],
                             'options' => ['placeholder' => Yii::t('survey', 'Expired at')]

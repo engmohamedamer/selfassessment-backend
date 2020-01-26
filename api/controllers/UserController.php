@@ -32,6 +32,11 @@ class UserController extends  RestController
             }
         }
 
+        $organization = Organization::findOne(['slug'=>$params['org']]);
+
+        if (!$organization) {
+            return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>Yii::t('common','Organization Not Found')],400);
+        }
     
         $user = User::find()
             ->andWhere(['or', ['username' => $params['identity'] ], ['email' => $params['identity']]])
@@ -57,9 +62,8 @@ class UserController extends  RestController
 
             //check role
            $roles = ArrayHelper::getColumn( Yii::$app->authManager->getRolesByUser($user->id),'name');
-           $currentRole=   array_keys($roles)[0];
-
-           if( $currentRole != \common\models\User::ROLE_USER){
+           $currentRole  =   array_keys($roles)[0];
+           if( $currentRole != \common\models\User::ROLE_USER || $organization->id != $user->userProfile->organization_id){
                return ResponseHelper::sendFailedResponse(['INVALID_ROLE'=>Yii::t('common','You do not have access')],401);
            }
 

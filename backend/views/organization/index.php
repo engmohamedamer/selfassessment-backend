@@ -89,13 +89,17 @@ $this->params['breadcrumbs'][] = $this->title;
             },
             'format' => 'raw',
         ],
-        // [
-        //     'attribute' => 'business_sector',
-        //     'filterInputOptions' => [
-        //         'class'       => 'form-control',
-        //         'placeholder' => Yii::t('common','Search')
-        //      ]
-        // ],
+        [
+            'attribute' => 'subdomain',
+            'value'=>function ($model) {
+                $link = 'http://'.str_ireplace('backend','',$model->slug.$_SERVER['SERVER_NAME']);
+                    return Html::a($model->slug, $link, [
+                        'title' => Yii::t('common', 'Organization Link'),
+                        'target'=>'_blank'
+                    ]); 
+            },
+            'format' => 'raw',
+        ],
         [
             'attribute' => 'email',
             'format' => 'email',
