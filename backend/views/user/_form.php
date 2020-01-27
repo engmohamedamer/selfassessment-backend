@@ -23,14 +23,13 @@ $model->roles =Yii::$app->session->get('UserRole');
 <div class="content-header">
     <div>
         <div class="">
-            <h1><?= Yii::t('backend','Add Adminstrator');?> </h1>
+            <h1><?=  ($profile->isNewRecord)? Yii::t('backend','Add Admin') : Yii::t('backend','Update Admin');?> </h1>
         </div>
         <div class=" actionBtns">
-            <!-- <?php echo Html::submitButton(Yii::t('backend', 'Save'), ['class' => 'btn btn-success', 'name' => 'signup-button']) ?> -->
             <button type="submit" class="btn btn-success"><i class="icofont-verification-check mr-2 ml-2"></i> <?= Yii::t('backend','Save');?></button>
     </div>
     </div>
-    
+
     <!-- /.col -->
 </div>
 <!-- /.content-header -->
@@ -38,18 +37,18 @@ $model->roles =Yii::$app->session->get('UserRole');
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            
-            
+
+
             <div class="card-body">
-               
+
                         <?php echo $form->field($profile, 'picture')->widget(Upload::class, [
                             'url'=>['avatar-upload']
                         ]) ?>
-                    
-              
+
+
 
                 <div class="row">
-                           
+
                     <div class="col-md-4 col-sm-12">
                                 <?php echo $form->field($profile, 'firstname') ?>
                             </div>
