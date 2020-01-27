@@ -36,9 +36,9 @@ class OrganizationController extends OrganizationBackendController
                 'class' => UploadAction::class,
                 'deleteRoute' => 'second-delete',
                 'on afterSave' => function ($event) {
-                    // $file = $event->file;
-                    // $img = ImageManagerStatic::make($file->read())->resize(50, 50);
-                    // $file->put($img->encode());
+                    $file = $event->file;
+                    $img = ImageManagerStatic::make($file->read())->resize(32, 32);
+                    $file->put($img->encode());
                 }
             ],
             'second-delete' => [
