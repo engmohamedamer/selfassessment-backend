@@ -5,6 +5,7 @@ namespace organization\controllers;
 use Intervention\Image\ImageManagerStatic;
 use Yii;
 use common\commands\SendEmailCommand;
+use common\models\Organization;
 use common\models\User;
 use common\models\UserProfile;
 use common\models\UserToken;
@@ -78,10 +79,17 @@ class UserController extends OrganizationBackendController
         $searchModel->organization_id = Yii::$app->user->identity->userProfile->organization_id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $orgModel = Organization::findOne(Yii::$app->user->identity->userProfile->organization_id);
+
+        if ($orgModel->load(\Yii::$app->request->post())) {
+            $orgModel->save();
+        }
+        
         $dataProvider->sort = [
             'defaultOrder' => ['id' => SORT_DESC]
         ];
         return $this->render('index', [
+            'orgModel'=>$orgModel,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

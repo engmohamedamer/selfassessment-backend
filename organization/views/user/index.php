@@ -7,6 +7,7 @@ use kartik\grid\GridView;
 use trntv\yii\datetime\DateTimeWidget;
 use yii\helpers\Html;
 use yii\web\JsExpression;
+use yii\bootstrap\ActiveForm;
 
 
 $url=\yii\helpers\Url::to(['/helper/users-list']);
@@ -36,13 +37,16 @@ $this->params['breadcrumbs'][] = $this->title;
             </h1>
         </div>
         <div class=" actionBtns">
-            <?php if(isset($_REQUEST['user_role']) and $_REQUEST['user_role'] == 'user'):?>
+            <?php if(isset($_REQUEST['user_role']) and $_REQUEST['user_role'] == 'user'):
+                $form = ActiveForm::begin();
+            ?>
             <div class="allowReg listingReg">
-            <input type="checkbox" checked>
-                <b class='allowLabel'>السماح بالتسجيل للمشاركين</b>
-               
+                <?= $form->field($orgModel,'allow_registration')->checkBox([
+                'onclick' =>'
+                    document.getElementById("w0").submit()
+                ']); ?>
             </div>
-            <?php endif;?>
+            <?php ActiveForm::end(); endif;?>
             <a href="/user/create" class="btn btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('common', 'Create') ?></a>
         </div>
         <!-- /.col -->
