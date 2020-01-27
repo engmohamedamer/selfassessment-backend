@@ -155,18 +155,20 @@ error_reporting(0);
 					)->checkbox(['class' => 'checkbox danger'], false);
 				}
                 echo Html::endTag('div');
-                if ($survey->sector_id) {
+                if (is_array($survey->sector_ids)) {
                     echo Html::beginTag('div', ['class' => 'col-md-9']);
-                        echo $form->field($survey, 'sector_id')->widget(TreeViewInput::classname(),
-                        [
-                            'name' => 'kvTreeInput',
-                            'value' => 'true', // preselected values
+                        echo '<label class="" for="survey-userslist">'. \Yii::t('common', 'Sector') .'</label>';
+                        echo \kartik\tree\TreeViewInput::widget([
+                            'name' => 'Survey[sector_ids]',
+                            'value' => is_array($survey->sector_ids) ? 
+                                    implode(',', $survey->sector_ids) : 'true'
+                            , // preselected values
                             'query' => Filter::organizationStructureQuery(),
-                            'headingOptions' => ['label' => Yii::t('common','Sector')],
+                            'headingOptions' => ['label' => 'Store'],
                             'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
                             'fontAwesome' => true,
                             'asDropdown' => true,
-                            'multiple' => false,
+                            'multiple' => true,
                             'options' => ['disabled' => false]
                         ]);
                     echo Html::endTag('div');

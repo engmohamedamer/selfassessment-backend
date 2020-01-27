@@ -13,6 +13,7 @@ use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\search\SurveySearch;
 use backend\modules\assessment\models\search\SurveyStatSearch;
 use common\models\SurveySelectedUsers;
+use common\models\base\SurveySelectedSectors;
 use webvimark\behaviors\multilanguage\MultiLanguageHelper;
 use yii\base\Model;
 use yii\base\UserException;
@@ -108,6 +109,8 @@ class DefaultController extends Controller
         	'query' => $survey->getRestrictedUsers()
         ]);
 	    $restrictedUserDataProvider->pagination->pageSize = 10;
+        $survey->sector_ids = $survey->surveySelectedSectors;
+
         // $survey->usersList = $survey->surveySelectedUsers;
         return $this->render('view', [
         	'survey' => $survey,
@@ -308,6 +311,7 @@ class DefaultController extends Controller
         
         if (\Yii::$app->request->isPjax) {
             if ($survey->load(\Yii::$app->request->post()) && $survey->validate()) {
+
                 if (is_array($survey['level_title'])) {
                     SurveyDegreeLevel::deleteAll(['survey_degree_level_survey_id'=> $survey->survey_id]);
                     foreach ($survey['level_title'] as $key => $value) {
@@ -328,6 +332,17 @@ class DefaultController extends Controller
                         $selectedUser->save(false);
                     }
                 }
+
+                $sector_ids = explode(',', $survey['sector_ids']);
+                if (is_array($sector_ids)) {
+                    SurveySelectedSectors::deleteAll(['survey_id'=> $survey->survey_id]);
+                    foreach ($sector_ids as $key => $value) {
+                        $selectedSector = new SurveySelectedSectors();
+                        $selectedSector->survey_id = $survey->survey_id;
+                        $selectedSector->sector_id = $value;
+                        $selectedSector->save(false);
+                    }
+                }
                 $survey->save();
 	            $survey->unlinkAll('restrictedUsers', true);
 
@@ -346,7 +361,8 @@ class DefaultController extends Controller
                 ]);
             }
         }
-        $survey->usersList = $survey->surveySelectedUsers;
+        $survey->usersList  = $survey->surveySelectedUsers;
+        $survey->sector_ids = $survey->surveySelectedSectors;
         return $this->render('update', [
         	'survey' => $survey,
 	        'withUserSearch' => $this->allowUserSearch()

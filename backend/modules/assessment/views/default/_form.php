@@ -321,20 +321,33 @@ if (Yii::$app->user->identity->userProfile->organization) {
                     echo Html::endTag('div'); // col-md-3
 
                     echo Html::beginTag('div', ['class' => 'col-md-9']);
-                        echo $form->field($survey, 'sector_id')->widget(TreeViewInput::classname(),
-                        [
-                            'name' => 'kvTreeInput',
-                            'value' => 'true', // preselected values
+                        echo '<label class="" for="survey-userslist">'. \Yii::t('common', 'Sector') .'</label>';
+                        echo \kartik\tree\TreeViewInput::widget([
+                            'name' => 'Survey[sector_ids]',
+                            'value' => is_array($survey->sector_ids) ? 
+                                    implode(',', $survey->sector_ids) : 'true'
+                            , // preselected values
                             'query' => Filter::organizationStructureQuery(),
-                            'headingOptions' => ['label' => Yii::t('common','Sector')],
+                            'headingOptions' => ['label' => 'Store'],
                             'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
                             'fontAwesome' => true,
                             'asDropdown' => true,
-                            'multiple' => false,
+                            'multiple' => true,
                             'options' => ['disabled' => false]
                         ]);
-                   
 
+                        // echo $form->field($survey, 'sector_ids')->widget(TreeViewInput::classname(),
+                        // [
+                        //     'name' => 'kvTreeInput',
+                        //     'value' => '8,9', // preselected values
+                        //     'query' => Filter::organizationStructureQuery(),
+                        //     'headingOptions' => ['label' => Yii::t('common','Sector')],
+                        //     'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
+                        //     'fontAwesome' => true,
+                        //     'asDropdown' => true,
+                        //     'multiple' => true,
+                        //     'options' => ['disabled' => false]
+                        // ]);
                     ?>
                     
                     <?= $form->field($survey, 'tags')->widget(TagEditor::class, [

@@ -64,8 +64,8 @@ class AssessmentsController extends  MyActiveController
       $commandSector = $connection->createCommand("
           SELECT survey.survey_id from user_profile
           join survey on org_id = organization_id 
-          join organization_structure as str on survey.sector_id = str.id where
-          user_profile.sector_id in ( select id from organization_structure where root = str.root  ) 
+          join survey_selected_sectors on survey_selected_sectors.survey_id = survey.survey_id
+          where user_profile.sector_id = survey_selected_sectors.sector_id
           and org_id = :org_id and survey_is_visible = 1 and user_profile.user_id = :user_id group by survey.survey_id;
       ", [':org_id' => $orgId,':user_id'=> $user_id]);
       $resultSector = $commandSector->queryAll();
@@ -73,7 +73,8 @@ class AssessmentsController extends  MyActiveController
       $commandOpenForAll = $connection->createCommand("
           SELECT survey.survey_id from survey 
           where org_id = :org_id and survey_is_visible = 1
-          and (sector_id is null or sector_id < 1)
+          and survey_id 
+            not in ( select survey_id from survey_selected_sectors where survey_selected_sectors.survey_id = survey.survey_id)
           and survey_id 
             not in ( select survey_id from survey_tag where survey_tag.survey_id = survey.survey_id) 
           and survey_id 

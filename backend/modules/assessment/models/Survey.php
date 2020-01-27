@@ -7,6 +7,7 @@ use backend\models\SurveyDegreeLevel;
 use common\models\OrganizationStructure;
 use common\models\SurveySelectedUsers;
 use common\models\Tag;
+use common\models\base\SurveySelectedSectors;
 use sjaakp\taggable\TaggableBehavior;
 use yii\db\Expression;
 use yii\db\conditions\AndCondition;
@@ -57,6 +58,7 @@ class Survey extends \yii\db\ActiveRecord
     public $level_to = null;
 
     public $usersList = [];
+    public $sector_ids = [];
     const SCENARIOUPDATE = 'scenarioupdate';
 
     public $survey_stat;
@@ -95,7 +97,7 @@ class Survey extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id','start_info','level_title','level_from','level_to','tags','usersList'], 'safe'],
+            [['survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id','start_info','level_title','level_from','level_to','tags','usersList','sector_ids'], 'safe'],
             [['survey_is_pinned', 'survey_is_closed', 'survey_is_private', 'survey_is_visible'], 'boolean'],
             [['survey_name'], 'string', 'max' => 100],
             [['survey_descr'], 'string'],
@@ -138,6 +140,7 @@ class Survey extends \yii\db\ActiveRecord
             'level_from'=>Yii::t('survey', 'From a percentage') ,
             'level_to'=>Yii::t('survey', 'To a percentage') ,
             'sector_id'=> Yii::t('common', 'Sector'),
+            'sector_ids'=> Yii::t('common', 'Sector'),
             'tags' => Yii::t('common', 'Tags'),
             'usersList' => Yii::t('common', 'Selected Users'),
         ];
@@ -340,6 +343,15 @@ class Survey extends \yii\db\ActiveRecord
         $selectedList= SurveySelectedUsers::find()->where(['survey_id'=>$this->survey_id])->all();
         foreach($selectedList as $item){
             $data[] = $item->user_id ;
+        }
+        return $data ;
+    }
+
+    public  function getSurveySelectedSectors(){
+        $data=[];
+        $selectedList= SurveySelectedSectors::find()->where(['survey_id'=>$this->survey_id])->all();
+        foreach($selectedList as $item){
+            $data[] = $item->sector_id ;
         }
         return $data ;
     }
