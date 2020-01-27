@@ -371,10 +371,10 @@ if(Yii::$app->user->isGuest){
 
 
         .allowReg .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 25px;
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 27px;
         }
 
         .allowReg .switch input { 
@@ -432,12 +432,12 @@ if(Yii::$app->user->isGuest){
 
         .allowReg .allowLabel {
             display: block;
-            margin-bottom:0px;
+            margin: 0 10px;
         }
 
         .listingReg.allowReg  {
-            flex-direction: column;
-            margin: 0 20px;
+            margin: 0 10px;
+            padding-top: 10px;
         }
                 
                     

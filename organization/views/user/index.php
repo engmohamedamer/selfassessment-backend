@@ -38,7 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class=" actionBtns">
             <div class="allowReg listingReg">
                 <b class='allowLabel'>السماح بالتسجيل للمشاركين</b>
-                <br>
                 <label class="switch">
                     <input type="checkbox" checked>
                     <span class="slider round"></span>
