@@ -173,8 +173,9 @@ $config = [
         'adminEmail' => env('ADMIN_EMAIL'),
         'robotEmail' => env('ROBOT_EMAIL'),
         'availableLocales' => [
-            'ar-AR' => 'Arabic',
             'en-US' => 'English',
+            'ar-AR' => 'Arabic',
+
         ],
         'mlConfig'=>[
             'default_language'=>'en',

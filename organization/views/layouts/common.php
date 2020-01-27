@@ -28,6 +28,15 @@ if(Yii::$app->user->isGuest){
     }
 }
 $organization = Yii::$app->user->identity->userProfile->organization;
+
+if(Yii::$app->controller->id == 'organization'){
+    $OrgTitle = (Yii::$app->language == 'ar' )? $organization->name_ar : $organization->name;
+}else{
+    $OrgTitle = $organization->name;
+
+}
+
+
 $logo = $organization->first_image_base_url . $organization->first_image_path;
 
 ?>
@@ -55,8 +64,8 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
       </a>
         <div class="dropdown-item dropdown-header">
             <!-- . \Yii::$app->language  -->
-            <div><?= $organization->name ?></div>
-            
+            <div><?= $OrgTitle ?></div>
+
         </div>
       <!-- Navbar Right Menu -->
       <div class='user-info-block'>
@@ -66,14 +75,15 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
             <li class="dropdown user user-menu">
 
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                    
-                    <span class="dropdown-item dropdown-header mr-2 ml-2"><?= Yii::t('common','welcome')?><div><?php echo Yii::$app->user->identity->userProfile->fullName; ?></div></span>
+
+                    <span class="dropdown-item dropdown-header mr-2 ml-2">
+                        <?= Yii::t('common','welcome')?><div><?php echo Yii::$app->user->identity->userProfile->fullName; ?></div></span>
                     <?php if(Yii::$app->user->identity->userProfile->avatar != null):?>
                     <img class="user-image" src="<?= Yii::$app->user->identity->userProfile->avatar ?>" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>">
-                    <?php else:?>    
+                    <?php else:?>
                     <img class="user-image" alt="<?= Yii::$app->user->identity->userProfile->fullname ?>" avatar="<?= Yii::$app->user->identity->userProfile->fullname ?>">
                     <?php endif;?>
-                    
+
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <div class="dropdown-divider"></div>
@@ -104,7 +114,7 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
         <aside class="main-sidebar ">
 
     <a href="/" class="logo">
-       <img src="<?= $logo ?>" alt="<?= $organization->name ?>" title="<?= $organization->name ?>" class="brand-image ">
+       <img src="<?= $logo ?>" alt="<?= $OrgTitle ?>" title="<?= $OrgTitle ?>" class="brand-image ">
 
     </a>
             <!-- Sidebar -->
@@ -161,7 +171,7 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
         <strong>&nbsp;</strong>
         <div class="pull-right">
             <!-- <?php echo Yii::powered() ?> -->
-            <?= $organization->name ?> &copy;  <?php echo date('Y') ?>
+            <?= $OrgTitle ?> &copy;  <?php echo date('Y') ?>
         </div>
   </footer>
 </div><!-- ./wrapper -->
