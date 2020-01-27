@@ -172,18 +172,22 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             </div>
                             
                             <!-- <div class="col-lg-6">
-                                <?= $form->field($model, 'allow_registration')->checkBox(); 
+                                <?php // echo $form->field($model,'allow_registration')->checkBox(); 
                                 ?>
                             </div> -->
 
-                            <div class="col-lg-6 allowReg">
+                            <!-- <div class="col-lg-6 allowReg">
                                 <b class='allowLabel'>السماح بالتسجيل للمشاركين</b>
                                 <br>
                                 <label class="switch">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" name="Organization[allow_registration]"    <?php if($model->allow_registration){
+                                            // echo "checked";
+                                            }
+                                        ?>
+                                    >
                                     <span class="slider round"></span>
                                 </label>
-                            </div>
+                            </div> -->
 
 
                             <hr class='mt-5 mb-5 col-lg-12 row'>
