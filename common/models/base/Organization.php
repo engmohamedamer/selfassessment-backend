@@ -46,8 +46,6 @@ use yii\behaviors\TimestampBehavior;
  */
 class Organization extends \yii\db\ActiveRecord
 {
-    use MultiLanguageTrait;
-
     public $first_image;
     public $second_image;
 
@@ -78,54 +76,6 @@ class Organization extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-                'createdAtAttribute' => 'created_at',
-                'updatedAtAttribute' => 'updated_at',
-                'value' => time(),
-            ],
-            [
-                'class' => UploadBehavior::class,
-                'attribute' => 'first_image',
-                'pathAttribute' => 'first_image_path',
-                'baseUrlAttribute' => 'first_image_base_url',
-            ],
-            [
-                'class' => UploadBehavior::class,
-                'attribute' => 'second_image',
-                'pathAttribute' => 'second_image_path',
-                'baseUrlAttribute' => 'second_image_base_url',
-            ],
-            'slug' => [
-                'class' => SluggableBehavior::class,
-                'attribute' => 'name',
-                'ensureUnique' => true,
-                'immutable' => true
-            ],
-            'mlBehavior'=>[
-                'class'    => MultiLanguageBehavior::className(),
-                'mlConfig' => [
-                    'db_table'         => 'translations_with_text',
-                    'attributes'       => [
-                        'name','business_sector','address',
-                        'conatct_name','contact_position',
-                        'about',
-                        ],
-                    'admin_routes'     => [
-                        'organization/update',
-                        'organization/index',
-                        'organization/view',
-                    ],
-                ],
-            ],
-        ];
-    }
 
     /**
      * @inheritdoc

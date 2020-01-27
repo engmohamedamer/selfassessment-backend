@@ -7,6 +7,7 @@ use common\widgets\OrganizationView;
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Organization'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 
 <?= OrganizationView::widget(['model' => $model]) ?>
