@@ -39,7 +39,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $second_image_path
  * @property integer $created_at
  * @property integer $updated_at
- * @property integer $status 
+ * @property integer $status
  * @property integer $allow_registration
  * @property string $postalcode
  * @property string $postalbox
@@ -120,6 +120,7 @@ class Organization extends \yii\db\ActiveRecord
                     'admin_routes'     => [
                         'organization/update',
                         'organization/index',
+                        'organization/view',
                     ],
                 ],
             ],
@@ -175,7 +176,7 @@ class Organization extends \yii\db\ActiveRecord
     {
         return $this->hasOne(\backend\models\City::className(), ['id' => 'city_id']);
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
