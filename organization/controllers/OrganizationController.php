@@ -8,6 +8,7 @@ use common\models\Organization;
 use common\models\OrganizationTheme;
 use trntv\filekit\actions\DeleteAction;
 use trntv\filekit\actions\UploadAction;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
@@ -114,7 +115,7 @@ class OrganizationController extends OrganizationBackendController
         if (($model = Organization::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException(Yii::t('common', 'The requested page does not exist.'));
+            throw new NotFoundHttpException(\Yii::t('common', 'The requested page does not exist.'));
         }
     }
     public  function actionStructure(){

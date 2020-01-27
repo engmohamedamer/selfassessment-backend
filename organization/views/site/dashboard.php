@@ -5,7 +5,6 @@ use common\models\OrganizationStructure;
 use common\models\base\Tag;
 use kartik\select2\Select2;
 use kartik\tree\TreeViewInput;
-use organization\models\Schools;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -18,7 +17,6 @@ $this->title = Yii::t('backend', 'Dashboard');
 
 $i = 1;
 ?>
-
     <!-- <div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
         <img src="./img/preloader.gif" alt="">
     </div> -->
