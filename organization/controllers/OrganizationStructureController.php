@@ -4,15 +4,16 @@ namespace organization\controllers;
 
 use Yii;
 use common\models\OrganizationStructure;
+use organization\controllers\OrganizationBackendController;
 use yii\data\ActiveDataProvider;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * OrganizationStructureController implements the CRUD actions for OrganizationStructure model.
  */
-class OrganizationStructureController extends Controller
+class OrganizationStructureController extends OrganizationBackendController
 {
     public function behaviors()
     {

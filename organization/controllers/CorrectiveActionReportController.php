@@ -5,14 +5,14 @@ namespace organization\controllers;
 use Yii;
 use backend\models\CorrectiveActionReport;
 use backend\models\search\CorrectiveActionReportSearch;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use organization\controllers\OrganizationBackendController;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
 
 /**
  * CorrectiveActionReportController implements the CRUD actions for CorrectiveActionReport model.
  */
-class CorrectiveActionReportController extends Controller
+class CorrectiveActionReportController extends OrganizationBackendController
 {
     public function behaviors()
     {

@@ -8,19 +8,19 @@ use common\commands\SendEmailCommand;
 use common\models\User;
 use common\models\UserProfile;
 use common\models\UserToken;
+use organization\controllers\OrganizationBackendController;
 use organization\models\UserForm;
 use organization\models\search\UserSearch;
 use trntv\filekit\actions\DeleteAction;
 use trntv\filekit\actions\UploadAction;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * UserController implements the CRUD actions for User model.
  */
-class UserController extends Controller
+class UserController extends OrganizationBackendController
 {
 
     public function behaviors()

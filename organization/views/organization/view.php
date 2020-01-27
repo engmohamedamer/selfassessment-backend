@@ -1,10 +1,6 @@
 <?php
 
 use common\widgets\OrganizationView;
-use kartik\grid\GridView;
-use yii\helpers\Html;
-use yii\widgets\DetailView;
-
 /* @var $this yii\web\View */
 /* @var $model common\models\Organization */
 

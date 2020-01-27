@@ -1,7 +1,6 @@
 <?php
 
 use common\widgets\OrganizationForm;
-use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Organization */

@@ -5,15 +5,15 @@ namespace organization\controllers;
 use Yii;
 use common\models\Pages;
 use common\models\search\PagesSearch;
+use organization\controllers\OrganizationBackendController;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use webvimark\behaviors\multilanguage\MultiLanguageHelper;
 
 /**
  * PagesController implements the CRUD actions for Pages model.
  */
-class PagesController extends Controller
+class PagesController extends OrganizationBackendController
 {
     public function behaviors()
     {
@@ -25,18 +25,6 @@ class PagesController extends Controller
                 ],
             ],
         ];
-    }
-
-    public function init()
-    {
-
-        MultiLanguageHelper::catchLanguage();
-        if(\Yii::$app->user->identity->userProfile->locale == 'ar-AR'){
-            \Yii::$app->language = 'ar';
-        }else{
-            \Yii::$app->language = 'en';
-        }
-        parent::init();
     }
 
     /**
