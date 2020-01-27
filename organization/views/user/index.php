@@ -38,11 +38,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class=" actionBtns">
             <?php if(isset($_REQUEST['user_role']) and $_REQUEST['user_role'] == 'user'):?>
             <div class="allowReg listingReg">
+            <input type="checkbox" checked>
                 <b class='allowLabel'>السماح بالتسجيل للمشاركين</b>
-                <label class="switch">
-                    <input type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
+               
             </div>
             <?php endif;?>
             <a href="/user/create" class="btn btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('common', 'Create') ?></a>
