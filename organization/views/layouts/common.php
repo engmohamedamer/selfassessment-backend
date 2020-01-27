@@ -54,6 +54,7 @@ $logo = $organization->first_image_base_url . $organization->first_image_path;
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
       </a>
         <div class="dropdown-item dropdown-header">
+            <!-- . \Yii::$app->language  -->
             <div><?= $organization->name ?></div>
             
         </div>

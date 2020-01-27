@@ -13,6 +13,7 @@ use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\search\SurveySearch;
 use backend\modules\assessment\models\search\SurveyStatSearch;
 use common\models\SurveySelectedUsers;
+use webvimark\behaviors\multilanguage\MultiLanguageHelper;
 use yii\base\Model;
 use yii\base\UserException;
 use yii\data\ActiveDataProvider;
@@ -43,6 +44,13 @@ class DefaultController extends Controller
 //        $module = \Yii::$app->getModule('assessment');
 //        $this->organization_id = $module->params['organization_id'];
 
+        MultiLanguageHelper::catchLanguage();
+        if(\Yii::$app->user->identity->userProfile->locale == 'ar-AR'){
+            \Yii::$app->language = 'ar';
+        }else{
+            \Yii::$app->language = 'en';
+        }
+        
         $this->organization_id =\Yii::$app->user->identity->userProfile->organization_id;
 
         parent::init();

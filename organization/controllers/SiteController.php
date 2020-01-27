@@ -16,7 +16,7 @@ use yii\web\Controller;
 /**
  * Site controller
  */
-class SiteController extends OrganizationController
+class SiteController extends OrganizationBackendController
 {
 
 

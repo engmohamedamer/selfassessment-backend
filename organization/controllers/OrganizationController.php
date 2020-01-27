@@ -8,12 +8,11 @@ use common\models\Organization;
 use common\models\OrganizationTheme;
 use trntv\filekit\actions\DeleteAction;
 use trntv\filekit\actions\UploadAction;
-use webvimark\behaviors\multilanguage\MultiLanguageHelper;
 
 /**
  * Site controller
  */
-class OrganizationController extends \yii\web\Controller
+class OrganizationController extends OrganizationBackendController
 {
     /**
      * @inheritdoc
@@ -56,28 +55,6 @@ class OrganizationController extends \yii\web\Controller
             ]
         ];
     }
-    public function init()
-    {
-
-        MultiLanguageHelper::catchLanguage();
-        if(\Yii::$app->user->identity->userProfile->locale == 'ar-AR'){
-            \Yii::$app->language = 'ar';
-        }else{
-            \Yii::$app->language = 'en';
-        }
-        parent::init();
-    }
-
-
-
-
-
-//    public function init()
-//    {
-//        parent::init();
-//        \Yii::$app->keyStorage->set('accounting.theme-skin', 'skin-blue');
-//
-//    }
 
     /**
      * Displays a single Organization model.
