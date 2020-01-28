@@ -165,7 +165,13 @@ class UserSearch extends User
         if ($sector_id) {
             // return $sector_id;
             $str = OrganizationStructure::findOne($sector_id);
-            $structure = OrganizationStructure::find()->where(['root'=>$str->root])->andWhere(['>=','lvl',$str->lvl])->addOrderBy('root, lft')->all();
+            $structure = OrganizationStructure::find()->where(['root'=>$str->root])
+            ->andWhere(['>','lvl',$str->lvl])
+            ->andWhere(['<','rgt',$str->rgt])
+            ->andWhere(['>','lft',$str->lft])
+            ->orWhere(['id'=>$str->id])
+            ->addOrderBy('root, lft')
+            ->all();
             // $structure = OrganizationStructure::find()->select('id')->where(['root'=>$sector_id])->all();
             $ids = [];
             foreach ($structure as $value) {
@@ -202,7 +208,10 @@ class UserSearch extends User
             
             $structure = OrganizationStructure::find()->select('id')
                 ->where(['root'=>$structureRoot->root])
-                ->andWhere(['>=','lvl',$structureRoot->lvl])
+                ->andWhere(['>','lvl',$structureRoot->lvl])
+                ->andWhere(['<','rgt',$structureRoot->rgt])
+                ->andWhere(['>','lft',$structureRoot->lft])
+                ->orWhere(['id'=>$structureRoot->id])
                 ->addOrderBy('root, lft')
                 ->all();
             

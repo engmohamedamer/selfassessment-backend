@@ -39,9 +39,13 @@ class Filter
         $organization_id = \Yii::$app->user->identity->userProfile->organization_id;
         $sector_id = \Yii::$app->user->identity->userProfile->sector_id;
         if ($sector_id) {
+            // select * from organization_structure where  id = 9  or root = 1  and lvl > 2 and rgt < 12 and lft > 7 
             $str = OrganizationStructure::findOne($sector_id);
             return OrganizationStructure::find()->where(['organization_id'=>$organization_id,'root'=>$str->root])
-            ->andWhere(['>=','lvl',$str->lvl])
+            ->andWhere(['>','lvl',$str->lvl])
+            ->andWhere(['<','rgt',$str->rgt])
+            ->andWhere(['>','lft',$str->lft])
+            ->orWhere(['id'=>$str->id])
             ->addOrderBy('root, lft');
         }
         return OrganizationStructure::find()->where(['organization_id'=>$organization_id])->addOrderBy('root, lft');
