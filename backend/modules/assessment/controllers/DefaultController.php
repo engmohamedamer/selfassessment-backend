@@ -326,10 +326,12 @@ class DefaultController extends Controller
                 if (is_array($survey['usersList'])) {
                     SurveySelectedUsers::deleteAll(['survey_id'=> $survey->survey_id]);
                     foreach ($survey['usersList'] as $key => $value) {
-                        $selectedUser = new SurveySelectedUsers();
-                        $selectedUser->survey_id = $survey->survey_id;
-                        $selectedUser->user_id = $value;
-                        $selectedUser->save(false);
+                        if ($value != 0) {
+                            $selectedUser = new SurveySelectedUsers();
+                            $selectedUser->survey_id = $survey->survey_id;
+                            $selectedUser->user_id = $value;
+                            $selectedUser->save(false);
+                        }
                     }
                 }
 
