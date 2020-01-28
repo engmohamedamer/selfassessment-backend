@@ -133,7 +133,7 @@ class SurveyResource extends Survey
                         }elseif ($question->questionType->survey_type_name == 'Multiple choice') {
                             $type = 'checkbox';
                         }elseif ($question->questionType->survey_type_name == 'Date/Time') {
-                            $type = 'datepicker';
+                            $type = 'text';
                         }elseif ($question->questionType->survey_type_name == 'Ranking') {
                             $type = 'matrixdropdown';
                         }elseif ($question->questionType->survey_type_name == 'Comment box') {
