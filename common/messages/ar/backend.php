@@ -27,7 +27,6 @@ return [
     'You Have no privilege on this dashbaord'=>'ليس لديك صلاحيه للدخول الى النظام',
     'Users Data'=>'بيانات المستخدمين',
     'Add Adminstrator'=>'إضافة / تعديل بيانات المسؤول',
-    'Users'=>'المستخدمين',
 
     'Published'=>'تم النشر',
     'Rejected'=>'مرفوض',
@@ -252,7 +251,8 @@ return [
     'Used size' => 'المساحه المستخدمه',
     'User Registrations' => 'تسجيل المستخدم',
     'Username' => 'اسم المستخدم',
-    'Users' => 'المستخدمين',
+    'Users' => 'المشا',
+    'Participants' => 'المشاركين',
     'View all' => 'اعرض الكل',
     'View user' => 'عرض المستخدم',
     'Web Server' => 'Web Server',

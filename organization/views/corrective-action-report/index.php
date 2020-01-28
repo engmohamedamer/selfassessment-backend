@@ -77,7 +77,7 @@ $usersData = \yii\helpers\ArrayHelper::map($query->asArray()->all(), 'id', 'name
         //     ],
         [
             'attribute' => 'user_id',
-            'label' => Yii::t('backend', 'Users'),
+            'label' => Yii::t('backend', 'Participants'),
             'value' => function($model){
                 if ($model->user)
                 {return $model->user->userProfile->firstname .' '. $model->user->userProfile->lastname ;}
