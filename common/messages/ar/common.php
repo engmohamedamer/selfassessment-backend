@@ -337,8 +337,8 @@ return [
     'Create new structure'=>'إضافة الهيكل التنظيمي',
     'Allow User Registration'=>'السماح بالتسجيل للمشاركين',
     'There is no possibility of registration'=>'لا توجد إمكانية للتسجيل',
-    ''=>'',
-    ''=>'',
+    'Old password does not match.'=>'كلمة المرور القديمة غير متطابقة',
+    'Old password Required.'=>'يجب ادخال كلمة المرور القديمة',
     ''=>'',
     ''=>'',
 ];

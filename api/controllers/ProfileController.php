@@ -28,6 +28,15 @@ class ProfileController extends  MyActiveController
 
     public function actionUpdate(){
         $params = \Yii::$app->request->post();
+
+        if (!isset($params['locale'])) {
+            \Yii::$app->language = 'ar';
+        }else{
+            if ($params['locale'] == 'ar') {
+                \Yii::$app->language = 'ar';
+            }
+        }
+        
         $model = DynamicModel::validateData(['firstname' => $params['firstname'],'email' => $params['email'],'password'=>$params['password'],'mobile'=>$params['mobile']], [
             ['email', 'unique', 'targetClass' => User::class, 'filter' => function ($query) {
                 $query->andWhere(['not', ['id' => \Yii::$app->user->identity->getId()]]);
@@ -52,7 +61,21 @@ class ProfileController extends  MyActiveController
         if (isset($params['address'])) $profile->address = $params['address'] ;
         if (isset($params['position'])) $profile->position = $params['position'] ;
         if (isset($params['email'])) $user->email= $params['email'] ;
-        if (!empty($params['password'])) $user->setPassword($params['password']);
+        // if (!empty($params['password'])) $user->setPassword($params['password']);
+
+        if($params['password'] != ""){
+            if ( !isset($params['old_password']) || empty($params['old_password']) ) {
+                return ResponseHelper::sendFailedResponse(['password'=>\Yii::t('common','Old password Required.')],401);
+            }
+            if (!$user->validatePassword($params['old_password']))
+            {
+                return ResponseHelper::sendFailedResponse(['password'=>\Yii::t('common',"Old password does not match.")],401);
+            }else{
+                $user->setPassword($params['password']);
+            }
+
+        }
+
         if (isset($params['locale'])){
             if ($params['locale'] == 'en') {
                 $profile->locale = 'en-US';
