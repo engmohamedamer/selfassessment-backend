@@ -68,7 +68,7 @@ error_reporting(0);
                 <?php
                 echo Html::beginTag('div', ['class' => 'row']);
                 echo Html::beginTag('div', ['class' => 'col-md-6']);
-                echo Html::label(Yii::t('survey', 'Expired at') . ': ', 'survey-survey_expired_at');
+                echo Html::label(Yii::t('survey', 'Expired at') . ' : ', 'survey-survey_expired_at');
                 echo Editable::widget([
                     'model' => $survey,
                     'attribute' => 'survey_expired_at',
@@ -122,16 +122,18 @@ error_reporting(0);
                 if ($survey->survey_point) {
                     echo Html::beginTag('div', ['class' => 'col-md-3']);
                         echo $form->field($survey, "survey_point", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
-                        )->input('number',['min'=>0]);
+                        )->input('number',['min'=>0,'disabled'=>true]);
                     echo Html::endTag('div'); // row
                 }
 
                 echo Html::beginTag('div', ['class' => 'col-md-12']);
                 echo $form->field($survey, "survey_descr", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
-                )->textarea(['rows' => 3]);
+                )->textarea(['rows' => 3,'disabled'=>true]);
 
-                 echo $form->field($survey, "start_info", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
-                )->textarea(['rows' => 3,'calss'=>'form-control']);
+                if (!empty($survey->start_info)) {
+                     echo $form->field($survey, "start_info", ['template' => "<div class='survey-form-field'>{label}{input}</div>",]
+                    )->textarea(['rows' => 3,'calss'=>'form-control','disabled'=>true]);
+                }
 
                 echo Html::tag('div', '', ['class' => 'clearfix']);
                 echo Html::endTag('div');
@@ -169,7 +171,7 @@ error_reporting(0);
                             'fontAwesome' => true,
                             'asDropdown' => true,
                             'multiple' => true,
-                            'options' => ['disabled' => false]
+                            'options' => ['disabled' => true]
                         ]);
                     echo Html::endTag('div');
                 }
@@ -181,7 +183,7 @@ error_reporting(0);
                             'autocomplete' => [
                                 'source' => Url::toRoute(['/tag/suggest'])
                             ],
-                            'disable'=>true
+                            'disabled'=>true
                         ]
                     ]);
                     echo Html::endTag('div');
