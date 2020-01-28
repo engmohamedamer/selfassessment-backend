@@ -56,7 +56,7 @@ class SurveyReportResource extends Survey
                 $gained_points =  \Yii::$app->db->createCommand('SELECT sum(survey_user_answer_point) as gained_points from survey_user_answer where survey_user_answer_user_id = '. $this->userId .' and survey_user_answer_survey_id ='.$model->survey_id )->queryScalar();
 
                 if ($model->survey_point) {
-                    $gained_score =  ($gained_points / $model->survey_point) * 100;
+                    $gained_score =  (round($gained_points,0) / $model->survey_point) * 100;
                     foreach ($model->levels as $key => $value) {
                         if ($value->from <= $gained_score and $gained_score <= $value->to) {
                             $gained_score = $value->title;
