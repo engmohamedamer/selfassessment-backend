@@ -337,10 +337,12 @@ class DefaultController extends Controller
                 if (is_array($sector_ids)) {
                     SurveySelectedSectors::deleteAll(['survey_id'=> $survey->survey_id]);
                     foreach ($sector_ids as $key => $value) {
-                        $selectedSector = new SurveySelectedSectors();
-                        $selectedSector->survey_id = $survey->survey_id;
-                        $selectedSector->sector_id = $value;
-                        $selectedSector->save(false);
+                        if ($value != 0) {
+                            $selectedSector = new SurveySelectedSectors();
+                            $selectedSector->survey_id = $survey->survey_id;
+                            $selectedSector->sector_id = $value;
+                            $selectedSector->save(false);
+                        }
                     }
                 }
                 $survey->save();
