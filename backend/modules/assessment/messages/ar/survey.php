@@ -103,4 +103,5 @@ return [
     'Multiple choice'=>'خيارات من متعدد',
     'Can Ignore'=>'يمكن تجاهله',
     'Question Point'=>'درجة الإجابة',
+    'Text Area'=>'نص كبير',
 ];

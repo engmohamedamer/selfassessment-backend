@@ -6,10 +6,10 @@
  * Time: 13:59
  */
 
+use kartik\date\DatePicker;
+use vova07\imperavi\Widget;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use vova07\imperavi\Widget;
-use yii\jui\DatePicker;
 /** @var $question \backend\modules\assessment\models\SurveyQuestion */
 /** @var $form \yii\widgets\ActiveForm */
 
@@ -50,7 +50,12 @@ foreach ($question->answers as $i => $answer) {
     echo Html::tag('br', '');
 
     if ($answer->survey_answer_show_corrective_action) {
-        echo $form->field($answer,"[{$question->survey_question_id}][$i]corrective_action_date")->input('date');
+        echo $form->field($answer,"[{$question->survey_question_id}][$i]corrective_action_date")->widget(DatePicker::classname(), [
+                'pluginOptions' => [
+                    'autoclose'=>true,
+                    'format' => 'yyyy-mm-dd',
+                ]
+            ]);
         echo Html::beginTag('div', ['class' => 'desc-100']);
             echo $form->field($answer, "[{$question->survey_question_id}][$i]survey_answer_corrective_action")->textarea(['rows'=>'5','cols'=>'10'])->label(false);
         echo Html::endTag('div');

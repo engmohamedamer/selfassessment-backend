@@ -9,19 +9,26 @@
 use vova07\imperavi\Widget;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use kartik\date\DatePicker;
 
 /** @var $question \backend\modules\assessment\models\SurveyQuestion */
 /** @var $form \yii\widgets\ActiveForm */
 
 foreach ($question->answers as $i => $answer) {
 	if ($i == 0) {
-		$lable =  'Date From';
+		$lable =  \Yii::t('common','Date From');
 	}else{
-		$lable =  'Date To';
+		$lable =  \Yii::t('common','Date To');
 	}
     echo $form->field($answer, "[$question->survey_question_id][$i]survey_answer_name", [
     'template' => "<div class='survey-questions-form-field'><div class='inline-input'>{label}{input}</div>\n{error}</div>",
-    ])->input('date')->label(\Yii::t('survey', $lable));
+    ])->widget(DatePicker::classname(), [
+    'options' => ['placeholder' => $lable],
+    'pluginOptions' => [
+        'autoclose'=>true,
+	    'format' => 'yyyy-mm-dd',
+    ]
+	])->label(\Yii::t('survey', $lable));
     echo Html::tag('br', '');
 }
 

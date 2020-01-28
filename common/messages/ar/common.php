@@ -339,6 +339,6 @@ return [
     'There is no possibility of registration'=>'لا توجد إمكانية للتسجيل',
     'Old password does not match.'=>'كلمة المرور القديمة غير متطابقة',
     'Old password Required.'=>'يجب ادخال كلمة المرور القديمة',
-    ''=>'',
-    ''=>'',
+    'Date From'=>'التاريخ من',
+    'Date To'=>'التاريخ الي',
 ];
