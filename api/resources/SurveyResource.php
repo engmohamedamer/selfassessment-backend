@@ -170,6 +170,8 @@ class SurveyResource extends Survey
 
                         if ($question->questionType->survey_type_name == 'Date/Time') {
                             $data[$c]['inputType'] = 'date';
+                            $data[$c]['dateFormat'] = 'dd/mm/yy';
+                            $data[$c]['config'] = ['changeMonth'=>true,'changeYear'=>true];
                         }
 
                         if ($type == 'rating') {
