@@ -120,74 +120,35 @@ class UserController extends  RestController
         $organization = Organization::findOne(['slug'=>$params['organization']]);
         $organizationStructure = OrganizationStructureResource::find()->where(['organization_id'=>$organization->id,'lvl'=>0])->addOrderBy('root, lft')->all();
         $data = [];
-        foreach ($organizationStructure as $key => $value) {
-            $one = OrganizationStructureResource::find()->where(['root'=>$value->id,'lvl'=>1])->andWhere(['!=','id',$value->id])->all();
-            $childrenOne = [];
-            foreach ($one as $v) {
-                $two = OrganizationStructureResource::find()->where(['root'=>$value->id,'lvl'=>2])->andWhere(['!=','id',$value->id])->all();
-                $childrenTwo = [];
-                foreach ($two as $v2) {
-                    $childrenTwo[] = [
-                        'id'=> $v2->id,
-                        'label'=> $v2->name,
-                        'children'=> $childrenOne,
-                    ];
-                }
-                $childrenOne[] = [
-                    'id'=> $v->id,
-                    'label'=> $v->name,
-                    'children'=> $childrenTwo,
-                ];
-            }
+        foreach ($organizationStructure as $key => $structure) {
             $data[] = [
-                'id'=> $value->id,
-                'label'=> $value->name,
-                'children'=> $childrenOne,
+                'id'=> $structure->id,
+                'label'=> $structure->name,
+                'children'=> $this->buildTree($structure),
             ];
         }
         return ResponseHelper::sendSuccessResponse($data);
     }
 
-    private function buildTree($elements, $parentId = 0) {
-        $branch = array();
 
-        foreach ($elements as $value) {
-            $organizationStructure = OrganizationStructureResource::find()->where(['lvl'=>0])->addOrderBy('root, lft')->all();
-            $branch [] = [
-                'id'=>$value->id,
-                'lable'=>$value->name,
-                'children'=>$this->buildTree(),
-            ];
-        }
-        return $branch;
-    }
-
-    private function sectorTreeItem($root)
+    public function buildTree($structure)
     {
-        $i = 1;
-        $data = OrganizationStructureResource::find()->where(['root'=>$root,'lvl'=>$i])->andWhere(['!=','id',$root])->all();
-
-        $childrenOne = [];
-
-        foreach ($data as $v) {
-            $i++;
-            $two = OrganizationStructureResource::find()->where(['root'=>$root,'lvl'=>$i])->andWhere(['!=','id',$root])->all();
-            if (count($two)>0) {
-                return var_dump(count($two),'two');
-                $d = $this->sectorTreeItem($root,$i); 
-            }else{
-                return var_dump($i,'i');
-            }
-
-            $childrenOne[] = [
-                'id'=> $v->id,
-                'label'=> $v->name,
-                'children'=> $d,
+        $data = [];
+        $organizationStructure = OrganizationStructureResource::find()
+            ->where(['root'=>$structure->root,'lvl'=>$structure->lvl+1])
+            ->andWhere(['<','rgt',$structure->rgt])
+            ->andWhere(['>','lft',$structure->lft])
+            ->addOrderBy('root, lft')
+            ->all();
+        foreach ($organizationStructure as $key => $value) {
+            $data[] = [
+                'id'=> $value->id,
+                'label'=> $value->name,
+                'children'=> $this->buildTree($value),
             ];
         }
-
-        return $childrenOne;
-
+        return $data;
+        
     }
 
     public function actionVerify(){
