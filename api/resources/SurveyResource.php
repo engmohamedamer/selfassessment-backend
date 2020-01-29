@@ -103,10 +103,16 @@ class SurveyResource extends Survey
                     $attach = 'Do you want to attach some files?';
                     $descr = 'Sorting';
                     $info = '<h3>Important instructions</h3><p>  '. $model->start_info .' </p>';
+                    $ignore = "Do you want to ignore this question?";
+                    $yes = 'Yes';
+                    $no = 'No';
                 }else{
                     $attach = 'تريد إرفاق بعض الملفات؟';
                     $descr = 'الترتيب';
                     $info = '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>';
+                    $ignore = " تريد تخطي هذا السؤال لأنه لا يناسب قسمك ؟";
+                    $yes = 'نعم';
+                    $no = 'لا';
                 }
                 $result = [];
                 $result[] = [
@@ -220,8 +226,8 @@ class SurveyResource extends Survey
                                         'title'=> $attach,
                                         'colCount'=> 2,
                                         'choices'=> [
-                                            "نعم",
-                                            "لا"
+                                            $yes,
+                                            $no
                                         ]
                                     ],
                                     [
@@ -251,11 +257,11 @@ class SurveyResource extends Survey
                                     [
                                         'type'=> "radiogroup",
                                         'name'=> "Q-".$question->survey_question_id,
-                                        'title'=> "هذا السؤال يمكن تجاهله، هل تريد تجاهل",
+                                        'title'=> $ignore,
                                         'colCount'=> 2,
                                         'choices'=> [
-                                            "نعم",
-                                            "لا"
+                                            $yes,
+                                            $no
                                         ]
                                     ],
                                 ],
