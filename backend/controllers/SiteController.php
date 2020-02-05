@@ -69,10 +69,13 @@ class SiteController extends BackendController
         $data2  = $chartData['data2']; 
         
         $dateSurvey = Filter::dateFilter('survey_created_at');
-        $surveyCount = Survey::find()
-            ->where($dateSurvey)
-            ->andWhere($this->filterByOrganization('org_id'))->count();
 
+        $surveyCount = Survey::find()->join('LEFT JOIN','{{%survey_question}}','{{%survey_question}}.survey_question_survey_id = {{%survey}}.survey_id')
+            ->where($dateSurvey)
+            ->andWhere($this->filterByOrganization('org_id'))
+            ->having(['>','count(survey_question.survey_question_id)',0])
+            ->groupBy('survey_id')
+            ->count();
         $dateStats = Filter::dateFilter('survey_stat_assigned_at');
         $surveyStatsCount  = SurveyStat::find()->where($dateStats);
 
