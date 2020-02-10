@@ -1,12 +1,12 @@
 <?php
 use yii\helpers\Html;
 $resetLink = Yii::getAlias('@backendUrl').'/sign-in/reset-password?token='.$token;
-$logo  = Yii::getAlias('@frontendUrl').'/images/Tamkeen.png';
+$logo  = Yii::getAlias('@backendUrl').'/img/tamkeen-logo2.png';
 ?>
 
   <!-- start preheader -->
   <div class="preheader" style="display: none; max-width: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #fff; opacity: 0;">
-    تعديل كلمة المرور الخاصة بحسابك علي <?= Yii::getAlias('@frontendUrl')  ?>
+    تعديل كلمة المرور الخاصة بحسابك علي <?= Yii::getAlias('@backendUrl')  ?>
   </div>
   <!-- end preheader -->
 
