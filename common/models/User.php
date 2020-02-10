@@ -352,25 +352,11 @@ class User extends ActiveRecord implements IdentityInterface
 
 
 
-    public static function IsSchoolAdmin($user){
+    public static function CheckIsAdmin($user_id){
 
-        $roles = ArrayHelper::getColumn( Yii::$app->authManager->getRolesByUser($user->getId()),'name');
+        $roles = ArrayHelper::getColumn( Yii::$app->authManager->getRolesByUser($user_id),'name');
         $currentRole=   array_keys($roles)[0];
-
-        if($currentRole == User::ROLE_SCHOOL_ACTIVITY_ADMIN or  $currentRole== User::ROLE_SCHOOL_ADMIN){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-
-    public static function IsOfficialNEoffice($user){
-
-        $roles = ArrayHelper::getColumn( Yii::$app->authManager->getRolesByUser($user->getId()),'name');
-        $currentRole=   array_keys($roles)[0];
-
-        if($currentRole == User::ROLE_OFFICLAL_NE_OFFICE){
+        if($currentRole == User::ROLE_ADMINISTRATOR or  $currentRole== User::ROLE_MANAGER){
             return true;
         }else{
             return false;

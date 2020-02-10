@@ -66,11 +66,11 @@ class UserSearch extends User
                 ]
             );
         }
-
+        $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
+            ->andFilterWhere([ '<>','{{%rbac_auth_assignment}}.item_name' , User::ROLE_ADMINISTRATOR]);
 
         if($this->user_role){
-            $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
-                ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => $this->user_role]);
+            $query->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => $this->user_role]);
         }
 
         $query->andFilterWhere([

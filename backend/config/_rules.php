@@ -23,19 +23,32 @@ return [
         'allow' => true,
         'roles' => ['?'],
     ],
+
+
     [
         'controllers' => ['user'],
         'allow' => true,
-        'roles' => ['administrator','manager'],
+        'roles' => ['administrator'],
+    ],
+
+    [
+        'controllers' => ['user'],
+        'allow' => true,
+        'actions' => ['profile','account','organization-admins','update','create-organization-admin'],
+
+        'roles' => ['manager'],
     ],
     [
         'controllers' => ['user'],
         'allow' => false,
     ],
-       [
+
+    [
         'allow' => true,
         'roles' => ['manager', 'administrator'],
     ],
+
+
 
     /**  *-------------------------------- Moe Admin  --------------------------------------------   **/
 
