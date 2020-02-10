@@ -1,10 +1,11 @@
 <?php
+use api\helpers\ResetPassword;
 use yii\helpers\Html;
+
 $organization = $user->userProfile->organization;
 $logo     = $organization->first_image_base_url . $organization->first_image_path;
-$siteLink = $organization->slug . $_SERVER['SERVER_NAME'];
-
-$resetLink = $_SERVER['REQUEST_SCHEME'] . '://'.str_ireplace('endpoints','',$siteLink).'/reset-password?token='.$token;
+$siteLink = ResetPassword::siteLink($user);
+$resetLink = $siteLink.'/reset-password?token='.$token;
 ?>
 
   <!-- start preheader -->
