@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 $resetLink = Yii::getAlias('@backendUrl').'/sign-in/reset-password?token='.$token;
-$logo  = Yii::getAlias('@backendUrl').'/images/Tamkeen.png';
+$logo  = Yii::getAlias('@backendUrl').'/img/tamkeen-logo2.png';
 ?>
 
   <!-- start preheader -->
