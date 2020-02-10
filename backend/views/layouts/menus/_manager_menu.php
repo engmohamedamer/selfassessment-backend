@@ -50,8 +50,8 @@ echo Menu::widget([
     'submenuTemplate' => "\n<ul class=\"treeview-menu\">\n{items}\n</ul>\n",
     'activateParents' => true,
     'items' => [
-        
-       
+
+
         [
             'label' => Yii::t('backend', 'Dashboard'),
             'url' => '/',
@@ -66,7 +66,7 @@ echo Menu::widget([
         //     'label' => Yii::t('backend', 'Users Data'),
         //     'options' => ['class' => 'header'],
         // ],
-        
+
         // [
         //     'label' => Yii::t('backend', 'Users'),
         //     'url' => '#',
@@ -75,7 +75,7 @@ echo Menu::widget([
         //     'active' => (Yii::$app->controller->module->id == 'user'),
         //     'items' => [
 
-                
+
         //     ],
         // ],
 
@@ -95,7 +95,7 @@ echo Menu::widget([
             'url' => '#',
             'options' => ['class' => 'treeview'],
             'active' =>  (Yii::$app->controller->id == 'user'),
-            'visible' => (Yii::$app->user->can('administrator') or  Yii::$app->user->can('manager') ),
+            'visible' => (Yii::$app->user->can('administrator') ),
             'items' => $admins,
         ],
 
@@ -143,9 +143,9 @@ echo Menu::widget([
         //     'options' => ['class' => 'nav-item'],
         // ],
 
-       
-        
 
-        
+
+
+
     ],
 ]) ?>
