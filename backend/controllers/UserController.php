@@ -240,7 +240,7 @@ class UserController extends BackendController
             if ($profile->organization_id) {
                 return $this->redirect(['/user/organization-admins?organization_id='.$profile->organization_id]);
             }
-            return $this->redirect(['index']);
+            return $this->redirect(['index?user_role=manager']);
         }
 
         // return var_dump($model->errors);
