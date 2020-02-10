@@ -166,7 +166,7 @@ class UserController extends  RestController
             if ($user->save()) {
                 return \Yii::$app->commandBus->handle(new SendEmailCommand([
                     'to' => $user->email,
-                    'subject' => \Yii::t('frontend', \Yii::t('common','Password Reset')),
+                    'subject' => 'استعادة كلمة المرور',
                     'view' => 'passwordResetToken',
                     'params' => [
                         'user' => $user,
