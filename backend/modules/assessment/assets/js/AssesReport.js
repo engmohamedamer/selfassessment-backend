@@ -165,7 +165,7 @@ var app = new Vue({
                                     </p> -->
                                 </div>
                                 
-                                <div class="item wow fadeInUpBig animated animated" data-number="359" style="visibility: visible;">
+                                <div class="item wow fadeInUpBig animated animated" v-if="reportGeneralInfo.gained_score > 0" data-number="359" style="visibility: visible;">
                                     <i v-if="reportGeneralInfo.gained_points > (reportGeneralInfo.total_points/2) || reportGeneralInfo.gained_points == null" class="far fa-smile"></i>
                                     <i v-else class="far fa-frown"></i>
                                     <p id="number3" class="number"  v-if="reportGeneralInfo.gained_points >= 0">{{reportGeneralInfo.gained_points}}/{{reportGeneralInfo.total_points}} </p>
