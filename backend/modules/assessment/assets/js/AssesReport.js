@@ -1,19 +1,19 @@
 var currentHostname = window.location.hostname;
 var api;
 
-  if ( currentHostname  == 'organization.selfassest.localhost') {
-         api ='http://api.selfassest.localhost';
-  }
-  // else if(currentHostname  === 'organization.selfassest.localhost' ){
-  //       api = 'http://api.selfassest.localhost/';
-  // }
-  else{
-        api = 'http://api.sahlit.com';
-  } 
+if (currentHostname == 'organization.selfassest.localhost') {
+    api = 'http://api.selfassest.localhost';
+}
+// else if(currentHostname  === 'organization.selfassest.localhost' ){
+//       api = 'http://api.selfassest.localhost/';
+// }
+else {
+    api = 'http://api.tamkeentechlab.com';
+}
 
-  console.log(currentHostname)
+console.log(currentHostname)
 
-  var app = new Vue({
+var app = new Vue({
     el: "#assessmentReport",
     vuetify: new Vuetify(),
     template: `
@@ -113,7 +113,7 @@ var api;
 
                     <div id="projectFacts" class="sectionClass">
                         <div class="fullWidth eight columns">
-                            <div class="projectFactsWrap ">
+                            <div class="projectFactsWrap " style="justify-content: center;">
                                 <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible;">
                                     <i class="fas fa-tasks"></i>
                                     <p id="number1" class="number">{{reportGeneralInfo.survey_corrective_number}}</p>
@@ -165,7 +165,7 @@ var api;
                                     </p> -->
                                 </div>
                                 
-                                <div class="item wow fadeInUpBig animated animated" data-number="359" style="visibility: visible;">
+                                <div class="item wow fadeInUpBig animated animated" v-if="reportGeneralInfo.gained_score > 0" data-number="359" style="visibility: visible;">
                                     <i v-if="reportGeneralInfo.gained_points > (reportGeneralInfo.total_points/2) || reportGeneralInfo.gained_points == null" class="far fa-smile"></i>
                                     <i v-else class="far fa-frown"></i>
                                     <p id="number3" class="number"  v-if="reportGeneralInfo.gained_points >= 0">{{reportGeneralInfo.gained_points}}/{{reportGeneralInfo.total_points}} </p>
@@ -288,118 +288,114 @@ var api;
     `,
 
     data: {
-      Api: api,
-      tocken: $("#assessmentReport").attr("data-tocken"),
-      SurveyId:$("#assessmentReport").attr("data-SurveyId"),
-      UserId:$("#assessmentReport").attr("data-UserId"),
-      Asses:{},
-      search: '',
-      headers: [
-        { text: 'الرقم', align: '', sortable: true, value: 'qNum' },
-        { text: 'السؤال', align: '', value: 'qText' },
-        { text: 'الإجابة', align: '', value: 'qAnswer' },
-        { text: 'الملفات المرفقة', value: 'qAttatchments' },
-        { text: 'النقاط المحصلة', align: 'center', value: 'qGainedPoints' },
-        // { text: 'النقاط الإجمالية', align: 'center', value: 'qTotalPoints' },
-        { text: 'الإجرائات التصحيحية', value: 'qCorrectiveActions' },
-      ],
-      assessmentData: {},
-      dialog:false,
-      surveyResults: {},
-      answerValue: true,
-      questionsReport: [],
-      reportGeneralInfo: {},
-      assessmentTitle: '',
-      assessmentDesc: '',
-      pagination: {
-        rowsPerPage: 100
-      },
-      methods: {
-        customFilter(items, search, filter) {
-            search = search.toString().toLowerCase();
-            return items.filter(row => filter(row["qNum"], search));
-        } 
-      },
-     },
+        Api: api,
+        tocken: $("#assessmentReport").attr("data-tocken"),
+        SurveyId: $("#assessmentReport").attr("data-SurveyId"),
+        UserId: $("#assessmentReport").attr("data-UserId"),
+        Asses: {},
+        search: '',
+        headers: [
+            { text: 'الرقم', align: '', sortable: true, value: 'qNum' },
+            { text: 'السؤال', align: '', value: 'qText' },
+            { text: 'الإجابة', align: '', value: 'qAnswer' },
+            { text: 'الملفات المرفقة', value: 'qAttatchments' },
+            { text: 'النقاط المحصلة', align: 'center', value: 'qGainedPoints' },
+            // { text: 'النقاط الإجمالية', align: 'center', value: 'qTotalPoints' },
+            { text: 'الإجرائات التصحيحية', value: 'qCorrectiveActions' },
+        ],
+        assessmentData: {},
+        dialog: false,
+        surveyResults: {},
+        answerValue: true,
+        questionsReport: [],
+        reportGeneralInfo: {},
+        assessmentTitle: '',
+        assessmentDesc: '',
+        pagination: {
+            rowsPerPage: 100
+        },
+        methods: {
+            customFilter(items, search, filter) {
+                search = search.toString().toLowerCase();
+                return items.filter(row => filter(row["qNum"], search));
+            }
+        },
+    },
     mounted() {
-      $.ajax({
-        url:api+"/assessments/custom-report/"+this.SurveyId+"/"+this.UserId,
-        method: "GET",
-        "headers": {
-          "Content-Type": "application/json",
-          Authorization: "Bearer "+this.tocken
+        $.ajax({
+            url: api + "/assessments/custom-report/" + this.SurveyId + "/" + this.UserId,
+            method: "GET",
+            "headers": {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + this.tocken
 
-        },
-        beforeSend: function() {
-            $(".survey-preloader").show()
+            },
+            beforeSend: function() {
+                $(".survey-preloader").show()
 
-        },
-        success: res => {
-          if(res.status == 200){
-            
-            this.questionsReport = res.data.answers
-            this.reportGeneralInfo = res.data.generalInfo
-            this.assessmentDesc = res.data.description
-            this.assessmentTitle = res.data.title
-            $("#tabletemplate").show()
-            $("#projectFacts").show()
-            $(".content-header").show()
-            $(".survey-preloader").hide()
-          }
-        },
-        error:res =>{
-          $("#tabletemplate").hide()
-          $("#projectFacts").hide()
-          $("#noreport").show()
-          $(".survey-preloader").hide()
+            },
+            success: res => {
+                if (res.status == 200) {
 
-        }
-      });
-      
+                    this.questionsReport = res.data.answers
+                    this.reportGeneralInfo = res.data.generalInfo
+                    this.assessmentDesc = res.data.description
+                    this.assessmentTitle = res.data.title
+                    $("#tabletemplate").show()
+                    $("#projectFacts").show()
+                    $(".content-header").show()
+                    $(".survey-preloader").hide()
+                }
+            },
+            error: res => {
+                $("#tabletemplate").hide()
+                $("#projectFacts").hide()
+                $("#noreport").show()
+                $(".survey-preloader").hide()
+
+            }
+        });
+
     },
     methods: {
-      savePDF() {
-                  
-          let myReport = document.getElementById('my-report'),
-              options = {
-                  logging: true, 
-                  taintTest: false, 
-                  allowTaint: true,
-              }
+        savePDF() {
 
-              
+            let myReport = document.getElementById('my-report'),
+                options = {
+                    logging: true,
+                    taintTest: false,
+                    allowTaint: true,
+                }
 
-          html2canvas(myReport, options).then(function(canvas) {
-              var hide = document.createElement('style')
-              hide.innerHTML = 'footer { display: none !important;} header {display: none !important; } .report-title {display: none !important;} .search-card {display: none !important;} .v-data-footer {display: none !important;}'
-              document.head.appendChild(hide)
-              print();
-              hide.remove();
-          });
 
-      },
 
-      getLevel(gained, total) {
-          if ((gained/total)*100 < 25 || total == 0) {
-              return 'red'
-          } else if ( (gained/total)*100 >= 25 && (gained/total)*100 < 50 ) {
-              return 'orange'
-          } else if ( (gained/total)*100 >= 50 && (gained/total)*100 < 75 ) {
-              return '#cebe32'
-          }
-          else {
-              return 'green'
-          }
-      },
-     
-  
+            html2canvas(myReport, options).then(function(canvas) {
+                var hide = document.createElement('style')
+                hide.innerHTML = 'footer { display: none !important;} header {display: none !important; } .report-title {display: none !important;} .search-card {display: none !important;} .v-data-footer {display: none !important;}'
+                document.head.appendChild(hide)
+                print();
+                hide.remove();
+            });
+
+        },
+
+        getLevel(gained, total) {
+            if ((gained / total) * 100 < 25 || total == 0) {
+                return 'red'
+            } else if ((gained / total) * 100 >= 25 && (gained / total) * 100 < 50) {
+                return 'orange'
+            } else if ((gained / total) * 100 >= 50 && (gained / total) * 100 < 75) {
+                return '#cebe32'
+            } else {
+                return 'green'
+            }
+        },
+
+
     },
-  
+
     computed: {
-     
-  
+
+
     }
-  });
-
-
-
+});
