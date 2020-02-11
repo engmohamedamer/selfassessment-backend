@@ -6,6 +6,7 @@ use api\helpers\ImageHelper;
 use api\helpers\ResponseHelper;
 use api\resources\User;
 use yii\base\DynamicModel;
+use yii\base\Exception;
 
 
 class ProfileController extends  MyActiveController
@@ -87,14 +88,17 @@ class ProfileController extends  MyActiveController
         if(isset($params['mobile'])){
             $profile->mobile = $params['mobile'];
         }
-
-        if (isset($params['image']) and !empty($params['image'])) {
-            $userProfile = User::findOne(['id'=> \Yii::$app->user->identity->getId()])->userProfile;
-            $filename = ImageHelper::Base64IMageConverter($params['image'],'profile');
-            $path = \Yii::getAlias('@storageUrl'). '/source/';
-            $userProfile->avatar_path = 'profile/'.$filename;
-            $userProfile->avatar_base_url= $path;
-            $userProfile->save(false);
+        try{
+            if (isset($params['image']) and !empty($params['image'])) {
+                $userProfile = User::findOne(['id'=> \Yii::$app->user->identity->getId()])->userProfile;
+                $filename = ImageHelper::Base64IMageConverter($params['image'],'profile');
+                $path = \Yii::getAlias('@storageUrl'). '/source/';
+                $userProfile->avatar_path = 'profile/'.$filename;
+                $userProfile->avatar_base_url= $path;
+                $userProfile->save(false);
+            }
+        }catch(Exception $e){
+            return ['status'=>0 , 'message'=>'Invalid Data','errors'=> \Yii::t('common','File Not Allowed')];
         }
 
         if($profile->save() && $user->save()){

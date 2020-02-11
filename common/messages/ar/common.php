@@ -341,4 +341,5 @@ return [
     'Old password Required.'=>'يجب ادخال كلمة المرور القديمة',
     'Date From'=>'التاريخ من',
     'Date To'=>'التاريخ الي',
+    'File Not Allowed'=>'يجب اخيتار ملف صحيح',
 ];
