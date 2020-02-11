@@ -2,18 +2,18 @@
 
 use backend\models\City;
 use backend\models\District;
+use common\helpers\multiLang\MyMultiLanguageActiveField;
 use common\models\Organization;
 use common\models\User;
 use common\models\UserProfile;
 use kartik\widgets\ActiveForm;
 use kartik\widgets\DepDrop;
 use trntv\filekit\widget\Upload;
-// use yii\bootstrap4\ActiveForm;
+use wbraganca\dynamicform\DynamicFormWidget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use common\helpers\multiLang\MyMultiLanguageActiveField;
-use wbraganca\dynamicform\DynamicFormWidget;
+use yii\web\JsExpression;
 \organization\assets\OrgUpdate::register($this);
 
 
@@ -250,12 +250,16 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                         <div class='col-sm-12 col-lg-8 row theme-edit-content-panel'>
                             <div class="col-lg-6">
                                 <?php echo $form->field($model, 'first_image')->widget(Upload::class, [
-                                    'url'=>['first-upload']
+                                    'url'=>['first-upload'],
+                                    'acceptFileTypes' => new JsExpression('/(\.|\/)(gif|jpeg|png)$/i'),
+                                    'maxFileSize' => 10485760,
                                 ]) ?>
                             </div>
                             <div class="col-lg-6">
                                 <?php echo $form->field($model, 'second_image')->widget(Upload::class, [
-                                    'url'=>['second-upload']
+                                    'url'=>['second-upload'],
+                                    'acceptFileTypes' => new JsExpression('/(\.|\/)(gif|jpeg|png)$/i'),
+                                    'maxFileSize' => 10485760,
                                 ]) ?>
                             </div>
                         </div>

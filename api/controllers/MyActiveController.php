@@ -36,6 +36,10 @@ class MyActiveController extends ActiveController
             'http://selfassest.localhost',
             'http://organization.selfassest.localhost',
             'http://backend.selfassest.localhost',
+            'http://org1.tamkeentechlab.com',
+            'http://org2.tamkeentechlab.com',
+            'http://org3.tamkeentechlab.com',
+            'http://org4.tamkeentechlab.com'
         ];
     }
 

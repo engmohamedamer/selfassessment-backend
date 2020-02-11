@@ -1,8 +1,9 @@
 <?php
 
 use common\models\UserProfile;
-use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\UserProfile */
@@ -35,7 +36,9 @@ $this->title = Yii::t('backend', 'Edit profile')
 
 
     <?php echo $form->field($model, 'picture')->widget(\trntv\filekit\widget\Upload::class, [
-        'url'=>['avatar-upload']
+        'url'=>['avatar-upload'],
+        'acceptFileTypes' => new JsExpression('/(\.|\/)(gif|jpeg|png)$/i'),
+        'maxFileSize' => 10485760,
     ]) ?>
 <div class="row">
         <div class="col-lg-4">

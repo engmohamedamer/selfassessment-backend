@@ -2,10 +2,11 @@
 
 use common\models\User;
 use common\models\UserProfile;
+use trntv\filekit\widget\Upload;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use trntv\filekit\widget\Upload;
+use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\UserForm */
@@ -42,7 +43,9 @@ $model->roles =Yii::$app->session->get('UserRole');
             <div class="card-body">
 
                         <?php echo $form->field($profile, 'picture')->widget(Upload::class, [
-                            'url'=>['avatar-upload']
+                            'url'=>['avatar-upload'],
+                            'acceptFileTypes' => new JsExpression('/(\.|\/)(gif|jpeg|png)$/i'),
+                            'maxFileSize' => 10485760,
                         ]) ?>
 
 

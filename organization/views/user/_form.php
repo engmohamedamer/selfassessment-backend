@@ -10,6 +10,7 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
 /* @var $model organization\models\UserForm */
@@ -54,7 +55,9 @@ $model->roles =Yii::$app->session->get('UserRole');
                 <div class="row">
                     <div class="col-md-4">
                         <?php echo $form->field($profile, 'picture')->widget(\trntv\filekit\widget\Upload::class, [
-                            'url'=>['avatar-upload']
+                            'url'=>['avatar-upload'],
+                            'acceptFileTypes' => new JsExpression('/(\.|\/)(gif|jpeg|png)$/i'),
+                            'maxFileSize' => 10485760,
                         ]) ?>
                     </div>
 

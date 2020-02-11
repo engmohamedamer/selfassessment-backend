@@ -83,4 +83,11 @@ class ResetPassword extends Model
             'password' => Yii::t('frontend', 'Password')
         ];
     }
+
+    public static function siteLink($user)
+    {
+        $organization = $user->userProfile->organization;
+        $siteLink = $_SERVER['REQUEST_SCHEME'] . '://'. $organization->slug . $_SERVER['SERVER_NAME'];
+        return str_ireplace(['api','endpoints'],'',$siteLink);
+    }
 }

@@ -2,6 +2,9 @@
 
 namespace api\helpers;
 
+use api\helpers\ResponseHelper;
+use yii\base\NotSupportedException;
+
  class ImageHelper{
 
 
@@ -122,7 +125,8 @@ namespace api\helpers;
          if(file_exists($directory)){
              return $imageName;
          }else{
-             return false;
+            return new NotSupportedException("File Not Allowed");
+            return false;
          }
      }
 
