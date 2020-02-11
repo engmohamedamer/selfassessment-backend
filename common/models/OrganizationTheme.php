@@ -19,9 +19,9 @@ class OrganizationTheme extends BaseOrganizationTheme
 	    [
             [['brandPrimColor','brandSecColor'], 'required'],
             [['organization_id'], 'integer'],
-            [['brandPrimColor', 'brandSecColor', 'brandHTextColor', 'brandPTextColor', 'brandBlackColor', 'brandGrayColor', 'arfont', 'enfont', 'facebook', 'twitter', 'linkedin', 'instagram', 'locale', 'updated_at'], 'string', 'max' => 255],
+            [['brandPrimColor', 'brandSecColor', 'brandHTextColor', 'brandPTextColor', 'brandBlackColor', 'brandGrayColor', 'arfont', 'enfont', 'locale', 'updated_at'], 'string', 'max' => 255],
             [['brandPrimColor', 'brandSecColor', 'brandHTextColor', 'brandPTextColor', 'brandBlackColor', 'brandGrayColor'], 'match', 'pattern' => '/^#([0-9a-f]{6}|[0-9a-f]{3})$/' ,'message'=>Yii::t('common','Enter valid color')],
-            
+            [['facebook','twitter','linkedin','instagram'],'url', 'defaultScheme' => 'http'],
             ['facebook', 'match', 'pattern' => '/^(?:https?:\/\/)?(?:www\.)?facebook\.com\/.(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-\.]*)$/' ,'message'=>Yii::t('common','Enter valid facebook link')],
             ['twitter', 'match', 'pattern' => '/^http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)$/' ,'message'=>Yii::t('common','Enter valid twitter link')],
             ['instagram', 'match', 'pattern' => '/(?:(?:http|https):\/\/)?(?:www.)?(?:instagram.com|instagr.am)\/([A-Za-z0-9-_]+)/im' ,'message'=>Yii::t('common','Enter valid instagram link')],
