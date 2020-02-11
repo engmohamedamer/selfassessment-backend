@@ -148,17 +148,10 @@
     
     .projectFactsWrap .item {
         width: 33.3%;
-        height: 100%;
+        height: 295px;
         padding: 50px 0px;
         text-align: center;
-        .v-btn {
-            height: 24px;
-        }
-        .v-btn__content {
-            background: transparent;
-            height: auto;
-            color: #fff;
-        }
+        
     }
     
     .projectFactsWrap .item:nth-child(1) {

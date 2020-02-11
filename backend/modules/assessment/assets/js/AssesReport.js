@@ -113,7 +113,7 @@ var app = new Vue({
 
                     <div id="projectFacts" class="sectionClass">
                         <div class="fullWidth eight columns">
-                            <div class="projectFactsWrap ">
+                            <div class="projectFactsWrap " style="justify-content: center;">
                                 <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible;">
                                     <i class="fas fa-tasks"></i>
                                     <p id="number1" class="number">{{reportGeneralInfo.survey_corrective_number}}</p>
