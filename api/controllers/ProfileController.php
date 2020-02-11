@@ -98,7 +98,7 @@ class ProfileController extends  MyActiveController
                 $userProfile->save(false);
             }
         }catch(Exception $e){
-            return ['status'=>0 , 'message'=>'Invalid Data','errors'=> \Yii::t('common','File Not Allowed')];
+            return ResponseHelper::sendFailedResponse(['images'=>\Yii::t('common','File Not Allowed')],400);
         }
 
         if($profile->save() && $user->save()){
