@@ -240,7 +240,7 @@ class SurveyResource extends Survey
                                         'imageWidth'=> 150,
                                         'allowMultiple'=> true,
                                         'maxSize'=> 10485760,
-                                        "visibleIf"=>"{f-".$question->survey_question_id."} == 'نعم'",
+                                        "visibleIf"=>"{f-".$question->survey_question_id."} == '$yes'",
                                     ]
                                 ],
                             ];
