@@ -104,6 +104,7 @@ class SurveyResource extends Survey
                     $descr = 'Sorting';
                     $info = '<h3>Important instructions</h3><p>  '. $model->start_info .' </p>';
                     $ignore = "Do you want to ignore this question?";
+                    $chose = "Chose Your Attattchment";
                     $yes = 'Yes';
                     $no = 'No';
                 }else{
@@ -111,6 +112,7 @@ class SurveyResource extends Survey
                     $descr = 'الترتيب';
                     $info = '<h3>تعليمات هامة</h3><p>  '. $model->start_info .' </p>';
                     $ignore = " تريد تخطي هذا السؤال لأنه لا يناسب قسمك ؟";
+                    $chose = "اختر مرفقات اجابتك";
                     $yes = 'نعم';
                     $no = 'لا';
                 }
@@ -234,7 +236,7 @@ class SurveyResource extends Survey
                                         "name"=> 'a-'.$question->survey_question_id,
                                         "showTitle"=> false,
                                         "type"=>"file",
-                                        "title"=>"اختر مرفقات اجابتك",
+                                        "title"=> $chose,
                                         'storeDataAsText'=> false,
                                         'showPreview'=> true,
                                         'imageWidth'=> 150,
@@ -276,6 +278,14 @@ class SurveyResource extends Survey
             },
             'answers'=>function($model){
                 $userId = \Yii::$app->user->identity->id;
+                $userId = \Yii::$app->user->identity->userProfile;
+                if ($userId->locale == 'en-US') {
+                    $yes = 'Yes';
+                    $no = 'No';
+                }else{
+                    $yes = 'نعم';
+                    $no = 'لا';
+                }
                 $data = [];
                 //get survey questions then check user answers
 
@@ -393,7 +403,7 @@ class SurveyResource extends Survey
 
                     if (count($files) > 0) {
                         $data['a-'.$question->survey_question_id] = $qAttatchments;   
-                        $data['f-'.$question->survey_question_id] = true;   
+                        $data['f-'.$question->survey_question_id] = $yes;   
                     }
 
                 } // end questions for loop
