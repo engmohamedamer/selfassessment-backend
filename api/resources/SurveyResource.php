@@ -376,17 +376,31 @@ class SurveyResource extends Survey
                         ])->all();
                         if($userAnswersObj){
                             foreach ($userAnswersObj as $item) {
-
-                                $data['q-'.$question->survey_question_id][] = [
-                                    'id'=>$item->survey_user_answer_id,
-                                    'name'=>$item->survey_user_answer_text,
-                                    'content'=>$item->survey_user_answer_value,
-                                    'type'=>$item->survey_user_answer_file_type
-                                ];
+                                if (!empty($item->survey_user_answer_value)) {
+                                    $data['q-'.$question->survey_question_id][] = [
+                                        'id'=>$item->survey_user_answer_id,
+                                        'name'=>$item->survey_user_answer_text,
+                                        'content'=>$item->survey_user_answer_value,
+                                        'type'=>$item->survey_user_answer_file_type
+                                    ];
+                                }
                             }
                         }
                     }
-                    
+
+                     $userAnswersObjCheckIgnore = SurveyUserAnswer::find()->where([
+                        'survey_user_answer_user_id'=> \Yii::$app->user->getId(),
+                        'survey_user_answer_survey_id'=>$question->survey_question_survey_id,
+                        'survey_user_answer_question_id'=>$question->survey_question_id
+                    ])->limit(1)->one();
+                    if ($userAnswersObjCheckIgnore) {
+                        if ($userAnswersObjCheckIgnore->not_applicable) {
+                            $data['Q-'.$userAnswersObjCheckIgnore->survey_user_answer_question_id] = $yes;   
+                        }else{
+                            $data['Q-'.$userAnswersObjCheckIgnore->survey_user_answer_question_id] = $no;
+                        }
+                    }
+
                     $qAttatchments = [];
                     $files = SurveyUserAnswerAttachments::findAll(['survey_user_answer_attachments_survey_id'=>$question->survey_question_survey_id ,
                        'survey_user_answer_attachments_question_id'=>$question->survey_question_id,

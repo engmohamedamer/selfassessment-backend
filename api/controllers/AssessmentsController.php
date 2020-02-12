@@ -226,11 +226,11 @@ class AssessmentsController extends  MyActiveController
         $survey_done =  $this->CheckState($surveyObj->survey_id,$params['status'],$params['pageNo']);
 
         if(!$survey_done)  return ResponseHelper::sendFailedResponse(['message'=>'Survey is Completed'],404);
-        
+
         if (!array_key_exists('answers',$params) || !is_array($params['answers'])){
             return ResponseHelper::sendFailedResponse(['message'=>'Invalid Params'],400);
         };
-
+        $questionIds = [];
         foreach ($params['answers'] as $key=>$value) {
 
           if (strstr($key, 'Q-')) {
@@ -273,6 +273,7 @@ class AssessmentsController extends  MyActiveController
           }elseif (strstr($key, 'q-')){
               $key=  (int)preg_replace('/\D/ui','',$key);
               $question = $this->findModel($key);
+              $questionIds[] = $question->survey_question_id;
              //check question type
              if (($question->survey_question_type === SurveyType::TYPE_SINGLE_TEXTBOX
                   || $question->survey_question_type === SurveyType::TYPE_COMMENT_BOX) and !is_array($value)
@@ -380,7 +381,7 @@ class AssessmentsController extends  MyActiveController
                      $userAnswer->save(false);
                 }else{
                     return ResponseHelper::sendFailedResponse(['message'=>'Bad Request'],400);
-                }   
+                }
               }else if($question->survey_question_type === SurveyType::TYPE_MULTIPLE
                  || $question->survey_question_type === SurveyType::TYPE_MULTIPLE_TEXTBOX
              ) {
@@ -401,7 +402,7 @@ class AssessmentsController extends  MyActiveController
                  foreach ($question->answers as $i => $answer) {
                    $found = in_array($answer->survey_answer_id ,$value);
                     if($found){
-                        $valid_count++; 
+                        $valid_count++;
                         $userAnswer =  new SurveyUserAnswer();
 
                             $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
@@ -437,7 +438,7 @@ class AssessmentsController extends  MyActiveController
                    $found = in_array($answer->survey_answer_id ,$ids);
                     if($found){
                         if (isset($value[$answer->survey_answer_id]['rate'])) {
-                            $valid_count++; 
+                            $valid_count++;
                             $userAnswer =  new SurveyUserAnswer();
                             $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
                             $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
@@ -464,7 +465,8 @@ class AssessmentsController extends  MyActiveController
                      'survey_user_answer_user_id' => \Yii::$app->user->getId()
                    ]);
                    foreach ($value as $k => $file) {
-                      if (preg_match('/((http|https):\/\/)?storage.selfassest.localhost.source\/answers\/.*/', $file['content'])) {
+                      $host = \Yii::getAlias('@storageUrl');
+                      if (strpos($file['content'],$host.'/source/answers') !== false) {
                           $userAnswer =  new SurveyUserAnswer();
                           $userAnswer->survey_user_answer_user_id = \Yii::$app->user->getId();
                           $userAnswer->survey_user_answer_survey_id = $question->survey_question_survey_id;
@@ -476,9 +478,9 @@ class AssessmentsController extends  MyActiveController
                             $userAnswer->survey_user_answer_point = $question->survey_question_point;
                           }
                           $userAnswer->save(false);
-                        }else{
-                            return ResponseHelper::sendFailedResponse(['message'=>'Bad Request'],400);
-                        }
+                      }else{
+                          return ResponseHelper::sendFailedResponse(['message'=>'Bad Request File'],400);
+                      }
                     }
                 }
              }else{
@@ -488,9 +490,30 @@ class AssessmentsController extends  MyActiveController
 
         }//end loap answers
 
-
+        $this->checkQuestionAnswer($surveyObj->survey_id,$questionIds);
         return ResponseHelper::sendSuccessResponse();
 
+    }
+
+
+    private function checkQuestionAnswer($survey_id,$questionIds)
+    {
+        $userAnswerQuestionIds = SurveyUserAnswer::findAll([
+          'survey_user_answer_survey_id'=>$survey_id ,
+          'survey_user_answer_user_id' => \Yii::$app->user->getId()
+        ]);
+
+        $survey_user_answer_question_id = ArrayHelper::getColumn($userAnswerQuestionIds,'survey_user_answer_question_id');
+
+        $result = array_diff($survey_user_answer_question_id,$questionIds);
+
+        foreach ($result as $value) {
+          $userAnswerQuestionIds = SurveyUserAnswer::deleteAll([
+           'survey_user_answer_question_id'=>$value,
+            'survey_user_answer_survey_id'=>$survey_id ,
+            'survey_user_answer_user_id' => \Yii::$app->user->getId()
+          ]);
+        }
     }
 
     public function correctiveActionReport($questionObj,$answerObj)
