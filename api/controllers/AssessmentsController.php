@@ -97,13 +97,13 @@ class AssessmentsController extends  MyActiveController
         $userId = \Yii::$app->user->identity->id;
         $userSurveyStat =  SurveyStat::find()->select('survey_stat_survey_id')->where(['survey_stat_user_id'=>$userId])->asArray()->all();
         $ids = ArrayHelper::getColumn($userSurveyStat, 'survey_stat_survey_id');
-        $queryNoStart = SurveyMiniResource::find()->join('LEFT JOIN','{{%survey_question}}','{{%survey_question}}.survey_question_survey_id = {{%survey}}.survey_id')
+        $queryNoStart = SurveyMiniResource::find()
           ->groupBy('survey_id')
           ->orderBy('survey_id DESC');
         $queryNoStart->andWhere(['NOT IN','survey_id',$ids])
+          ->andWhere(['admin_enabled'=> 1])
           ->andWhere(['IN','survey_id',$this->allowedSurvey()])
-          ->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1])
-          ->having(['>','count(survey_question.survey_question_id)',0]);
+          ->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1]);
 
         $activeData = new ActiveDataProvider([
             'query' => $queryNoStart,

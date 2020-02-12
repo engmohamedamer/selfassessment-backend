@@ -90,9 +90,9 @@ class SiteController extends OrganizationBackendController
     private function organizationSurveys($organization_id)
     {
         $organizationSurvey = Survey::find()->select('survey_id, survey_is_closed, survey_expired_at, survey_name, count(survey_stat.survey_stat_id) as survey_stat')
-            ->join('LEFT JOIN','{{%survey_question}}','{{%survey_question}}.survey_question_survey_id = {{%survey}}.survey_id')
             ->join('LEFT JOIN','{{%survey_stat}}','{{%survey_stat}}.survey_stat_survey_id = {{%survey}}.survey_id')
             ->where(['org_id'=>$organization_id])
+            ->where(['admin_enabled'=> 1])
             ->andWhere(Filter::dateFilter('survey_created_at'));
         
         if (!empty($_GET['SurveySearch']['tags'])) {
@@ -104,7 +104,7 @@ class SiteController extends OrganizationBackendController
             $organizationSurvey->andFilterWhere(['sector_id'=>$_GET['SurveySearch']['sector_id']]);
         }
 
-        $organizationSurvey->having(['>','count(survey_question.survey_question_id)',0])
+        $organizationSurvey
             ->groupBy('survey_id')
             ->orderBy('survey_id DESC');
         return $organizationSurvey;
