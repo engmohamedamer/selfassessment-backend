@@ -86,13 +86,13 @@ use common\models\Organization;
                    $name =  Organization::find()->where(['id'=>$model->model_id])->one()->name;
                    $query->orFilterWhere(['like', 'name', $name]);
                }
+              // return layout to its default
                 if(\Yii::$app->user->identity->userProfile->locale == 'ar-AR'){
                     \Yii::$app->language = 'ar';
                 }else{
                     \Yii::$app->language = 'en';
                 }
                 //var_dump($names);  die;
-                $names[] =  $this->name;
                 $query->orFilterWhere(['like', 'name', $this->name]);
            }else{
                 $query->andFilterWhere(['like', 'name', $this->name]);

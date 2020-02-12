@@ -22,7 +22,7 @@ class SurveySearch extends Survey
     public function rules()
     {
         return [
-            [['survey_id', 'survey_badge_id','org_id','sector_id'], 'integer'],
+            [['survey_id', 'survey_badge_id','org_id','sector_id','admin_enabled'], 'integer'],
             [['survey_name', 'survey_created_at', 'survey_updated_at', 'survey_expired_at','org_id','tags'], 'safe'],
             [['survey_is_pinned', 'survey_is_closed'], 'boolean'],
         ];
@@ -49,8 +49,7 @@ class SurveySearch extends Survey
 
         $this->load($params);
 
-        $query = Survey::find()->join('LEFT JOIN','{{%survey_question}}','{{%survey_question}}.survey_question_survey_id = {{%survey}}.survey_id');
-        $query->having(['>','count(survey_question.survey_question_id)',0]);
+        $query = Survey::find();
 
         if (!\Yii::$app->user->identity->userProfile->main_admin) {
             $sctor_ids = Filter::adminAllowedSectorIds();
@@ -64,7 +63,7 @@ class SurveySearch extends Survey
             $tagsSurvey = ArrayHelper::getColumn(SurveyTag::find()->where(['IN','tag_id',$this->tags])->all(),'survey_id');
             $query->andFilterWhere(['IN','survey_id',array_unique($tagsSurvey)]);
         }
-        
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => ['defaultPageSize' => 10],
@@ -77,6 +76,10 @@ class SurveySearch extends Survey
         }
 
         $query->andFilterWhere(Filter::dateFilter('survey_created_at'));
+
+        //alwyas show surveys with updated  data only
+        $query->andFilterWhere(['admin_enabled' => 1]);
+
 
         $query->andFilterWhere([
             'org_id' => $this->org_id,
@@ -103,7 +106,7 @@ class SurveySearch extends Survey
         // LEFT JOIN survey_question AS m ON g.survey_id = m.survey_question_survey_id
         // where org_id = 12
         // GROUP BY g.survey_id
-        // HAVING question > 0 
+        // HAVING question > 0
         //  "
         $sql = "SELECT `s`.* FROM `survey` `s` WHERE 
                 ((select count(*)
