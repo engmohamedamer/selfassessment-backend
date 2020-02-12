@@ -490,6 +490,7 @@ return [
     'Create New Adminstrators'=>'إضافة مسؤول',
     'Adminstrator Name'=>'اسم المسؤول',
     'Organization Admins'=>'مسؤولي مؤسسة : ',
+    'Create New Organization Admin'=>'أضف مسؤل للمؤسسة',
     'Organization Name'=>'اسم المؤسسة',
     'Current Year'=>'( السنة الحالية ) ',
     'Last Year'=>'( السنة السابقة ) ',

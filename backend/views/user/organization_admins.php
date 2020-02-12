@@ -24,10 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="content-header">
                 <div>
                 <div class="">
-                    <h1><?= Yii::t('backend', 'Organization Admins')  . $organization->name ?></h1>
+                    <h1><?= Yii::t('backend', 'Organization Admins') .' - ' . $organization->name ?></h1>
                 </div>
                 <div class=" actionBtns">
-                    <a href="/user/create-organization-admin?organization_id=<?=$organization->id ?>" class="btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('backend','Create New Adminstrators') ?></a>
+                    <a href="/user/create-organization-admin?organization_id=<?=$organization->id ?>" class="btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('backend','Create New Organization Admin') ?></a>
 
                 </div>
                 </div>
@@ -37,8 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            
-           
+
+
             <div class="card-body">
             <?php
                 $gridColumns=[
