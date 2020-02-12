@@ -66,11 +66,42 @@ use common\models\Organization;
         ]);
 
         //get arabic name for search
+        if($this->name){
 
+            $models =  TranslationsWithText::find()->where('table_name = "organization"  and attribute="name"' );
+            if($this->name ){
+                $Arabic   = new I18N_Arabic_Query();
+                $keyword = str_replace('\"', '"', $this->name);
+                $Arabic->setStrFields('value');
+                $titleReg = $Arabic->getWhereCondition($keyword);
+                $strOrderBy = $Arabic->getOrderBy($keyword);
+                //$query->where($titleReg);
+                $models->where(['or', 'value like "%'. $this->name.'%" ', $titleReg ]);
+            }
 
+            $data =  $models->all();
+            if($data){
+                \Yii::$app->language = 'en';
+               foreach ($data as $model) {
+                   $name =  Organization::find()->where(['id'=>$model->model_id])->one()->name;
+                   $query->orFilterWhere(['like', 'name', $name]);
+               }
+                if(\Yii::$app->user->identity->userProfile->locale == 'ar-AR'){
+                    \Yii::$app->language = 'ar';
+                }else{
+                    \Yii::$app->language = 'en';
+                }
+                //var_dump($names);  die;
+                $names[] =  $this->name;
+                $query->orFilterWhere(['like', 'name', $this->name]);
+           }else{
+                $query->andFilterWhere(['like', 'name', $this->name]);
+            }
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['BETWEEN', 'DATE(FROM_UNIXTIME(created_at))',$this->from, date('Y-m-d', strtotime("+1 day", strtotime($this->to)))])
+        }
+      //  echo $query->createCommand()->getRawSql();  die;
+
+        $query->andFilterWhere(['BETWEEN', 'DATE(FROM_UNIXTIME(created_at))',$this->from, date('Y-m-d', strtotime("+1 day", strtotime($this->to)))])
             ->andFilterWhere(['like', 'business_sector', $this->business_sector])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'email', $this->email])

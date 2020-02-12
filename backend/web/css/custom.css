@@ -1539,7 +1539,7 @@ header nav a {
 
 .dropdown-menu {
     left: auto;
-    right: 0;
+    right: auto;
 }
 
 .actionBtns .btn {
@@ -1822,6 +1822,11 @@ html:lang(en) .user-menu .dropdown-toggle span::before {
 
 html:lang(en) .skin-blue .sidebar-menu .treeview-menu>li>a {
     padding: 10px 15px 10px 15px;
+}
+
+
+.datetimepicker.datetimepicker-dropdown-bottom-right.dropdown-menu {
+    right: auto !important;
 }
 
 

@@ -201,14 +201,14 @@ if(Yii::$app->user->isGuest){
 
         .addQFixed {
             position: fixed;
-            right: 250px;
+            right: 0;
             bottom: 0;
             z-index: 99999;
             background: white;
             padding: 10px 5px;
             height: auto;
             overflow: hidden;
-            width: calc(100% - 250px);
+            width: 100%;
             display: flex;
             align-items: flex-start;
             justify-content: center;

@@ -220,7 +220,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <h2 class=''> <?php echo Yii::t('common', 'Preview') ?></h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active">
-                                    <p><?php echo Yii::t('common', '* Please enter the required data in two languages arabic & english.') ?></p>
+                                    <p class='highlighted'><?php echo Yii::t('common', '* Please enter the required data in two languages arabic & english.') ?></p>
                                     <hr class='mt-5 mb-5'>
                                     <p><?php echo Yii::t('common', '* SLUG input is the subdomain of your website and contains your organization name in english with no spaces.') ?></p>
                                     <img src="/img/previews/preview4.png" alt="" class='mt-3 mb-3 img'>

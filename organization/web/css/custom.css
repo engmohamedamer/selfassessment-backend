@@ -1543,8 +1543,9 @@ header nav a {
 
 .dropdown-menu {
     left: auto;
-    right: 0;
+    right: auto;
 }
+
 
 .actionBtns .btn {
     margin-left: 10px;
@@ -1795,6 +1796,7 @@ html:lang(en) .user-menu .dropdown-toggle span::before {
 html:lang(en) .skin-blue .sidebar-menu .treeview-menu>li>a {
     padding: 10px 15px 10px 15px;
 }
+
 
 
 /**********************************Responsive mobile view
