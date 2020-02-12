@@ -89,7 +89,7 @@ class SiteController extends OrganizationBackendController
 
     private function organizationSurveys($organization_id)
     {
-        $organizationSurvey = Survey::find()->select('survey_id, survey_is_closed, survey_expired_at, survey_name, count(survey_stat.survey_stat_id) as survey_stat')
+        $organizationSurvey = Survey::find()->select('survey_id, survey_is_closed, survey_expired_at, survey_name, count(survey_stat.survey_stat_id) as survey_stat ,admin_enabled')
             ->join('LEFT JOIN','{{%survey_stat}}','{{%survey_stat}}.survey_stat_survey_id = {{%survey}}.survey_id')
             ->where(['org_id'=>$organization_id , 'admin_enabled'=>1])
             ->andWhere(Filter::dateFilter('survey_created_at'));
