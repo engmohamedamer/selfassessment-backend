@@ -69,9 +69,11 @@ $model->roles =Yii::$app->session->get('UserRole');
                     <div class="col-md-4">
                         <?php echo $form->field($model, 'email') ?>
                     </div>
-                    <div class="col-md-4">
-                        <?php echo $form->field($model, 'password')->passwordInput() ?>
-                    </div>
+                    <?php if($profile->isNewRecord):?>
+                        <div class="col-md-4 col-sm-12">
+                            <?php echo $form->field($model, 'password')->passwordInput() ?>
+                        </div>
+                    <?php endif;?>
                 </div>
                 <div class="row">
                     <div class="col-md-4">

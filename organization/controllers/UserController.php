@@ -154,7 +154,6 @@ class UserController extends OrganizationBackendController
             if ($model->load(Yii::$app->request->post()) && $profile->load(Yii::$app->request->post()) &&  $model->validate()) {
                 $model->save();
                 $profile->sector_id = $model->sector_id ;
-
                 $organization_id = Yii::$app->user->identity->userProfile->organization_id;
                 $user = $this->UpdateUserRelatedTbls($model,$profile,$organization_id)->user;
 
@@ -281,6 +280,7 @@ class UserController extends OrganizationBackendController
         $prof->locale = $profile->locale;
         $prof->mobile = $profile->mobile;
         $prof->sector_id = $profile->sector_id;
+        $prof->position = $profile->position;
         if ($organization_id) {
             $prof->organization_id = $organization_id;
         }
