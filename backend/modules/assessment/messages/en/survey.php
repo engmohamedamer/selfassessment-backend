@@ -12,5 +12,5 @@ return [
     'Date-1'=>'To',
     'Time to pass'=>'Time to pass (optional)',
     'Expired at'=>'Expired at (optional)',
-    'Can be skipped'=>'Required',
+    'Required'=>'Required',
 ];

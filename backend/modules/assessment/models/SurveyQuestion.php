@@ -195,7 +195,7 @@ class SurveyQuestion extends \yii\db\ActiveRecord
             'survey_question_descr' => Yii::t('survey', 'Detailed description'),
             'survey_question_type' => Yii::t('survey', 'Question Type'),
             'survey_question_survey_id' => Yii::t('survey', 'Survey ID'),
-            'survey_question_can_skip' => Yii::t('survey', 'Can be skipped'),
+            'survey_question_can_skip' => Yii::t('survey', 'Required'),
             'survey_question_show_descr' => Yii::t('survey', 'Show detailed description'),
             'survey_question_is_scorable' => Yii::t('survey', 'Score this question'),
             'steps'=> Yii::t('survey', 'Steps Number'),
