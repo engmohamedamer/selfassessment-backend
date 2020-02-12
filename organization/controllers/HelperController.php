@@ -22,13 +22,12 @@ class HelperController extends Controller
         $out = ['results' => ['id' => '', 'text' => '']];
         if (!is_null($q)) {
             $query = new Query();
-            $query->select(' CONCAT_WS(" ", `firstname`, `lastname`) as text, {{%user_profile}}.user_id as id')
+            $query->select('firstname  as text, {{%user_profile}}.user_id as id')
                 ->from('{{%user_profile}}')
-                ->where('CONCAT( `firstname`, `lastname`) LIKE  \'%'.$q.'%\'  ')->andWhere(['organization_id'=>Yii::$app->user->identity->userProfile->organization_id]);
-    
+                ->where('`firstname` LIKE  \'%'.$q.'%\'  ')->andWhere(['organization_id'=>Yii::$app->user->identity->userProfile->organization_id]);
+
             $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user_profile}}.user_id')
                 ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_USER]);
-
             $command = $query->createCommand();
             $data = $command->queryAll();
             $out['results'] = array_values($data);
