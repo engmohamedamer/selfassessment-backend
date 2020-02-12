@@ -65,6 +65,8 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
+        //maintain old assessment
+        $this->MaintainSurveys();
         $searchModel = new SurveySearch();
         $searchModel->org_id = $this->organization_id ;
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
@@ -465,6 +467,17 @@ class DefaultController extends Controller
         $model->save(false);
 	    return true;
     }
+    //delete random created surveys form db
+    public function MaintainSurveys(){
+	    $surveys = Survey::find()->where(['admin_enabled'=> 0 ])->andWhere(' DATE (survey_created_at) < "'. date("Y-m-d").'" ' )->all();
+        if($surveys){
+            foreach ($surveys as $survey) {
+                $survey->delete();
+            }
+        }
+      return true;
+    }
+
 
 	/**
 	 * @return bool
