@@ -256,8 +256,6 @@ class AssessmentsController extends  MyActiveController
                    'survey_user_answer_attachments_question_id'=>$question->survey_question_id,
                    'survey_user_answer_attachments_user_id' => \Yii::$app->user->getId()
                    ]);
-            }else{
-                return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
             }
           }elseif (strstr($key, 'a-')){
             $key=  (int)preg_replace('/\D/ui','',$key);
