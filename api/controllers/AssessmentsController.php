@@ -307,10 +307,10 @@ class AssessmentsController extends  MyActiveController
                 }
               }elseif ($question->survey_question_type === SurveyType::TYPE_DATE_TIME and !is_array($value)
               ){
-                    if ($question->survey_question_can_skip == 0 and (date('d/m/Y', strtotime($value)) != $value)) {
+                    $date =  str_ireplace('/', '-', $value);
+                    if ($question->survey_question_can_skip == 0 and (date('d-m-Y',strtotime($date)) != $date)) {
                         return ResponseHelper::sendFailedResponse(['message'=>'Bad Request Date'],400);
                     }
-
                     $answerPoint = SurveyAnswer::findOne(['survey_answer_id'=>$value,'survey_answer_question_id'=>$question->survey_question_id]);
                     //handel one answer
                     $userAnswers = $question->userAnswers;

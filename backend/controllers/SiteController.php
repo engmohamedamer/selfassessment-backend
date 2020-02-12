@@ -36,6 +36,13 @@ class SiteController extends BackendController
             ],
         ];
     }
+
+    public function actionTest()
+    {
+        $date =  str_ireplace('/', '-', "26/02/2020");
+        return var_dump((date('d-m-Y',strtotime($date)) != $date),date('d-m-Y',strtotime($date)));
+    }
+
     public function actionGo(){
         $this->layout= 'baselayout';
         return $this->render('go');
