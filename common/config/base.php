@@ -182,7 +182,6 @@ $config = [
             'languages'=>[
                 'en'=>'English',
                 'ar'=>'عربى',
-
             ],
         ],
     ],
