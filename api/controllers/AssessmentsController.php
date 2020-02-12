@@ -248,6 +248,15 @@ class AssessmentsController extends  MyActiveController
                   $userAnswer->survey_user_answer_point = $question->survey_question_point;
                   $userAnswer->save(false);
               }
+          }elseif (strstr($key, 'f-')){
+            $key=  (int)preg_replace('/\D/ui','',$key);
+            $question = $this->findModel($key);
+            if ($question->survey_question_attachment_file and ($value == 'No' || $value == 'لا') ) {
+              SurveyUserAnswerAttachments::deleteAll(['survey_user_answer_attachments_survey_id'=>$question->survey_question_survey_id ,
+                   'survey_user_answer_attachments_question_id'=>$question->survey_question_id,
+                   'survey_user_answer_attachments_user_id' => \Yii::$app->user->getId()
+                   ]);
+            }
           }elseif (strstr($key, 'a-')){
             $key=  (int)preg_replace('/\D/ui','',$key);
             $question = $this->findModel($key);
@@ -307,10 +316,10 @@ class AssessmentsController extends  MyActiveController
                 }
               }elseif ($question->survey_question_type === SurveyType::TYPE_DATE_TIME and !is_array($value)
               ){
-                    if ($question->survey_question_can_skip == 0 and (date('d/m/Y', strtotime($value)) != $value)) {
+                    $date =  str_ireplace('/', '-', $value);
+                    if ($question->survey_question_can_skip == 0 and (date('d-m-Y',strtotime($date)) != $date)) {
                         return ResponseHelper::sendFailedResponse(['message'=>'Bad Request Date'],400);
                     }
-
                     $answerPoint = SurveyAnswer::findOne(['survey_answer_id'=>$value,'survey_answer_question_id'=>$question->survey_question_id]);
                     //handel one answer
                     $userAnswers = $question->userAnswers;

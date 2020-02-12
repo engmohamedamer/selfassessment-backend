@@ -418,6 +418,8 @@ class SurveyResource extends Survey
                     if (count($files) > 0) {
                         $data['a-'.$question->survey_question_id] = $qAttatchments;   
                         $data['f-'.$question->survey_question_id] = $yes;   
+                    }else{
+                        $data['f-'.$question->survey_question_id] = $no;   
                     }
 
                 } // end questions for loop
