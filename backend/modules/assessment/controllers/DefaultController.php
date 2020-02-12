@@ -375,7 +375,6 @@ class DefaultController extends Controller
 
         // Check if there is an Editable ajax request
         if (isset($_POST['hasEditable'])) {
-            $this->setEnabled($model);
             // use Yii's response format to encode output as JSON
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
@@ -383,6 +382,7 @@ class DefaultController extends Controller
             if ($model->load($_POST)) {
                 // read or convert your posted information
                 if ($model->validate() && $model->save()) {
+                    $this->setEnabled($model);
                     // return JSON encoded output in the below format
                     return ['output' => $model->$property, 'message' => ''];
                 }
@@ -400,8 +400,6 @@ class DefaultController extends Controller
     {
         $model = $this->findModel($id);
         $model['imageFile'] = UploadedFile::getInstance($model, 'imageFile');
-        $this->setEnabled($model);
-
         $validate = ActiveForm::validate($model);
         if (\Yii::$app->request->isAjax && !empty($validate)) {
             Yii::$app->response->format = Response::FORMAT_JSON;
@@ -445,6 +443,7 @@ class DefaultController extends Controller
                     }
                     $model->survey_image = $name;
                     $model->save();
+                    $this->setEnabled($model);
                 } else {
                     Yii::$app->session->setFlash("warning", Yii::t('survey','Error loading image.') );
                 }
