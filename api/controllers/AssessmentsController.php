@@ -248,6 +248,17 @@ class AssessmentsController extends  MyActiveController
                   $userAnswer->survey_user_answer_point = $question->survey_question_point;
                   $userAnswer->save(false);
               }
+          }elseif (strstr($key, 'f-')){
+            $key=  (int)preg_replace('/\D/ui','',$key);
+            $question = $this->findModel($key);
+            if ($question->survey_question_attachment_file and ($value == 'No' || $value == 'لا') ) {
+              SurveyUserAnswerAttachments::deleteAll(['survey_user_answer_attachments_survey_id'=>$question->survey_question_survey_id ,
+                   'survey_user_answer_attachments_question_id'=>$question->survey_question_id,
+                   'survey_user_answer_attachments_user_id' => \Yii::$app->user->getId()
+                   ]);
+            }else{
+                return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
+            }
           }elseif (strstr($key, 'a-')){
             $key=  (int)preg_replace('/\D/ui','',$key);
             $question = $this->findModel($key);
