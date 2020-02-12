@@ -1,11 +1,13 @@
 <?php
 use yii\helpers\Html;
 $resetLink = Yii::getAlias('@organizationUrl').'/sign-in/reset-password?token='.$token;
+$organization = $user->userProfile->organization;
+$logo  = $organization->first_image_base_url . $organization->first_image_path;
 ?>
 
   <!-- start preheader -->
   <div class="preheader" style="display: none; max-width: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #fff; opacity: 0;">
-    تعديل كلمة المرور الخاصة بحسابك علي selfassessment.com
+    تعديل كلمة المرور الخاصة بحسابك علي <?= Yii::getAlias('@organizationUrl') ?>
   </div>
   <!-- end preheader -->
 
@@ -23,8 +25,8 @@ $resetLink = Yii::getAlias('@organizationUrl').'/sign-in/reset-password?token='.
         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
           <tr>
             <td align="center" valign="top" style="padding:20px;">
-              <a href="https://selfassessment.com" target="_blank" style="display: inline-block;">
-                <img src="tamkeen-logo.png" alt="Logo" border="0" width="170" style="display: block; width: 170px; max-width: 170px; min-width: 170px;">
+              <a href="<?= Yii::getAlias('@organizationUrl') ?>" target="_blank" style="display: inline-block;">
+                <img src="<?= $logo?>" alt="Logo" border="0" width="170" style="display: block; width: 170px; max-width: 170px; min-width: 170px;">
               </a>
             </td>
           </tr>
