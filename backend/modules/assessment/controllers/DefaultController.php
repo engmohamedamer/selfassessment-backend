@@ -383,9 +383,9 @@ class DefaultController extends Controller
             // read your posted model attributes
             if ($model->load($_POST)) {
 
-                if (isset($_POST['Survey']['survey_expired_at']) and ) {
-                    # code...
-                }
+                // if (isset($_POST['Survey']['survey_expired_at']) and ) {
+                //     # code...
+                // }
                 // read or convert your posted information
                 if ($model->validate() && $model->save()) {
                     $this->setEnabled($model);
