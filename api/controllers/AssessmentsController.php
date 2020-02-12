@@ -307,7 +307,7 @@ class AssessmentsController extends  MyActiveController
                 }
               }elseif ($question->survey_question_type === SurveyType::TYPE_DATE_TIME and !is_array($value)
               ){
-                    if ($question->survey_question_can_skip == 0 and (date('Y-m-d', strtotime($value)) != $value)) {
+                    if ($question->survey_question_can_skip == 0 and (date('d/m/Y', strtotime($value)) != $value)) {
                         return ResponseHelper::sendFailedResponse(['message'=>'Bad Request Date'],400);
                     }
 
