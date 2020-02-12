@@ -42,7 +42,7 @@ class OrgAdmin extends UserProfile
         return array_merge(parent::attributeLabels(),[
             'email' => Yii::t('common', 'Email'),
             'password' => Yii::t('common', 'Password'),
-            'full_name'=> Yii::t('common', 'Full Name')
+            'full_name'=> Yii::t('common', 'Organization Admin Name')
         ]);
     }
 

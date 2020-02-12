@@ -35,6 +35,7 @@ return [
      'Assessments List'=>'قائمة الاستبيانات',
      'Welcome'=>'مرحبا',
      'Full Name'=>'اسم المستخدم',
+     'Organization Admin Name'=>'اسم مسؤول المؤسسة',
      ''=>'',
      'My Account'=>'حسابى',
      'My Profile'=>'بياناتى',

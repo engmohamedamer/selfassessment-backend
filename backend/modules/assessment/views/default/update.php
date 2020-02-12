@@ -15,7 +15,7 @@ use yii\helpers\Url;
 /* @var $survey \backend\modules\assessment\models\Survey */
 /* @var $withUserSearch boolean */
 
-$this->title = Yii::t('survey', 'Update survey');
+$this->title = Yii::t('survey', 'Update assessment');
 
 
 echo $this->render('_form', [

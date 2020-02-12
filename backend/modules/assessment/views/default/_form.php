@@ -109,7 +109,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
                         'additionalData' => ['id' => $survey->survey_id],
                         'options' => [
                             'class' => 'form-control',
-                            'placeholder' => Yii::t('survey','Enter survey name...'),
+                            'placeholder' => Yii::t('survey','Enter assessment name...'),
                         ]
                     ]);
                     echo Html::endTag('div');
@@ -182,13 +182,13 @@ if (Yii::$app->user->identity->userProfile->organization) {
 
 
                     echo Html::beginTag('div', ['class' => 'col-md-3', 'style' => 'background: '.$brandSecColor.'; color:#000; border-radius: 10px; text-align: center; margin:5px;']);
-                    echo Html::label(Yii::t('survey', 'Survey Point (optional)') . ': ', 'survey-survey_point');
+                    echo Html::label(Yii::t('survey', 'Assessment Point (optional)') . ': ', 'survey-survey_point');
                     echo Html::tag('br', '');
                     echo Editable::widget([
                         'model' => $survey,
                         'attribute' => 'survey_point',
                         'asPopover' => true,
-                        'header' => Yii::t('survey', 'Survey Point'),
+                        'header' => Yii::t('survey', 'Assessment Point'),
                         'size' => 'md',
                         'formOptions' => [
                             'action' => Url::toRoute(['default/update-editable', 'property' => 'survey_point'])
@@ -196,7 +196,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
                         'additionalData' => ['id' => $survey->survey_id],
                         'options' => [
                             'class' => 'form-control',
-                            'placeholder' => Yii::t('survey', 'Enter Survey Point...'),
+                            'placeholder' => Yii::t('survey', 'Enter Assessment Point...'),
                             'type' => 'number',
                         ]
                     ]);
@@ -377,7 +377,7 @@ if (Yii::$app->user->identity->userProfile->organization) {
                         echo $form->field($survey, 'restrictedUserIds')->widget(Select2::classname(),
                             [
                                 'initValueText' => $survey->restrictedUsernames, // set the initial display text
-                                'options' => ['placeholder' => \Yii::t('survey', 'Restrict survey to selected user...')],
+                                'options' => ['placeholder' => \Yii::t('survey', 'Restrict assessment to selected user...')],
                                 'pluginOptions' => [
                                     'allowClear' => true,
                                     'minimumInputLength' => 3,

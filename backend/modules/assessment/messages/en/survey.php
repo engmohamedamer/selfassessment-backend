@@ -7,7 +7,7 @@
  */
 
 return [
-    'Create new survey' => 'Create new survey',
+    'Create new survey' => 'Create new assessment',
     'Date-0'=>'From',
     'Date-1'=>'To',
     'Time to pass'=>'Time to pass (optional)',

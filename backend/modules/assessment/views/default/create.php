@@ -16,7 +16,7 @@ use yii\widgets\Pjax;
 /* @var $survey \backend\modules\assessment\models\Survey */
 /* @var $withUserSearch boolean */
 
-$this->title = Yii::t('survey', 'Create new survey');
+$this->title = Yii::t('survey', 'Create new assessment');
 
 
 echo $this->render('_form', [
