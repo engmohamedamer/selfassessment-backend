@@ -7,6 +7,8 @@ use yii\web\View;
 
 ?>
 <?php $sid = uniqid();
+//Yii::$app->language ='en';
+$setDefualtLang= 'en';
 ?>
 
 <div class="translatenav">
@@ -14,7 +16,7 @@ use yii\web\View;
 <ul class="nav nav-pills ">
 	<?php foreach (Yii::$app->params['mlConfig']['languages'] as $languageCode => $languageName): ?>
 
-		<li class="nav-item  <?= (Yii::$app->language == $languageCode) ? 'active' : '' ?>">
+		<li class="nav-item  <?= ($setDefualtLang == $languageCode) ? 'active' : '' ?>">
 			<a class="nav-link " href="#L<?= $sid.$languageCode ?>" data-toggle="tab" aria-expanded="true">
 				<?= $languageName ?>
 			</a>
@@ -38,7 +40,7 @@ use yii\web\View;
 			$attribute .= '_' . $languageCode;
 		}
 
-		$activeClass = (Yii::$app->language == $languageCode) ? 'active' : '';
+		$activeClass = ($setDefualtLang == $languageCode) ? 'active' : '';
 		?>
 
 

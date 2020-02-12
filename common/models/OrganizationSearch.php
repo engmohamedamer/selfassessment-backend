@@ -65,6 +65,10 @@ use common\models\Organization;
             'limit_account' => $this->limit_account,
         ]);
 
+        //get arabic name for search
+
+
+
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['BETWEEN', 'DATE(FROM_UNIXTIME(created_at))',$this->from, date('Y-m-d', strtotime("+1 day", strtotime($this->to)))])
             ->andFilterWhere(['like', 'business_sector', $this->business_sector])
