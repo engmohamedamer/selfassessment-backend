@@ -19,7 +19,7 @@
 return [
 
     ''=>'',
-    ''=>'',
+    'Sorry! you have exceeded the allowed numbers for participants'=>'عفوا! لقد تخطيت الحد المسموح به لعدد المشاركين لمؤسستك',
     'User Position'=>'المسمى الوظيفى',
     'Contributor Name'=>'اسم المشارك',
 

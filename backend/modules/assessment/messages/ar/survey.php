@@ -42,7 +42,7 @@ return [
     'Questions count'=>'عدد الاسئلة',
     'Questions'=>'الاسئلة',
     'Restricted users'=>'المشاركين المحظورين',
-    'Were interviewed'=>'تم الاجابه عليهم',
+    'Were interviewed'=>'تم الاجابه عليه',
     'Respondents count'=>'عدد المشاركين',
     'Assessments List'=>'قائمة الاستبيانات',
     'Create new assessment' => 'اضف استبيان جديد',

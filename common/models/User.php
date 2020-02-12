@@ -351,7 +351,6 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
 
-
     public static function CheckIsAdmin($user_id){
 
         $roles = ArrayHelper::getColumn( Yii::$app->authManager->getRolesByUser($user_id),'name');

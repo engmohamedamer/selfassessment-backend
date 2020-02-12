@@ -37,7 +37,7 @@ class UserController extends  RestController
         if (!$organization) {
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>Yii::t('common','Organization Not Found')],400);
         }
-    
+
         $user = User::find()
             ->andWhere(['or', ['username' => $params['identity'] ], ['email' => $params['identity']]])
             ->one();
@@ -79,7 +79,7 @@ class UserController extends  RestController
     public function actionSignup(){
 
         $params = \Yii::$app->request->post();
-      
+
         if (!isset($params['locale'])) {
             \Yii::$app->language = 'ar';
         }else{
@@ -105,7 +105,12 @@ class UserController extends  RestController
             return ResponseHelper::sendFailedResponse(['ORGANIZATION_NOT_FOUND'=>Yii::t('common','There is no possibility of registration')],400);
         }
 
-        $model = new SignupForm();
+        if ( $organization->limit_account > 0   &&  (User::CountUsers(User::ROLE_USER,' organization_id='.$organization->id) >= $organization->limit_account  ) ) {
+            return ResponseHelper::sendFailedResponse(['message'=>Yii::t('common','Sorry! you have exceeded the allowed numbers for participants')],400);
+
+        }
+
+            $model = new SignupForm();
         if ($model->load(['SignupForm'=>$params]) && $user = $model->save($organization->id)) {
             $user= User::findOne(['id'=> $user->id]);
             return ResponseHelper::sendSuccessResponse(['message'=>Yii::t('common','Account Created Successfully')]);
@@ -148,7 +153,7 @@ class UserController extends  RestController
             ];
         }
         return $data;
-        
+
     }
 
     public function actionVerify(){

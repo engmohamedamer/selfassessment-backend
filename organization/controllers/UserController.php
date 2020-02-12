@@ -84,7 +84,7 @@ class UserController extends OrganizationBackendController
         if ($orgModel->load(\Yii::$app->request->post())) {
             $orgModel->save();
         }
-        
+
         $dataProvider->sort = [
             'defaultOrder' => ['id' => SORT_DESC]
         ];
@@ -95,15 +95,6 @@ class UserController extends OrganizationBackendController
         ]);
     }
 
-
-    public function userCount()
-    {
-        $searchModel = new UserSearch();
-        $searchModel->user_role = User::ROLE_USER;
-        $searchModel->organization_id = Yii::$app->user->identity->userProfile->organization_id;
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        return $dataProvider->count;
-    }
 
     /**
      * Displays a single User model.
@@ -144,34 +135,43 @@ class UserController extends OrganizationBackendController
      */
     public function actionCreate()
     {
-
         $model = new UserForm();
         $model->roles = Yii::$app->session->get('UserRole') ? : User::ROLE_USER;
         $profile = new UserProfile();
         $model->setScenario('create');
         $organization = Yii::$app->user->identity->userProfile->organization;
-        if ( !$organization->limit_account ||  ( $organization->limit_account and $organization->limit_account >= $this->userCount() ) ) {
-            if ($model->load(Yii::$app->request->post()) && $profile->load(Yii::$app->request->post()) &&  $model->validate()) {
-                $model->save();
-                $profile->sector_id = $model->sector_id ;
-                $organization_id = Yii::$app->user->identity->userProfile->organization_id;
-                $user = $this->UpdateUserRelatedTbls($model,$profile,$organization_id)->user;
 
-                Yii::$app->getSession()->setFlash('alert', [
-                    'type' =>'success',
-                    'body' => \Yii::t('backend', 'Data has been saved Successfully') ,
-                    'title' =>'',
-                ]);
-
-                return $this->redirect(['index?user_role='.$model->roles]);
-            }
-
-            return $this->render('create', [
-                'model' => $model,
-                'profile' => $profile,
+        if ( $organization->limit_account > 0   &&  ( User::CountUsers(User::ROLE_USER,' organization_id='.$organization->id) >= $organization->limit_account  ) ) {
+            Yii::$app->getSession()->setFlash('alert', [
+                'type' =>'success',
+                'body' => \Yii::t('common', 'Sorry! you have exceeded the allowed numbers for participants') ,
+                'title' =>'',
             ]);
+
+            return $this->redirect(['index?user_role='.$model->roles]);
         }
-        return $this->redirect('/user');
+
+        if ($model->load(Yii::$app->request->post()) && $profile->load(Yii::$app->request->post()) &&  $model->validate()) {
+            $model->save();
+            $profile->sector_id = $model->sector_id ;
+            $organization_id = Yii::$app->user->identity->userProfile->organization_id;
+            $user = $this->UpdateUserRelatedTbls($model,$profile,$organization_id)->user;
+
+            Yii::$app->getSession()->setFlash('alert', [
+                'type' =>'success',
+                'body' => \Yii::t('backend', 'Data has been saved Successfully') ,
+                'title' =>'',
+            ]);
+
+            return $this->redirect(['index?user_role='.$model->roles]);
+        }
+        return $this->render('create', [
+            'model' => $model,
+            'profile' => $profile,
+        ]);
+
+
+
     }
 
     /**

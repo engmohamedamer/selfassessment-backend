@@ -35,7 +35,7 @@ class SiteController extends OrganizationBackendController
         $searchModel->user_role = User::ROLE_USER;
         $searchModel->organization_id = $organization->id;
         $contributors = $searchModel->search(null,6);
-        
+
         $orgSurveyStats = $this->organizationSurveyStats();
         $surveyChart    = $this->surveyChart();
 
@@ -48,7 +48,7 @@ class SiteController extends OrganizationBackendController
     private function surveyChart()
     {
         $organization = Yii::$app->user->identity->userProfile->organization;
-        $data = $this->organizationSurveys($organization->id)->limit(10)->all();     
+        $data = $this->organizationSurveys($organization->id)->limit(10)->all();
         $labels = ArrayHelper::getColumn($data,'survey_name');
         $data   = ArrayHelper::getColumn($data,'survey_stat');
         return ['labels'=> $labels ,'data'=>$data];
@@ -73,7 +73,7 @@ class SiteController extends OrganizationBackendController
         $sumNotstart   = ($orgUserCount * count($organizationSurveyIds) ) - ( $sumComplete + $sumUncomplete );
 
         return [
-            'labels'=> [ 
+            'labels'=> [
                 \Yii::t('common','Completed'),
                 \Yii::t('common','Under completion'),
                 \Yii::t('common','Not started'),
@@ -94,7 +94,7 @@ class SiteController extends OrganizationBackendController
             ->where(['org_id'=>$organization_id])
             ->where(['admin_enabled'=> 1])
             ->andWhere(Filter::dateFilter('survey_created_at'));
-        
+
         if (!empty($_GET['SurveySearch']['tags'])) {
             $tagsSurvey = ArrayHelper::getColumn(SurveyTag::find()->where(['IN','tag_id',$_GET['SurveySearch']['tags']])->all(),'survey_id');
             $organizationSurvey->andFilterWhere(['IN','survey_id',array_unique($tagsSurvey)]);
