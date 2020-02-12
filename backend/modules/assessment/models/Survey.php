@@ -52,7 +52,7 @@ class Survey extends \yii\db\ActiveRecord
 
     public $question = null;
     public $imageFile = null;
-    
+
     public $level_title = null;
     public $level_from = null;
     public $level_to = null;
@@ -105,7 +105,7 @@ class Survey extends \yii\db\ActiveRecord
             // survey_descr
             [['survey_name'], 'required'],
             [['survey_expired_at'], 'required', 'on' => self::SCENARIOUPDATE],
-            [['survey_wallet', 'survey_status', 'survey_created_by', 'survey_badge_id','org_id','survey_point','sector_id'], 'integer'],
+            [['survey_wallet', 'survey_status', 'survey_created_by', 'survey_badge_id','org_id','survey_point','sector_id','admin_enabled'], 'integer'],
             ['survey_time_to_pass','integer','min'=>1],
             ['survey_point', 'compare', 'compareValue' => 0, 'operator' => '>=', 'type' => 'number'],
             [['imageFile'], 'file', 'mimeTypes' => 'image/jpeg, image/png', 'maxSize' => 5000000]

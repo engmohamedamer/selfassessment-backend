@@ -51,7 +51,7 @@ class DefaultController extends Controller
         }else{
             \Yii::$app->language = 'en';
         }
-        
+
         $this->organization_id =\Yii::$app->user->identity->userProfile->organization_id;
 
         parent::init();
@@ -123,15 +123,12 @@ class DefaultController extends Controller
 
     public function actionCreate()
     {
-
-
         $survey = new Survey();
         $survey->org_id =$this->organization_id ;
         $survey->survey_name = \Yii::t('survey', 'New Assessment');
         $survey->survey_is_closed = true;
         $survey->save(false);
         \Yii::$app->session->set('surveyUploadsSubpath', $survey->survey_id);
-
         $levels =['مقبول'=>[0,50],'جيد'=>[51,65],'جيد جدا'=>[66,85],'ممتاز'=>[86,100]];
         foreach ($levels as $key => $value) {
             $new = new SurveyDegreeLevel();
@@ -308,10 +305,10 @@ class DefaultController extends Controller
         $survey = $this->findModel($id);
         // $survey->scenario = 'scenarioupdate';
         \Yii::$app->session->set('surveyUploadsSubpath', $id);
-        
+        $this->setEnabled($survey);
+
         if (\Yii::$app->request->isPjax) {
             if ($survey->load(\Yii::$app->request->post()) && $survey->validate()) {
-
                 if (is_array($survey['level_title'])) {
                     SurveyDegreeLevel::deleteAll(['survey_degree_level_survey_id'=> $survey->survey_id]);
                     foreach ($survey['level_title'] as $key => $value) {
@@ -334,7 +331,6 @@ class DefaultController extends Controller
                         }
                     }
                 }
-
                 $sector_ids = explode(',', $survey['sector_ids']);
                 if (is_array($sector_ids)) {
                     SurveySelectedSectors::deleteAll(['survey_id'=> $survey->survey_id]);
@@ -348,8 +344,7 @@ class DefaultController extends Controller
                     }
                 }
                 $survey->save();
-	            $survey->unlinkAll('restrictedUsers', true);
-
+                $survey->unlinkAll('restrictedUsers', true);
 	            $post = \Yii::$app->request->post('Survey');
 	            if (array_key_exists('restrictedUserIds', $post) && is_array($post['restrictedUserIds']))
 	            {
@@ -380,6 +375,7 @@ class DefaultController extends Controller
 
         // Check if there is an Editable ajax request
         if (isset($_POST['hasEditable'])) {
+            $this->setEnabled($model);
             // use Yii's response format to encode output as JSON
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
@@ -390,7 +386,7 @@ class DefaultController extends Controller
                     // return JSON encoded output in the below format
                     return ['output' => $model->$property, 'message' => ''];
                 }
-                //  $model->getFirstError($property) 
+                //  $model->getFirstError($property)
                 return ['output' => '', 'message' =>array_values($model->errors)];
             } // else if nothing to do always return an empty JSON encoded output
             else {
@@ -400,11 +396,11 @@ class DefaultController extends Controller
 
         throw new BadRequestHttpException();
     }
-
     public function actionUpdateImage($id)
     {
         $model = $this->findModel($id);
         $model['imageFile'] = UploadedFile::getInstance($model, 'imageFile');
+        $this->setEnabled($model);
 
         $validate = ActiveForm::validate($model);
         if (\Yii::$app->request->isAjax && !empty($validate)) {
@@ -462,6 +458,13 @@ class DefaultController extends Controller
         }
 
         return true;
+    }
+
+
+    public  function setEnabled($model){
+        $model->admin_enabled = 1;
+        $model->save(false);
+	    return true;
     }
 
 	/**
