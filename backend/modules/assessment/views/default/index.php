@@ -32,7 +32,7 @@ BootstrapPluginAsset::register($this);
                     </h1>
                 </div>
                 <div class=" actionBtns">
-                    <a href="assessment/default/create" class="btn btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('survey', 'Create new survey') ?></a>
+                    <a href="assessment/default/create" class="btn btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('survey', 'Create new assessment') ?></a>
                     <a data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse" class="btn btn-info"><span><i class="fa fa-filter mr-2 ml-2"></i> <?= \Yii::t('common', 'Advanced Search')?> </span></a>
 
                 

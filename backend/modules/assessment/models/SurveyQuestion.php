@@ -191,7 +191,7 @@ class SurveyQuestion extends \yii\db\ActiveRecord
     {
         return [
             'survey_question_id' => Yii::t('survey', 'Question ID'),
-            'survey_question_name' => Yii::t('survey', 'Survey Question Name'),
+            'survey_question_name' => Yii::t('survey', 'Assessment Question Name'),
             'survey_question_descr' => Yii::t('survey', 'Detailed description'),
             'survey_question_type' => Yii::t('survey', 'Question Type'),
             'survey_question_survey_id' => Yii::t('survey', 'Survey ID'),
@@ -200,7 +200,7 @@ class SurveyQuestion extends \yii\db\ActiveRecord
             'survey_question_is_scorable' => Yii::t('survey', 'Score this question'),
             'steps'=> Yii::t('survey', 'Steps Number'),
             'survey_question_attachment_file'=> Yii::t('survey', 'Can Attach File'),
-            'survey_question_point'=> Yii::t('survey', 'Survey Question Point'),
+            'survey_question_point'=> Yii::t('survey', 'Assessment Question Point'),
             'survey_question_can_ignore'=>Yii::t('survey', 'Can Ignore'),
         ];
     }

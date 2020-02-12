@@ -127,7 +127,7 @@ class DefaultController extends Controller
 
         $survey = new Survey();
         $survey->org_id =$this->organization_id ;
-        $survey->survey_name = \Yii::t('survey', 'New Survey');
+        $survey->survey_name = \Yii::t('survey', 'New Assessment');
         $survey->survey_is_closed = true;
         $survey->save(false);
         \Yii::$app->session->set('surveyUploadsSubpath', $survey->survey_id);
