@@ -216,4 +216,9 @@ class Organization extends \yii\db\ActiveRecord
         }
         return $countComplete;
     }
+
+    public function countSurvey()
+    {
+        return $this->hasMany(Survey::className(), ['org_id' => 'id'])->where(['admin_enabled'=>1])->count();
+    }
 }
