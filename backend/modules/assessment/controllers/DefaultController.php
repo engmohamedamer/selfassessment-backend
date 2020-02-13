@@ -131,7 +131,12 @@ class DefaultController extends Controller
         $survey->survey_is_closed = true;
         $survey->save(false);
         \Yii::$app->session->set('surveyUploadsSubpath', $survey->survey_id);
-        $levels =['مقبول'=>[0,50],'جيد'=>[51,65],'جيد جدا'=>[66,85],'ممتاز'=>[86,100]];
+        $levels =[
+            Yii::t('common','Acceptable')=>[30,50],
+            Yii::t('common','Good')=>[51,65],
+            Yii::t('common','Very good')=>[66,85],
+            Yii::t('common','Excellent')=>[86,100]
+        ];
         foreach ($levels as $key => $value) {
             $new = new SurveyDegreeLevel();
             $new->survey_degree_level_survey_id = $survey->survey_id;
@@ -332,7 +337,10 @@ class DefaultController extends Controller
                             $selectedUser->save(false);
                         }
                     }
+                }else{
+                    SurveySelectedUsers::deleteAll(['survey_id'=> $survey->survey_id]);
                 }
+
                 $sector_ids = explode(',', $survey['sector_ids']);
                 if (is_array($sector_ids)) {
                     SurveySelectedSectors::deleteAll(['survey_id'=> $survey->survey_id]);

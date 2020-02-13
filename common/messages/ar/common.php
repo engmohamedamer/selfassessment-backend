@@ -344,4 +344,8 @@ return [
     'Date To'=>'التاريخ الي',
     'File Not Allowed'=>'يجب اخيتار ملف صحيح',
     'Enter Valid Date'=>'يجب ادخال تاريخ صحيح',
+    'Acceptable'=>'مقبول',
+    'Good'=>'جيد',
+    'Very good'=>'جيد جدا',
+    'Excellent'=>'ممتاز',
 ];
