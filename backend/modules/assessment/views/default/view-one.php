@@ -339,12 +339,5 @@
         background: #cebe32 !important;
     }
 </style>
-<?php
-if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
-        $bundle = BackendAsset::register($this);
-    }else{
-        $bundle = BackendArabic::register($this);
-    } 
-?>
 
 <div id="assessmentReport" data-SurveyId="<?= $survey->survey_id ?>" data-UserId="<?= $user_id; ?>" data-tocken="<?= Yii::$app->user->getIdentity()->access_token ;?>"></div>
