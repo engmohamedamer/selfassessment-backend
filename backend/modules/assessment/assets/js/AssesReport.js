@@ -1,8 +1,8 @@
 var currentHostname = window.location.hostname;
 var api;
 
-if (currentHostname == 'organization.selfassest.localhost') {
-    api = 'http://api.selfassest.localhost';
+if (currentHostname == 'organization.tamkeen-selfassessment.localhost') {
+    api = 'http://endpoints.tamkeen-selfassessment.localhost';
 }
 // else if(currentHostname  === 'organization.selfassest.localhost' ){
 //       api = 'http://api.selfassest.localhost/';
@@ -10,8 +10,6 @@ if (currentHostname == 'organization.selfassest.localhost') {
 else {
     api = 'http://api.tamkeentechlab.com';
 }
-
-console.log(currentHostname)
 
 var app = new Vue({
     el: "#assessmentReport",

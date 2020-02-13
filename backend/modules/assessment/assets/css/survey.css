@@ -1404,3 +1404,7 @@ section.content .survey-container .survey-block {
     text-align: center;
 }
 
+
+.text-start {
+    font-size: 13px !important;
+  }
