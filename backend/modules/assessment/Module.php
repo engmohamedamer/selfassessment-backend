@@ -2,6 +2,8 @@
 
 namespace backend\modules\assessment;
 
+use backend\modules\assessment\ReportComponentAR;
+use backend\modules\assessment\ReportComponentEN;
 use yii\base\UserException;
 use yii\helpers\FileHelper;
 use yii\helpers\Url;
@@ -74,5 +76,11 @@ class Module extends \yii\base\Module
 
         $view = \Yii::$app->getView();
         SurveyAsset::register($view);
+        
+        if(\Yii::$app->user->identity->userProfile->locale == 'en-US') {
+            ReportComponentEN::register($view);
+        }else{
+            ReportComponentAR::register($view);
+        }
     }
 }
