@@ -125,6 +125,7 @@ class AssessmentsController extends  MyActiveController
         $queryCompleted = SurveyMiniResource::find()->orderBy('survey_id DESC');
         $queryCompleted->joinWith(['stats'])->where(['survey_stat_is_done'=>1]);
         $queryCompleted->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1])
+            ->andwhere(['survey_stat_user_id'=>\Yii::$app->user->identity->id])
             ->andWhere(['IN','survey_id',$this->allowedSurvey()]);
 
 
@@ -148,6 +149,7 @@ class AssessmentsController extends  MyActiveController
         $queryNotComplete = SurveyMiniResource::find()->orderBy('survey_id DESC');
         $queryNotComplete->joinWith(['stats'])->where(['survey_stat_is_done'=>0]);
         $queryNotComplete->andwhere(['org_id'=>$orgId,'survey_is_visible' => 1])
+            ->andwhere(['survey_stat_user_id'=>\Yii::$app->user->identity->id])
             ->andWhere(['IN','survey_id',$this->allowedSurvey()]);
 
         $activeData = new ActiveDataProvider([
