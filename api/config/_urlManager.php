@@ -54,12 +54,13 @@ return [
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'assessments',
-            'only'=>['index','view','update','delete-file','report','survey-start','custom-report','completed','not-complete','options'],//'update',
+            'only'=>['index','view','update','delete-file','report','survey-start','custom-report','completed','not-complete','report-questions','options'],//'update',
             'extraPatterns'=>[
                 'GET ' => 'index' ,
                 'GET completed' => 'completed' ,
                 'GET not-complete' => 'not-complete' ,
                 'GET <id>' => 'view' ,
+                'GET report-questions/<id>' => 'report-questions' ,
                 'GET report/<id>' => 'report' ,
                 'GET custom-report/<id>/<user_id>' => 'custom-report' ,
                 'GET survey-start/<surveyId>' => 'survey-start',
