@@ -176,8 +176,8 @@ class AssessmentsController extends  MyActiveController
         if(!$surveyObj)  return ResponseHelper::sendFailedResponse(['message'=>'Survey not found'],404);
         $expired_at = time() >= strtotime($surveyObj->survey_expired_at);
         $stats = SurveyStat::findOne(['survey_stat_survey_id'=>$id,'survey_stat_user_id'=> $user_id]);
-        
-        // if($surveyObj->survey_is_closed || $expired_at || (isset($stats) and $stats->survey_stat_is_done))  return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
+        // and $stats->survey_stat_is_done
+        if($surveyObj->survey_is_closed || $expired_at || (isset($stats) ))  return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
         
 
         return ResponseHelper::sendSuccessResponse($surveyObj);
