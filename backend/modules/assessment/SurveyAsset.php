@@ -34,7 +34,7 @@ class SurveyAsset extends AssetBundle
         'js/survey.js',
         "https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js",
         "https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js",
-        'js/AssesReport.js'
+        'js/html2canvas.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

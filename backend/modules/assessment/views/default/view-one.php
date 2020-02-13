@@ -147,11 +147,15 @@
     }
     
     .projectFactsWrap .item {
-        width: 33.3%;
+        width: 25%;
         height: 295px;
         padding: 50px 0px;
         text-align: center;
         
+    }
+
+    .projectFactsWrap .item p.number {
+        font-size: 12px;
     }
     
     .projectFactsWrap .item:nth-child(1) {
@@ -171,7 +175,7 @@
     }
     
     .projectFactsWrap .item p.number {
-        font-size: 40px;
+        font-size: 22px;
         padding: 0;
         font-weight: bold;
     }
@@ -260,18 +264,62 @@
             width: 58mm
         }
     }
+
+
+@page {
+        size: A4;
+        margin: 0;
+    }
+    
+    @media print {
+        html,
+        body {
+            width: 297mm;
+            height:210mm ;
+        }
+        .page {
+            margin: 0;
+            border: initial;
+            border-radius: initial;
+            width: initial;
+            min-height: initial;
+            box-shadow: initial;
+            background: initial;
+            page-break-after: always;
+            padding: 15mm !important;
+        }
+        #my-report{
+            border: 0 !important;
+            
+        }
+        footer { display: none !important;} 
+        header {display: none !important; } 
+        // #projectFacts{display: none !important;} 
+        .report-title {display: none !important;} 
+        .search-card {display: none !important;} 
+        .v-data-footer {display: none !important;}
+
+    }
     /* this line is needed for fixing Chrome's bug */
     
-    .tablepop table thead tr th {
+     table thead tr th {
         background: #152638 !important;
         color: #fff !important;
+        font-size:12px !important;
+    }
+
+    table thead tr th i {
+        font-size:12px !important;
+
     }
     
-    .tablepop table tr td p {
-        margin: 0 !important
+     table tr td p {
+        /* font-size:10px !important; */
+        margin: 0 !important;
     }
     
-    .tablepop table tr td {
+     table tr td {
+        font-size:12px !important;
         padding: 10px;
     }
     
@@ -291,5 +339,12 @@
         background: #cebe32 !important;
     }
 </style>
+<?php
+if(Yii::$app->user->identity->userProfile->locale == 'en-US') {
+        $bundle = BackendAsset::register($this);
+    }else{
+        $bundle = BackendArabic::register($this);
+    } 
+?>
 
 <div id="assessmentReport" data-SurveyId="<?= $survey->survey_id ?>" data-UserId="<?= $user_id; ?>" data-tocken="<?= Yii::$app->user->getIdentity()->access_token ;?>"></div>

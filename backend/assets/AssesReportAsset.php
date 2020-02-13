@@ -34,6 +34,7 @@ class AssesReportAsset extends AssetBundle
      * @var array
      */
     public $js = [
+        'js/html2canvas.min.js',
         'js/AssesReport.js'
     ];
 
