@@ -42,14 +42,30 @@ $this->title = Yii::t('backend', 'Dashboard');
                             <label><?= \Yii::t('common', 'Filter by time')?></label>
                             <select class="form-control" name="date">
                                 <option value=""><?= Yii::t('backend','All');  ?></option>
-                                <option value="dateCurrentDay" <?php if($_GET['date'] == 'dateCurrentDay') echo "selected"; ;?> >اليوم</option>
-                                <option value="dateLastDay" <?php if($_GET['date'] == 'dateLastDay') echo "selected"; ;?>>اليوم السابق</option>
-                                <option value="dateCurrentWeek" <?php if($_GET['date'] == 'dateCurrentWeek') echo "selected"; ;?>>الاسبوع الحالي</option>
-                                <option value="dateLastWeek" <?php if($_GET['date'] == 'dateLastWeek') echo "selected"; ;?>>الاسبوع السابق</option>
-                                <option value="dateCurrentMonth" <?php if($_GET['date'] == 'dateCurrentMonth') echo "selected"; ;?>>الشهر الحالي</option>
-                                <option value="dateLastMonth" <?php if($_GET['date'] == 'dateLastMonth') echo "selected"; ;?>>الشهر السابق</option>
-                                <option value="dateCurrentYear" <?php if($_GET['date'] == 'dateCurrentYear') echo "selected"; ;?>>السنة الحالية</option>
-                                <option value="dateLastYear" <?php if($_GET['date'] == 'dateLastYear') echo "selected"; ;?>>السنة السابقة</option>
+                                <option value="dateCurrentDay" <?php if($_GET['date'] == 'dateCurrentDay') echo "selected"; ;?> >
+                                    <?= Yii::t('common','Current Day')?>
+                                </option>
+                                <option value="dateLastDay" <?php if($_GET['date'] == 'dateLastDay') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Last Day')?>
+                                </option>
+                                <option value="dateCurrentWeek" <?php if($_GET['date'] == 'dateCurrentWeek') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Current Week')?>
+                                </option>
+                                <option value="dateLastWeek" <?php if($_GET['date'] == 'dateLastWeek') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Last Week')?>
+                                </option>
+                                <option value="dateCurrentMonth" <?php if($_GET['date'] == 'dateCurrentMonth') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Current Month')?>
+                                </option>
+                                <option value="dateLastMonth" <?php if($_GET['date'] == 'dateLastMonth') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Last Month')?>
+                                </option>
+                                <option value="dateCurrentYear" <?php if($_GET['date'] == 'dateCurrentYear') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Current Year')?>
+                                </option>
+                                <option value="dateLastYear" <?php if($_GET['date'] == 'dateLastYear') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Last Year')?>
+                                </option>
                             </select>
                             <small class="form-text text-muted"><?= \Yii::t('common', 'Filter the dashboard by time.')?></small>
                         </div>
@@ -141,13 +157,6 @@ $this->title = Yii::t('backend', 'Dashboard');
             <div class="box-header with-border">
                 <h3 class="box-title">
                     <?= Yii::t('backend','Contributing Report') ?>
-                    <?php
-                        if ($_GET['date'] == 'dateLastYear') {
-                            echo Yii::t('backend','Last Year');
-                        }else{
-                            echo Yii::t('backend','Current Year');
-                        }
-                    ?>
                 </h3>
             </div>
             <div class="box-body">
@@ -198,12 +207,9 @@ $this->title = Yii::t('backend', 'Dashboard');
                                         
                                         <a href="/organization/view?id=<?= $organization->id ?>"><?= $organization->name ?></a>
                                     </td>
-                                    <td><a ><?= count($organization->survey) ?></a></td>
+                                    <td><a ><?= $organization->countSurvey() ?></a></td>
                                     <td><a href="#"><?= $organization->countUsers() ?></a></td>
                                     <td><a href="#"><?= $organization->startSurvey() ?></a></td>
-                                    <!-- <td class="text-success">
-                                        <?php // echo $organization->status()[$organization->status] ?>
-                                    </td> -->
                                     <td>
                                         <a href="/organization/view?id=<?= $organization->id ?>" class="text-muted newOrgsActions" title="<?= Yii::t('common','View') ?>" style="margin-right: 10px">
                                             <i class="fas fa-file-contract"></i>
@@ -239,8 +245,7 @@ $this->title = Yii::t('backend', 'Dashboard');
 <?php
 
 $l = json_encode($labels);
-$d1 = json_encode($data1);
-$d2 = json_encode($data2);
+$d2 = json_encode($dataChart);
 $js = <<<JS
 $(function () {
   'use strict'

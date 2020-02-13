@@ -37,6 +37,8 @@ class SurveyStat extends \yii\db\ActiveRecord
     
     public $month;
     public $count_month;
+    public $day;
+    public $count_day;
     /**
      * @inheritdoc
      */

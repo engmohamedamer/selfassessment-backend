@@ -2,9 +2,11 @@
 
 namespace common\helpers;
 
+use backend\modules\assessment\models\Survey;
+use backend\modules\assessment\models\SurveyStat;
 use common\models\OrganizationStructure;
 use yii\helpers\ArrayHelper;
-
+use Yii;
 class Filter  
 {
     public static function dateFilter($column_date, $unix = false, $prefix = '')
@@ -58,5 +60,134 @@ class Filter
             return ArrayHelper::getColumn($organizationStructure,'id');
         }
         return [];
+    }
+
+
+    public static function chartData()
+    {
+
+        if (!empty($_GET['organization_id'])) {
+            $surveyIds = ArrayHelper::getColumn(Survey::find()->where(['org_id'=>$_GET['organization_id']])->all(),'survey_id');
+            $filter = ['IN','survey_stat_survey_id',$surveyIds];
+        }else{
+            $filter = ['IS NOT','survey_stat_survey_id',null];
+        }
+
+        if ($_GET['date'] == 'dateLastYear' ) {
+            $year = date("Y",strtotime("-1 year"));
+            $chartPerYear = self::chartPerYear($year,$filter);
+            return ['data'=>$chartPerYear['data'],'labels'=>$chartPerYear['labels']];
+        }elseif ($_GET['date'] == 'dateCurrentDay' || $_GET['date'] == 'dateLastDay' || $_GET['date'] == 'dateCurrentWeek' ){
+
+            $date = self::dateFilter('DATE(`survey_stat_assigned_at`)');
+            $chartPerYear = self::chartPerWeek($date,$filter);
+            return ['data'=>$chartPerYear['data'],'labels'=>$chartPerYear['labels']];
+
+        }elseif ($_GET['date'] == 'dateLastWeek' ) {
+
+            $date = self::dateFilter('DATE(`survey_stat_assigned_at`)');
+            $chartPerYear = self::chartPerWeek($date,$filter);
+            return ['data'=>$chartPerYear['data'],'labels'=>$chartPerYear['labels']];
+
+        }elseif ($_GET['date'] == 'dateCurrentMonth' ) {
+
+            $date = self::dateFilter('survey_stat_assigned_at');
+            $chartPerYear = self::chartPerMonth($date,$filter);
+            return ['data'=>$chartPerYear['data'],'labels'=>$chartPerYear['labels']];
+
+        }elseif ($_GET['date'] == 'dateLastMonth' ) 
+        {
+            $date = self::dateFilter('survey_stat_assigned_at');
+            $chartPerYear = self::chartPerMonth($date,$filter);
+            return ['data'=>$chartPerYear['data'],'labels'=>$chartPerYear['labels']];
+
+        }else{
+            $year = date('Y');
+            $chartPerYear = self::chartPerYear($year,$filter);
+            return ['data'=>$chartPerYear['data'],'labels'=>$chartPerYear['labels']];
+        }
+    }
+
+
+    private function chartPerWeek($date,$filter)
+    {
+        $surveyStatsCountPerMonthDay = SurveyStat::find()
+            ->select('Day(survey_stat_assigned_at) as day, count(survey_stat_assigned_at) as count_day')
+            ->where($date)
+            ->andWhere($filter)
+            ->groupBy('survey_stat_assigned_at')
+            ->all();
+
+        $labels = [];
+        $data = [];
+
+        if ($_GET['date'] == 'dateCurrentWeek' ){
+            $start = (int) date("d",strtotime("last saturday"));
+            $end = (int) date("d",strtotime("1 day"));
+        }else{
+            $start = (int) date("d",strtotime("-7 days",strtotime(date("Y-m-d",strtotime("last saturday")))));
+            $end = (int) date("d",strtotime("last saturday"));
+        }
+
+        for ($i= $start; $i < $end; $i++) { 
+            $labels[]  = $i; 
+            $data [] = 0;
+        }
+
+        foreach ($surveyStatsCountPerMonthDay as $key => $value) {
+            $data[array_search($value->day,$labels)] = $value->count_day;
+        }
+        return ['data'=>$data,'labels'=>$labels];
+    }
+
+    private function chartPerMonth($date,$filter)
+    {
+        $surveyStatsCountPerMonthDay = SurveyStat::find()
+            ->select('Day(survey_stat_assigned_at) as day, count(survey_stat_assigned_at) as count_day')
+            ->where($date)
+            ->andWhere($filter)
+            ->groupBy('survey_stat_assigned_at')
+            ->all();
+
+        $labels = [];
+        $data = [];
+
+        for ($i=1; $i <= 30; $i++) { 
+            $labels[] = $i; 
+            $data [] = 0;
+        }
+
+        foreach ($surveyStatsCountPerMonthDay as $key => $value) {
+            $data[($value->day - 1)] = $value->count_day;
+        }
+        return ['data'=>$data,'labels'=>$labels];
+    }
+
+    private function chartPerYear($year,$filter)
+    {
+        $surveyStatsCountPerMonth = SurveyStat::find()
+            ->select('MONTH(survey_stat_assigned_at) as month, count(MONTH(survey_stat_assigned_at)) as count_month')
+            ->where(['Year(survey_stat_assigned_at)'=> $year])
+            ->andWhere($filter)
+            ->groupBy('MONTH(survey_stat_assigned_at)')
+            ->all();
+
+        $labels = [];
+        $data = [];
+
+        for ($i=1; $i <= 12; $i++) { 
+            $labels[] = self::months()[$i]; 
+            $data [] = 0;
+        }
+
+        foreach ($surveyStatsCountPerMonth as $key => $value) {
+            $data[($value->month - 1)] = $value->count_month;
+        }
+        return ['data'=>$data,'labels'=>$labels];
+    }
+
+    private static function months()
+    {
+        return array(1 => 'Jan.', 2 => 'Feb.', 3 => 'Mar.', 4 => 'Apr.', 5 => 'May', 6 => 'Jun.', 7 => 'Jul.', 8 => 'Aug.', 9 => 'Sep.', 10 => 'Oct.', 11 => 'Nov.', 12 => 'Dec.');
     }
 }

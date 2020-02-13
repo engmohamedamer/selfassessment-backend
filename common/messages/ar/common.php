@@ -348,4 +348,12 @@ return [
     'Good'=>'جيد',
     'Very good'=>'جيد جدا',
     'Excellent'=>'ممتاز',
+    'Current Day'=>'اليوم',
+    'Last Day'=>'اليوم السابق',
+    'Current Week'=>'الاسبوع الحالي',
+    'Last Week'=>'الاسبوع السابق',
+    'Current Month'=>'الشهر الحالي',
+    'Last Month'=>'الشهر السابق',
+    'Current Year'=>'السنة الحالية',
+    'Last Year'=>'السنة السابقة',
 ];
