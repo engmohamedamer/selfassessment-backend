@@ -356,4 +356,6 @@ return [
     'Last Month'=>'الشهر السابق',
     'Current Year'=>'السنة الحالية',
     'Last Year'=>'السنة السابقة',
+    'Filter By Tags'=>'بحث الإستبيانات حسب الوسوم',
+    'Filter By Business Sector'=>'بحث الإستبيانات حسب قطاع العمل'
 ];

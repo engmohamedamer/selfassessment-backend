@@ -50,17 +50,33 @@ $i = 1;
                             <div class="form-group">
                                 <label><?= \Yii::t('common', 'Filter by time')?></label>
                                 <select class="form-control" name="date">
-                                    <option value=""><?= Yii::t('backend','All');  ?></option>
-                                    <option value="dateCurrentDay" <?php if($_GET['date'] == 'dateCurrentDay') echo "selected"; ;?> >اليوم</option>
-                                    <option value="dateLastDay" <?php if($_GET['date'] == 'dateLastDay') echo "selected"; ;?>>اليوم السابق</option>
-                                    <option value="dateCurrentWeek" <?php if($_GET['date'] == 'dateCurrentWeek') echo "selected"; ;?>>الاسبوع الحالي</option>
-                                    <option value="dateLastWeek" <?php if($_GET['date'] == 'dateLastWeek') echo "selected"; ;?>>الاسبوع السابق</option>
-                                    <option value="dateCurrentMonth" <?php if($_GET['date'] == 'dateCurrentMonth') echo "selected"; ;?>>الشهر الحالي</option>
-                                    <option value="dateLastMonth" <?php if($_GET['date'] == 'dateLastMonth') echo "selected"; ;?>>الشهر السابق</option>
-                                    <option value="dateCurrentYear" <?php if($_GET['date'] == 'dateCurrentYear') echo "selected"; ;?>>السنة الحالية</option>
-                                    <option value="dateLastYear" <?php if($_GET['date'] == 'dateLastYear') echo "selected"; ;?>>السنة السابقة</option>
-                                </select>
-                                <small class="form-text text-muted">بحث الإستبيانات بالمدة الزمنية المحددة</small>
+                                <option value=""><?= Yii::t('backend','All');  ?></option>
+                                <option value="dateCurrentDay" <?php if($_GET['date'] == 'dateCurrentDay') echo "selected"; ;?> >
+                                    <?= Yii::t('common','Current Day')?>
+                                </option>
+                                <option value="dateLastDay" <?php if($_GET['date'] == 'dateLastDay') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Last Day')?>
+                                </option>
+                                <option value="dateCurrentWeek" <?php if($_GET['date'] == 'dateCurrentWeek') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Current Week')?>
+                                </option>
+                                <option value="dateLastWeek" <?php if($_GET['date'] == 'dateLastWeek') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Last Week')?>
+                                </option>
+                                <option value="dateCurrentMonth" <?php if($_GET['date'] == 'dateCurrentMonth') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Current Month')?>
+                                </option>
+                                <option value="dateLastMonth" <?php if($_GET['date'] == 'dateLastMonth') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Last Month')?>
+                                </option>
+                                <option value="dateCurrentYear" <?php if($_GET['date'] == 'dateCurrentYear') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Current Year')?>
+                                </option>
+                                <option value="dateLastYear" <?php if($_GET['date'] == 'dateLastYear') echo "selected"; ;?>>
+                                    <?= Yii::t('common','Last Year')?>
+                                </option>
+                            </select>
+                            <small class="form-text text-muted"><?= \Yii::t('common', 'Filter the dashboard by time.')?></small>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -83,7 +99,7 @@ $i = 1;
                                         ],
                                     ]);
                                 ?>
-                                <small class="form-text text-muted">بحث الإستبيانات حسب قطاع العمل</small>
+                                <small class="form-text text-muted"><?= Yii::t('common','Filter By Business Sector') ?></small>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -101,7 +117,7 @@ $i = 1;
                                         ],
                                     ]);
                                 ?>
-                                <small class="form-text text-muted">بحث الإستبيانات حسب الوسوم</small>
+                                <small class="form-text text-muted"><?= Yii::t('common','Filter By Tags') ?></small>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -244,25 +260,6 @@ $i = 1;
                 <div class="box box-danger">
                     <div class="box-header with-border">
                         <h3 class="box-title"><?= \Yii::t('common', 'Latest Assessments')?></h3>
-
-                        <div class="box-tools pull-right">
-                        <div class="dropdown">
-                        <button class="btn btn-box-tool dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-cogs"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">اليوم</a>
-                            <a class="dropdown-item" href="#">اليوم السابق</a>
-                            <a class="dropdown-item" href="#">الاسبوع الحالي</a>
-                            <a class="dropdown-item" href="#">الاسبوع السابق</a>
-                            <a class="dropdown-item" href="#">الشهر الحالي</a>
-                            <a class="dropdown-item" href="#">الشهر السابق</a>
-                            <a class="dropdown-item" href="#">السنة الحالية</a>
-                            <a class="dropdown-item" href="#">السنة السابقة</a>
-
-                        </div>
-                    </div>
-                        </div>
                     </div>
                     <div class="box-body">
                         <div class="table-responsive">

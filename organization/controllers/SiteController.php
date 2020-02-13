@@ -92,7 +92,7 @@ class SiteController extends OrganizationBackendController
         $organizationSurvey = Survey::find()->select('survey_id, survey_is_closed, survey_expired_at, survey_name, count(survey_stat.survey_stat_id) as survey_stat')
             ->join('LEFT JOIN','{{%survey_stat}}','{{%survey_stat}}.survey_stat_survey_id = {{%survey}}.survey_id')
             ->where(['org_id'=>$organization_id])
-            ->where(['admin_enabled'=> 1])
+            ->andWhere(['admin_enabled'=> 1])
             ->andWhere(Filter::dateFilter('survey_created_at'));
 
         if (!empty($_GET['SurveySearch']['tags'])) {
