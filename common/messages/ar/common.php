@@ -343,4 +343,5 @@ return [
     'Date From'=>'التاريخ من',
     'Date To'=>'التاريخ الي',
     'File Not Allowed'=>'يجب اخيتار ملف صحيح',
+    'Enter Valid Date'=>'يجب ادخال تاريخ صحيح',
 ];

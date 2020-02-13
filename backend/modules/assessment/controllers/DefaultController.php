@@ -383,9 +383,11 @@ class DefaultController extends Controller
             // read your posted model attributes
             if ($model->load($_POST)) {
 
-                // if (isset($_POST['Survey']['survey_expired_at']) and ) {
-                //     # code...
-                // }
+                if (!empty($_POST['Survey']['survey_expired_at']) and 
+                    time() >= strtotime($_POST['Survey']['survey_expired_at'])
+                    ) {
+                    return ['output' => '', 'message' =>\Yii::t('common','Enter Valid Date')];
+                }
                 // read or convert your posted information
                 if ($model->validate() && $model->save()) {
                     $this->setEnabled($model);

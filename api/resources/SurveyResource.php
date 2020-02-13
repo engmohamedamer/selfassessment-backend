@@ -56,7 +56,7 @@ class SurveyResource extends Survey
             'startSurveyText'=>function($model){
                 $userId = \Yii::$app->user->identity->userProfile;
                 if ($userId->locale == 'en-US') {
-                    return 'Start Survey';
+                    return 'Start Assessment';
                 }else{
                     return 'بدء الإستبيان';
                 }
@@ -70,7 +70,7 @@ class SurveyResource extends Survey
             'completedHtml'=>function($model){
                 $userId = \Yii::$app->user->identity->userProfile;
                 if ($userId->locale == 'en-US') {
-                    return "<h3 class='mb-4'>Saving Survey .. </h3>";
+                    return "<h3 class='mb-4'>Saving Assessment .. </h3>";
                 }else{
                     return "<h3 class='mb-4'>جاري حفظ الإستبيان .. </h3>";
                 }
@@ -123,9 +123,7 @@ class SurveyResource extends Survey
                         [
                             'type'=>'html',
                             'name'=>'q',
-                            'html'=>[
-                                'ar'=> $info
-                            ]
+                            'html'=> $info
                         ]
                     ]
                 ];
