@@ -142,19 +142,19 @@ class UserSearch extends User
             
             if ($_GET['date'] == 'dateLastDay') {
                 $date = strtotime("-1 day");
-                $time = ['<=','user.created_a',$date];
+                $time = ['<=','user.created_at',$date];
             }elseif ($_GET['date'] == 'dateLastWeek') {
                 $date = strtotime("last saturday");
-                $time = ['<=','user.created_a',$date];
+                $time = ['<=','user.created_at',$date];
             }elseif ($_GET['date'] == 'dateLastMonth') {
                 $date = strtotime("-1 month");
-                $time = ['<=','user.created_a',$date];
+                $time = ['<=','user.created_at',$date];
             }elseif ($_GET['date'] == 'dateLastYear') {
                 $date = strtotime("-1 year");
-                $time = ['<=','user.created_a',$date];
+                $time = ['<=','user.created_at',$date];
             }else{
                 $date = date('Y-m-d',time());
-                $time = ['<=','DATE(FROM_UNIXTIME(user.created_a))',$date];
+                $time = ['<=','DATE(FROM_UNIXTIME(user.created_at))',$date];
             }
 
             $query->andFilterWhere($time);
