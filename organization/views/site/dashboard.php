@@ -30,7 +30,9 @@ $i = 1;
             </div>
         </div>
     </div>
-    <div class="collapse" id="filterCollapse">
+    <div class="collapse <?php if(isset($_GET['date']) || isset($_GET['SurveySearch']['sector_id'])
+            || isset($_GET['SurveySearch']['tags'])
+        ) echo 'in' ;?>" id="filterCollapse">
         <div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-filter fa-xs"></i> <?= \Yii::t('common', 'Dashboard Filter')?></h3>
