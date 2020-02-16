@@ -67,9 +67,9 @@ class SiteController extends OrganizationBackendController
         $dataProvider = $searchModel->searchUntilFilterDate([]);
         $orgUserCount =  count($dataProvider->getModels());
         $surveyIds = $this->organizationSurveysForChart($organization->id)
-            ->andFilterWhere(Filter::dateFilter('survey_stat_assigned_at'))
+            // ->andFilterWhere(Filter::dateFilter('survey_stat_assigned_at'))
             ->all();
-        return var_dump($surveyIds);
+        // return var_dump($surveyIds);
         $organizationSurveyIds = ArrayHelper::getColumn($surveyIds,'survey_id');
         $surveyStat = $this->surveyStat($organizationSurveyIds);
         $sumComplete   = $surveyStat['sumComplete'];
