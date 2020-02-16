@@ -146,7 +146,7 @@ $i = 1;
         <div class='item'>
             <span><?= $i++ ?></span>
             <h5><?= Yii::t('common','Add assessment contributors from your organization.'); ?></h5>
-            <a href="/user/index" class='btn small thirdBtn'><?= Yii::t('common','Add contributors'); ?></a>
+            <a href="/user/index?user_role=user" class='btn small thirdBtn'><?= Yii::t('common','Add contributors'); ?></a>
         </div>
         <?php endif;?>
         <?php if(count($organization->survey) == 0):?>
@@ -253,7 +253,7 @@ $i = 1;
             </div>
             <?php endif;?>
             
-            <?php if(count($organization->survey) > 0):?>
+            <?php if(count($organization->survey) > 0 and count($organizationLastSurveys) > 0 ):?>
             <!--Latest assessments-->
             <div class="col-md-6">
                 <div class="box box-danger">
