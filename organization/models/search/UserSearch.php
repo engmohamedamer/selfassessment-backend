@@ -118,6 +118,63 @@ class UserSearch extends User
         return $dataProvider;
     }
 
+    public function searchUntilFilterDate()
+    {
+
+        $query = User::find();
+        $query->joinWith(['userProfile'])->where(['organization_id'=>$this->organization_id]);
+
+        if ($_GET['user_role'] != 'governmentAdmin') {
+            if (!\Yii::$app->user->identity->userProfile->main_admin) {
+                self::querySector($query);        
+            }
+        }
+
+        if (!empty($_GET['SurveySearch']['sector_id'])) {
+            $query->andFilterWhere(['sector_id'=>$_GET['SurveySearch']['sector_id']]);
+        }
+
+        if (!empty($_GET['SurveySearch']['tags'])) {
+            $tagsUser = ArrayHelper::getColumn(UserTag::find()->where(['IN','tag_id',$_GET['SurveySearch']['tags']])->all(),'user_id');
+            $query->andFilterWhere(['IN','id',array_unique($tagsUser)]);
+        }
+        if (isset($_GET['date']) and !empty($_GET['date'])) {
+            
+            if ($_GET['date'] == 'dateLastDay') {
+                $date = strtotime("-1 day");
+            }elseif ($_GET['date'] == 'dateLastWeek') {
+                $date = strtotime("last saturday");
+            }elseif ($_GET['date'] == 'dateLastMonth') {
+                $date = strtotime("-1 month");
+            }elseif ($_GET['date'] == 'dateLastYear') {
+                $date = strtotime("-1 year");
+            }else{
+                $date = time();
+            }
+
+            $query->andFilterWhere(['<=','user.created_at',$date]);
+        }
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort'=> ['defaultOrder' => ['id'=>SORT_DESC]],
+            'pagination' => false, //['defaultPageSize' => 10],
+
+        ]);
+
+        if($this->user_role){
+            $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
+                ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => $this->user_role])->andFilterWhere(['!=','{{%user}}.id', \Yii::$app->user->identity->id]);
+        }
+
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'status' => User::STATUS_ACTIVE,
+        ]);
+
+        return $dataProvider;
+    }
+
     private static function filter($query)
     {
 

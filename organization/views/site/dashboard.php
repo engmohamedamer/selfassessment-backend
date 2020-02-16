@@ -17,10 +17,6 @@ $this->title = Yii::t('backend', 'Dashboard');
 
 $i = 1;
 ?>
-    <!-- <div class="col-sm-12 text-center assessmentParticipants-preloader preloader" style="display:none">
-        <img src="./img/preloader.gif" alt="">
-    </div> -->
-
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class=" mb-2">
@@ -32,10 +28,6 @@ $i = 1;
                 <a data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse" class="btn btn-info"><span><i class="fa fa-filter mr-2 ml-2"></i> <?= \Yii::t('common', 'Filter Options')?> </span></a>
 
             </div>
-            <!-- <div class="col-sm-6"> -->
-                <!-- <a href="NewOrganization.html" class="btn btn-primary" style="float: right">New Organization</a> -->
-            <!-- </div> -->
-            <!-- /.col -->
         </div>
     </div>
     <div class="collapse" id="filterCollapse">
@@ -132,7 +124,7 @@ $i = 1;
 
         </div>
     </div>
-    <?php if( (count($contributors->getModels()) == 0 || count($organization->survey) == 0) and (empty($_GET['date']) and  empty($_GET['SurveySearch']['sector_id']) and  empty($_GET['SurveySearch']['tags'])  ) ):?>
+    <?php if( (count($contributors->getModels()) == 0 || count($organization->survey) == 0 || $organization->countOrganizationStructure() == 0) and (empty($_GET['date']) and  empty($_GET['SurveySearch']['sector_id']) and  empty($_GET['SurveySearch']['tags'])  ) ):?>
     <div class="row custom-dashboard text-center">
 
         <h2><?= Yii::t('common','welcome'); ?></h2>
@@ -143,17 +135,21 @@ $i = 1;
             <h5><?= Yii::t('common','Modify the visual identity of the site to match the visual identity of your organization'); ?></h5>
             <a href="/organization/update" class='btn small thirdBtn'><?= Yii::t('common','Modify basic data'); ?></a>
         </div>
+        <?php if($organization->countOrganizationStructure() == 0):?>
         <div class='item'>
             <span><?= $i++ ?></span>
             <h5><?= Yii::t('common','Add Your organization structure.'); ?></h5>
             <a href="/organization-structure" class='btn small thirdBtn'><?= Yii::t('common','Create new structure'); ?></a>
         </div>
-
+        <?php endif;?>
+        <?php if(count($contributors->getModels()) == 0):?>
         <div class='item'>
             <span><?= $i++ ?></span>
             <h5><?= Yii::t('common','Add assessment contributors from your organization.'); ?></h5>
             <a href="/user/index" class='btn small thirdBtn'><?= Yii::t('common','Add contributors'); ?></a>
         </div>
+        <?php endif;?>
+        <?php if(count($organization->survey) == 0):?>
         <div class='item'>
             <span><?= $i++ ?></span>
             <h5> <?= Yii::t('common','Create the first assessment for your organization'); ?></h5>
@@ -161,18 +157,18 @@ $i = 1;
             <h6>" <?= Yii::t('common','The status of the assessment must be modified from closed to visible so that participants can view the assessment'); ?> "</h6>
             <a href="/assessment/default/create" class='btn small thirdBtn'><?= \Yii::t('common', 'Create new survey')?></a>
         </div>
+        <?php endif;?>
         </div>
     </div>
     <?php endif; ?>
 
 
-    <?php if(count($contributors->getModels()) > 0 && count($organization->survey) > 0):?>
     <div>
     <div class="row custom-dashboard">
 
-
-
         <!--Countributing in assessments-->
+        <?php if(count($contributors->getModels()) > 0 and count($organization->survey) > 0):?>
+
         <div class="col-md-6">
 
             <div class="box box-danger">
@@ -185,9 +181,10 @@ $i = 1;
             <!-- /.box-body -->
             </div>
         </div>
+        <?php endif;?>
 
         <!--Assessments status-->
-
+        <?php if(count($contributors->getModels()) > 0 and count($organization->survey) > 0):?>
         <div class="col-md-6">
 
             <div class="box box-danger">
@@ -207,11 +204,11 @@ $i = 1;
                 <!-- /.box-body -->
             </div>
         </div>
-
+        <?php endif;?>
 
     </div>
         <div class="row custom-dashboard">
-
+            <?php if(count($contributors->getModels()) > 0):?>
             <!--Latest contributors-->
             <div class="col-md-6">
                 <!-- USERS LIST -->
@@ -254,7 +251,9 @@ $i = 1;
                 </div>
                 <!--/.box -->
             </div>
-
+            <?php endif;?>
+            
+            <?php if(count($organization->survey) > 0):?>
             <!--Latest assessments-->
             <div class="col-md-6">
                 <div class="box box-danger">
@@ -306,11 +305,11 @@ $i = 1;
 
                 </div>
             </div>
+            <?php endif;?>
         </div>
 
 
     </div>
-    <?php endif; ?>
 
 
 

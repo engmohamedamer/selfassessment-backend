@@ -48,7 +48,10 @@ class SiteController extends OrganizationBackendController
     private function surveyChart()
     {
         $organization = Yii::$app->user->identity->userProfile->organization;
-        $data = $this->organizationSurveys($organization->id)->limit(10)->all();
+        $data = $this->organizationSurveysForChart($organization->id)
+            ->andFilterWhere(Filter::dateFilter('survey_stat_assigned_at'))
+            ->limit(10)
+            ->all();
         $labels = ArrayHelper::getColumn($data,'survey_name');
         $data   = ArrayHelper::getColumn($data,'survey_stat');
         return ['labels'=> $labels ,'data'=>$data];
@@ -61,12 +64,13 @@ class SiteController extends OrganizationBackendController
         $searchModel = new UserSearch();
         $searchModel->user_role = User::ROLE_USER;
         $searchModel->organization_id = $organization->id;
-        $searchModel->status = 2;
-        $dataProvider = $searchModel->search([]);
+        $dataProvider = $searchModel->searchUntilFilterDate([]);
         $orgUserCount =  count($dataProvider->getModels());
 
-        $organizationSurveyIds = ArrayHelper::getColumn($this->organizationSurveys($organization->id)->all(),'survey_id');
-
+        $surveyIds = $this->organizationSurveysForChart($organization->id)
+            ->andFilterWhere(Filter::dateFilter('survey_stat_assigned_at'))
+            ->all();
+        $organizationSurveyIds = ArrayHelper::getColumn($surveyIds,'survey_id');
         $surveyStat = $this->surveyStat($organizationSurveyIds);
         $sumComplete   = $surveyStat['sumComplete'];
         $sumUncomplete = $surveyStat['sumUncomplete'];
@@ -94,6 +98,28 @@ class SiteController extends OrganizationBackendController
             ->where(['org_id'=>$organization_id])
             ->andWhere(['admin_enabled'=> 1])
             ->andWhere(Filter::dateFilter('survey_created_at'));
+
+        if (!empty($_GET['SurveySearch']['tags'])) {
+            $tagsSurvey = ArrayHelper::getColumn(SurveyTag::find()->where(['IN','tag_id',$_GET['SurveySearch']['tags']])->all(),'survey_id');
+            $organizationSurvey->andFilterWhere(['IN','survey_id',array_unique($tagsSurvey)]);
+        }
+
+        if (!empty($_GET['SurveySearch']['sector_id'])) {
+            $organizationSurvey->andFilterWhere(['sector_id'=>$_GET['SurveySearch']['sector_id']]);
+        }
+
+        $organizationSurvey
+            ->groupBy('survey_id')
+            ->orderBy('survey_id DESC');
+        return $organizationSurvey;
+    }
+
+    private function organizationSurveysForChart($organization_id)
+    {
+        $organizationSurvey = Survey::find()->select('survey_id, survey_is_closed, survey_expired_at, survey_name, count(survey_stat.survey_stat_id) as survey_stat')
+            ->join('LEFT JOIN','{{%survey_stat}}','{{%survey_stat}}.survey_stat_survey_id = {{%survey}}.survey_id')
+            ->where(['org_id'=>$organization_id])
+            ->andWhere(['admin_enabled'=> 1]);
 
         if (!empty($_GET['SurveySearch']['tags'])) {
             $tagsSurvey = ArrayHelper::getColumn(SurveyTag::find()->where(['IN','tag_id',$_GET['SurveySearch']['tags']])->all(),'survey_id');

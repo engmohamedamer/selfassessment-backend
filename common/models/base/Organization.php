@@ -5,6 +5,7 @@ namespace common\models\base;
 use Yii;
 use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
+use common\models\OrganizationStructure;
 use common\models\Pages;
 use common\models\User;
 use common\models\UserProfile;
@@ -220,5 +221,10 @@ class Organization extends \yii\db\ActiveRecord
     public function countSurvey()
     {
         return $this->hasMany(Survey::className(), ['org_id' => 'id'])->where(['admin_enabled'=>1])->count();
+    }
+
+    public function countOrganizationStructure()
+    {
+        return $this->hasMany(OrganizationStructure::className(), ['organization_id' => 'id'])->count();
     }
 }
