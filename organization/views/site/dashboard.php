@@ -39,11 +39,13 @@ $i = 1;
             </div>
             <div class="box-body">
                 <div class="row">
+                    <?php if(count($contributors->getModels()) > 0 and count($organization->survey) > 0):?>
                     <div class="col-md-12">
                         <div class="alert alert-warning">
-                            <p>لا يوجد بيانات يمكن عرضها برجاء استخدام مدخلات أخري</p>
+                            <p><?= Yii::t('common','No data can be displayed, please use other entries!') ?></p>
                         </div>
                     </div>
+                    <?php endif;?>
                     <form method="GET">
                         <div class="col-md-3">
                             <div class="form-group">
