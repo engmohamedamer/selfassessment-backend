@@ -39,7 +39,7 @@ $i = 1;
             </div>
             <div class="box-body">
                 <div class="row">
-                    <?php if(count($contributors->getModels()) == 0 and count($organization->survey) == 0):?>
+                    <?php if(count($contributors->getModels()) == 0 and count($organizationLastSurveys) == 0):?>
                     <div class="col-md-12">
                         <div class="alert alert-warning">
                             <p><?= Yii::t('common','No data can be displayed, please use other entries!') ?></p>
