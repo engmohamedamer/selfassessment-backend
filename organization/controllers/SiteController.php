@@ -9,6 +9,7 @@ use common\helpers\Filter;
 use common\models\Organization;
 use common\models\SurveyTag;
 use common\models\User;
+use common\models\base\SurveySelectedSectors;
 use organization\models\search\UserSearch;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
@@ -105,7 +106,8 @@ class SiteController extends OrganizationBackendController
         }
 
         if (!empty($_GET['SurveySearch']['sector_id'])) {
-            $organizationSurvey->andFilterWhere(['sector_id'=>$_GET['SurveySearch']['sector_id']]);
+            $sectorSurvey = ArrayHelper::getColumn(SurveySelectedSectors::find()->where(['IN','sector_id',$_GET['SurveySearch']['sector_id']])->all(),'survey_id');
+            $organizationSurvey->andFilterWhere(['IN','survey_id',array_unique($sectorSurvey)]);
         }
 
         $organizationSurvey
@@ -127,7 +129,8 @@ class SiteController extends OrganizationBackendController
         }
 
         if (!empty($_GET['SurveySearch']['sector_id'])) {
-            $organizationSurvey->andFilterWhere(['sector_id'=>$_GET['SurveySearch']['sector_id']]);
+            $sectorSurvey = ArrayHelper::getColumn(SurveySelectedSectors::find()->where(['IN','sector_id',$_GET['SurveySearch']['sector_id']])->all(),'survey_id');
+            $organizationSurvey->andFilterWhere(['IN','survey_id',array_unique($sectorSurvey)]);
         }
 
         $organizationSurvey

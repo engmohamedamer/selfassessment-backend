@@ -126,7 +126,7 @@ class UserSearch extends User
 
         if ($_GET['user_role'] != 'governmentAdmin') {
             if (!\Yii::$app->user->identity->userProfile->main_admin) {
-                self::querySector($query);        
+                // self::querySector($query);        
             }
         }
 
@@ -136,7 +136,7 @@ class UserSearch extends User
 
         if (!empty($_GET['SurveySearch']['tags'])) {
             $tagsUser = ArrayHelper::getColumn(UserTag::find()->where(['IN','tag_id',$_GET['SurveySearch']['tags']])->all(),'user_id');
-            $query->andFilterWhere(['IN','id',array_unique($tagsUser)]);
+            $query->andWhere(['IN','id',array_unique($tagsUser)]);
         }
         if (isset($_GET['date']) and !empty($_GET['date'])) {
             
@@ -195,7 +195,7 @@ class UserSearch extends User
 
         if (!empty($_GET['SurveySearch']['tags'])) {
             $tagsUser = ArrayHelper::getColumn(UserTag::find()->where(['IN','tag_id',$_GET['SurveySearch']['tags']])->all(),'user_id');
-            $query->andFilterWhere(['IN','id',array_unique($tagsUser)]);
+            $query->andWhere(['IN','id',array_unique($tagsUser)]);
         }
 
         $query->andFilterWhere(Filter::dateFilter('created_at',true,'user.'));
