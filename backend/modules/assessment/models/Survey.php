@@ -4,6 +4,7 @@ namespace backend\modules\assessment\models;
 
 use Yii;
 use backend\models\SurveyDegreeLevel;
+use common\models\Organization;
 use common\models\OrganizationStructure;
 use common\models\SurveySelectedUsers;
 use common\models\Tag;
@@ -152,6 +153,11 @@ class Survey extends \yii\db\ActiveRecord
     public function getSurveyUserAnswers()
     {
         return $this->hasOne(SurveyUserAnswer::class, ['survey_user_answer_survey_id' => 'survey_id']);
+    }
+
+    public function getOrganization()
+    {
+        return $this->hasOne(Organization::class, ['id' => 'org_id']);
     }
 
     /**

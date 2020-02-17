@@ -20,6 +20,7 @@ return [
         ['pattern' => '/', 'route' => 'site/index'],
         ['pattern' => '/site', 'route' => 'site/index'],
         ['pattern' => '/site/index', 'route' => 'site/index'],
+        ['pattern' => '/report/<token>', 'route' => 'site/report'],
         ['pattern' => '/login', 'route' => 'user/login'],
         ['pattern' => '/signup', 'route' => 'user/signup'],
         ['pattern' => '/sectors', 'route' => 'user/sectors'],
