@@ -29,7 +29,7 @@ class ReportController extends RestController
 
         $surveyObj = SurveyResource::find()->where(['survey_id'=>$stat->survey_stat_survey_id,'survey_is_visible' => 1])->one();
 
-
+        $_SESSION['userID'] = $stat->survey_stat_user_id;
         $surveyObj2 = SurveyReportResource::findOne(['survey_id'=>$stat->survey_stat_survey_id,'survey_is_visible' => 1]);
 
         $data['theme'] = $themeData;
