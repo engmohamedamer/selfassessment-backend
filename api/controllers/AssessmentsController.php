@@ -15,6 +15,7 @@ use backend\modules\assessment\models\SurveyQuestion;
 use backend\modules\assessment\models\SurveyStat;
 use backend\modules\assessment\models\SurveyType;
 use backend\modules\assessment\models\SurveyUserAnswer;
+use common\models\OrganizationStructure;
 use common\models\SurveyUserAnswerAttachments;
 use yii\data\ActiveDataProvider;
 use yii\db\Expression;
@@ -183,8 +184,6 @@ class AssessmentsController extends  MyActiveController
         
         if($surveyObj->survey_is_closed || $expired_at || (isset($stats) and $stats->survey_stat_is_done))  return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
         
-        // return $this->sendReportEmail($surveyObj,$user);
-
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
     }
@@ -530,18 +529,36 @@ class AssessmentsController extends  MyActiveController
     {
 
         $assignedModel = SurveyStat::getAssignedUserStat($user->id,$surveyObj->survey_id);
-
+        \Yii::$app->language  = 'ar';
         $variables = [
             'user' => $user,
             'survey' => $surveyObj,
             'token'=> $assignedModel->survey_stat_hash
         ];
 
-        $mail = \Yii::$app->mailer;
-        return $mail->compose('reportAsnwer',$variables)
-          ->setTo('m.3laa.95@gmail.com')
-          ->setSubject(\Yii::t('common','Report Asnwer'))
+        \Yii::$app->mailer->compose('reportAsnwer',$variables)
+          ->setTo($user->email)
+          ->setSubject('تقرير اجابات المشارك')
           ->send();
+
+        if ($user->userProfile->sector_id) {
+          $structure = OrganizationStructure::find()->select('id')
+              ->where(['root'=>$user->userProfile->sector->root,'lvl'=>0])
+              ->one();
+            
+            $users = User::find();
+            $users->joinWith(['userProfile'])
+                ->where(['organization_id'=>$surveyObj->org_id]);
+            $users->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')
+                ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => 'governmentAdmin'])
+                ->andFilterWhere(['sector_id'=>$structure->id]);
+          foreach ($users->all() as $admin) {
+              \Yii::$app->mailer->compose('reportOrganizationAdminAsnwer',$variables)
+                ->setTo($admin->email)
+                ->setSubject('تقرير اجابات المشارك')
+                ->send();  
+          }
+        }  
     }
 
     private function checkQuestionAnswer($survey_id,$questionIds)

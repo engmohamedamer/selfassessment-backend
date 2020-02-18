@@ -383,7 +383,7 @@ $path = \Yii::getAlias('@apiUrl');
                             <tr>
                                 <td width="100"><a href="<?= $siteLink ?>" data-hs-link-id="0"><img src="<?= $path.'/img/avatar.jpg'?>" width="100" height="100" alt="Tamkeen" style="border:0; margin: auto; border-radius: 100px;"></a></td>
                             </tr>
-                            <tr><td align="center"><h2 style="margin: 0 !important; font-family:'Cairo', sans-serif !important;font-size:28px !important;line-height:38px !important;font-weight:200 !important;color:#252b33 !important;"><?= $user->userProfile->firstname .' '.$user->userProfile->lastname ?></h2></td></tr>
+                            <tr><td align="center"><h2 style="margin: 0 !important; font-family:'Cairo', sans-serif !important;font-size:28px !important;line-height:38px !important;font-weight:200 !important;color:#252b33 !important;"><?= $user->userProfile->firstname .' ' . $user->userProfile->lastname ?></h2></td></tr>
                         
                     </tbody></table>
                 </td></tr>
@@ -394,7 +394,7 @@ $path = \Yii::getAlias('@apiUrl');
                     <td align="center">
                         <table class="story-4" border="0" cellpadding="0" cellspacing="0" width="78%">
                             <tbody><tr>
-                                <td align="center" style="font-family:'Cairo', sans-serif !important;font-size:16px !important;line-height:30px !important;font-weight:400 !important;color:#7e8890 !important;">شكراً لك .. تم الإجابة على الاستبيان بنجاح <br> يمكنك تحميل تقرير بإجابات الإستبيان والنقاط التي حصلت عليها والإجراءات التصحيحية الخاصة بإجاباتك من هنا</td>
+                                <td align="center" style="font-family:'Cairo', sans-serif !important;font-size:16px !important;line-height:30px !important;font-weight:400 !important;color:#7e8890 !important;"> تم الإجابة على الاستبيان بنجاح <br> يمكنك تحميل تقرير بإجابات الإستبيان والنقاط التي حصل عليها والإجراءات التصحيحية من هنا</td>
                               
                           
                             </tr>
