@@ -5,6 +5,7 @@ namespace api\controllers;
 use Yii;
 use api\controllers\RestController;
 use api\helpers\ResponseHelper;
+use api\resources\SurveyReportResource;
 use api\resources\SurveyResource;
 use api\resources\User;
 use backend\modules\assessment\models\SurveyStat;
@@ -28,8 +29,12 @@ class ReportController extends RestController
 
         $surveyObj = SurveyResource::find()->where(['survey_id'=>$stat->survey_stat_survey_id,'survey_is_visible' => 1])->one();
 
+
+        $surveyObj2 = SurveyReportResource::findOne(['survey_id'=>$stat->survey_stat_survey_id,'survey_is_visible' => 1]);
+
         $data['theme'] = $themeData;
         $data['question'] = $surveyObj;
+        $date['report'] = $surveyObj2;
         return ResponseHelper::sendSuccessResponse($data);
     }
 
