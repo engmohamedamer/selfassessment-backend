@@ -20,7 +20,7 @@ return [
         ['pattern' => '/', 'route' => 'site/index'],
         ['pattern' => '/site', 'route' => 'site/index'],
         ['pattern' => '/site/index', 'route' => 'site/index'],
-        ['pattern' => '/report/<token>', 'route' => 'site/report'],
+        ['pattern' => '/report/<token>', 'route' => 'report/view'],
         ['pattern' => '/login', 'route' => 'user/login'],
         ['pattern' => '/signup', 'route' => 'user/signup'],
         ['pattern' => '/sectors', 'route' => 'user/sectors'],
@@ -113,10 +113,10 @@ return [
         ],
 
         ['class' =>'yii\rest\UrlRule',
-            'controller'=>'site',
-            'only'=>['report'],
+            'controller'=>'report',
+            'only'=>['view'],
             'extraPatterns'=>[
-                'GET report/<token>' => 'report'
+                'GET view/<token>' => 'view'
             ],
             'pluralize'=>false
         ],

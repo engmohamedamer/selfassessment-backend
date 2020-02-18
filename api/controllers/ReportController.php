@@ -3,22 +3,18 @@
 namespace api\controllers;
 
 use Yii;
+use api\controllers\RestController;
 use api\helpers\ResponseHelper;
 use api\resources\SurveyResource;
 use api\resources\User;
 use backend\modules\assessment\models\SurveyStat;
-use yii\web\Controller;
+use yii\rest\Controller;
 use yii\web\NotFoundHttpException;
 
-class SiteController extends Controller
+class ReportController extends RestController
 {
-    public function actionIndex(){
 
-        return 'API...';
-       // return $this->redirect(\Yii::getAlias('@frontendUrl'));
-    }
-
-    public function actionReport($token){
+    public function actionView($token){
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $stat = SurveyStat::findOne(['survey_stat_hash'=>$token]);
 
@@ -37,19 +33,4 @@ class SiteController extends Controller
         return ResponseHelper::sendSuccessResponse($data);
     }
 
-
-    public function actionError()
-    {
-        if (($exception = Yii::$app->getErrorHandler()->exception) === null) {
-            $exception = new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
-        }
-
-        if ($exception instanceof \HttpException) {
-            Yii::$app->response->setStatusCode($exception->getCode());
-        } else {
-            Yii::$app->response->setStatusCode(500);
-        }
-
-        return $this->asJson(['error' => $exception->getMessage(), 'code' => $exception->getCode()]);
-    }
 }
