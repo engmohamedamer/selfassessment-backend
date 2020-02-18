@@ -528,9 +528,13 @@ class AssessmentsController extends  MyActiveController
 
     public function sendReportEmail($surveyObj,$user)
     {
+
+        $assignedModel = SurveyStat::getAssignedUserStat($user->id,$surveyObj->survey_id);
+
         $variables = [
             'user' => $user,
-            'survey' => $surveyObj
+            'survey' => $surveyObj,
+            'token'=> $assignedModel->survey_stat_hash
         ];
 
         $mail = \Yii::$app->mailer;

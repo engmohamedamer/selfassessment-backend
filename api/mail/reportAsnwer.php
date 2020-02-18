@@ -5,7 +5,7 @@ use yii\helpers\Html;
 $organization = $user->userProfile->organization;
 $logo     = $organization->first_image_base_url . $organization->first_image_path;
 $siteLink = ResetPassword::siteLink($user);
-$resetLink = $siteLink.'/reset-password?token='.$token;
+$reportLink = $siteLink."/report/$token";
 ?>
 <!-- start coded_template: id:5555860215 path:Custom/email/onboarding_template/content_onboarding_updated_nocta_noheader.html -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -381,7 +381,7 @@ $resetLink = $siteLink.'/reset-password?token='.$token;
                             <tr>
                                 <td width="100"><a href="<?= $siteLink ?>" data-hs-link-id="0"><img src="avatar.jpg" width="100" height="100" alt="InVision App" style="border:0; margin: auto; border-radius: 100px;"></a></td>
                             </tr>
-                            <tr><td align="center"><h2 style="margin: 0 !important; font-family:'Cairo', sans-serif !important;font-size:28px !important;line-height:38px !important;font-weight:200 !important;color:#252b33 !important;">Mahmoud Baghdady</h2></td></tr>
+                            <tr><td align="center"><h2 style="margin: 0 !important; font-family:'Cairo', sans-serif !important;font-size:28px !important;line-height:38px !important;font-weight:200 !important;color:#252b33 !important;"><?= $user->userProfile->firstname . $user->userProfile->lastname ?></h2></td></tr>
                         
                     </tbody></table>
                 </td></tr>
@@ -414,7 +414,7 @@ $resetLink = $siteLink.'/reset-password?token='.$token;
                                         <center style="color:#ffffff;font-family:Helvetica, Arial,sans-serif;font-size:13px;text-transform: uppercase;">NOTHING VENTURED, NOTHING GAINED</center>
                                     </v:roundrect>
                                 <![endif]-->
-                                 <a class="main-cta" summary="main-cta" href="http://collegify.com"
+                                 <a class="main-cta" summary="main-cta" href="<? $reportLink ?>"
                                                 style="background-color:#153DD1; padding:14px 68px 14px 68px; border-radius:35px; color:#ffffff !important; display:inline-block; font-family:'Cairo', sans-serif; font-weight:500; font-size:16px; color:#FFFFFF; letter-spacing:1px; line-height:22px !important; text-align:center; text-decoration:none; -webkit-text-size-adjust:none"
                                                 bgcolor="#153DD1" align="center" data-hs-link-id="1" target="_blank">تحميل التقرير</a>
                                             
