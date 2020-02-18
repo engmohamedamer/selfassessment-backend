@@ -10,7 +10,7 @@ use backend\modules\assessment\models\SurveyStat;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class SiteController extends Controller
+class SiteController extends RestController
 {
     public function actionIndex(){
 
