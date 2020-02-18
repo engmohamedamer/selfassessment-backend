@@ -13,6 +13,10 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $surveyId integer */
 
+$organization = $survey->organization;
+$siteLink = $_SERVER['REQUEST_SCHEME'] . '://'. $organization->slug . $_SERVER['SERVER_NAME'];
+$link =  str_ireplace(['api','endpoints','organization'],'',$siteLink);
+
 ?>
 <div id="survey-respondents" class="survey-container">
 
@@ -103,7 +107,7 @@ JS
 		'layout' => "<div class='pull-right'>{summary}</div>\n<div class='clearfix'></div>{items}\n<div class='clearfix'></div><div class='col-md-12'>{pager}</div>",
 		'dataProvider' => $dataProvider,
 		'itemOptions' => ['class' => 'item'],
-		'itemView' => function ($model, $key, $index, $widget) use ($surveyId) {
+		'itemView' => function ($model, $key, $index, $widget) use ($surveyId,$link){
 			/** @var $model \backend\modules\assessment\models\SurveyStat */
 			$surveyStat = $model;
 			ob_start();
@@ -112,7 +116,7 @@ JS
 				<?php
 				echo $surveyStat->user->userProfile->fullName
 				?>
-                - <a href="/assessment/default/view-one?id=<?= $surveyId?>&user_id=<?= $surveyStat->user->id ?>">
+                - <a href="<?= $link.'/report/'.$surveyStat->survey_stat_hash ?>">
                     <?= Yii::t('survey','view Assessment Answers')?>
                 </a>
 

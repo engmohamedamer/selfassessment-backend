@@ -286,7 +286,7 @@ error_reporting(0);
     $surveyId = $survey->survey_id;
 
     echo $this->render('respondents',
-        compact('searchModel', 'dataProvider', 'surveyId', 'withUserSearch'));
+        compact('searchModel', 'dataProvider', 'surveyId', 'withUserSearch','survey'));
     ?>
 </div>
 
