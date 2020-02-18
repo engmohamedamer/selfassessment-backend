@@ -183,6 +183,7 @@ class AssessmentsController extends  MyActiveController
         
         if($surveyObj->survey_is_closed || $expired_at || (isset($stats) and $stats->survey_stat_is_done))  return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
         
+        return $this->sendReportEmail($surveyObj,$user);
 
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
@@ -516,12 +517,28 @@ class AssessmentsController extends  MyActiveController
           } // end if strstr
 
         }//end loap answers
+        if ($params['status'] == 2) {
+            $this->sendReportEmail($surveyObj,$user);
+        }
 
         $this->checkQuestionAnswer($surveyObj->survey_id,$questionIds);
         return ResponseHelper::sendSuccessResponse();
 
     }
 
+    public function sendReportEmail($surveyObj,$user)
+    {
+        $variables = [
+            'user' => $user,
+            'survey' => $surveyObj
+        ];
+
+        $mail = \Yii::$app->mailer;
+        return $mail->compose('reportAsnwer',$variables)
+          ->setTo('m.3laa.95@gmail.com')
+          ->setSubject(\Yii::t('common','Report Asnwer'))
+          ->send();
+    }
 
     private function checkQuestionAnswer($survey_id,$questionIds)
     {

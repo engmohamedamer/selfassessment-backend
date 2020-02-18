@@ -112,6 +112,15 @@ return [
             'pluralize'=>false
         ],
 
+        ['class' =>'yii\rest\UrlRule',
+            'controller'=>'site',
+            'only'=>['report'],
+            'extraPatterns'=>[
+                'GET report/<token>' => 'report'
+            ],
+            'pluralize'=>false
+        ],
+
 
         ['class' => 'yii\rest\UrlRule', 'controller' => 'lookups' ,'pluralize'=>false ,
             'only' => ['list-cities','list-districts'],
