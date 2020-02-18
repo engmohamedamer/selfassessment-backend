@@ -141,7 +141,7 @@ class UserController extends OrganizationBackendController
         $model->setScenario('create');
         $organization = Yii::$app->user->identity->userProfile->organization;
 
-        if ( $organization->limit_account > 0   &&  ( User::CountUsers(User::ROLE_USER,' organization_id='.$organization->id) >= $organization->limit_account  ) ) {
+        if ($model->roles == User::ROLE_USER && $organization->limit_account > 0   &&  ( User::CountUsers(User::ROLE_USER,' organization_id='.$organization->id) >= $organization->limit_account  ) ) {
             Yii::$app->getSession()->setFlash('alert', [
                 'type' =>'success',
                 'body' => \Yii::t('common', 'Sorry! you have exceeded the allowed numbers for participants') ,
