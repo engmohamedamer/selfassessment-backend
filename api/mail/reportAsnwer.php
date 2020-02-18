@@ -1,3 +1,12 @@
+<?php
+use api\helpers\ResetPassword;
+use yii\helpers\Html;
+
+$organization = $user->userProfile->organization;
+$logo     = $organization->first_image_base_url . $organization->first_image_path;
+$siteLink = ResetPassword::siteLink($user);
+$resetLink = $siteLink.'/reset-password?token='.$token;
+?>
 <!-- start coded_template: id:5555860215 path:Custom/email/onboarding_template/content_onboarding_updated_nocta_noheader.html -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -288,7 +297,7 @@
   </style>
 
   <meta name="generator" content="HubSpot">
-  <meta property="og:url" content="http://selfassessment.com">
+  <meta property="og:url" content="<?= $siteLink ?>">
   <meta name="x-apple-disable-message-reformatting">
 </head>
 <!--[if !((gte mso 9)|(IE))]><!-->
@@ -332,20 +341,22 @@
     <table class="responsive-table" width="570" border="0" cellpadding="0" cellspacing="0" valign="top">
     	<tbody><tr>
             
-    		<td width="70"><a href="http://www.selfassessment.com" data-hs-link-id="0"><img src="2.png" width="50.0" height="47.0" alt="InVision App" style="border:0;"></a></td>
+    		<td width="70"><a href="<?= $siteLink ?>" data-hs-link-id="0"><img src="2.png" width="50.0" height="47.0" alt="InVision App" style="border:0;"></a></td>
             
             
     		<td class="responsive-header-cell-big" style="font-family:'Cairo', arial, sans-serif !important;font-size:25px;line-height:30px !important;font-weight:200 !important;color:#252b33 !important;">تقرير اجابات المشارك</td>
             
             
-    		<td class="responsive-header-cell" style="font-family:'Cairo', arial, sans-serif !important;font-size:13px !important;line-height:30px !important;font-weight:400 !important;color:#7e8890 !important;text-transform:uppercase !important;" align="right"> استبيان وزارة العدل "123/2019"</td>
+    		<td class="responsive-header-cell" style="font-family:'Cairo', arial, sans-serif !important;font-size:13px !important;line-height:30px !important;font-weight:400 !important;color:#7e8890 !important;text-transform:uppercase !important;" align="right"> <?= $survey->survey_name ?> 
+    			"<?= $survey->survey_id .'/'. date('Y',strtotime($survey->survey_created_at)) ?>"
+    		</td>
             
         </tr>
     </tbody></table>
 </td></tr>
 
 <!-- <tr>
-        <td width="100"><a href="http://www.selfassessment.com" data-hs-link-id="0"><img src="2.png" width="50.0" height="47.0" alt="InVision App" style="border:0;"></a></td>
+        <td width="100"><a href="<?= $siteLink ?>" data-hs-link-id="0"><img src="2.png" width="50.0" height="47.0" alt="InVision App" style="border:0;"></a></td>
 
 </tr>
 
@@ -361,14 +372,14 @@
     <tr>
     	<td align="center" valign="top">
             <table class="responsive-table" width="580" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" valign="top" style="overflow:hidden !important;border-radius:3px;">
-                <tbody><tr><td><a href="http://www.selfassessment.com" data-hs-link-id="0"><img src="customer-survey.jpeg" class="hero-image" width="580" style="border: 0; max-width: 100% !important;" srcset="customer-survey.jpeg" sizes="(max-width: 580px) 100vw, 580px"></a></td></tr>
+                <tbody><tr><td><a href="<?= $siteLink ?>" data-hs-link-id="0"><img src="customer-survey.jpeg" class="hero-image" width="580" style="border: 0; max-width: 100% !important;" srcset="customer-survey.jpeg" sizes="(max-width: 580px) 100vw, 580px"></a></td></tr>
                 <tr height="46"><td>&nbsp;</td></tr>
                 
                 <tr><td align="center">
                     <table width="85%">
                         <tbody>
                             <tr>
-                                <td width="100"><a href="http://www.selfassessment.com" data-hs-link-id="0"><img src="avatar.jpg" width="100" height="100" alt="InVision App" style="border:0; margin: auto; border-radius: 100px;"></a></td>
+                                <td width="100"><a href="<?= $siteLink ?>" data-hs-link-id="0"><img src="avatar.jpg" width="100" height="100" alt="InVision App" style="border:0; margin: auto; border-radius: 100px;"></a></td>
                             </tr>
                             <tr><td align="center"><h2 style="margin: 0 !important; font-family:'Cairo', sans-serif !important;font-size:28px !important;line-height:38px !important;font-weight:200 !important;color:#252b33 !important;">Mahmoud Baghdady</h2></td></tr>
                         
