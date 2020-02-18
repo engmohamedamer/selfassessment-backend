@@ -34,7 +34,7 @@ class ReportController extends RestController
 
         $data['theme'] = $themeData;
         $data['question'] = $surveyObj;
-        $date['report'] = $surveyObj2;
+        $data['report'] = $surveyObj2;
         return ResponseHelper::sendSuccessResponse($data);
     }
 

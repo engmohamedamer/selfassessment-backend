@@ -183,7 +183,7 @@ class AssessmentsController extends  MyActiveController
         
         if($surveyObj->survey_is_closed || $expired_at || (isset($stats) and $stats->survey_stat_is_done))  return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
         
-        return $this->sendReportEmail($surveyObj,$user);
+        // return $this->sendReportEmail($surveyObj,$user);
 
         return ResponseHelper::sendSuccessResponse($surveyObj);
 
