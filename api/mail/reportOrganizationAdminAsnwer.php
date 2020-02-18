@@ -305,7 +305,7 @@ $path = \Yii::getAlias('@apiUrl');
 <!--[if !((gte mso 9)|(IE))]><!-->
 
 <body bgcolor="#eaeced" style="font-family:'Cairo', sans-serif; color:#8a959e"><span class="preheader" summary="preheader" style="display:none !important; Margin-left:-9999 !important; width:0 !important; height:0 !important; visibility:hidden !important; min-width:0 !important; min-height:0 !important; font-size:0 !important; line-height:0 !important"
-    width="0" height="0">Collegify</span>
+    width="0" height="0"></span>
   <!--<![endif]-->
   <table id="body" class="body" summary="body" width="100%" height="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="background-color:#eaeced;">
     <tbody>
@@ -374,7 +374,7 @@ $path = \Yii::getAlias('@apiUrl');
     <tr>
     	<td align="center" valign="top">
             <table class="responsive-table" width="580" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" valign="top" style="overflow:hidden !important;border-radius:3px;">
-                <tbody><tr><td><a href="<?= $siteLink ?>" data-hs-link-id="0"><img src="<?= $path.'/img/tamkeen-logo.png'?>" class="hero-image" width="580" style="border: 0; max-width: 100% !important;" srcset="customer-survey.jpeg" sizes="(max-width: 580px) 100vw, 580px"></a></td></tr>
+                <tbody><tr><td><a href="<?= $siteLink ?>" data-hs-link-id="0"><img src="<?= $path.'/img/customer-survey.jpeg'?>" class="hero-image" width="580" style="border: 0; max-width: 100% !important;" srcset="customer-survey.jpeg" sizes="(max-width: 580px) 100vw, 580px"></a></td></tr>
                 <tr height="46"><td>&nbsp;</td></tr>
                 
                 <tr><td align="center">
@@ -584,7 +584,7 @@ $path = \Yii::getAlias('@apiUrl');
                                 <td align="center" valign="top"><a href="http://collegify.com"
                                     data-hs-link-id="1" target="_blank">
                                                 
-                                                    <img src="https://image.ibb.co/iA53P9/Collegify_favicon.png" width="30" height="30" alt="InVision" style="border:0; width:30px;height:30px;">
+                                                    <img src="https://image.ibb.co/iA53P9/_favicon.png" width="30" height="30" alt="InVision" style="border:0; width:30px;height:30px;">
                                                 
                                             </a></td>
                               </tr>
