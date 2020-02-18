@@ -214,6 +214,15 @@ class AssessmentsController extends  MyActiveController
 
     }
 
+    public function actionReportToken($id)
+    {
+        $user= User::findOne(['id'=> \Yii::$app->user->identity->getId()]) ;
+        $stat = SurveyStat::findOne(['survey_stat_survey_id'=>$id,'survey_stat_user_id'=>$user->id]);
+        if (!$stat || !$stat->survey_stat_is_done) return ResponseHelper::sendFailedResponse(['message'=>'Forbidden'],403);
+        return ResponseHelper::sendSuccessResponse(['token'=>$stat->survey_stat_hash]);
+
+    }
+
     public function actionCustomReport($id,$user_id)
     {
         $user= User::findOne(['id'=> $user_id]) ;

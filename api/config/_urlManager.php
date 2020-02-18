@@ -29,6 +29,7 @@ return [
         ['pattern' => '/theme', 'route' => 'theme/index'],
         ['pattern' => '/theme/<slug>/<lang>', 'route' => 'theme/index'],
         ['pattern' => '/assessments/report/<id>', 'route' => 'assessments/report'],
+        ['pattern' => '/assessments/report-token/<id>', 'route' => 'assessments/report-token'],
         ['pattern' => '/assessments/report-questions/<id>', 'route' => 'assessments/report-questions'],
         ['pattern' => '/assessments/completed', 'route' => 'assessments/completed'],
         ['pattern' => '/assessments/not-complete', 'route' => 'assessments/not-complete'],
@@ -55,7 +56,7 @@ return [
 
         ['class' =>'yii\rest\UrlRule',
             'controller'=>'assessments',
-            'only'=>['index','view','update','delete-file','report','survey-start','custom-report','completed','not-complete','report-questions','options'],//'update',
+            'only'=>['index','view','update','delete-file','report','survey-start','custom-report','completed','not-complete','report-questions','report-token','options'],//'update',
             'extraPatterns'=>[
                 'GET ' => 'index' ,
                 'GET completed' => 'completed' ,
@@ -63,6 +64,7 @@ return [
                 'GET <id>' => 'view' ,
                 'GET report-questions/<id>' => 'report-questions' ,
                 'GET report/<id>' => 'report' ,
+                'GET report-token/<id>' => 'report-token' ,
                 'GET custom-report/<id>/<user_id>' => 'custom-report' ,
                 'GET survey-start/<surveyId>' => 'survey-start',
                 'PUT ' => 'update',
