@@ -2,25 +2,27 @@
 
 namespace api\controllers;
 
-use Yii;
-
 use Stevenmaguire\OAuth2\Client\Provider\Keycloak as ProviderKeyc;
+use Yii;
+use api\helpers\SignupForm;
+use common\models\Organization;
 
 class AuthController extends  RestController
 {
 
     public function actionIndex($slug=null){
 
-        if($slug){
-            //get org info
+        if($slug || isset($_SESSION['slug'])){
+            $organization = Organization::findOne(['slug'=>$slug]);
+            $_SESSION['slug'] = $slug;
+            return value($organization);
         }
 
-        //now fill org info
         $provider = new ProviderKeyc([
-            'authServerUrl'             => "https://sso.tamkeen.land/auth",
-            'realm'                     => 'tamkeen',
-            'clientId'                  => 'self-asses-new',
-            'clientSecret'              => 'af2604e1-1fe6-4f29-bfd3-cbcb6168a5cc',
+            'authServerUrl'             => $organization->authServerUrl,
+            'realm'                     => $organization->realm,
+            'clientId'                  => $organization->clientId,
+            'clientSecret'              => $organization->clientSecret,
             'redirectUri'               => 'http://sahlit.com/auth',
             'encryptionAlgorithm'       => null,
             'encryptionKey'             => null,
@@ -51,17 +53,34 @@ class AuthController extends  RestController
 
             // Optional: Now you have a token you can look up a users profile data
             try {
+                unset($_SESSION['slug']);
 
                 // We got an access token, let's now get the user's details
                 $user = $provider->getResourceOwner($token);
                 // Use these details to create a new profile
-                 $name =    $user->getName();
-               // printf('Hello %s!\n<br>', $user->getName());
+                 $name  = $user->getName();
+                 $email = $user->getEmail();
+
+                $checkUser = User::find()->where(['email'=>$email])->one();
+                if (!$checkUser) {
+                    return ['user'=>'user found'];
+                    // $model = new SignupForm();
+                    // if ($model->load(['SignupForm'=>[
+                    //     'name'=> $user->getName(),
+                    //     'email'=> $user->getEmail(),
+                    //     'password'=> '123456',
+                    //     'mobile'=> '0512345678',
+                    // ]]) && $user = $model->save($organization->id)) {
+                    //     $user= User::findOne(['id'=> $user->id]);
+                    //     return ResponseHelper::sendSuccessResponse(['message'=>Yii::t('common','Account Created Successfully')]);
+                    // }
+                }else{
+                    return ['token_temp'=>'temp token!'];
+                }
 
             } catch (\Exception $e) {
                 exit('Failed to get resource owner: '.$e->getMessage());
             }
-
             // Use this to interact with an API on the users behalf
             return ['token'=>$token->getToken() ,'owner'=>$provider->realm, 'name'=>$name ,'user'=>$user->toArray()  ] ;
 
