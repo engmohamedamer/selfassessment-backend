@@ -160,6 +160,11 @@ class UserController extends  RestController
 
     }
 
+    public function actionSsoLogin($code){
+
+        return ['token'=>'asdasdadasdasdasdas'];
+    }
+
     public function actionRequestResetPassword(){
         $params = \Yii::$app->request->post();
         if ($params['locale'] == 'ar') {
