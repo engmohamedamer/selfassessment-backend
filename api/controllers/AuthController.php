@@ -66,8 +66,8 @@ class AuthController extends  RestController
                     if ($model->load(['SignupForm'=>[
                         'name'=> $user->getName(),
                         'email'=> $user->getEmail(),
-                        'password'=> 123456,
-                        'mobile'=> 0512345678,
+                        'password'=> '123456',
+                        'mobile'=> '0512345678',
                     ]]) && $user = $model->save($organization->id)) {
                         $user= User::findOne(['id'=> $user->id]);
                         return ResponseHelper::sendSuccessResponse(['message'=>Yii::t('common','Account Created Successfully')]);
