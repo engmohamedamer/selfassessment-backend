@@ -64,7 +64,8 @@
     "onmotion/yii2-survey": "*",
     "wbraganca/yii2-dynamicform": "*",
     "flow/jsonpath": "dev-master",
-    "sjaakp/yii2-taggable": "*"
+    "sjaakp/yii2-taggable": "*",
+    "pviojo/oauth2-keycloak": "^1.0@dev"
 
 
   },
