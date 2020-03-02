@@ -63,7 +63,7 @@ class AuthController extends  RestController
             }
 
             // Use this to interact with an API on the users behalf
-            return ['token'=>$token->getToken() , 'name'=>$name ,'user'=>$user  ] ;
+            return ['token'=>$token->getToken() , 'name'=>$name ,'user'=>$user->toArray()  ] ;
 
             //now call the profile end point
 
