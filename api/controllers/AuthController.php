@@ -15,6 +15,7 @@ class AuthController extends  RestController
         if($slug || isset($_SESSION['slug'])){
             $organization = Organization::findOne(['slug'=>$slug]);
             $_SESSION['slug'] = $slug;
+            return value($organization);
         }
 
         $provider = new ProviderKeyc([
