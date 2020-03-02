@@ -250,7 +250,30 @@ use yii\widgets\DetailView;
                     </div>
                     <div class="tab-pane" id="tab7">
 
-                        سسسس
+                        <div class="row">
+                            
+
+                            <div class="col-md-12">
+                            <?php 
+                                echo DetailView::widget([
+                                    'model' => $model,
+                                    'attributes' => [
+                                        [
+                                            'attribute'=>'sso_login',
+                                            'value'=>function($model){
+                                                return $model->sso_login ? \Yii::t('common','Active') :  \Yii::t('common','Not Active');
+                                            },
+                                            'format'=>'raw'
+                                        ],
+                                        'authServerUrl',
+                                        'realm',
+                                        'clientId',
+                                        'clientSecret',
+                                    ]
+                                ]);
+                            ?>
+                            </div>
+                        </div>
                             
                        
                     </div>

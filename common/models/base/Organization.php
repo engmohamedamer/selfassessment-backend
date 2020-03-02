@@ -67,11 +67,11 @@ class Organization extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['city_id', 'district_id', 'limit_account','allow_registration'], 'integer'],
+            [['city_id', 'district_id', 'limit_account','allow_registration','sso_login'], 'integer'],
             [['postalbox','postalcode'], 'number'],
             ['name', 'string', 'max' => 150],
             [['business_sector', 'email', 'conatct_name', 'contact_email', 'contact_position'], 'string', 'max' => 100],
-            [['address','slug'], 'string', 'max' => 255],
+            [['address','slug','authServerUrl','realm','clientId','clientSecret'], 'string', 'max' => 255],
             [['phone', 'mobile', 'contact_phone'], 'string', 'max' => 20],
             [['first_image','second_image','status'],'safe'],
         ];
@@ -117,6 +117,7 @@ class Organization extends \yii\db\ActiveRecord
             'to'=>Yii::t('common','To'),
             'created_at'=>Yii::t('common','Created At'),
             'allow_registration'=> Yii::t('common','Allow User Registration') ,
+            'sso_login'=> Yii::t('common','Allow Login using organization SSO.') ,
         ];
     }
 

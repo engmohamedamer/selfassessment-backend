@@ -194,6 +194,17 @@ class OrganizationController extends BackendController
         $model = $this->findModel($id);
         $theme = OrganizationTheme::findOne(['organization_id'=>$id]);
         $themeFooterLinks = FooterLinks::findOne(['organization_id'=>$id]);
+
+        if (!$theme) {
+            $theme = new OrganizationTheme();
+            $theme->organization_id = $id;
+        }
+        $themeFooterLinks = new FooterLinks();
+        if (!$themeFooterLinks) {
+            $themeFooterLinks = new FooterLinks();
+            $themeFooterLinks->organization_id = $id;
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if (!$themeFooterLinks) {
                 $themeFooterLinks = new FooterLinks();

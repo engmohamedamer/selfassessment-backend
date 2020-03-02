@@ -31,14 +31,14 @@ class Organization extends BaseOrganization
 
             [['name','slug','business_sector', 'address', 'phone', 'email', 'conatct_name', 'contact_phone', 'contact_email', 'contact_position','first_image','second_image','about'], 'required'],
             [['postalbox','postalcode','mobile'], 'number'],
-            [['city_id', 'district_id', 'limit_account','allow_registration'], 'integer'],
+            [['city_id', 'district_id', 'limit_account','allow_registration','sso_login'], 'integer'],
             [['name'], 'string', 'max' => 150],
             [['business_sector', 'conatct_name', 'contact_position'], 'string', 'max' => 100],
-            [['address'], 'string', 'max' => 255],
+            [['address','authServerUrl','realm','clientId','clientSecret'], 'string', 'max' => 255],
             [['phone', 'mobile'], 'string', 'max' => 20],
             [['first_image_base_url', 'first_image_path', 'second_image_base_url', 'second_image_path'], 'string', 'max' => 1024],
             [['first_image','second_image','status','save_exit'],'safe'],
-            ['slug','unique'],
+            [['slug','realm'],'unique'],
 
         ];
     }

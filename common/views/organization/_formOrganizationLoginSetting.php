@@ -28,27 +28,22 @@ use wbraganca\dynamicform\DynamicFormWidget;
         <div class="form-group">
             <div class="checkbox">
                 <label for="organization-allow_sso">
-                    <input type="checkbox" id="organization-allow_sso" value="1" onclick="">
-                    <?= Yii::t('common', 'Allow Login using organization SSO.') ?>
+                    <?= $form->field($model,'sso_login')->checkBox(); ?>
             </label>
 
             </div>
         </div>
         <div class="form-group highlight-addon field-organizationtheme-facebook">
-            <label class="control-label">AuthServerUrl</label>
-            <input type="text" id="" class="form-control"  value="" placeholder="https://sso.xxxx.land/auth">
+            <?php echo  $form->field($model, 'authServerUrl')->textInput(['maxlength' => true, 'placeholder' => 'https://sso.xxxx.land/auth']) ?>
         </div>    
         <div class="form-group highlight-addon field-organizationtheme-facebook">
-            <label class="control-label">Realm</label>
-            <input type="text" id="" class="form-control"  value="" placeholder="xxxxx">
+            <?php echo  $form->field($model, 'realm')->textInput(['maxlength' => true, 'placeholder' => 'xxxxx']) ?>
         </div> 
         <div class="form-group highlight-addon field-organizationtheme-facebook">
-            <label class="control-label">ClientId</label>
-            <input type="text" id="" class="form-control"  value="" placeholder="xxxxx">
+            <?php echo  $form->field($model, 'clientId')->textInput(['maxlength' => true, 'placeholder' => 'xxxxx']) ?>
         </div> 
         <div class="form-group highlight-addon field-organizationtheme-facebook">
-            <label class="control-label">ClientSecret</label>
-            <input type="text" id="" class="form-control"  value="" placeholder="xxxx-xxx-xxxxxx-xxxxx">
+            <?php echo  $form->field($model, 'clientSecret')->textInput(['maxlength' => true, 'placeholder' => 'xxxx-xxx-xxxxxx-xxxxx']) ?>
         </div> 
         
     </div>

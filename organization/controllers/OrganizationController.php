@@ -83,7 +83,16 @@ class OrganizationController extends OrganizationBackendController
         $id = \Yii::$app->user->identity->userProfile->organization_id;
         $model = $this->findModel($id);
         $theme = OrganizationTheme::findOne(['organization_id'=>$id]);
-        $themeFooterLinks = FooterLinks::findOne(['organization_id'=>$id]);
+        if (!$theme) {
+            $theme = new OrganizationTheme();
+            $theme->organization_id = $id;
+        }
+        $themeFooterLinks = new FooterLinks();
+        if (!$themeFooterLinks) {
+            $themeFooterLinks = new FooterLinks();
+            $themeFooterLinks->organization_id = $id;
+        }
+        
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             if ($themeFooterLinks->load(\Yii::$app->request->post()) && $theme->load(\Yii::$app->request->post()) && $themeFooterLinks->save() && $theme->save()) {
                 if ($model->save_exit == 'exit') {
@@ -97,6 +106,7 @@ class OrganizationController extends OrganizationBackendController
                 }
             }
         }
+
         return $this->render('update', [
             'model' => $model,
             'theme' => $theme,

@@ -402,7 +402,7 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                             <?=
                                 $this->render('_formOrganizationLoginSetting', [
                                 'form' => $form,
-                                'OrganizationTheme' => $theme,
+                                'model' => $model,
                             ]) ?>
                         </div>
                         <div class='col-sm-0 col-lg-4 theme-edit-preview'>
