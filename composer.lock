@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8eadaf73621127356df4d613a773d56d",
+    "content-hash": "b7e6fcf683d8d4114c68999bf6a89676",
     "packages": [
         {
             "name": "alexantr/yii2-elfinder",
@@ -167,8 +167,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/ajaxorg/ace-builds/zipball/5ad04a46e8e0981a65dd982693e5d19a2209311c",
-                "reference": "5ad04a46e8e0981a65dd982693e5d19a2209311c",
-                "shasum": null
+                "reference": "5ad04a46e8e0981a65dd982693e5d19a2209311c"
             },
             "type": "bower-asset",
             "license": [
@@ -186,8 +185,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/blueimp/JavaScript-Canvas-to-Blob/zipball/ae6b62a7b0862ef102946fa4bc8992510869eb27",
-                "reference": "ae6b62a7b0862ef102946fa4bc8992510869eb27",
-                "shasum": null
+                "reference": "ae6b62a7b0862ef102946fa4bc8992510869eb27"
             },
             "type": "bower-asset",
             "time": "2019-11-03T01:20:10+00:00"
@@ -197,14 +195,13 @@
             "version": "v9.34.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/blueimp/jQuery-File-Upload.git",
+                "url": "git@github.com:blueimp/jQuery-File-Upload.git",
                 "reference": "bb52d3493d725175fcf5554da034a317aaaea0e2"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/blueimp/jQuery-File-Upload/zipball/bb52d3493d725175fcf5554da034a317aaaea0e2",
-                "reference": "bb52d3493d725175fcf5554da034a317aaaea0e2",
-                "shasum": null
+                "reference": "bb52d3493d725175fcf5554da034a317aaaea0e2"
             },
             "require": {
                 "bower-asset/blueimp-canvas-to-blob": ">=2.1.1",
@@ -228,8 +225,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/blueimp/JavaScript-Load-Image/zipball/ae40880049220d8283abd880e3f95c53581548a0",
-                "reference": "ae40880049220d8283abd880e3f95c53581548a0",
-                "shasum": null
+                "reference": "ae40880049220d8283abd880e3f95c53581548a0"
             },
             "type": "bower-asset",
             "time": "2019-11-03T01:20:22+00:00"
@@ -245,8 +241,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/blueimp/JavaScript-Templates/zipball/0b02d7d7e3c36b62c0f43ae08e3a9dae489fbbca",
-                "reference": "0b02d7d7e3c36b62c0f43ae08e3a9dae489fbbca",
-                "shasum": null
+                "reference": "0b02d7d7e3c36b62c0f43ae08e3a9dae489fbbca"
             },
             "type": "bower-asset",
             "time": "2019-11-03T01:24:45+00:00"
@@ -262,8 +257,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/twbs/bootstrap/zipball/68b0d231a13201eb14acd3dc84e51543d16e5f7e",
-                "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e",
-                "shasum": null
+                "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "require": {
                 "bower-asset/jquery": ">=1.9.1,<4.0"
@@ -278,14 +272,13 @@
             "version": "4.17.47",
             "source": {
                 "type": "git",
-                "url": "git@github.com:Eonasdan/bootstrap-datetimepicker.git",
+                "url": "https://github.com/Eonasdan/bootstrap-datetimepicker.git",
                 "reference": "25c11d79e614bc6463a87c3dd9cbf8280422e006"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Eonasdan/bootstrap-datetimepicker/zipball/25c11d79e614bc6463a87c3dd9cbf8280422e006",
-                "reference": "25c11d79e614bc6463a87c3dd9cbf8280422e006",
-                "shasum": null
+                "reference": "25c11d79e614bc6463a87c3dd9cbf8280422e006"
             },
             "require": {
                 "bower-asset/jquery": ">=1.8.3",
@@ -307,8 +300,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/fancyapps/fancyBox/zipball/059c44062a033665cb635364320713cbc52de651",
-                "reference": "059c44062a033665cb635364320713cbc52de651",
-                "shasum": null
+                "reference": "059c44062a033665cb635364320713cbc52de651"
             },
             "require": {
                 "bower-asset/jquery": ">=1.9.0"
@@ -329,8 +321,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/5e670ad62f50c738388d4dcec78d2888505ad77b",
-                "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b",
-                "shasum": null
+                "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "require": {
                 "bower-asset/jquery": ">=1.7"
@@ -345,14 +336,13 @@
             "version": "3.4.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jquery/jquery-dist.git",
+                "url": "https://github.com/jquery/jquery-dist.git",
                 "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/15bc73803f76bc53b654b9fdbbbc096f56d7c03d",
-                "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d",
-                "shasum": null
+                "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d"
             },
             "type": "bower-asset",
             "license": [
@@ -364,14 +354,13 @@
             "version": "1.12.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/components/jqueryui.git",
+                "url": "git@github.com:components/jqueryui.git",
                 "reference": "44ecf3794cc56b65954cc19737234a3119d036cc"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/components/jqueryui/zipball/44ecf3794cc56b65954cc19737234a3119d036cc",
-                "reference": "44ecf3794cc56b65954cc19737234a3119d036cc",
-                "shasum": null
+                "reference": "44ecf3794cc56b65954cc19737234a3119d036cc"
             },
             "require": {
                 "bower-asset/jquery": ">=1.6"
@@ -392,8 +381,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/moment/moment/zipball/96d0d6791ab495859d09a868803d31a55c917de1",
-                "reference": "96d0d6791ab495859d09a868803d31a55c917de1",
-                "shasum": null
+                "reference": "96d0d6791ab495859d09a868803d31a55c917de1"
             },
             "type": "bower-asset",
             "license": [
@@ -405,14 +393,13 @@
             "version": "v1.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bestiejs/punycode.js.git",
+                "url": "git@github.com:bestiejs/punycode.js.git",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/bestiejs/punycode.js/zipball/38c8d3131a82567bfef18da09f7f4db68c84f8a3",
-                "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3",
-                "shasum": null
+                "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "type": "bower-asset"
         },
@@ -421,14 +408,13 @@
             "version": "2.0.7.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:yiisoft/jquery-pjax.git",
+                "url": "https://github.com/yiisoft/jquery-pjax.git",
                 "reference": "aef7b953107264f00234902a3880eb50dafc48be"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/aef7b953107264f00234902a3880eb50dafc48be",
-                "reference": "aef7b953107264f00234902a3880eb50dafc48be",
-                "shasum": null
+                "reference": "aef7b953107264f00234902a3880eb50dafc48be"
             },
             "require": {
                 "bower-asset/jquery": ">=1.8"
@@ -786,6 +772,49 @@
             "time": "2019-10-28T03:44:26+00:00"
         },
         {
+            "name": "firebase/php-jwt",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "time": "2016-07-18T04:51:16+00:00"
+        },
+        {
             "name": "flow/jsonpath",
             "version": "dev-master",
             "source": {
@@ -1141,6 +1170,107 @@
                 "watermark"
             ],
             "time": "2019-11-02T09:15:47+00:00"
+        },
+        {
+            "name": "ircmaxell/random-lib",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ircmaxell/RandomLib.git",
+                "reference": "e9e0204f40e49fa4419946c677eccd3fa25b8cf4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ircmaxell/RandomLib/zipball/e9e0204f40e49fa4419946c677eccd3fa25b8cf4",
+                "reference": "e9e0204f40e49fa4419946c677eccd3fa25b8cf4",
+                "shasum": ""
+            },
+            "require": {
+                "ircmaxell/security-lib": "^1.1",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.11",
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^4.8|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "RandomLib": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Ferrara",
+                    "email": "ircmaxell@ircmaxell.com",
+                    "homepage": "http://blog.ircmaxell.com"
+                }
+            ],
+            "description": "A Library For Generating Secure Random Numbers",
+            "homepage": "https://github.com/ircmaxell/RandomLib",
+            "keywords": [
+                "cryptography",
+                "random",
+                "random-numbers",
+                "random-strings"
+            ],
+            "time": "2016-09-07T15:52:06+00:00"
+        },
+        {
+            "name": "ircmaxell/security-lib",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ircmaxell/SecurityLib.git",
+                "reference": "f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5",
+                "reference": "f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "1.1.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "SecurityLib": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Ferrara",
+                    "email": "ircmaxell@ircmaxell.com",
+                    "homepage": "http://blog.ircmaxell.com"
+                }
+            ],
+            "description": "A Base Security Library",
+            "homepage": "https://github.com/ircmaxell/SecurityLib",
+            "time": "2015-03-20T14:31:23+00:00"
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
@@ -3406,6 +3536,69 @@
             "time": "2019-04-03T23:46:42+00:00"
         },
         {
+            "name": "league/oauth2-client",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/oauth2-client.git",
+                "reference": "01f955b85040b41cf48885b078f7fd39a8be5411"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/01f955b85040b41cf48885b078f7fd39a8be5411",
+                "reference": "01f955b85040b41cf48885b078f7fd39a8be5411",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "guzzlehttp/guzzle": "~6.0",
+                "ircmaxell/random-lib": "~1.1",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "0.8.*",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "0.6.*",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\OAuth2\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Bilbie",
+                    "email": "hello@alexbilbie.com",
+                    "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OAuth 2.0 Client Library",
+            "keywords": [
+                "Authentication",
+                "SSO",
+                "authorization",
+                "identity",
+                "idp",
+                "oauth",
+                "oauth2",
+                "single sign on"
+            ],
+            "time": "2016-07-28T13:20:43+00:00"
+        },
+        {
             "name": "league/uri",
             "version": "5.3.0",
             "source": {
@@ -4466,9 +4659,7 @@
             "version": "4.0.13",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/acorn/-/acorn-4.0.13.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/acorn/-/acorn-4.0.13.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -4486,8 +4677,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/86990d5b48f5b9d747ee14d67df7bb200ffc6f85",
-                "reference": "86990d5b48f5b9d747ee14d67df7bb200ffc6f85",
-                "shasum": null
+                "reference": "86990d5b48f5b9d747ee14d67df7bb200ffc6f85"
             },
             "require": {
                 "npm-asset/bootstrap": ">=3.4.0,<4.0.0",
@@ -4529,9 +4719,7 @@
             "version": "4.10.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/asn1.js/-/asn1.js-4.10.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/asn1.js/-/asn1.js-4.10.1.tgz"
             },
             "require": {
                 "npm-asset/bn.js": ">=4.0.0,<5.0.0",
@@ -4548,9 +4736,7 @@
             "version": "1.5.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/assert/-/assert-1.5.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/assert/-/assert-1.5.0.tgz"
             },
             "require": {
                 "npm-asset/object-assign": ">=4.1.1,<5.0.0",
@@ -4566,9 +4752,7 @@
             "version": "2.2.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/astw/-/astw-2.2.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/astw/-/astw-2.2.0.tgz"
             },
             "require": {
                 "npm-asset/acorn": ">=4.0.3,<5.0.0"
@@ -4583,9 +4767,7 @@
             "version": "1.0.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -4597,9 +4779,7 @@
             "version": "1.3.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/base64-js/-/base64-js-1.3.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/base64-js/-/base64-js-1.3.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -4611,9 +4791,7 @@
             "version": "4.11.8",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/bn.js/-/bn.js-4.11.8.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/bn.js/-/bn.js-4.11.8.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -4625,9 +4803,7 @@
             "version": "3.4.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.4.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.4.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -4645,8 +4821,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/itsjavi/bootstrap-colorpicker/zipball/5e3e02aba534708148af6b44eb76ea639c793d69",
-                "reference": "5e3e02aba534708148af6b44eb76ea639c793d69",
-                "shasum": null
+                "reference": "5e3e02aba534708148af6b44eb76ea639c793d69"
             },
             "require": {
                 "npm-asset/jquery": ">=1.10"
@@ -4662,9 +4837,7 @@
             "version": "1.9.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/bootstrap-datepicker/-/bootstrap-datepicker-1.9.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/bootstrap-datepicker/-/bootstrap-datepicker-1.9.0.tgz"
             },
             "require": {
                 "npm-asset/jquery": ">=1.7.1,<4.0.0"
@@ -4679,9 +4852,7 @@
             "version": "2.1.30",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/bootstrap-daterangepicker/-/bootstrap-daterangepicker-2.1.30.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/bootstrap-daterangepicker/-/bootstrap-daterangepicker-2.1.30.tgz"
             },
             "require": {
                 "npm-asset/jquery": ">=1.10",
@@ -4697,9 +4868,7 @@
             "version": "9.10.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/bootstrap-slider/-/bootstrap-slider-9.10.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/bootstrap-slider/-/bootstrap-slider-9.10.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -4711,9 +4880,7 @@
             "version": "1.1.11",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz"
             },
             "require": {
                 "npm-asset/balanced-match": ">=1.0.0,<2.0.0",
@@ -4729,9 +4896,7 @@
             "version": "1.1.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/brorand/-/brorand-1.1.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/brorand/-/brorand-1.1.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -4743,9 +4908,7 @@
             "version": "6.0.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/browser-pack/-/browser-pack-6.0.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/browser-pack/-/browser-pack-6.0.2.tgz"
             },
             "require": {
                 "npm-asset/combine-source-map": "~0.7.1",
@@ -4764,9 +4927,7 @@
             "version": "1.11.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/browser-resolve/-/browser-resolve-1.11.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/browser-resolve/-/browser-resolve-1.11.3.tgz"
             },
             "require": {
                 "npm-asset/resolve": "1.1.7"
@@ -4781,9 +4942,7 @@
             "version": "14.3.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/browserify/-/browserify-14.3.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/browserify/-/browserify-14.3.0.tgz"
             },
             "require": {
                 "npm-asset/assert": ">=1.4.0,<2.0.0",
@@ -4844,9 +5003,7 @@
             "version": "1.2.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/browserify-aes/-/browserify-aes-1.2.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/browserify-aes/-/browserify-aes-1.2.0.tgz"
             },
             "require": {
                 "npm-asset/buffer-xor": ">=1.0.3,<2.0.0",
@@ -4866,9 +5023,7 @@
             "version": "1.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/browserify-cipher/-/browserify-cipher-1.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/browserify-cipher/-/browserify-cipher-1.0.1.tgz"
             },
             "require": {
                 "npm-asset/browserify-aes": ">=1.0.4,<2.0.0",
@@ -4885,9 +5040,7 @@
             "version": "1.0.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/browserify-des/-/browserify-des-1.0.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/browserify-des/-/browserify-des-1.0.2.tgz"
             },
             "require": {
                 "npm-asset/cipher-base": ">=1.0.1,<2.0.0",
@@ -4905,9 +5058,7 @@
             "version": "4.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/browserify-rsa/-/browserify-rsa-4.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/browserify-rsa/-/browserify-rsa-4.0.1.tgz"
             },
             "require": {
                 "npm-asset/bn.js": ">=4.1.0,<5.0.0",
@@ -4923,9 +5074,7 @@
             "version": "4.0.4",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/browserify-sign/-/browserify-sign-4.0.4.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/browserify-sign/-/browserify-sign-4.0.4.tgz"
             },
             "require": {
                 "npm-asset/bn.js": ">=4.1.1,<5.0.0",
@@ -4946,9 +5095,7 @@
             "version": "0.1.4",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/browserify-zlib/-/browserify-zlib-0.1.4.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/browserify-zlib/-/browserify-zlib-0.1.4.tgz"
             },
             "require": {
                 "npm-asset/pako": "~0.2.0"
@@ -4963,9 +5110,7 @@
             "version": "5.4.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/buffer/-/buffer-5.4.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/buffer/-/buffer-5.4.3.tgz"
             },
             "require": {
                 "npm-asset/base64-js": ">=1.0.2,<2.0.0",
@@ -4981,9 +5126,7 @@
             "version": "1.0.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/buffer-xor/-/buffer-xor-1.0.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/buffer-xor/-/buffer-xor-1.0.3.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -4995,9 +5138,7 @@
             "version": "2.0.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/builtin-status-codes/-/builtin-status-codes-2.0.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/builtin-status-codes/-/builtin-status-codes-2.0.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5009,9 +5150,7 @@
             "version": "1.0.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/cached-path-relative/-/cached-path-relative-1.0.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/cached-path-relative/-/cached-path-relative-1.0.2.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5023,9 +5162,7 @@
             "version": "0.1.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/charm/-/charm-0.1.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/charm/-/charm-0.1.2.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5037,9 +5174,7 @@
             "version": "1.1.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/chart.js/-/chart.js-1.1.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/chart.js/-/chart.js-1.1.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5051,9 +5186,7 @@
             "version": "1.0.4",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/cipher-base/-/cipher-base-1.0.4.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/cipher-base/-/cipher-base-1.0.4.tgz"
             },
             "require": {
                 "npm-asset/inherits": ">=2.0.1,<3.0.0",
@@ -5075,8 +5208,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/ckeditor/ckeditor4-releases/zipball/4d6b1722a79009f4627fd338ca872e57914e8235",
-                "reference": "4d6b1722a79009f4627fd338ca872e57914e8235",
-                "shasum": null
+                "reference": "4d6b1722a79009f4627fd338ca872e57914e8235"
             },
             "type": "npm-asset",
             "license": [
@@ -5095,8 +5227,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/yawetse/classie/zipball/4ceee2bbe44e64d29db11dd70b02e78367b1f4c9",
-                "reference": "4ceee2bbe44e64d29db11dd70b02e78367b1f4c9",
-                "shasum": null
+                "reference": "4ceee2bbe44e64d29db11dd70b02e78367b1f4c9"
             },
             "type": "npm-asset",
             "license": [
@@ -5109,9 +5240,7 @@
             "version": "0.7.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/combine-source-map/-/combine-source-map-0.7.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/combine-source-map/-/combine-source-map-0.7.2.tgz"
             },
             "require": {
                 "npm-asset/convert-source-map": "~1.1.0",
@@ -5129,9 +5258,7 @@
             "version": "0.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5143,9 +5270,7 @@
             "version": "1.5.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/concat-stream/-/concat-stream-1.5.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/concat-stream/-/concat-stream-1.5.2.tgz"
             },
             "require": {
                 "npm-asset/inherits": "~2.0.1",
@@ -5162,9 +5287,7 @@
             "version": "1.2.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/console-browserify/-/console-browserify-1.2.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/console-browserify/-/console-browserify-1.2.0.tgz"
             },
             "type": "npm-asset"
         },
@@ -5173,9 +5296,7 @@
             "version": "1.0.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/constants-browserify/-/constants-browserify-1.0.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/constants-browserify/-/constants-browserify-1.0.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5187,9 +5308,7 @@
             "version": "1.1.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.1.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.1.3.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5201,9 +5320,7 @@
             "version": "1.0.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5215,9 +5332,7 @@
             "version": "4.0.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/create-ecdh/-/create-ecdh-4.0.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/create-ecdh/-/create-ecdh-4.0.3.tgz"
             },
             "require": {
                 "npm-asset/bn.js": ">=4.1.0,<5.0.0",
@@ -5233,9 +5348,7 @@
             "version": "1.2.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/create-hash/-/create-hash-1.2.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/create-hash/-/create-hash-1.2.0.tgz"
             },
             "require": {
                 "npm-asset/cipher-base": ">=1.0.1,<2.0.0",
@@ -5254,9 +5367,7 @@
             "version": "1.1.7",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/create-hmac/-/create-hmac-1.1.7.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/create-hmac/-/create-hmac-1.1.7.tgz"
             },
             "require": {
                 "npm-asset/cipher-base": ">=1.0.3,<2.0.0",
@@ -5276,9 +5387,7 @@
             "version": "3.12.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/crypto-browserify/-/crypto-browserify-3.12.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/crypto-browserify/-/crypto-browserify-3.12.0.tgz"
             },
             "require": {
                 "npm-asset/browserify-cipher": ">=1.0.0,<2.0.0",
@@ -5303,9 +5412,7 @@
             "version": "1.10.20",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/datatables.net/-/datatables.net-1.10.20.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/datatables.net/-/datatables.net-1.10.20.tgz"
             },
             "require": {
                 "npm-asset/jquery": ">=1.7"
@@ -5320,9 +5427,7 @@
             "version": "1.10.20",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/datatables.net-bs/-/datatables.net-bs-1.10.20.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/datatables.net-bs/-/datatables.net-bs-1.10.20.tgz"
             },
             "require": {
                 "npm-asset/datatables.net": "1.10.20",
@@ -5338,9 +5443,7 @@
             "version": "1.0.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/defined/-/defined-1.0.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/defined/-/defined-1.0.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5352,9 +5455,7 @@
             "version": "2.0.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/deps-sort/-/deps-sort-2.0.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/deps-sort/-/deps-sort-2.0.0.tgz"
             },
             "require": {
                 "npm-asset/jsonstream": ">=1.0.3,<2.0.0",
@@ -5372,9 +5473,7 @@
             "version": "1.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/des.js/-/des.js-1.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/des.js/-/des.js-1.0.1.tgz"
             },
             "require": {
                 "npm-asset/inherits": ">=2.0.1,<3.0.0",
@@ -5390,9 +5489,7 @@
             "version": "4.5.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/detective/-/detective-4.5.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/detective/-/detective-4.5.0.tgz"
             },
             "require": {
                 "npm-asset/acorn": ">=4.0.3,<5.0.0",
@@ -5408,9 +5505,7 @@
             "version": "5.0.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/diffie-hellman/-/diffie-hellman-5.0.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/diffie-hellman/-/diffie-hellman-5.0.3.tgz"
             },
             "require": {
                 "npm-asset/bn.js": ">=4.1.0,<5.0.0",
@@ -5427,9 +5522,7 @@
             "version": "1.1.7",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/domain-browser/-/domain-browser-1.1.7.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/domain-browser/-/domain-browser-1.1.7.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5441,9 +5534,7 @@
             "version": "0.9.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/domhelper/-/domhelper-0.9.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/domhelper/-/domhelper-0.9.1.tgz"
             },
             "require": {
                 "npm-asset/browserify": ">=3.46.0",
@@ -5457,9 +5548,7 @@
             "version": "0.1.4",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/duplexer2/-/duplexer2-0.1.4.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/duplexer2/-/duplexer2-0.1.4.tgz"
             },
             "require": {
                 "npm-asset/readable-stream": ">=2.0.2,<3.0.0"
@@ -5474,9 +5563,7 @@
             "version": "6.5.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/elliptic/-/elliptic-6.5.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/elliptic/-/elliptic-6.5.2.tgz"
             },
             "require": {
                 "npm-asset/bn.js": ">=4.4.0,<5.0.0",
@@ -5497,9 +5584,7 @@
             "version": "0.5.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/eve-raphael/-/eve-raphael-0.5.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/eve-raphael/-/eve-raphael-0.5.0.tgz"
             },
             "type": "npm-asset"
         },
@@ -5508,9 +5593,7 @@
             "version": "1.1.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/events/-/events-1.1.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/events/-/events-1.1.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5522,9 +5605,7 @@
             "version": "1.0.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/evp_bytestokey/-/evp_bytestokey-1.0.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/evp_bytestokey/-/evp_bytestokey-1.0.3.tgz"
             },
             "require": {
                 "npm-asset/md5.js": ">=1.3.4,<2.0.0",
@@ -5540,9 +5621,7 @@
             "version": "1.0.6",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/fastclick/-/fastclick-1.0.6.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/fastclick/-/fastclick-1.0.6.tgz"
             },
             "type": "npm-asset"
         },
@@ -5551,9 +5630,7 @@
             "version": "0.8.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/flot/-/flot-0.8.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/flot/-/flot-0.8.3.tgz"
             },
             "type": "npm-asset"
         },
@@ -5562,9 +5639,7 @@
             "version": "4.7.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.7.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.7.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5576,9 +5651,7 @@
             "version": "1.0.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5596,8 +5669,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/fullcalendar/fullcalendar/zipball/bad3b01082691191c8b7ce2158a454d6dc40360d",
-                "reference": "bad3b01082691191c8b7ce2158a454d6dc40360d",
-                "shasum": null
+                "reference": "bad3b01082691191c8b7ce2158a454d6dc40360d"
             },
             "type": "npm-asset",
             "license": [
@@ -5610,9 +5682,7 @@
             "version": "1.1.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5624,9 +5694,7 @@
             "version": "7.1.6",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/glob/-/glob-7.1.6.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/glob/-/glob-7.1.6.tgz"
             },
             "require": {
                 "npm-asset/fs.realpath": ">=1.0.0,<2.0.0",
@@ -5646,9 +5714,7 @@
             "version": "1.0.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/has/-/has-1.0.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/has/-/has-1.0.3.tgz"
             },
             "require": {
                 "npm-asset/function-bind": ">=1.1.1,<2.0.0"
@@ -5663,9 +5729,7 @@
             "version": "3.0.4",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/hash-base/-/hash-base-3.0.4.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/hash-base/-/hash-base-3.0.4.tgz"
             },
             "require": {
                 "npm-asset/inherits": ">=2.0.1,<3.0.0",
@@ -5681,9 +5745,7 @@
             "version": "1.0.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/hash.js/-/hash.js-1.0.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/hash.js/-/hash.js-1.0.3.tgz"
             },
             "require": {
                 "npm-asset/inherits": ">=2.0.1,<3.0.0"
@@ -5698,9 +5760,7 @@
             "version": "1.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/hmac-drbg/-/hmac-drbg-1.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/hmac-drbg/-/hmac-drbg-1.0.1.tgz"
             },
             "require": {
                 "npm-asset/hash.js": ">=1.0.3,<2.0.0",
@@ -5717,9 +5777,7 @@
             "version": "3.7.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/html5shiv/-/html5shiv-3.7.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/html5shiv/-/html5shiv-3.7.3.tgz"
             },
             "type": "npm-asset"
         },
@@ -5728,9 +5786,7 @@
             "version": "1.1.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/htmlescape/-/htmlescape-1.1.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/htmlescape/-/htmlescape-1.1.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5742,9 +5798,7 @@
             "version": "1.0.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/https-browserify/-/https-browserify-1.0.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/https-browserify/-/https-browserify-1.0.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5756,9 +5810,7 @@
             "version": "1.1.13",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/ieee754/-/ieee754-1.1.13.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/ieee754/-/ieee754-1.1.13.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5770,9 +5822,7 @@
             "version": "0.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/indexof/-/indexof-0.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/indexof/-/indexof-0.0.1.tgz"
             },
             "type": "npm-asset"
         },
@@ -5781,9 +5831,7 @@
             "version": "1.0.6",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/inflight/-/inflight-1.0.6.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/inflight/-/inflight-1.0.6.tgz"
             },
             "require": {
                 "npm-asset/once": ">=1.3.0,<2.0.0",
@@ -5799,9 +5847,7 @@
             "version": "2.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5813,9 +5859,7 @@
             "version": "0.6.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/inline-source-map/-/inline-source-map-0.6.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/inline-source-map/-/inline-source-map-0.6.2.tgz"
             },
             "require": {
                 "npm-asset/source-map": "~0.5.3"
@@ -5830,14 +5874,13 @@
             "version": "3.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
                 "reference": "8d0c60f85598b56980b539053d93b0965aa70a45"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/8d0c60f85598b56980b539053d93b0965aa70a45",
-                "reference": "8d0c60f85598b56980b539053d93b0965aa70a45",
-                "shasum": null
+                "reference": "8d0c60f85598b56980b539053d93b0965aa70a45"
             },
             "type": "npm-asset",
             "license": [
@@ -5850,9 +5893,7 @@
             "version": "7.0.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/insert-module-globals/-/insert-module-globals-7.0.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/insert-module-globals/-/insert-module-globals-7.0.2.tgz"
             },
             "require": {
                 "npm-asset/combine-source-map": "~0.7.1",
@@ -5874,9 +5915,7 @@
             "version": "2.3.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/ion-rangeslider/-/ion-rangeslider-2.3.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/ion-rangeslider/-/ion-rangeslider-2.3.0.tgz"
             },
             "require": {
                 "npm-asset/jquery": ">=1.8"
@@ -5891,14 +5930,13 @@
             "version": "3.0.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ionic-team/ionicons.git",
+                "url": "git@github.com:ionic-team/ionicons.git",
                 "reference": "368a069e52f08233ac2b0f769120d6ad9ecb5278"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/ionic-team/ionicons/zipball/368a069e52f08233ac2b0f769120d6ad9ecb5278",
-                "reference": "368a069e52f08233ac2b0f769120d6ad9ecb5278",
-                "shasum": null
+                "reference": "368a069e52f08233ac2b0f769120d6ad9ecb5278"
             },
             "type": "npm-asset",
             "license": [
@@ -5911,9 +5949,7 @@
             "version": "1.1.6",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/is-buffer/-/is-buffer-1.1.6.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/is-buffer/-/is-buffer-1.1.6.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5925,9 +5961,7 @@
             "version": "1.0.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5939,9 +5973,7 @@
             "version": "3.4.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/jquery/-/jquery-3.4.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/jquery/-/jquery-3.4.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -5959,8 +5991,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/aterrien/jQuery-Knob/zipball/755309e933d326ffaa5a2d758dc377147b766515",
-                "reference": "755309e933d326ffaa5a2d758dc377147b766515",
-                "shasum": null
+                "reference": "755309e933d326ffaa5a2d758dc377147b766515"
             },
             "type": "npm-asset",
             "license": [
@@ -5972,9 +6003,7 @@
             "version": "1.3.8",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/jquery-slimscroll/-/jquery-slimscroll-1.3.8.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/jquery-slimscroll/-/jquery-slimscroll-1.3.8.tgz"
             },
             "require": {
                 "npm-asset/jquery": ">=1.7"
@@ -5986,9 +6015,7 @@
             "version": "2.4.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/jquery-sparkline/-/jquery-sparkline-2.4.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/jquery-sparkline/-/jquery-sparkline-2.4.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6000,9 +6027,7 @@
             "version": "1.12.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.12.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.12.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6014,9 +6039,7 @@
             "version": "0.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/json-stable-stringify/-/json-stable-stringify-0.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/json-stable-stringify/-/json-stable-stringify-0.0.1.tgz"
             },
             "require": {
                 "npm-asset/jsonify": "~0.0.0"
@@ -6031,9 +6054,7 @@
             "version": "0.0.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/jsonify/-/jsonify-0.0.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/jsonify/-/jsonify-0.0.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6045,9 +6066,7 @@
             "version": "1.3.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/jsonparse/-/jsonparse-1.3.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/jsonparse/-/jsonparse-1.3.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6065,8 +6084,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/dominictarr/JSONStream/zipball/4aef6e50ec4f2bc84fdf2370e43b2e62cd8e534c",
-                "reference": "4aef6e50ec4f2bc84fdf2370e43b2e62cd8e534c",
-                "shasum": null
+                "reference": "4aef6e50ec4f2bc84fdf2370e43b2e62cd8e534c"
             },
             "require": {
                 "npm-asset/jsonparse": ">=1.1.0,<2.0.0",
@@ -6082,9 +6100,7 @@
             "version": "1.2.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/jvectormap/-/jvectormap-1.2.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/jvectormap/-/jvectormap-1.2.2.tgz"
             },
             "require": {
                 "npm-asset/jquery": ">=1.5"
@@ -6096,9 +6112,7 @@
             "version": "2.0.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/labeled-stream-splicer/-/labeled-stream-splicer-2.0.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/labeled-stream-splicer/-/labeled-stream-splicer-2.0.2.tgz"
             },
             "require": {
                 "npm-asset/inherits": ">=2.0.1,<3.0.0",
@@ -6114,9 +6128,7 @@
             "version": "1.2.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/lexical-scope/-/lexical-scope-1.2.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/lexical-scope/-/lexical-scope-1.2.0.tgz"
             },
             "require": {
                 "npm-asset/astw": ">=2.0.0,<3.0.0"
@@ -6131,14 +6143,13 @@
             "version": "3.0.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/lodash/lodash.git",
+                "url": "git@github.com:lodash/lodash.git",
                 "reference": "f11f2385a63a90ab26d6e6713478994c64c634a2"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/lodash/lodash/zipball/f11f2385a63a90ab26d6e6713478994c64c634a2",
-                "reference": "f11f2385a63a90ab26d6e6713478994c64c634a2",
-                "shasum": null
+                "reference": "f11f2385a63a90ab26d6e6713478994c64c634a2"
             },
             "type": "npm-asset"
         },
@@ -6147,9 +6158,7 @@
             "version": "1.3.5",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/md5.js/-/md5.js-1.3.5.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/md5.js/-/md5.js-1.3.5.tgz"
             },
             "require": {
                 "npm-asset/hash-base": ">=3.0.0,<4.0.0",
@@ -6166,9 +6175,7 @@
             "version": "4.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/miller-rabin/-/miller-rabin-4.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/miller-rabin/-/miller-rabin-4.0.1.tgz"
             },
             "require": {
                 "npm-asset/bn.js": ">=4.0.0,<5.0.0",
@@ -6184,9 +6191,7 @@
             "version": "1.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6198,9 +6203,7 @@
             "version": "1.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6212,9 +6215,7 @@
             "version": "3.0.4",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/minimatch/-/minimatch-3.0.4.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/minimatch/-/minimatch-3.0.4.tgz"
             },
             "require": {
                 "npm-asset/brace-expansion": ">=1.1.7,<2.0.0"
@@ -6229,9 +6230,7 @@
             "version": "1.2.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/minimist/-/minimist-1.2.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/minimist/-/minimist-1.2.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6243,9 +6242,7 @@
             "version": "4.1.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/module-deps/-/module-deps-4.1.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/module-deps/-/module-deps-4.1.1.tgz"
             },
             "require": {
                 "npm-asset/browser-resolve": ">=1.7.0,<2.0.0",
@@ -6274,9 +6271,7 @@
             "version": "2.24.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/moment/-/moment-2.24.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/moment/-/moment-2.24.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6288,14 +6283,13 @@
             "version": "0.5.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/morrisjs/morris.js.git",
+                "url": "git@github.com:morrisjs/morris.js.git",
                 "reference": "d5cf1410eda7055eaf2c7d218d4cb24ec5ed55c8"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/morrisjs/morris.js/zipball/d5cf1410eda7055eaf2c7d218d4cb24ec5ed55c8",
-                "reference": "d5cf1410eda7055eaf2c7d218d4cb24ec5ed55c8",
-                "shasum": null
+                "reference": "d5cf1410eda7055eaf2c7d218d4cb24ec5ed55c8"
             },
             "type": "npm-asset",
             "license": [
@@ -6307,9 +6301,7 @@
             "version": "4.1.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6321,9 +6313,7 @@
             "version": "1.4.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/once/-/once-1.4.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/once/-/once-1.4.0.tgz"
             },
             "require": {
                 "npm-asset/wrappy": "~1"
@@ -6338,9 +6328,7 @@
             "version": "0.1.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/os-browserify/-/os-browserify-0.1.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/os-browserify/-/os-browserify-0.1.2.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6352,9 +6340,7 @@
             "version": "0.0.4",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/pace/-/pace-0.0.4.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/pace/-/pace-0.0.4.tgz"
             },
             "require": {
                 "npm-asset/charm": "~0.1.0"
@@ -6366,14 +6352,13 @@
             "version": "0.2.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nodeca/pako.git",
+                "url": "git@github.com:nodeca/pako.git",
                 "reference": "85d145e616967f3720382f416da530c23c02ad13"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/nodeca/pako/zipball/85d145e616967f3720382f416da530c23c02ad13",
-                "reference": "85d145e616967f3720382f416da530c23c02ad13",
-                "shasum": null
+                "reference": "85d145e616967f3720382f416da530c23c02ad13"
             },
             "type": "npm-asset",
             "license": [
@@ -6386,9 +6371,7 @@
             "version": "1.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/parents/-/parents-1.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/parents/-/parents-1.0.1.tgz"
             },
             "require": {
                 "npm-asset/path-platform": "~0.11.15"
@@ -6403,9 +6386,7 @@
             "version": "5.1.5",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/parse-asn1/-/parse-asn1-5.1.5.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/parse-asn1/-/parse-asn1-5.1.5.tgz"
             },
             "require": {
                 "npm-asset/asn1.js": ">=4.0.0,<5.0.0",
@@ -6425,9 +6406,7 @@
             "version": "0.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/path-browserify/-/path-browserify-0.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/path-browserify/-/path-browserify-0.0.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6439,9 +6418,7 @@
             "version": "1.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6453,9 +6430,7 @@
             "version": "0.11.15",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/path-platform/-/path-platform-0.11.15.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/path-platform/-/path-platform-0.11.15.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6467,9 +6442,7 @@
             "version": "3.0.17",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/pbkdf2/-/pbkdf2-3.0.17.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/pbkdf2/-/pbkdf2-3.0.17.tgz"
             },
             "require": {
                 "npm-asset/create-hash": ">=1.1.2,<2.0.0",
@@ -6488,9 +6461,7 @@
             "version": "0.11.10",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/process/-/process-0.11.10.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/process/-/process-0.11.10.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6508,8 +6479,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/calvinmetcalf/process-nextick-args/zipball/07f531b2e7b3587f1c6cbce3f83054f50aa5cc97",
-                "reference": "07f531b2e7b3587f1c6cbce3f83054f50aa5cc97",
-                "shasum": null
+                "reference": "07f531b2e7b3587f1c6cbce3f83054f50aa5cc97"
             },
             "type": "npm-asset",
             "license": [
@@ -6521,9 +6491,7 @@
             "version": "4.0.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/public-encrypt/-/public-encrypt-4.0.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/public-encrypt/-/public-encrypt-4.0.3.tgz"
             },
             "require": {
                 "npm-asset/bn.js": ">=4.1.0,<5.0.0",
@@ -6543,9 +6511,7 @@
             "version": "1.3.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/punycode/-/punycode-1.3.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/punycode/-/punycode-1.3.2.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6557,9 +6523,7 @@
             "version": "0.2.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/querystring/-/querystring-0.2.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/querystring/-/querystring-0.2.0.tgz"
             },
             "type": "npm-asset"
         },
@@ -6568,9 +6532,7 @@
             "version": "0.2.1-patch0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/querystring-es3/-/querystring-es3-0.2.1-0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/querystring-es3/-/querystring-es3-0.2.1-0.tgz"
             },
             "type": "npm-asset"
         },
@@ -6579,9 +6541,7 @@
             "version": "2.1.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/randombytes/-/randombytes-2.1.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/randombytes/-/randombytes-2.1.0.tgz"
             },
             "require": {
                 "npm-asset/safe-buffer": ">=5.1.0,<6.0.0"
@@ -6596,9 +6556,7 @@
             "version": "1.0.4",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/randomfill/-/randomfill-1.0.4.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/randomfill/-/randomfill-1.0.4.tgz"
             },
             "require": {
                 "npm-asset/randombytes": ">=2.0.5,<3.0.0",
@@ -6614,9 +6572,7 @@
             "version": "2.3.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/raphael/-/raphael-2.3.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/raphael/-/raphael-2.3.0.tgz"
             },
             "require": {
                 "npm-asset/eve-raphael": "0.5.0"
@@ -6631,9 +6587,7 @@
             "version": "2.0.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/read-only-stream/-/read-only-stream-2.0.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/read-only-stream/-/read-only-stream-2.0.0.tgz"
             },
             "require": {
                 "npm-asset/readable-stream": ">=2.0.2,<3.0.0"
@@ -6648,9 +6602,7 @@
             "version": "2.0.6",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/readable-stream/-/readable-stream-2.0.6.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/readable-stream/-/readable-stream-2.0.6.tgz"
             },
             "require": {
                 "npm-asset/core-util-is": "~1.0.0",
@@ -6670,9 +6622,7 @@
             "version": "1.1.7",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/resolve/-/resolve-1.1.7.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/resolve/-/resolve-1.1.7.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6684,9 +6634,7 @@
             "version": "2.0.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/ripemd160/-/ripemd160-2.0.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/ripemd160/-/ripemd160-2.0.2.tgz"
             },
             "require": {
                 "npm-asset/hash-base": ">=3.0.0,<4.0.0",
@@ -6702,9 +6650,7 @@
             "version": "5.2.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.0.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6716,9 +6662,7 @@
             "version": "4.0.12",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/select2/-/select2-4.0.12.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/select2/-/select2-4.0.12.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6730,9 +6674,7 @@
             "version": "2.4.11",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/sha.js/-/sha.js-2.4.11.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/sha.js/-/sha.js-2.4.11.tgz"
             },
             "require": {
                 "npm-asset/inherits": ">=2.0.1,<3.0.0",
@@ -6748,9 +6690,7 @@
             "version": "1.0.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/shasum/-/shasum-1.0.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/shasum/-/shasum-1.0.2.tgz"
             },
             "require": {
                 "npm-asset/json-stable-stringify": "~0.0.0",
@@ -6766,9 +6706,7 @@
             "version": "1.7.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/shell-quote/-/shell-quote-1.7.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/shell-quote/-/shell-quote-1.7.2.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6780,9 +6718,7 @@
             "version": "0.9.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/slimscroll/-/slimscroll-0.9.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/slimscroll/-/slimscroll-0.9.1.tgz"
             },
             "require": {
                 "npm-asset/browserify": ">=3.46.0",
@@ -6797,9 +6733,7 @@
             "version": "0.5.7",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6811,9 +6745,7 @@
             "version": "2.0.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/stream-browserify/-/stream-browserify-2.0.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/stream-browserify/-/stream-browserify-2.0.2.tgz"
             },
             "require": {
                 "npm-asset/inherits": "~2.0.1",
@@ -6829,9 +6761,7 @@
             "version": "1.1.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/stream-combiner2/-/stream-combiner2-1.1.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/stream-combiner2/-/stream-combiner2-1.1.1.tgz"
             },
             "require": {
                 "npm-asset/duplexer2": "~0.1.0",
@@ -6847,9 +6777,7 @@
             "version": "2.2.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/stream-http/-/stream-http-2.2.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/stream-http/-/stream-http-2.2.1.tgz"
             },
             "require": {
                 "npm-asset/builtin-status-codes": ">=2.0.0,<3.0.0",
@@ -6867,9 +6795,7 @@
             "version": "2.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/stream-splicer/-/stream-splicer-2.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/stream-splicer/-/stream-splicer-2.0.1.tgz"
             },
             "require": {
                 "npm-asset/inherits": ">=2.0.1,<3.0.0",
@@ -6891,8 +6817,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/nodejs/string_decoder/zipball/d46d4fd87cf1d06e031c23f1ba170ca7d4ade9a0",
-                "reference": "d46d4fd87cf1d06e031c23f1ba170ca7d4ade9a0",
-                "shasum": null
+                "reference": "d46d4fd87cf1d06e031c23f1ba170ca7d4ade9a0"
             },
             "type": "npm-asset",
             "license": [
@@ -6905,9 +6830,7 @@
             "version": "1.0.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/subarg/-/subarg-1.0.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/subarg/-/subarg-1.0.0.tgz"
             },
             "require": {
                 "npm-asset/minimist": ">=1.1.0,<2.0.0"
@@ -6922,9 +6845,7 @@
             "version": "1.3.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/syntax-error/-/syntax-error-1.3.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/syntax-error/-/syntax-error-1.3.0.tgz"
             },
             "require": {
                 "npm-asset/acorn": ">=4.0.3,<5.0.0"
@@ -6939,9 +6860,7 @@
             "version": "2.3.8",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/through/-/through-2.3.8.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/through/-/through-2.3.8.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6953,9 +6872,7 @@
             "version": "2.0.4",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/through2/-/through2-2.0.4.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/through2/-/through2-2.0.4.tgz"
             },
             "require": {
                 "npm-asset/readable-stream": "~2|3",
@@ -6971,9 +6888,7 @@
             "version": "1.4.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/timers-browserify/-/timers-browserify-1.4.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/timers-browserify/-/timers-browserify-1.4.2.tgz"
             },
             "require": {
                 "npm-asset/process": "~0.11.0"
@@ -6985,9 +6900,7 @@
             "version": "1.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/to-arraybuffer/-/to-arraybuffer-1.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/to-arraybuffer/-/to-arraybuffer-1.0.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -6999,9 +6912,7 @@
             "version": "0.0.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/tty-browserify/-/tty-browserify-0.0.1.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/tty-browserify/-/tty-browserify-0.0.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -7013,9 +6924,7 @@
             "version": "0.0.6",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -7027,9 +6936,7 @@
             "version": "3.0.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/umd/-/umd-3.0.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/umd/-/umd-3.0.3.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -7041,9 +6948,7 @@
             "version": "0.11.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/url/-/url-0.11.0.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/url/-/url-0.11.0.tgz"
             },
             "require": {
                 "npm-asset/punycode": "1.3.2",
@@ -7059,9 +6964,7 @@
             "version": "0.10.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/util/-/util-0.10.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/util/-/util-0.10.3.tgz"
             },
             "require": {
                 "npm-asset/inherits": "2.0.1"
@@ -7076,9 +6979,7 @@
             "version": "1.0.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -7090,9 +6991,7 @@
             "version": "1.0.3",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/util-extend/-/util-extend-1.0.3.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/util-extend/-/util-extend-1.0.3.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -7104,9 +7003,7 @@
             "version": "0.0.4",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/vm-browserify/-/vm-browserify-0.0.4.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/vm-browserify/-/vm-browserify-0.0.4.tgz"
             },
             "require": {
                 "npm-asset/indexof": "0.0.1"
@@ -7121,9 +7018,7 @@
             "version": "1.0.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -7135,9 +7030,7 @@
             "version": "4.0.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/xtend/-/xtend-4.0.2.tgz",
-                "reference": null,
-                "shasum": null
+                "url": "https://registry.npmjs.org/xtend/-/xtend-4.0.2.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -7526,6 +7419,63 @@
                 "simple-cache"
             ],
             "time": "2017-10-23T01:57:42+00:00"
+        },
+        {
+            "name": "pviojo/oauth2-keycloak",
+            "version": "1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pviojo/oauth2-keycloak.git",
+                "reference": "d476a1c52426728ff29a490eabdfcd2f1fa08b42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pviojo/oauth2-keycloak/zipball/d476a1c52426728ff29a490eabdfcd2f1fa08b42",
+                "reference": "d476a1c52426728ff29a490eabdfcd2f1fa08b42",
+                "shasum": ""
+            },
+            "require": {
+                "firebase/php-jwt": "^4.0",
+                "league/oauth2-client": "~1.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stevenmaguire\\OAuth2\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steven Maguire",
+                    "email": "stevenmaguire@gmail.com",
+                    "homepage": "https://github.com/stevenmaguire"
+                }
+            ],
+            "description": "Keycloak OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
+            "keywords": [
+                "authorisation",
+                "authorization",
+                "client",
+                "keycloak",
+                "oauth",
+                "oauth2"
+            ],
+            "time": "2016-12-09T00:56:41+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -12107,7 +12057,8 @@
         "kartik-v/yii2-tree-manager": 20,
         "arogachev/yii2-many-to-many": 20,
         "kartik-v/yii2-icons": 20,
-        "flow/jsonpath": 20
+        "flow/jsonpath": 20,
+        "pviojo/oauth2-keycloak": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
