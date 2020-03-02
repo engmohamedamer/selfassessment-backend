@@ -3,20 +3,8 @@
 namespace api\controllers;
 
 use Yii;
-use api\helpers\ResetPassword;
-use api\helpers\ResponseHelper;
-use api\helpers\SignupForm;
-use api\resources\OrganizationStructureResource;
-use api\resources\User;
-use cheatsheet\Time;
-use common\commands\SendEmailCommand;
-use common\models\Organization;
-use common\models\OrganizationStructure;
-use common\models\UserProfile;
-use common\models\UserToken;
-use organization\models\UserForm;
-use yii\helpers\ArrayHelper;
-use yii\web\NotFoundHttpException;
+
+use Stevenmaguire\OAuth2\Client\Provider\Keycloak as ProviderKeyc;
 
 class AuthController extends  RestController
 {
@@ -28,7 +16,7 @@ class AuthController extends  RestController
         }
 
         //now fill org info
-        $provider = new pviojo\OAuth2\Client\Provider\Keycloak([
+        $provider = new ProviderKeyc([
             'authServerUrl'             => "https://sso.tamkeen.land/auth",
             'realm'                     => 'tamkeen',
             'clientId'                  => 'self-asses-new',
@@ -57,7 +45,7 @@ class AuthController extends  RestController
                 $token = $provider->getAccessToken('authorization_code', [
                     'code' => $_GET['code']
                 ]);
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 exit('Failed to get access token: '.$e->getMessage());
             }
 
@@ -69,14 +57,14 @@ class AuthController extends  RestController
                 // Use these details to create a new profile
                 printf('Hello %s!\n<br>', $user->getName());
 
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 exit('Failed to get resource owner: '.$e->getMessage());
             }
 
             // Use this to interact with an API on the users behalf
             echo $token->getToken();
 
-            //now call the profile end point 
+            //now call the profile end point
 
         }
 
