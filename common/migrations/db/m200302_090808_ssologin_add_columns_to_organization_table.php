@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m200302_090807_ssologin_add_columns_to_organization_table
+ * Class m200302_090808_ssologin_add_columns_to_organization_table
  */
-class m200302_090807_ssologin_add_columns_to_organization_table extends Migration
+class m200302_090808_ssologin_add_columns_to_organization_table extends Migration
 {
     /**
      * {@inheritdoc}
@@ -28,7 +28,7 @@ class m200302_090807_ssologin_add_columns_to_organization_table extends Migratio
      */
     public function safeDown()
     {
-        echo "m200302_090807_ssologin_add_columns_to_organization_table cannot be reverted.\n";
+        echo "m200302_090808_ssologin_add_columns_to_organization_table cannot be reverted.\n";
 
         return false;
     }
@@ -42,7 +42,7 @@ class m200302_090807_ssologin_add_columns_to_organization_table extends Migratio
 
     public function down()
     {
-        echo "m200302_090807_ssologin_add_columns_to_organization_table cannot be reverted.\n";
+        echo "m200302_090808_ssologin_add_columns_to_organization_table cannot be reverted.\n";
 
         return false;
     }
