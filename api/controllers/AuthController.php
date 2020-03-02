@@ -60,18 +60,19 @@ class AuthController extends  RestController
                  $name  = $user->getName();
                  $email = $user->getEmail();
 
-                $checkUser = User::find()->where(['email'])->one();
+                $checkUser = User::find()->where(['email'=>$email])->one();
                 if (!$checkUser) {
-                    $model = new SignupForm();
-                    if ($model->load(['SignupForm'=>[
-                        'name'=> $user->getName(),
-                        'email'=> $user->getEmail(),
-                        'password'=> '123456',
-                        'mobile'=> '0512345678',
-                    ]]) && $user = $model->save($organization->id)) {
-                        $user= User::findOne(['id'=> $user->id]);
-                        return ResponseHelper::sendSuccessResponse(['message'=>Yii::t('common','Account Created Successfully')]);
-                    }
+                    return ['user'=>'user found'];
+                    // $model = new SignupForm();
+                    // if ($model->load(['SignupForm'=>[
+                    //     'name'=> $user->getName(),
+                    //     'email'=> $user->getEmail(),
+                    //     'password'=> '123456',
+                    //     'mobile'=> '0512345678',
+                    // ]]) && $user = $model->save($organization->id)) {
+                    //     $user= User::findOne(['id'=> $user->id]);
+                    //     return ResponseHelper::sendSuccessResponse(['message'=>Yii::t('common','Account Created Successfully')]);
+                    // }
                 }else{
                     return ['token_temp'=>'temp token!'];
                 }
