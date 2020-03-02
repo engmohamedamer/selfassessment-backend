@@ -58,7 +58,7 @@ return [
                 'POST login' => 'login',
                 'POST reset-password'=>'reset-password',
                 'POST request-reset-password'=>'request-reset-password',
-                'GET sso-login'=>'sso-login',
+                'GET sso-login/<code>'=>'sso-login',
 
             ]
             , 'pluralize'=>false
