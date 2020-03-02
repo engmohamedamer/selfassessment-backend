@@ -36,7 +36,8 @@ use yii\widgets\DetailView;
                         <li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Footer Links') ?> </a></li>
                         <li class="nav-item"><a class="nav-link" href="#tab5" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Socail Links') ?> </a></li>
                         <li class="nav-item"><a class="nav-link" href="#tab6" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Organization Theme') ?></a></li>
-                     
+                        <li class="nav-item"><a class="nav-link" href="#tab7" data-toggle="tab" aria-expanded="false"> <?php echo Yii::t('common', 'Login Settings') ?></a></li>
+
                 </ul>
                 <div class="tab-content mt-2">
                     <div class="tab-pane active" id="tab1">
@@ -244,6 +245,12 @@ use yii\widgets\DetailView;
                             ?>
                         </div>
                       
+                            
+                       
+                    </div>
+                    <div class="tab-pane" id="tab7">
+
+                        سسسس
                             
                        
                     </div>

@@ -91,6 +91,9 @@ if (isset($model->city_id) and !empty($model->city_id)) {
             <li role="presentation" class=""><a  href="#tab_3-3" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-palette"></i></span><p><?php echo Yii::t('common', 'Colors') ?></p></a></li>
             <li role="presentation" class=""><a  href="#tab_4-4" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-link"></i></span><p><?php echo Yii::t('common', 'Footer Links') ?></p></a></li>
             <li role="presentation" class=""><a  href="#tab_5-5" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-users"></i></span><p><?php echo Yii::t('common', 'Socail Links') ?></p></a></li>
+            <li role="presentation" class=""><a  href="#tab_7-7" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-sign-in-alt"></i></span><p><?php echo Yii::t('common', 'Login Settings') ?></p></a></li>
+
+        
         </ul>
     </div>
     
@@ -393,7 +396,30 @@ if (isset($model->city_id) and !empty($model->city_id)) {
 
                     </div>
                 </div>
+                <div class="tab-pane " id="tab_7-7">
+                    <div class='row'>
+                        <div class='col-sm-12 col-lg-8 row theme-edit-content-panel'>
+                            <?=
+                                $this->render('_formOrganizationLoginSetting', [
+                                'form' => $form,
+                                'OrganizationTheme' => $theme,
+                            ]) ?>
+                        </div>
+                        <div class='col-sm-0 col-lg-4 theme-edit-preview'>
+                            <h2 class=''> <?php echo Yii::t('common', 'Preview') ?></h2>
+                            <div class='preview-images mt-5'>
+                                <div  class="tab-pane active" >
+                                <p><?php echo Yii::t('common', 'Login using SSO Account manager.') ?></p>
+                                    <!-- <p> <?php echo Yii::t('common', '-- Examples --') ?> </p> -->
+                                    <!-- <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'> -->
+                                    <hr class='mt-5 mb-5'>
 
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
             <!-- <div class="row">

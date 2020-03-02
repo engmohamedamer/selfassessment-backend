@@ -360,4 +360,8 @@ return [
     'Filter By Business Sector'=>'بحث الإستبيانات حسب قطاع العمل',
     'No data can be displayed, please use other entries!'=>'لا يوجد بيانات يمكن عرضها برجاء استخدام مدخلات أخري',
     'Report Asnwer'=>'تقرير اجابات المشارك',
+    'Login Settings'=>'أعدادات الدخول',
+    'Login using SSO'=>'تسجيل الدخول بأستخدام بيانات دخول SSO',
+    'Allow Login using organization SSO.'=>'السماح بتسجيل الدخول بأستخدام بيانات SSO للمؤسسة',
+
 ];
