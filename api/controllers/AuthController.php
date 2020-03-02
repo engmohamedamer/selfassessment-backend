@@ -12,10 +12,10 @@ class AuthController extends  RestController
 
     public function actionIndex($slug=null){
 
-        if($slug || isset($_SESSION['slug'])){
-            $organization = Organization::findOne(['slug'=>$slug]);
+        if($slug){
             $_SESSION['slug'] = $slug;
         }
+        $organization = Organization::findOne(['slug'=>$_SESSION['slug']]);
 
         $provider = new ProviderKeyc([
             'authServerUrl'             => $organization->authServerUrl,
@@ -39,7 +39,7 @@ class AuthController extends  RestController
         // Check given state against previously stored one to mitigate CSRF attack
         } elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
             unset($_SESSION['oauth2state']);
-            exit('Invalid state, make sure HTTP sessions are enabled.');
+            exit('Invalid state, make sure HTTP sessions are enabled.'. $_SESSION['slug']);
         } else {
             // Try to get an access token (using the authorization coe grant)
             try {
