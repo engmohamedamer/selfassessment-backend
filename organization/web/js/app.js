@@ -128,3 +128,29 @@ $(window).on("load", function() {
 });
 
 $('.tooltipdiv').tooltip()
+
+if ($("#organization-sso_login:checked").length == 1) {
+    $("#organization-authserverurl").attr("disabled", false)
+    $("#organization-realm").attr("disabled", false)
+    $("#organization-clientid").attr("disabled", false)
+    $("#organization-clientsecret").attr("disabled", false)
+} else {
+    $("#organization-authserverurl").attr("disabled", true)
+    $("#organization-realm").attr("disabled", true)
+    $("#organization-clientid").attr("disabled", true)
+    $("#organization-clientsecret").attr("disabled", true)
+}
+
+$("#organization-sso_login").click(function() {
+    if ($("#organization-sso_login:checked").length == 1) {
+        $("#organization-authserverurl").attr("disabled", false)
+        $("#organization-realm").attr("disabled", false)
+        $("#organization-clientid").attr("disabled", false)
+        $("#organization-clientsecret").attr("disabled", false)
+    } else {
+        $("#organization-authserverurl").attr("disabled", true)
+        $("#organization-realm").attr("disabled", true)
+        $("#organization-clientid").attr("disabled", true)
+        $("#organization-clientsecret").attr("disabled", true)
+    }
+})
