@@ -55,14 +55,15 @@ class AuthController extends  RestController
                 // We got an access token, let's now get the user's details
                 $user = $provider->getResourceOwner($token);
                 // Use these details to create a new profile
-                printf('Hello %s!\n<br>', $user->getName());
+                 $name =    $user->getName();
+               // printf('Hello %s!\n<br>', $user->getName());
 
             } catch (\Exception $e) {
                 exit('Failed to get resource owner: '.$e->getMessage());
             }
 
             // Use this to interact with an API on the users behalf
-            echo $token->getToken();
+            return ['token'=>$token->getToken() , 'name'=>$name ,'user'=>$user  ] ;
 
             //now call the profile end point
 
