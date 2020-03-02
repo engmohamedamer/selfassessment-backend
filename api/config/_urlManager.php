@@ -24,7 +24,7 @@ return [
         ['pattern' => '/login', 'route' => 'user/login'],
         ['pattern' => '/signup', 'route' => 'user/signup'],
         ['pattern' => '/sectors', 'route' => 'user/sectors'],
-        ['pattern' => '/sso-login/<code>', 'route' => 'user/sso-login'],
+        ['pattern' => '/change-token/<code>', 'route' => 'auth/change-token'],
         ['pattern' => '/reset-password', 'route' => 'user/reset-password'],
         ['pattern' => '/request-reset-password', 'route' => 'user/request-reset-password'],
         ['pattern' => '/theme', 'route' => 'theme/index'],
@@ -42,23 +42,23 @@ return [
         // ['pattern' => '/notification', 'route' => 'notification/index'],
 
         ['class' =>'yii\rest\UrlRule','controller'=>'auth'
-            ,'only'=>['index','options']
+            ,'only'=>['index','change-token','options']
             ,'extraPatterns'=>[
             'GET  index' => 'index',
+            'GET change-token/<code>'=>'change-token',
 
         ]
             , 'pluralize'=>false
         ],
 
         ['class' =>'yii\rest\UrlRule','controller'=>'user'
-            ,'only'=>['login','signup','reset-password','request-reset-password','sectors','sso-login','options']
+            ,'only'=>['login','signup','reset-password','request-reset-password','sectors','options']
             ,'extraPatterns'=>[
                 'POST  signup' => 'signup',
                 'GET  sectors' => 'sectors',
                 'POST login' => 'login',
                 'POST reset-password'=>'reset-password',
                 'POST request-reset-password'=>'request-reset-password',
-                'GET sso-login/<code>'=>'sso-login',
 
             ]
             , 'pluralize'=>false

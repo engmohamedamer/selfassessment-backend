@@ -15,7 +15,7 @@ class AuthController extends  RestController
         if($slug || isset($_SESSION['slug'])){
             $organization = Organization::findOne(['slug'=>$slug]);
             $_SESSION['slug'] = $slug;
-            return value($organization);
+            // return var_dump($organization);
         }
 
         $provider = new ProviderKeyc([
@@ -89,6 +89,11 @@ class AuthController extends  RestController
         }
 
 
+    }
+
+    public function actionChangeToken($code){
+
+        return ['token'=>'asdasdadasdasdasdas'];
     }
 
 }
