@@ -405,17 +405,17 @@ if (isset($model->city_id) and !empty($model->city_id)) {
                                 'model' => $model,
                             ]) ?>
                         </div>
-                        <div class='col-sm-0 col-lg-4 theme-edit-preview'>
-                            <h2 class=''> <?php echo Yii::t('common', 'Preview') ?></h2>
+                        <div class='col-sm-0 col-lg-4'>
+                            <!-- <h2 class=''> <?php echo Yii::t('common', 'Preview') ?></h2>
                             <div class='preview-images mt-5'>
                                 <div  class="tab-pane active" >
                                 <p><?php echo Yii::t('common', 'Login using SSO Account manager.') ?></p>
-                                    <!-- <p> <?php echo Yii::t('common', '-- Examples --') ?> </p> -->
-                                    <!-- <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'> -->
+                                     <p> <?php echo Yii::t('common', '-- Examples --') ?> </p> 
+                                 <img src="/img/previews/preview7.png" alt="" class='mt-3 mb-3 img'>
                                     <hr class='mt-5 mb-5'>
 
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
