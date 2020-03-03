@@ -76,6 +76,7 @@ class AuthController extends  RestController
                         $user->userProfile->temporary_token = \Yii::$app->getSecurity()->generateRandomString();
                         $data = ['token_temp'=> $user->userProfile->temporary_token];
                         return ResponseHelper::sendSuccessResponse($data);
+                    }
                  }else{
                     $checkUser->userProfile->temporary_token = \Yii::$app->getSecurity()->generateRandomString();
                     $checkUser->userProfile->save(false);
