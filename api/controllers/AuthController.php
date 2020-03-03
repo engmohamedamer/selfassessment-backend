@@ -80,7 +80,7 @@ class AuthController extends  RestController
                     $checkUser->userProfile->save(false);
                     $token_temp = $checkUser->userProfile->temporary_token;
                 }
-                header('Location: '.$siteLink.'login?code='.$token_temp);
+                header('Location: '.$siteLink.'/login?code='.$token_temp);
                 exit;
 
             } catch (\Exception $e) {
