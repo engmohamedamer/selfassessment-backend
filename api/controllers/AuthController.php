@@ -7,7 +7,7 @@ use Yii;
 use api\helpers\ResponseHelper;
 use api\helpers\SignupForm;
 use common\models\Organization;
-use common\models\User;
+use api\resources\User;
 use common\models\UserProfile;
 
 class AuthController extends  RestController
