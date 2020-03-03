@@ -19,23 +19,18 @@ $url=\yii\helpers\Url::to(['/helper/users-list']);
 $this->title = Yii::t('common', 'Contributors');
 $this->params['breadcrumbs'][] = $this->title;
 
-// echo newerton\fancybox\FancyBox::widget([
-//     'target' => '.fancybox',
-//     'helpers' => true,
-//     'mouse' => true,
-//     'config' => [
-//         'maxWidth' => '350',
-//         'maxHeight' => '500',
-//         'padding' => 0,
-//         'fitToView' => false,
-//         'autoSize' => false,
-//         'closeClick' => false,
-//         'openEffect' => 'elastic',
-//         'closeEffect' => 'elastic',
-//         'prevEffect' => 'elastic',
-//         'nextEffect' => 'elastic',
-//     ]
-// ]);
+echo newerton\fancybox3\FancyBox::widget([
+    'config'=>[
+        'iframe' => [
+            'preload'       => true,
+            'css'=>[
+                'width'=>'800px',
+                'height'=>'500px'
+            ]
+        ],
+
+    ],
+]);
 ?>
 
 <!-- Content Header (Page header) -->
@@ -69,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href="/user/create" class="btn btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('common', 'Create') ?></a>
         </div>
         <?php elseif(Yii::$app->user->identity->userProfile->organization->sso_login):?>
-            <a class="fancybox" style="color: #ef4f6a;margin-right: 5px;" data-fancybox-type="iframe" href="/user/sso-login">
+            <a data-fancybox="" data-type="iframe"   data-options=""   href="/user/sso-login"">
                 <i class="fas fa-info-circle"></i><?= Yii::t('common', 'Login using SSO') ?>
             </a>
 

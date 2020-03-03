@@ -65,11 +65,6 @@ class AuthController extends  RestController
 
                 $checkUser = User::find()->where(['email'=>$email])->one();
 
-                $roles = ArrayHelper::getColumn( Yii::$app->authManager->getRolesByUser($checkUser->id),'name');
-                $currentRole  =   array_keys($roles)[0];
-                if( $currentRole != \common\models\User::ROLE_USER || $organization->id != $checkUser->userProfile->organization_id){
-                    return ResponseHelper::sendFailedResponse(['INVALID_ROLE'=>Yii::t('common','You do not have access')],401);
-                }
 
                 if (!$checkUser) {
                     $model = new SignupForm();
@@ -89,6 +84,14 @@ class AuthController extends  RestController
                         $userProfile->save(false);
                     }
                  }else{
+
+                    $roles = ArrayHelper::getColumn( Yii::$app->authManager->getRolesByUser($checkUser->id),'name');
+                    $currentRole  =   array_keys($roles)[0];
+                    if( $currentRole != \common\models\User::ROLE_USER || $organization->id != $checkUser->userProfile->organization_id){
+                        header('Location: '.$siteLink.'/login?status=false');
+                        exit();
+                    }
+                    
                     $token_temp = \Yii::$app->getSecurity()->generateRandomString(40);
                     $userProfile = $checkUser->userProfile;
                     $userProfile->temporary_token = $token_temp;
