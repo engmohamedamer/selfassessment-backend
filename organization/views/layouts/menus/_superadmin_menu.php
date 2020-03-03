@@ -88,6 +88,7 @@ echo Menu::widget([
                     'icon' => '<i class="icofont-users-social mr-2 ml-2"></i>',
                     'active' => (Yii::$app->request->url == '/user/index?user_role=user&status=unactive'),
                     'options' => ['class' => 'nav-item'],
+                    'visible'=> (!Yii::$app->user->identity->userProfile->organization->sso_login)
                 ],
             ]
 

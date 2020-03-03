@@ -64,6 +64,13 @@ class AuthController extends  RestController
                  $email = $user->getEmail();
 
                 $checkUser = User::find()->where(['email'=>$email])->one();
+
+                $roles = ArrayHelper::getColumn( Yii::$app->authManager->getRolesByUser($checkUser->id),'name');
+                $currentRole  =   array_keys($roles)[0];
+                if( $currentRole != \common\models\User::ROLE_USER || $organization->id != $checkUser->userProfile->organization_id){
+                    return ResponseHelper::sendFailedResponse(['INVALID_ROLE'=>Yii::t('common','You do not have access')],401);
+                }
+
                 if (!$checkUser) {
                     $model = new SignupForm();
                     if ($model->load(['SignupForm'=>[

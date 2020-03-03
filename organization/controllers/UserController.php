@@ -292,4 +292,14 @@ class UserController extends OrganizationBackendController
         return $prof;
     }
 
+    public function  actionSsoLogin(){
+        $this->layout='base';
+        $organization = Yii::$app->user->identity->userProfile->organization;
+
+        if ($organization->load(\Yii::$app->request->post()) && $organization->save()) {
+        }
+
+        return $this->render('_organization_sso_login' ,['organization'=> $organization]);
+    }
+
 }
