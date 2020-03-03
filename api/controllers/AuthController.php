@@ -8,6 +8,7 @@ use api\helpers\ResponseHelper;
 use api\helpers\SignupForm;
 use common\models\Organization;
 use common\models\User;
+use common\models\UserProfile;
 
 class AuthController extends  RestController
 {
@@ -97,8 +98,17 @@ class AuthController extends  RestController
     }
 
     public function actionChangeToken($code){
+        $checkUser = UserProfile::find()->where(['temporary_token'=>$code])->one();
+        if (!$checkUser) {
+            return ResponseHelper::sendFailedResponse(['message'=>'Not Found'],403);
+        }
+        $checkUser->temporary_token_used  =1;
+        $checkUser->save(false);
+        $user = $checkUser->user;
+        $user->access_token = Yii::$app->getSecurity()->generateRandomString(40);
+        $user->save(false);
+        return ['token'=> $checkUser->user->access_token, 'profile'=> $checkUser->user ];
 
-        return ['token'=>'asdasdadasdasdasdas'];
     }
 
 }
