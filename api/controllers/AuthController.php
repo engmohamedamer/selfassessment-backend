@@ -64,7 +64,6 @@ class AuthController extends  RestController
 
                 $checkUser = User::find()->where(['email'=>$email])->one();
                 if (!$checkUser) {
-                    return ['user'=>'user found'];
                     $model = new SignupForm();
                     if ($model->load(['SignupForm'=>[
                         'name'=> $user->getName(),
