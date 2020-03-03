@@ -6,9 +6,10 @@ use Stevenmaguire\OAuth2\Client\Provider\Keycloak as ProviderKeyc;
 use Yii;
 use api\helpers\ResponseHelper;
 use api\helpers\SignupForm;
-use common\models\Organization;
 use api\resources\User;
+use common\models\Organization;
 use common\models\UserProfile;
+use yii\helpers\ArrayHelper;
 
 class AuthController extends  RestController
 {
