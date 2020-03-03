@@ -55,7 +55,7 @@ class AuthController extends  RestController
             // Optional: Now you have a token you can look up a users profile data
             try {
                 unset($_SESSION['slug']);
-
+                $siteLink = $_SERVER['REQUEST_SCHEME'] . '://'. $organization->slug . $_SERVER['SERVER_NAME'];
                 // We got an access token, let's now get the user's details
                 $user = $provider->getResourceOwner($token);
                 // Use these details to create a new profile
@@ -73,15 +73,15 @@ class AuthController extends  RestController
                     ]]) && $user = $model->save($organization->id)) {
                         $user = User::findOne(['id'=> $user->id]);
                         $user->userProfile->temporary_token = \Yii::$app->getSecurity()->generateRandomString();
-                        $data = ['token_temp'=> $user->userProfile->temporary_token];
-                        return ResponseHelper::sendSuccessResponse($data);
+                        $token_temp = $user->userProfile->temporary_token;
                     }
                  }else{
                     $checkUser->userProfile->temporary_token = \Yii::$app->getSecurity()->generateRandomString();
                     $checkUser->userProfile->save(false);
-                    $data = ['token_temp'=> $checkUser->userProfile->temporary_token];
-                    return ResponseHelper::sendSuccessResponse($data);
+                    $token_temp = $checkUser->userProfile->temporary_token;
                 }
+                header('Location: '.$siteLink.'login?code='.$token_temp);
+                exit;
 
             } catch (\Exception $e) {
                 exit('Failed to get resource owner: '.$e->getMessage());
