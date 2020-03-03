@@ -4,6 +4,7 @@ namespace api\controllers;
 
 use Stevenmaguire\OAuth2\Client\Provider\Keycloak as ProviderKeyc;
 use Yii;
+use api\helpers\ResponseHelper;
 use api\helpers\SignupForm;
 use common\models\Organization;
 use common\models\User;
@@ -64,18 +65,22 @@ class AuthController extends  RestController
                 $checkUser = User::find()->where(['email'=>$email])->one();
                 if (!$checkUser) {
                     return ['user'=>'user found'];
-                    // $model = new SignupForm();
-                    // if ($model->load(['SignupForm'=>[
-                    //     'name'=> $user->getName(),
-                    //     'email'=> $user->getEmail(),
-                    //     'password'=> '123456',
-                    //     'mobile'=> '0512345678',
-                    // ]]) && $user = $model->save($organization->id)) {
-                    //     $user= User::findOne(['id'=> $user->id]);
-                    //     return ResponseHelper::sendSuccessResponse(['message'=>Yii::t('common','Account Created Successfully')]);
-                    // }
-                }else{
-                    return ['token_temp'=>'temp token!'];
+                    $model = new SignupForm();
+                    if ($model->load(['SignupForm'=>[
+                        'name'=> $user->getName(),
+                        'email'=> $user->getEmail(),
+                        'password'=> '123456',
+                        'mobile'=> '0512345678',
+                    ]]) && $user = $model->save($organization->id)) {
+                        $user = User::findOne(['id'=> $user->id]);
+                        $user->userProfile->temporary_token = \Yii::$app->getSecurity()->generateRandomString();
+                        $data = ['token_temp'=> $user->userProfile->temporary_token];
+                        return ResponseHelper::sendSuccessResponse($data);
+                 }else{
+                    $checkUser->userProfile->temporary_token = \Yii::$app->getSecurity()->generateRandomString();
+                    $checkUser->userProfile->save(false);
+                    $data = ['token_temp'=> $checkUser->userProfile->temporary_token];
+                    return ResponseHelper::sendSuccessResponse($data);
                 }
 
             } catch (\Exception $e) {

@@ -25,6 +25,8 @@ use yii\db\ActiveRecord;
  * @property string $device_token
  * @property string $bio
  * @property integer $sector_id
+ * @property integer $temporary_token_used
+ * @property string $temporary_token
  * @property integer $main_admin
  *
  * @property User $user
@@ -82,7 +84,7 @@ class UserProfile extends ActiveRecord
             [['picture','nationality_id','specialization_id','job','activity','active','bio'], 'safe'],
             [['nationality_id','specialization_id','job','activity','mobile'],'required', 'on'=>self::SCENARIO_VALIDATE],
             ['firstname','required','message' => 'full_name يجب ادخاله', 'on'=>self::SCENARIO_VALIDATE],
-            ['position','safe'],
+            [['position','temporary_token','temporary_token_used'],'safe'],
 
         ];
     }
