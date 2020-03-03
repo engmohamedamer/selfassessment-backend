@@ -55,7 +55,7 @@ class AuthController extends  RestController
             // Optional: Now you have a token you can look up a users profile data
             try {
                 unset($_SESSION['slug']);
-                $siteLink = $_SERVER['REQUEST_SCHEME'] . '://'. $organization->slug . $_SERVER['SERVER_NAME'];
+                $siteLink = $_SERVER['REQUEST_SCHEME'] . '://'. $organization->slug .'.'. $_SERVER['SERVER_NAME'];
                 // We got an access token, let's now get the user's details
                 $user = $provider->getResourceOwner($token);
                 // Use these details to create a new profile
