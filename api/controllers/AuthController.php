@@ -72,7 +72,7 @@ class AuthController extends  RestController
                         'password'=> '123456',
                         'mobile'=> '0512345678',
                     ]]) && $user = $model->save($organization->id)) {
-                        $token_temp = \Yii::$app->getSecurity()->generateRandomString();
+                        $token_temp = \Yii::$app->getSecurity()->generateRandomString(40);
                         $user = User::findOne(['id'=> $user->id]);
                         $userProfile = $user->userProfile;
                         $userProfile->temporary_token = $token_temp;
@@ -80,7 +80,7 @@ class AuthController extends  RestController
                         $userProfile->save(false);
                     }
                  }else{
-                    $token_temp = \Yii::$app->getSecurity()->generateRandomString();
+                    $token_temp = \Yii::$app->getSecurity()->generateRandomString(40);
                     $userProfile = $checkUser->userProfile;
                     $userProfile->temporary_token = $token_temp;
                     $userProfile->temporary_token_used = 0;
@@ -104,18 +104,19 @@ class AuthController extends  RestController
     }
 
     public function actionChangeToken($code){
-        $checkUser = UserProfile::find()->where(['temporary_token'=>$code])
+        $user = User::find()->joinWith(['userProfile'])->where(['temporary_token'=>$code])
             ->where(['temporary_token_used'=>0])
             ->one();
-        if (!$checkUser) {
+
+        if (!$user) {
             return ResponseHelper::sendFailedResponse(['message'=>'Not Found'],404);
         }
-        $checkUser->temporary_token_used  =1;
-        $checkUser->save(false);
-        $user = $checkUser->user;
+        $profile = $user->userProfile;
+        $profile->temporary_token_used = 1;
+        $profile->save(false);
         $user->access_token = Yii::$app->getSecurity()->generateRandomString(40);
         $user->save(false);
-        return ['token'=> $checkUser->user->access_token, 'profile'=> $checkUser->user ];
+        return ['token'=> $user->access_token, 'profile'=> $user ];
 
     }
 
