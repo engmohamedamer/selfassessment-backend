@@ -43,4 +43,13 @@ use kartik\widgets\ActiveForm;
 
     <?php ActiveForm::end(); ?>
 
+<?php
+if($saved){
+    $this->registerJs("$(function() {
+          parent.jQuery.fancybox.getInstance().close();
+           parent.location.reload();
+     });
+   ");
+}
 
+?>
