@@ -105,7 +105,13 @@ class ThemeController extends RestController
            ]
        ];
 
-        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name,'address'=> $organization->address ,'about'=> $organization->about, 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale,'allow_registration'=> (bool) $organization->allow_registration,'sso_login'=> (bool)$organization->sso_login,'link_sso_login'=> 'http://sahlit.com/auth?slug='. $organization->slug ];
+       if ($_SERVER['SERVER_NAME'] == 'sahlit.com'){
+            $redirectUri = 'http://sahlit.com/auth?slug='. $organization->slug;
+        }else{
+            $redirectUri = 'http://tamkeentechlab.com/auth?slug='. $organization->slug;
+        }
+
+        $organizationDate = ['id'=> $organization->id,'name'=> $organization->name,'address'=> $organization->address ,'about'=> $organization->about, 'logo'=> $organization->first_image_base_url . $organization->first_image_path, 'logo_icon'=>$organization->second_image_base_url . $organization->second_image_path,'locale'=> $locale,'allow_registration'=> (bool) $organization->allow_registration,'sso_login'=> (bool)$organization->sso_login,'link_sso_login'=> $redirectUri ];
 
         return ['theme_version'=> strtotime($theme->updated_at),'organization'=>$organizationDate,'colors'=>$colors,'footer'=>$footer];
     }
