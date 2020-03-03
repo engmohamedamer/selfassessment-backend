@@ -76,12 +76,14 @@ class AuthController extends  RestController
                         $user = User::findOne(['id'=> $user->id]);
                         $userProfile = $user->userProfile;
                         $userProfile->temporary_token = $token_temp;
+                        $userProfile->temporary_token_used = 0;
                         $userProfile->save(false);
                     }
                  }else{
                     $token_temp = \Yii::$app->getSecurity()->generateRandomString();
                     $userProfile = $checkUser->userProfile;
                     $userProfile->temporary_token = $token_temp;
+                    $userProfile->temporary_token_used = 0;
                     $userProfile->save(false);
                 }
                 return $userProfile->temporary_token;
