@@ -72,14 +72,17 @@ class AuthController extends  RestController
                         'password'=> '123456',
                         'mobile'=> '0512345678',
                     ]]) && $user = $model->save($organization->id)) {
+                        $token_temp = \Yii::$app->getSecurity()->generateRandomString();
                         $user = User::findOne(['id'=> $user->id]);
-                        $user->userProfile->temporary_token = \Yii::$app->getSecurity()->generateRandomString();
-                        $token_temp = $user->userProfile->temporary_token;
+                        $userProfile = $user->userProfile;
+                        $userProfile->temporary_token = $token_temp;
+                        $userProfile->save(false);
                     }
                  }else{
-                    $checkUser->userProfile->temporary_token = \Yii::$app->getSecurity()->generateRandomString();
-                    $checkUser->userProfile->save(false);
-                    $token_temp = $checkUser->userProfile->temporary_token;
+                    $token_temp = \Yii::$app->getSecurity()->generateRandomString();
+                    $userProfile = $checkUser->userProfile;
+                    $userProfile->temporary_token = $token_temp;
+                    $userProfile->save(false);
                 }
                 header('Location: '.$siteLink.'/login?code='.$token_temp);
                 exit;
