@@ -64,7 +64,7 @@ echo newerton\fancybox3\FancyBox::widget([
             <a href="/user/create" class="btn btn btn-success"><i class="icofont-plus mr-2 ml-2"></i> <?= Yii::t('common', 'Create') ?></a>
         </div>
         <?php elseif(Yii::$app->user->identity->userProfile->organization->sso_login):?>
-            <a data-fancybox="" data-type="iframe"   data-options=""   href="/user/sso-login"">
+            <a data-fancybox="" data-type="iframe"   data-options=""   href="/user/sso-login"> 
                 <i class="fas fa-info-circle"></i><?= Yii::t('common', 'Login using SSO') ?>
             </a>
 
