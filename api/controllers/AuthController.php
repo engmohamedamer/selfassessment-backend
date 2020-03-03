@@ -124,16 +124,14 @@ class AuthController extends  RestController
     }
 
     public function actionChangeToken($code){
-        $user = User::find()->joinWith(['userProfile'])->where(['temporary_token'=>$code])
-            ->where(['temporary_token_used'=>0])
-            ->one();
-
+        $user = UserProfile::find()->where(['temporary_token'=>$code])
+        ->andWhere(['temporary_token_used'=>0])->one();
         if (!$user) {
             return ResponseHelper::sendFailedResponse(['message'=>'Not Found'],404);
         }
-        $profile = $user->userProfile;
-        $profile->temporary_token_used = 1;
-        $profile->save(false);
+        $user->temporary_token_used = 1;
+        $user->save(false);
+        $user = User::find()->where(['id'=>$user->user_id])->one();
         $user->access_token = Yii::$app->getSecurity()->generateRandomString(40);
         $user->save(false);
         return ['token'=> $user->access_token, 'profile'=> $user ];
