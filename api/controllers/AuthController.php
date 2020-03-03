@@ -19,6 +19,13 @@ class AuthController extends  RestController
         if($slug){
             $_SESSION['slug'] = $slug;
         }
+
+        if ($_SERVER['SERVER_NAME'] == 'sahlit.com'){
+            $redirectUri = 'http://sahlit.com/auth';
+        }else{
+            $redirectUri = 'http://tamkeentechlab.com/auth';
+        }
+
         $organization = Organization::findOne(['slug'=>$_SESSION['slug']]);
 
         $provider = new ProviderKeyc([
@@ -26,7 +33,7 @@ class AuthController extends  RestController
             'realm'                     => $organization->realm,
             'clientId'                  => $organization->clientId,
             'clientSecret'              => $organization->clientSecret,
-            'redirectUri'               => 'http://sahlit.com/auth',
+            'redirectUri'               => $redirectUri,
             'encryptionAlgorithm'       => null,
             'encryptionKey'             => null,
             'encryptionKeyPath'         => null
@@ -92,7 +99,7 @@ class AuthController extends  RestController
                         header('Location: '.$siteLink.'/login?status=false');
                         exit();
                     }
-                    
+
                     $token_temp = \Yii::$app->getSecurity()->generateRandomString(40);
                     $userProfile = $checkUser->userProfile;
                     $userProfile->temporary_token = $token_temp;
