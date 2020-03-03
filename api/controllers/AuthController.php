@@ -98,10 +98,10 @@ class AuthController extends  RestController
     }
 
     public function actionChangeToken($code){
-        $checkUser = UserProfile::find()->where(['temporary_token'=>$code])
-            ->andWhere(['!=','temporary_token_used',1])->one();
-        if (!$checkUser) {
-            return ResponseHelper::sendFailedResponse(['message'=>'Not Found '. $checkUser->user->access_token],403);
+        $checkUser = UserProfile::find()->where(['temporary_token'=>$code,'temporary_token_used'=>1])
+            ->one();
+        if ($checkUser) {
+            return ResponseHelper::sendFailedResponse(['message'=>'Not Found'],404);
         }
         $checkUser->temporary_token_used  =1;
         $checkUser->save(false);
