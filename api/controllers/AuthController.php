@@ -101,7 +101,7 @@ class AuthController extends  RestController
         $checkUser = UserProfile::find()->where(['temporary_token'=>$code])
             ->andWhere(['!=','temporary_token_used',1])->one();
         if (!$checkUser) {
-            return ResponseHelper::sendFailedResponse(['message'=>'Not Found'],403);
+            return ResponseHelper::sendFailedResponse(['message'=>'Not Found '. $checkUser->user->access_token],403);
         }
         $checkUser->temporary_token_used  =1;
         $checkUser->save(false);
