@@ -57,8 +57,19 @@ $link =  str_ireplace(['api','endpoints','organization'],'',$siteLink);
 
 
                     [
-                        'class' => 'kartik\grid\ActionColumn',
-                        'template'=>'{delete}'
+                        'class' => 'yii\grid\ActionColumn',
+                        'template' => '{delete}',
+                        'buttons' => [
+                            'delete' => function($url, $model){
+                                return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'id' => $model->survey_stat_id], [
+                                    'class' => '',
+                                    'data' => [
+                                        'confirm' => Yii::t('common','Are you absolutely sure ? You will lose all the information about this user assessment naswer with this action.'),
+                                        'method' => 'post',
+                                    ],
+                                ]);
+                            }
+                        ]
                     ],
                 ];
 
