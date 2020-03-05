@@ -69,7 +69,7 @@ class AuthController extends  RestController
                 $user = $provider->getResourceOwner($token);
                 // var_dump($user->toArray());
 
-                if ($user['email_verified'] == false) {
+                if ($user->email_verified == false) {
                     header('Location: '.$siteLink.'/login?email=false');
                     exit();
                 }
