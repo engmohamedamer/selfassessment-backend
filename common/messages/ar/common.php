@@ -366,6 +366,6 @@ return [
     'Contributors list'=>'قائمة المشاركين',
     'Respondents'=>'المشاركين',
     'Reports'=>'التقارير',
-    'Are you absolutely sure ? You will lose all the information about this user assessment naswer with this action.'=>'هل أنت متأكد تماما؟ ستفقد جميع المعلومات حول إجابة المستخدم من خلال هذا الإجراء.',
+    'Are you absolutely sure ? You will lose all the information about this user assessment naswer with this action.'=>'هل أنت متأكد تماما؟ ستفقد جميع المعلومات حول إجابة المشارك من خلال هذا الإجراء.',
 
 ];
