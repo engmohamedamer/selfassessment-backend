@@ -67,6 +67,7 @@ class AuthController extends  RestController
                 $siteLink = $_SERVER['REQUEST_SCHEME'] . '://'. $organization->slug .'.'. $_SERVER['SERVER_NAME'];
                 // We got an access token, let's now get the user's details
                 $user = $provider->getResourceOwner($token);
+                return var_dump($user);
                 // Use these details to create a new profile
                  $name  = $user->getName();
                  $email = $user->getEmail();
