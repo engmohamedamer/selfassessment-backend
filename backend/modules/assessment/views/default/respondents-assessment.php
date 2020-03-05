@@ -12,6 +12,62 @@ $siteLink = $_SERVER['REQUEST_SCHEME'] . '://'. $organization->slug . $_SERVER['
 $link =  str_ireplace(['api','endpoints','organization'],'',$siteLink);
 
 ?>
+<style>
+body {
+    background-color: #fff !important;
+}
+</style>
+<div class="col-md-12 ">
+    <div class="content-header">
+        <div class="">
+            <div class="">
+                <h1 class="m-0 text-dark">
+                <i class="icofont-users-social"></i> <?= Yii::t('common', 'Contributors list') ?>
+                </h1>
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div>
+	<table class="kv-grid-table table table-bordered table-striped kv-table-wrap">
+		<thead>
+			<tr class="kartik-sheet-style">
+				<th>اسم المشارك</th>
+				<th>تاريخ المشاركة</th>
+				<th>خيارات</th>
+			</tr>
+			
+		</thead>
+		<tbody>
+			<tr class="kv-grid-demo">
+				<td>اسم المشارك</td>
+				<td>20/20/2002</td>
+				<td class="skip-export kv-align-center kv-align-middle kv-grid-demo">
+					<a href="/user/view?id=6" title="View" aria-label="View" data-pjax="0">
+						<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+					</a>
+					
+					<a href="/user/delete?id=6" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="هل انت متاكد من الحذف">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					</a>
+				</td>
+			</tr>
+			<tr class="kv-grid-demo">
+				<td>اسم المشارك</td>
+				<td>20/20/2002</td>
+				<td class="skip-export kv-align-center kv-align-middle kv-grid-demo">
+					<a href="/user/view?id=6" title="View" aria-label="View" data-pjax="0">
+						<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+					</a>
+					
+					<a href="/user/delete?id=6" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="هل انت متاكد من الحذف">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 <div id="survey-respondents" class="survey-container">
 
 	<?php
