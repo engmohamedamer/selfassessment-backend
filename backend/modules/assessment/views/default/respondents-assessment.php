@@ -60,7 +60,7 @@ body {
 						<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
 					</a>
 					
-					<a href="/user/delete?id=6" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="هل انت متاكد من الحذف">
+					<a href="/user/delete?id=6" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-action="<?=  Url::toRoute(['default/unassign-user', 'surveyId' => $surveyId]) ?>" data-confirm="هل انت متاكد من الحذف">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					</a>
 				</td>
