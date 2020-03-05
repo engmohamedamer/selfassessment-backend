@@ -68,7 +68,11 @@ class AuthController extends  RestController
                 // We got an access token, let's now get the user's details
                 $user = $provider->getResourceOwner($token);
                 var_dump($user->toArray());
-                exit();
+
+                if ($user['email_verified'] == false) {
+                    header('Location: '.$siteLink.'/login?email=false');
+                    exit();
+                }
                 // Use these details to create a new profile
                  $name  = $user->getName();
                  $email = $user->getEmail();
