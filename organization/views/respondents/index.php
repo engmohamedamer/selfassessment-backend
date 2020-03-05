@@ -64,7 +64,7 @@ $link =  str_ireplace(['api','endpoints','organization'],'',$siteLink);
                                 return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'id' => $model->survey_stat_id], [
                                     'class' => '',
                                     'data' => [
-                                        'confirm' => Yii::t('common','Are you absolutely sure ? You will lose all the information about this user assessment naswer with this action.'),
+                                        'confirm' => Yii::t('common','By confirming the delete, the assessment will be reopened to the contributor to re-answer.'),
                                         'method' => 'post',
                                     ],
                                 ]);
