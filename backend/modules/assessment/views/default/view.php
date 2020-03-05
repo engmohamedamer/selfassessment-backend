@@ -36,6 +36,20 @@ $this->title = Yii::t('survey', 'Survey') . ' - ' . $survey->survey_name;
 BootstrapPluginAsset::register($this);
 
 error_reporting(0);
+
+echo newerton\fancybox3\FancyBox::widget([
+    'config'=>[
+        'iframe' => [
+            'preload'       => true,
+            'css'=>[
+                'width'=>'600px',
+                'height'=>'550px'
+            ]
+        ],
+
+    ],
+]);
+
 ?>
 <style>
 .surveylevels .col-md-10,.surveylevels .col-md-4{
@@ -51,10 +65,10 @@ error_reporting(0);
                         <a href="<?= Url::toRoute(['default/update/', 'id' => $survey->survey_id]) ?>"
                            class="btn btn-info btn-xs survey-label" data-pjax="0"
                            title="edit"><span class="glyphicon glyphicon-pencil"></span></a>
-                        <span class="survey-label btn btn-info btn-xs respondents-toggle" data-toggle="tooltip"
-                              title="<?= \Yii::t('survey', 'Respondents count') ?>">
-                             <?= \Yii::t('survey', 'Respondents count') ?>: <?= $survey->getRespondentsCount() ?>
-                        </span>
+                        <a data-fancybox="" data-type="iframe" class="survey-label btn btn-info btn-xs" data-options="" href="/assessment/default/respondents-assessment?surveyId=<?=$survey->survey_id?>">
+                            <?= \Yii::t('survey', 'Respondents count') ?>: <?= $survey->getRespondentsCount() ?>
+                        </a>   
+                        
                         <span class="survey-label btn btn-info btn-xs" data-toggle="tooltip"
                               title="<?= \Yii::t('survey', 'Questions') ?>">
                                <?= \Yii::t('survey', 'Questions') ?>: <?= $survey->getQuestions()->count() ?>

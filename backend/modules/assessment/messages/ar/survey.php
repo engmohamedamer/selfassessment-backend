@@ -104,4 +104,5 @@ return [
     'Can Ignore'=>'يمكن تجاهله',
     'Question Point'=>'درجة الإجابة',
     'Text Area'=>'نص كبير',
+    'Respondents'=>'المشاركين',
 ];

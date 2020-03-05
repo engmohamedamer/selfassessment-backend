@@ -22,6 +22,18 @@ $this->title = Yii::t('backend', 'Survey');
 
 BootstrapPluginAsset::register($this);
 
+echo newerton\fancybox3\FancyBox::widget([
+    'config'=>[
+        'iframe' => [
+            'preload'       => true,
+            'css'=>[
+                'width'=>'600px',
+                'height'=>'550px'
+            ]
+        ],
+
+    ],
+]);
 ?>
     <div id="survey-index">
         <div class="content-header">
@@ -180,6 +192,14 @@ BootstrapPluginAsset::register($this);
                                               title="<?= \Yii::t('survey', 'Questions count') ?>"><?= $survey->getQuestions()->count() ?></span>
                                     </div>
                                     <div class="survey-actions">
+                                        <?php
+                                            if (count($survey->stats) > 0): ?>
+                                                <a data-fancybox="" data-type="iframe" class="btn btn btn-success" data-options="" href="/assessment/default/respondents-assessment?surveyId=<?=$survey->survey_id?>">
+                                                    <?= \Yii::t('survey', 'Respondents') ?>
+                                                </a>
+                                        <?php 
+                                            endif;
+                                        ?>
                                         <a href="<?= Url::toRoute(['default/update/', 'id' => $survey->survey_id]) ?>"
                                            class="btn btn-info btn-xs" data-pjax="0"
                                            title="<?= \Yii::t('survey','Edit') ?>"><span class="glyphicon glyphicon-pencil mr-2 ml-2"></span><?= \Yii::t('survey','Edit') ?></a>

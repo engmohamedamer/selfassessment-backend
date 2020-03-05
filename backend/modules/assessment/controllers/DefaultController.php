@@ -509,5 +509,19 @@ class DefaultController extends Controller
         }
     }
 
+    public function  actionRespondentsAssessment($surveyId){
+        $this->layout = 'base';
+        $searchModel = new SurveyStatSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        $dataProvider->query->andWhere(['survey_stat_survey_id' => $surveyId])
+            ->orderBy(['survey_stat_assigned_at' => SORT_DESC]);
+        $dataProvider->pagination = false;
+        $dataProvider->pagination->route = Url::toRoute(['default/respondents']);
+        return $this->render('respondents-assessment', [
+            'dataProvider' => $dataProvider,
+            'surveyId' => $surveyId,
+            'organization'=> $this->findModel($surveyId)->organization
+        ]);
+    }
 
 }
