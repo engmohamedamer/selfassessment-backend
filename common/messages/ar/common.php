@@ -364,5 +364,7 @@ return [
     'Login using SSO'=>'تسجيل الدخول بأستخدام بيانات دخول SSO',
     'Allow Login using organization SSO.'=>'السماح بتسجيل الدخول بأستخدام بيانات SSO للمؤسسة',
     'Contributors list'=>'قائمة المشاركين',
+    'Respondents'=>'المشاركين',
+    'Reports'=>'التقارير',
 
 ];

@@ -21,19 +21,6 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('backend', 'Survey');
 
 BootstrapPluginAsset::register($this);
-
-echo newerton\fancybox3\FancyBox::widget([
-    'config'=>[
-        'iframe' => [
-            'preload'       => true,
-            'css'=>[
-                'width'=>'600px',
-                'height'=>'550px'
-            ]
-        ],
-
-    ],
-]);
 ?>
     <div id="survey-index">
         <div class="content-header">
@@ -194,7 +181,7 @@ echo newerton\fancybox3\FancyBox::widget([
                                     <div class="survey-actions">
                                         <?php
                                             if (count($survey->stats) > 0): ?>
-                                                <a data-fancybox="" data-type="iframe" class="btn btn btn-success" data-options="" href="/assessment/default/respondents-assessment?surveyId=<?=$survey->survey_id?>">
+                                                <a class="btn btn btn-success" href="/respondents?surveyId=<?=$survey->survey_id?>">
                                                     <?= \Yii::t('survey', 'Respondents') ?>
                                                 </a>
                                         <?php 
