@@ -10,6 +10,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
     ],
+    'timeZone' => 'Asia/Riyadh',
     'components' => [
         'authManager' => [
             'class' => yii\rbac\DbManager::class,
