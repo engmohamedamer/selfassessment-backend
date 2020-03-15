@@ -91,7 +91,9 @@ if (isset($model->city_id) and !empty($model->city_id)) {
             <li role="presentation" class=""><a  href="#tab_3-3" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-palette"></i></span><p><?php echo Yii::t('common', 'Colors') ?></p></a></li>
             <li role="presentation" class=""><a  href="#tab_4-4" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-link"></i></span><p><?php echo Yii::t('common', 'Footer Links') ?></p></a></li>
             <li role="presentation" class=""><a  href="#tab_5-5" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-users"></i></span><p><?php echo Yii::t('common', 'Socail Links') ?></p></a></li>
-            <li role="presentation" class=""><a  href="#tab_7-7" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-sign-in-alt"></i></span><p><?php echo Yii::t('common', 'Login Settings') ?></p></a></li>
+            <?php if(Yii::$app->user->can('administrator') || Yii::$app->user->can('manager')): ?>
+                <li role="presentation" class=""><a  href="#tab_7-7" data-toggle="tab" aria-expanded="true"><span > <i class="fas fa-sign-in-alt"></i></span><p><?php echo Yii::t('common', 'Login Settings') ?></p></a></li>
+            <?php endif ?>
 
         
         </ul>
