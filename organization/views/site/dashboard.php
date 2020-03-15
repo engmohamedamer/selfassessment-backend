@@ -297,7 +297,7 @@ $i = 1;
                                 <tr>
                                     <td><?= $i++ ?></td>
                                     <td><a href="/assessment/default/view?id=<?= $survey->survey_id ?>"><?= $survey->survey_name ?></a></td>
-                                    <td><a href="/respondents?surveyId=<?= $survey->survey_id ?>"><?= $survey->stats ? count($survey->stats) : 0 ?></a></td>
+                                    <td><a href="/respondents?surveyId=<?= $survey->survey_id ?>" class="label label-success" style="color: #fff !important;"><?= $survey->stats ? count($survey->stats) : 0 ?></a></td>
                                     <td><span class="label label-<?=$class?>"><?= $status ?></span></td>
                                     <td>
                                         <div class="sparkbar" data-color="#00a65a" data-height="20"><?= $survey->survey_expired_at ?></div>
