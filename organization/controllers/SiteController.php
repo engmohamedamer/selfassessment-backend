@@ -94,6 +94,17 @@ class SiteController extends OrganizationBackendController
 
     private function organizationSurveys($organization_id)
     {
+        $organizationSurvey = Survey::find()->where(['org_id'=>$organization_id,'survey_is_closed'=>0])->all();
+
+        foreach ($organizationSurvey as $survey) {
+            if(strtotime($survey->survey_expired_at)){
+                if (time() >= strtotime($survey->survey_expired_at)) {
+                    $survey->survey_is_closed = 1;
+                    $survey->save(false);
+                }
+            }
+        }
+
         $organizationSurvey = Survey::find()->select('survey_id, survey_is_closed, survey_expired_at, survey_name, count(survey_stat.survey_stat_id) as survey_stat')
             ->join('LEFT JOIN','{{%survey_stat}}','{{%survey_stat}}.survey_stat_survey_id = {{%survey}}.survey_id')
             ->where(['org_id'=>$organization_id])
