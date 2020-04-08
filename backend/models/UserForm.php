@@ -121,7 +121,7 @@ class UserForm extends Model
             $model = $this->getModel();
             $isNewRecord = $model->getIsNewRecord();
             $model->username = $this->username;
-            $model->email = $this->email;
+            $model->email =strtolower( $this->email);
             $model->status = $this->status;
             if ($this->password) {
                 $model->setPassword($this->password);
