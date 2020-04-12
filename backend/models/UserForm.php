@@ -83,7 +83,7 @@ class UserForm extends Model
     public function setModel($model)
     {
         $this->username = $model->username;
-        $this->email = $model->email;
+        $this->email = strtolower($model->email);
         $this->mobile = $model->userProfile->mobile;
         $this->status = $model->status;
         $this->model = $model;

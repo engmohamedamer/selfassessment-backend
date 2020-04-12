@@ -3,7 +3,6 @@
 namespace common\models;
 
 use Yii;
-use backend\models\Schools;
 use common\models\Organization;
 use common\models\OrganizationStructure;
 use trntv\filekit\behaviors\UploadBehavior;
@@ -78,7 +77,8 @@ class UserProfile extends ActiveRecord
             [['user_id', 'gender','organization_id','draft','sector_id','main_admin'], 'integer'],
             [['sector_id'], 'default', 'value' => 0],
             [['gender'], 'in', 'range' => [NULL, self::GENDER_FEMALE, self::GENDER_MALE]],
-            [['firstname', 'middlename', 'lastname', 'avatar_path', 'avatar_base_url','mobile','device_token','position'], 'string', 'max' => 255],
+            [[ 'avatar_path', 'avatar_base_url','mobile','device_token','position'], 'string', 'max' => 255],
+            [['firstname', 'middlename', 'lastname'], 'string', 'max' => 40 ],
             ['locale', 'default', 'value' => Yii::$app->language],
             ['locale', 'in', 'range' => array_keys(Yii::$app->params['availableLocales'])],
             [['picture','nationality_id','specialization_id','job','activity','active','bio'], 'safe'],

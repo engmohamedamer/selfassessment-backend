@@ -81,7 +81,7 @@ class UserForm extends Model
     public function setModel($model)
     {
         $this->username = $model->username;
-        $this->email = $model->email;
+        $this->email = strtolower($model->email);
         $this->status = $model->status;
         $this->model = $model;
         $this->roles = ArrayHelper::getColumn(
@@ -120,7 +120,7 @@ class UserForm extends Model
             $model = $this->getModel();
             $isNewRecord = $model->getIsNewRecord();
             $model->username = $this->username;
-            $model->email = $this->email;
+            $model->email = strtolower($this->email);
             $model->status = $this->status;
             $model->tags = $this->tags;
             if ($this->password) {
