@@ -10,6 +10,10 @@ $config = [
         'request' => [
             'cookieValidationKey' => env('BACKEND_COOKIE_VALIDATION_KEY'),
             'baseUrl' => env('BACKEND_BASE_URL'),
+            'csrfCookie' => [
+                'httpOnly' => true,
+                'secure' => true,
+            ],
         ],
         'user' => [
             'class' => yii\web\User::class,

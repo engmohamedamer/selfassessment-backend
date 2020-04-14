@@ -7,14 +7,6 @@ use yii\widgets\ActiveForm;
 /* @var $model backend\models\District */
 /* @var $form yii\widgets\ActiveForm */
 
-\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
-    'viewParams' => [
-        'class' => 'Schools', 
-        'relID' => 'schools', 
-        'value' => \yii\helpers\Json::encode($model->schools),
-        'isNewRecord' => ($model->isNewRecord) ? 1 : 0
-    ]
-]);
 ?>
 
 <div class="district-form">
@@ -37,26 +29,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true, 'placeholder' => 'Slug']) ?>
 
-    <?php
-    $forms = [
-        [
-            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('backend', 'Schools')),
-            'content' => $this->render('_formSchools', [
-                'row' => \yii\helpers\ArrayHelper::toArray($model->schools),
-            ]),
-        ],
-    ];
-    echo kartik\tabs\TabsX::widget([
-        'items' => $forms,
-        'position' => kartik\tabs\TabsX::POS_ABOVE,
-        'encodeLabels' => false,
-        'pluginOptions' => [
-            'bordered' => true,
-            'sideways' => true,
-            'enableCache' => false,
-        ],
-    ]);
-    ?>
     <div class="form-group">
     <?php if(Yii::$app->controller->action->id != 'save-as-new'): ?>
         <?= Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

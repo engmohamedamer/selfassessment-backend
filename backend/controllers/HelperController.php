@@ -29,7 +29,7 @@ class HelperController extends Controller
             $query->select(' CONCAT_WS(" ", `firstname`, `lastname`) as text, {{%user_profile}}.user_id as id')
                 ->from('{{%user_profile}}')
                 ->where('CONCAT( `firstname`, `lastname`) LIKE  \'%'.$q.'%\'  ');
-    
+
             $query->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user_profile}}.user_id')
                 ->andFilterWhere(['{{%rbac_auth_assignment}}.item_name' => User::ROLE_MANAGER]);
 
@@ -45,32 +45,6 @@ class HelperController extends Controller
 
     //endpoints
 
-
-    // list schools for select2 plugin
-    public function actionSchoolList($q = null, $id = null) {
-        $q = preg_replace('/\s+/', '', $q);
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        $out = ['results' => ['id' => '', 'text' => '']];
-        if (!is_null($q)) {
-
-            $strOrderBy = 'name DESC ';
-
-            $query = new Query();
-            $query->select(' name as text, id ')
-                ->from('ya_school')
-                ->where('name like "%'.$q.'%"')
-                ->limit(20);
-
-            $command = $query->createCommand();
-            $data = $command->queryAll();
-
-            $out['results'] = array_values($data);
-        }
-        elseif ($id > 0) {
-            $out['results'] = ['id' => $id, 'text' => Organization::findOne(['id'=>$id])->name];
-        }
-        return $out;
-    }
 
 
     public function actionSchoolDistricts($schoolId = null) {

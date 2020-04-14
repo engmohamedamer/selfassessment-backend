@@ -3,16 +3,6 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Event;
-use backend\models\EventBeneficiary;
-use backend\models\EventField;
-use backend\models\EventRequest;
-use backend\models\EventSelectedBeneficary;
-use backend\models\News;
-use backend\models\NewsStatus;
-use backend\models\SchoolCategory;
-use backend\models\SchoolGender;
-use backend\models\Schools;
 use backend\modules\assessment\models\Survey;
 use backend\modules\assessment\models\SurveyStat;
 use common\helpers\Filter;
@@ -64,16 +54,16 @@ class SiteController extends BackendController
             ->orderBy('id DESC')
             ->limit(10)
             ->all();
-        
+
         $organizationsCount = Organization::find()->select('id,name')
             ->where($dateOrganizations)
             ->count();
-        
+
         // charts data
         $chartData = Filter::chartData() ;
-        $labels = $chartData['labels']; 
-        $dataChart  = $chartData['data']; 
-        
+        $labels = $chartData['labels'];
+        $dataChart  = $chartData['data'];
+
         $dateSurvey = Filter::dateFilter('survey_created_at');
 
         $surveyCount = Survey::find()->where($dateSurvey)
@@ -88,7 +78,7 @@ class SiteController extends BackendController
             $surveyStatsCount->andWhere(['IN','survey_stat_survey_id',$surveyIds]);
         }
         $surveyStatsCount  = $surveyStatsCount->count();
-        
+
         $dateUser = Filter::dateFilter('created_at',true,'user.');
         $user = User::find()
             ->join('LEFT JOIN','{{%rbac_auth_assignment}}','{{%rbac_auth_assignment}}.user_id = {{%user}}.id')

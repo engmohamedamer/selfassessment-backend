@@ -1,6 +1,5 @@
 <?php
 
-use backend\models\Schools;
 use common\models\Organization;
 use yii\helpers\Html;
 
@@ -9,7 +8,7 @@ use yii\helpers\Html;
 /* @var $message string */
 /* @var $exception Exception */
 
-$this->title = Yii::t('backend', 'Dashboard'); 
+$this->title = Yii::t('backend', 'Dashboard');
 \backend\assets\DashboardAsset::register($this);
 ?>
 
@@ -24,7 +23,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             <a data-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse" class="btn btn-info"><span><i class="fa fa-filter mr-2 ml-2"></i> <?= \Yii::t('common', 'Filter Options')?> </span></a>
 
         </div>
- 
+
     </div>
 
 </div>
@@ -36,7 +35,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             <div class="box-body">
                 <div class="row">
                     <form method="GET">
-                        
+
                     <div class="col-md-3">
                         <div class="form-group">
                             <label><?= \Yii::t('common', 'Filter by time')?></label>
@@ -84,19 +83,19 @@ $this->title = Yii::t('backend', 'Dashboard');
                             <!-- <small class="form-text text-muted"><?= \Yii::t('common', 'Filter the dashboard by organization.')?></small> -->
                         </div>
                     </div>
-                   
+
                     <div class="col-md-3">
                         <div class="form-group">
-                            
+
                             <button class="btn btn-success" style="margin-top: 32px;"><?= \Yii::t('common', 'Filter')?></button>
                         </div>
                     </div>
-                    
+
                     </form>
 
                 </div>
             </div>
-            
+
         </div>
     </div>
 <!-- /.content-header -->
@@ -136,7 +135,7 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div>
             <!-- /.info-box-content -->
         </div>
-                
+
     </div>
 
     <div class="col-sm-12 col-md-3">
@@ -161,21 +160,21 @@ $this->title = Yii::t('backend', 'Dashboard');
             </div>
             <div class="box-body">
                 <canvas id="visitors-chart" style="height: 237px" height="237" ></canvas>
-            
+
                 <!-- <div class="d-flex flex-row justify-content-end">
-                    
+
                 </div> -->
             </div>
             <div class="box-footer text-center">
-           
+
 
                     <span class="mr-5 ml-5">
                         <i class="fas fa-square text-gray" style="color:#dd4b39 !important"></i> <?= Yii::t('backend','Contributing Count') ?>
                     </span>
             </div>
         <!-- /.box-body -->
-        </div>  
-        
+        </div>
+
     </div>
 </div>
 
@@ -204,7 +203,7 @@ $this->title = Yii::t('backend', 'Dashboard');
                                 <?php foreach($organizations as $organization):?>
                                 <tr>
                                     <td>
-                                        
+
                                         <a href="/organization/view?id=<?= $organization->id ?>"><?= $organization->name ?></a>
                                     </td>
                                     <td><a ><?= $organization->countSurvey() ?></a></td>
@@ -232,13 +231,13 @@ $this->title = Yii::t('backend', 'Dashboard');
                 </div>
             </div>
         </div>
-        <!-- /.card -->  
+        <!-- /.card -->
     </div>
-    
+
     <!-- /.col-md-6 -->
 </div>
-   
-    
+
+
 
 <!-- /.row -->
 

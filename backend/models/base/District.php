@@ -13,7 +13,6 @@ use Yii;
  * @property string $slug
  *
  * @property \backend\models\City $city
- * @property \backend\models\Schools[] $schools
  */
 class District extends \yii\db\ActiveRecord
 {
@@ -28,7 +27,6 @@ class District extends \yii\db\ActiveRecord
     {
         return [
             'city',
-            'schools'
         ];
     }
 
@@ -64,7 +62,7 @@ class District extends \yii\db\ActiveRecord
             'slug' => Yii::t('backend', 'Slug'),
         ];
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -72,15 +70,8 @@ class District extends \yii\db\ActiveRecord
     {
         return $this->hasOne(\backend\models\City::className(), ['id' => 'city_id']);
     }
-        
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getSchools()
-    {
-        return $this->hasMany(\backend\models\Schools::className(), ['district_id' => 'id']);
-    }
-    
+
+
 
     /**
      * @inheritdoc

@@ -48,32 +48,6 @@ echo Menu::widget([
                     'visible' => (Yii::$app->user->can('administrator') or  Yii::$app->user->can('manager') ),
                 ],
 
-                [
-                    'label' => Yii::t('backend', 'Schools Owner'),
-                    'icon' => '<i class="fa fa-users"></i>',
-                    'url' => ['/user/index?user_role=schoolOwner'],
-                    'active' => (Yii::$app->controller->id == 'user'),
-                    'visible' => (Yii::$app->user->can('administrator') or  Yii::$app->user->can('manager') ),
-                ],
-
-                [
-                    'label' => Yii::t('backend', 'Schools Rep.'),
-                    'icon' => '<i class="fa fa-users"></i>',
-                    'url' => ['/user/index?user_role=schoolAdmin'],
-                    'active' => (Yii::$app->controller->id == 'user'),
-                    'visible' => (Yii::$app->user->can('administrator') or  Yii::$app->user->can('manager') ),
-                ],
-
-                [
-                    'label' => Yii::t('backend', 'Schools Activity Admin'),
-                    'icon' => '<i class="fa fa-users"></i>',
-                    'url' => ['/user/index?user_role=schoolActivityAdmin'],
-                    'active' => (Yii::$app->controller->id == 'user'),
-                    'visible' => (Yii::$app->user->can('administrator') or  Yii::$app->user->can('manager') ),
-                ],
-
-
-
 
                 [
                     'label' => Yii::t('backend', 'National Education office official'),

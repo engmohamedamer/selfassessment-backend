@@ -49,12 +49,9 @@ class DistrictController extends BackendController
     public function actionView($id)
     {
         $model = $this->findModel($id);
-        $providerSchools = new \yii\data\ArrayDataProvider([
-            'allModels' => $model->schools,
-        ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'providerSchools' => $providerSchools,
         ]);
     }
 
@@ -126,7 +123,7 @@ class DistrictController extends BackendController
         if (Yii::$app->request->post('_asnew') != '1') {
             $model = $this->findModel($id);
         }
-    
+
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -135,7 +132,7 @@ class DistrictController extends BackendController
             ]);
         }
     }
-    
+
     /**
      * Finds the District model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -151,24 +148,7 @@ class DistrictController extends BackendController
             throw new NotFoundHttpException(Yii::t('backend', 'The requested page does not exist.'));
         }
     }
-    
-    /**
-    * Action to load a tabular form grid
-    * for Schools
-    * @author Yohanes Candrajaya <moo.tensai@gmail.com>
-    * @author Jiwantoro Ndaru <jiwanndaru@gmail.com>
-    *
-    * @return mixed
-    */
-    public function actionAddSchools()
-    {
-        if (Yii::$app->request->isAjax) {
-            $row = Yii::$app->request->post('Schools');
-            if((Yii::$app->request->post('isNewRecord') && Yii::$app->request->post('_action') == 'load' && empty($row)) || Yii::$app->request->post('_action') == 'add')
-                $row[] = [];
-            return $this->renderAjax('_formSchools', ['row' => $row]);
-        } else {
-            throw new NotFoundHttpException(Yii::t('backend', 'The requested page does not exist.'));
-        }
-    }
+
+
+
 }
