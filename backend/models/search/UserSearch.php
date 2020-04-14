@@ -21,7 +21,7 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'status'], 'integer'],
+            [['id', 'status','SearchFullName'], 'integer'],
             [['created_at'], 'filter', 'filter' => 'strtotime', 'skipOnEmpty' => true],
             [['created_at'], 'default', 'value' => null],
             [['username', 'auth_key', 'password_hash', 'email','SearchFullName'], 'safe'],

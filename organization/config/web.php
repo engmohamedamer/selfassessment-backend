@@ -9,6 +9,10 @@ $config = [
         ],
         'request' => [
             'cookieValidationKey' => env('ORGANIZATION_COOKIE_VALIDATION_KEY'),
+            'csrfCookie' => [
+                'httpOnly' => true,
+                'secure' => true,
+            ],
         ],
         'user' => [
             'class' => yii\web\User::class,
