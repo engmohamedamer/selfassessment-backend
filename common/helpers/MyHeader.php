@@ -43,4 +43,21 @@ class MyHeader extends Headers
         });
     }
 
+
+    /**
+     * Get report part for X-XSS-Protection header
+     *
+     * @access private
+     * @return string
+     */
+    private function getXssProtectionReportPart()
+    {
+        $report = '';
+        if (!empty($this->reportUri)) {
+            $report = ' report=' . $this->reportUri . '/';
+        }
+
+        return $report;
+    }
+
 }
