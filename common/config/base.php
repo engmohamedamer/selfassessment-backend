@@ -5,13 +5,62 @@ $config = [
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'sourceLanguage' => 'en-US',
     'language' => 'ar-AR',
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','headers'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
     ],
     'timeZone' => 'Asia/Riyadh',
     'components' => [
+        'headers' => [
+            'class' => '\hyperia\security\Headers',
+            'upgradeInsecureRequests' => true,
+            'blockAllMixedContent' => true,
+            'requireSriForScript' => false,
+            'requireSriForStyle' => false,
+            'xssProtection' => true,
+            'contentTypeOptions' => true,
+            'stsMaxAge' => 10,
+            'xFrameOptions' => 'DENY',
+            'xPoweredBy' => 'Sahl',
+            'referrerPolicy' => 'no-referrer',
+            'publicKeyPins' => '',
+            'reportUri' => 'https://sahl.tech',
+            'cspDirectives' => [
+                'script-src' => "'self' 'unsafe-inline'",
+                'style-src' => "'self' 'unsafe-inline'",
+                'img-src' => "'self' data:",
+                'connect-src' => "'self'",
+                'font-src' => "'self'",
+                'object-src' => "'self'",
+                'media-src' => "'self'",
+                'form-action' => "'self'",
+                'frame-src' => "'self'",
+                'child-src' => "'self'",
+                'worker-src' => "'self'"
+            ],
+            'featurePolicyDirectives' => [
+                'accelerometer' => "'self'",
+                'ambient-light-sensor' => "'self'",
+                'autoplay' => "'self'",
+                'camera' => "'self'",
+                'encrypted-media' => "'self'",
+                'fullscreen' => "'self'",
+                'geolocation' => "'self'",
+                'gyroscope' => "'self'",
+                'magnetometer' => "'self'",
+                'microphone' => "'self'",
+                'midi' => "'self'",
+                'payment' => "'self'",
+                'picture-in-picture' => "*",
+                'speaker' => "'self'",
+                'usb' => "'self'",
+                'vr' => "'self'"
+            ]
+        ],
+
+
+
         'authManager' => [
             'class' => yii\rbac\DbManager::class,
             'itemTable' => '{{%rbac_auth_item}}',

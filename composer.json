@@ -65,7 +65,8 @@
     "wbraganca/yii2-dynamicform": "*",
     "flow/jsonpath": "dev-master",
     "sjaakp/yii2-taggable": "*",
-    "pviojo/oauth2-keycloak": "^1.0@dev"
+    "pviojo/oauth2-keycloak": "^1.0@dev",
+    "hyperia/yii2-secure-headers": "^1.0"
 
 
   },
