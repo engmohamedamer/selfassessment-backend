@@ -39,24 +39,24 @@ $config = [
                 'child-src' => "'self'",
                 'worker-src' => "'self'"
             ],
-            'featurePolicyDirectives' => [
-                'accelerometer' => "'self'",
-                'ambient-light-sensor' => "'self'",
-                'autoplay' => "'self'",
-                'camera' => "'self'",
-                'encrypted-media' => "'self'",
-                'fullscreen' => "'self'",
-                'geolocation' => "'self'",
-                'gyroscope' => "'self'",
-                'magnetometer' => "'self'",
-                'microphone' => "'self'",
-                'midi' => "'self'",
-                'payment' => "'self'",
-                'picture-in-picture' => "*",
-                'speaker' => "'self'",
-                'usb' => "'self'",
-                'vr' => "'self'"
-            ]
+//            'featurePolicyDirectives' => [
+//                'accelerometer' => "'self'",
+//                'ambient-light-sensor' => "'self'",
+//                'autoplay' => "'self'",
+//                'camera' => "'self'",
+//                'encrypted-media' => "'self'",
+//                'fullscreen' => "'self'",
+//                'geolocation' => "'self'",
+//                'gyroscope' => "'self'",
+//                'magnetometer' => "'self'",
+//                'microphone' => "'self'",
+//                'midi' => "'self'",
+//                'payment' => "'self'",
+//                'picture-in-picture' => "*",
+//                'speaker' => "'self'",
+//                'usb' => "'self'",
+//                'vr' => "'self'"
+//            ]
         ],
 
 
