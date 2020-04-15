@@ -27,17 +27,31 @@ $config = [
             'publicKeyPins' => '',
           // 'reportUri' => 'https://sahl.tech',
             'cspDirectives' => [
-                'script-src' => "'self' 'unsafe-inline'",
-                'style-src' => "'self' 'unsafe-inline'",
-                'img-src' => "'self' data:",
-                'connect-src' => "'self'",
-                'font-src' => "'self'",
-                'object-src' => "'self'",
-                'media-src' => "'self'",
-                'form-action' => "'self'",
-                'frame-src' => "'self'",
-                'child-src' => "'self'",
-                'worker-src' => "'self'"
+//                'script-src' => "'self' 'unsafe-inline'",
+//                'style-src' => "'self' 'unsafe-inline'",
+//                'img-src' => "'self' data:",
+//                'connect-src' => "'self'",
+//                'font-src' => "'self'",
+//                'object-src' => "'self'",
+//                'media-src' => "'self'",
+//                'form-action' => "'self'",
+//                'frame-src' => "'self'",
+//                'child-src' => "'self'",
+//                'worker-src' => "'self'"
+
+                'script-src' => "",
+                'style-src' => "",
+                'img-src' => "",
+                'connect-src' => "",
+                'font-src' => "",
+                'object-src' => "",
+                'media-src' => "",
+                'form-action' => "",
+                'frame-src' => "",
+                'child-src' => "",
+                'worker-src' => ""
+
+
             ],
 //            'featurePolicyDirectives' => [
 //                'accelerometer' => "'self'",
