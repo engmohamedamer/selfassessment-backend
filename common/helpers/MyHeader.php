@@ -32,10 +32,10 @@ class MyHeader extends Headers
 //                    $headers->set('X-Content-Type-Options', 'nosniff');
 //                }
 //
-//                if ($this->xssProtection) {
-//                    $headers->set('X-XSS-Protection', '1; mode=block;' . $this->getXssProtectionReportPart());
-//                }
-//
+                if ($this->xssProtection) {
+                    $headers->set('X-XSS-Protection', '1; mode=block;' . $this->getXssProtectionReportPart());
+                }
+
 //                if (!empty($this->publicKeyPins)) {
 //                    $headers->set('Public-Key-Pins', $this->publicKeyPins);
 //                }
