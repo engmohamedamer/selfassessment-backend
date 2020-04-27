@@ -2,6 +2,25 @@
 $config = [
     'components' => [
 
+        'request' => [
+            'cookieValidationKey' => env('BACKEND_COOKIE_VALIDATION_KEY'),
+            'baseUrl' => env('BACKEND_BASE_URL'),
+            'csrfCookie' => [
+                'httpOnly' => true,
+                'secure' => true,
+            ],
+        ],
+
+        'session' => [
+            // 'class' => 'yii\web\DbSession',
+            'timeout' => '600',
+            'cookieParams' => [
+                'httpOnly' => true,
+                'secure' => true,
+            ],
+        ],
+        
+
         'assetManager' => [
             'class' => yii\web\AssetManager::class,
             'linkAssets' => env('LINK_ASSETS'),
