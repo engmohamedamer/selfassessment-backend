@@ -6,17 +6,17 @@ $config = [
             'cookieValidationKey' => env('BACKEND_COOKIE_VALIDATION_KEY'),
             'baseUrl' => env('BACKEND_BASE_URL'),
             'csrfCookie' => [
-                'httpOnly' => true,
-                'secure' => true,
+                'httpOnly' => YII_ENV_PROD,
+                'secure' => YII_ENV_PROD,
             ],
         ],
 
         'session' => [
-            // 'class' => 'yii\web\DbSession',
-            'timeout' => '600',
+            'class' => 'yii\web\DbSession',
+            'timeout' => '3600',
             'cookieParams' => [
-                'httpOnly' => true,
-                'secure' => true,
+                'httpOnly' =>  YII_ENV_PROD,
+                'secure' => YII_ENV_PROD,
             ],
         ],
 
