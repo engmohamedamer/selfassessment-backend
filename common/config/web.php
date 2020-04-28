@@ -19,7 +19,7 @@ $config = [
                 'secure' => true,
             ],
         ],
-        
+
 
         'assetManager' => [
             'class' => yii\web\AssetManager::class,
