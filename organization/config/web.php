@@ -9,10 +9,10 @@ $config = [
         ],
         'request' => [
             'cookieValidationKey' => env('ORGANIZATION_COOKIE_VALIDATION_KEY'),
-            'csrfCookie' => [
-                'httpOnly' => true,
-                'secure' => true,
-            ],
+//            'csrfCookie' => [
+//                'httpOnly' => true,
+//                'secure' => true,
+//            ],
         ],
         'user' => [
             'class' => yii\web\User::class,
@@ -33,17 +33,6 @@ $config = [
                 'uploadsPath' => '@storage/web/source/survey/', // absolute path to the folder where images will be saved.
                 'organization_id'=>  5, //\Yii::$app->user->identity->userProfile->organization_id,
             ],
-//            'as access' => [
-//                'class' => AccessControl::class,
-//                'except' => ['default/done'],
-//                'only' => ['default*'],
-//                'rules' => [
-//                    [
-//                        'allow' => true,
-//                        'roles' => ['survey'],
-//                    ],
-//                ],
-//            ],
         ],
 
 

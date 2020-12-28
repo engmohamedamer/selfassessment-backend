@@ -1061,9 +1061,9 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'superadmin', 'Chl2wTf1lcFvgHzjy_d7o3T79cBGBTGj', 'foGDvBiPRrk8MkemGZyZCAudcdxTUtY-HjFW_PlR', '$2y$13$Ij0Bjtsnv/9D7uoHZ7p4leQl7JJHezG0Ugr9woqz68y8y0XE2Zn3a', null, null, 'webmaster@example.com', '2', '1552385275', '1552385275', '1569225691');
-INSERT INTO `user` VALUES ('2', 'manager', 'm64KHrNPyf7q1slLz0x9Rlqx6fbmfY4M', 'bkVRGck5Lf1dC2xF9jequ5qPg67o0lpZAGyVAAJE', '$2y$13$RoksEVwYtitm.xjsQw0zp.iSI/T051q2aNW4/gAffylbPq4LqlpCS', null, null, 'admin@sahl.tech', '2', '1552385276', '1580894283', '1580894383');
+INSERT INTO `user` VALUES ('2', 'manager', 'm64KHrNPyf7q1slLz0x9Rlqx6fbmfY4M', 'bkVRGck5Lf1dC2xF9jequ5qPg67o0lpZAGyVAAJE', '$2y$13$RoksEVwYtitm.xjsQw0zp.iSI/T051q2aNW4/gAffylbPq4LqlpCS', null, null, 'manager@takeen.com', '2', '1552385276', '1580894283', '1580894383');
 INSERT INTO `user` VALUES ('3', 'user', 'IgC3yV60pa5oIbrtahAEEUgQAbJDfzz9', '__yC5eEfXr6yYM8EuTweBqjxU92ZD6vdrLCc-GdC', '$2y$13$9V/G9ZtHZl5NWM5NwZGRmeogHQDBrfpavhbMYlRl1kBb7J0wXN2Jm', null, null, 'user@example.com', '2', '1552385276', '1552385276', null);
-INSERT INTO `user` VALUES ('4', 'tamkeen-superadmin', 'Chl2wTf1lcFvgHzjy_d7o3T79cBGBTGj', 'foGDvBiPRrk8MkemGZyZCAudcdxTUtY-HjFW_PlR', '$2y$13$Ij0Bjtsnv/9D7uoHZ7p4leQl7JJHezG0Ugr9woqz68y8y0XE2Zn3a', null, null, 'webmaster@example.com', '2', '1552385275', '1552385275', '1569225691');
+INSERT INTO `user` VALUES ('4', 'tamkeen-superadmin', 'Chl2wTf1lcFvgHzjy_d7o3T79cBGBTGj', 'foGDvBiPRrk8MkemGZyZCAudcdxTUtY-HjFW_PlR', '$2y$13$Ij0Bjtsnv/9D7uoHZ7p4leQl7JJHezG0Ugr9woqz68y8y0XE2Zn3a', null, null, 'tamkeen-superadmin@takeen.com', '2', '1552385275', '1552385275', '1569225691');
 
 -- ----------------------------
 -- Table structure for `user_attachment`

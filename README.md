@@ -1,29 +1,40 @@
-Under Development
 
-# Yii2-Starter
-
-Yii2 Strater kit based on some repositories on GitHub and some changes from my side to deliver a full working backend and restful template for yii2
-
-Based on Yii2 starter kit
-
-composer require
+# Tamkeen Self-assessment
 
 ## Installation
 
-start docker instance
+First clone the project repo from : 
 
-- docker-compose up -d
-- docker exec -it template-webserver /bin/bash
-- composer install
+Enter the project folder then
 - cp .env.dist .env 
+- create database and configure .env file with the required data 
+####Run commands
+- composer install
 - php console/yii app/setup
+#### prepare the virtual domains
+* http://api.selfassesment.localhost   map to folder project_folder/api/web
+* http://backnd.selfassesment.localhost   map to folder project_folder/backend/web
+* http://storage.selfassesment.localhost   map to folder project_folder/storage/web
+* http://organization.selfassesment.localhost   map to folder project_folder/organization/web
 
-## Demo
+And for each organization name we will generate a virtual domain to be linked to the frontend app which we will present later
 
-http://template.localhost
+ Ex :
+- Organization X will have subdomain x.selfassesment.localhost And will refer to the app frontend folder
 
-http://backend.template.localhost
 
-http://storage.template.localhost
+## Demo Data
+Super Admin (can manage all other admins)
+-----------------------------------------
+- user : tamkeen-superadmin@takeen.com
+- pass : superadmin@321
 
-http://api.template.localhost
+Tamkeen admin
+---------------------------
+- URL         :  http://backnd.selfassesment.localhost
+- User        :  manager@takeen.com 
+- Password : manager@321
+
+### Now you can add your first organization from admin dashboard
+ - For each organization you can add one or more "organization-admin". we will use the organization-admin to login to  http://organization.selfassessment.localhost/
+

@@ -21,6 +21,15 @@ class SiteController extends OrganizationBackendController
 {
 
 
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+        ];
+    }
+
     public function beforeAction($action)
     {
         $this->layout = Yii::$app->user->isGuest || !Yii::$app->user->can('loginToOrganization') ? 'base' : 'common';
