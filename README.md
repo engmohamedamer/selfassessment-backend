@@ -5,7 +5,7 @@
 
 First clone the project repo from : 
 
-Enter the project folder then
+Enter the project folder then Run
 - cp .env.dist .env 
 - create database and configure .env file with the required data 
 ####Run commands
