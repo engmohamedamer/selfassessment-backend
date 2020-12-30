@@ -13,6 +13,7 @@ $config = [
     'timeZone' => 'Asia/Riyadh',
     'components' => [
         'headers' => [
+            /*   comment for local machine use 
             'class' => '\common\helpers\MyHeader',
             'upgradeInsecureRequests' => true,
             'blockAllMixedContent' => false,
@@ -23,9 +24,7 @@ $config = [
             'stsMaxAge' => 10,
             'xFrameOptions' => 'SAMEORIGIN',
             'xPoweredBy' => 'Sahl',
-          //  'referrerPolicy' => 'no-referrer',
             'publicKeyPins' => '',
-          // 'reportUri' => 'https://sahl.tech',
             'cspDirectives' => [
                     'script-src' => "'self' 'unsafe-inline' 'unsafe-eval'",
                     'style-src' => "'self' 'unsafe-inline' 'unsafe-eval'",
@@ -39,6 +38,11 @@ $config = [
                     'child-src' => "'self' 'unsafe-eval'",
                     'worker-src' => "'self'"
             ],
+            */
+
+
+            //  'referrerPolicy' => 'no-referrer',
+            // 'reportUri' => 'https://sahl.tech',
 //            'featurePolicyDirectives' => [
 //                'accelerometer' => "'self'",
 //                'ambient-light-sensor' => "'self'",
