@@ -13,7 +13,7 @@ $config = [
     'timeZone' => 'Asia/Riyadh',
     'components' => [
         'headers' => [
-            /*   commented for local machine use
+           // /*   commented for local machine use
             'class' => '\common\helpers\MyHeader',
             'upgradeInsecureRequests' => true,
             'blockAllMixedContent' => false,
@@ -38,7 +38,7 @@ $config = [
                     'child-src' => "'self' 'unsafe-eval'",
                     'worker-src' => "'self'"
             ],
-            */
+            //*/
 
 
             //  'referrerPolicy' => 'no-referrer',
