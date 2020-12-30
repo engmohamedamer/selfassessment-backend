@@ -3,7 +3,7 @@
 
 ## Installation
 
-First clone the project repo from : 
+First clone the project repo from : git@github.com:engmohamedamer/selfassessment-backend.git
 
 Enter the project folder then Run
 - cp .env.dist .env 
@@ -13,7 +13,7 @@ Enter the project folder then Run
 - php console/yii app/setup
 #### prepare the virtual domains
 * http://api.selfassesment.localhost   map to folder project_folder/api/web
-* http://backnd.selfassesment.localhost   map to folder project_folder/backend/web
+* http://backend.selfassesment.localhost   map to folder project_folder/backend/web
 * http://storage.selfassesment.localhost   map to folder project_folder/storage/web
 * http://organization.selfassesment.localhost   map to folder project_folder/organization/web
 
@@ -31,7 +31,7 @@ Super Admin (can manage all other admins)
 
 Tamkeen admin
 ---------------------------
-- URL         :  http://backnd.selfassesment.localhost
+- URL         :  http://backend.selfassesment.localhost
 - User        :  manager@takeen.com 
 - Password : manager@321
 
