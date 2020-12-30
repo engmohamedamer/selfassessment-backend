@@ -18,11 +18,6 @@ class RestController  extends  Controller
     {
         return [
             '*',                        // star allows all domains
-            'http://selfassest.localhost',
-            'http://org1.tamkeentechlab.com',
-            'http://org2.tamkeentechlab.com',
-            'http://org3.tamkeentechlab.com',
-            'http://org4.tamkeentechlab.com'
         ];
     }
     public function behaviors()
