@@ -13,7 +13,7 @@ $config = [
     'timeZone' => 'Asia/Riyadh',
     'components' => [
         'headers' => [
-            /*   comment for local machine use 
+            /*   commented for local machine use
             'class' => '\common\helpers\MyHeader',
             'upgradeInsecureRequests' => true,
             'blockAllMixedContent' => false,

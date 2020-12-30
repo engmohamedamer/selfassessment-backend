@@ -5,19 +5,23 @@ $config = [
         'request' => [
             'cookieValidationKey' => env('BACKEND_COOKIE_VALIDATION_KEY'),
             'baseUrl' => env('BACKEND_BASE_URL'),
+            /* commented for local machine use
             'csrfCookie' => [
                 'httpOnly' => YII_ENV_PROD,
                 'secure' => YII_ENV_PROD,
             ],
+            */
         ],
 
         'session' => [
             'class' => 'yii\web\DbSession',
             'timeout' => '3600',
+              /* commented for local machine use
             'cookieParams' => [
                 'httpOnly' =>  YII_ENV_PROD,
                 'secure' => YII_ENV_PROD,
             ],
+              */
         ],
 
 
